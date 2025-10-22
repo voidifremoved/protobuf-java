@@ -242,11 +242,41 @@ public class Parser {
       // empty statement
       return true;
     }
-    return parseField(messageBuilder.addFieldBuilder(), location);
+    if (lookingAt("oneof")) {
+      return parseOneof(messageBuilder, location);
+    }
+    return parseField(messageBuilder.addFieldBuilder(), -1, location);
   }
 
-  private boolean parseField(FieldDescriptorProto.Builder fieldBuilder, LocationRecorder location) {
-    parseLabel(fieldBuilder);
+  private boolean parseOneof(DescriptorProto.Builder messageBuilder, LocationRecorder location) {
+    tokenizer.next(); // consume "oneof"
+    String oneofName = consumeIdentifier("Expected oneof name.");
+    int oneofIndex = messageBuilder.getOneofDeclCount();
+    messageBuilder.addOneofDeclBuilder().setName(oneofName);
+
+    consume("{", "Expected '{' to start oneof block.");
+    while (!tryConsume("}")) {
+      if (tokenizer.current().type == Tokenizer.TokenType.END) {
+        recordError("Reached end of input in oneof definition (missing '}').");
+        return false;
+      }
+      parseField(messageBuilder.addFieldBuilder(), oneofIndex, location);
+    }
+    return true;
+  }
+
+  private boolean parseField(
+      FieldDescriptorProto.Builder fieldBuilder, int oneofIndex, LocationRecorder location) {
+    if (oneofIndex != -1) {
+      if (lookingAt("required") || lookingAt("optional") || lookingAt("repeated")) {
+        recordError("Fields in oneofs must not have labels (required / optional / repeated).");
+        tokenizer.next(); // Consume the label to recover
+      }
+      fieldBuilder.setOneofIndex(oneofIndex);
+      fieldBuilder.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
+    } else {
+      parseLabel(fieldBuilder);
+    }
     parseType(fieldBuilder);
     fieldBuilder.setName(consumeIdentifier("Expected field name."));
     consume("=", "Missing field number.");
