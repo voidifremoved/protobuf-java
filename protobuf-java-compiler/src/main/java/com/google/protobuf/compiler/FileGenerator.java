@@ -1,14 +1,42 @@
 package com.google.protobuf.compiler;
 
 import com.google.protobuf.Descriptors.FileDescriptor;
+import java.util.List;
+import java.util.function.Consumer;
 
 class FileGenerator {
   private final FileDescriptor file;
+  private final Options options;
   private final boolean immutable;
+  private final Context context;
+  private final NameResolver nameResolver;
+  private final String className;
 
-  FileGenerator(FileDescriptor file, boolean immutable) {
+  FileGenerator(FileDescriptor file, Options options, boolean immutable) {
     this.file = file;
+    this.options = options;
     this.immutable = immutable;
+    this.context = new Context(file, options);
+    this.nameResolver = context.getNameResolver();
+    this.className = nameResolver.getFileClassName(file, immutable);
+  }
+
+  boolean validate(Consumer<String> error) {
+    // Check that no class name matches the file's class name.  This is a common
+    // problem that leads to Java compile errors that can be hard to understand.
+    // It's especially bad when using the java_multiple_files, since we would
+    // end up overwriting the outer class with one of the inner ones.
+    if (nameResolver.hasConflictingClassName(file, className, /* exact= */ true)) {
+      error.accept(
+          file.getName()
+              + ": Cannot generate Java output because the file's outer class name, \""
+              + className
+              + "\", matches the name of one of the types declared inside it.  "
+              + "Please either rename the type or use the java_outer_classname "
+              + "option to specify a different outer class name for the .proto file.");
+      return false;
+    }
+    return true;
   }
 
   void generate(java.io.PrintWriter writer) {
@@ -112,14 +140,22 @@ class FileGenerator {
     writer.close();
   }
 
+  void generateSiblings(
+      String packageDir,
+      GeneratorContext context,
+      List<String> fileList,
+      List<String> annotationList) {
+    // This will be implemented in a future task.
+  }
+
   String getJavaPackage() {
-    return file.getOptions().hasJavaPackage() ?
-        file.getOptions().getJavaPackage() : file.getPackage();
+    return file.getOptions().hasJavaPackage()
+        ? file.getOptions().getJavaPackage()
+        : file.getPackage();
   }
 
   String getClassName() {
-    String fileName = file.getName().substring(0, file.getName().lastIndexOf('.'));
-    return StringUtils.toUpperCamelCase(fileName);
+    return nameResolver.getFileClassName(file, immutable);
   }
 
   private String getJavaType(com.google.protobuf.Descriptors.FieldDescriptor field) {
