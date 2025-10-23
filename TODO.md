@@ -5,7 +5,7 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 ## Phase 1: Core Components
 
 1.  **Initial Setup**: Create a Maven project for the Java compiler.
-2.  **Parser**: Implement a Java version of the C++ parser (`src/google/protobuf/compiler/parser.cc`).
+2.  **Parser**: Implement a Java version of the C++ parser (`src/google/protobuf/compiler/parser.cc`) - DONE
 3.  **Code Generator**: Implement a Java version of the C++ code generator (`src/google/protobuf/compiler/code_generator.cc`).
 4.  **Command-Line Interface**: Implement a Java version of the C++ command-line interface (`src/google/protobuf/compiler/command_line_interface.cc`).
 
