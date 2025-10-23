@@ -15,7 +15,7 @@ This phase involves converting the C++ files for the Java generator to their Jav
 
 ### `java` package:
 - `context.java` - DONE
-- `doc_comment.java`
+- `doc_comment.java` - DONE
 - `field_common.java`
 - `file.java`
 - `generator.java`
