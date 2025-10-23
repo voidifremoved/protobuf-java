@@ -19,6 +19,54 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 - Implement Ruby version of the language-specific code generator for Java
 - Implement Objective C version of the language-specific code generator for Java
 
+## Phase 2A: Java-Specific Generator
+
+This phase involves converting the C++ files for the Java generator to their Java equivalents under `com.google.protobuf.compiler.java`.
+
+### `java` package:
+- `context.java`
+- `doc_comment.java`
+- `field_common.java`
+- `file.java`
+- `generator.java`
+- `helpers.java`
+- `internal_helpers.java`
+- `java_features.java`
+- `message_serialization.java`
+- `name_resolver.java`
+- `names.java`
+- `options.java`
+- `shared_code_generator.java`
+
+### `java.full` subpackage:
+- `enum.java`
+- `enum_field.java`
+- `extension.java`
+- `field_generator.java`
+- `generator_factory.java`
+- `make_field_gens.java`
+- `map_field.java`
+- `message.java`
+- `message_builder.java`
+- `message_field.java`
+- `primitive_field.java`
+- `service.java`
+- `string_field.java`
+
+### `java.lite` subpackage:
+- `enum.java`
+- `enum_field.java`
+- `extension.java`
+- `field_generator.java`
+- `generator_factory.java`
+- `make_field_gens.java`
+- `map_field.java`
+- `message.java`
+- `message_builder.java`
+- `message_field.java`
+- `primitive_field.java`
+- `string_field.java`
+
 ## Phase 3: Improvements
 - Create a java API to allow a list of strings containing .proto file contents to be compiled to one or more specified languages, with the output returned as strings.
   
