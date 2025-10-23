@@ -8,10 +8,18 @@
 package com.google.protobuf.compiler.java;
 
 /**
- * A placeholder for the Options class.
+ * An enum representing the different types of field accessors.
  */
-public final class Options {
-    public boolean enforceLite;
-    public boolean annotateCode;
-    public boolean stripNonfunctionalCodegen;
+public enum FieldAccessorType {
+  HAZZER,
+  GETTER,
+  SETTER,
+  CLEARER,
+  // Repeated
+  LIST_COUNT,
+  LIST_GETTER,
+  LIST_INDEXED_GETTER,
+  LIST_INDEXED_SETTER,
+  LIST_ADDER,
+  LIST_MULTI_ADDER
 }
