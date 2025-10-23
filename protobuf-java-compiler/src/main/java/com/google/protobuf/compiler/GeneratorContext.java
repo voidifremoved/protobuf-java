@@ -23,5 +23,5 @@ public interface GeneratorContext {
    * OutputStream that writes to the file.  The caller takes ownership
    * of the returned object.
    */
-  OutputStream open(String filename);
+  OutputStream open(String filename) throws java.io.IOException;
 }
