@@ -52,5 +52,9 @@ public abstract class CodeGenerator {
     public GenerationException(String message) {
       super(message);
     }
+
+    public GenerationException(Throwable cause) {
+      super(cause);
+    }
   }
 }
