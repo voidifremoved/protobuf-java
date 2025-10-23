@@ -9,17 +9,7 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 3.  **Code Generator**: Implement a Java version of the C++ code generator (`src/google/protobuf/compiler/code_generator.cc`) - DONE
 4.  **Command-Line Interface**: Implement a Java version of the C++ command-line interface (`src/google/protobuf/compiler/command_line_interface.cc`) - DONE
 
-## Phase 2: Language-Specific Generators
-
-- Implement Java version of the language-specific code generator for Java - DONE
-- Implement C++ version of the language-specific code generator for Java
-- Implement Csharp version of the language-specific code generator for Java
-- Implement Python version of the language-specific code generator for Java
-- Implement Rust version of the language-specific code generator for Java
-- Implement Ruby version of the language-specific code generator for Java
-- Implement Objective C version of the language-specific code generator for Java
-
-## Phase 2A: Java-Specific Generator
+## Phase 2: Java-Specific Generator
 
 This phase involves converting the C++ files for the Java generator to their Java equivalents under `com.google.protobuf.compiler.java`.
 
@@ -67,10 +57,19 @@ This phase involves converting the C++ files for the Java generator to their Jav
 - `primitive_field.java`
 - `string_field.java`
 
-## Phase 3: Improvements
+## Phase 3: More Language-Specific Generators
+
+- Implement C++ version of the language-specific code generator for Java
+- Implement Csharp version of the language-specific code generator for Java
+- Implement Python version of the language-specific code generator for Java
+- Implement Rust version of the language-specific code generator for Java
+- Implement Ruby version of the language-specific code generator for Java
+- Implement Objective C version of the language-specific code generator for Java
+
+## Phase 4: Improvements
 - Create a java API to allow a list of strings containing .proto file contents to be compiled to one or more specified languages, with the output returned as strings.
   
-## Phase 4: Testing and Validation
+## Phase 5: Testing and Validation
 
 - Implement a comprehensive test suite for the Java compiler.
 - Validate the output of the Java compiler against the C++ compiler.
