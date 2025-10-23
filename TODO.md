@@ -19,7 +19,11 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 - Implement Ruby version of the language-specific code generator for Java
 - Implement Objective C version of the language-specific code generator for Java
 
-## Phase 3: Testing and Validation
+## Phase 3: Improvements
+- Create a java API to allow a list of strings containing .proto file contents to be compiled to one or more specified languages, with the output returned as strings.
+  
+## Phase 4: Testing and Validation
 
 - Implement a comprehensive test suite for the Java compiler.
 - Validate the output of the Java compiler against the C++ compiler.
+
