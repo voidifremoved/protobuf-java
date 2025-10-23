@@ -14,7 +14,7 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 This phase involves converting the C++ files for the Java generator to their Java equivalents under `com.google.protobuf.compiler.java`.
 
 ### `java` package:
-- `context.java`
+- `context.java` - DONE
 - `doc_comment.java`
 - `field_common.java`
 - `file.java`
