@@ -11,7 +11,8 @@ public class JavaCodeGenerator extends CodeGenerator {
       throws GenerationException {
     try {
       String fileName = file.getName().substring(0, file.getName().lastIndexOf('.'));
-      String className = toUpperCamelCase(fileName);
+      String className = file.getOptions().hasJavaOuterClassname() ?
+          file.getOptions().getJavaOuterClassname() : toUpperCamelCase(fileName);
       String javaPackage = file.getOptions().hasJavaPackage() ?
           file.getOptions().getJavaPackage() : file.getPackage();
       String outputFileName = javaPackage.replace('.', '/') + "/" + className + ".java";

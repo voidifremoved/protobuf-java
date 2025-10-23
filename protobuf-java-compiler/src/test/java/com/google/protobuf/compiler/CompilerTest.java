@@ -64,4 +64,26 @@ public class CompilerTest {
     assertTrue(personFileContents.contains("public final class Person"));
     assertTrue(personFileContents.contains("private com.example.Address address_;"));
   }
+
+  @Test
+  public void testCompileWithOptions() throws Exception {
+    String protoFile =
+        "option java_package = \"com.rubberjam.gameservices.core.messages\";\n"
+            + "option java_outer_classname = \"CoreEnums\";\n"
+            + "option optimize_for = SPEED;\n"
+            + "message TestMessage {\n"
+            + "  optional string query = 1;\n"
+            + "}\n";
+
+    Compiler compiler = new Compiler();
+    Map<String, String> files =
+        compiler.compile(
+            Collections.singletonMap("test.proto", protoFile), Collections.singletonList("java"));
+
+    assertEquals(1, files.size());
+    String fileName = "com/rubberjam/gameservices/core/messages/CoreEnums.java";
+    assertTrue(files.containsKey(fileName));
+    String fileContents = files.get(fileName);
+    assertTrue(fileContents.contains("public final class CoreEnums"));
+  }
 }
