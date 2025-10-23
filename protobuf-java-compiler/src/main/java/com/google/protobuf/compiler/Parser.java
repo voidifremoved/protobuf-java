@@ -170,23 +170,68 @@ public class Parser {
   }
 
   private boolean parseOption(FileOptions.Builder optionsBuilder, LocationRecorder location) {
-    location.addPath(FileOptions.UNINTERPRETED_OPTION_FIELD_NUMBER);
     tokenizer.next(); // consume "option"
-
-    UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-    parseOptionName(option);
-    consume("=", "Expected '=' after option name.");
-    parseOptionValue(option);
-    consume(";", "Expected ';' after option declaration.");
-    optionsBuilder.addUninterpretedOption(option);
-    location.end();
-    return true;
+    String optionName = consumeIdentifier("Expected option name.");
+    if (optionName.equals("java_package")) {
+      consume("=", "Expected '=' after option name.");
+      optionsBuilder.setJavaPackage(consumeString("Expected string value."));
+      consume(";", "Expected ';' after option declaration.");
+      return true;
+    } else if (optionName.equals("java_outer_classname")) {
+      consume("=", "Expected '=' after option name.");
+      optionsBuilder.setJavaOuterClassname(consumeString("Expected string value."));
+      consume(";", "Expected ';' after option declaration.");
+      return true;
+    } else if (optionName.equals("optimize_for")) {
+      consume("=", "Expected '=' after option name.");
+      String optimizeFor = consumeIdentifier("Expected identifier value.");
+      if (optimizeFor.equals("SPEED")) {
+        optionsBuilder.setOptimizeFor(FileOptions.OptimizeMode.SPEED);
+      } else if (optimizeFor.equals("CODE_SIZE")) {
+        optionsBuilder.setOptimizeFor(FileOptions.OptimizeMode.CODE_SIZE);
+      } else if (optimizeFor.equals("LITE_RUNTIME")) {
+        optionsBuilder.setOptimizeFor(FileOptions.OptimizeMode.LITE_RUNTIME);
+      } else {
+        recordError("Invalid value for optimize_for option.");
+      }
+      consume(";", "Expected ';' after option declaration.");
+      return true;
+    } else if (optionName.equals("cc_generic_services")) {
+      consume("=", "Expected '=' after option name.");
+      optionsBuilder.setCcGenericServices(consumeBoolean("Expected 'true' or 'false'."));
+      consume(";", "Expected ';' after option declaration.");
+      return true;
+    } else if (optionName.equals("java_generic_services")) {
+      consume("=", "Expected '=' after option name.");
+      optionsBuilder.setJavaGenericServices(consumeBoolean("Expected 'true' or 'false'."));
+      consume(";", "Expected ';' after option declaration.");
+      return true;
+    } else {
+      location.addPath(FileOptions.UNINTERPRETED_OPTION_FIELD_NUMBER);
+      UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
+      option.addNameBuilder().setNamePart(optionName);
+      while (tryConsume(".")) {
+        option.addNameBuilder().setNamePart(consumeIdentifier("Expected option name component."));
+      }
+      consume("=", "Expected '=' after option name.");
+      parseOptionValue(option);
+      consume(";", "Expected ';' after option declaration.");
+      optionsBuilder.addUninterpretedOption(option);
+      location.end();
+      return true;
+    }
   }
 
-  private void parseOptionName(UninterpretedOption.Builder option) {
-    option.addNameBuilder().setNamePart(consumeIdentifier("Expected option name."));
-    while (tryConsume(".")) {
-      option.addNameBuilder().setNamePart(consumeIdentifier("Expected option name component."));
+  private boolean consumeBoolean(String error) {
+    if (lookingAt("true")) {
+      tokenizer.next();
+      return true;
+    } else if (lookingAt("false")) {
+      tokenizer.next();
+      return false;
+    } else {
+      recordError(error);
+      return false;
     }
   }
 
@@ -292,8 +337,9 @@ public class Parser {
   private void parseFieldOptions(FieldDescriptorProto.Builder fieldBuilder,
       LocationRecorder location) {
     do {
+      String optionName = consumeIdentifier("Expected option name.");
       UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-      parseOptionName(option);
+      option.addNameBuilder().setNamePart(optionName);
       consume("=", "Expected '=' after option name.");
       parseOptionValue(option);
       fieldBuilder.getOptionsBuilder().addUninterpretedOption(option);
@@ -372,8 +418,9 @@ public class Parser {
   private void parseEnumConstantOptions(EnumValueDescriptorProto.Builder enumValueBuilder,
       LocationRecorder location) {
     do {
+      String optionName = consumeIdentifier("Expected option name.");
       UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-      parseOptionName(option);
+      option.addNameBuilder().setNamePart(optionName);
       consume("=", "Expected '=' after option name.");
       parseOptionValue(option);
       enumValueBuilder.getOptionsBuilder().addUninterpretedOption(option);
@@ -436,8 +483,9 @@ public class Parser {
   private void parseMethodOptions(MethodDescriptorProto.Builder methodBuilder,
       LocationRecorder location) {
     while (!lookingAt("}")) {
+      String optionName = consumeIdentifier("Expected option name.");
       UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-      parseOptionName(option);
+      option.addNameBuilder().setNamePart(optionName);
       consume("=", "Expected '=' after option name.");
       parseOptionValue(option);
       methodBuilder.getOptionsBuilder().addUninterpretedOption(option);
