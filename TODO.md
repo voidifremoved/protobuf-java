@@ -11,7 +11,13 @@ This document outlines the steps for converting the C++ protobuf compiler to Jav
 
 ## Phase 2: Language-Specific Generators
 
-- Implement Java versions of the language-specific code generators (e.g., for C++, Java, Python).
+- Implement Java version of the language-specific code generator for Java
+- Implement C++ version of the language-specific code generator for Java
+- Implement Csharp version of the language-specific code generator for Java
+- Implement Python version of the language-specific code generator for Java
+- Implement Rust version of the language-specific code generator for Java
+- Implement Ruby version of the language-specific code generator for Java
+- Implement Objective C version of the language-specific code generator for Java
 
 ## Phase 3: Testing and Validation
 
