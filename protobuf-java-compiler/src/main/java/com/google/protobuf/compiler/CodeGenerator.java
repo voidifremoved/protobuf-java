@@ -57,4 +57,55 @@ public abstract class CodeGenerator {
       super(cause);
     }
   }
+
+  /**
+   * This must be kept in sync with plugin.proto. See that file for
+   * documentation on each value.
+   */
+  public enum Feature {
+    FEATURE_PROTO3_OPTIONAL(1),
+    FEATURE_SUPPORTS_EDITIONS(2);
+
+    private final int value;
+
+    Feature(int value) {
+      this.value = value;
+    }
+
+    public int getValue() {
+      return value;
+    }
+  }
+
+  /**
+   * Implement this to indicate what features this code generator supports.
+   *
+   * @return A bitwise OR of values from the Feature enum above (or zero).
+   */
+  public long getSupportedFeatures() {
+    return 0;
+  }
+
+  /**
+   * Returns the minimum edition (inclusive) supported by this generator.  Any
+   * proto files with an edition before this will result in an error.
+   */
+  public Edition getMinimumEdition() {
+    return Edition.EDITION_UNKNOWN;
+  }
+
+  /**
+   * Returns the maximum edition (inclusive) supported by this generator.  Any
+   * proto files with an edition after this will result in an error.
+   */
+  public Edition getMaximumEdition() {
+    return Edition.EDITION_UNKNOWN;
+  }
+
+  /**
+   * Builds a default feature set mapping for this generator.
+   */
+  public FeatureSetDefaults buildFeatureSetDefaults() {
+    return null;
+  }
 }
