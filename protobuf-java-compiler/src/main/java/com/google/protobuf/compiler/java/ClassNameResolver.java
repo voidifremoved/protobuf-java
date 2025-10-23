@@ -7,8 +7,60 @@
 
 package com.google.protobuf.compiler.java;
 
-/**
- * A placeholder for the ClassNameResolver class.
- */
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
+
+/** A utility class for resolving Java class names for protobuf descriptors. */
 public final class ClassNameResolver {
+
+  public String getFileClassName(FileDescriptor file, boolean immutable) {
+    if (file.getOptions().hasJavaOuterClassname()) {
+      return file.getOptions().getJavaOuterClassname();
+    }
+    String basename;
+    int lastSlash = file.getName().lastIndexOf('/');
+    if (lastSlash == -1) {
+      basename = file.getName();
+    } else {
+      basename = file.getName().substring(lastSlash + 1);
+    }
+    return StringUtils.underscoresToCamelCase(basename.replace(".proto", ""), true) + "Proto";
+  }
+
+  private String getFileJavaPackage(FileDescriptor file) {
+    if (file.getOptions().hasJavaPackage()) {
+      return file.getOptions().getJavaPackage();
+    }
+    return file.getPackage();
+  }
+
+  private String getClassName(String nameWithoutPackage, FileDescriptor file, boolean immutable) {
+    String result = getFileJavaPackage(file);
+    if (!result.isEmpty()) {
+      result += ".";
+    }
+    if (file.getOptions().getJavaMultipleFiles()) {
+      result += nameWithoutPackage;
+    } else {
+      result += getFileClassName(file, immutable);
+      result += ".";
+      result += nameWithoutPackage.replace(".", "$");
+    }
+    return result;
+  }
+
+  private String classNameWithoutPackage(Descriptor descriptor) {
+    String result;
+    if (descriptor.getContainingType() != null) {
+      result = classNameWithoutPackage(descriptor.getContainingType()) + ".";
+    } else {
+      result = "";
+    }
+    return result + descriptor.getName();
+  }
+
+  public String getClassName(Descriptor descriptor, boolean immutable) {
+    return getClassName(
+        classNameWithoutPackage(descriptor), descriptor.getFile(), immutable);
+  }
 }
