@@ -8,11 +8,16 @@
 package com.google.protobuf.compiler.java;
 
 /**
- * A placeholder for the Options class.
+ * An enum representing the different Java types.
  */
-public final class Options {
-    public boolean enforceLite;
-    public boolean annotateCode;
-    public boolean stripNonfunctionalCodegen;
-    public boolean jvmDsl;
+public enum JavaType {
+  INT,
+  LONG,
+  FLOAT,
+  DOUBLE,
+  BOOLEAN,
+  STRING,
+  BYTES,
+  ENUM,
+  MESSAGE
 }

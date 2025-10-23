@@ -58,4 +58,104 @@ public final class StringUtils {
     }
     return fieldName;
   }
+
+  public static String fieldConstantName(FieldDescriptor field) {
+    return field.getName().toUpperCase() + "_FIELD_NUMBER";
+  }
+
+  public static JavaType getJavaType(FieldDescriptor field) {
+    switch (field.getType()) {
+      case INT32:
+      case UINT32:
+      case SINT32:
+      case FIXED32:
+      case SFIXED32:
+        return JavaType.INT;
+      case INT64:
+      case UINT64:
+      case SINT64:
+      case FIXED64:
+      case SFIXED64:
+        return JavaType.LONG;
+      case FLOAT:
+        return JavaType.FLOAT;
+      case DOUBLE:
+        return JavaType.DOUBLE;
+      case BOOL:
+        return JavaType.BOOLEAN;
+      case STRING:
+        return JavaType.STRING;
+      case BYTES:
+        return JavaType.BYTES;
+      case ENUM:
+        return JavaType.ENUM;
+      case GROUP:
+      case MESSAGE:
+        return JavaType.MESSAGE;
+    }
+    throw new IllegalArgumentException("Unknown field type: " + field.getType());
+  }
+
+  public static String getFieldTypeName(FieldDescriptor.Type fieldType) {
+    switch (fieldType) {
+      case INT32:
+        return "INT32";
+      case UINT32:
+        return "UINT32";
+      case SINT32:
+        return "SINT32";
+      case FIXED32:
+        return "FIXED32";
+      case SFIXED32:
+        return "SFIXED32";
+      case INT64:
+        return "INT64";
+      case UINT64:
+        return "UINT64";
+      case SINT64:
+        return "SINT64";
+      case FIXED64:
+        return "FIXED64";
+      case SFIXED64:
+        return "SFIXED64";
+      case FLOAT:
+        return "FLOAT";
+      case DOUBLE:
+        return "DOUBLE";
+      case BOOL:
+        return "BOOL";
+      case STRING:
+        return "STRING";
+      case BYTES:
+        return "BYTES";
+      case ENUM:
+        return "ENUM";
+      case GROUP:
+        return "GROUP";
+      case MESSAGE:
+        return "MESSAGE";
+    }
+    throw new IllegalArgumentException("Unknown field type: " + fieldType);
+  }
+
+  public static String boxedPrimitiveTypeName(JavaType type) {
+    switch (type) {
+      case INT:
+        return "java.lang.Integer";
+      case LONG:
+        return "java.lang.Long";
+      case FLOAT:
+        return "java.lang.Float";
+      case DOUBLE:
+        return "java.lang.Double";
+      case BOOLEAN:
+        return "java.lang.Boolean";
+      case STRING:
+        return "java.lang.String";
+      case BYTES:
+        return "com.google.protobuf.ByteString";
+      default:
+        return null;
+    }
+  }
 }
