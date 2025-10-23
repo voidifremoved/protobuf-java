@@ -152,6 +152,21 @@ public class JavaCodeGenerator extends CodeGenerator {
     }
   }
 
+  @Override
+  public long getSupportedFeatures() {
+    return Feature.FEATURE_PROTO3_OPTIONAL.getValue();
+  }
+
+  @Override
+  public Edition getMinimumEdition() {
+    return Edition.EDITION_PROTO2;
+  }
+
+  @Override
+  public Edition getMaximumEdition() {
+    return Edition.EDITION_2023;
+  }
+
   private String getJavaWrapperType(Descriptors.FieldDescriptor field) {
     switch (field.getType()) {
       case DOUBLE:
