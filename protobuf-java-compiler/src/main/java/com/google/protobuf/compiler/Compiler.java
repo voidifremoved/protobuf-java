@@ -76,7 +76,7 @@ public final class Compiler {
     for (FileDescriptor fileDescriptor : fileDescriptors.values()) {
       for (String language : languages) {
         if (language.equals("java")) {
-          JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
+          JavaCodeGenerator codeGenerator = GeneratorFactory.create();
           try {
             codeGenerator.generate(fileDescriptor, "", context);
           } catch (CodeGenerator.GenerationException e) {

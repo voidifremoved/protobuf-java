@@ -26,7 +26,7 @@ public final class ClassNameResolver {
     } else {
       basename = file.getName().substring(lastSlash + 1);
     }
-    return StringUtils.underscoresToCamelCase(basename.replace(".proto", ""), true) + "Proto";
+    return Helpers.underscoresToCamelCase(basename.replace(".proto", ""), true) + "Proto";
   }
 
   public String getFileJavaPackage(FileDescriptor file) {
@@ -61,7 +61,22 @@ public final class ClassNameResolver {
     return result + descriptor.getName();
   }
 
+  private String classNameWithoutPackage(EnumDescriptor descriptor) {
+    String result;
+    if (descriptor.getContainingType() != null) {
+      result = classNameWithoutPackage(descriptor.getContainingType()) + ".";
+    } else {
+      result = "";
+    }
+    return result + descriptor.getName();
+  }
+
   public String getClassName(Descriptor descriptor, boolean immutable) {
+    return getClassName(
+        classNameWithoutPackage(descriptor), descriptor.getFile(), immutable);
+  }
+
+  public String getClassName(EnumDescriptor descriptor, boolean immutable) {
     return getClassName(
         classNameWithoutPackage(descriptor), descriptor.getFile(), immutable);
   }

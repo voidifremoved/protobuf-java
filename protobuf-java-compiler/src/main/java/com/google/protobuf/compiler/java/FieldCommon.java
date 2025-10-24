@@ -26,7 +26,7 @@ public final class FieldCommon {
     variables.put("classname", descriptor.getContainingType().getName());
     variables.put("capitalized_name", info.capitalizedName);
     variables.put("disambiguated_reason", info.disambiguatedReason);
-    variables.put("constant_name", StringUtils.fieldConstantName(descriptor));
+    variables.put("constant_name", Helpers.fieldConstantName(descriptor));
     variables.put("number", Integer.toString(descriptor.getNumber()));
     variables.put("kt_dsl_builder", "_builder");
     variables.put("{", "");
@@ -38,14 +38,14 @@ public final class FieldCommon {
     variables.put("kt_capitalized_name", getKotlinName(info.capitalizedName));
     variables.put("jvm_synthetic", jvmSynthetic(info.options.jvmDsl));
     if (!descriptor.isRepeated()) {
-      variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()));
+      variables.put("annotation_field_type", Helpers.getFieldTypeName(descriptor.getType()));
     } else if (descriptor.isMapField()) {
-      variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "MAP");
+      variables.put("annotation_field_type", Helpers.getFieldTypeName(descriptor.getType()) + "MAP");
     } else {
-      variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST");
+      variables.put("annotation_field_type", Helpers.getFieldTypeName(descriptor.getType()) + "_LIST");
       if (descriptor.isPacked()) {
         variables.put(
-            "annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST_PACKED");
+            "annotation_field_type", Helpers.getFieldTypeName(descriptor.getType()) + "_LIST_PACKED");
       }
     }
   }
@@ -110,14 +110,14 @@ public final class FieldCommon {
   }
 
   private static String getOneofStoredType(FieldDescriptor field) {
-    JavaType javaType = StringUtils.getJavaType(field);
+    JavaType javaType = Helpers.getJavaType(field);
     switch (javaType) {
       case ENUM:
         return "java.lang.Integer";
       case MESSAGE:
         return new ClassNameResolver().getClassName(field.getMessageType(), true);
       default:
-        return StringUtils.boxedPrimitiveTypeName(javaType);
+        return Helpers.boxedPrimitiveTypeName(javaType);
     }
   }
 

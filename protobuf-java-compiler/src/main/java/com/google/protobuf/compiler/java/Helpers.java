@@ -7,14 +7,15 @@
 
 package com.google.protobuf.compiler.java;
 
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- * A utility class for string manipulations.
- */
-public final class StringUtils {
+/** A utility class for string manipulations. */
+public final class Helpers {
 
-  private StringUtils() {}
+  private Helpers() {}
 
   public static String underscoresToCamelCase(String input, boolean capNextLetter) {
     StringBuilder result = new StringBuilder();
@@ -157,5 +158,99 @@ public final class StringUtils {
       default:
         return null;
     }
+  }
+
+  public static String getOneofStoredType(FieldDescriptor field) {
+    JavaType javaType = getJavaType(field);
+    switch (javaType) {
+      case ENUM:
+        return "java.lang.Integer";
+      case MESSAGE:
+        return new ClassNameResolver().getClassName(field.getMessageType(), true);
+      default:
+        return boxedPrimitiveTypeName(javaType);
+    }
+  }
+
+  public static String defaultValue(FieldDescriptor field) {
+    switch (field.getType()) {
+      case INT32:
+        return Integer.toString(field.getDefaultValue().hashCode());
+      case INT64:
+        return Long.toString(field.getDefaultValue().hashCode()) + "L";
+      case FLOAT:
+        return Float.toString((Float) field.getDefaultValue()) + "F";
+      case DOUBLE:
+        return Double.toString((Double) field.getDefaultValue()) + "D";
+      case BOOL:
+        return Boolean.toString((Boolean) field.getDefaultValue());
+      case STRING:
+        return "\"" + (String) field.getDefaultValue() + "\"";
+      case BYTES:
+        return "com.google.protobuf.ByteString.EMPTY";
+      case ENUM:
+        return new ClassNameResolver().getClassName(field.getEnumType(), true)
+            + "."
+            + field.getDefaultValue().toString();
+      case MESSAGE:
+        return new ClassNameResolver().getClassName(field.getMessageType(), true)
+            + ".getDefaultInstance()";
+    }
+    throw new IllegalArgumentException("Unknown field type: " + field.getType());
+  }
+
+  public static boolean isDefaultValueJavaDefault(FieldDescriptor field) {
+    switch (field.getType()) {
+      case INT32:
+        return (Integer) field.getDefaultValue() == 0;
+      case INT64:
+        return (Long) field.getDefaultValue() == 0L;
+      case FLOAT:
+        return (Float) field.getDefaultValue() == 0F;
+      case DOUBLE:
+        return (Double) field.getDefaultValue() == 0D;
+      case BOOL:
+        return !(Boolean) field.getDefaultValue();
+      case STRING:
+      case BYTES:
+      case ENUM:
+      case MESSAGE:
+        return false;
+    }
+    throw new IllegalArgumentException("Unknown field type: " + field.getType());
+  }
+
+  public static boolean isByteStringWithCustomDefaultValue(FieldDescriptor field) {
+    return getJavaType(field) == JavaType.BYTES && !field.getDefaultValue().toString().isEmpty();
+  }
+
+  public static String javaPackageToDir(String packageName) {
+    return packageName.replace('.', '/');
+  }
+
+  public static boolean hasRequiredFields(Descriptor descriptor) {
+    Set<Descriptor> alreadySeen = new HashSet<>();
+    return hasRequiredFields(descriptor, alreadySeen);
+  }
+
+  private static boolean hasRequiredFields(Descriptor descriptor, Set<Descriptor> alreadySeen) {
+    if (alreadySeen.contains(descriptor)) {
+      return false;
+    }
+    alreadySeen.add(descriptor);
+    if (descriptor.toProto().getExtensionRangeCount() > 0) {
+      return true;
+    }
+    for (FieldDescriptor field : descriptor.getFields()) {
+      if (field.isRequired()) {
+        return true;
+      }
+      if (getJavaType(field) == JavaType.MESSAGE) {
+        if (hasRequiredFields(field.getMessageType(), alreadySeen)) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

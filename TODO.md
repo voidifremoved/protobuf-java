@@ -19,7 +19,7 @@ This phase involves converting the C++ files for the Java generator to their Jav
 - `field_common.java` - DONE
 - `file.java` - DONE
 - `generator.java` - DONE
-- `helpers.java`
+- `helpers.java` - DONE
 - `internal_helpers.java`
 - `java_features.java`
 - `message_serialization.java`

@@ -75,8 +75,8 @@ public final class Context {
 
     for (OneofDescriptor oneof : message.getOneofs()) {
       OneofGeneratorInfo info = new OneofGeneratorInfo();
-      info.name = StringUtils.underscoresToCamelCase(oneof.getName(), false);
-      info.capitalizedName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+      info.name = Helpers.underscoresToCamelCase(oneof.getName(), false);
+      info.capitalizedName = Helpers.underscoresToCamelCase(oneof.getName(), true);
       oneofGeneratorInfoMap.put(oneof, info);
     }
   }
@@ -121,10 +121,10 @@ public final class Context {
     boolean[] isConflict = new boolean[fields.size()];
     for (int i = 0; i < fields.size(); i++) {
       FieldDescriptor field = fields.get(i);
-      String name = StringUtils.capitalizedFieldName(field);
+      String name = Helpers.capitalizedFieldName(field);
       for (int j = i + 1; j < fields.size(); j++) {
         FieldDescriptor other = fields.get(j);
-        String otherName = StringUtils.capitalizedFieldName(other);
+        String otherName = Helpers.capitalizedFieldName(other);
         if (name.equals(otherName) || isConflicting(field, name, other, otherName)) {
           isConflict[i] = isConflict[j] = true;
         }
@@ -134,8 +134,8 @@ public final class Context {
     for (int i = 0; i < fields.size(); i++) {
       FieldDescriptor field = fields.get(i);
       FieldGeneratorInfo info = new FieldGeneratorInfo();
-      info.name = StringUtils.camelCaseFieldName(field);
-      info.capitalizedName = StringUtils.capitalizedFieldName(field);
+      info.name = Helpers.camelCaseFieldName(field);
+      info.capitalizedName = Helpers.capitalizedFieldName(field);
       if (isConflict[i]) {
         info.name += field.getNumber();
         info.capitalizedName += field.getNumber();
