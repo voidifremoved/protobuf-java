@@ -41,7 +41,6 @@ public class JavaCodeGeneratorImpl implements JavaCodeGenerator {
           "lite runtime generator option cannot be used with mutable API.");
     }
 
-    // By default we generate immutable code and shared code for immutable API.
     if (!fileOptions.generateImmutableCode
         && !fileOptions.generateMutableCode
         && !fileOptions.generateSharedCode) {
@@ -55,9 +54,6 @@ public class JavaCodeGeneratorImpl implements JavaCodeGenerator {
     List<FileGenerator> fileGenerators = new ArrayList<>();
     if (fileOptions.generateImmutableCode) {
       fileGenerators.add(new FileGenerator(file, fileOptions));
-    }
-    if (fileOptions.generateMutableCode) {
-      // fileGenerators.add(new FileGenerator(file, fileOptions, /* immutable= */ false));
     }
 
     for (FileGenerator fileGenerator : fileGenerators) {
@@ -77,16 +73,11 @@ public class JavaCodeGeneratorImpl implements JavaCodeGenerator {
           allAnnotations.add(infoFullPath);
         }
 
-        // Generate main java file.
         StringWriter writer = new StringWriter();
         fileGenerator.generate(new PrintWriter(writer));
         generatorContext.open(javaFilename).write(writer.toString().getBytes());
-
-        // Generate sibling files.
-        // fileGenerator.generateSiblings(packageDir, generatorContext, allFiles, allAnnotations);
       }
 
-      // Generate output list if requested.
       if (fileOptions.outputListFile != null) {
         StringWriter writer = new StringWriter();
         for (String fileName : allFiles) {
