@@ -10,11 +10,16 @@ package com.google.protobuf.compiler;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.compiler.java.FileGenerator;
+import com.google.protobuf.compiler.java.Options;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.Reader;
+import java.io.StringWriter;
 import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,10 +43,25 @@ public final class CommandLineInterface {
 
     String javaOut = null;
     List<String> protoFiles = new ArrayList<>();
+    Options options = new Options();
 
     for (String arg : args) {
       if (arg.startsWith("--java_out=")) {
         javaOut = arg.substring("--java_out=".length());
+      } else if (arg.equals("--immutable")) {
+        options.generateImmutableCode = true;
+      } else if (arg.equals("--mutable")) {
+        options.generateMutableCode = true;
+      } else if (arg.equals("--shared")) {
+        options.generateSharedCode = true;
+      } else if (arg.equals("--lite")) {
+        options.enforceLite = true;
+      } else if (arg.equals("--annotate_code")) {
+        options.annotateCode = true;
+      } else if (arg.equals("--experimental_strip_nonfunctional_codegen")) {
+        options.stripNonfunctionalCodegen = true;
+      } else if (arg.equals("--bootstrap")) {
+        options.bootstrap = true;
       } else {
         protoFiles.add(arg);
       }
@@ -59,7 +79,7 @@ public final class CommandLineInterface {
 
     for (String protoFile : protoFiles) {
       try {
-        if (!processProtoFile(protoFile, javaOut)) {
+        if (!processProtoFile(protoFile, javaOut, options)) {
           return 1;
         }
       } catch (IOException e) {
@@ -71,7 +91,8 @@ public final class CommandLineInterface {
     return 0;
   }
 
-  private static boolean processProtoFile(String protoFile, String javaOut) throws IOException {
+  private static boolean processProtoFile(String protoFile, String javaOut, Options options)
+      throws IOException {
     File file = new File(protoFile);
     if (!file.exists()) {
       System.err.println(protoFile + ": No such file or directory.");
@@ -95,11 +116,20 @@ public final class CommandLineInterface {
     }
 
     try {
-      FileDescriptor fileDescriptor = FileDescriptor.buildFrom(fileBuilder.build(), new FileDescriptor[0]);
-      JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-      GeneratorContextImpl generatorContext = new GeneratorContextImpl(javaOut);
-      codeGenerator.generate(fileDescriptor, "", generatorContext);
-    } catch (Descriptors.DescriptorValidationException | CodeGenerator.GenerationException e) {
+      FileDescriptor fileDescriptor =
+          FileDescriptor.buildFrom(fileBuilder.build(), new FileDescriptor[0]);
+      FileGenerator fileGenerator = new FileGenerator(fileDescriptor, options);
+      String error = fileGenerator.validate();
+      if (error != null) {
+        System.err.println(error);
+        return false;
+      }
+      StringWriter writer = new StringWriter();
+      fileGenerator.generate(new PrintWriter(writer));
+      String filename = javaOut + "/" + fileGenerator.getClassname().replace('.', '/') + ".java";
+      Files.createDirectories(Paths.get(filename).getParent());
+      Files.write(Paths.get(filename), writer.toString().getBytes());
+    } catch (Descriptors.DescriptorValidationException e) {
       System.err.println("Error processing " + protoFile + ": " + e.getMessage());
       return false;
     }

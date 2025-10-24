@@ -15,4 +15,10 @@ public final class Options {
     public boolean annotateCode;
     public boolean stripNonfunctionalCodegen;
     public boolean jvmDsl;
+    public String outputListFile;
+    public boolean generateImmutableCode;
+    public boolean generateMutableCode;
+    public boolean generateSharedCode;
+    public String annotationListFile;
+    public boolean bootstrap;
 }

@@ -41,8 +41,19 @@ public final class FileGenerator {
   }
 
   public String validate() {
-    // TODO: Implement this method.
+    if (nameResolver.hasConflictingClassName(file, classname)) {
+      return file.getName()
+          + ": Cannot generate Java output because the file's outer class name, \""
+          + classname
+          + "\", matches the name of one of the types declared inside it.  "
+          + "Please either rename the type or use the java_outer_classname "
+          + "option to specify a different outer class name for the .proto file.";
+    }
     return null;
+  }
+
+  public String getClassname() {
+    return classname;
   }
 
   public void generate(PrintWriter out) {
@@ -91,7 +102,29 @@ public final class FileGenerator {
     out.println("  private static com.google.protobuf.Descriptors.FileDescriptor");
     out.println("      descriptor;");
     out.println("  static {");
-    // TODO: Add descriptor initialization code.
+    String[] descriptorData = new String[] {file.toProto().toString()};
+    out.println("    java.lang.String[] descriptorData = {");
+    for (String line : descriptorData) {
+      out.println("      \"" + line.replace("\"", "\\\"") + "\",");
+    }
+    out.println("    };");
+    out.println(
+        "    descriptor = com.google.protobuf.Descriptors.FileDescriptor.internalBuildGeneratedFileFrom(");
+    out.println("        descriptorData,");
+    out.println("        new com.google.protobuf.Descriptors.FileDescriptor[] {");
+    for (FileDescriptor dependency : file.getDependencies()) {
+      out.println(
+          "          "
+              + nameResolver.getClassName(dependency, true)
+              + ".getDescriptor(),");
+    }
+    out.println("        });");
+    for (MessageGenerator messageGenerator : messageGenerators) {
+      messageGenerator.generateStaticVariableInitializers(out);
+    }
+    for (ExtensionGenerator extensionGenerator : extensionGenerators) {
+      extensionGenerator.generateNonNestedInitializationCode(out);
+    }
     out.println("  }");
     out.println();
     out.println("  // @@protoc_insertion_point(outer_class_scope)");
