@@ -63,13 +63,58 @@ public class FileGenerator {
       printer.println("public final class " + className + " {");
       printer.println("  private " + className + "() {}");
 
+      printer.println("  public static void registerAllExtensions(");
+      printer.println("      com.google.protobuf.ExtensionRegistryLite registry) {");
+      for (ExtensionGenerator generator : extensionGenerators) {
+          generator.generateRegistrationCode(printer);
+      }
+      for (MessageGenerator generator : messageGenerators) {
+          generator.generateExtensionRegistrationCode(printer);
+      }
+      printer.println("  }");
+
+      printer.println("  public static void registerAllExtensions(");
+      printer.println("      com.google.protobuf.ExtensionRegistry registry) {");
+      printer.println("    registerAllExtensions(");
+      printer.println("        (com.google.protobuf.ExtensionRegistryLite) registry);");
+      printer.println("  }");
+
       // ... call generators
       for (MessageGenerator generator : messageGenerators) {
+          generator.generateInterface(printer);
           generator.generate(printer);
       }
       for (ExtensionGenerator generator : extensionGenerators) {
           generator.generate(printer);
       }
+
+      // Descriptor Initialization
+      printer.println("  public static com.google.protobuf.Descriptors.FileDescriptor");
+      printer.println("      getDescriptor() {");
+      printer.println("    return descriptor;");
+      printer.println("  }");
+      printer.println("  private static com.google.protobuf.Descriptors.FileDescriptor");
+      printer.println("      descriptor;");
+      printer.println("  static {");
+      // TODO: Full descriptor initialization logic (dependencies, etc.)
+      printer.println("    java.lang.String[] descriptorData = {");
+      printer.println("      // TODO: Dump descriptor data");
+      printer.println("    };");
+      printer.println("    descriptor = com.google.protobuf.Descriptors.FileDescriptor");
+      printer.println("      .internalBuildGeneratedFileFrom(descriptorData,");
+      printer.println("        new com.google.protobuf.Descriptors.FileDescriptor[] {");
+      // TODO: dependencies
+      printer.println("        });");
+
+      // Internal init
+      for (MessageGenerator generator : messageGenerators) {
+          generator.generateStaticVariableInitializers(printer);
+      }
+      for (ExtensionGenerator generator : extensionGenerators) {
+          generator.generateNonNestedInitializationCode(printer);
+      }
+
+      printer.println("  }");
 
       printer.println("}");
   }

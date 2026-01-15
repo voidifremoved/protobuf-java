@@ -35,16 +35,7 @@ public class GeneratorFactory implements com.google.protobuf.compiler.java.Gener
 
   @Override
   public ExtensionGenerator newExtensionGenerator(FieldDescriptor descriptor) {
-    return new ExtensionGenerator() {
-         @Override
-         public void generate(PrintWriter printer) {
-             printer.println("// TODO: ExtensionGenerator");
-         }
-         @Override
-         public int generateNonNestedInitializationCode(PrintWriter printer) { return 0; }
-         @Override
-         public int generateRegistrationCode(PrintWriter printer) { return 0; }
-    };
+    return new ImmutableExtensionGenerator(descriptor, context);
   }
 
   @Override

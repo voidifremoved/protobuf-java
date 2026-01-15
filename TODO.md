@@ -32,17 +32,17 @@ Mirroring `src/google/protobuf/compiler/java/full/`:
 
 - [x] `GeneratorFactory.java` (Implementation for Full)
 - [x] `EnumGenerator.java` (`enum.cc`) - *Stubbed*
-- [x] `EnumFieldGenerator.java` (`enum_field.cc`) - *Singular Implemented*
+- [x] `EnumFieldGenerator.java` (`enum_field.cc`)
 - [ ] `ExtensionGenerator.java` (`extension.cc`)
 - [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
 - [x] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [ ] `MapFieldGenerator.java` (`map_field.cc`)
 - [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
 - [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
-- [x] `MessageFieldGenerator.java` (`message_field.cc`) - *Singular Implemented*
-- [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`) - *Singular & Repeated Implemented*
+- [x] `MessageFieldGenerator.java` (`message_field.cc`)
+- [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
 - [ ] `ServiceGenerator.java` (`service.cc`)
-- [x] `StringFieldGenerator.java` (`string_field.cc`) - *Singular & Repeated Implemented*
+- [x] `StringFieldGenerator.java` (`string_field.cc`)
 
 ### Lite Runtime Generators (`com.google.protobuf.compiler.java.lite`)
 Mirroring `src/google/protobuf/compiler/java/lite/`:
@@ -65,7 +65,7 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
 3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
 4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
-5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *In Progress (Primitives, Strings, Enums, Messages implemented)*
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE (Basic types implemented)*
 6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`.
 
 ## Phase 4: Verification
