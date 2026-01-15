@@ -31,18 +31,18 @@ Mirroring `src/google/protobuf/compiler/java/`:
 Mirroring `src/google/protobuf/compiler/java/full/`:
 
 - [x] `GeneratorFactory.java` (Implementation for Full)
-- [ ] `EnumGenerator.java` (`enum.cc`)
-- [ ] `EnumFieldGenerator.java` (`enum_field.cc`)
+- [x] `EnumGenerator.java` (`enum.cc`) - *Stubbed*
+- [x] `EnumFieldGenerator.java` (`enum_field.cc`) - *Singular Implemented*
 - [ ] `ExtensionGenerator.java` (`extension.cc`)
-- [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface) - *Abstract class created*
-- [ ] `MakeFieldGens.java` (`make_field_gens.cc`)
+- [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
+- [x] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [ ] `MapFieldGenerator.java` (`map_field.cc`)
 - [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
 - [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
-- [ ] `MessageFieldGenerator.java` (`message_field.cc`)
-- [ ] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
+- [x] `MessageFieldGenerator.java` (`message_field.cc`) - *Singular Implemented*
+- [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`) - *Singular & Repeated Implemented*
 - [ ] `ServiceGenerator.java` (`service.cc`)
-- [ ] `StringFieldGenerator.java` (`string_field.cc`)
+- [x] `StringFieldGenerator.java` (`string_field.cc`) - *Singular & Repeated Implemented*
 
 ### Lite Runtime Generators (`com.google.protobuf.compiler.java.lite`)
 Mirroring `src/google/protobuf/compiler/java/lite/`:
@@ -65,7 +65,7 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
 3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
 4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
-5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`.
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *In Progress (Primitives, Strings, Enums, Messages implemented)*
 6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`.
 
 ## Phase 4: Verification

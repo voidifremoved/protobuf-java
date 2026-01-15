@@ -216,4 +216,14 @@ public final class StringUtils {
       // Real logic is more complex checking descriptor.hasDefaultValue()
       return !field.hasDefaultValue();
   }
+
+  public static String toProperCase(String s) {
+    if (s == null || s.isEmpty()) {
+      return "";
+    }
+    if (s.length() == 1) {
+      return s.toUpperCase();
+    }
+    return s.substring(0, 1).toUpperCase() + s.substring(1);
+  }
 }

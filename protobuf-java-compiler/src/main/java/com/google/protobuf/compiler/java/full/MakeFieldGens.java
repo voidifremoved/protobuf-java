@@ -27,13 +27,21 @@ public final class MakeFieldGens {
   private static ImmutableFieldGenerator makeImmutableGenerator(
       FieldDescriptor field, int messageBitIndex, int builderBitIndex, Context context) {
     if (field.isRepeated()) {
-      // TODO: Implement Repeated Field Generators
-      // For now, return a PrimitiveFieldGenerator as a fallback to avoid crash, but this is WRONG for repeated
        JavaType javaType = StringUtils.getJavaType(field);
-       if (javaType == JavaType.STRING) {
-           return new StringFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be RepeatedStringFieldGenerator
+       switch (javaType) {
+         case MESSAGE:
+             // return new RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+             // TODO: repeated message
+             return new PrimitiveFieldGenerator.RepeatedPrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Fallback
+         case ENUM:
+             // return new RepeatedEnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+             // TODO: repeated enum
+             return new PrimitiveFieldGenerator.RepeatedPrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Fallback
+         case STRING:
+             return new StringFieldGenerator.RepeatedStringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+         default:
+             return new PrimitiveFieldGenerator.RepeatedPrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context);
        }
-       return new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be RepeatedPrimitiveFieldGenerator
     } else {
       if (field.getContainingOneof() != null) {
           // TODO: Oneof support
@@ -41,16 +49,20 @@ public final class MakeFieldGens {
           if (javaType == JavaType.STRING) {
               return new StringFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be StringOneof
           }
+          if (javaType == JavaType.ENUM) {
+              return new EnumFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be EnumOneof
+          }
+          if (javaType == JavaType.MESSAGE) {
+              return new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be MessageOneof
+          }
            return new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Should be PrimitiveOneof
       } else {
         JavaType javaType = StringUtils.getJavaType(field);
         switch (javaType) {
           case MESSAGE:
-             // TODO: MessageFieldGenerator
-             throw new UnsupportedOperationException("Message field generation not implemented yet");
+             return new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           case ENUM:
-             // TODO: EnumFieldGenerator
-             return new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Stub
+             return new EnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           case STRING:
              return new StringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           default:
