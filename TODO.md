@@ -7,37 +7,37 @@ The goal is to replicate the functionality of `src/google/protobuf/compiler/java
 - [x] `CommandLineInterface` (Basic implementation exists)
 - [x] `Parser` (Basic implementation exists)
 - [x] `CodeGenerator` (Interface exists)
-- [x] `JavaCodeGenerator` (Basic implementation exists, needs refactoring to use full Java generator logic)
+- [x] `JavaCodeGenerator` (Refactored to use `FileGenerator`)
 
 ## Phase 2: Java-Specific Generator Structure (`com.google.protobuf.compiler.java`)
 Mirroring `src/google/protobuf/compiler/java/`:
 
 ### Shared Components
-- [ ] `Options.java` (Port `options.h`) - *In Progress (Exists as placeholder/misplaced)*
-- [x] `Context.java` (Port `context.cc`) - *Exists*
-- [ ] `NameResolver.java` (Port `name_resolver.cc`) - *Exists as `ClassNameResolver.java`, verify completeness*
-- [x] `DocComment.java` (Port `doc_comment.cc`) - *Exists*
-- [x] `FieldCommon.java` (Port `field_common.cc`) - *Exists*
-- [ ] `Helpers.java` (Port `helpers.cc`) - *Exists as `StringUtils.java`, need to verify/rename?*
+- [x] `Options.java` (Port `options.h`)
+- [x] `Context.java` (Port `context.cc`)
+- [ ] `NameResolver.java` (Port `name_resolver.cc`) - *Exists as `ClassNameResolver.java`*
+- [x] `DocComment.java` (Port `doc_comment.cc`)
+- [x] `FieldCommon.java` (Port `field_common.cc`)
+- [ ] `Helpers.java` (Port `helpers.cc`) - *Exists as `StringUtils.java`*
 - [ ] `InternalHelpers.java` (Port `internal_helpers.cc`)
 - [ ] `Names.java` (Port `names.cc`)
 - [ ] `SharedCodeGenerator.java` (Port `shared_code_generator.cc`)
 - [ ] `MessageSerialization.java` (Port `message_serialization.cc`)
 - [ ] `JavaFeatures.java` (Port `java_features.pb.cc` or generate it)
-- [ ] `FileGenerator.java` (Port `file.cc`) - *Crucial for orchestration*
-- [ ] `GeneratorFactory.java` (Port `generator_factory.h` - Interface?)
+- [x] `FileGenerator.java` (Port `file.cc`)
+- [x] `GeneratorFactory.java` (Port `generator_factory.h`)
 
 ### Full Runtime Generators (`com.google.protobuf.compiler.java.full`)
-Mirroring `src/google/protobuf/compiler/java/full/` (likely `java` dir in C++ maps to both shared and full/lite logic, but file lists showed `full/` subdir):
+Mirroring `src/google/protobuf/compiler/java/full/`:
 
-- [ ] `GeneratorFactory.java` (Implementation for Full)
+- [x] `GeneratorFactory.java` (Implementation for Full)
 - [ ] `EnumGenerator.java` (`enum.cc`)
 - [ ] `EnumFieldGenerator.java` (`enum_field.cc`)
 - [ ] `ExtensionGenerator.java` (`extension.cc`)
-- [ ] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
+- [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface) - *Abstract class created*
 - [ ] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [ ] `MapFieldGenerator.java` (`map_field.cc`)
-- [ ] `MessageGenerator.java` (`message.cc`)
+- [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
 - [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
 - [ ] `MessageFieldGenerator.java` (`message_field.cc`)
 - [ ] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
@@ -59,13 +59,12 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 - [ ] `MessageFieldGenerator.java`
 - [ ] `PrimitiveFieldGenerator.java`
 - [ ] `StringFieldGenerator.java`
-(Service generator is typically not supported in Lite, need to verify)
 
 ## Phase 3: Implementation & Refactoring Steps
-1.  **Refactor `Options`**: Consolidate `com.google.protobuf.compiler.Options` into `com.google.protobuf.compiler.java.Options`.
-2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`.
-3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators.
-4.  **Implement `MessageGenerator`**: Core message generation logic.
+1.  **Refactor `Options`**: Consolidate `com.google.protobuf.compiler.Options` into `com.google.protobuf.compiler.java.Options`. - DONE
+2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
+3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
+4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
 5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`.
 6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`.
 
