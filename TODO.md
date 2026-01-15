@@ -31,17 +31,17 @@ Mirroring `src/google/protobuf/compiler/java/`:
 Mirroring `src/google/protobuf/compiler/java/full/`:
 
 - [x] `GeneratorFactory.java` (Implementation for Full)
-- [x] `EnumGenerator.java` (`enum.cc`) - *Stubbed*
+- [x] `EnumGenerator.java` (`enum.cc`)
 - [x] `EnumFieldGenerator.java` (`enum_field.cc`)
 - [x] `ExtensionGenerator.java` (`extension.cc`)
 - [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
 - [x] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [ ] `MapFieldGenerator.java` (`map_field.cc`)
-- [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
+- [x] `MessageGenerator.java` (`message.cc`)
 - [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
 - [x] `MessageFieldGenerator.java` (`message_field.cc`)
 - [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
-- [ ] `ServiceGenerator.java` (`service.cc`)
+- [x] `ServiceGenerator.java` (`service.cc`)
 - [x] `StringFieldGenerator.java` (`string_field.cc`)
 
 ### Lite Runtime Generators (`com.google.protobuf.compiler.java.lite`)
@@ -65,8 +65,8 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
 3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
 4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
-5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE*
-6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`. - *Extension Done, others in progress*
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE (Primitive, String, Enum, Message)*
+6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`. - *DONE*
 
 ## Phase 4: Verification
 - [ ] Verify Output against C++ compiler output.

@@ -26,13 +26,14 @@ public final class MakeFieldGens {
 
   private static ImmutableFieldGenerator makeImmutableGenerator(
       FieldDescriptor field, int messageBitIndex, int builderBitIndex, Context context) {
+    if (field.isMapField()) {
+        return new MapFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+    }
     if (field.isRepeated()) {
        JavaType javaType = StringUtils.getJavaType(field);
        switch (javaType) {
          case MESSAGE:
-             // return new RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
-             // TODO: repeated message
-             return new PrimitiveFieldGenerator.RepeatedPrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context); // Fallback
+             return new MessageFieldGenerator.RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
          case ENUM:
              // return new RepeatedEnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
              // TODO: repeated enum
