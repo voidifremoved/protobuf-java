@@ -1,6 +1,8 @@
 package com.google.protobuf.compiler;
 
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.compiler.java.FileGenerator;
+import com.google.protobuf.compiler.java.Options;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;

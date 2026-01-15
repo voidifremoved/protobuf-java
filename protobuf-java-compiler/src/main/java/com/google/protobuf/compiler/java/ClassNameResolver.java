@@ -27,7 +27,7 @@ public final class ClassNameResolver {
     return StringUtils.underscoresToCamelCase(basename.replace(".proto", ""), true) + "Proto";
   }
 
-  private String getFileJavaPackage(FileDescriptor file) {
+  public String getFileJavaPackage(FileDescriptor file) {
     if (file.getOptions().hasJavaPackage()) {
       return file.getOptions().getJavaPackage();
     }
