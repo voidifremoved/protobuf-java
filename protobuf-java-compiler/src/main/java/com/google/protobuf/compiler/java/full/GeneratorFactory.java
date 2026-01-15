@@ -25,35 +25,16 @@ public class GeneratorFactory implements com.google.protobuf.compiler.java.Gener
 
   @Override
   public EnumGenerator newEnumGenerator(EnumDescriptor descriptor) {
-    return new EnumGenerator() {
-         @Override
-         public void generate(PrintWriter printer) {
-             printer.println("// TODO: EnumGenerator");
-         }
-    };
+    return new ImmutableEnumGenerator(descriptor, context);
   }
 
   @Override
   public ExtensionGenerator newExtensionGenerator(FieldDescriptor descriptor) {
-    return new ExtensionGenerator() {
-         @Override
-         public void generate(PrintWriter printer) {
-             printer.println("// TODO: ExtensionGenerator");
-         }
-         @Override
-         public int generateNonNestedInitializationCode(PrintWriter printer) { return 0; }
-         @Override
-         public int generateRegistrationCode(PrintWriter printer) { return 0; }
-    };
+    return new ImmutableExtensionGenerator(descriptor, context);
   }
 
   @Override
   public ServiceGenerator newServiceGenerator(ServiceDescriptor descriptor) {
-    return new ServiceGenerator(descriptor) {
-         @Override
-         public void generate(PrintWriter printer) {
-             printer.println("// TODO: ServiceGenerator");
-         }
-    };
+    return new ImmutableServiceGenerator(descriptor, context);
   }
 }

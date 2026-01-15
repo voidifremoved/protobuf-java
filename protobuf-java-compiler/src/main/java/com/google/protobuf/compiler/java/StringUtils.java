@@ -158,4 +158,72 @@ public final class StringUtils {
         return null;
     }
   }
+
+  public static String getPrimitiveTypeName(JavaType type) {
+    switch (type) {
+      case INT:
+        return "int";
+      case LONG:
+        return "long";
+      case FLOAT:
+        return "float";
+      case DOUBLE:
+        return "double";
+      case BOOLEAN:
+        return "boolean";
+      case STRING:
+        return "java.lang.String";
+      case BYTES:
+        return "com.google.protobuf.ByteString";
+      default:
+        return null;
+    }
+  }
+
+  public static String defaultValue(FieldDescriptor field) {
+    if (field.isRepeated()) {
+      return "java.util.Collections.emptyList()";
+    }
+    JavaType javaType = getJavaType(field);
+    switch (javaType) {
+      case INT:
+        return "0";
+      case LONG:
+        return "0L";
+      case FLOAT:
+        return "0F";
+      case DOUBLE:
+        return "0D";
+      case BOOLEAN:
+        return "false";
+      case STRING:
+        return "\"\"";
+      case BYTES:
+        return "com.google.protobuf.ByteString.EMPTY";
+      case ENUM:
+        return field.getEnumType().getName() + "." + field.getEnumType().getValues().get(0).getName();
+      case MESSAGE:
+        return "null";
+      default:
+        return "null";
+    }
+  }
+
+  public static boolean isDefaultValueJavaDefault(FieldDescriptor field) {
+      if (field.isRepeated()) return false;
+      JavaType javaType = getJavaType(field);
+      // For now assume all defaults are java defaults for primitives if not explicitly set in proto
+      // Real logic is more complex checking descriptor.hasDefaultValue()
+      return !field.hasDefaultValue();
+  }
+
+  public static String toProperCase(String s) {
+    if (s == null || s.isEmpty()) {
+      return "";
+    }
+    if (s.length() == 1) {
+      return s.toUpperCase();
+    }
+    return s.substring(0, 1).toUpperCase() + s.substring(1);
+  }
 }
