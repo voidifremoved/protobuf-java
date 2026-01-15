@@ -1,76 +1,75 @@
-# Protobuf Compiler C++ to Java Conversion TODO
+# Protobuf Java Compiler Conversion TODO
 
-This document outlines the steps for converting the C++ protobuf compiler to Java.
+This project aims to create a fully compatible Java version of the C++ protobuf compiler.
+The goal is to replicate the functionality of `src/google/protobuf/compiler/java` in `protobuf-java-compiler/src/main/java/com/google/protobuf/compiler/java`.
 
-## Phase 1: Core Components
+## Phase 1: Core Framework (Generic Compiler)
+- [x] `CommandLineInterface` (Basic implementation exists)
+- [x] `Parser` (Basic implementation exists)
+- [x] `CodeGenerator` (Interface exists)
+- [x] `JavaCodeGenerator` (Basic implementation exists, needs refactoring to use full Java generator logic)
 
-1.  **Initial Setup**: Create a Maven project for the Java compiler.
-2.  **Parser**: Implement a Java version of the C++ parser (`src/google/protobuf/compiler/parser.cc`) - DONE
-3.  **Code Generator**: Implement a Java version of the C++ code generator (`src/google/protobuf/compiler/code_generator.cc`) - DONE
-4.  **Command-Line Interface**: Implement a Java version of the C++ command-line interface (`src/google/protobuf/compiler/command_line_interface.cc`) - DONE
+## Phase 2: Java-Specific Generator Structure (`com.google.protobuf.compiler.java`)
+Mirroring `src/google/protobuf/compiler/java/`:
 
-## Phase 2: Java-Specific Generator
+### Shared Components
+- [ ] `Options.java` (Port `options.h`) - *In Progress (Exists as placeholder/misplaced)*
+- [x] `Context.java` (Port `context.cc`) - *Exists*
+- [ ] `NameResolver.java` (Port `name_resolver.cc`) - *Exists as `ClassNameResolver.java`, verify completeness*
+- [x] `DocComment.java` (Port `doc_comment.cc`) - *Exists*
+- [x] `FieldCommon.java` (Port `field_common.cc`) - *Exists*
+- [ ] `Helpers.java` (Port `helpers.cc`) - *Exists as `StringUtils.java`, need to verify/rename?*
+- [ ] `InternalHelpers.java` (Port `internal_helpers.cc`)
+- [ ] `Names.java` (Port `names.cc`)
+- [ ] `SharedCodeGenerator.java` (Port `shared_code_generator.cc`)
+- [ ] `MessageSerialization.java` (Port `message_serialization.cc`)
+- [ ] `JavaFeatures.java` (Port `java_features.pb.cc` or generate it)
+- [ ] `FileGenerator.java` (Port `file.cc`) - *Crucial for orchestration*
+- [ ] `GeneratorFactory.java` (Port `generator_factory.h` - Interface?)
 
-This phase involves converting the C++ files for the Java generator to their Java equivalents under `com.google.protobuf.compiler.java`.
+### Full Runtime Generators (`com.google.protobuf.compiler.java.full`)
+Mirroring `src/google/protobuf/compiler/java/full/` (likely `java` dir in C++ maps to both shared and full/lite logic, but file lists showed `full/` subdir):
 
-### `java` package:
-- `context.java` - DONE
-- `doc_comment.java` - DONE
-- `field_common.java` - DONE
-- `file.java`
-- `generator.java`
-- `helpers.java`
-- `internal_helpers.java`
-- `java_features.java`
-- `message_serialization.java`
-- `name_resolver.java`
-- `names.java`
-- `options.java`
-- `shared_code_generator.java`
+- [ ] `GeneratorFactory.java` (Implementation for Full)
+- [ ] `EnumGenerator.java` (`enum.cc`)
+- [ ] `EnumFieldGenerator.java` (`enum_field.cc`)
+- [ ] `ExtensionGenerator.java` (`extension.cc`)
+- [ ] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
+- [ ] `MakeFieldGens.java` (`make_field_gens.cc`)
+- [ ] `MapFieldGenerator.java` (`map_field.cc`)
+- [ ] `MessageGenerator.java` (`message.cc`)
+- [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
+- [ ] `MessageFieldGenerator.java` (`message_field.cc`)
+- [ ] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
+- [ ] `ServiceGenerator.java` (`service.cc`)
+- [ ] `StringFieldGenerator.java` (`string_field.cc`)
 
-### `java.full` subpackage:
-- `enum.java`
-- `enum_field.java`
-- `extension.java`
-- `field_generator.java`
-- `generator_factory.java`
-- `make_field_gens.java`
-- `map_field.java`
-- `message.java`
-- `message_builder.java`
-- `message_field.java`
-- `primitive_field.java`
-- `service.java`
-- `string_field.java`
+### Lite Runtime Generators (`com.google.protobuf.compiler.java.lite`)
+Mirroring `src/google/protobuf/compiler/java/lite/`:
 
-### `java.lite` subpackage:
-- `enum.java`
-- `enum_field.java`
-- `extension.java`
-- `field_generator.java`
-- `generator_factory.java`
-- `make_field_gens.java`
-- `map_field.java`
-- `message.java`
-- `message_builder.java`
-- `message_field.java`
-- `primitive_field.java`
-- `string_field.java`
+- [ ] `GeneratorFactory.java` (Implementation for Lite)
+- [ ] `EnumGenerator.java`
+- [ ] `EnumFieldGenerator.java`
+- [ ] `ExtensionGenerator.java`
+- [ ] `FieldGenerator.java`
+- [ ] `MakeFieldGens.java`
+- [ ] `MapFieldGenerator.java`
+- [ ] `MessageGenerator.java`
+- [ ] `MessageBuilderGenerator.java`
+- [ ] `MessageFieldGenerator.java`
+- [ ] `PrimitiveFieldGenerator.java`
+- [ ] `StringFieldGenerator.java`
+(Service generator is typically not supported in Lite, need to verify)
 
-## Phase 3: More Language-Specific Generators
+## Phase 3: Implementation & Refactoring Steps
+1.  **Refactor `Options`**: Consolidate `com.google.protobuf.compiler.Options` into `com.google.protobuf.compiler.java.Options`.
+2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`.
+3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators.
+4.  **Implement `MessageGenerator`**: Core message generation logic.
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`.
+6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`.
 
-- Implement C++ version of the language-specific code generator for Java
-- Implement Csharp version of the language-specific code generator for Java
-- Implement Python version of the language-specific code generator for Java
-- Implement Rust version of the language-specific code generator for Java
-- Implement Ruby version of the language-specific code generator for Java
-- Implement Objective C version of the language-specific code generator for Java
-
-## Phase 4: Improvements
-- Create a java API to allow a list of strings containing .proto file contents to be compiled to one or more specified languages, with the output returned as strings.
-  
-## Phase 5: Testing and Validation
-
-- Implement a comprehensive test suite for the Java compiler.
-- Validate the output of the Java compiler against the C++ compiler.
-
+## Phase 4: Verification
+- [ ] Verify Output against C++ compiler output.
+- [ ] Run existing tests in `protobuf-java-compiler`.
+- [ ] Add new tests covering complex proto features.

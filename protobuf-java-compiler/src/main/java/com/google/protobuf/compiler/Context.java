@@ -1,6 +1,7 @@
 package com.google.protobuf.compiler;
 
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.compiler.java.Options;
 
 class Context {
   private final FileDescriptor file;
