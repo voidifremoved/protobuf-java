@@ -71,4 +71,8 @@ public final class ClassNameResolver {
   public String getImmutableClassName(com.google.protobuf.Descriptors.EnumDescriptor descriptor) {
     return getClassName(descriptor.getName(), descriptor.getFile(), true); // Simplified: Enum nesting not fully handled in this stub
   }
+
+  public String getImmutableClassName(FileDescriptor file) {
+    return getFileClassName(file, true);
+  }
 }

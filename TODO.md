@@ -33,7 +33,7 @@ Mirroring `src/google/protobuf/compiler/java/full/`:
 - [x] `GeneratorFactory.java` (Implementation for Full)
 - [x] `EnumGenerator.java` (`enum.cc`) - *Stubbed*
 - [x] `EnumFieldGenerator.java` (`enum_field.cc`)
-- [ ] `ExtensionGenerator.java` (`extension.cc`)
+- [x] `ExtensionGenerator.java` (`extension.cc`)
 - [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
 - [x] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [ ] `MapFieldGenerator.java` (`map_field.cc`)
@@ -65,8 +65,8 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
 3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
 4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
-5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE (Basic types implemented)*
-6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`.
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE*
+6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`. - *Extension Done, others in progress*
 
 ## Phase 4: Verification
 - [ ] Verify Output against C++ compiler output.
