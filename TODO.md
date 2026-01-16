@@ -18,10 +18,10 @@ Mirroring `src/google/protobuf/compiler/java/`:
 - [ ] `NameResolver.java` (Port `name_resolver.cc`) - *Exists as `ClassNameResolver.java`*
 - [x] `DocComment.java` (Port `doc_comment.cc`)
 - [x] `FieldCommon.java` (Port `field_common.cc`)
-- [ ] `Helpers.java` (Port `helpers.cc`) - *Exists as `StringUtils.java`*
+- [x] `Helpers.java` (Port `helpers.cc`) - *Exists as `StringUtils.java`*
 - [ ] `InternalHelpers.java` (Port `internal_helpers.cc`)
 - [ ] `Names.java` (Port `names.cc`)
-- [ ] `SharedCodeGenerator.java` (Port `shared_code_generator.cc`)
+- [x] `SharedCodeGenerator.java` (Port `shared_code_generator.cc`)
 - [x] `MessageSerialization.java` (Port `message_serialization.cc`) - *Skeleton Implemented*
 - [ ] `JavaFeatures.java` (Port `java_features.pb.cc` or generate it)
 - [x] `FileGenerator.java` (Port `file.cc`)
@@ -37,8 +37,8 @@ Mirroring `src/google/protobuf/compiler/java/full/`:
 - [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
 - [x] `MakeFieldGens.java` (`make_field_gens.cc`)
 - [x] `MapFieldGenerator.java` (`map_field.cc`)
-- [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
-- [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
+- [x] `MessageGenerator.java` (`message.cc`) - *Implemented*
+- [x] `MessageBuilderGenerator.java` (`message_builder.cc`)
 - [x] `MessageFieldGenerator.java` (`message_field.cc`)
 - [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
 - [x] `ServiceGenerator.java` (`service.cc`)
