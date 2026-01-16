@@ -96,15 +96,8 @@ public class FileGenerator {
       printer.println("  private static com.google.protobuf.Descriptors.FileDescriptor");
       printer.println("      descriptor;");
       printer.println("  static {");
-      // TODO: Full descriptor initialization logic (dependencies, etc.)
-      printer.println("    java.lang.String[] descriptorData = {");
-      printer.println("      // TODO: Dump descriptor data");
-      printer.println("    };");
-      printer.println("    descriptor = com.google.protobuf.Descriptors.FileDescriptor");
-      printer.println("      .internalBuildGeneratedFileFrom(descriptorData,");
-      printer.println("        new com.google.protobuf.Descriptors.FileDescriptor[] {");
-      // TODO: dependencies
-      printer.println("        });");
+      SharedCodeGenerator sharedCodeGenerator = new SharedCodeGenerator(file, options);
+      sharedCodeGenerator.generateDescriptors(printer);
 
       // Internal init
       for (MessageGenerator generator : messageGenerators) {
