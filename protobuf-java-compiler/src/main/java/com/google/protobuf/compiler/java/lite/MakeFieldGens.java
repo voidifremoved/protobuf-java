@@ -21,38 +21,26 @@ public final class MakeFieldGens {
   }
 
   private static ImmutableFieldGenerator createFieldGenerator(FieldDescriptor field, Context context) {
-      // Stub implementation
+    if (field.isRepeated()) {
+      // For now, treat repeated as singular stub to avoid compilation error until repeated support is added
+      // Or fallback to stub
       return new ImmutableFieldGenerator() {
-          @Override
-          public void generateSerializationCode(java.io.PrintWriter printer) {
-          }
-
-          public void generateMembers(java.io.PrintWriter printer) {
-          }
-          public void generateBuilderMembers(java.io.PrintWriter printer) {
-          }
-          public void generateInitializationCode(java.io.PrintWriter printer) {
-          }
-          public void generateBuilderClearCode(java.io.PrintWriter printer) {
-          }
-          public void generateMergingCode(java.io.PrintWriter printer) {
-          }
-          public void generateBuildingCode(java.io.PrintWriter printer) {
-          }
-          public void generateParsingCode(java.io.PrintWriter printer) {
-          }
-          public void generateParsingDoneCode(java.io.PrintWriter printer) {
-          }
-          public void generateSerializedSizeCode(java.io.PrintWriter printer) {
-          }
-          public void generateFieldAccessor(java.io.PrintWriter printer) {
-          }
-          public void generateEqualsCode(java.io.PrintWriter printer) {
-          }
-          public void generateHashCode(java.io.PrintWriter printer) {
-          }
-          public void generateInterfaceMembers(java.io.PrintWriter printer) {
-          }
+          @Override public void generateSerializationCode(java.io.PrintWriter printer) {}
+          @Override public void generateMembers(java.io.PrintWriter printer) {}
+          @Override public void generateBuilderMembers(java.io.PrintWriter printer) {}
+          @Override public void generateInitializationCode(java.io.PrintWriter printer) {}
       };
+    }
+
+    switch (field.getJavaType()) {
+      case MESSAGE:
+        return new MessageFieldGenerator(field, context);
+      case ENUM:
+        return new EnumFieldGenerator(field, context);
+      case STRING:
+        return new StringFieldGenerator(field, context);
+      default:
+        return new PrimitiveFieldGenerator(field, context);
+    }
   }
 }
