@@ -22,7 +22,7 @@ Mirroring `src/google/protobuf/compiler/java/`:
 - [ ] `InternalHelpers.java` (Port `internal_helpers.cc`)
 - [ ] `Names.java` (Port `names.cc`)
 - [ ] `SharedCodeGenerator.java` (Port `shared_code_generator.cc`)
-- [ ] `MessageSerialization.java` (Port `message_serialization.cc`)
+- [x] `MessageSerialization.java` (Port `message_serialization.cc`) - *Skeleton Implemented*
 - [ ] `JavaFeatures.java` (Port `java_features.pb.cc` or generate it)
 - [x] `FileGenerator.java` (Port `file.cc`)
 - [x] `GeneratorFactory.java` (Port `generator_factory.h`)
@@ -36,8 +36,8 @@ Mirroring `src/google/protobuf/compiler/java/full/`:
 - [x] `ExtensionGenerator.java` (`extension.cc`)
 - [x] `FieldGenerator.java` (`field_generator.h` - Base/Interface)
 - [x] `MakeFieldGens.java` (`make_field_gens.cc`)
-- [ ] `MapFieldGenerator.java` (`map_field.cc`)
-- [x] `MessageGenerator.java` (`message.cc`)
+- [x] `MapFieldGenerator.java` (`map_field.cc`)
+- [x] `MessageGenerator.java` (`message.cc`) - *Skeleton Implemented*
 - [ ] `MessageBuilderGenerator.java` (`message_builder.cc`)
 - [x] `MessageFieldGenerator.java` (`message_field.cc`)
 - [x] `PrimitiveFieldGenerator.java` (`primitive_field.cc`)
@@ -65,7 +65,7 @@ Mirroring `src/google/protobuf/compiler/java/lite/`:
 2.  **Refactor `JavaCodeGenerator`**: Update `com.google.protobuf.compiler.JavaCodeGenerator` to initialize the correct `GeneratorFactory` (Full/Lite) and delegate to `FileGenerator`. - DONE
 3.  **Implement `FileGenerator`**: Implement the orchestration logic to generate the outer class and call other generators. - DONE
 4.  **Implement `MessageGenerator`**: Core message generation logic. - *In Progress (Skeleton)*
-5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE (Primitive, String, Enum, Message)*
+5.  **Implement Field Generators**: Implement `FieldGenerator` hierarchy and factory `MakeFieldGens`. - *DONE (Primitive, String, Enum, Message, Map)*
 6.  **Implement `EnumGenerator`**, `ServiceGenerator`, `ExtensionGenerator`. - *DONE*
 
 ## Phase 4: Verification
