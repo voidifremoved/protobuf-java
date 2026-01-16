@@ -121,4 +121,39 @@ public class CompilerTest {
     String fileContents = files.get(fileName);
     assertTrue(fileContents.contains("public final class CoreEnums"));
   }
+
+  @Test
+  public void testCompileLite() throws Exception {
+    String protoFile =
+        "syntax = \"proto3\";\n"
+            + "option optimize_for = LITE_RUNTIME;\n"
+            + "package com.example;\n"
+            + "message LitePerson {\n"
+            + "  string name = 1;\n"
+            + "}\n";
+
+    Compiler compiler = new Compiler();
+    Map<String, String> files =
+        compiler.compile(
+            Collections.singletonMap("lite_test.proto", protoFile), Collections.singletonList("java"));
+
+    assertEquals(1, files.size());
+
+    // Default outer class name for "lite_test.proto" is "LiteTestProto"
+    String fileName = "com/example/LiteTestProto.java";
+
+    // Check if key exists (flexibility)
+    boolean found = false;
+    for (String key : files.keySet()) {
+        if (key.contains("LiteTestProto")) {
+            found = true;
+            fileName = key;
+            break;
+        }
+    }
+    assertTrue("Generated file not found. Files: " + files.keySet(), found);
+
+    String fileContents = files.get(fileName);
+    assertTrue(fileContents.contains("GeneratedMessageLite"));
+  }
 }
