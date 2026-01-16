@@ -30,8 +30,8 @@ public class FileGenerator {
     this.javaPackage = nameResolver.getFileJavaPackage(file);
 
     // TODO: Choose factory based on lite/full
-    if (context.enforceLite()) {
-      throw new UnsupportedOperationException("Lite generation not yet implemented");
+    if (context.enforceLite() || file.getOptions().getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.LITE_RUNTIME) {
+      this.generatorFactory = new com.google.protobuf.compiler.java.lite.GeneratorFactory(context);
     } else {
       this.generatorFactory = new com.google.protobuf.compiler.java.full.GeneratorFactory(context);
     }

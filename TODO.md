@@ -47,14 +47,14 @@ Mirroring `src/google/protobuf/compiler/java/full/`:
 ### Lite Runtime Generators (`com.google.protobuf.compiler.java.lite`)
 Mirroring `src/google/protobuf/compiler/java/lite/`:
 
-- [ ] `GeneratorFactory.java` (Implementation for Lite)
-- [ ] `EnumGenerator.java`
+- [x] `GeneratorFactory.java` (Implementation for Lite)
+- [x] `EnumGenerator.java`
 - [ ] `EnumFieldGenerator.java`
-- [ ] `ExtensionGenerator.java`
+- [x] `ExtensionGenerator.java`
 - [ ] `FieldGenerator.java`
 - [ ] `MakeFieldGens.java`
 - [ ] `MapFieldGenerator.java`
-- [ ] `MessageGenerator.java`
+- [x] `MessageGenerator.java`
 - [ ] `MessageBuilderGenerator.java`
 - [ ] `MessageFieldGenerator.java`
 - [ ] `PrimitiveFieldGenerator.java`
