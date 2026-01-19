@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import org.junit.Test;
 
+import com.rubberjam.protobuf.compiler.CompilationException;
+import com.rubberjam.protobuf.compiler.Compiler;
+
 public class CompilerDependencyTest {
 
   @Test

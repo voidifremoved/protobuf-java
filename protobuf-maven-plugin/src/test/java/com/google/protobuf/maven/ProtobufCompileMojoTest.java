@@ -15,6 +15,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
 
+import com.rubberjam.protobuf.maven.ProtobufCompileMojo;
+
 public class ProtobufCompileMojoTest {
 
   @Rule

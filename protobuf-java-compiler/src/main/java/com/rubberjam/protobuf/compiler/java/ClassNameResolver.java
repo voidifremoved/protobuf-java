@@ -1,0 +1,107 @@
+// Protocol Buffers - Google's data interchange format
+// Copyright 2008 Google Inc.  All rights reserved.
+//
+// Use of this source code is governed by a BSD-style
+// license that can be found in the LICENSE file or at
+// https://developers.google.com/open-source/licenses/bsd
+
+package com.rubberjam.protobuf.compiler.java;
+
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
+
+/** A utility class for resolving Java class names for protobuf descriptors. */
+public final class ClassNameResolver
+{
+
+	public String getFileClassName(FileDescriptor file, boolean immutable)
+	{
+		if (file.getOptions().hasJavaOuterClassname())
+		{
+			return file.getOptions().getJavaOuterClassname();
+		}
+		String basename;
+		int lastSlash = file.getName().lastIndexOf('/');
+		if (lastSlash == -1)
+		{
+			basename = file.getName();
+		}
+		else
+		{
+			basename = file.getName().substring(lastSlash + 1);
+		}
+		return StringUtils.underscoresToCamelCase(basename.replace(".proto", ""), true) + "Proto";
+	}
+
+	public String getFileJavaPackage(FileDescriptor file)
+	{
+		if (file.getOptions().hasJavaPackage())
+		{
+			return file.getOptions().getJavaPackage();
+		}
+		return file.getPackage();
+	}
+
+	private String getClassName(String nameWithoutPackage, FileDescriptor file, boolean immutable)
+	{
+		String result = getFileJavaPackage(file);
+		if (!result.isEmpty())
+		{
+			result += ".";
+		}
+		if (file.getOptions().getJavaMultipleFiles())
+		{
+			result += nameWithoutPackage;
+		}
+		else
+		{
+			result += getFileClassName(file, immutable);
+			result += ".";
+			result += nameWithoutPackage.replace(".", "$");
+		}
+		return result;
+	}
+
+	private String classNameWithoutPackage(Descriptor descriptor)
+	{
+		String result;
+		if (descriptor.getContainingType() != null)
+		{
+			result = classNameWithoutPackage(descriptor.getContainingType()) + ".";
+		}
+		else
+		{
+			result = "";
+		}
+		return result + descriptor.getName();
+	}
+
+	public String getClassName(Descriptor descriptor, boolean immutable)
+	{
+		return getClassName(
+				classNameWithoutPackage(descriptor), descriptor.getFile(), immutable);
+	}
+
+	public String getImmutableClassName(Descriptor descriptor)
+	{
+		return getClassName(descriptor, true);
+	}
+
+	public String getImmutableClassName(com.google.protobuf.Descriptors.EnumDescriptor descriptor)
+	{
+		return getClassName(descriptor.getName(), descriptor.getFile(), true); // Simplified:
+																				// Enum
+																				// nesting
+																				// not
+																				// fully
+																				// handled
+																				// in
+																				// this
+																				// stub
+	}
+
+	public String getImmutableClassName(FileDescriptor file)
+	{
+		return getFileClassName(file, true);
+	}
+}

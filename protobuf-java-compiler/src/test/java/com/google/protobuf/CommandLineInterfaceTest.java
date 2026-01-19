@@ -7,7 +7,6 @@
 
 package com.google.protobuf;
 
-import com.google.protobuf.compiler.CommandLineInterface;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
@@ -15,6 +14,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.rubberjam.protobuf.compiler.CommandLineInterface;
 
 /** Unit tests for {@link CommandLineInterface}. */
 public class CommandLineInterfaceTest {

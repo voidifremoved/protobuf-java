@@ -7,6 +7,8 @@ import java.util.Collections;
 import java.util.Map;
 import org.junit.Test;
 
+import com.rubberjam.protobuf.compiler.Compiler;
+
 public class CompilerTest {
   @Test
   public void testCompile() throws Exception {

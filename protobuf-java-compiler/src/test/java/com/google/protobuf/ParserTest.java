@@ -1,12 +1,14 @@
 package com.google.protobuf;
 
-import com.google.protobuf.compiler.ErrorCollector;
-import com.google.protobuf.compiler.Parser;
-import com.google.protobuf.compiler.SourceLocationTable;
-import com.google.protobuf.compiler.Tokenizer;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.rubberjam.protobuf.compiler.ErrorCollector;
+import com.rubberjam.protobuf.compiler.Parser;
+import com.rubberjam.protobuf.compiler.SourceLocationTable;
+import com.rubberjam.protobuf.compiler.Tokenizer;
+
 import junit.framework.TestCase;
 
 public class ParserTest extends TestCase {
