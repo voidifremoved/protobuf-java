@@ -42,6 +42,8 @@ public final class CommandLineInterface
 		}
 
 		String javaOut = null;
+		String cppOut = null;
+		String csharpOut = null;
 		List<String> protoFiles = new ArrayList<>();
 
 		for (String arg : args)
@@ -50,13 +52,21 @@ public final class CommandLineInterface
 			{
 				javaOut = arg.substring("--java_out=".length());
 			}
+			else if (arg.startsWith("--cpp_out="))
+			{
+				cppOut = arg.substring("--cpp_out=".length());
+			}
+			else if (arg.startsWith("--csharp_out="))
+			{
+				csharpOut = arg.substring("--csharp_out=".length());
+			}
 			else
 			{
 				protoFiles.add(arg);
 			}
 		}
 
-		if (javaOut == null)
+		if (javaOut == null && cppOut == null && csharpOut == null)
 		{
 			System.err.println("Missing output directive.");
 			return 1;
@@ -72,7 +82,7 @@ public final class CommandLineInterface
 		{
 			try
 			{
-				if (!processProtoFile(protoFile, javaOut))
+				if (!processProtoFile(protoFile, javaOut, cppOut, csharpOut))
 				{
 					return 1;
 				}
@@ -87,7 +97,8 @@ public final class CommandLineInterface
 		return 0;
 	}
 
-	private static boolean processProtoFile(String protoFile, String javaOut) throws IOException
+	private static boolean processProtoFile(String protoFile, String javaOut, String cppOut, String csharpOut)
+			throws IOException
 	{
 		File file = new File(protoFile);
 		if (!file.exists())
@@ -116,9 +127,27 @@ public final class CommandLineInterface
 		try
 		{
 			FileDescriptor fileDescriptor = FileDescriptor.buildFrom(fileBuilder.build(), new FileDescriptor[0]);
-			JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-			GeneratorContextImpl generatorContext = new GeneratorContextImpl(javaOut);
-			codeGenerator.generate(fileDescriptor, "", generatorContext);
+
+			if (javaOut != null)
+			{
+				JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
+				GeneratorContextImpl generatorContext = new GeneratorContextImpl(javaOut);
+				codeGenerator.generate(fileDescriptor, "", generatorContext);
+			}
+
+			if (cppOut != null)
+			{
+				com.rubberjam.protobuf.compiler.cpp.CppCodeGenerator codeGenerator = new com.rubberjam.protobuf.compiler.cpp.CppCodeGenerator();
+				GeneratorContextImpl generatorContext = new GeneratorContextImpl(cppOut);
+				codeGenerator.generate(fileDescriptor, "", generatorContext);
+			}
+
+			if (csharpOut != null)
+			{
+				com.rubberjam.protobuf.compiler.csharp.CSharpCodeGenerator codeGenerator = new com.rubberjam.protobuf.compiler.csharp.CSharpCodeGenerator();
+				GeneratorContextImpl generatorContext = new GeneratorContextImpl(csharpOut);
+				codeGenerator.generate(fileDescriptor, "", generatorContext);
+			}
 		}
 		catch (Descriptors.DescriptorValidationException | CodeGenerator.GenerationException e)
 		{
@@ -134,5 +163,7 @@ public final class CommandLineInterface
 		System.out.println("Usage: protoc [OPTION] PROTO_FILES");
 		System.out.println("Parse PROTO_FILES and generate output based on the options given:");
 		System.out.println("  --java_out=OUT_DIR      Generate Java source files.");
+		System.out.println("  --cpp_out=OUT_DIR       Generate C++ source files.");
+		System.out.println("  --csharp_out=OUT_DIR    Generate C# source files.");
 	}
 }
