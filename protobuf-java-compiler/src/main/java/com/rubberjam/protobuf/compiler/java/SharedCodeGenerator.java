@@ -24,43 +24,26 @@ public class SharedCodeGenerator
 	public void generateDescriptors(PrintWriter printer)
 	{
 		FileDescriptorProto fileProto = file.toProto();
-		String fileData = com.google.protobuf.TextFormat.escapeBytes(fileProto.toByteString());
+		com.google.protobuf.ByteString byteString = fileProto.toByteString();
 
 		printer.println("    java.lang.String[] descriptorData = {");
 
-		// Split into 40-byte chunks (similar to C++ logic but simplified)
-		// C++ uses octal escapes, Java TextFormat.escapeBytes uses octal/hex.
-		// Ideally we'd use Base64 or just raw bytes if Java compiler supported
-		// it well,
-		// but the C++ approach splits strings to avoid size limits.
-		// For now, let's just dump it as one chunk if small, or split if large.
-		// We will assume the output of escapeBytes is safe for Java string
-		// literals.
-		// Note: escapeBytes might contain '"' which needs to be escaped for
-		// Java source.
-		// And '\' needs to be escaped.
-		// TextFormat.escapeBytes produces something like "\012\005..." which is
-		// valid Java string content.
-		// But we need to ensure it's wrapped in quotes.
+		printer.print("      \"");
+		int bytesPerLine = 40;
+		for (int i = 0; i < byteString.size(); i += bytesPerLine)
+		{
+			int end = Math.min(i + bytesPerLine, byteString.size());
+			com.google.protobuf.ByteString chunk = byteString.substring(i, end);
+			String escaped = escapeBytesForJava(chunk);
 
-		// A robust implementation would mimic C++ CEscape but for Java.
-		// Let's rely on a simplified approach: serialize to ISO-8859-1 string
-		// (which preserves bytes 0-255)
-		// then escape non-printable.
-
-		// Actually, let's just use the hex dump or similar if possible?
-		// No, standard way is string literals.
-
-		// Since we don't have absl::CEscape, we will assume standard Java
-		// string escaping is needed.
-		// For this prototype, we'll try to put the raw bytes in a slightly
-		// different way to ensure correctness.
-		// Or just comment out the data for now as "TODO" to make it compile,
-		// since the C++ implementation does complex chunking.
-
-		// Re-reading C++: it chunks 40 bytes per line.
-
-		printer.println("      \"" + escapeBytesForJava(fileProto.toByteString()) + "\"");
+			if (i > 0)
+			{
+				printer.println("\" +");
+				printer.print("      \"");
+			}
+			printer.print(escaped);
+		}
+		printer.println("\"");
 		printer.println("    };");
 
 		printer.println("    descriptor = com.google.protobuf.Descriptors.FileDescriptor");
