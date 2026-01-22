@@ -45,5 +45,15 @@ public class InternalHelpers
 		return 2;
 	}
 
+	public static boolean hasHasbit(FieldDescriptor descriptor)
+	{
+		if (!descriptor.hasPresence())
+		{
+			return false;
+		}
+		OneofDescriptor oneof = descriptor.getContainingOneof();
+		return oneof == null || oneof.isSynthetic();
+	}
+
 	// Add other methods from internal_helpers.cc as needed
 }

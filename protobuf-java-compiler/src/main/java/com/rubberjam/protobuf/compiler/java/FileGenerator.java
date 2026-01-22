@@ -93,6 +93,12 @@ public class FileGenerator
 		printer.println("        (com.google.protobuf.ExtensionRegistryLite) registry);");
 		printer.println("  }");
 
+		int[] bytecodeEstimate = new int[] { 0 };
+		for (MessageGenerator generator : messageGenerators)
+		{
+			generator.generateStaticVariables(printer, bytecodeEstimate);
+		}
+
 		// ... call generators
 		for (MessageGenerator generator : messageGenerators)
 		{

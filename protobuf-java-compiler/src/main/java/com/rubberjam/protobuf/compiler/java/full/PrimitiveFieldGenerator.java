@@ -80,13 +80,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForMessage()
 	{
-		return 0; // TODO
+		return com.rubberjam.protobuf.compiler.java.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
 	}
 
 	@Override
 	public int getNumBitsForBuilder()
 	{
-		return 0; // TODO
+		return 1;
 	}
 
 	@Override
@@ -290,8 +290,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public int getNumBitsForBuilder()
 		{
-			return 0;
-		} // Assuming simpler implementation without bitsets for now
+			return 1;
+		}
 
 		@Override
 		public void generateInterfaceMembers(PrintWriter printer)

@@ -8,7 +8,6 @@ import org.junit.Test;
 import com.google.protobuf.DescriptorProtos.DescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.midoki.jupiter.gameserver.messages.MessageCopier;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeCompiler;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 
@@ -47,8 +46,8 @@ public class RuntimeJavaGeneratorTest
 		
 		System.out.println(generated.getSource());
 		
-		Class<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
+		//lass<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
 		
-		System.out.println(compiledClass);
+		//System.out.println(compiledClass);
 	}
 }

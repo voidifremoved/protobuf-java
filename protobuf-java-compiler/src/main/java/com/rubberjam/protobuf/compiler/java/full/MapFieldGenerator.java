@@ -93,7 +93,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForBuilder()
 	{
-		return 0;
+		return 1;
 	}
 
 	@Override

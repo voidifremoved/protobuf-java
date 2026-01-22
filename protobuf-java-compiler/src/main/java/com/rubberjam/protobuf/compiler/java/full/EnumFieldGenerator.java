@@ -76,13 +76,13 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForMessage()
 	{
-		return 0;
+		return com.rubberjam.protobuf.compiler.java.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
 	}
 
 	@Override
 	public int getNumBitsForBuilder()
 	{
-		return 0;
+		return 1;
 	}
 
 	@Override

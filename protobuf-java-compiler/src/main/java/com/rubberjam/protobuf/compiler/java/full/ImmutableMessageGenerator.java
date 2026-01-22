@@ -4,6 +4,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorMap;
 import com.rubberjam.protobuf.compiler.java.MessageGenerator;
+import com.rubberjam.protobuf.compiler.java.StringUtils;
 
 import java.io.PrintWriter;
 
@@ -24,13 +25,51 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	@Override
 	public void generateStaticVariables(PrintWriter printer, int[] bytecodeEstimate)
 	{
-		// Stub
+		String className = descriptor.getName();
+		printer.println("  private static final com.google.protobuf.Descriptors.Descriptor");
+		printer.println("      internal_" + className + "_descriptor;");
+		printer.println("  private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable");
+		printer.println("      internal_" + className + "_fieldAccessorTable;");
+
+		for (Descriptor nestedType : descriptor.getNestedTypes())
+		{
+			new ImmutableMessageGenerator(nestedType, context).generateStaticVariables(printer, bytecodeEstimate);
+		}
 	}
 
 	@Override
 	public int generateStaticVariableInitializers(PrintWriter printer)
 	{
-		// Stub
+		String className = descriptor.getName();
+		if (descriptor.getContainingType() == null)
+		{
+			printer.println("    internal_" + className + "_descriptor =");
+			printer.println("        getDescriptor().getMessageTypes().get(" + descriptor.getIndex() + ");");
+		}
+		else
+		{
+			String parentName = descriptor.getContainingType().getName();
+			printer.println("    internal_" + className + "_descriptor =");
+			printer.println("        internal_" + parentName + "_descriptor.getNestedTypes().get(" + descriptor.getIndex() + ");");
+		}
+		printer.println("    internal_" + className + "_fieldAccessorTable =");
+		printer.println("        new com.google.protobuf.GeneratedMessage.FieldAccessorTable(");
+		printer.print("            internal_" + className + "_descriptor,");
+		printer.print("            new java.lang.String[] {");
+		for (int i = 0; i < descriptor.getFields().size(); i++)
+		{
+			if (i > 0)
+			{
+				printer.print(", ");
+			}
+			printer.print("\"" + StringUtils.capitalizedFieldName(descriptor.getFields().get(i)) + "\"");
+		}
+		printer.println("});");
+
+		for (Descriptor nestedType : descriptor.getNestedTypes())
+		{
+			new ImmutableMessageGenerator(nestedType, context).generateStaticVariableInitializers(printer);
+		}
 		return 0;
 	}
 
@@ -38,6 +77,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	public void generate(PrintWriter printer)
 	{
 		String className = descriptor.getName();
+		String outerClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		printer.println("public static final class " + className + " extends");
 		printer.println("    com.google.protobuf.GeneratedMessage implements");
 		printer.println("    " + className + "OrBuilder {");
@@ -59,6 +99,18 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("  @java.lang.Override");
 		printer.println("  public final com.google.protobuf.UnknownFieldSet getUnknownFields() {");
 		printer.println("    return this.unknownFields;");
+		printer.println("  }");
+
+		printer.println("  public static final com.google.protobuf.Descriptors.Descriptor");
+		printer.println("      getDescriptor() {");
+		printer.println("    return " + outerClassName + ".internal_" + className + "_descriptor;");
+		printer.println("  }");
+
+		printer.println("  @java.lang.Override");
+		printer.println("  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
+		printer.println("      internalGetFieldAccessorTable() {");
+		printer.println("    return " + outerClassName + ".internal_" + className + "_fieldAccessorTable");
+		printer.println("        .ensureFieldAccessorsInitialized(" + className + ".class, " + className + ".Builder.class);");
 		printer.println("  }");
 
 		// Builder
