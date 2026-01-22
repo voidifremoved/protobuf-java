@@ -230,7 +230,7 @@ public final class Helpers
 		case ENUM:
 		{
 			EnumValueDescriptor value = (EnumValueDescriptor) field.getDefaultValue();
-			return nameResolver.getClassName(field.getEnumType(), immutable) + "." + value.getName();
+			return nameResolver.getImmutableClassName(field.getEnumType()) + "." + value.getName();
 		}
 		case GROUP:
 		case MESSAGE:
@@ -328,7 +328,7 @@ public final class Helpers
 
 	private static String escapeText(String text)
 	{
-		return TextFormat.escapeText(text);
+		return escapeBytes(ByteString.copyFromUtf8(text));
 	}
 
 	private static String escapeBytes(ByteString bytes)
