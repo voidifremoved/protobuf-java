@@ -372,6 +372,14 @@ public class Parser
 		{
 			return parseOneof(messageBuilder, location);
 		}
+		if (lookingAt("message"))
+		{
+			return parseMessageDefinition(messageBuilder.addNestedTypeBuilder(), location);
+		}
+		if (lookingAt("enum"))
+		{
+			return parseEnumDefinition(messageBuilder.addEnumTypeBuilder(), location);
+		}
 		return parseField(messageBuilder.addFieldBuilder(), -1, location);
 	}
 
