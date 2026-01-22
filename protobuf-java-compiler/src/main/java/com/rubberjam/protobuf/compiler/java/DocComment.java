@@ -324,6 +324,7 @@ public final class DocComment
 			boolean kdoc,
 			boolean isPrivate)
 	{
+		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc);
 		writeDebugString(out, field, options, kdoc);
@@ -334,35 +335,87 @@ public final class DocComment
 		switch (type)
 		{
 		case HAZZER:
-			out.print(" * @return Whether the " + field.getName() + " field is set.\n");
+			out.print(" * @return Whether the " + camelcaseName + " field is set.\n");
 			break;
 		case GETTER:
-			out.print(" * @return The " + field.getName() + ".\n");
+			out.print(" * @return The " + camelcaseName + ".\n");
 			break;
 		case SETTER:
-			out.print(" * @param value The " + field.getName() + " to set.\n");
+			out.print(" * @param value The " + camelcaseName + " to set.\n");
 			break;
 		case CLEARER:
 			break;
 		case LIST_COUNT:
-			out.print(" * @return The count of " + field.getName() + ".\n");
+			out.print(" * @return The count of " + camelcaseName + ".\n");
 			break;
 		case LIST_GETTER:
-			out.print(" * @return A list containing the " + field.getName() + ".\n");
+			out.print(" * @return A list containing the " + camelcaseName + ".\n");
 			break;
 		case LIST_INDEXED_GETTER:
 			out.print(" * @param index The index of the element to return.\n");
-			out.print(" * @return The " + field.getName() + " at the given index.\n");
+			out.print(" * @return The " + camelcaseName + " at the given index.\n");
 			break;
 		case LIST_INDEXED_SETTER:
 			out.print(" * @param index The index to set the value at.\n");
-			out.print(" * @param value The " + field.getName() + " to set.\n");
+			out.print(" * @param value The " + camelcaseName + " to set.\n");
 			break;
 		case LIST_ADDER:
-			out.print(" * @param value The " + field.getName() + " to add.\n");
+			out.print(" * @param value The " + camelcaseName + " to add.\n");
 			break;
 		case LIST_MULTI_ADDER:
-			out.print(" * @param values The " + field.getName() + " to add.\n");
+			out.print(" * @param values The " + camelcaseName + " to add.\n");
+			break;
+		}
+		if (builder)
+		{
+			out.print(" * @return This builder for chaining.\n");
+		}
+		out.print(" */\n");
+	}
+
+	public static void writeFieldStringBytesAccessorDocComment(
+			PrintWriter out,
+			FieldDescriptor field,
+			FieldAccessorType type,
+			Options options,
+			boolean builder,
+			boolean kdoc,
+			boolean isPrivate)
+	{
+		String camelcaseName = StringUtils.camelCaseFieldName(field);
+		out.print("/**\n");
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc);
+		writeDebugString(out, field, options, kdoc);
+		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
+		{
+			out.print(" * @deprecated\n");
+		}
+		switch (type)
+		{
+		case GETTER:
+			out.print(" * @return The bytes for " + camelcaseName + ".\n");
+			break;
+		case SETTER:
+			out.print(" * @param value The bytes for " + camelcaseName + " to set.\n");
+			break;
+		case LIST_GETTER:
+			out.print(" * @return A list containing the bytes for " + camelcaseName + ".\n");
+			break;
+		case LIST_INDEXED_GETTER:
+			out.print(" * @param index The index of the value to return.\n");
+			out.print(" * @return The bytes of the " + camelcaseName + " at the given index.\n");
+			break;
+		case LIST_INDEXED_SETTER:
+			out.print(" * @param index The index to set the value at.\n");
+			out.print(" * @param value The bytes of the " + camelcaseName + " to set.\n");
+			break;
+		case LIST_ADDER:
+			out.print(" * @param value The bytes of the " + camelcaseName + " to add.\n");
+			break;
+		case LIST_MULTI_ADDER:
+			out.print(" * @param values The bytes of the " + camelcaseName + " to add.\n");
+			break;
+		default:
 			break;
 		}
 		if (builder)
