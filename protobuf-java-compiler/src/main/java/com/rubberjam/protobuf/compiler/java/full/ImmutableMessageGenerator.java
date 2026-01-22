@@ -25,11 +25,11 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	@Override
 	public void generateStaticVariables(PrintWriter printer, int[] bytecodeEstimate)
 	{
-		String className = descriptor.getName();
+		String uniqueName = getUniqueClassName(descriptor);
 		printer.println("  private static final com.google.protobuf.Descriptors.Descriptor");
-		printer.println("      internal_" + className + "_descriptor;");
+		printer.println("      " + uniqueName + "_descriptor;");
 		printer.println("  private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable");
-		printer.println("      internal_" + className + "_fieldAccessorTable;");
+		printer.println("      " + uniqueName + "_fieldAccessorTable;");
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
@@ -40,21 +40,21 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	@Override
 	public int generateStaticVariableInitializers(PrintWriter printer)
 	{
-		String className = descriptor.getName();
+		String uniqueName = getUniqueClassName(descriptor);
 		if (descriptor.getContainingType() == null)
 		{
-			printer.println("    internal_" + className + "_descriptor =");
+			printer.println("    " + uniqueName + "_descriptor =");
 			printer.println("        getDescriptor().getMessageTypes().get(" + descriptor.getIndex() + ");");
 		}
 		else
 		{
-			String parentName = descriptor.getContainingType().getName();
-			printer.println("    internal_" + className + "_descriptor =");
-			printer.println("        internal_" + parentName + "_descriptor.getNestedTypes().get(" + descriptor.getIndex() + ");");
+			String parentUniqueName = getUniqueClassName(descriptor.getContainingType());
+			printer.println("    " + uniqueName + "_descriptor =");
+			printer.println("        " + parentUniqueName + "_descriptor.getNestedTypes().get(" + descriptor.getIndex() + ");");
 		}
-		printer.println("    internal_" + className + "_fieldAccessorTable =");
+		printer.println("    " + uniqueName + "_fieldAccessorTable =");
 		printer.println("        new com.google.protobuf.GeneratedMessage.FieldAccessorTable(");
-		printer.print("            internal_" + className + "_descriptor,");
+		printer.print("            " + uniqueName + "_descriptor,");
 		printer.print("            new java.lang.String[] {");
 		for (int i = 0; i < descriptor.getFields().size(); i++)
 		{
@@ -80,8 +80,18 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		String outerClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		printer.println("public static final class " + className + " extends");
 		printer.println("    com.google.protobuf.GeneratedMessage implements");
+		printer.println("    // @@protoc_insertion_point(message_implements:" + descriptor.getFullName() + ")");
 		printer.println("    " + className + "OrBuilder {");
 		printer.println("private static final long serialVersionUID = 0L;");
+		printer.println("    static {");
+		printer.println("      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(");
+		printer.println("        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,");
+		printer.println("        /* major= */ 4,");
+		printer.println("        /* minor= */ 31,");
+		printer.println("        /* patch= */ 1,");
+		printer.println("        /* suffix= */ \"\",");
+		printer.println("        " + className + ".class.getName());");
+		printer.println("    }");
 
 		// Fields
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
@@ -103,13 +113,13 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		printer.println("  public static final com.google.protobuf.Descriptors.Descriptor");
 		printer.println("      getDescriptor() {");
-		printer.println("    return " + outerClassName + ".internal_" + className + "_descriptor;");
+		printer.println("    return " + outerClassName + "." + getUniqueClassName(descriptor) + "_descriptor;");
 		printer.println("  }");
 
 		printer.println("  @java.lang.Override");
 		printer.println("  protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
 		printer.println("      internalGetFieldAccessorTable() {");
-		printer.println("    return " + outerClassName + ".internal_" + className + "_fieldAccessorTable");
+		printer.println("    return " + outerClassName + "." + getUniqueClassName(descriptor) + "_fieldAccessorTable");
 		printer.println("        .ensureFieldAccessorsInitialized(" + className + ".class, " + className + ".Builder.class);");
 		printer.println("  }");
 
@@ -146,6 +156,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("  }");
 
 		// Default instance
+		printer.println("    // @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")");
 		printer.println("  private static final " + className + " DEFAULT_INSTANCE;");
 		printer.println("  static {");
 		printer.println("    DEFAULT_INSTANCE = new " + className + "();");
@@ -168,6 +179,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	{
 		String className = descriptor.getName();
 		printer.println("public interface " + className + "OrBuilder extends");
+		printer.println("    // @@protoc_insertion_point(interface_extends:" + descriptor.getFullName() + ")");
 		printer.println("    com.google.protobuf.MessageOrBuilder {");
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
@@ -179,6 +191,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	@Override
 	public void generateExtensionRegistrationCode(PrintWriter printer)
 	{
-		printer.println("// TODO: generateExtensionRegistrationCode");
+	}
+
+	private String getUniqueClassName(Descriptor descriptor)
+	{
+		return "internal_static_" + descriptor.getFullName().replace('.', '_');
 	}
 }

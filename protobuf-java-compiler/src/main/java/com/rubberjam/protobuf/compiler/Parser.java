@@ -263,10 +263,11 @@ public class Parser
 		{
 			location.addPath(FileOptions.UNINTERPRETED_OPTION_FIELD_NUMBER);
 			UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-			option.addNameBuilder().setNamePart(optionName);
+			option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
 			while (tryConsume("."))
 			{
-				option.addNameBuilder().setNamePart(consumeIdentifier("Expected option name component."));
+				option.addNameBuilder().setNamePart(consumeIdentifier("Expected option name component."))
+						.setIsExtension(false);
 			}
 			consume("=", "Expected '=' after option name.");
 			parseOptionValue(option);
@@ -439,13 +440,52 @@ public class Parser
 		do
 		{
 			String optionName = consumeIdentifier("Expected option name.");
-			UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-			option.addNameBuilder().setNamePart(optionName);
-			consume("=", "Expected '=' after option name.");
-			parseOptionValue(option);
-			fieldBuilder.getOptionsBuilder().addUninterpretedOption(option);
+			if (optionName.equals("default"))
+			{
+				consume("=", "Expected '=' after option name.");
+				fieldBuilder.setDefaultValue(parseDefaultValue());
+			}
+			else
+			{
+				UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
+				option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
+				consume("=", "Expected '=' after option name.");
+				parseOptionValue(option);
+				fieldBuilder.getOptionsBuilder().addUninterpretedOption(option);
+			}
 		}
 		while (tryConsume(","));
+	}
+
+	private String parseDefaultValue()
+	{
+		if (tokenizer.current().type == Tokenizer.TokenType.STRING)
+		{
+			return consumeString("Expected string value.");
+		}
+		else if (tokenizer.current().type == Tokenizer.TokenType.IDENTIFIER)
+		{
+			String text = tokenizer.current().text;
+			tokenizer.next();
+			return text;
+		}
+		else if (tokenizer.current().type == Tokenizer.TokenType.INTEGER)
+		{
+			String text = tokenizer.current().text;
+			tokenizer.next();
+			return text;
+		}
+		else if (tokenizer.current().type == Tokenizer.TokenType.FLOAT)
+		{
+			String text = tokenizer.current().text;
+			tokenizer.next();
+			return text;
+		}
+		else
+		{
+			recordError("Expected default value.");
+			return "";
+		}
 	}
 
 	private void parseLabel(FieldDescriptorProto.Builder fieldBuilder)
@@ -546,7 +586,7 @@ public class Parser
 		{
 			String optionName = consumeIdentifier("Expected option name.");
 			UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-			option.addNameBuilder().setNamePart(optionName);
+			option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
 			consume("=", "Expected '=' after option name.");
 			parseOptionValue(option);
 			enumValueBuilder.getOptionsBuilder().addUninterpretedOption(option);
@@ -625,7 +665,7 @@ public class Parser
 		{
 			String optionName = consumeIdentifier("Expected option name.");
 			UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-			option.addNameBuilder().setNamePart(optionName);
+			option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
 			consume("=", "Expected '=' after option name.");
 			parseOptionValue(option);
 			methodBuilder.getOptionsBuilder().addUninterpretedOption(option);
