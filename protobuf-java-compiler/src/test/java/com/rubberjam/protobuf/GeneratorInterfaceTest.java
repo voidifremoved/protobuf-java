@@ -1,4 +1,4 @@
-package com.google.protobuf;
+package com.rubberjam.protobuf;
 
 import com.rubberjam.protobuf.compiler.CommandLineInterface;
 import org.junit.After;

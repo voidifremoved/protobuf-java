@@ -1,4 +1,4 @@
-package com.google.protobuf.compiler;
+package com.rubberjam.protobuf.compiler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;

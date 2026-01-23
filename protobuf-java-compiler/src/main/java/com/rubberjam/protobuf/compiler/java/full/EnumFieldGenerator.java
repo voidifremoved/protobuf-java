@@ -56,7 +56,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 
 		variables.put("unknown",
 				// Logic for unknown enum value support (check syntax)
-				descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3
+				com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor)
 						? variables.get("type") + ".UNRECOGNIZED"
 						: variables.get("default"));
 	}
@@ -76,7 +76,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForMessage()
 	{
-		return com.rubberjam.protobuf.compiler.java.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
+		return com.google.protobuf.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
 	}
 
 	@Override
@@ -229,6 +229,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 
 	private boolean supportUnknownEnumValue(FieldDescriptor descriptor)
 	{
-		return descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3;
+		return com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor);
 	}
 }

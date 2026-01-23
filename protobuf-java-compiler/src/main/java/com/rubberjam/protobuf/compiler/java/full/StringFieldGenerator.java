@@ -1,5 +1,6 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
+import com.google.protobuf.InternalHelpers;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.DocComment;
@@ -7,7 +8,6 @@ import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
 import com.rubberjam.protobuf.compiler.java.Helpers;
-import com.rubberjam.protobuf.compiler.java.InternalHelpers;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
 import java.io.PrintWriter;
@@ -97,7 +97,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForMessage()
 	{
-		return com.rubberjam.protobuf.compiler.java.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
+		return com.google.protobuf.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
 	}
 
 	@Override

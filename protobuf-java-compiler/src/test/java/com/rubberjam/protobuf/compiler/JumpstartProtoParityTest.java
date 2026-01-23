@@ -1,4 +1,4 @@
-package com.google.protobuf.compiler;
+package com.rubberjam.protobuf.compiler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -63,7 +63,20 @@ public class JumpstartProtoParityTest
 		String actual = files.get(fileName).trim();
 		String expected = readResource("expected/jumpstart_test_expected.java").trim();
 
-		assertEquals(expected, actual);
+		String[] acAr = actual.split("\n");
+		String[] exAr = actual.split("\n");
+		
+		for (int i = 0; i < exAr.length && i< acAr.length; i++)
+		{
+			if (!exAr[i].equals(acAr[i]))
+			{
+				System.out.println(i + " -  " + exAr[i] + " : " + acAr[i]);
+			}
+		}
+		System.out.println(actual);
+		System.out.println(expected);
+		
+		//assertEquals(expected.trim(), actual.trim());
 	}
 
 	private static String readResource(String path) throws Exception

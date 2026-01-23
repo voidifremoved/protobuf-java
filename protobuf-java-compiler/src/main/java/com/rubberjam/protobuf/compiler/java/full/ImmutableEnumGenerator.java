@@ -80,7 +80,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			printer.print(")");
 		}
 
-		if (descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3)
+		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			printer.println(",");
 			printer.print("  UNRECOGNIZED(");
@@ -114,7 +114,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 
 		// Standard methods
 		printer.println("  public final int getNumber() {");
-		if (descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3)
+		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			printer.println("    if (this == UNRECOGNIZED) {");
 			printer.println("      throw new java.lang.IllegalArgumentException(");
@@ -151,7 +151,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("  public final com.google.protobuf.Descriptors.EnumValueDescriptor");
 		printer.println("      getValueDescriptor() {");
 		// Simplified logic for proto3 UNRECOGNIZED check
-		if (descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3)
+		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			printer.println("    if (this == UNRECOGNIZED) {");
 			printer.println("      throw new java.lang.IllegalStateException(");
@@ -181,7 +181,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("      throw new java.lang.IllegalArgumentException(");
 		printer.println("        \"EnumValueDescriptor is not for this type.\");");
 		printer.println("    }");
-		if (descriptor.getFile().getSyntax() == com.google.protobuf.Descriptors.FileDescriptor.Syntax.PROTO3)
+		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			printer.println("    if (desc.getIndex() == -1) {");
 			printer.println("      return UNRECOGNIZED;");

@@ -1,4 +1,4 @@
-package com.google.protobuf.compiler;
+package com.rubberjam.protobuf.compiler;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -46,8 +46,8 @@ public class RuntimeJavaGeneratorTest
 		
 		System.out.println(generated.getSource());
 		
-		//lass<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
+		Class<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
 		
-		//System.out.println(compiledClass);
+		System.out.println(compiledClass);
 	}
 }

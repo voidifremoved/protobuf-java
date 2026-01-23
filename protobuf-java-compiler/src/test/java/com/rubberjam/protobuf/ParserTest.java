@@ -1,9 +1,10 @@
-package com.google.protobuf;
+package com.rubberjam.protobuf;
 
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.protobuf.DescriptorProtos;
 import com.rubberjam.protobuf.compiler.ErrorCollector;
 import com.rubberjam.protobuf.compiler.Parser;
 import com.rubberjam.protobuf.compiler.SourceLocationTable;

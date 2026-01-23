@@ -5,7 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
-package com.google.protobuf;
+package com.rubberjam.protobuf;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;

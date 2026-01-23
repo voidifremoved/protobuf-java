@@ -11,6 +11,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
+import com.google.protobuf.Syntax;
 import com.google.protobuf.DescriptorProtos.FileOptions;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,7 +116,7 @@ public final class Context
 			FieldDescriptor field1, String name1, FieldDescriptor field2, String name2)
 	{
 		if (field1.getType() == FieldDescriptor.Type.ENUM
-				&& field1.getFile().getSyntax() == FileDescriptor.Syntax.PROTO3)
+				&& !field1.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			if (name2.equals(name1 + "Value"))
 			{
