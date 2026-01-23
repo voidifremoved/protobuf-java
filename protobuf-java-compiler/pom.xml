@@ -71,7 +71,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!--<plugin>
+			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.1.0</version>
@@ -103,35 +103,9 @@
 							</target>
 						</configuration>
 					</execution>
-					<execution>
-						<id>flatten-generated-csharp</id>
-						<phase>process-test-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo message="Flattening generated C# files..."/>
-								<mkdir dir="${project.basedir}/src/test/resources/expected/csharp-temp"/>
-								<copy todir="${project.basedir}/src/test/resources/expected/csharp-temp" flatten="true" overwrite="true" failonerror="false">
-									<fileset dir="${project.basedir}/src/test/resources/expected/csharp">
-										<include name="**/*.cs"/>
-									</fileset>
-								</copy>
-								<delete dir="${project.basedir}/src/test/resources/expected/csharp" includeemptydirs="true"/>
-								<mkdir dir="${project.basedir}/src/test/resources/expected/csharp"/>
-								<move todir="${project.basedir}/src/test/resources/expected/csharp" failonerror="false">
-									<fileset dir="${project.basedir}/src/test/resources/expected/csharp-temp">
-										<include name="*.cs"/>
-									</fileset>
-								</move>
-								<delete dir="${project.basedir}/src/test/resources/expected/csharp-temp"/>
-								<echo message="C# flattening complete."/>
-							</target>
-						</configuration>
-					</execution>
+					
 				</executions>
-			</plugin>-->
+			</plugin>
 		</plugins>
 	</build>
 

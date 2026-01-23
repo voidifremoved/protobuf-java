@@ -26,84 +26,12109 @@ public final class ComprehensiveTestV3 extends com.google.protobuf.GeneratedFile
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
-  static final com.google.protobuf.Descriptors.Descriptor
+  /**
+   * <pre>
+   * Test enum (proto3 - open enum)
+   * </pre>
+   *
+   * Protobuf enum {@code ComprehensiveTest.V3.TestEnumV3}
+   */
+  public enum TestEnumV3
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TEST_UNKNOWN = 0;</code>
+     */
+    TEST_UNKNOWN(0),
+    /**
+     * <code>TEST_FIRST = 1;</code>
+     */
+    TEST_FIRST(1),
+    /**
+     * <code>TEST_SECOND = 2;</code>
+     */
+    TEST_SECOND(2),
+    /**
+     * <pre>
+     * Proto3 enums are open, so unknown values are preserved
+     * </pre>
+     *
+     * <code>TEST_THIRD = 3;</code>
+     */
+    TEST_THIRD(3),
+    UNRECOGNIZED(-1),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "TestEnumV3");
+    }
+    /**
+     * <code>TEST_UNKNOWN = 0;</code>
+     */
+    public static final int TEST_UNKNOWN_VALUE = 0;
+    /**
+     * <code>TEST_FIRST = 1;</code>
+     */
+    public static final int TEST_FIRST_VALUE = 1;
+    /**
+     * <code>TEST_SECOND = 2;</code>
+     */
+    public static final int TEST_SECOND_VALUE = 2;
+    /**
+     * <pre>
+     * Proto3 enums are open, so unknown values are preserved
+     * </pre>
+     *
+     * <code>TEST_THIRD = 3;</code>
+     */
+    public static final int TEST_THIRD_VALUE = 3;
+
+
+    public final int getNumber() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalArgumentException(
+            "Can't get the number of an unknown enum value.");
+      }
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static TestEnumV3 valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static TestEnumV3 forNumber(int value) {
+      switch (value) {
+        case 0: return TEST_UNKNOWN;
+        case 1: return TEST_FIRST;
+        case 2: return TEST_SECOND;
+        case 3: return TEST_THIRD;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<TestEnumV3>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        TestEnumV3> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TestEnumV3>() {
+            public TestEnumV3 findValueByNumber(int number) {
+              return TestEnumV3.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      if (this == UNRECOGNIZED) {
+        throw new java.lang.IllegalStateException(
+            "Can't get the descriptor of an unrecognized enum value.");
+      }
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final TestEnumV3[] VALUES = values();
+
+    public static TestEnumV3 valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      if (desc.getIndex() == -1) {
+        return UNRECOGNIZED;
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private TestEnumV3(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3.TestEnumV3)
+  }
+
+  public interface AllFieldTypesV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.AllFieldTypesV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Integer types
+     * </pre>
+     *
+     * <code>int32 int32_field = 1;</code>
+     * @return The int32Field.
+     */
+    int getInt32Field();
+
+    /**
+     * <code>int64 int64_field = 2;</code>
+     * @return The int64Field.
+     */
+    long getInt64Field();
+
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    int getUint32Field();
+
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    long getUint64Field();
+
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    int getSint32Field();
+
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    long getSint64Field();
+
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    int getFixed32Field();
+
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    long getFixed64Field();
+
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    int getSfixed32Field();
+
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    long getSfixed64Field();
+
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    float getFloatField();
+
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    double getDoubleField();
+
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    boolean getBoolField();
+
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    java.lang.String getStringField();
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    com.google.protobuf.ByteString
+        getStringFieldBytes();
+
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    com.google.protobuf.ByteString getBytesField();
+
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    int getEnumFieldValue();
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getEnumField();
+
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     * @return Whether the messageField field is set.
+     */
+    boolean hasMessageField();
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     * @return The messageField.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getMessageField();
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getMessageFieldOrBuilder();
+
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    java.util.List<java.lang.Integer> getRepeatedInt32List();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    int getRepeatedInt32Count();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    int getRepeatedInt32(int index);
+
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedStringList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    int getRepeatedStringCount();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    java.lang.String getRepeatedString(int index);
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getRepeatedEnumList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    int getRepeatedEnumCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getRepeatedEnum(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    int getRepeatedEnumValue(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> 
+        getRepeatedMessageList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getRepeatedMessage(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    int getRepeatedMessageCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    java.util.List<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> 
+        getRepeatedMessageOrBuilderList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getRepeatedMessageOrBuilder(
+        int index);
+
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    boolean hasOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    java.lang.String getOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    com.google.protobuf.ByteString
+        getOptionalStringBytes();
+
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    boolean hasOptionalInt32();
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    int getOptionalInt32();
+
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    boolean hasOptionalBool();
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    boolean getOptionalBool();
+
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+     * @return The enum numeric value on the wire for nestedEnumField.
+     */
+    int getNestedEnumFieldValue();
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+     * @return The nestedEnumField.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 getNestedEnumField();
+  }
+  /**
+   * <pre>
+   * Message with all field types (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.AllFieldTypesV3}
+   */
+  public static final class AllFieldTypesV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.AllFieldTypesV3)
+      AllFieldTypesV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "AllFieldTypesV3");
+    }
+    // Use AllFieldTypesV3.newBuilder() to construct.
+    private AllFieldTypesV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AllFieldTypesV3() {
+      stringField_ = "";
+      bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      enumField_ = 0;
+      repeatedInt32_ = emptyIntList();
+      repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedEnum_ = emptyIntList();
+      repeatedMessage_ = java.util.Collections.emptyList();
+      optionalString_ = "";
+      nestedEnumField_ = 0;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder.class);
+    }
+
+    /**
+     * <pre>
+     * Nested enum
+     * </pre>
+     *
+     * Protobuf enum {@code ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3}
+     */
+    public enum NestedEnumV3
+        implements com.google.protobuf.ProtocolMessageEnum {
+      /**
+       * <code>NESTED_UNKNOWN_V3 = 0;</code>
+       */
+      NESTED_UNKNOWN_V3(0),
+      /**
+       * <code>NESTED_FIRST_V3 = 1;</code>
+       */
+      NESTED_FIRST_V3(1),
+      UNRECOGNIZED(-1),
+      ;
+
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 33,
+          /* patch= */ 4,
+          /* suffix= */ "",
+          "NestedEnumV3");
+      }
+      /**
+       * <code>NESTED_UNKNOWN_V3 = 0;</code>
+       */
+      public static final int NESTED_UNKNOWN_V3_VALUE = 0;
+      /**
+       * <code>NESTED_FIRST_V3 = 1;</code>
+       */
+      public static final int NESTED_FIRST_V3_VALUE = 1;
+
+
+      public final int getNumber() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalArgumentException(
+              "Can't get the number of an unknown enum value.");
+        }
+        return value;
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static NestedEnumV3 valueOf(int value) {
+        return forNumber(value);
+      }
+
+      /**
+       * @param value The numeric wire value of the corresponding enum entry.
+       * @return The enum associated with the given numeric wire value.
+       */
+      public static NestedEnumV3 forNumber(int value) {
+        switch (value) {
+          case 0: return NESTED_UNKNOWN_V3;
+          case 1: return NESTED_FIRST_V3;
+          default: return null;
+        }
+      }
+
+      public static com.google.protobuf.Internal.EnumLiteMap<NestedEnumV3>
+          internalGetValueMap() {
+        return internalValueMap;
+      }
+      private static final com.google.protobuf.Internal.EnumLiteMap<
+          NestedEnumV3> internalValueMap =
+            new com.google.protobuf.Internal.EnumLiteMap<NestedEnumV3>() {
+              public NestedEnumV3 findValueByNumber(int number) {
+                return NestedEnumV3.forNumber(number);
+              }
+            };
+
+      public final com.google.protobuf.Descriptors.EnumValueDescriptor
+          getValueDescriptor() {
+        if (this == UNRECOGNIZED) {
+          throw new java.lang.IllegalStateException(
+              "Can't get the descriptor of an unrecognized enum value.");
+        }
+        return getDescriptor().getValues().get(ordinal());
+      }
+      public final com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptorForType() {
+        return getDescriptor();
+      }
+      public static com.google.protobuf.Descriptors.EnumDescriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDescriptor().getEnumTypes().get(0);
+      }
+
+      private static final NestedEnumV3[] VALUES = values();
+
+      public static NestedEnumV3 valueOf(
+          com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+        if (desc.getType() != getDescriptor()) {
+          throw new java.lang.IllegalArgumentException(
+            "EnumValueDescriptor is not for this type.");
+        }
+        if (desc.getIndex() == -1) {
+          return UNRECOGNIZED;
+        }
+        return VALUES[desc.getIndex()];
+      }
+
+      private final int value;
+
+      private NestedEnumV3(int value) {
+        this.value = value;
+      }
+
+      // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3)
+    }
+
+    public interface NestedMessageV3OrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>string nested_string = 1;</code>
+       * @return The nestedString.
+       */
+      java.lang.String getNestedString();
+      /**
+       * <code>string nested_string = 1;</code>
+       * @return The bytes for nestedString.
+       */
+      com.google.protobuf.ByteString
+          getNestedStringBytes();
+
+      /**
+       * <code>int32 nested_int32 = 2;</code>
+       * @return The nestedInt32.
+       */
+      int getNestedInt32();
+
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+       * @return The enum numeric value on the wire for nestedEnum.
+       */
+      int getNestedEnumValue();
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+       * @return The nestedEnum.
+       */
+      com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 getNestedEnum();
+    }
+    /**
+     * <pre>
+     * Nested message
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3}
+     */
+    public static final class NestedMessageV3 extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3)
+        NestedMessageV3OrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 33,
+          /* patch= */ 4,
+          /* suffix= */ "",
+          "NestedMessageV3");
+      }
+      // Use NestedMessageV3.newBuilder() to construct.
+      private NestedMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private NestedMessageV3() {
+        nestedString_ = "";
+        nestedEnum_ = 0;
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder.class);
+      }
+
+      /**
+       * <pre>
+       * Nested enum
+       * </pre>
+       *
+       * Protobuf enum {@code ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3}
+       */
+      public enum NestedEnumV3
+          implements com.google.protobuf.ProtocolMessageEnum {
+        /**
+         * <code>NESTED_UNKNOWN_V3 = 0;</code>
+         */
+        NESTED_UNKNOWN_V3(0),
+        /**
+         * <code>NESTED_FIRST_V3 = 1;</code>
+         */
+        NESTED_FIRST_V3(1),
+        UNRECOGNIZED(-1),
+        ;
+
+        static {
+          com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+            com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+            /* major= */ 4,
+            /* minor= */ 33,
+            /* patch= */ 4,
+            /* suffix= */ "",
+            "NestedEnumV3");
+        }
+        /**
+         * <code>NESTED_UNKNOWN_V3 = 0;</code>
+         */
+        public static final int NESTED_UNKNOWN_V3_VALUE = 0;
+        /**
+         * <code>NESTED_FIRST_V3 = 1;</code>
+         */
+        public static final int NESTED_FIRST_V3_VALUE = 1;
+
+
+        public final int getNumber() {
+          if (this == UNRECOGNIZED) {
+            throw new java.lang.IllegalArgumentException(
+                "Can't get the number of an unknown enum value.");
+          }
+          return value;
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         * @deprecated Use {@link #forNumber(int)} instead.
+         */
+        @java.lang.Deprecated
+        public static NestedEnumV3 valueOf(int value) {
+          return forNumber(value);
+        }
+
+        /**
+         * @param value The numeric wire value of the corresponding enum entry.
+         * @return The enum associated with the given numeric wire value.
+         */
+        public static NestedEnumV3 forNumber(int value) {
+          switch (value) {
+            case 0: return NESTED_UNKNOWN_V3;
+            case 1: return NESTED_FIRST_V3;
+            default: return null;
+          }
+        }
+
+        public static com.google.protobuf.Internal.EnumLiteMap<NestedEnumV3>
+            internalGetValueMap() {
+          return internalValueMap;
+        }
+        private static final com.google.protobuf.Internal.EnumLiteMap<
+            NestedEnumV3> internalValueMap =
+              new com.google.protobuf.Internal.EnumLiteMap<NestedEnumV3>() {
+                public NestedEnumV3 findValueByNumber(int number) {
+                  return NestedEnumV3.forNumber(number);
+                }
+              };
+
+        public final com.google.protobuf.Descriptors.EnumValueDescriptor
+            getValueDescriptor() {
+          if (this == UNRECOGNIZED) {
+            throw new java.lang.IllegalStateException(
+                "Can't get the descriptor of an unrecognized enum value.");
+          }
+          return getDescriptor().getValues().get(ordinal());
+        }
+        public final com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+        public static com.google.protobuf.Descriptors.EnumDescriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDescriptor().getEnumTypes().get(0);
+        }
+
+        private static final NestedEnumV3[] VALUES = values();
+
+        public static NestedEnumV3 valueOf(
+            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+          if (desc.getType() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "EnumValueDescriptor is not for this type.");
+          }
+          if (desc.getIndex() == -1) {
+            return UNRECOGNIZED;
+          }
+          return VALUES[desc.getIndex()];
+        }
+
+        private final int value;
+
+        private NestedEnumV3(int value) {
+          this.value = value;
+        }
+
+        // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3)
+      }
+
+      public static final int NESTED_STRING_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object nestedString_ = "";
+      /**
+       * <code>string nested_string = 1;</code>
+       * @return The nestedString.
+       */
+      @java.lang.Override
+      public java.lang.String getNestedString() {
+        java.lang.Object ref = nestedString_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          nestedString_ = s;
+          return s;
+        }
+      }
+      /**
+       * <code>string nested_string = 1;</code>
+       * @return The bytes for nestedString.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getNestedStringBytes() {
+        java.lang.Object ref = nestedString_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          nestedString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int NESTED_INT32_FIELD_NUMBER = 2;
+      private int nestedInt32_ = 0;
+      /**
+       * <code>int32 nested_int32 = 2;</code>
+       * @return The nestedInt32.
+       */
+      @java.lang.Override
+      public int getNestedInt32() {
+        return nestedInt32_;
+      }
+
+      public static final int NESTED_ENUM_FIELD_NUMBER = 3;
+      private int nestedEnum_ = 0;
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+       * @return The enum numeric value on the wire for nestedEnum.
+       */
+      @java.lang.Override public int getNestedEnumValue() {
+        return nestedEnum_;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+       * @return The nestedEnum.
+       */
+      @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 getNestedEnum() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3.forNumber(nestedEnum_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3.UNRECOGNIZED : result;
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * <pre>
+       * Nested message
+       * </pre>
+       *
+       * Protobuf type {@code ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3)
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder.class);
+        }
+
+        // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.newBuilder()
+        private Builder() {
+
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          nestedString_ = "";
+          nestedInt32_ = 0;
+          nestedEnum_ = 0;
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_descriptor;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getDefaultInstanceForType() {
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 build() {
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 buildPartial() {
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 result) {
+          int from_bitField0_ = bitField0_;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.nestedString_ = nestedString_;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.nestedInt32_ = nestedInt32_;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.nestedEnum_ = nestedEnum_;
+          }
+        }
+
+        private int bitField0_;
+
+        private java.lang.Object nestedString_ = "";
+        /**
+         * <code>string nested_string = 1;</code>
+         * @return The nestedString.
+         */
+        public java.lang.String getNestedString() {
+          java.lang.Object ref = nestedString_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            nestedString_ = s;
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>string nested_string = 1;</code>
+         * @return The bytes for nestedString.
+         */
+        public com.google.protobuf.ByteString
+            getNestedStringBytes() {
+          java.lang.Object ref = nestedString_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            nestedString_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>string nested_string = 1;</code>
+         * @param value The nestedString to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNestedString(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          nestedString_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string nested_string = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNestedString() {
+          nestedString_ = getDefaultInstance().getNestedString();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>string nested_string = 1;</code>
+         * @param value The bytes for nestedString to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNestedStringBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          checkByteStringIsUtf8(value);
+          nestedString_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        private int nestedInt32_ ;
+        /**
+         * <code>int32 nested_int32 = 2;</code>
+         * @return The nestedInt32.
+         */
+        @java.lang.Override
+        public int getNestedInt32() {
+          return nestedInt32_;
+        }
+        /**
+         * <code>int32 nested_int32 = 2;</code>
+         * @param value The nestedInt32 to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNestedInt32(int value) {
+
+          nestedInt32_ = value;
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>int32 nested_int32 = 2;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNestedInt32() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          nestedInt32_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private int nestedEnum_ = 0;
+        /**
+         * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+         * @return The enum numeric value on the wire for nestedEnum.
+         */
+        @java.lang.Override public int getNestedEnumValue() {
+          return nestedEnum_;
+        }
+        /**
+         * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+         * @param value The enum numeric value on the wire for nestedEnum to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNestedEnumValue(int value) {
+          nestedEnum_ = value;
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+         * @return The nestedEnum.
+         */
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 getNestedEnum() {
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3.forNumber(nestedEnum_);
+          return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3.UNRECOGNIZED : result;
+        }
+        /**
+         * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+         * @param value The nestedEnum to set.
+         * @return This builder for chaining.
+         */
+        public Builder setNestedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 value) {
+          if (value == null) { throw new NullPointerException(); }
+          bitField0_ |= 0x00000004;
+          nestedEnum_ = value.getNumber();
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3.NestedEnumV3 nested_enum = 3;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearNestedEnum() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          nestedEnum_ = 0;
+          onChanged();
+          return this;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3)
+      }
+
+      // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3)
+      private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3();
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<NestedMessageV3>
+          PARSER = new com.google.protobuf.AbstractParser<NestedMessageV3>() {
+        @java.lang.Override
+        public NestedMessageV3 parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<NestedMessageV3> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<NestedMessageV3> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    private int bitField0_;
+    public static final int INT32_FIELD_FIELD_NUMBER = 1;
+    private int int32Field_ = 0;
+    /**
+     * <pre>
+     * Integer types
+     * </pre>
+     *
+     * <code>int32 int32_field = 1;</code>
+     * @return The int32Field.
+     */
+    @java.lang.Override
+    public int getInt32Field() {
+      return int32Field_;
+    }
+
+    public static final int INT64_FIELD_FIELD_NUMBER = 2;
+    private long int64Field_ = 0L;
+    /**
+     * <code>int64 int64_field = 2;</code>
+     * @return The int64Field.
+     */
+    @java.lang.Override
+    public long getInt64Field() {
+      return int64Field_;
+    }
+
+    public static final int UINT32_FIELD_FIELD_NUMBER = 3;
+    private int uint32Field_ = 0;
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    @java.lang.Override
+    public int getUint32Field() {
+      return uint32Field_;
+    }
+
+    public static final int UINT64_FIELD_FIELD_NUMBER = 4;
+    private long uint64Field_ = 0L;
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    @java.lang.Override
+    public long getUint64Field() {
+      return uint64Field_;
+    }
+
+    public static final int SINT32_FIELD_FIELD_NUMBER = 5;
+    private int sint32Field_ = 0;
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    @java.lang.Override
+    public int getSint32Field() {
+      return sint32Field_;
+    }
+
+    public static final int SINT64_FIELD_FIELD_NUMBER = 6;
+    private long sint64Field_ = 0L;
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    @java.lang.Override
+    public long getSint64Field() {
+      return sint64Field_;
+    }
+
+    public static final int FIXED32_FIELD_FIELD_NUMBER = 7;
+    private int fixed32Field_ = 0;
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    @java.lang.Override
+    public int getFixed32Field() {
+      return fixed32Field_;
+    }
+
+    public static final int FIXED64_FIELD_FIELD_NUMBER = 8;
+    private long fixed64Field_ = 0L;
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    @java.lang.Override
+    public long getFixed64Field() {
+      return fixed64Field_;
+    }
+
+    public static final int SFIXED32_FIELD_FIELD_NUMBER = 9;
+    private int sfixed32Field_ = 0;
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    @java.lang.Override
+    public int getSfixed32Field() {
+      return sfixed32Field_;
+    }
+
+    public static final int SFIXED64_FIELD_FIELD_NUMBER = 10;
+    private long sfixed64Field_ = 0L;
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    @java.lang.Override
+    public long getSfixed64Field() {
+      return sfixed64Field_;
+    }
+
+    public static final int FLOAT_FIELD_FIELD_NUMBER = 11;
+    private float floatField_ = 0F;
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    @java.lang.Override
+    public float getFloatField() {
+      return floatField_;
+    }
+
+    public static final int DOUBLE_FIELD_FIELD_NUMBER = 12;
+    private double doubleField_ = 0D;
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    @java.lang.Override
+    public double getDoubleField() {
+      return doubleField_;
+    }
+
+    public static final int BOOL_FIELD_FIELD_NUMBER = 13;
+    private boolean boolField_ = false;
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    @java.lang.Override
+    public boolean getBoolField() {
+      return boolField_;
+    }
+
+    public static final int STRING_FIELD_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stringField_ = "";
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    @java.lang.Override
+    public java.lang.String getStringField() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        stringField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStringFieldBytes() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stringField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTES_FIELD_FIELD_NUMBER = 15;
+    private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getBytesField() {
+      return bytesField_;
+    }
+
+    public static final int ENUM_FIELD_FIELD_NUMBER = 16;
+    private int enumField_ = 0;
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    @java.lang.Override public int getEnumFieldValue() {
+      return enumField_;
+    }
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getEnumField() {
+      com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(enumField_);
+      return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+    }
+
+    public static final int MESSAGE_FIELD_FIELD_NUMBER = 17;
+    private com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 messageField_;
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     * @return Whether the messageField field is set.
+     */
+    @java.lang.Override
+    public boolean hasMessageField() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     * @return The messageField.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getMessageField() {
+      return messageField_ == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance() : messageField_;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getMessageFieldOrBuilder() {
+      return messageField_ == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance() : messageField_;
+    }
+
+    public static final int REPEATED_INT32_FIELD_NUMBER = 18;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedInt32_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeatedInt32List() {
+      return repeatedInt32_;
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    public int getRepeatedInt32Count() {
+      return repeatedInt32_.size();
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    public int getRepeatedInt32(int index) {
+      return repeatedInt32_.getInt(index);
+    }
+    private int repeatedInt32MemoizedSerializedSize = -1;
+
+    public static final int REPEATED_STRING_FIELD_NUMBER = 19;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedStringList() {
+      return repeatedString_;
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    public int getRepeatedStringCount() {
+      return repeatedString_.size();
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    public java.lang.String getRepeatedString(int index) {
+      return repeatedString_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index) {
+      return repeatedString_.getByteString(index);
+    }
+
+    public static final int REPEATED_ENUM_FIELD_NUMBER = 20;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedEnum_ =
+        emptyIntList();
+    private static final     com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> repeatedEnum_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>() {
+              public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 convert(int from) {
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(from);
+                return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getRepeatedEnumList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumCount() {
+      return repeatedEnum_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getRepeatedEnum(int index) {
+      return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList() {
+      return repeatedEnum_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumValue(int index) {
+      return repeatedEnum_.getInt(index);
+    }
+    private int repeatedEnumMemoizedSerializedSize;
+
+    public static final int REPEATED_MESSAGE_FIELD_NUMBER = 21;
+    @SuppressWarnings("serial")
+    private java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> repeatedMessage_;
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> getRepeatedMessageList() {
+      return repeatedMessage_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> 
+        getRepeatedMessageOrBuilderList() {
+      return repeatedMessage_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    @java.lang.Override
+    public int getRepeatedMessageCount() {
+      return repeatedMessage_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getRepeatedMessage(int index) {
+      return repeatedMessage_.get(index);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getRepeatedMessageOrBuilder(
+        int index) {
+      return repeatedMessage_.get(index);
+    }
+
+    public static final int OPTIONAL_STRING_FIELD_NUMBER = 22;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object optionalString_ = "";
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalString() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    @java.lang.Override
+    public java.lang.String getOptionalString() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        optionalString_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOptionalStringBytes() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        optionalString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OPTIONAL_INT32_FIELD_NUMBER = 23;
+    private int optionalInt32_ = 0;
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalInt32() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    @java.lang.Override
+    public int getOptionalInt32() {
+      return optionalInt32_;
+    }
+
+    public static final int OPTIONAL_BOOL_FIELD_NUMBER = 24;
+    private boolean optionalBool_ = false;
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalBool() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    @java.lang.Override
+    public boolean getOptionalBool() {
+      return optionalBool_;
+    }
+
+    public static final int NESTED_ENUM_FIELD_FIELD_NUMBER = 25;
+    private int nestedEnumField_ = 0;
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+     * @return The enum numeric value on the wire for nestedEnumField.
+     */
+    @java.lang.Override public int getNestedEnumFieldValue() {
+      return nestedEnumField_;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+     * @return The nestedEnumField.
+     */
+    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 getNestedEnumField() {
+      com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3.forNumber(nestedEnumField_);
+      return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3.UNRECOGNIZED : result;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with all field types (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.AllFieldTypesV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.AllFieldTypesV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetMessageFieldFieldBuilder();
+          internalGetRepeatedMessageFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        int32Field_ = 0;
+        int64Field_ = 0L;
+        uint32Field_ = 0;
+        uint64Field_ = 0L;
+        sint32Field_ = 0;
+        sint64Field_ = 0L;
+        fixed32Field_ = 0;
+        fixed64Field_ = 0L;
+        sfixed32Field_ = 0;
+        sfixed64Field_ = 0L;
+        floatField_ = 0F;
+        doubleField_ = 0D;
+        boolField_ = false;
+        stringField_ = "";
+        bytesField_ = com.google.protobuf.ByteString.EMPTY;
+        enumField_ = 0;
+        messageField_ = null;
+        if (messageFieldBuilder_ != null) {
+          messageFieldBuilder_.dispose();
+          messageFieldBuilder_ = null;
+        }
+        repeatedInt32_ = emptyIntList();
+        repeatedString_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedEnum_ = emptyIntList();
+        if (repeatedMessageBuilder_ == null) {
+          repeatedMessage_ = java.util.Collections.emptyList();
+        } else {
+          repeatedMessage_ = null;
+          repeatedMessageBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00100000);
+        optionalString_ = "";
+        optionalInt32_ = 0;
+        optionalBool_ = false;
+        nestedEnumField_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AllFieldTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 result) {
+        if (repeatedMessageBuilder_ == null) {
+          if (((bitField0_ & 0x00100000) != 0)) {
+            repeatedMessage_ = java.util.Collections.unmodifiableList(repeatedMessage_);
+            bitField0_ = (bitField0_ & ~0x00100000);
+          }
+          result.repeatedMessage_ = repeatedMessage_;
+        } else {
+          result.repeatedMessage_ = repeatedMessageBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.int32Field_ = int32Field_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.int64Field_ = int64Field_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.uint32Field_ = uint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.uint64Field_ = uint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.sint32Field_ = sint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.sint64Field_ = sint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.fixed32Field_ = fixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fixed64Field_ = fixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.sfixed32Field_ = sfixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.sfixed64Field_ = sfixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.floatField_ = floatField_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          result.doubleField_ = doubleField_;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.boolField_ = boolField_;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          result.stringField_ = stringField_;
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          result.bytesField_ = bytesField_;
+        }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.enumField_ = enumField_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          result.messageField_ = messageFieldBuilder_ == null
+              ? messageField_
+              : messageFieldBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00020000) != 0)) {
+          repeatedInt32_.makeImmutable();
+          result.repeatedInt32_ = repeatedInt32_;
+        }
+        if (((from_bitField0_ & 0x00040000) != 0)) {
+          repeatedString_.makeImmutable();
+          result.repeatedString_ = repeatedString_;
+        }
+        if (((from_bitField0_ & 0x00080000) != 0)) {
+          repeatedEnum_.makeImmutable();
+          result.repeatedEnum_ = repeatedEnum_;
+        }
+        if (((from_bitField0_ & 0x00200000) != 0)) {
+          result.optionalString_ = optionalString_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00400000) != 0)) {
+          result.optionalInt32_ = optionalInt32_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00800000) != 0)) {
+          result.optionalBool_ = optionalBool_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x01000000) != 0)) {
+          result.nestedEnumField_ = nestedEnumField_;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      private int bitField0_;
+
+      private int int32Field_ ;
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @return The int32Field.
+       */
+      @java.lang.Override
+      public int getInt32Field() {
+        return int32Field_;
+      }
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @param value The int32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInt32Field(int value) {
+
+        int32Field_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInt32Field() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        int32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long int64Field_ ;
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @return The int64Field.
+       */
+      @java.lang.Override
+      public long getInt64Field() {
+        return int64Field_;
+      }
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @param value The int64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInt64Field(long value) {
+
+        int64Field_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInt64Field() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        int64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int uint32Field_ ;
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return The uint32Field.
+       */
+      @java.lang.Override
+      public int getUint32Field() {
+        return uint32Field_;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @param value The uint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint32Field(int value) {
+
+        uint32Field_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        uint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long uint64Field_ ;
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return The uint64Field.
+       */
+      @java.lang.Override
+      public long getUint64Field() {
+        return uint64Field_;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @param value The uint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint64Field(long value) {
+
+        uint64Field_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        uint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sint32Field_ ;
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return The sint32Field.
+       */
+      @java.lang.Override
+      public int getSint32Field() {
+        return sint32Field_;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @param value The sint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint32Field(int value) {
+
+        sint32Field_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sint64Field_ ;
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return The sint64Field.
+       */
+      @java.lang.Override
+      public long getSint64Field() {
+        return sint64Field_;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @param value The sint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint64Field(long value) {
+
+        sint64Field_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int fixed32Field_ ;
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return The fixed32Field.
+       */
+      @java.lang.Override
+      public int getFixed32Field() {
+        return fixed32Field_;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @param value The fixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed32Field(int value) {
+
+        fixed32Field_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        fixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long fixed64Field_ ;
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return The fixed64Field.
+       */
+      @java.lang.Override
+      public long getFixed64Field() {
+        return fixed64Field_;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @param value The fixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed64Field(long value) {
+
+        fixed64Field_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        fixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sfixed32Field_ ;
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return The sfixed32Field.
+       */
+      @java.lang.Override
+      public int getSfixed32Field() {
+        return sfixed32Field_;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @param value The sfixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed32Field(int value) {
+
+        sfixed32Field_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        sfixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sfixed64Field_ ;
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return The sfixed64Field.
+       */
+      @java.lang.Override
+      public long getSfixed64Field() {
+        return sfixed64Field_;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @param value The sfixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed64Field(long value) {
+
+        sfixed64Field_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        sfixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private float floatField_ ;
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return The floatField.
+       */
+      @java.lang.Override
+      public float getFloatField() {
+        return floatField_;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @param value The floatField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFloatField(float value) {
+
+        floatField_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFloatField() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        floatField_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private double doubleField_ ;
+      /**
+       * <code>double double_field = 12;</code>
+       * @return The doubleField.
+       */
+      @java.lang.Override
+      public double getDoubleField() {
+        return doubleField_;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @param value The doubleField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDoubleField(double value) {
+
+        doubleField_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDoubleField() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        doubleField_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private boolean boolField_ ;
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return The boolField.
+       */
+      @java.lang.Override
+      public boolean getBoolField() {
+        return boolField_;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @param value The boolField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBoolField(boolean value) {
+
+        boolField_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBoolField() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        boolField_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object stringField_ = "";
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The stringField.
+       */
+      public java.lang.String getStringField() {
+        java.lang.Object ref = stringField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          stringField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The bytes for stringField.
+       */
+      public com.google.protobuf.ByteString
+          getStringFieldBytes() {
+        java.lang.Object ref = stringField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stringField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStringField() {
+        stringField_ = getDefaultInstance().getStringField();
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The bytes for stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return The bytesField.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getBytesField() {
+        return bytesField_;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @param value The bytesField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBytesField(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        bytesField_ = value;
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBytesField() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        bytesField_ = getDefaultInstance().getBytesField();
+        onChanged();
+        return this;
+      }
+
+      private int enumField_ = 0;
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+       * @return The enum numeric value on the wire for enumField.
+       */
+      @java.lang.Override public int getEnumFieldValue() {
+        return enumField_;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+       * @param value The enum numeric value on the wire for enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumFieldValue(int value) {
+        enumField_ = value;
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+       * @return The enumField.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getEnumField() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(enumField_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+       * @param value The enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x00008000;
+        enumField_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3.TestEnumV3 enum_field = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnumField() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        enumField_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 messageField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> messageFieldBuilder_;
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       * @return Whether the messageField field is set.
+       */
+      public boolean hasMessageField() {
+        return ((bitField0_ & 0x00010000) != 0);
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       * @return The messageField.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getMessageField() {
+        if (messageFieldBuilder_ == null) {
+          return messageField_ == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance() : messageField_;
+        } else {
+          return messageFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public Builder setMessageField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 value) {
+        if (messageFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          messageField_ = value;
+        } else {
+          messageFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public Builder setMessageField(
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder builderForValue) {
+        if (messageFieldBuilder_ == null) {
+          messageField_ = builderForValue.build();
+        } else {
+          messageFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public Builder mergeMessageField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 value) {
+        if (messageFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00010000) != 0) &&
+            messageField_ != null &&
+            messageField_ != com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance()) {
+            getMessageFieldBuilder().mergeFrom(value);
+          } else {
+            messageField_ = value;
+          }
+        } else {
+          messageFieldBuilder_.mergeFrom(value);
+        }
+        if (messageField_ != null) {
+          bitField0_ |= 0x00010000;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public Builder clearMessageField() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        messageField_ = null;
+        if (messageFieldBuilder_ != null) {
+          messageFieldBuilder_.dispose();
+          messageFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder getMessageFieldBuilder() {
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return internalGetMessageFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getMessageFieldOrBuilder() {
+        if (messageFieldBuilder_ != null) {
+          return messageFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return messageField_ == null ?
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance() : messageField_;
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 message_field = 17;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> 
+          internalGetMessageFieldFieldBuilder() {
+        if (messageFieldBuilder_ == null) {
+          messageFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder>(
+                  getMessageField(),
+                  getParentForChildren(),
+                  isClean());
+          messageField_ = null;
+        }
+        return messageFieldBuilder_;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedInt32_ = emptyIntList();
+      private void ensureRepeatedInt32IsMutable() {
+        if (!repeatedInt32_.isModifiable()) {
+          repeatedInt32_ = makeMutableCopy(repeatedInt32_);
+        }
+        bitField0_ |= 0x00020000;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return A list containing the repeatedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeatedInt32List() {
+        repeatedInt32_.makeImmutable();
+        return repeatedInt32_;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return The count of repeatedInt32.
+       */
+      public int getRepeatedInt32Count() {
+        return repeatedInt32_.size();
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedInt32 at the given index.
+       */
+      public int getRepeatedInt32(int index) {
+        return repeatedInt32_.getInt(index);
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedInt32(
+          int index, int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.setInt(index, value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param value The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedInt32(int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.addInt(value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param values The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeatedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedInt32_);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedInt32() {
+        repeatedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00020000);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedStringIsMutable() {
+        if (!repeatedString_.isModifiable()) {
+          repeatedString_ = new com.google.protobuf.LazyStringArrayList(repeatedString_);
+        }
+        bitField0_ |= 0x00040000;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return A list containing the repeatedString.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedStringList() {
+        repeatedString_.makeImmutable();
+        return repeatedString_;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return The count of repeatedString.
+       */
+      public int getRepeatedStringCount() {
+        return repeatedString_.size();
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString at the given index.
+       */
+      public java.lang.String getRepeatedString(int index) {
+        return repeatedString_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedStringBytes(int index) {
+        return repeatedString_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.set(index, value);
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param values The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedStringIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString_);
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString() {
+        repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00040000);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The bytes of the repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedEnum_ = emptyIntList();
+      private void ensureRepeatedEnumIsMutable() {
+        if (!repeatedEnum_.isModifiable()) {
+          repeatedEnum_ = makeMutableCopy(repeatedEnum_);
+        }
+        bitField0_ |= 0x00080000;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the repeatedEnum.
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getRepeatedEnumList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @return The count of repeatedEnum.
+       */
+      public int getRepeatedEnumCount() {
+        return repeatedEnum_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedEnum at the given index.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getRepeatedEnum(int index) {
+        return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnum(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnum(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> values) {
+        ensureRepeatedEnumIsMutable();
+        for (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value : values) {
+          repeatedEnum_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedEnum() {
+        repeatedEnum_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00080000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the enum numeric values on the wire for repeatedEnum.
+       */
+      public java.util.List<java.lang.Integer>
+      getRepeatedEnumValueList() {
+        repeatedEnum_.makeImmutable();
+        return repeatedEnum_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of repeatedEnum at the given index.
+       */
+      public int getRepeatedEnumValue(int index) {
+        return repeatedEnum_.getInt(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The enum numeric value on the wire for repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnumValue(
+          int index, int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The enum numeric value on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnumValue(int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The enum numeric values on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnumValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensureRepeatedEnumIsMutable();
+        for (int value : values) {
+          repeatedEnum_.addInt(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> repeatedMessage_ =
+        java.util.Collections.emptyList();
+      private void ensureRepeatedMessageIsMutable() {
+        if (!((bitField0_ & 0x00100000) != 0)) {
+          repeatedMessage_ = new java.util.ArrayList<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3>(repeatedMessage_);
+          bitField0_ |= 0x00100000;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> repeatedMessageBuilder_;
+
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> getRepeatedMessageList() {
+        if (repeatedMessageBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(repeatedMessage_);
+        } else {
+          return repeatedMessageBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public int getRepeatedMessageCount() {
+        if (repeatedMessageBuilder_ == null) {
+          return repeatedMessage_.size();
+        } else {
+          return repeatedMessageBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 getRepeatedMessage(int index) {
+        if (repeatedMessageBuilder_ == null) {
+          return repeatedMessage_.get(index);
+        } else {
+          return repeatedMessageBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder setRepeatedMessage(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 value) {
+        if (repeatedMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.set(index, value);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder setRepeatedMessage(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder builderForValue) {
+        if (repeatedMessageBuilder_ == null) {
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder addRepeatedMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 value) {
+        if (repeatedMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.add(value);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder addRepeatedMessage(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3 value) {
+        if (repeatedMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.add(index, value);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder addRepeatedMessage(
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder builderForValue) {
+        if (repeatedMessageBuilder_ == null) {
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.add(builderForValue.build());
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder addRepeatedMessage(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder builderForValue) {
+        if (repeatedMessageBuilder_ == null) {
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder addAllRepeatedMessage(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3> values) {
+        if (repeatedMessageBuilder_ == null) {
+          ensureRepeatedMessageIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, repeatedMessage_);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder clearRepeatedMessage() {
+        if (repeatedMessageBuilder_ == null) {
+          repeatedMessage_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00100000);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public Builder removeRepeatedMessage(int index) {
+        if (repeatedMessageBuilder_ == null) {
+          ensureRepeatedMessageIsMutable();
+          repeatedMessage_.remove(index);
+          onChanged();
+        } else {
+          repeatedMessageBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder getRepeatedMessageBuilder(
+          int index) {
+        return internalGetRepeatedMessageFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder getRepeatedMessageOrBuilder(
+          int index) {
+        if (repeatedMessageBuilder_ == null) {
+          return repeatedMessage_.get(index);  } else {
+          return repeatedMessageBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public java.util.List<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> 
+           getRepeatedMessageOrBuilderList() {
+        if (repeatedMessageBuilder_ != null) {
+          return repeatedMessageBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(repeatedMessage_);
+        }
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder addRepeatedMessageBuilder() {
+        return internalGetRepeatedMessageFieldBuilder().addBuilder(
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder addRepeatedMessageBuilder(
+          int index) {
+        return internalGetRepeatedMessageFieldBuilder().addBuilder(
+            index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.AllFieldTypesV3.NestedMessageV3 repeated_message = 21;</code>
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder> 
+           getRepeatedMessageBuilderList() {
+        return internalGetRepeatedMessageFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder> 
+          internalGetRepeatedMessageFieldBuilder() {
+        if (repeatedMessageBuilder_ == null) {
+          repeatedMessageBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedMessageV3OrBuilder>(
+                  repeatedMessage_,
+                  ((bitField0_ & 0x00100000) != 0),
+                  getParentForChildren(),
+                  isClean());
+          repeatedMessage_ = null;
+        }
+        return repeatedMessageBuilder_;
+      }
+
+      private java.lang.Object optionalString_ = "";
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return Whether the optionalString field is set.
+       */
+      public boolean hasOptionalString() {
+        return ((bitField0_ & 0x00200000) != 0);
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The optionalString.
+       */
+      public java.lang.String getOptionalString() {
+        java.lang.Object ref = optionalString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          optionalString_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The bytes for optionalString.
+       */
+      public com.google.protobuf.ByteString
+          getOptionalStringBytes() {
+        java.lang.Object ref = optionalString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          optionalString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        optionalString_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalString() {
+        optionalString_ = getDefaultInstance().getOptionalString();
+        bitField0_ = (bitField0_ & ~0x00200000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The bytes for optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        optionalString_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+
+      private int optionalInt32_ ;
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return Whether the optionalInt32 field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalInt32() {
+        return ((bitField0_ & 0x00400000) != 0);
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return The optionalInt32.
+       */
+      @java.lang.Override
+      public int getOptionalInt32() {
+        return optionalInt32_;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @param value The optionalInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalInt32(int value) {
+
+        optionalInt32_ = value;
+        bitField0_ |= 0x00400000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalInt32() {
+        bitField0_ = (bitField0_ & ~0x00400000);
+        optionalInt32_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean optionalBool_ ;
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return Whether the optionalBool field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalBool() {
+        return ((bitField0_ & 0x00800000) != 0);
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return The optionalBool.
+       */
+      @java.lang.Override
+      public boolean getOptionalBool() {
+        return optionalBool_;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @param value The optionalBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalBool(boolean value) {
+
+        optionalBool_ = value;
+        bitField0_ |= 0x00800000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalBool() {
+        bitField0_ = (bitField0_ & ~0x00800000);
+        optionalBool_ = false;
+        onChanged();
+        return this;
+      }
+
+      private int nestedEnumField_ = 0;
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+       * @return The enum numeric value on the wire for nestedEnumField.
+       */
+      @java.lang.Override public int getNestedEnumFieldValue() {
+        return nestedEnumField_;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+       * @param value The enum numeric value on the wire for nestedEnumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNestedEnumFieldValue(int value) {
+        nestedEnumField_ = value;
+        bitField0_ |= 0x01000000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+       * @return The nestedEnumField.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 getNestedEnumField() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3.forNumber(nestedEnumField_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+       * @param value The nestedEnumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNestedEnumField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.NestedEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x01000000;
+        nestedEnumField_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3.NestedEnumV3 nested_enum_field = 25;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNestedEnumField() {
+        bitField0_ = (bitField0_ & ~0x01000000);
+        nestedEnumField_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.AllFieldTypesV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.AllFieldTypesV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AllFieldTypesV3>
+        PARSER = new com.google.protobuf.AbstractParser<AllFieldTypesV3>() {
+      @java.lang.Override
+      public AllFieldTypesV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AllFieldTypesV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllFieldTypesV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface OneofMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.OneofMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return Whether the oneofString field is set.
+     */
+    boolean hasOneofString();
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The oneofString.
+     */
+    java.lang.String getOneofString();
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The bytes for oneofString.
+     */
+    com.google.protobuf.ByteString
+        getOneofStringBytes();
+
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    boolean hasOneofInt32();
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return The oneofInt32.
+     */
+    int getOneofInt32();
+
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    boolean hasOneofEnum();
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return The enum numeric value on the wire for oneofEnum.
+     */
+    int getOneofEnumValue();
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return The oneofEnum.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getOneofEnum();
+
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    boolean hasOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return The oneofMessage.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder();
+
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    boolean hasOneofBytes();
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return The oneofBytes.
+     */
+    com.google.protobuf.ByteString getOneofBytes();
+
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The regularField.
+     */
+    java.lang.String getRegularField();
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The bytes for regularField.
+     */
+    com.google.protobuf.ByteString
+        getRegularFieldBytes();
+
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    boolean hasOneofBool();
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return The oneofBool.
+     */
+    boolean getOneofBool();
+
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    boolean hasOneofDouble();
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return The oneofDouble.
+     */
+    double getOneofDouble();
+
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.TestOneofCase getTestOneofCase();
+
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.SecondOneofCase getSecondOneofCase();
+  }
+  /**
+   * <pre>
+   * Message with oneof (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.OneofMessageV3}
+   */
+  public static final class OneofMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.OneofMessageV3)
+      OneofMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "OneofMessageV3");
+    }
+    // Use OneofMessageV3.newBuilder() to construct.
+    private OneofMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private OneofMessageV3() {
+      regularField_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_OneofMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_OneofMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.Builder.class);
+    }
+
+    private int testOneofCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object testOneof_;
+    public enum TestOneofCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF_STRING(1),
+      ONEOF_INT32(2),
+      ONEOF_ENUM(3),
+      ONEOF_MESSAGE(4),
+      ONEOF_BYTES(5),
+      TESTONEOF_NOT_SET(0);
+      private final int value;
+      private TestOneofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TestOneofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TestOneofCase forNumber(int value) {
+        switch (value) {
+          case 1: return ONEOF_STRING;
+          case 2: return ONEOF_INT32;
+          case 3: return ONEOF_ENUM;
+          case 4: return ONEOF_MESSAGE;
+          case 5: return ONEOF_BYTES;
+          case 0: return TESTONEOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public TestOneofCase
+    getTestOneofCase() {
+      return TestOneofCase.forNumber(
+          testOneofCase_);
+    }
+
+    private int secondOneofCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object secondOneof_;
+    public enum SecondOneofCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF_BOOL(7),
+      ONEOF_DOUBLE(8),
+      SECONDONEOF_NOT_SET(0);
+      private final int value;
+      private SecondOneofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SecondOneofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SecondOneofCase forNumber(int value) {
+        switch (value) {
+          case 7: return ONEOF_BOOL;
+          case 8: return ONEOF_DOUBLE;
+          case 0: return SECONDONEOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public SecondOneofCase
+    getSecondOneofCase() {
+      return SecondOneofCase.forNumber(
+          secondOneofCase_);
+    }
+
+    public static final int ONEOF_STRING_FIELD_NUMBER = 1;
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return Whether the oneofString field is set.
+     */
+    public boolean hasOneofString() {
+      return testOneofCase_ == 1;
+    }
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The oneofString.
+     */
+    public java.lang.String getOneofString() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 1) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (testOneofCase_ == 1) {
+          testOneof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The bytes for oneofString.
+     */
+    public com.google.protobuf.ByteString
+        getOneofStringBytes() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 1) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (testOneofCase_ == 1) {
+          testOneof_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF_INT32_FIELD_NUMBER = 2;
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofInt32() {
+      return testOneofCase_ == 2;
+    }
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return The oneofInt32.
+     */
+    @java.lang.Override
+    public int getOneofInt32() {
+      if (testOneofCase_ == 2) {
+        return (java.lang.Integer) testOneof_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_ENUM_FIELD_NUMBER = 3;
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    public boolean hasOneofEnum() {
+      return testOneofCase_ == 3;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return The enum numeric value on the wire for oneofEnum.
+     */
+    public int getOneofEnumValue() {
+      if (testOneofCase_ == 3) {
+        return (java.lang.Integer) testOneof_;
+      }
+      return 0;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+     * @return The oneofEnum.
+     */
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getOneofEnum() {
+      if (testOneofCase_ == 3) {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(
+            (java.lang.Integer) testOneof_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.TEST_UNKNOWN;
+    }
+
+    public static final int ONEOF_MESSAGE_FIELD_NUMBER = 4;
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofMessage() {
+      return testOneofCase_ == 4;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return The oneofMessage.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getOneofMessage() {
+      if (testOneofCase_ == 4) {
+         return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+    }
+    /**
+     * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
+      if (testOneofCase_ == 4) {
+         return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+    }
+
+    public static final int ONEOF_BYTES_FIELD_NUMBER = 5;
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBytes() {
+      return testOneofCase_ == 5;
+    }
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return The oneofBytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getOneofBytes() {
+      if (testOneofCase_ == 5) {
+        return (com.google.protobuf.ByteString) testOneof_;
+      }
+      return com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final int REGULAR_FIELD_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object regularField_ = "";
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The regularField.
+     */
+    @java.lang.Override
+    public java.lang.String getRegularField() {
+      java.lang.Object ref = regularField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        regularField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The bytes for regularField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRegularFieldBytes() {
+      java.lang.Object ref = regularField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        regularField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF_BOOL_FIELD_NUMBER = 7;
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBool() {
+      return secondOneofCase_ == 7;
+    }
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return The oneofBool.
+     */
+    @java.lang.Override
+    public boolean getOneofBool() {
+      if (secondOneofCase_ == 7) {
+        return (java.lang.Boolean) secondOneof_;
+      }
+      return false;
+    }
+
+    public static final int ONEOF_DOUBLE_FIELD_NUMBER = 8;
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofDouble() {
+      return secondOneofCase_ == 8;
+    }
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return The oneofDouble.
+     */
+    @java.lang.Override
+    public double getOneofDouble() {
+      if (secondOneofCase_ == 8) {
+        return (java.lang.Double) secondOneof_;
+      }
+      return 0D;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with oneof (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.OneofMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.OneofMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_OneofMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_OneofMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (oneofMessageBuilder_ != null) {
+          oneofMessageBuilder_.clear();
+        }
+        regularField_ = "";
+        testOneofCase_ = 0;
+        testOneof_ = null;
+        secondOneofCase_ = 0;
+        secondOneof_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_OneofMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.regularField_ = regularField_;
+        }
+      }
+
+      private void buildPartialOneofs(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 result) {
+        result.testOneofCase_ = testOneofCase_;
+        result.testOneof_ = this.testOneof_;
+        if (testOneofCase_ == 4 &&
+            oneofMessageBuilder_ != null) {
+          result.testOneof_ = oneofMessageBuilder_.build();
+        }
+        result.secondOneofCase_ = secondOneofCase_;
+        result.secondOneof_ = this.secondOneof_;
+      }
+
+      private int testOneofCase_ = 0;
+      private java.lang.Object testOneof_;
+      public TestOneofCase
+          getTestOneofCase() {
+        return TestOneofCase.forNumber(
+            testOneofCase_);
+      }
+
+      public Builder clearTestOneof() {
+        testOneofCase_ = 0;
+        testOneof_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int secondOneofCase_ = 0;
+      private java.lang.Object secondOneof_;
+      public SecondOneofCase
+          getSecondOneofCase() {
+        return SecondOneofCase.forNumber(
+            secondOneofCase_);
+      }
+
+      public Builder clearSecondOneof() {
+        secondOneofCase_ = 0;
+        secondOneof_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return Whether the oneofString field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofString() {
+        return testOneofCase_ == 1;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return The oneofString.
+       */
+      @java.lang.Override
+      public java.lang.String getOneofString() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 1) {
+          ref = testOneof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (testOneofCase_ == 1) {
+            testOneof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return The bytes for oneofString.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getOneofStringBytes() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 1) {
+          ref = testOneof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (testOneofCase_ == 1) {
+            testOneof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @param value The oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 1;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofString() {
+        if (testOneofCase_ == 1) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @param value The bytes for oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        testOneofCase_ = 1;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return Whether the oneofInt32 field is set.
+       */
+      public boolean hasOneofInt32() {
+        return testOneofCase_ == 2;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return The oneofInt32.
+       */
+      public int getOneofInt32() {
+        if (testOneofCase_ == 2) {
+          return (java.lang.Integer) testOneof_;
+        }
+        return 0;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @param value The oneofInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofInt32(int value) {
+
+        testOneofCase_ = 2;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofInt32() {
+        if (testOneofCase_ == 2) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @return Whether the oneofEnum field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofEnum() {
+        return testOneofCase_ == 3;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @return The enum numeric value on the wire for oneofEnum.
+       */
+      @java.lang.Override
+      public int getOneofEnumValue() {
+        if (testOneofCase_ == 3) {
+          return ((java.lang.Integer) testOneof_).intValue();
+        }
+        return 0;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @param value The enum numeric value on the wire for oneofEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofEnumValue(int value) {
+        testOneofCase_ = 3;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @return The oneofEnum.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getOneofEnum() {
+        if (testOneofCase_ == 3) {
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(
+              (java.lang.Integer) testOneof_);
+          return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+        }
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.TEST_UNKNOWN;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @param value The oneofEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 3;
+        testOneof_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.TestEnumV3 oneof_enum = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofEnum() {
+        if (testOneofCase_ == 3) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder> oneofMessageBuilder_;
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       * @return Whether the oneofMessage field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofMessage() {
+        return testOneofCase_ == 4;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       * @return The oneofMessage.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4) {
+            return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_;
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+        } else {
+          if (testOneofCase_ == 4) {
+            return oneofMessageBuilder_.getMessage();
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder setOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 value) {
+        if (oneofMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          testOneof_ = value;
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(value);
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder setOneofMessage(
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder builderForValue) {
+        if (oneofMessageBuilder_ == null) {
+          testOneof_ = builderForValue.build();
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(builderForValue.build());
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder mergeOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 value) {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4 &&
+              testOneof_ != com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance()) {
+            testOneof_ = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.newBuilder((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            testOneof_ = value;
+          }
+          onChanged();
+        } else {
+          if (testOneofCase_ == 4) {
+            oneofMessageBuilder_.mergeFrom(value);
+          } else {
+            oneofMessageBuilder_.setMessage(value);
+          }
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder clearOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4) {
+            testOneofCase_ = 0;
+            testOneof_ = null;
+            onChanged();
+          }
+        } else {
+          if (testOneofCase_ == 4) {
+            testOneofCase_ = 0;
+            testOneof_ = null;
+          }
+          oneofMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder getOneofMessageBuilder() {
+        return internalGetOneofMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
+        if ((testOneofCase_ == 4) && (oneofMessageBuilder_ != null)) {
+          return oneofMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (testOneofCase_ == 4) {
+            return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_;
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder> 
+          internalGetOneofMessageFieldBuilder() {
+        if (oneofMessageBuilder_ == null) {
+          if (!(testOneofCase_ == 4)) {
+            testOneof_ = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance();
+          }
+          oneofMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder>(
+                  (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) testOneof_,
+                  getParentForChildren(),
+                  isClean());
+          testOneof_ = null;
+        }
+        testOneofCase_ = 4;
+        onChanged();
+        return oneofMessageBuilder_;
+      }
+
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return Whether the oneofBytes field is set.
+       */
+      public boolean hasOneofBytes() {
+        return testOneofCase_ == 5;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return The oneofBytes.
+       */
+      public com.google.protobuf.ByteString getOneofBytes() {
+        if (testOneofCase_ == 5) {
+          return (com.google.protobuf.ByteString) testOneof_;
+        }
+        return com.google.protobuf.ByteString.EMPTY;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @param value The oneofBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBytes(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 5;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBytes() {
+        if (testOneofCase_ == 5) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private java.lang.Object regularField_ = "";
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return The regularField.
+       */
+      public java.lang.String getRegularField() {
+        java.lang.Object ref = regularField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          regularField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return The bytes for regularField.
+       */
+      public com.google.protobuf.ByteString
+          getRegularFieldBytes() {
+        java.lang.Object ref = regularField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          regularField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @param value The regularField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegularField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        regularField_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegularField() {
+        regularField_ = getDefaultInstance().getRegularField();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @param value The bytes for regularField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegularFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        regularField_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return Whether the oneofBool field is set.
+       */
+      public boolean hasOneofBool() {
+        return secondOneofCase_ == 7;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return The oneofBool.
+       */
+      public boolean getOneofBool() {
+        if (secondOneofCase_ == 7) {
+          return (java.lang.Boolean) secondOneof_;
+        }
+        return false;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @param value The oneofBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBool(boolean value) {
+
+        secondOneofCase_ = 7;
+        secondOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBool() {
+        if (secondOneofCase_ == 7) {
+          secondOneofCase_ = 0;
+          secondOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return Whether the oneofDouble field is set.
+       */
+      public boolean hasOneofDouble() {
+        return secondOneofCase_ == 8;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return The oneofDouble.
+       */
+      public double getOneofDouble() {
+        if (secondOneofCase_ == 8) {
+          return (java.lang.Double) secondOneof_;
+        }
+        return 0D;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @param value The oneofDouble to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofDouble(double value) {
+
+        secondOneofCase_ = 8;
+        secondOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofDouble() {
+        if (secondOneofCase_ == 8) {
+          secondOneofCase_ = 0;
+          secondOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.OneofMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.OneofMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OneofMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<OneofMessageV3>() {
+      @java.lang.Override
+      public OneofMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<OneofMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OneofMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.OneofMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface MapMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.MapMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32Count();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    boolean containsStringToInt32(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToInt32Map()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToInt32();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToInt32Map();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32OrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32OrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    int getInt32ToStringCount();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    boolean containsInt32ToString(
+        int key);
+    /**
+     * Use {@link #getInt32ToStringMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.String>
+    getInt32ToString();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.String>
+    getInt32ToStringMap();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+        int key,
+        /* nullable */
+java.lang.String defaultValue);
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    java.lang.String getInt32ToStringOrThrow(
+        int key);
+
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumCount();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    boolean containsStringToEnum(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToEnumMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+    getStringToEnum();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+    getStringToEnumMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3         defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrThrow(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToEnumValueMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValue();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValueMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumValueOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumValueOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    int getStringToMessageCount();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    boolean containsStringToMessage(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToMessageMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3>
+    getStringToMessage();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3>
+    getStringToMessageMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    int getBoolToStringCount();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    boolean containsBoolToString(
+        boolean key);
+    /**
+     * Use {@link #getBoolToStringMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Boolean, java.lang.String>
+    getBoolToString();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    java.util.Map<java.lang.Boolean, java.lang.String>
+    getBoolToStringMap();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    /* nullable */
+java.lang.String getBoolToStringOrDefault(
+        boolean key,
+        /* nullable */
+java.lang.String defaultValue);
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    java.lang.String getBoolToStringOrThrow(
+        boolean key);
+
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    int getInt64ToBytesCount();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    boolean containsInt64ToBytes(
+        long key);
+    /**
+     * Use {@link #getInt64ToBytesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    getInt64ToBytes();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    getInt64ToBytesMap();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+        long key,
+        /* nullable */
+com.google.protobuf.ByteString defaultValue);
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+        long key);
+
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    int getUint32ToFloatCount();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    boolean containsUint32ToFloat(
+        int key);
+    /**
+     * Use {@link #getUint32ToFloatMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.Float>
+    getUint32ToFloat();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.Float>
+    getUint32ToFloatMap();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    float getUint32ToFloatOrDefault(
+        int key,
+        float defaultValue);
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    float getUint32ToFloatOrThrow(
+        int key);
+
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    int getFixed64ToDoubleCount();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    boolean containsFixed64ToDouble(
+        long key);
+    /**
+     * Use {@link #getFixed64ToDoubleMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Long, java.lang.Double>
+    getFixed64ToDouble();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    java.util.Map<java.lang.Long, java.lang.Double>
+    getFixed64ToDoubleMap();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    double getFixed64ToDoubleOrDefault(
+        long key,
+        double defaultValue);
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    double getFixed64ToDoubleOrThrow(
+        long key);
+  }
+  /**
+   * <pre>
+   * Message with map fields (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.MapMessageV3}
+   */
+  public static final class MapMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.MapMessageV3)
+      MapMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "MapMessageV3");
+    }
+    // Use MapMessageV3.newBuilder() to construct.
+    private MapMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private MapMessageV3() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetStringToInt32();
+        case 2:
+          return internalGetInt32ToString();
+        case 3:
+          return internalGetStringToEnum();
+        case 4:
+          return internalGetStringToMessage();
+        case 5:
+          return internalGetBoolToString();
+        case 6:
+          return internalGetInt64ToBytes();
+        case 7:
+          return internalGetUint32ToFloat();
+        case 8:
+          return internalGetFixed64ToDouble();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.Builder.class);
+    }
+
+    public static final int STRING_TO_INT32_FIELD_NUMBER = 1;
+    private static final class StringToInt32DefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_StringToInt32Entry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> stringToInt32_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetStringToInt32() {
+      if (stringToInt32_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToInt32DefaultEntryHolder.defaultEntry);
+      }
+      return stringToInt32_;
+    }
+    public int getStringToInt32Count() {
+      return internalGetStringToInt32().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToInt32(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToInt32().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToInt32Map()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32() {
+      return getStringToInt32Map();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32Map() {
+      return internalGetStringToInt32().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public int getStringToInt32OrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToInt32().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public int getStringToInt32OrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToInt32().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int INT32_TO_STRING_FIELD_NUMBER = 2;
+    private static final class Int32ToStringDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.String>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_Int32ToStringEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.String> int32ToString_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+    internalGetInt32ToString() {
+      if (int32ToString_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Int32ToStringDefaultEntryHolder.defaultEntry);
+      }
+      return int32ToString_;
+    }
+    public int getInt32ToStringCount() {
+      return internalGetInt32ToString().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public boolean containsInt32ToString(
+        int key) {
+
+      return internalGetInt32ToString().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInt32ToStringMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToString() {
+      return getInt32ToStringMap();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToStringMap() {
+      return internalGetInt32ToString().getMap();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+        int key,
+        /* nullable */
+java.lang.String defaultValue) {
+
+      java.util.Map<java.lang.Integer, java.lang.String> map =
+          internalGetInt32ToString().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getInt32ToStringOrThrow(
+        int key) {
+
+      java.util.Map<java.lang.Integer, java.lang.String> map =
+          internalGetInt32ToString().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int STRING_TO_ENUM_FIELD_NUMBER = 3;
+    private static final class StringToEnumDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_StringToEnumEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.ENUM,
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.TEST_UNKNOWN.getNumber());
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> stringToEnum_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetStringToEnum() {
+      if (stringToEnum_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToEnumDefaultEntryHolder.defaultEntry);
+      }
+      return stringToEnum_;
+    }
+    private static final
+    com.google.protobuf.Internal.MapAdapter.Converter<
+        java.lang.Integer, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> stringToEnumValueConverter =
+            com.google.protobuf.Internal.MapAdapter.newEnumConverter(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.internalGetValueMap(),
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED);
+    private static final java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+    internalGetAdaptedStringToEnumMap(
+        java.util.Map<java.lang.String, java.lang.Integer> map) {
+      return new com.google.protobuf.Internal.MapAdapter<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3, java.lang.Integer>(
+              map, stringToEnumValueConverter);
+    }
+    public int getStringToEnumCount() {
+      return internalGetStringToEnum().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToEnum(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToEnum().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToEnumMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+    getStringToEnum() {
+      return getStringToEnumMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+    getStringToEnumMap() {
+      return internalGetAdaptedStringToEnumMap(
+          internalGetStringToEnum().getMap());}
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      return map.containsKey(key)
+             ? stringToEnumValueConverter.doForward(map.get(key))
+             : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return stringToEnumValueConverter.doForward(map.get(key));
+    }
+    /**
+     * Use {@link #getStringToEnumValueMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValue() {
+      return getStringToEnumValueMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValueMap() {
+      return internalGetStringToEnum().getMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public int getStringToEnumValueOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public int getStringToEnumValueOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int STRING_TO_MESSAGE_FIELD_NUMBER = 4;
+    private static final class StringToMessageDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_StringToMessageEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.getDefaultInstance());
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> stringToMessage_;
+    private com.google.protobuf.MapField<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3>
+    internalGetStringToMessage() {
+      if (stringToMessage_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToMessageDefaultEntryHolder.defaultEntry);
+      }
+      return stringToMessage_;
+    }
+    public int getStringToMessageCount() {
+      return internalGetStringToMessage().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToMessage(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToMessage().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToMessageMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> getStringToMessage() {
+      return getStringToMessageMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> getStringToMessageMap() {
+      return internalGetStringToMessage().getMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> map =
+          internalGetStringToMessage().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> map =
+          internalGetStringToMessage().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int BOOL_TO_STRING_FIELD_NUMBER = 5;
+    private static final class BoolToStringDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Boolean, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Boolean, java.lang.String>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_BoolToStringEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.BOOL,
+                  false,
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Boolean, java.lang.String> boolToString_;
+    private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+    internalGetBoolToString() {
+      if (boolToString_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BoolToStringDefaultEntryHolder.defaultEntry);
+      }
+      return boolToString_;
+    }
+    public int getBoolToStringCount() {
+      return internalGetBoolToString().getMap().size();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public boolean containsBoolToString(
+        boolean key) {
+
+      return internalGetBoolToString().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getBoolToStringMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToString() {
+      return getBoolToStringMap();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToStringMap() {
+      return internalGetBoolToString().getMap();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+java.lang.String getBoolToStringOrDefault(
+        boolean key,
+        /* nullable */
+java.lang.String defaultValue) {
+
+      java.util.Map<java.lang.Boolean, java.lang.String> map =
+          internalGetBoolToString().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getBoolToStringOrThrow(
+        boolean key) {
+
+      java.util.Map<java.lang.Boolean, java.lang.String> map =
+          internalGetBoolToString().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int INT64_TO_BYTES_FIELD_NUMBER = 6;
+    private static final class Int64ToBytesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Long, com.google.protobuf.ByteString> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Long, com.google.protobuf.ByteString>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_Int64ToBytesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  0L,
+                  com.google.protobuf.WireFormat.FieldType.BYTES,
+                  com.google.protobuf.ByteString.EMPTY);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Long, com.google.protobuf.ByteString> int64ToBytes_;
+    private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+    internalGetInt64ToBytes() {
+      if (int64ToBytes_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Int64ToBytesDefaultEntryHolder.defaultEntry);
+      }
+      return int64ToBytes_;
+    }
+    public int getInt64ToBytesCount() {
+      return internalGetInt64ToBytes().getMap().size();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public boolean containsInt64ToBytes(
+        long key) {
+
+      return internalGetInt64ToBytes().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInt64ToBytesMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytes() {
+      return getInt64ToBytesMap();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytesMap() {
+      return internalGetInt64ToBytes().getMap();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+        long key,
+        /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+
+      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+          internalGetInt64ToBytes().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+        long key) {
+
+      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+          internalGetInt64ToBytes().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int UINT32_TO_FLOAT_FIELD_NUMBER = 7;
+    private static final class Uint32ToFloatDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.Float> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.Float>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_Uint32ToFloatEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.UINT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.FLOAT,
+                  0F);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Float> uint32ToFloat_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+    internalGetUint32ToFloat() {
+      if (uint32ToFloat_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Uint32ToFloatDefaultEntryHolder.defaultEntry);
+      }
+      return uint32ToFloat_;
+    }
+    public int getUint32ToFloatCount() {
+      return internalGetUint32ToFloat().getMap().size();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public boolean containsUint32ToFloat(
+        int key) {
+
+      return internalGetUint32ToFloat().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getUint32ToFloatMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloat() {
+      return getUint32ToFloatMap();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloatMap() {
+      return internalGetUint32ToFloat().getMap();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public float getUint32ToFloatOrDefault(
+        int key,
+        float defaultValue) {
+
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetUint32ToFloat().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public float getUint32ToFloatOrThrow(
+        int key) {
+
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetUint32ToFloat().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int FIXED64_TO_DOUBLE_FIELD_NUMBER = 8;
+    private static final class Fixed64ToDoubleDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Long, java.lang.Double> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Long, java.lang.Double>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_Fixed64ToDoubleEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.FIXED64,
+                  0L,
+                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  0D);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Long, java.lang.Double> fixed64ToDouble_;
+    private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+    internalGetFixed64ToDouble() {
+      if (fixed64ToDouble_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+      }
+      return fixed64ToDouble_;
+    }
+    public int getFixed64ToDoubleCount() {
+      return internalGetFixed64ToDouble().getMap().size();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public boolean containsFixed64ToDouble(
+        long key) {
+
+      return internalGetFixed64ToDouble().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getFixed64ToDoubleMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDouble() {
+      return getFixed64ToDoubleMap();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDoubleMap() {
+      return internalGetFixed64ToDouble().getMap();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public double getFixed64ToDoubleOrDefault(
+        long key,
+        double defaultValue) {
+
+      java.util.Map<java.lang.Long, java.lang.Double> map =
+          internalGetFixed64ToDouble().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public double getFixed64ToDoubleOrThrow(
+        long key) {
+
+      java.util.Map<java.lang.Long, java.lang.Double> map =
+          internalGetFixed64ToDouble().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with map fields (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.MapMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.MapMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetStringToInt32();
+          case 2:
+            return internalGetInt32ToString();
+          case 3:
+            return internalGetStringToEnum();
+          case 4:
+            return internalGetStringToMessage();
+          case 5:
+            return internalGetBoolToString();
+          case 6:
+            return internalGetInt64ToBytes();
+          case 7:
+            return internalGetUint32ToFloat();
+          case 8:
+            return internalGetFixed64ToDouble();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableStringToInt32();
+          case 2:
+            return internalGetMutableInt32ToString();
+          case 3:
+            return internalGetMutableStringToEnum();
+          case 4:
+            return internalGetMutableStringToMessage();
+          case 5:
+            return internalGetMutableBoolToString();
+          case 6:
+            return internalGetMutableInt64ToBytes();
+          case 7:
+            return internalGetMutableUint32ToFloat();
+          case 8:
+            return internalGetMutableFixed64ToDouble();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        internalGetMutableStringToInt32().clear();
+        internalGetMutableInt32ToString().clear();
+        internalGetMutableStringToEnum().clear();
+        internalGetMutableStringToMessage().clear();
+        internalGetMutableBoolToString().clear();
+        internalGetMutableInt64ToBytes().clear();
+        internalGetMutableUint32ToFloat().clear();
+        internalGetMutableFixed64ToDouble().clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_MapMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.stringToInt32_ = internalGetStringToInt32();
+          result.stringToInt32_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.int32ToString_ = internalGetInt32ToString();
+          result.int32ToString_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.stringToEnum_ = internalGetStringToEnum();
+          result.stringToEnum_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.stringToMessage_ = internalGetStringToMessage().build(StringToMessageDefaultEntryHolder.defaultEntry);
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.boolToString_ = internalGetBoolToString();
+          result.boolToString_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.int64ToBytes_ = internalGetInt64ToBytes();
+          result.int64ToBytes_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.uint32ToFloat_ = internalGetUint32ToFloat();
+          result.uint32ToFloat_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fixed64ToDouble_ = internalGetFixed64ToDouble();
+          result.fixed64ToDouble_.makeImmutable();
+        }
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> stringToInt32_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetStringToInt32() {
+        if (stringToInt32_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StringToInt32DefaultEntryHolder.defaultEntry);
+        }
+        return stringToInt32_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableStringToInt32() {
+        if (stringToInt32_ == null) {
+          stringToInt32_ = com.google.protobuf.MapField.newMapField(
+              StringToInt32DefaultEntryHolder.defaultEntry);
+        }
+        if (!stringToInt32_.isMutable()) {
+          stringToInt32_ = stringToInt32_.copy();
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return stringToInt32_;
+      }
+      public int getStringToInt32Count() {
+        return internalGetStringToInt32().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToInt32(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToInt32().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToInt32Map()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32() {
+        return getStringToInt32Map();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32Map() {
+        return internalGetStringToInt32().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public int getStringToInt32OrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToInt32().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public int getStringToInt32OrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToInt32().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearStringToInt32() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        internalGetMutableStringToInt32().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder removeStringToInt32(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToInt32().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableStringToInt32() {
+        bitField0_ |= 0x00000001;
+        return internalGetMutableStringToInt32().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder putStringToInt32(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToInt32().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder putAllStringToInt32(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableStringToInt32().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.String> int32ToString_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+          internalGetInt32ToString() {
+        if (int32ToString_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Int32ToStringDefaultEntryHolder.defaultEntry);
+        }
+        return int32ToString_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+          internalGetMutableInt32ToString() {
+        if (int32ToString_ == null) {
+          int32ToString_ = com.google.protobuf.MapField.newMapField(
+              Int32ToStringDefaultEntryHolder.defaultEntry);
+        }
+        if (!int32ToString_.isMutable()) {
+          int32ToString_ = int32ToString_.copy();
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return int32ToString_;
+      }
+      public int getInt32ToStringCount() {
+        return internalGetInt32ToString().getMap().size();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public boolean containsInt32ToString(
+          int key) {
+
+        return internalGetInt32ToString().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInt32ToStringMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToString() {
+        return getInt32ToStringMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToStringMap() {
+        return internalGetInt32ToString().getMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+          int key,
+          /* nullable */
+java.lang.String defaultValue) {
+
+        java.util.Map<java.lang.Integer, java.lang.String> map =
+            internalGetInt32ToString().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getInt32ToStringOrThrow(
+          int key) {
+
+        java.util.Map<java.lang.Integer, java.lang.String> map =
+            internalGetInt32ToString().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearInt32ToString() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        internalGetMutableInt32ToString().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder removeInt32ToString(
+          int key) {
+
+        internalGetMutableInt32ToString().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.String>
+          getMutableInt32ToString() {
+        bitField0_ |= 0x00000002;
+        return internalGetMutableInt32ToString().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder putInt32ToString(
+          int key,
+          java.lang.String value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableInt32ToString().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder putAllInt32ToString(
+          java.util.Map<java.lang.Integer, java.lang.String> values) {
+        internalGetMutableInt32ToString().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> stringToEnum_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetStringToEnum() {
+        if (stringToEnum_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StringToEnumDefaultEntryHolder.defaultEntry);
+        }
+        return stringToEnum_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableStringToEnum() {
+        if (stringToEnum_ == null) {
+          stringToEnum_ = com.google.protobuf.MapField.newMapField(
+              StringToEnumDefaultEntryHolder.defaultEntry);
+        }
+        if (!stringToEnum_.isMutable()) {
+          stringToEnum_ = stringToEnum_.copy();
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return stringToEnum_;
+      }
+      public int getStringToEnumCount() {
+        return internalGetStringToEnum().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToEnum(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToEnum().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToEnumMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+      getStringToEnum() {
+        return getStringToEnumMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+      getStringToEnumMap() {
+        return internalGetAdaptedStringToEnumMap(
+            internalGetStringToEnum().getMap());}
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrDefault(
+          java.lang.String key,
+          /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        return map.containsKey(key)
+               ? stringToEnumValueConverter.doForward(map.get(key))
+               : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getStringToEnumOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return stringToEnumValueConverter.doForward(map.get(key));
+      }
+      /**
+       * Use {@link #getStringToEnumValueMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getStringToEnumValue() {
+        return getStringToEnumValueMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getStringToEnumValueMap() {
+        return internalGetStringToEnum().getMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public int getStringToEnumValueOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public int getStringToEnumValueOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearStringToEnum() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        internalGetMutableStringToEnum().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder removeStringToEnum(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToEnum().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>
+          getMutableStringToEnum() {
+        bitField0_ |= 0x00000004;
+        return internalGetAdaptedStringToEnumMap(
+             internalGetMutableStringToEnum().getMutableMap());
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putStringToEnum(
+          java.lang.String key,
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToEnum().getMutableMap()
+            .put(key, stringToEnumValueConverter.doBackward(value));
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putAllStringToEnum(
+          java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> values) {
+        internalGetAdaptedStringToEnumMap(
+            internalGetMutableStringToEnum().getMutableMap())
+                .putAll(values);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getMutableStringToEnumValue() {
+        bitField0_ |= 0x00000004;
+        return internalGetMutableStringToEnum().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putStringToEnumValue(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToEnum().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putAllStringToEnumValue(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableStringToEnum().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+
+      private static final class StringToMessageConverter implements com.google.protobuf.MapFieldBuilder.Converter<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> {
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 build(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder val) {
+          if (val instanceof com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) { return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) val; }
+          return ((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder) val).build();
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.MapEntry<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> defaultEntry() {
+          return StringToMessageDefaultEntryHolder.defaultEntry;
+        }
+      };
+      private static final StringToMessageConverter stringToMessageConverter = new StringToMessageConverter();
+
+      private com.google.protobuf.MapFieldBuilder<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder> stringToMessage_;
+      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder>
+          internalGetStringToMessage() {
+        if (stringToMessage_ == null) {
+          return new com.google.protobuf.MapFieldBuilder<>(stringToMessageConverter);
+        }
+        return stringToMessage_;
+      }
+      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder>
+          internalGetMutableStringToMessage() {
+        if (stringToMessage_ == null) {
+          stringToMessage_ = new com.google.protobuf.MapFieldBuilder<>(stringToMessageConverter);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return stringToMessage_;
+      }
+      public int getStringToMessageCount() {
+        return internalGetStringToMessage().ensureBuilderMap().size();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToMessage(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToMessage().ensureBuilderMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToMessageMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> getStringToMessage() {
+        return getStringToMessageMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> getStringToMessageMap() {
+        return internalGetStringToMessage().getImmutableMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrDefault(
+          java.lang.String key,
+          /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder> map = internalGetMutableStringToMessage().ensureBuilderMap();
+        return map.containsKey(key) ? stringToMessageConverter.build(map.get(key)) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 getStringToMessageOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder> map = internalGetMutableStringToMessage().ensureBuilderMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return stringToMessageConverter.build(map.get(key));
+      }
+      public Builder clearStringToMessage() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        internalGetMutableStringToMessage().clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder removeStringToMessage(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3>
+          getMutableStringToMessage() {
+        bitField0_ |= 0x00000008;
+        return internalGetMutableStringToMessage().ensureMessageMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder putStringToMessage(
+          java.lang.String key,
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3 value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .put(key, value);
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder putAllStringToMessage(
+          java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> values) {
+        for (java.util.Map.Entry<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3> e : values.entrySet()) {
+          if (e.getKey() == null || e.getValue() == null) {
+            throw new NullPointerException();
+          }
+        }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .putAll(values);
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder putStringToMessageBuilderIfAbsent(
+          java.lang.String key) {
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder> builderMap = internalGetMutableStringToMessage().ensureBuilderMap();
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3OrBuilder entry = builderMap.get(key);
+        if (entry == null) {
+          entry = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.newBuilder();
+          builderMap.put(key, entry);
+        }
+        if (entry instanceof com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) {
+          entry = ((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3) entry).toBuilder();
+          builderMap.put(key, entry);
+        }
+        return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AllFieldTypesV3.Builder) entry;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Boolean, java.lang.String> boolToString_;
+      private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+          internalGetBoolToString() {
+        if (boolToString_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              BoolToStringDefaultEntryHolder.defaultEntry);
+        }
+        return boolToString_;
+      }
+      private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+          internalGetMutableBoolToString() {
+        if (boolToString_ == null) {
+          boolToString_ = com.google.protobuf.MapField.newMapField(
+              BoolToStringDefaultEntryHolder.defaultEntry);
+        }
+        if (!boolToString_.isMutable()) {
+          boolToString_ = boolToString_.copy();
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return boolToString_;
+      }
+      public int getBoolToStringCount() {
+        return internalGetBoolToString().getMap().size();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public boolean containsBoolToString(
+          boolean key) {
+
+        return internalGetBoolToString().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getBoolToStringMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToString() {
+        return getBoolToStringMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToStringMap() {
+        return internalGetBoolToString().getMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+java.lang.String getBoolToStringOrDefault(
+          boolean key,
+          /* nullable */
+java.lang.String defaultValue) {
+
+        java.util.Map<java.lang.Boolean, java.lang.String> map =
+            internalGetBoolToString().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getBoolToStringOrThrow(
+          boolean key) {
+
+        java.util.Map<java.lang.Boolean, java.lang.String> map =
+            internalGetBoolToString().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearBoolToString() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        internalGetMutableBoolToString().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder removeBoolToString(
+          boolean key) {
+
+        internalGetMutableBoolToString().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Boolean, java.lang.String>
+          getMutableBoolToString() {
+        bitField0_ |= 0x00000010;
+        return internalGetMutableBoolToString().getMutableMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder putBoolToString(
+          boolean key,
+          java.lang.String value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableBoolToString().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder putAllBoolToString(
+          java.util.Map<java.lang.Boolean, java.lang.String> values) {
+        internalGetMutableBoolToString().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Long, com.google.protobuf.ByteString> int64ToBytes_;
+      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+          internalGetInt64ToBytes() {
+        if (int64ToBytes_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Int64ToBytesDefaultEntryHolder.defaultEntry);
+        }
+        return int64ToBytes_;
+      }
+      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+          internalGetMutableInt64ToBytes() {
+        if (int64ToBytes_ == null) {
+          int64ToBytes_ = com.google.protobuf.MapField.newMapField(
+              Int64ToBytesDefaultEntryHolder.defaultEntry);
+        }
+        if (!int64ToBytes_.isMutable()) {
+          int64ToBytes_ = int64ToBytes_.copy();
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return int64ToBytes_;
+      }
+      public int getInt64ToBytesCount() {
+        return internalGetInt64ToBytes().getMap().size();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public boolean containsInt64ToBytes(
+          long key) {
+
+        return internalGetInt64ToBytes().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInt64ToBytesMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytes() {
+        return getInt64ToBytesMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytesMap() {
+        return internalGetInt64ToBytes().getMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+          long key,
+          /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+
+        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+            internalGetInt64ToBytes().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+          long key) {
+
+        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+            internalGetInt64ToBytes().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearInt64ToBytes() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder removeInt64ToBytes(
+          long key) {
+
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+          getMutableInt64ToBytes() {
+        bitField0_ |= 0x00000020;
+        return internalGetMutableInt64ToBytes().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder putInt64ToBytes(
+          long key,
+          com.google.protobuf.ByteString value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder putAllInt64ToBytes(
+          java.util.Map<java.lang.Long, com.google.protobuf.ByteString> values) {
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.Float> uint32ToFloat_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+          internalGetUint32ToFloat() {
+        if (uint32ToFloat_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Uint32ToFloatDefaultEntryHolder.defaultEntry);
+        }
+        return uint32ToFloat_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+          internalGetMutableUint32ToFloat() {
+        if (uint32ToFloat_ == null) {
+          uint32ToFloat_ = com.google.protobuf.MapField.newMapField(
+              Uint32ToFloatDefaultEntryHolder.defaultEntry);
+        }
+        if (!uint32ToFloat_.isMutable()) {
+          uint32ToFloat_ = uint32ToFloat_.copy();
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return uint32ToFloat_;
+      }
+      public int getUint32ToFloatCount() {
+        return internalGetUint32ToFloat().getMap().size();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public boolean containsUint32ToFloat(
+          int key) {
+
+        return internalGetUint32ToFloat().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getUint32ToFloatMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloat() {
+        return getUint32ToFloatMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloatMap() {
+        return internalGetUint32ToFloat().getMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public float getUint32ToFloatOrDefault(
+          int key,
+          float defaultValue) {
+
+        java.util.Map<java.lang.Integer, java.lang.Float> map =
+            internalGetUint32ToFloat().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public float getUint32ToFloatOrThrow(
+          int key) {
+
+        java.util.Map<java.lang.Integer, java.lang.Float> map =
+            internalGetUint32ToFloat().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearUint32ToFloat() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder removeUint32ToFloat(
+          int key) {
+
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Float>
+          getMutableUint32ToFloat() {
+        bitField0_ |= 0x00000040;
+        return internalGetMutableUint32ToFloat().getMutableMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder putUint32ToFloat(
+          int key,
+          float value) {
+
+
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder putAllUint32ToFloat(
+          java.util.Map<java.lang.Integer, java.lang.Float> values) {
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Long, java.lang.Double> fixed64ToDouble_;
+      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+          internalGetFixed64ToDouble() {
+        if (fixed64ToDouble_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+        }
+        return fixed64ToDouble_;
+      }
+      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+          internalGetMutableFixed64ToDouble() {
+        if (fixed64ToDouble_ == null) {
+          fixed64ToDouble_ = com.google.protobuf.MapField.newMapField(
+              Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+        }
+        if (!fixed64ToDouble_.isMutable()) {
+          fixed64ToDouble_ = fixed64ToDouble_.copy();
+        }
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return fixed64ToDouble_;
+      }
+      public int getFixed64ToDoubleCount() {
+        return internalGetFixed64ToDouble().getMap().size();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public boolean containsFixed64ToDouble(
+          long key) {
+
+        return internalGetFixed64ToDouble().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getFixed64ToDoubleMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDouble() {
+        return getFixed64ToDoubleMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDoubleMap() {
+        return internalGetFixed64ToDouble().getMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public double getFixed64ToDoubleOrDefault(
+          long key,
+          double defaultValue) {
+
+        java.util.Map<java.lang.Long, java.lang.Double> map =
+            internalGetFixed64ToDouble().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public double getFixed64ToDoubleOrThrow(
+          long key) {
+
+        java.util.Map<java.lang.Long, java.lang.Double> map =
+            internalGetFixed64ToDouble().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearFixed64ToDouble() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder removeFixed64ToDouble(
+          long key) {
+
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, java.lang.Double>
+          getMutableFixed64ToDouble() {
+        bitField0_ |= 0x00000080;
+        return internalGetMutableFixed64ToDouble().getMutableMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder putFixed64ToDouble(
+          long key,
+          double value) {
+
+
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder putAllFixed64ToDouble(
+          java.util.Map<java.lang.Long, java.lang.Double> values) {
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.MapMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.MapMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MapMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<MapMessageV3>() {
+      @java.lang.Override
+      public MapMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<MapMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MapMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.MapMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface PackedMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.PackedMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return A list containing the packedInt32.
+     */
+    java.util.List<java.lang.Integer> getPackedInt32List();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return The count of packedInt32.
+     */
+    int getPackedInt32Count();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt32 at the given index.
+     */
+    int getPackedInt32(int index);
+
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return A list containing the packedInt64.
+     */
+    java.util.List<java.lang.Long> getPackedInt64List();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return The count of packedInt64.
+     */
+    int getPackedInt64Count();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt64 at the given index.
+     */
+    long getPackedInt64(int index);
+
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return A list containing the packedUint32.
+     */
+    java.util.List<java.lang.Integer> getPackedUint32List();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return The count of packedUint32.
+     */
+    int getPackedUint32Count();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedUint32 at the given index.
+     */
+    int getPackedUint32(int index);
+
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return A list containing the packedBool.
+     */
+    java.util.List<java.lang.Boolean> getPackedBoolList();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return The count of packedBool.
+     */
+    int getPackedBoolCount();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedBool at the given index.
+     */
+    boolean getPackedBool(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the packedEnum.
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getPackedEnumList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return The count of packedEnum.
+     */
+    int getPackedEnumCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedEnum at the given index.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getPackedEnum(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the enum numeric values on the wire for packedEnum.
+     */
+    java.util.List<java.lang.Integer>
+    getPackedEnumValueList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of packedEnum at the given index.
+     */
+    int getPackedEnumValue(int index);
+
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return A list containing the packedFixed32.
+     */
+    java.util.List<java.lang.Integer> getPackedFixed32List();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return The count of packedFixed32.
+     */
+    int getPackedFixed32Count();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFixed32 at the given index.
+     */
+    int getPackedFixed32(int index);
+
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return A list containing the packedFloat.
+     */
+    java.util.List<java.lang.Float> getPackedFloatList();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return The count of packedFloat.
+     */
+    int getPackedFloatCount();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFloat at the given index.
+     */
+    float getPackedFloat(int index);
+
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return A list containing the unpackedInt32.
+     */
+    java.util.List<java.lang.Integer> getUnpackedInt32List();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return The count of unpackedInt32.
+     */
+    int getUnpackedInt32Count();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @param index The index of the element to return.
+     * @return The unpackedInt32 at the given index.
+     */
+    int getUnpackedInt32(int index);
+  }
+  /**
+   * <pre>
+   * Message with packed repeated fields (proto3 default)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.PackedMessageV3}
+   */
+  public static final class PackedMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.PackedMessageV3)
+      PackedMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "PackedMessageV3");
+    }
+    // Use PackedMessageV3.newBuilder() to construct.
+    private PackedMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PackedMessageV3() {
+      packedInt32_ = emptyIntList();
+      packedInt64_ = emptyLongList();
+      packedUint32_ = emptyIntList();
+      packedBool_ = emptyBooleanList();
+      packedEnum_ = emptyIntList();
+      packedFixed32_ = emptyIntList();
+      packedFloat_ = emptyFloatList();
+      unpackedInt32_ = emptyIntList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_PackedMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_PackedMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.Builder.class);
+    }
+
+    public static final int PACKED_INT32_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedInt32_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return A list containing the packedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedInt32List() {
+      return packedInt32_;
+    }
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return The count of packedInt32.
+     */
+    public int getPackedInt32Count() {
+      return packedInt32_.size();
+    }
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt32 at the given index.
+     */
+    public int getPackedInt32(int index) {
+      return packedInt32_.getInt(index);
+    }
+    private int packedInt32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_INT64_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.LongList packedInt64_ =
+        emptyLongList();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return A list containing the packedInt64.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Long>
+        getPackedInt64List() {
+      return packedInt64_;
+    }
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return The count of packedInt64.
+     */
+    public int getPackedInt64Count() {
+      return packedInt64_.size();
+    }
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt64 at the given index.
+     */
+    public long getPackedInt64(int index) {
+      return packedInt64_.getLong(index);
+    }
+    private int packedInt64MemoizedSerializedSize = -1;
+
+    public static final int PACKED_UINT32_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedUint32_ =
+        emptyIntList();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return A list containing the packedUint32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedUint32List() {
+      return packedUint32_;
+    }
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return The count of packedUint32.
+     */
+    public int getPackedUint32Count() {
+      return packedUint32_.size();
+    }
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedUint32 at the given index.
+     */
+    public int getPackedUint32(int index) {
+      return packedUint32_.getInt(index);
+    }
+    private int packedUint32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_BOOL_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.BooleanList packedBool_ =
+        emptyBooleanList();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return A list containing the packedBool.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Boolean>
+        getPackedBoolList() {
+      return packedBool_;
+    }
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return The count of packedBool.
+     */
+    public int getPackedBoolCount() {
+      return packedBool_.size();
+    }
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedBool at the given index.
+     */
+    public boolean getPackedBool(int index) {
+      return packedBool_.getBoolean(index);
+    }
+    private int packedBoolMemoizedSerializedSize = -1;
+
+    public static final int PACKED_ENUM_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedEnum_ =
+        emptyIntList();
+    private static final     com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> packedEnum_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>() {
+              public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 convert(int from) {
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.forNumber(from);
+                return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the packedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getPackedEnumList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>(packedEnum_, packedEnum_converter_);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return The count of packedEnum.
+     */
+    @java.lang.Override
+    public int getPackedEnumCount() {
+      return packedEnum_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedEnum at the given index.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getPackedEnum(int index) {
+      return packedEnum_converter_.convert(packedEnum_.getInt(index));
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the enum numeric values on the wire for packedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+    getPackedEnumValueList() {
+      return packedEnum_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of packedEnum at the given index.
+     */
+    @java.lang.Override
+    public int getPackedEnumValue(int index) {
+      return packedEnum_.getInt(index);
+    }
+    private int packedEnumMemoizedSerializedSize;
+
+    public static final int PACKED_FIXED32_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedFixed32_ =
+        emptyIntList();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return A list containing the packedFixed32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedFixed32List() {
+      return packedFixed32_;
+    }
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return The count of packedFixed32.
+     */
+    public int getPackedFixed32Count() {
+      return packedFixed32_.size();
+    }
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFixed32 at the given index.
+     */
+    public int getPackedFixed32(int index) {
+      return packedFixed32_.getInt(index);
+    }
+    private int packedFixed32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_FLOAT_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.FloatList packedFloat_ =
+        emptyFloatList();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return A list containing the packedFloat.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Float>
+        getPackedFloatList() {
+      return packedFloat_;
+    }
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return The count of packedFloat.
+     */
+    public int getPackedFloatCount() {
+      return packedFloat_.size();
+    }
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFloat at the given index.
+     */
+    public float getPackedFloat(int index) {
+      return packedFloat_.getFloat(index);
+    }
+    private int packedFloatMemoizedSerializedSize = -1;
+
+    public static final int UNPACKED_INT32_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList unpackedInt32_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return A list containing the unpackedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getUnpackedInt32List() {
+      return unpackedInt32_;
+    }
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return The count of unpackedInt32.
+     */
+    public int getUnpackedInt32Count() {
+      return unpackedInt32_.size();
+    }
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @param index The index of the element to return.
+     * @return The unpackedInt32 at the given index.
+     */
+    public int getUnpackedInt32(int index) {
+      return unpackedInt32_.getInt(index);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with packed repeated fields (proto3 default)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.PackedMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.PackedMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_PackedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_PackedMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        packedInt32_ = emptyIntList();
+        packedInt64_ = emptyLongList();
+        packedUint32_ = emptyIntList();
+        packedBool_ = emptyBooleanList();
+        packedEnum_ = emptyIntList();
+        packedFixed32_ = emptyIntList();
+        packedFloat_ = emptyFloatList();
+        unpackedInt32_ = emptyIntList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_PackedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          packedInt32_.makeImmutable();
+          result.packedInt32_ = packedInt32_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          packedInt64_.makeImmutable();
+          result.packedInt64_ = packedInt64_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          packedUint32_.makeImmutable();
+          result.packedUint32_ = packedUint32_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          packedBool_.makeImmutable();
+          result.packedBool_ = packedBool_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          packedEnum_.makeImmutable();
+          result.packedEnum_ = packedEnum_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          packedFixed32_.makeImmutable();
+          result.packedFixed32_ = packedFixed32_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          packedFloat_.makeImmutable();
+          result.packedFloat_ = packedFloat_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          unpackedInt32_.makeImmutable();
+          result.unpackedInt32_ = unpackedInt32_;
+        }
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.IntList packedInt32_ = emptyIntList();
+      private void ensurePackedInt32IsMutable() {
+        if (!packedInt32_.isModifiable()) {
+          packedInt32_ = makeMutableCopy(packedInt32_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return A list containing the packedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedInt32List() {
+        packedInt32_.makeImmutable();
+        return packedInt32_;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return The count of packedInt32.
+       */
+      public int getPackedInt32Count() {
+        return packedInt32_.size();
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedInt32 at the given index.
+       */
+      public int getPackedInt32(int index) {
+        return packedInt32_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedInt32(
+          int index, int value) {
+
+        ensurePackedInt32IsMutable();
+        packedInt32_.setInt(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param value The packedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedInt32(int value) {
+
+        ensurePackedInt32IsMutable();
+        packedInt32_.addInt(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param values The packedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedInt32_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedInt32() {
+        packedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.LongList packedInt64_ = emptyLongList();
+      private void ensurePackedInt64IsMutable() {
+        if (!packedInt64_.isModifiable()) {
+          packedInt64_ = makeMutableCopy(packedInt64_);
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return A list containing the packedInt64.
+       */
+      public java.util.List<java.lang.Long>
+          getPackedInt64List() {
+        packedInt64_.makeImmutable();
+        return packedInt64_;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return The count of packedInt64.
+       */
+      public int getPackedInt64Count() {
+        return packedInt64_.size();
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedInt64 at the given index.
+       */
+      public long getPackedInt64(int index) {
+        return packedInt64_.getLong(index);
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedInt64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedInt64(
+          int index, long value) {
+
+        ensurePackedInt64IsMutable();
+        packedInt64_.setLong(index, value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param value The packedInt64 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedInt64(long value) {
+
+        ensurePackedInt64IsMutable();
+        packedInt64_.addLong(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param values The packedInt64 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedInt64(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensurePackedInt64IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedInt64_);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedInt64() {
+        packedInt64_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedUint32_ = emptyIntList();
+      private void ensurePackedUint32IsMutable() {
+        if (!packedUint32_.isModifiable()) {
+          packedUint32_ = makeMutableCopy(packedUint32_);
+        }
+        bitField0_ |= 0x00000004;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return A list containing the packedUint32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedUint32List() {
+        packedUint32_.makeImmutable();
+        return packedUint32_;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return The count of packedUint32.
+       */
+      public int getPackedUint32Count() {
+        return packedUint32_.size();
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedUint32 at the given index.
+       */
+      public int getPackedUint32(int index) {
+        return packedUint32_.getInt(index);
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedUint32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedUint32(
+          int index, int value) {
+
+        ensurePackedUint32IsMutable();
+        packedUint32_.setInt(index, value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param value The packedUint32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedUint32(int value) {
+
+        ensurePackedUint32IsMutable();
+        packedUint32_.addInt(value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param values The packedUint32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedUint32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedUint32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedUint32_);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedUint32() {
+        packedUint32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList packedBool_ = emptyBooleanList();
+      private void ensurePackedBoolIsMutable() {
+        if (!packedBool_.isModifiable()) {
+          packedBool_ = makeMutableCopy(packedBool_);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      private void ensurePackedBoolIsMutable(int capacity) {
+        if (!packedBool_.isModifiable()) {
+          packedBool_ = makeMutableCopy(packedBool_, capacity);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return A list containing the packedBool.
+       */
+      public java.util.List<java.lang.Boolean>
+          getPackedBoolList() {
+        packedBool_.makeImmutable();
+        return packedBool_;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return The count of packedBool.
+       */
+      public int getPackedBoolCount() {
+        return packedBool_.size();
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedBool at the given index.
+       */
+      public boolean getPackedBool(int index) {
+        return packedBool_.getBoolean(index);
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedBool(
+          int index, boolean value) {
+
+        ensurePackedBoolIsMutable();
+        packedBool_.setBoolean(index, value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param value The packedBool to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedBool(boolean value) {
+
+        ensurePackedBoolIsMutable();
+        packedBool_.addBoolean(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param values The packedBool to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedBool(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensurePackedBoolIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedBool_);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedBool() {
+        packedBool_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedEnum_ = emptyIntList();
+      private void ensurePackedEnumIsMutable() {
+        if (!packedEnum_.isModifiable()) {
+          packedEnum_ = makeMutableCopy(packedEnum_);
+        }
+        bitField0_ |= 0x00000010;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return A list containing the packedEnum.
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> getPackedEnumList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3>(packedEnum_, packedEnum_converter_);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return The count of packedEnum.
+       */
+      public int getPackedEnumCount() {
+        return packedEnum_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedEnum at the given index.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 getPackedEnum(int index) {
+        return packedEnum_converter_.convert(packedEnum_.getInt(index));
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedEnum(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePackedEnumIsMutable();
+        packedEnum_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param value The packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePackedEnumIsMutable();
+        packedEnum_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param values The packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedEnum(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3> values) {
+        ensurePackedEnumIsMutable();
+        for (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.TestEnumV3 value : values) {
+          packedEnum_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedEnum() {
+        packedEnum_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return A list containing the enum numeric values on the wire for packedEnum.
+       */
+      public java.util.List<java.lang.Integer>
+      getPackedEnumValueList() {
+        packedEnum_.makeImmutable();
+        return packedEnum_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of packedEnum at the given index.
+       */
+      public int getPackedEnumValue(int index) {
+        return packedEnum_.getInt(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The enum numeric value on the wire for packedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedEnumValue(
+          int index, int value) {
+        ensurePackedEnumIsMutable();
+        packedEnum_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param value The enum numeric value on the wire for packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedEnumValue(int value) {
+        ensurePackedEnumIsMutable();
+        packedEnum_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param values The enum numeric values on the wire for packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedEnumValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensurePackedEnumIsMutable();
+        for (int value : values) {
+          packedEnum_.addInt(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedFixed32_ = emptyIntList();
+      private void ensurePackedFixed32IsMutable() {
+        if (!packedFixed32_.isModifiable()) {
+          packedFixed32_ = makeMutableCopy(packedFixed32_);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      private void ensurePackedFixed32IsMutable(int capacity) {
+        if (!packedFixed32_.isModifiable()) {
+          packedFixed32_ = makeMutableCopy(packedFixed32_, capacity);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return A list containing the packedFixed32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedFixed32List() {
+        packedFixed32_.makeImmutable();
+        return packedFixed32_;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return The count of packedFixed32.
+       */
+      public int getPackedFixed32Count() {
+        return packedFixed32_.size();
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedFixed32 at the given index.
+       */
+      public int getPackedFixed32(int index) {
+        return packedFixed32_.getInt(index);
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedFixed32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedFixed32(
+          int index, int value) {
+
+        ensurePackedFixed32IsMutable();
+        packedFixed32_.setInt(index, value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param value The packedFixed32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedFixed32(int value) {
+
+        ensurePackedFixed32IsMutable();
+        packedFixed32_.addInt(value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param values The packedFixed32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedFixed32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedFixed32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedFixed32_);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedFixed32() {
+        packedFixed32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.FloatList packedFloat_ = emptyFloatList();
+      private void ensurePackedFloatIsMutable() {
+        if (!packedFloat_.isModifiable()) {
+          packedFloat_ = makeMutableCopy(packedFloat_);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      private void ensurePackedFloatIsMutable(int capacity) {
+        if (!packedFloat_.isModifiable()) {
+          packedFloat_ = makeMutableCopy(packedFloat_, capacity);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return A list containing the packedFloat.
+       */
+      public java.util.List<java.lang.Float>
+          getPackedFloatList() {
+        packedFloat_.makeImmutable();
+        return packedFloat_;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return The count of packedFloat.
+       */
+      public int getPackedFloatCount() {
+        return packedFloat_.size();
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedFloat at the given index.
+       */
+      public float getPackedFloat(int index) {
+        return packedFloat_.getFloat(index);
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedFloat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedFloat(
+          int index, float value) {
+
+        ensurePackedFloatIsMutable();
+        packedFloat_.setFloat(index, value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param value The packedFloat to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedFloat(float value) {
+
+        ensurePackedFloatIsMutable();
+        packedFloat_.addFloat(value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param values The packedFloat to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedFloat(
+          java.lang.Iterable<? extends java.lang.Float> values) {
+        ensurePackedFloatIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedFloat_);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedFloat() {
+        packedFloat_ = emptyFloatList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList unpackedInt32_ = emptyIntList();
+      private void ensureUnpackedInt32IsMutable() {
+        if (!unpackedInt32_.isModifiable()) {
+          unpackedInt32_ = makeMutableCopy(unpackedInt32_);
+        }
+        bitField0_ |= 0x00000080;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return A list containing the unpackedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getUnpackedInt32List() {
+        unpackedInt32_.makeImmutable();
+        return unpackedInt32_;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return The count of unpackedInt32.
+       */
+      public int getUnpackedInt32Count() {
+        return unpackedInt32_.size();
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param index The index of the element to return.
+       * @return The unpackedInt32 at the given index.
+       */
+      public int getUnpackedInt32(int index) {
+        return unpackedInt32_.getInt(index);
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param index The index to set the value at.
+       * @param value The unpackedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnpackedInt32(
+          int index, int value) {
+
+        ensureUnpackedInt32IsMutable();
+        unpackedInt32_.setInt(index, value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param value The unpackedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addUnpackedInt32(int value) {
+
+        ensureUnpackedInt32IsMutable();
+        unpackedInt32_.addInt(value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param values The unpackedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllUnpackedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureUnpackedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, unpackedInt32_);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUnpackedInt32() {
+        unpackedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.PackedMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.PackedMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PackedMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<PackedMessageV3>() {
+      @java.lang.Override
+      public PackedMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PackedMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PackedMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.PackedMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface ReservedMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.ReservedMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string field1 = 1;</code>
+     * @return The field1.
+     */
+    java.lang.String getField1();
+    /**
+     * <code>string field1 = 1;</code>
+     * @return The bytes for field1.
+     */
+    com.google.protobuf.ByteString
+        getField1Bytes();
+
+    /**
+     * <code>int32 field3 = 3;</code>
+     * @return The field3.
+     */
+    int getField3();
+  }
+  /**
+   * <pre>
+   * Message with reserved fields (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.ReservedMessageV3}
+   */
+  public static final class ReservedMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.ReservedMessageV3)
+      ReservedMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "ReservedMessageV3");
+    }
+    // Use ReservedMessageV3.newBuilder() to construct.
+    private ReservedMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ReservedMessageV3() {
+      field1_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_ReservedMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_ReservedMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.Builder.class);
+    }
+
+    public static final int FIELD1_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object field1_ = "";
+    /**
+     * <code>string field1 = 1;</code>
+     * @return The field1.
+     */
+    @java.lang.Override
+    public java.lang.String getField1() {
+      java.lang.Object ref = field1_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        field1_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string field1 = 1;</code>
+     * @return The bytes for field1.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getField1Bytes() {
+      java.lang.Object ref = field1_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        field1_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int FIELD3_FIELD_NUMBER = 3;
+    private int field3_ = 0;
+    /**
+     * <code>int32 field3 = 3;</code>
+     * @return The field3.
+     */
+    @java.lang.Override
+    public int getField3() {
+      return field3_;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with reserved fields (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.ReservedMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.ReservedMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_ReservedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_ReservedMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        field1_ = "";
+        field3_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_ReservedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.field1_ = field1_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.field3_ = field3_;
+        }
+      }
+
+      private int bitField0_;
+
+      private java.lang.Object field1_ = "";
+      /**
+       * <code>string field1 = 1;</code>
+       * @return The field1.
+       */
+      public java.lang.String getField1() {
+        java.lang.Object ref = field1_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          field1_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string field1 = 1;</code>
+       * @return The bytes for field1.
+       */
+      public com.google.protobuf.ByteString
+          getField1Bytes() {
+        java.lang.Object ref = field1_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          field1_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string field1 = 1;</code>
+       * @param value The field1 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField1(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        field1_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string field1 = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField1() {
+        field1_ = getDefaultInstance().getField1();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string field1 = 1;</code>
+       * @param value The bytes for field1 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField1Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        field1_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private int field3_ ;
+      /**
+       * <code>int32 field3 = 3;</code>
+       * @return The field3.
+       */
+      @java.lang.Override
+      public int getField3() {
+        return field3_;
+      }
+      /**
+       * <code>int32 field3 = 3;</code>
+       * @param value The field3 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField3(int value) {
+
+        field3_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 field3 = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField3() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        field3_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.ReservedMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.ReservedMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ReservedMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<ReservedMessageV3>() {
+      @java.lang.Override
+      public ReservedMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ReservedMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ReservedMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.ReservedMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AnyMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.AnyMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     * @return Whether the anyField field is set.
+     */
+    boolean hasAnyField();
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     * @return The anyField.
+     */
+    com.google.protobuf.Any getAnyField();
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     */
+    com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder();
+
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    java.util.List<com.google.protobuf.Any> 
+        getRepeatedAnyList();
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    com.google.protobuf.Any getRepeatedAny(int index);
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    int getRepeatedAnyCount();
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+        getRepeatedAnyOrBuilderList();
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    com.google.protobuf.AnyOrBuilder getRepeatedAnyOrBuilder(
+        int index);
+  }
+  /**
+   * <pre>
+   * Message with any type (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.AnyMessageV3}
+   */
+  public static final class AnyMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.AnyMessageV3)
+      AnyMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "AnyMessageV3");
+    }
+    // Use AnyMessageV3.newBuilder() to construct.
+    private AnyMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AnyMessageV3() {
+      repeatedAny_ = java.util.Collections.emptyList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AnyMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AnyMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int ANY_FIELD_FIELD_NUMBER = 1;
+    private com.google.protobuf.Any anyField_;
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     * @return Whether the anyField field is set.
+     */
+    @java.lang.Override
+    public boolean hasAnyField() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     * @return The anyField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getAnyField() {
+      return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+    }
+    /**
+     * <code>.google.protobuf.Any any_field = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder() {
+      return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+    }
+
+    public static final int REPEATED_ANY_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private java.util.List<com.google.protobuf.Any> repeatedAny_;
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<com.google.protobuf.Any> getRepeatedAnyList() {
+      return repeatedAny_;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+        getRepeatedAnyOrBuilderList() {
+      return repeatedAny_;
+    }
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    @java.lang.Override
+    public int getRepeatedAnyCount() {
+      return repeatedAny_.size();
+    }
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getRepeatedAny(int index) {
+      return repeatedAny_.get(index);
+    }
+    /**
+     * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getRepeatedAnyOrBuilder(
+        int index) {
+      return repeatedAny_.get(index);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with any type (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.AnyMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.AnyMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AnyMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AnyMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetAnyFieldFieldBuilder();
+          internalGetRepeatedAnyFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        anyField_ = null;
+        if (anyFieldBuilder_ != null) {
+          anyFieldBuilder_.dispose();
+          anyFieldBuilder_ = null;
+        }
+        if (repeatedAnyBuilder_ == null) {
+          repeatedAny_ = java.util.Collections.emptyList();
+        } else {
+          repeatedAny_ = null;
+          repeatedAnyBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_AnyMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3(this);
+        buildPartialRepeatedFields(result);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartialRepeatedFields(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 result) {
+        if (repeatedAnyBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            repeatedAny_ = java.util.Collections.unmodifiableList(repeatedAny_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.repeatedAny_ = repeatedAny_;
+        } else {
+          result.repeatedAny_ = repeatedAnyBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.anyField_ = anyFieldBuilder_ == null
+              ? anyField_
+              : anyFieldBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.Any anyField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> anyFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       * @return Whether the anyField field is set.
+       */
+      public boolean hasAnyField() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       * @return The anyField.
+       */
+      public com.google.protobuf.Any getAnyField() {
+        if (anyFieldBuilder_ == null) {
+          return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+        } else {
+          return anyFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public Builder setAnyField(com.google.protobuf.Any value) {
+        if (anyFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          anyField_ = value;
+        } else {
+          anyFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public Builder setAnyField(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (anyFieldBuilder_ == null) {
+          anyField_ = builderForValue.build();
+        } else {
+          anyFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public Builder mergeAnyField(com.google.protobuf.Any value) {
+        if (anyFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            anyField_ != null &&
+            anyField_ != com.google.protobuf.Any.getDefaultInstance()) {
+            getAnyFieldBuilder().mergeFrom(value);
+          } else {
+            anyField_ = value;
+          }
+        } else {
+          anyFieldBuilder_.mergeFrom(value);
+        }
+        if (anyField_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public Builder clearAnyField() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        anyField_ = null;
+        if (anyFieldBuilder_ != null) {
+          anyFieldBuilder_.dispose();
+          anyFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public com.google.protobuf.Any.Builder getAnyFieldBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return internalGetAnyFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder() {
+        if (anyFieldBuilder_ != null) {
+          return anyFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return anyField_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : anyField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          internalGetAnyFieldFieldBuilder() {
+        if (anyFieldBuilder_ == null) {
+          anyFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getAnyField(),
+                  getParentForChildren(),
+                  isClean());
+          anyField_ = null;
+        }
+        return anyFieldBuilder_;
+      }
+
+      private java.util.List<com.google.protobuf.Any> repeatedAny_ =
+        java.util.Collections.emptyList();
+      private void ensureRepeatedAnyIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          repeatedAny_ = new java.util.ArrayList<com.google.protobuf.Any>(repeatedAny_);
+          bitField0_ |= 0x00000002;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> repeatedAnyBuilder_;
+
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public java.util.List<com.google.protobuf.Any> getRepeatedAnyList() {
+        if (repeatedAnyBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(repeatedAny_);
+        } else {
+          return repeatedAnyBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public int getRepeatedAnyCount() {
+        if (repeatedAnyBuilder_ == null) {
+          return repeatedAny_.size();
+        } else {
+          return repeatedAnyBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public com.google.protobuf.Any getRepeatedAny(int index) {
+        if (repeatedAnyBuilder_ == null) {
+          return repeatedAny_.get(index);
+        } else {
+          return repeatedAnyBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder setRepeatedAny(
+          int index, com.google.protobuf.Any value) {
+        if (repeatedAnyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.set(index, value);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder setRepeatedAny(
+          int index, com.google.protobuf.Any.Builder builderForValue) {
+        if (repeatedAnyBuilder_ == null) {
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder addRepeatedAny(com.google.protobuf.Any value) {
+        if (repeatedAnyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.add(value);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder addRepeatedAny(
+          int index, com.google.protobuf.Any value) {
+        if (repeatedAnyBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.add(index, value);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder addRepeatedAny(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (repeatedAnyBuilder_ == null) {
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.add(builderForValue.build());
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder addRepeatedAny(
+          int index, com.google.protobuf.Any.Builder builderForValue) {
+        if (repeatedAnyBuilder_ == null) {
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder addAllRepeatedAny(
+          java.lang.Iterable<? extends com.google.protobuf.Any> values) {
+        if (repeatedAnyBuilder_ == null) {
+          ensureRepeatedAnyIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, repeatedAny_);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder clearRepeatedAny() {
+        if (repeatedAnyBuilder_ == null) {
+          repeatedAny_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public Builder removeRepeatedAny(int index) {
+        if (repeatedAnyBuilder_ == null) {
+          ensureRepeatedAnyIsMutable();
+          repeatedAny_.remove(index);
+          onChanged();
+        } else {
+          repeatedAnyBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public com.google.protobuf.Any.Builder getRepeatedAnyBuilder(
+          int index) {
+        return internalGetRepeatedAnyFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getRepeatedAnyOrBuilder(
+          int index) {
+        if (repeatedAnyBuilder_ == null) {
+          return repeatedAny_.get(index);  } else {
+          return repeatedAnyBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public java.util.List<? extends com.google.protobuf.AnyOrBuilder> 
+           getRepeatedAnyOrBuilderList() {
+        if (repeatedAnyBuilder_ != null) {
+          return repeatedAnyBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(repeatedAny_);
+        }
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public com.google.protobuf.Any.Builder addRepeatedAnyBuilder() {
+        return internalGetRepeatedAnyFieldBuilder().addBuilder(
+            com.google.protobuf.Any.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public com.google.protobuf.Any.Builder addRepeatedAnyBuilder(
+          int index) {
+        return internalGetRepeatedAnyFieldBuilder().addBuilder(
+            index, com.google.protobuf.Any.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .google.protobuf.Any repeated_any = 2;</code>
+       */
+      public java.util.List<com.google.protobuf.Any.Builder> 
+           getRepeatedAnyBuilderList() {
+        return internalGetRepeatedAnyFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          internalGetRepeatedAnyFieldBuilder() {
+        if (repeatedAnyBuilder_ == null) {
+          repeatedAnyBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  repeatedAny_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          repeatedAny_ = null;
+        }
+        return repeatedAnyBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.AnyMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.AnyMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AnyMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<AnyMessageV3>() {
+      @java.lang.Override
+      public AnyMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AnyMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AnyMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.AnyMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface WellKnownTypesV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3.WellKnownTypesV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     * @return Whether the timestampField field is set.
+     */
+    boolean hasTimestampField();
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     * @return The timestampField.
+     */
+    com.google.protobuf.Timestamp getTimestampField();
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     */
+    com.google.protobuf.TimestampOrBuilder getTimestampFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     * @return Whether the durationField field is set.
+     */
+    boolean hasDurationField();
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     * @return The durationField.
+     */
+    com.google.protobuf.Duration getDurationField();
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     */
+    com.google.protobuf.DurationOrBuilder getDurationFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     * @return Whether the structField field is set.
+     */
+    boolean hasStructField();
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     * @return The structField.
+     */
+    com.google.protobuf.Struct getStructField();
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     */
+    com.google.protobuf.StructOrBuilder getStructFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     * @return Whether the valueField field is set.
+     */
+    boolean hasValueField();
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     * @return The valueField.
+     */
+    com.google.protobuf.Value getValueField();
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     */
+    com.google.protobuf.ValueOrBuilder getValueFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     * @return Whether the listValueField field is set.
+     */
+    boolean hasListValueField();
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     * @return The listValueField.
+     */
+    com.google.protobuf.ListValue getListValueField();
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     */
+    com.google.protobuf.ListValueOrBuilder getListValueFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+     * @return The enum numeric value on the wire for nullValueField.
+     */
+    int getNullValueFieldValue();
+    /**
+     * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+     * @return The nullValueField.
+     */
+    com.google.protobuf.NullValue getNullValueField();
+
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     * @return Whether the emptyField field is set.
+     */
+    boolean hasEmptyField();
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     * @return The emptyField.
+     */
+    com.google.protobuf.Empty getEmptyField();
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     */
+    com.google.protobuf.EmptyOrBuilder getEmptyFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     * @return Whether the fieldMaskField field is set.
+     */
+    boolean hasFieldMaskField();
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     * @return The fieldMaskField.
+     */
+    com.google.protobuf.FieldMask getFieldMaskField();
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     */
+    com.google.protobuf.FieldMaskOrBuilder getFieldMaskFieldOrBuilder();
+
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     * @return Whether the anyField field is set.
+     */
+    boolean hasAnyField();
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     * @return The anyField.
+     */
+    com.google.protobuf.Any getAnyField();
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     */
+    com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder();
+  }
+  /**
+   * <pre>
+   * Message with well-known types
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3.WellKnownTypesV3}
+   */
+  public static final class WellKnownTypesV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3.WellKnownTypesV3)
+      WellKnownTypesV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "WellKnownTypesV3");
+    }
+    // Use WellKnownTypesV3.newBuilder() to construct.
+    private WellKnownTypesV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private WellKnownTypesV3() {
+      nullValueField_ = 0;
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_WellKnownTypesV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_WellKnownTypesV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int TIMESTAMP_FIELD_FIELD_NUMBER = 1;
+    private com.google.protobuf.Timestamp timestampField_;
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     * @return Whether the timestampField field is set.
+     */
+    @java.lang.Override
+    public boolean hasTimestampField() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     * @return The timestampField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Timestamp getTimestampField() {
+      return timestampField_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestampField_;
+    }
+    /**
+     * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.TimestampOrBuilder getTimestampFieldOrBuilder() {
+      return timestampField_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestampField_;
+    }
+
+    public static final int DURATION_FIELD_FIELD_NUMBER = 2;
+    private com.google.protobuf.Duration durationField_;
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     * @return Whether the durationField field is set.
+     */
+    @java.lang.Override
+    public boolean hasDurationField() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     * @return The durationField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Duration getDurationField() {
+      return durationField_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durationField_;
+    }
+    /**
+     * <code>.google.protobuf.Duration duration_field = 2;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.DurationOrBuilder getDurationFieldOrBuilder() {
+      return durationField_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durationField_;
+    }
+
+    public static final int STRUCT_FIELD_FIELD_NUMBER = 3;
+    private com.google.protobuf.Struct structField_;
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     * @return Whether the structField field is set.
+     */
+    @java.lang.Override
+    public boolean hasStructField() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     * @return The structField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Struct getStructField() {
+      return structField_ == null ? com.google.protobuf.Struct.getDefaultInstance() : structField_;
+    }
+    /**
+     * <code>.google.protobuf.Struct struct_field = 3;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.StructOrBuilder getStructFieldOrBuilder() {
+      return structField_ == null ? com.google.protobuf.Struct.getDefaultInstance() : structField_;
+    }
+
+    public static final int VALUE_FIELD_FIELD_NUMBER = 4;
+    private com.google.protobuf.Value valueField_;
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     * @return Whether the valueField field is set.
+     */
+    @java.lang.Override
+    public boolean hasValueField() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     * @return The valueField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Value getValueField() {
+      return valueField_ == null ? com.google.protobuf.Value.getDefaultInstance() : valueField_;
+    }
+    /**
+     * <code>.google.protobuf.Value value_field = 4;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ValueOrBuilder getValueFieldOrBuilder() {
+      return valueField_ == null ? com.google.protobuf.Value.getDefaultInstance() : valueField_;
+    }
+
+    public static final int LIST_VALUE_FIELD_FIELD_NUMBER = 5;
+    private com.google.protobuf.ListValue listValueField_;
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     * @return Whether the listValueField field is set.
+     */
+    @java.lang.Override
+    public boolean hasListValueField() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     * @return The listValueField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ListValue getListValueField() {
+      return listValueField_ == null ? com.google.protobuf.ListValue.getDefaultInstance() : listValueField_;
+    }
+    /**
+     * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ListValueOrBuilder getListValueFieldOrBuilder() {
+      return listValueField_ == null ? com.google.protobuf.ListValue.getDefaultInstance() : listValueField_;
+    }
+
+    public static final int NULL_VALUE_FIELD_FIELD_NUMBER = 6;
+    private int nullValueField_ = 0;
+    /**
+     * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+     * @return The enum numeric value on the wire for nullValueField.
+     */
+    @java.lang.Override public int getNullValueFieldValue() {
+      return nullValueField_;
+    }
+    /**
+     * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+     * @return The nullValueField.
+     */
+    @java.lang.Override public com.google.protobuf.NullValue getNullValueField() {
+      com.google.protobuf.NullValue result = com.google.protobuf.NullValue.forNumber(nullValueField_);
+      return result == null ? com.google.protobuf.NullValue.UNRECOGNIZED : result;
+    }
+
+    public static final int EMPTY_FIELD_FIELD_NUMBER = 7;
+    private com.google.protobuf.Empty emptyField_;
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     * @return Whether the emptyField field is set.
+     */
+    @java.lang.Override
+    public boolean hasEmptyField() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     * @return The emptyField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Empty getEmptyField() {
+      return emptyField_ == null ? com.google.protobuf.Empty.getDefaultInstance() : emptyField_;
+    }
+    /**
+     * <code>.google.protobuf.Empty empty_field = 7;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.EmptyOrBuilder getEmptyFieldOrBuilder() {
+      return emptyField_ == null ? com.google.protobuf.Empty.getDefaultInstance() : emptyField_;
+    }
+
+    public static final int FIELD_MASK_FIELD_FIELD_NUMBER = 8;
+    private com.google.protobuf.FieldMask fieldMaskField_;
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     * @return Whether the fieldMaskField field is set.
+     */
+    @java.lang.Override
+    public boolean hasFieldMaskField() {
+      return ((bitField0_ & 0x00000040) != 0);
+    }
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     * @return The fieldMaskField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.FieldMask getFieldMaskField() {
+      return fieldMaskField_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMaskField_;
+    }
+    /**
+     * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.FieldMaskOrBuilder getFieldMaskFieldOrBuilder() {
+      return fieldMaskField_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMaskField_;
+    }
+
+    public static final int ANY_FIELD_FIELD_NUMBER = 9;
+    private com.google.protobuf.Any anyField_;
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     * @return Whether the anyField field is set.
+     */
+    @java.lang.Override
+    public boolean hasAnyField() {
+      return ((bitField0_ & 0x00000080) != 0);
+    }
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     * @return The anyField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.Any getAnyField() {
+      return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+    }
+    /**
+     * <code>.google.protobuf.Any any_field = 9;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder() {
+      return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with well-known types
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3.WellKnownTypesV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3.WellKnownTypesV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_WellKnownTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_WellKnownTypesV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage
+                .alwaysUseFieldBuilders) {
+          internalGetTimestampFieldFieldBuilder();
+          internalGetDurationFieldFieldBuilder();
+          internalGetStructFieldFieldBuilder();
+          internalGetValueFieldFieldBuilder();
+          internalGetListValueFieldFieldBuilder();
+          internalGetEmptyFieldFieldBuilder();
+          internalGetFieldMaskFieldFieldBuilder();
+          internalGetAnyFieldFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        timestampField_ = null;
+        if (timestampFieldBuilder_ != null) {
+          timestampFieldBuilder_.dispose();
+          timestampFieldBuilder_ = null;
+        }
+        durationField_ = null;
+        if (durationFieldBuilder_ != null) {
+          durationFieldBuilder_.dispose();
+          durationFieldBuilder_ = null;
+        }
+        structField_ = null;
+        if (structFieldBuilder_ != null) {
+          structFieldBuilder_.dispose();
+          structFieldBuilder_ = null;
+        }
+        valueField_ = null;
+        if (valueFieldBuilder_ != null) {
+          valueFieldBuilder_.dispose();
+          valueFieldBuilder_ = null;
+        }
+        listValueField_ = null;
+        if (listValueFieldBuilder_ != null) {
+          listValueFieldBuilder_.dispose();
+          listValueFieldBuilder_ = null;
+        }
+        nullValueField_ = 0;
+        emptyField_ = null;
+        if (emptyFieldBuilder_ != null) {
+          emptyFieldBuilder_.dispose();
+          emptyFieldBuilder_ = null;
+        }
+        fieldMaskField_ = null;
+        if (fieldMaskFieldBuilder_ != null) {
+          fieldMaskFieldBuilder_.dispose();
+          fieldMaskFieldBuilder_ = null;
+        }
+        anyField_ = null;
+        if (anyFieldBuilder_ != null) {
+          anyFieldBuilder_.dispose();
+          anyFieldBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.internal_static_ComprehensiveTest_V3_WellKnownTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.timestampField_ = timestampFieldBuilder_ == null
+              ? timestampField_
+              : timestampFieldBuilder_.build();
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.durationField_ = durationFieldBuilder_ == null
+              ? durationField_
+              : durationFieldBuilder_.build();
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.structField_ = structFieldBuilder_ == null
+              ? structField_
+              : structFieldBuilder_.build();
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.valueField_ = valueFieldBuilder_ == null
+              ? valueField_
+              : valueFieldBuilder_.build();
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.listValueField_ = listValueFieldBuilder_ == null
+              ? listValueField_
+              : listValueFieldBuilder_.build();
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.nullValueField_ = nullValueField_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.emptyField_ = emptyFieldBuilder_ == null
+              ? emptyField_
+              : emptyFieldBuilder_.build();
+          to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fieldMaskField_ = fieldMaskFieldBuilder_ == null
+              ? fieldMaskField_
+              : fieldMaskFieldBuilder_.build();
+          to_bitField0_ |= 0x00000040;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.anyField_ = anyFieldBuilder_ == null
+              ? anyField_
+              : anyFieldBuilder_.build();
+          to_bitField0_ |= 0x00000080;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.Timestamp timestampField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> timestampFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       * @return Whether the timestampField field is set.
+       */
+      public boolean hasTimestampField() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       * @return The timestampField.
+       */
+      public com.google.protobuf.Timestamp getTimestampField() {
+        if (timestampFieldBuilder_ == null) {
+          return timestampField_ == null ? com.google.protobuf.Timestamp.getDefaultInstance() : timestampField_;
+        } else {
+          return timestampFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public Builder setTimestampField(com.google.protobuf.Timestamp value) {
+        if (timestampFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          timestampField_ = value;
+        } else {
+          timestampFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public Builder setTimestampField(
+          com.google.protobuf.Timestamp.Builder builderForValue) {
+        if (timestampFieldBuilder_ == null) {
+          timestampField_ = builderForValue.build();
+        } else {
+          timestampFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public Builder mergeTimestampField(com.google.protobuf.Timestamp value) {
+        if (timestampFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            timestampField_ != null &&
+            timestampField_ != com.google.protobuf.Timestamp.getDefaultInstance()) {
+            getTimestampFieldBuilder().mergeFrom(value);
+          } else {
+            timestampField_ = value;
+          }
+        } else {
+          timestampFieldBuilder_.mergeFrom(value);
+        }
+        if (timestampField_ != null) {
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public Builder clearTimestampField() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        timestampField_ = null;
+        if (timestampFieldBuilder_ != null) {
+          timestampFieldBuilder_.dispose();
+          timestampFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public com.google.protobuf.Timestamp.Builder getTimestampFieldBuilder() {
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return internalGetTimestampFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      public com.google.protobuf.TimestampOrBuilder getTimestampFieldOrBuilder() {
+        if (timestampFieldBuilder_ != null) {
+          return timestampFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return timestampField_ == null ?
+              com.google.protobuf.Timestamp.getDefaultInstance() : timestampField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Timestamp timestamp_field = 1;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder> 
+          internalGetTimestampFieldFieldBuilder() {
+        if (timestampFieldBuilder_ == null) {
+          timestampFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Timestamp, com.google.protobuf.Timestamp.Builder, com.google.protobuf.TimestampOrBuilder>(
+                  getTimestampField(),
+                  getParentForChildren(),
+                  isClean());
+          timestampField_ = null;
+        }
+        return timestampFieldBuilder_;
+      }
+
+      private com.google.protobuf.Duration durationField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> durationFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       * @return Whether the durationField field is set.
+       */
+      public boolean hasDurationField() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       * @return The durationField.
+       */
+      public com.google.protobuf.Duration getDurationField() {
+        if (durationFieldBuilder_ == null) {
+          return durationField_ == null ? com.google.protobuf.Duration.getDefaultInstance() : durationField_;
+        } else {
+          return durationFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public Builder setDurationField(com.google.protobuf.Duration value) {
+        if (durationFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          durationField_ = value;
+        } else {
+          durationFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public Builder setDurationField(
+          com.google.protobuf.Duration.Builder builderForValue) {
+        if (durationFieldBuilder_ == null) {
+          durationField_ = builderForValue.build();
+        } else {
+          durationFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public Builder mergeDurationField(com.google.protobuf.Duration value) {
+        if (durationFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0) &&
+            durationField_ != null &&
+            durationField_ != com.google.protobuf.Duration.getDefaultInstance()) {
+            getDurationFieldBuilder().mergeFrom(value);
+          } else {
+            durationField_ = value;
+          }
+        } else {
+          durationFieldBuilder_.mergeFrom(value);
+        }
+        if (durationField_ != null) {
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public Builder clearDurationField() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        durationField_ = null;
+        if (durationFieldBuilder_ != null) {
+          durationFieldBuilder_.dispose();
+          durationFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public com.google.protobuf.Duration.Builder getDurationFieldBuilder() {
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return internalGetDurationFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      public com.google.protobuf.DurationOrBuilder getDurationFieldOrBuilder() {
+        if (durationFieldBuilder_ != null) {
+          return durationFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return durationField_ == null ?
+              com.google.protobuf.Duration.getDefaultInstance() : durationField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Duration duration_field = 2;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder> 
+          internalGetDurationFieldFieldBuilder() {
+        if (durationFieldBuilder_ == null) {
+          durationFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Duration, com.google.protobuf.Duration.Builder, com.google.protobuf.DurationOrBuilder>(
+                  getDurationField(),
+                  getParentForChildren(),
+                  isClean());
+          durationField_ = null;
+        }
+        return durationFieldBuilder_;
+      }
+
+      private com.google.protobuf.Struct structField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> structFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       * @return Whether the structField field is set.
+       */
+      public boolean hasStructField() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       * @return The structField.
+       */
+      public com.google.protobuf.Struct getStructField() {
+        if (structFieldBuilder_ == null) {
+          return structField_ == null ? com.google.protobuf.Struct.getDefaultInstance() : structField_;
+        } else {
+          return structFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public Builder setStructField(com.google.protobuf.Struct value) {
+        if (structFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          structField_ = value;
+        } else {
+          structFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public Builder setStructField(
+          com.google.protobuf.Struct.Builder builderForValue) {
+        if (structFieldBuilder_ == null) {
+          structField_ = builderForValue.build();
+        } else {
+          structFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public Builder mergeStructField(com.google.protobuf.Struct value) {
+        if (structFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) != 0) &&
+            structField_ != null &&
+            structField_ != com.google.protobuf.Struct.getDefaultInstance()) {
+            getStructFieldBuilder().mergeFrom(value);
+          } else {
+            structField_ = value;
+          }
+        } else {
+          structFieldBuilder_.mergeFrom(value);
+        }
+        if (structField_ != null) {
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public Builder clearStructField() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        structField_ = null;
+        if (structFieldBuilder_ != null) {
+          structFieldBuilder_.dispose();
+          structFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public com.google.protobuf.Struct.Builder getStructFieldBuilder() {
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return internalGetStructFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      public com.google.protobuf.StructOrBuilder getStructFieldOrBuilder() {
+        if (structFieldBuilder_ != null) {
+          return structFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return structField_ == null ?
+              com.google.protobuf.Struct.getDefaultInstance() : structField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Struct struct_field = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder> 
+          internalGetStructFieldFieldBuilder() {
+        if (structFieldBuilder_ == null) {
+          structFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Struct, com.google.protobuf.Struct.Builder, com.google.protobuf.StructOrBuilder>(
+                  getStructField(),
+                  getParentForChildren(),
+                  isClean());
+          structField_ = null;
+        }
+        return structFieldBuilder_;
+      }
+
+      private com.google.protobuf.Value valueField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Value, com.google.protobuf.Value.Builder, com.google.protobuf.ValueOrBuilder> valueFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       * @return Whether the valueField field is set.
+       */
+      public boolean hasValueField() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       * @return The valueField.
+       */
+      public com.google.protobuf.Value getValueField() {
+        if (valueFieldBuilder_ == null) {
+          return valueField_ == null ? com.google.protobuf.Value.getDefaultInstance() : valueField_;
+        } else {
+          return valueFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public Builder setValueField(com.google.protobuf.Value value) {
+        if (valueFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          valueField_ = value;
+        } else {
+          valueFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public Builder setValueField(
+          com.google.protobuf.Value.Builder builderForValue) {
+        if (valueFieldBuilder_ == null) {
+          valueField_ = builderForValue.build();
+        } else {
+          valueFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public Builder mergeValueField(com.google.protobuf.Value value) {
+        if (valueFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) != 0) &&
+            valueField_ != null &&
+            valueField_ != com.google.protobuf.Value.getDefaultInstance()) {
+            getValueFieldBuilder().mergeFrom(value);
+          } else {
+            valueField_ = value;
+          }
+        } else {
+          valueFieldBuilder_.mergeFrom(value);
+        }
+        if (valueField_ != null) {
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public Builder clearValueField() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        valueField_ = null;
+        if (valueFieldBuilder_ != null) {
+          valueFieldBuilder_.dispose();
+          valueFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public com.google.protobuf.Value.Builder getValueFieldBuilder() {
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return internalGetValueFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      public com.google.protobuf.ValueOrBuilder getValueFieldOrBuilder() {
+        if (valueFieldBuilder_ != null) {
+          return valueFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return valueField_ == null ?
+              com.google.protobuf.Value.getDefaultInstance() : valueField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Value value_field = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Value, com.google.protobuf.Value.Builder, com.google.protobuf.ValueOrBuilder> 
+          internalGetValueFieldFieldBuilder() {
+        if (valueFieldBuilder_ == null) {
+          valueFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Value, com.google.protobuf.Value.Builder, com.google.protobuf.ValueOrBuilder>(
+                  getValueField(),
+                  getParentForChildren(),
+                  isClean());
+          valueField_ = null;
+        }
+        return valueFieldBuilder_;
+      }
+
+      private com.google.protobuf.ListValue listValueField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.ListValue, com.google.protobuf.ListValue.Builder, com.google.protobuf.ListValueOrBuilder> listValueFieldBuilder_;
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       * @return Whether the listValueField field is set.
+       */
+      public boolean hasListValueField() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       * @return The listValueField.
+       */
+      public com.google.protobuf.ListValue getListValueField() {
+        if (listValueFieldBuilder_ == null) {
+          return listValueField_ == null ? com.google.protobuf.ListValue.getDefaultInstance() : listValueField_;
+        } else {
+          return listValueFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public Builder setListValueField(com.google.protobuf.ListValue value) {
+        if (listValueFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          listValueField_ = value;
+        } else {
+          listValueFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public Builder setListValueField(
+          com.google.protobuf.ListValue.Builder builderForValue) {
+        if (listValueFieldBuilder_ == null) {
+          listValueField_ = builderForValue.build();
+        } else {
+          listValueFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public Builder mergeListValueField(com.google.protobuf.ListValue value) {
+        if (listValueFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) != 0) &&
+            listValueField_ != null &&
+            listValueField_ != com.google.protobuf.ListValue.getDefaultInstance()) {
+            getListValueFieldBuilder().mergeFrom(value);
+          } else {
+            listValueField_ = value;
+          }
+        } else {
+          listValueFieldBuilder_.mergeFrom(value);
+        }
+        if (listValueField_ != null) {
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public Builder clearListValueField() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        listValueField_ = null;
+        if (listValueFieldBuilder_ != null) {
+          listValueFieldBuilder_.dispose();
+          listValueFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public com.google.protobuf.ListValue.Builder getListValueFieldBuilder() {
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return internalGetListValueFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      public com.google.protobuf.ListValueOrBuilder getListValueFieldOrBuilder() {
+        if (listValueFieldBuilder_ != null) {
+          return listValueFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return listValueField_ == null ?
+              com.google.protobuf.ListValue.getDefaultInstance() : listValueField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.ListValue list_value_field = 5;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.ListValue, com.google.protobuf.ListValue.Builder, com.google.protobuf.ListValueOrBuilder> 
+          internalGetListValueFieldFieldBuilder() {
+        if (listValueFieldBuilder_ == null) {
+          listValueFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.ListValue, com.google.protobuf.ListValue.Builder, com.google.protobuf.ListValueOrBuilder>(
+                  getListValueField(),
+                  getParentForChildren(),
+                  isClean());
+          listValueField_ = null;
+        }
+        return listValueFieldBuilder_;
+      }
+
+      private int nullValueField_ = 0;
+      /**
+       * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+       * @return The enum numeric value on the wire for nullValueField.
+       */
+      @java.lang.Override public int getNullValueFieldValue() {
+        return nullValueField_;
+      }
+      /**
+       * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+       * @param value The enum numeric value on the wire for nullValueField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNullValueFieldValue(int value) {
+        nullValueField_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+       * @return The nullValueField.
+       */
+      @java.lang.Override
+      public com.google.protobuf.NullValue getNullValueField() {
+        com.google.protobuf.NullValue result = com.google.protobuf.NullValue.forNumber(nullValueField_);
+        return result == null ? com.google.protobuf.NullValue.UNRECOGNIZED : result;
+      }
+      /**
+       * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+       * @param value The nullValueField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNullValueField(com.google.protobuf.NullValue value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x00000020;
+        nullValueField_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.NullValue null_value_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNullValueField() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        nullValueField_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Empty emptyField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Empty, com.google.protobuf.Empty.Builder, com.google.protobuf.EmptyOrBuilder> emptyFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       * @return Whether the emptyField field is set.
+       */
+      public boolean hasEmptyField() {
+        return ((bitField0_ & 0x00000040) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       * @return The emptyField.
+       */
+      public com.google.protobuf.Empty getEmptyField() {
+        if (emptyFieldBuilder_ == null) {
+          return emptyField_ == null ? com.google.protobuf.Empty.getDefaultInstance() : emptyField_;
+        } else {
+          return emptyFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public Builder setEmptyField(com.google.protobuf.Empty value) {
+        if (emptyFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          emptyField_ = value;
+        } else {
+          emptyFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public Builder setEmptyField(
+          com.google.protobuf.Empty.Builder builderForValue) {
+        if (emptyFieldBuilder_ == null) {
+          emptyField_ = builderForValue.build();
+        } else {
+          emptyFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public Builder mergeEmptyField(com.google.protobuf.Empty value) {
+        if (emptyFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) != 0) &&
+            emptyField_ != null &&
+            emptyField_ != com.google.protobuf.Empty.getDefaultInstance()) {
+            getEmptyFieldBuilder().mergeFrom(value);
+          } else {
+            emptyField_ = value;
+          }
+        } else {
+          emptyFieldBuilder_.mergeFrom(value);
+        }
+        if (emptyField_ != null) {
+          bitField0_ |= 0x00000040;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public Builder clearEmptyField() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        emptyField_ = null;
+        if (emptyFieldBuilder_ != null) {
+          emptyFieldBuilder_.dispose();
+          emptyFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public com.google.protobuf.Empty.Builder getEmptyFieldBuilder() {
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return internalGetEmptyFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      public com.google.protobuf.EmptyOrBuilder getEmptyFieldOrBuilder() {
+        if (emptyFieldBuilder_ != null) {
+          return emptyFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return emptyField_ == null ?
+              com.google.protobuf.Empty.getDefaultInstance() : emptyField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Empty empty_field = 7;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Empty, com.google.protobuf.Empty.Builder, com.google.protobuf.EmptyOrBuilder> 
+          internalGetEmptyFieldFieldBuilder() {
+        if (emptyFieldBuilder_ == null) {
+          emptyFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Empty, com.google.protobuf.Empty.Builder, com.google.protobuf.EmptyOrBuilder>(
+                  getEmptyField(),
+                  getParentForChildren(),
+                  isClean());
+          emptyField_ = null;
+        }
+        return emptyFieldBuilder_;
+      }
+
+      private com.google.protobuf.FieldMask fieldMaskField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder> fieldMaskFieldBuilder_;
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       * @return Whether the fieldMaskField field is set.
+       */
+      public boolean hasFieldMaskField() {
+        return ((bitField0_ & 0x00000080) != 0);
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       * @return The fieldMaskField.
+       */
+      public com.google.protobuf.FieldMask getFieldMaskField() {
+        if (fieldMaskFieldBuilder_ == null) {
+          return fieldMaskField_ == null ? com.google.protobuf.FieldMask.getDefaultInstance() : fieldMaskField_;
+        } else {
+          return fieldMaskFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public Builder setFieldMaskField(com.google.protobuf.FieldMask value) {
+        if (fieldMaskFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          fieldMaskField_ = value;
+        } else {
+          fieldMaskFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public Builder setFieldMaskField(
+          com.google.protobuf.FieldMask.Builder builderForValue) {
+        if (fieldMaskFieldBuilder_ == null) {
+          fieldMaskField_ = builderForValue.build();
+        } else {
+          fieldMaskFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public Builder mergeFieldMaskField(com.google.protobuf.FieldMask value) {
+        if (fieldMaskFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) != 0) &&
+            fieldMaskField_ != null &&
+            fieldMaskField_ != com.google.protobuf.FieldMask.getDefaultInstance()) {
+            getFieldMaskFieldBuilder().mergeFrom(value);
+          } else {
+            fieldMaskField_ = value;
+          }
+        } else {
+          fieldMaskFieldBuilder_.mergeFrom(value);
+        }
+        if (fieldMaskField_ != null) {
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public Builder clearFieldMaskField() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        fieldMaskField_ = null;
+        if (fieldMaskFieldBuilder_ != null) {
+          fieldMaskFieldBuilder_.dispose();
+          fieldMaskFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public com.google.protobuf.FieldMask.Builder getFieldMaskFieldBuilder() {
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return internalGetFieldMaskFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      public com.google.protobuf.FieldMaskOrBuilder getFieldMaskFieldOrBuilder() {
+        if (fieldMaskFieldBuilder_ != null) {
+          return fieldMaskFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return fieldMaskField_ == null ?
+              com.google.protobuf.FieldMask.getDefaultInstance() : fieldMaskField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.FieldMask field_mask_field = 8;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder> 
+          internalGetFieldMaskFieldFieldBuilder() {
+        if (fieldMaskFieldBuilder_ == null) {
+          fieldMaskFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.FieldMask, com.google.protobuf.FieldMask.Builder, com.google.protobuf.FieldMaskOrBuilder>(
+                  getFieldMaskField(),
+                  getParentForChildren(),
+                  isClean());
+          fieldMaskField_ = null;
+        }
+        return fieldMaskFieldBuilder_;
+      }
+
+      private com.google.protobuf.Any anyField_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> anyFieldBuilder_;
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       * @return Whether the anyField field is set.
+       */
+      public boolean hasAnyField() {
+        return ((bitField0_ & 0x00000100) != 0);
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       * @return The anyField.
+       */
+      public com.google.protobuf.Any getAnyField() {
+        if (anyFieldBuilder_ == null) {
+          return anyField_ == null ? com.google.protobuf.Any.getDefaultInstance() : anyField_;
+        } else {
+          return anyFieldBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public Builder setAnyField(com.google.protobuf.Any value) {
+        if (anyFieldBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          anyField_ = value;
+        } else {
+          anyFieldBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public Builder setAnyField(
+          com.google.protobuf.Any.Builder builderForValue) {
+        if (anyFieldBuilder_ == null) {
+          anyField_ = builderForValue.build();
+        } else {
+          anyFieldBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public Builder mergeAnyField(com.google.protobuf.Any value) {
+        if (anyFieldBuilder_ == null) {
+          if (((bitField0_ & 0x00000100) != 0) &&
+            anyField_ != null &&
+            anyField_ != com.google.protobuf.Any.getDefaultInstance()) {
+            getAnyFieldBuilder().mergeFrom(value);
+          } else {
+            anyField_ = value;
+          }
+        } else {
+          anyFieldBuilder_.mergeFrom(value);
+        }
+        if (anyField_ != null) {
+          bitField0_ |= 0x00000100;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public Builder clearAnyField() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        anyField_ = null;
+        if (anyFieldBuilder_ != null) {
+          anyFieldBuilder_.dispose();
+          anyFieldBuilder_ = null;
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public com.google.protobuf.Any.Builder getAnyFieldBuilder() {
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return internalGetAnyFieldFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      public com.google.protobuf.AnyOrBuilder getAnyFieldOrBuilder() {
+        if (anyFieldBuilder_ != null) {
+          return anyFieldBuilder_.getMessageOrBuilder();
+        } else {
+          return anyField_ == null ?
+              com.google.protobuf.Any.getDefaultInstance() : anyField_;
+        }
+      }
+      /**
+       * <code>.google.protobuf.Any any_field = 9;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder> 
+          internalGetAnyFieldFieldBuilder() {
+        if (anyFieldBuilder_ == null) {
+          anyFieldBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.google.protobuf.Any, com.google.protobuf.Any.Builder, com.google.protobuf.AnyOrBuilder>(
+                  getAnyField(),
+                  getParentForChildren(),
+                  isClean());
+          anyField_ = null;
+        }
+        return anyFieldBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3.WellKnownTypesV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3.WellKnownTypesV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<WellKnownTypesV3>
+        PARSER = new com.google.protobuf.AbstractParser<WellKnownTypesV3>() {
+      @java.lang.Override
+      public WellKnownTypesV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<WellKnownTypesV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<WellKnownTypesV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3.WellKnownTypesV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_AllFieldTypesV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_AllFieldTypesV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_AllFieldTypesV3_NestedMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_OneofMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_OneofMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_StringToInt32Entry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_StringToInt32Entry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_Int32ToStringEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_Int32ToStringEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_StringToEnumEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_StringToEnumEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_StringToMessageEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_StringToMessageEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_BoolToStringEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_BoolToStringEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_Int64ToBytesEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_Uint32ToFloatEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_MapMessageV3_Fixed64ToDoubleEntry_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_PackedMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_PackedMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_ReservedMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_ReservedMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_AnyMessageV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_AnyMessageV3_fieldAccessorTable;
-  static final com.google.protobuf.Descriptors.Descriptor
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3_WellKnownTypesV3_descriptor;
-  static final 
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3_WellKnownTypesV3_fieldAccessorTable;
 
@@ -224,9 +12249,9 @@ public final class ComprehensiveTestV3 extends com.google.protobuf.GeneratedFile
       ".ComprehensiveTest.V3.AllFieldTypesV30\001\022" +
       "c\n\016RpcWithOptions\022%.ComprehensiveTest.V3" +
       ".AllFieldTypesV3\032%.ComprehensiveTest.V3." +
-      "AllFieldTypesV3\"\003\210\002\001BH\n\'com.rubberjam.pr" +
+      "AllFieldTypesV3\"\003\210\002\001BF\n\'com.rubberjam.pr" +
       "otobuf.compiler.test.v3B\023ComprehensiveTe" +
-      "stV3H\002P\001\200\001\000\210\001\000b\006proto3"
+      "stV3H\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

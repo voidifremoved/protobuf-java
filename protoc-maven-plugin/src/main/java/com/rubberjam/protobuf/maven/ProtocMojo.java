@@ -276,11 +276,36 @@ public class ProtocMojo extends AbstractMojo
 		}
 
 		// Extract standard types to the includes directory
+		File stdTypesIncludeDir = null;
 		if (includeStdTypes)
 		{
 			try
 			{
 				Protoc.extractStdTypes(ProtocVersion.getVersion("-v" + protocVersion), includeDir);
+				// extractStdTypes creates includeDir/include/google/protobuf/, so we need to use includeDir/include as the include path
+				stdTypesIncludeDir = new File(includeDir, "include");
+				File googleProtobufDir = new File(stdTypesIncludeDir, "google/protobuf");
+				
+				// If extraction from JAR failed (directory doesn't exist or is empty), try extracting from protobuf-java dependency
+				if (!stdTypesIncludeDir.exists() || !stdTypesIncludeDir.isDirectory() || 
+				    !googleProtobufDir.exists() || !googleProtobufDir.isDirectory() ||
+				    (googleProtobufDir.listFiles() == null || googleProtobufDir.listFiles().length == 0))
+				{
+					getLog().info("Standard types not found in JAR, extracting from protobuf-java dependency");
+					extractStdTypesFromDependency(includeDir);
+					stdTypesIncludeDir = new File(includeDir, "include");
+					googleProtobufDir = new File(stdTypesIncludeDir, "google/protobuf");
+					if (!stdTypesIncludeDir.exists() || !stdTypesIncludeDir.isDirectory() ||
+					    !googleProtobufDir.exists() || googleProtobufDir.listFiles() == null || googleProtobufDir.listFiles().length == 0)
+					{
+						getLog().warn("Standard types directory not found or empty at " + googleProtobufDir + ", standard types may not be available");
+						stdTypesIncludeDir = null;
+					}
+					else
+					{
+						getLog().info("Successfully extracted " + googleProtobufDir.listFiles().length + " standard type proto files");
+					}
+				}
 			}
 			catch (IOException e)
 			{
@@ -304,7 +329,13 @@ public class ProtocMojo extends AbstractMojo
 				FileUtils.copyDirectory(mergedProtosDir, targetBuildDir);
 
 				// Set the include paths for the compiler
-				File[] currentIncludeDirs = new File[] { targetBuildDir, includeDir };
+				List<File> includeDirsList = new ArrayList<>();
+				includeDirsList.add(targetBuildDir);
+				if (stdTypesIncludeDir != null)
+				{
+					includeDirsList.add(stdTypesIncludeDir);
+				}
+				File[] currentIncludeDirs = includeDirsList.toArray(new File[0]);
 
 				// Identify only the project's own proto files for compilation
 				Collection<File> filesToCompile = new ArrayList<>();
@@ -542,6 +573,98 @@ public class ProtocMojo extends AbstractMojo
 		}
 		getLog().info("Extracted " + extractedCount + " proto files from dependencies");
 		getLog().info("  Scanned " + scannedJars + " JARs, skipped " + skippedNullFile + " artifacts with null files");
+	}
+
+	private void extractStdTypesFromDependency(File includeDir) throws IOException
+	{
+		getLog().info("Attempting to extract standard types from protobuf-java dependency");
+		// Look for protobuf-java dependency
+		Set<org.apache.maven.artifact.Artifact> artifacts = getArtifactsForProtoExtraction(true);
+		getLog().debug("Scanning " + artifacts.size() + " artifacts for protobuf-java");
+		
+		for (org.apache.maven.artifact.Artifact artifact : artifacts)
+		{
+			if (artifact.getFile() == null)
+			{
+				getLog().debug("  Skipping artifact with null file: " + artifact);
+				continue;
+			}
+			
+			getLog().debug("  Checking artifact: " + artifact.getGroupId() + ":" + artifact.getArtifactId());
+			
+			// Check if this is the protobuf-java artifact
+			if (!"protobuf-java".equals(artifact.getArtifactId()) || 
+			    !"com.google.protobuf".equals(artifact.getGroupId()))
+			{
+				continue;
+			}
+			
+			getLog().info("Found protobuf-java dependency, extracting standard types from: " + artifact.getFile());
+			File stdTypesDir = new File(includeDir, "include/google/protobuf");
+			stdTypesDir.mkdirs();
+			
+			InputStream is = null;
+			try
+			{
+				if (artifact.getFile().isDirectory())
+				{
+					// Extract from directory (for testing)
+					for (File f : listFilesRecursively(artifact.getFile(), extension, new ArrayList<File>()))
+					{
+						String path = f.getAbsolutePath().replace('\\', '/');
+						if (path.contains("/google/protobuf/") && path.endsWith(".proto"))
+						{
+							String relativePath = path.substring(path.indexOf("/google/protobuf/") + 1);
+							File destFile = new File(includeDir, "include/" + relativePath);
+							destFile.getParentFile().mkdirs();
+							FileUtils.copyFile(f, destFile);
+							getLog().debug("  Extracted: " + relativePath);
+						}
+					}
+				}
+				else
+				{
+					// Extract from JAR
+					ZipInputStream zis = new ZipInputStream(new FileInputStream(artifact.getFile()));
+					is = zis;
+					ZipEntry ze;
+					int extractedCount = 0;
+					while ((ze = zis.getNextEntry()) != null)
+					{
+						String entryName = ze.getName();
+						// Look for google/protobuf/*.proto files
+						if (!ze.isDirectory() && 
+						    entryName.startsWith("google/protobuf/") && 
+						    entryName.endsWith(".proto"))
+						{
+							File destFile = new File(includeDir, "include/" + entryName);
+							destFile.getParentFile().mkdirs();
+							FileOutputStream fos = new FileOutputStream(destFile);
+							streamCopy(zis, fos);
+							fos.close();
+							zis.closeEntry();
+							extractedCount++;
+							getLog().debug("  Extracted: " + entryName);
+						}
+						else
+						{
+							zis.closeEntry();
+						}
+					}
+					getLog().info("Extracted " + extractedCount + " standard type proto files from protobuf-java");
+				}
+				return; // Found and extracted, we're done
+			}
+			catch (IOException e)
+			{
+				getLog().warn("Error extracting standard types from protobuf-java: " + e);
+			}
+			finally
+			{
+				if (is != null) is.close();
+			}
+		}
+		getLog().warn("protobuf-java dependency not found, standard types may not be available");
 	}
 
 	private Set<org.apache.maven.artifact.Artifact> getArtifactsForProtoExtraction(boolean transitive)

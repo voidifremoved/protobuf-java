@@ -623,7 +623,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return Whether the deprecatedField field is set.
      */
     @java.lang.Deprecated boolean hasDeprecatedField();
@@ -634,7 +634,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return The deprecatedField.
      */
     @java.lang.Deprecated java.lang.String getDeprecatedField();
@@ -645,7 +645,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return The bytes for deprecatedField.
      */
     @java.lang.Deprecated com.google.protobuf.ByteString
@@ -2484,7 +2484,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return Whether the deprecatedField field is set.
      */
     @java.lang.Override
@@ -2498,7 +2498,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return The deprecatedField.
      */
     @java.lang.Override
@@ -2523,7 +2523,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
      *
      * <code>optional string deprecated_field = 30 [deprecated = true];</code>
      * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-     *     See comprehensive_test_v2.proto;l=67
+     *     See comprehensive_test_v2.proto;l=66
      * @return The bytes for deprecatedField.
      */
     @java.lang.Override
@@ -5763,7 +5763,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @return Whether the deprecatedField field is set.
        */
       @java.lang.Deprecated public boolean hasDeprecatedField() {
@@ -5776,7 +5776,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @return The deprecatedField.
        */
       @java.lang.Deprecated public java.lang.String getDeprecatedField() {
@@ -5800,7 +5800,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @return The bytes for deprecatedField.
        */
       @java.lang.Deprecated public com.google.protobuf.ByteString
@@ -5823,7 +5823,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @param value The deprecatedField to set.
        * @return This builder for chaining.
        */
@@ -5842,7 +5842,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @return This builder for chaining.
        */
       @java.lang.Deprecated public Builder clearDeprecatedField() {
@@ -5858,7 +5858,7 @@ public final class ComprehensiveTestV2 extends com.google.protobuf.GeneratedFile
        *
        * <code>optional string deprecated_field = 30 [deprecated = true];</code>
        * @deprecated ComprehensiveTest.V2.AllFieldTypes.deprecated_field is deprecated.
-       *     See comprehensive_test_v2.proto;l=67
+       *     See comprehensive_test_v2.proto;l=66
        * @param value The bytes for deprecatedField to set.
        * @return This builder for chaining.
        */
@@ -13428,9 +13428,9 @@ com.google.protobuf.ByteString defaultValue) {
       "dableMessage\030d \001(\t:?\n\016extended_int32\022\'.C" +
       "omprehensiveTest.V2.ExtendableMessage\030e " +
       "\001(\005:B\n\021extended_repeated\022\'.Comprehensive" +
-      "Test.V2.ExtendableMessage\030f \003(\tBH\n\'com.r" +
+      "Test.V2.ExtendableMessage\030f \003(\tBF\n\'com.r" +
       "ubberjam.protobuf.compiler.test.v2B\023Comp" +
-      "rehensiveTestV2H\001P\000\200\001\001\210\001\001"
+      "rehensiveTestV2H\001\200\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,

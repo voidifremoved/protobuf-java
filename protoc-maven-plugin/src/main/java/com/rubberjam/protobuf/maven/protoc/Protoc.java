@@ -644,12 +644,27 @@ public class Protoc
 			"include/google/protobuf/type.proto",
 			"include/google/protobuf/wrappers.proto",
 	};
+	static String[] sStdTypesProto4 = {
+			"include/google/protobuf/any.proto",
+			"include/google/protobuf/api.proto",
+			"include/google/protobuf/descriptor.proto",
+			"include/google/protobuf/duration.proto",
+			"include/google/protobuf/empty.proto",
+			"include/google/protobuf/field_mask.proto",
+			"include/google/protobuf/source_context.proto",
+			"include/google/protobuf/struct.proto",
+			"include/google/protobuf/timestamp.proto",
+			"include/google/protobuf/type.proto",
+			"include/google/protobuf/wrappers.proto",
+			"include/google/protobuf/java_features.proto",
+	};
 
 	static Map<String, String[]> sStdTypesMap = new HashMap<String, String[]>();
 	static
 	{
 		sStdTypesMap.put("2", sStdTypesProto2);
 		sStdTypesMap.put("3", sStdTypesProto3);
+		sStdTypesMap.put("4", sStdTypesProto4);
 	}
 }
 

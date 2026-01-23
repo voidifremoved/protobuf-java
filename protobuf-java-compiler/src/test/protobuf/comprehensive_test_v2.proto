@@ -4,7 +4,6 @@ package ComprehensiveTest.V2;
 
 option java_package = "com.rubberjam.protobuf.compiler.test.v2";
 option java_outer_classname = "ComprehensiveTestV2";
-option java_multiple_files = false;
 option java_generic_services = true;
 option cc_generic_services = true;
 option optimize_for = SPEED;
