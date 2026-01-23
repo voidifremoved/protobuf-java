@@ -316,9 +316,6 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		// Builder methods
 		
-		printer.println("    @java.lang.Override");
-		printer.println("    public Builder newBuilderForType() { return newBuilder(); }");
-		
 		printer.println("    public static Builder newBuilder() {");
 		printer.println("      return DEFAULT_INSTANCE.toBuilder();");
 		printer.println("    }");
