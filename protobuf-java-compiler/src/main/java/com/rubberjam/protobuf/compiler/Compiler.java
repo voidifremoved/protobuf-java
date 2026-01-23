@@ -14,6 +14,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import com.rubberjam.protobuf.compiler.cpp.CppCodeGenerator;
+import com.rubberjam.protobuf.compiler.csharp.CSharpCodeGenerator;
 
 /** An API for compiling .proto files. */
 public final class Compiler
@@ -133,21 +135,31 @@ public final class Compiler
 			{
 				for (String language : languages)
 				{
+					CodeGenerator codeGenerator;
 					if (language.equals("java"))
 					{
-						JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-						try
-						{
-							codeGenerator.generate(fileDescriptor, "", context);
-						}
-						catch (CodeGenerator.GenerationException e)
-						{
-							throw new CompilationException("Error generating code", e);
-						}
+						codeGenerator = new JavaCodeGenerator();
+					}
+					else if (language.equals("cpp"))
+					{
+						codeGenerator = new CppCodeGenerator();
+					}
+					else if (language.equals("csharp"))
+					{
+						codeGenerator = new CSharpCodeGenerator();
 					}
 					else
 					{
 						throw new CompilationException("Unsupported language: " + language);
+					}
+
+					try
+					{
+						codeGenerator.generate(fileDescriptor, "", context);
+					}
+					catch (CodeGenerator.GenerationException e)
+					{
+						throw new CompilationException("Error generating code", e);
 					}
 				}
 			}
