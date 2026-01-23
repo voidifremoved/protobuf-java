@@ -70,11 +70,6 @@ public class MessageBuilderGenerator
 		printer.println("      super(parent);");
 		printer.println("    }");
 
-		for (int i = 0; i < totalBuilderInts; i++)
-		{
-			printer.println("    private int " + getBitFieldName(i) + ";");
-		}
-
 		printer.println("    @java.lang.Override");
 		printer.println("    public Builder clear() {");
 		printer.println("      super.clear();");
@@ -137,6 +132,91 @@ public class MessageBuilderGenerator
 			}
 			printer.println("    }");
 		}
+
+		// mergeFrom(Message other)
+		printer.println("    @java.lang.Override");
+		printer.println("    public Builder mergeFrom(com.google.protobuf.Message other) {");
+		printer.println("      if (other instanceof " + outerClassName + "." + className + ") {");
+		printer.println("        return mergeFrom((" + outerClassName + "." + className + ")other);");
+		printer.println("      } else {");
+		printer.println("        super.mergeFrom(other);");
+		printer.println("        return this;");
+		printer.println("      }");
+		printer.println("    }");
+		printer.println();
+
+		// mergeFrom(ClassName other)
+		printer.println("    public Builder mergeFrom(" + outerClassName + "." + className + " other) {");
+		printer.println("      if (other == " + outerClassName + "." + className + ".getDefaultInstance()) return this;");
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			if (fieldGenerator.getDescriptor().getContainingOneof() == null)
+			{
+				fieldGenerator.generateMergingCode(printer);
+			}
+		}
+		printer.println("      this.mergeUnknownFields(other.getUnknownFields());");
+		printer.println("      onChanged();");
+		printer.println("      return this;");
+		printer.println("    }");
+		printer.println();
+
+		// isInitialized()
+		printer.println("    @java.lang.Override");
+		printer.println("    public final boolean isInitialized() {");
+		printer.println("      return true;");
+		printer.println("    }");
+		printer.println();
+
+		// mergeFrom(CodedInputStream, ExtensionRegistryLite)
+		printer.println("    @java.lang.Override");
+		printer.println("    public Builder mergeFrom(");
+		printer.println("        com.google.protobuf.CodedInputStream input,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      if (extensionRegistry == null) {");
+		printer.println("        throw new java.lang.NullPointerException();");
+		printer.println("      }");
+		printer.println("      try {");
+		printer.println("        boolean done = false;");
+		printer.println("        while (!done) {");
+		printer.println("          int tag = input.readTag();");
+		printer.println("          switch (tag) {");
+		printer.println("            case 0:");
+		printer.println("              done = true;");
+		printer.println("              break;");
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			com.google.protobuf.Descriptors.FieldDescriptor field = fieldGenerator.getDescriptor();
+			int tag = com.rubberjam.protobuf.compiler.java.Helpers.getTag(field);
+			printer.println("            case " + tag + ": {");
+			fieldGenerator.generateBuilderParsingCode(printer);
+			printer.println("              break;");
+			printer.println("            } // case " + tag);
+		}
+		printer.println("            default: {");
+		printer.println("              if (!super.parseUnknownField(input, extensionRegistry, tag)) {");
+		printer.println("                done = true; // was an endgroup tag");
+		printer.println("              }");
+		printer.println("              break;");
+		printer.println("            } // default:");
+		printer.println("          } // switch (tag)");
+		printer.println("        } // while (!done)");
+		printer.println("      } catch (com.google.protobuf.InvalidProtocolBufferException e) {");
+		printer.println("        throw e.unwrapIOException();");
+		printer.println("      } finally {");
+		printer.println("        onChanged();");
+		printer.println("      } // finally");
+		printer.println("      return this;");
+		printer.println("    }");
+		printer.println();
+
+		// bitField0_ for builder
+		for (int i = 0; i < totalBuilderPieces; i++)
+		{
+			printer.println("      private int " + getBitFieldName(i) + ";");
+		}
+		printer.println();
 
 		// Fields for builder
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())

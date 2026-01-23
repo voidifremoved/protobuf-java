@@ -407,31 +407,66 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateEqualsCode(PrintWriter printer)
 	{
-		switch (StringUtils.getJavaType(descriptor))
+		if (descriptor.hasPresence())
 		{
-		case INT:
-		case LONG:
-		case BOOLEAN:
-			printer.println("      if (get" + variables.get("capitalized_name") + "()");
-			printer.println("          != other.get" + variables.get("capitalized_name") + "()) return false;");
-			break;
-		case FLOAT:
-			printer.println("      if (java.lang.Float.floatToIntBits(get" + variables.get("capitalized_name") + "())");
-			printer.println("          != java.lang.Float.floatToIntBits(");
-			printer.println("              other.get" + variables.get("capitalized_name") + "())) return false;");
-			break;
-		case DOUBLE:
-			printer.println("      if (java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "())");
-			printer.println("          != java.lang.Double.doubleToLongBits(");
-			printer.println("              other.get" + variables.get("capitalized_name") + "())) return false;");
-			break;
-		case STRING:
-		case BYTES:
-			printer.println("      if (!get" + variables.get("capitalized_name") + "()");
-			printer.println("          .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
-			break;
-		default:
-			break;
+			printer.println("      if (has" + variables.get("capitalized_name") + "() != other.has" + variables.get("capitalized_name") + "()) return false;");
+			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+			switch (StringUtils.getJavaType(descriptor))
+			{
+			case INT:
+			case LONG:
+			case BOOLEAN:
+				printer.println("        if (get" + variables.get("capitalized_name") + "()");
+				printer.println("            != other.get" + variables.get("capitalized_name") + "()) return false;");
+				break;
+			case FLOAT:
+				printer.println("        if (java.lang.Float.floatToIntBits(get" + variables.get("capitalized_name") + "())");
+				printer.println("            != java.lang.Float.floatToIntBits(");
+				printer.println("                other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			case DOUBLE:
+				printer.println("        if (java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "())");
+				printer.println("            != java.lang.Double.doubleToLongBits(");
+				printer.println("                other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			case STRING:
+			case BYTES:
+				printer.println("        if (!get" + variables.get("capitalized_name") + "()");
+				printer.println("            .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			default:
+				break;
+			}
+			printer.println("      }");
+		}
+		else
+		{
+			switch (StringUtils.getJavaType(descriptor))
+			{
+			case INT:
+			case LONG:
+			case BOOLEAN:
+				printer.println("      if (get" + variables.get("capitalized_name") + "()");
+				printer.println("          != other.get" + variables.get("capitalized_name") + "()) return false;");
+				break;
+			case FLOAT:
+				printer.println("      if (java.lang.Float.floatToIntBits(get" + variables.get("capitalized_name") + "())");
+				printer.println("          != java.lang.Float.floatToIntBits(");
+				printer.println("              other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			case DOUBLE:
+				printer.println("      if (java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "())");
+				printer.println("          != java.lang.Double.doubleToLongBits(");
+				printer.println("              other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			case STRING:
+			case BYTES:
+				printer.println("      if (!get" + variables.get("capitalized_name") + "()");
+				printer.println("          .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 

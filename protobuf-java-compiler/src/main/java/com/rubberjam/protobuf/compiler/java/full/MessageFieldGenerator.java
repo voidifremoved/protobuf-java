@@ -474,8 +474,19 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateEqualsCode(PrintWriter printer)
 	{
-		printer.println("      if (!get" + variables.get("capitalized_name") + "()");
-		printer.println("          .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      if (has" + variables.get("capitalized_name") + "() != other.has" + variables.get("capitalized_name") + "()) return false;");
+			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+			printer.println("        if (!get" + variables.get("capitalized_name") + "()");
+			printer.println("            .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+			printer.println("      }");
+		}
+		else
+		{
+			printer.println("      if (!get" + variables.get("capitalized_name") + "()");
+			printer.println("          .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+		}
 	}
 
 	@Override

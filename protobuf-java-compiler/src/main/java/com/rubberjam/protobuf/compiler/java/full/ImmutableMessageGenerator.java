@@ -143,21 +143,22 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		// bitField0_ for tracking field presence
 		printer.println("    private int bitField0_;");
-		printer.println();
 
-		// FIELD_NUMBER constants (before fields)
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		// Fields (each with its FIELD_NUMBER constant before it)
+		java.util.List<ImmutableFieldGenerator> generators = fieldGenerators.getFieldGenerators();
+		for (int i = 0; i < generators.size(); i++)
 		{
+			ImmutableFieldGenerator fieldGenerator = generators.get(i);
 			com.google.protobuf.Descriptors.FieldDescriptor field = fieldGenerator.getDescriptor();
+			
 			printer.println("    public static final int " + StringUtils.fieldConstantName(field) + " = " + field.getNumber() + ";");
+			fieldGenerator.generateMembers(printer);
+			if (i < generators.size() - 1)
+			{
+				printer.println();
+			}
 		}
 		printer.println();
-
-		// Fields
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
-		{
-			fieldGenerator.generateMembers(printer);
-		}
 
 		// isInitialized()
 		printer.println("    private byte memoizedIsInitialized = -1;");
