@@ -35,6 +35,22 @@ public class MessageBuilderGenerator
 		int totalBuilderPieces = (totalFields + 31) / 32;
 
 		// Builder Class
+		String identifier = getUniqueFileScopeIdentifier(descriptor);
+		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
+		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
+		
+		
+
+		printer.println("      /**");
+		printer.println("       * <pre>");
+		printer.println("       * ");
+		printer.println("       * </pre>");
+		printer.println("       *");
+		printer.println("       * Protobuf type {@code " + fileClassName + "." + className + "}");
+		printer.println("       */");
+
+		
 		printer.println("  public static final class Builder extends");
 		if (descriptor.isExtendable())
 		{
@@ -44,14 +60,12 @@ public class MessageBuilderGenerator
 		{
 			printer.println("      com.google.protobuf.GeneratedMessage.Builder<Builder> implements");
 		}
-		printer.println("      " + className + "OrBuilder {");
+
+		printer.println("      // @@protoc_insertion_point(builder_implements:ComprehensiveTest.EdgeCases.EdgeCaseFields)");
+		printer.println("      " + outerClassName + "." + className + "OrBuilder {");
 
 		printer.println("    public static final com.google.protobuf.Descriptors.Descriptor");
 		printer.println("        getDescriptor() {");
-		String identifier = getUniqueFileScopeIdentifier(descriptor);
-		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
-		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
-		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
 		printer.println("      return " + outerClassName + ".internal_" + identifier + "_descriptor;");
 		printer.println("    }");
 
