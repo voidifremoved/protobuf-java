@@ -412,7 +412,8 @@ public final class DocComment
 	{
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, " ");
+		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, "");
 		writeDebugString(out, field, options, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
@@ -470,7 +471,8 @@ public final class DocComment
 	{
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, " ");
+		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, "");
 		writeDebugString(out, field, options, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
@@ -514,17 +516,23 @@ public final class DocComment
 	public static void writeEnumDocComment(
 			PrintWriter out, EnumDescriptor enum_, Options options, boolean kdoc)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, enum_.getFile(), getPath(enum_), options, kdoc);
+		writeEnumDocComment(out, enum_, options, kdoc, "");
+	}
+
+	public static void writeEnumDocComment(
+			PrintWriter out, EnumDescriptor enum_, Options options, boolean kdoc, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, enum_.getFile(), getPath(enum_), options, kdoc, indentPrefix);
 		if (kdoc)
 		{
-			out.print(" * Protobuf enum `" + escapeKdoc(enum_.getFullName()) + "`\n");
+			out.print(indentPrefix + " * Protobuf enum `" + escapeKdoc(enum_.getFullName()) + "`\n");
 		}
 		else
 		{
-			out.print(" * Protobuf enum {@code " + escapeJavadoc(enum_.getFullName()) + "}\n");
+			out.print(indentPrefix + " * Protobuf enum {@code " + escapeJavadoc(enum_.getFullName()) + "}\n");
 		}
-		out.print(" */\n");
+		out.print(indentPrefix + " */\n");
 	}
 
 	public static void writeEnumValueDocComment(

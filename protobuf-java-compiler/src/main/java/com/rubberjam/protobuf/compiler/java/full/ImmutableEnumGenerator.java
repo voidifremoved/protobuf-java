@@ -51,8 +51,8 @@ public class ImmutableEnumGenerator extends EnumGenerator
 	@Override
 	public void generate(PrintWriter printer)
 	{
-		// Match C++ WriteEnumDocComment behavior - use DocComment utility
-		DocComment.writeEnumDocComment(printer, descriptor, context.getOptions(), false);
+		// Match C++ WriteEnumDocComment behavior - use DocComment utility with 2-space indent
+		DocComment.writeEnumDocComment(printer, descriptor, context.getOptions(), false, "  ");
 		
 		String classname = descriptor.getName();
 		String deprecation = descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
@@ -157,104 +157,104 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println();
 		printer.println();
 
-		// Standard methods
-		printer.println("  public final int getNumber() {");
+		// Standard methods (4-space indentation inside enum)
+		printer.println("    public final int getNumber() {");
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println("    if (this == UNRECOGNIZED) {");
-			printer.println("      throw new java.lang.IllegalArgumentException(");
-			printer.println("          \"Can't get the number of an unknown enum value.\");");
-			printer.println("    }");
+			printer.println("      if (this == UNRECOGNIZED) {");
+			printer.println("        throw new java.lang.IllegalArgumentException(");
+			printer.println("            \"Can't get the number of an unknown enum value.\");");
+			printer.println("      }");
 		}
-		printer.println("    return value;");
-		printer.println("  }");
+		printer.println("      return value;");
+		printer.println("    }");
 		printer.println();
 
-		printer.println("  /**");
-		printer.println("   * @param value The numeric wire value of the corresponding enum entry.");
-		printer.println("   * @return The enum associated with the given numeric wire value.");
-		printer.println("   * @deprecated Use {@link #forNumber(int)} instead.");
-		printer.println("   */");
-		printer.println("  @java.lang.Deprecated");
-		printer.println("  public static " + classname + " valueOf(int value) {");
-		printer.println("    return forNumber(value);");
-		printer.println("  }");
+		printer.println("    /**");
+		printer.println("     * @param value The numeric wire value of the corresponding enum entry.");
+		printer.println("     * @return The enum associated with the given numeric wire value.");
+		printer.println("     * @deprecated Use {@link #forNumber(int)} instead.");
+		printer.println("     */");
+		printer.println("    @java.lang.Deprecated");
+		printer.println("    public static " + classname + " valueOf(int value) {");
+		printer.println("      return forNumber(value);");
+		printer.println("    }");
 		printer.println();
 
-		printer.println("  /**");
-		printer.println("   * @param value The numeric wire value of the corresponding enum entry.");
-		printer.println("   * @return The enum associated with the given numeric wire value.");
-		printer.println("   */");
-		printer.println("  public static " + classname + " forNumber(int value) {");
-		printer.println("    switch (value) {");
+		printer.println("    /**");
+		printer.println("     * @param value The numeric wire value of the corresponding enum entry.");
+		printer.println("     * @return The enum associated with the given numeric wire value.");
+		printer.println("     */");
+		printer.println("    public static " + classname + " forNumber(int value) {");
+		printer.println("      switch (value) {");
 		for (EnumValueDescriptor value : canonicalValues)
 		{
-			printer.println("      case " + value.getNumber() + ": return " + value.getName() + ";");
+			printer.println("        case " + value.getNumber() + ": return " + value.getName() + ";");
 		}
-		printer.println("      default: return null;");
+		printer.println("        default: return null;");
+		printer.println("      }");
 		printer.println("    }");
-		printer.println("  }");
 		printer.println();
 
 		// Internal map
-		printer.println("  public static com.google.protobuf.Internal.EnumLiteMap<" + classname + ">");
-		printer.println("      internalGetValueMap() {");
-		printer.println("    return internalValueMap;");
-		printer.println("  }");
-		printer.println("  private static final com.google.protobuf.Internal.EnumLiteMap<");
-		printer.println("      " + classname + "> internalValueMap =");
-		printer.println("        new com.google.protobuf.Internal.EnumLiteMap<" + classname + ">() {");
-		printer.println("          public " + classname + " findValueByNumber(int number) {");
-		printer.println("            return " + classname + ".forNumber(number);");
-		printer.println("          }");
-		printer.println("        };");
+		printer.println("    public static com.google.protobuf.Internal.EnumLiteMap<" + classname + ">");
+		printer.println("        internalGetValueMap() {");
+		printer.println("      return internalValueMap;");
+		printer.println("    }");
+		printer.println("    private static final com.google.protobuf.Internal.EnumLiteMap<");
+		printer.println("        " + classname + "> internalValueMap =");
+		printer.println("          new com.google.protobuf.Internal.EnumLiteMap<" + classname + ">() {");
+		printer.println("            public " + classname + " findValueByNumber(int number) {");
+		printer.println("              return " + classname + ".forNumber(number);");
+		printer.println("            }");
+		printer.println("          };");
 		printer.println();
 
 		// Reflection
-		printer.println("  public final com.google.protobuf.Descriptors.EnumValueDescriptor");
-		printer.println("      getValueDescriptor() {");
+		printer.println("    public final com.google.protobuf.Descriptors.EnumValueDescriptor");
+		printer.println("        getValueDescriptor() {");
 		// Simplified logic for proto3 UNRECOGNIZED check
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println("    if (this == UNRECOGNIZED) {");
-			printer.println("      throw new java.lang.IllegalStateException(");
-			printer.println("          \"Can't get the descriptor of an unrecognized enum value.\");");
-			printer.println("    }");
+			printer.println("      if (this == UNRECOGNIZED) {");
+			printer.println("        throw new java.lang.IllegalStateException(");
+			printer.println("            \"Can't get the descriptor of an unrecognized enum value.\");");
+			printer.println("      }");
 		}
-		printer.println("    return getDescriptor().getValues().get(ordinal());");
-		printer.println("  }");
+		printer.println("      return getDescriptor().getValues().get(ordinal());");
+		printer.println("    }");
 
-		printer.println("  public final com.google.protobuf.Descriptors.EnumDescriptor");
-		printer.println("      getDescriptorForType() {");
-		printer.println("    return getDescriptor();");
-		printer.println("  }");
-		printer.println("  public static com.google.protobuf.Descriptors.EnumDescriptor");
-		printer.println("      getDescriptor() {");
+		printer.println("    public final com.google.protobuf.Descriptors.EnumDescriptor");
+		printer.println("        getDescriptorForType() {");
+		printer.println("      return getDescriptor();");
+		printer.println("    }");
+		printer.println("    public static com.google.protobuf.Descriptors.EnumDescriptor");
+		printer.println("        getDescriptor() {");
 		// TODO: Handle nested vs top-level descriptor access correctly
 		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
 		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
-		printer.println("    return " + outerClassName + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
-		printer.println("  }");
+		printer.println("      return " + outerClassName + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
+		printer.println("    }");
 		printer.println();
 
 		printer.println("    private static final " + classname + "[] VALUES = values();");
 		printer.println();
 
-		printer.println("  public static " + classname + " valueOf(");
-		printer.println("      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {");
-		printer.println("    if (desc.getType() != getDescriptor()) {");
-		printer.println("      throw new java.lang.IllegalArgumentException(");
-		printer.println("        \"EnumValueDescriptor is not for this type.\");");
-		printer.println("    }");
+		printer.println("    public static " + classname + " valueOf(");
+		printer.println("        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {");
+		printer.println("      if (desc.getType() != getDescriptor()) {");
+		printer.println("        throw new java.lang.IllegalArgumentException(");
+		printer.println("          \"EnumValueDescriptor is not for this type.\");");
+		printer.println("      }");
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println("    if (desc.getNumber() == -1) {");
-			printer.println("      return UNRECOGNIZED;");
-			printer.println("    }");
+			printer.println("      if (desc.getNumber() == -1) {");
+			printer.println("        return UNRECOGNIZED;");
+			printer.println("      }");
 		}
-		printer.println("    return VALUES[desc.getIndex()];");
-		printer.println("  }");
+		printer.println("      return VALUES[desc.getIndex()];");
+		printer.println("    }");
 		printer.println();
 
 		printer.println("    private final int value;");

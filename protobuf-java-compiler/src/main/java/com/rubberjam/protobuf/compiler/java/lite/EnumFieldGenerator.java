@@ -9,11 +9,13 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 {
 	private final FieldDescriptor descriptor;
 	private final Context context;
+	private final int fieldNumber;
 
 	public EnumFieldGenerator(FieldDescriptor descriptor, Context context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
 	}
 
 	@Override
@@ -32,5 +34,11 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	public void generateInitializationCode(PrintWriter printer)
 	{
 		// Stub
+	}
+
+	@Override
+	public int getFieldNumber()
+	{
+		return fieldNumber;
 	}
 }

@@ -177,7 +177,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
 		printer.println("                        throws java.io.IOException {");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
 		{
 			fieldGenerator.generateWriteToCode(printer);
 		}
@@ -192,7 +192,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      if (size != -1) return size;");
 		printer.println();
 		printer.println("      size = 0;");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
 		{
 			fieldGenerator.generateSerializedSizeCode(printer);
 		}
@@ -315,15 +315,19 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		// Builder methods
+		
+		printer.println("    @java.lang.Override");
+		printer.println("    public Builder newBuilderForType() { return newBuilder(); }");
+		
 		printer.println("    public static Builder newBuilder() {");
 		printer.println("      return DEFAULT_INSTANCE.toBuilder();");
 		printer.println("    }");
-		printer.println();
+		
 
-		printer.println("    public static Builder newBuilder(" + className + " prototype) {");
+		printer.println("    public static Builder newBuilder(" + outerClassName + "." + className + " prototype) {");
 		printer.println("      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);");
 		printer.println("    }");
-		printer.println();
+
 
 		printer.println("    @java.lang.Override");
 		printer.println("    public Builder toBuilder() {");
@@ -333,16 +337,19 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		printer.println("    @java.lang.Override");
-		printer.println("    public Builder newBuilderForType() {");
-		printer.println("      return newBuilder();");
-		printer.println("    }");
-		printer.println();
-
-		printer.println("    @java.lang.Override");
-		printer.println("    protected Builder newBuilderForType(com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
+		printer.println("    protected Builder newBuilderForType(");
+		printer.println("         com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
 		printer.println("      Builder builder = new Builder(parent);");
 		printer.println("      return builder;");
 		printer.println("    }");
+		printer.println();
+	
+		
+		printer.println("    @java.lang.Override");
+		printer.println("    public Builder newBuilderForType() {");
+		printer.println("      return newBuilder();");
+		printer.println("    }");
+
 		printer.println();
 
 		messageBuilderGenerator.generate(printer);

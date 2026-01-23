@@ -17,6 +17,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	private final int builderBitIndex;
 	private final Context context;
 	private final Map<String, String> variables;
+	private final int fieldNumber;
 
 	public EnumFieldGenerator(
 			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
@@ -25,6 +26,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		this.messageBitIndex = messageBitIndex;
 		this.builderBitIndex = builderBitIndex;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
 		this.variables = new HashMap<>();
 		setEnumVariables(
 				descriptor,
@@ -34,6 +36,16 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 				variables,
 				context);
 	}
+	
+	
+
+	@Override
+	public int getFieldNumber()
+	{
+		return this.fieldNumber;
+	}
+
+
 
 	@Override
 	public FieldDescriptor getDescriptor()

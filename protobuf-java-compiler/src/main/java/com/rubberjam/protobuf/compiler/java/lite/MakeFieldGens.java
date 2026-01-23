@@ -52,6 +52,12 @@ public final class MakeFieldGens
 				public void generateInitializationCode(java.io.PrintWriter printer)
 				{
 				}
+
+				@Override
+				public int getFieldNumber()
+				{
+					return field.getNumber();
+				}
 			};
 		}
 

@@ -4,14 +4,14 @@ This document tracks the remaining differences between our Java protobuf compile
 
 ## 1. Enum Indentation Issues
 
-### 1.1 Enum JavaDoc Comment Indentation
-- **Location**: `FileGenerator.java` - enum generation
+### 1.1 Enum JavaDoc Comment Indentation ✅ FIXED
+- **Location**: `ImmutableEnumGenerator.java` - enum generation
 - **Issue**: Enum JavaDoc comment should be indented with 2 spaces (at enum level), but currently has 0 spaces
 - **Expected**: `  /**` (2 spaces)
 - **Actual**: `/**` (0 spaces)
-- **Fix**: Ensure enum JavaDoc is indented with 2 spaces in `FileGenerator.java`
+- **Fix**: ✅ Added `indentPrefix` parameter to `writeEnumDocComment` and pass `"  "` when calling from `ImmutableEnumGenerator.java`
 
-### 1.2 Enum Method Indentation
+### 1.2 Enum Method Indentation ✅ FIXED
 - **Location**: `ImmutableEnumGenerator.java` - all enum methods
 - **Issue**: All enum methods should be indented with 4 spaces (inside enum), but currently have 2 spaces
 - **Affected Methods**:
@@ -25,9 +25,9 @@ This document tracks the remaining differences between our Java protobuf compile
   - `valueOf(EnumValueDescriptor desc)`
 - **Expected**: `    public final int getNumber() {` (4 spaces)
 - **Actual**: `  public final int getNumber() {` (2 spaces)
-- **Fix**: Change indentation from 2 spaces to 4 spaces for all enum methods in `ImmutableEnumGenerator.java`
+- **Fix**: ✅ Changed indentation from 2 spaces to 4 spaces for all enum methods in `ImmutableEnumGenerator.java`
 
-### 1.3 Enum Field Indentation
+### 1.3 Enum Field Indentation ✅ VERIFIED
 - **Location**: `ImmutableEnumGenerator.java` - `VALUES` field and private fields
 - **Issue**: Fields should be indented with 4 spaces (inside enum)
 - **Affected Fields**:
@@ -35,18 +35,17 @@ This document tracks the remaining differences between our Java protobuf compile
   - `private final int value;`
   - `private TestEnum(int value)` constructor
 - **Expected**: `    private static final TestEnum[] VALUES = values();` (4 spaces)
-- **Actual**: Currently has 4 spaces (may be correct, verify)
-- **Fix**: Ensure all enum fields and constructors use 4-space indentation
+- **Actual**: ✅ Already has 4 spaces (correct)
 
 ## 2. Interface JavaDoc Comment Indentation
 
-### 2.1 Field Accessor JavaDoc Indentation
-- **Location**: `DocComment.java` or `ImmutableMessageGenerator.java` - interface field accessor JavaDoc
+### 2.1 Field Accessor JavaDoc Indentation ✅ FIXED
+- **Location**: `DocComment.java` - interface field accessor JavaDoc
 - **Issue**: JavaDoc comments for fields in the interface have incorrect indentation for the `*` lines
 - **Expected**: `     * <pre>` (5 spaces: 4 for interface level + 1 for `*`)
 - **Actual**: `      * <pre>` (6 spaces: 5 for interface level + 1 for `*`)
 - **Affected**: All field accessor JavaDoc comments in the `OrBuilder` interface
-- **Fix**: Adjust indentation in `DocComment.writeFieldAccessorDocComment` or the calling code to use correct indent prefix
+- **Fix**: ✅ Changed indent prefix from `" "` to `""` in `writeFieldAccessorDocComment` and `writeFieldStringBytesAccessorDocComment` since `Helpers.writeDocComment` already handles indentation
 
 ## 3. Whitespace and Blank Lines
 

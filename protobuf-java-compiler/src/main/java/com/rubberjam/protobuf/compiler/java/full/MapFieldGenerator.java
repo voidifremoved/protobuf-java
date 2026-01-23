@@ -17,6 +17,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	private final int messageBitIndex;
 	private final int builderBitIndex;
 	private final Context context;
+	private final int fieldNumber;
 	private final Map<String, String> variables;
 
 	public MapFieldGenerator(
@@ -26,6 +27,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		this.messageBitIndex = messageBitIndex;
 		this.builderBitIndex = builderBitIndex;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
 		this.variables = new HashMap<>();
 		setMessageVariables(
 				descriptor,
@@ -36,6 +38,12 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public int getFieldNumber()
+	{
+		return fieldNumber;
+	}
+	
 	@Override
 	public FieldDescriptor getDescriptor()
 	{

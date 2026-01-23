@@ -10,11 +10,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 {
 	private final FieldDescriptor descriptor;
 	private final Context context;
+	private final int fieldNumber;
 
 	public PrimitiveFieldGenerator(FieldDescriptor descriptor, Context context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
+	}
+	
+	@Override
+	public int getFieldNumber()
+	{
+		return fieldNumber;
 	}
 
 	@Override

@@ -19,6 +19,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	private final int messageBitIndex;
 	private final int builderBitIndex;
 	private final Context context;
+	private final int fieldNumber;
 	private final Map<String, String> variables;
 
 	public MessageFieldGenerator(
@@ -28,6 +29,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		this.messageBitIndex = messageBitIndex;
 		this.builderBitIndex = builderBitIndex;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
 		this.variables = new HashMap<>();
 		setMessageVariables(
 				descriptor,
@@ -38,6 +40,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public int getFieldNumber()
+	{
+		return this.fieldNumber;
+	}
+	
 	@Override
 	public FieldDescriptor getDescriptor()
 	{
@@ -492,8 +500,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		printer.println("      hash = (37 * hash) + " + variables.get("constant_name") + ";");
-		printer.println("      hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
+		printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
+		printer.println("      }");
 	}
 
 	@Override
@@ -518,6 +528,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		private final int builderBitIndex;
 		private final Context context;
 		private final Map<String, String> variables;
+		private final int fieldNumber;
 
 		public RepeatedMessageFieldGenerator(
 				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
@@ -526,6 +537,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			this.messageBitIndex = messageBitIndex;
 			this.builderBitIndex = builderBitIndex;
 			this.context = context;
+			this.fieldNumber = descriptor.getNumber();
 			this.variables = new HashMap<>();
 			setMessageVariables(
 					descriptor,
@@ -535,6 +547,14 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					variables,
 					context);
 		}
+		
+
+		@Override
+		public int getFieldNumber()
+		{
+			return this.fieldNumber;
+		}
+
 
 		@Override
 		public FieldDescriptor getDescriptor()
@@ -1210,8 +1230,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateHashCode(PrintWriter printer)
 		{
-			printer.println("      hash = (37 * hash) + " + variables.get("constant_name") + ";");
-			printer.println("      hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
+			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+			printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+			printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
+			printer.println("      }");	
 		}
 
 		@Override

@@ -22,6 +22,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	private final int builderBitIndex;
 	private final Context context;
 	private final Map<String, String> variables;
+	private final int fieldNumber;
 
 	public PrimitiveFieldGenerator(
 			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
@@ -30,6 +31,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		this.messageBitIndex = messageBitIndex;
 		this.builderBitIndex = builderBitIndex;
 		this.context = context;
+		this.fieldNumber = descriptor.getNumber();
 		this.variables = new HashMap<>();
 		setPrimitiveVariables(
 				descriptor,
@@ -40,6 +42,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public int getFieldNumber()
+	{
+		return this.fieldNumber;
+	}
+	
 	@Override
 	public FieldDescriptor getDescriptor()
 	{
@@ -473,35 +481,37 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		printer.println("      hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
 		switch (StringUtils.getJavaType(descriptor))
 		{
 		case INT:
-			printer.println("      hash = (53 * hash) + get" + variables.get("capitalized_name") + "();");
+			printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "();");
 			break;
 		case LONG:
-			printer.println("      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
-			printer.println("          get" + variables.get("capitalized_name") + "());");
+			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println("            get" + variables.get("capitalized_name") + "());");
 			break;
 		case BOOLEAN:
-			printer.println("      hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(");
-			printer.println("          get" + variables.get("capitalized_name") + "());");
+			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(");
+			printer.println("            get" + variables.get("capitalized_name") + "());");
 			break;
 		case FLOAT:
-			printer.println("      hash = (53 * hash) + java.lang.Float.floatToIntBits(");
-			printer.println("          get" + variables.get("capitalized_name") + "());");
+			printer.println("        hash = (53 * hash) + java.lang.Float.floatToIntBits(");
+			printer.println("            get" + variables.get("capitalized_name") + "());");
 			break;
 		case DOUBLE:
-			printer.println("      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
-			printer.println("          java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "()));");
+			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println("            java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "()));");
 			break;
 		case STRING:
 		case BYTES:
-			printer.println("      hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
+			printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
 			break;
 		default:
 			break;
 		}
+		printer.println("      }");
 	}
 
 	@Override
@@ -526,6 +536,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		private final int builderBitIndex;
 		private final Context context;
 		private final Map<String, String> variables;
+		private final int fieldNumber;
 
 		public RepeatedPrimitiveFieldGenerator(
 				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
@@ -534,6 +545,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			this.messageBitIndex = messageBitIndex;
 			this.builderBitIndex = builderBitIndex;
 			this.context = context;
+			this.fieldNumber = descriptor.getNumber();
 			this.variables = new HashMap<>();
 			setPrimitiveVariables(
 					descriptor,
@@ -543,6 +555,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 					variables,
 					context);
 		}
+		
+
+		@Override
+		public int getFieldNumber()
+		{
+			return this.fieldNumber;
+		}
+
 
 		@Override
 		public FieldDescriptor getDescriptor()
