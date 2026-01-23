@@ -97,8 +97,10 @@ public class FileGenerator
 		printer.println("      \"" + className + "\");");
 		printer.println("  }");
 
+		// Match C++ format: method signature at 2 spaces, continuation at 6 spaces (4 more), body at 6 spaces, closing brace at 2 spaces
 		printer.println("  public static void registerAllExtensions(");
 		printer.println("      com.google.protobuf.ExtensionRegistryLite registry) {");
+		// Body is indented 4 more spaces (6 total from class start)
 		for (ExtensionGenerator generator : extensionGenerators)
 		{
 			generator.generateRegistrationCode(printer);
@@ -112,6 +114,7 @@ public class FileGenerator
 
 		if (!context.enforceLite())
 		{
+			// Match C++ format: method signature at 2 spaces, continuation at 6 spaces, body at 6 spaces, closing brace at 2 spaces
 			printer.println("  public static void registerAllExtensions(");
 			printer.println("      com.google.protobuf.ExtensionRegistry registry) {");
 			printer.println("    registerAllExtensions(");

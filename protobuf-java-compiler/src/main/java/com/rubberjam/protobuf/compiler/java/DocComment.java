@@ -446,7 +446,8 @@ public final class DocComment
 	{
 		out.print("/**\n");
 		findLocationAndWriteComment(out, value.getFile(), getPath(value), options, false);
-		out.print(" * <code>" + escapeJavadoc(firstLineOf(value.toProto().toString())) + "</code>\n");
+		// Match C++ format: <code>NAME = NUMBER;</code>
+		out.print(" * <code>" + escapeJavadoc(value.getName() + " = " + value.getNumber() + ";") + "</code>\n");
 		out.print(" */\n");
 	}
 

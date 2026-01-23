@@ -102,6 +102,13 @@ public final class ClassNameResolver
 
 	public String getImmutableClassName(FileDescriptor file)
 	{
-		return getFileClassName(file, true);
+		// Match C++ GetImmutableClassName(FileDescriptor*) - returns fully qualified name
+		String packageName = getFileJavaPackage(file);
+		String className = getFileClassName(file, true);
+		if (packageName.isEmpty())
+		{
+			return className;
+		}
+		return packageName + "." + className;
 	}
 }

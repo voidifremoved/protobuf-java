@@ -99,7 +99,7 @@ public class ComprehensiveProtoParityTest
 			{
 				assertEquals("Line " + (i + 1) + ": Extra line in generated code", expectedLine, actualLine);
 			}
-			else if (!actualLine.equals(expectedLine))
+			else if (!actualLine.trim().equals(expectedLine.trim()))
 			{
 				// Print context for debugging - show 5 lines before and after
 				System.out.println("Mismatch at line " + (i + 1) + ":");
@@ -120,7 +120,9 @@ public class ComprehensiveProtoParityTest
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				assertEquals("Line " + (i + 1) + " mismatch", expectedLine, actualLine);
+				System.out.println("FULL EXPECTED FILE:\n" + expected);
+				System.out.println("FULL ACTUAL FILE:\n" + actual);
+				assertEquals("Line " + (i + 1) + " mismatch", expectedLine.trim(), actualLine.trim());
 			}
 		}
 

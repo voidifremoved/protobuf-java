@@ -3,6 +3,7 @@ package com.rubberjam.protobuf.compiler.java.full;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.EnumGenerator;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
@@ -50,10 +51,8 @@ public class ImmutableEnumGenerator extends EnumGenerator
 	@Override
 	public void generate(PrintWriter printer)
 	{
-		// Match C++ WriteEnumDocComment behavior
-		printer.println("  /**");
-		printer.println("   * Protobuf enum {@code " + descriptor.getFullName() + "}");
-		printer.println("   */");
+		// Match C++ WriteEnumDocComment behavior - use DocComment utility
+		DocComment.writeEnumDocComment(printer, descriptor, context.getOptions(), false);
 		
 		String classname = descriptor.getName();
 		String deprecation = descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
@@ -74,12 +73,8 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		{
 			EnumValueDescriptor value = canonicalValues.get(i);
 			
-			// Match C++ WriteEnumValueDocComment behavior
-			printer.println("    /**");
-			// Generate the enum value definition comment: <code>NAME = NUMBER;</code>
-			String valueDef = value.getName() + " = " + value.getNumber() + ";";
-			printer.println("     * <code>" + valueDef + "</code>");
-			printer.println("     */");
+			// Match C++ WriteEnumValueDocComment behavior - use DocComment utility
+			DocComment.writeEnumValueDocComment(printer, value, context.getOptions());
 			
 			// Add deprecation annotation if needed
 			if (value.getOptions().getDeprecated())
@@ -137,23 +132,21 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		// Aliases
 		for (Alias alias : aliases)
 		{
-			// Match C++ WriteEnumValueDocComment for aliases
-			printer.println("    /**");
-			String aliasDef = alias.value.getName() + " = " + alias.value.getNumber() + ";";
-			printer.println("     * <code>" + aliasDef + "</code>");
-			printer.println("     */");
+			// Match C++ WriteEnumValueDocComment for aliases - use DocComment utility
+			DocComment.writeEnumValueDocComment(printer, alias.value, context.getOptions());
 			printer.println("    public static final " + classname + " " + alias.value.getName() + " = "
 					+ alias.canonicalValue.getName() + ";");
+		}
+		if (!aliases.isEmpty())
+		{
+			printer.println();
 		}
 
 		// Value constants
 		for (EnumValueDescriptor value : descriptor.getValues())
 		{
-			// Match C++ WriteEnumValueDocComment for value constants
-			printer.println("    /**");
-			String valueDef = value.getName() + " = " + value.getNumber() + ";";
-			printer.println("     * <code>" + valueDef + "</code>");
-			printer.println("     */");
+			// Match C++ WriteEnumValueDocComment for value constants - use DocComment utility
+			DocComment.writeEnumValueDocComment(printer, value, context.getOptions());
 			String deprecationComment = value.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
 			printer.println("    " + deprecationComment + "public static final int " + value.getName() + "_VALUE = " + value.getNumber() + ";");
 		}

@@ -26,7 +26,8 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 		}
 		else
 		{
-			this.scope = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+			// Match C++ behavior: use GetImmutableClassName(FileDescriptor*) for file-level extensions
+			this.scope = context.getNameResolver().getImmutableClassName(descriptor.getFile());
 		}
 	}
 
@@ -79,8 +80,9 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 	@Override
 	public int generateRegistrationCode(PrintWriter printer)
 	{
+		// Match C++ format: method signature at 2 spaces, continuation at 6 spaces (4 more), body at 6 spaces
 		printer.println(
-				"    registry.add(" + scope + "." + StringUtils.underscoresToCamelCase(descriptor.getName(), false) + ");");
+				"      registry.add(" + scope + "." + StringUtils.underscoresToCamelCase(descriptor.getName(), false) + ");");
 		return 7;
 	}
 
