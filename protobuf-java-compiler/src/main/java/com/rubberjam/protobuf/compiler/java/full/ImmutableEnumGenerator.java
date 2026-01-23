@@ -50,9 +50,15 @@ public class ImmutableEnumGenerator extends EnumGenerator
 	@Override
 	public void generate(PrintWriter printer)
 	{
+		// Match C++ WriteEnumDocComment behavior
+		printer.println("  /**");
+		printer.println("   * Protobuf enum {@code " + descriptor.getFullName() + "}");
+		printer.println("   */");
+		
 		String classname = descriptor.getName();
-		printer.println("public enum " + classname);
-		printer.println("    implements com.google.protobuf.ProtocolMessageEnum {");
+		String deprecation = descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
+		printer.println("  " + deprecation + "public enum " + classname);
+		printer.println("      implements com.google.protobuf.ProtocolMessageEnum {");
 
 		boolean ordinalIsIndex = true;
 		for (int i = 0; i < canonicalValues.size(); i++)
@@ -67,8 +73,22 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		for (int i = 0; i < canonicalValues.size(); i++)
 		{
 			EnumValueDescriptor value = canonicalValues.get(i);
-			if (i > 0) printer.println(",");
-			printer.print("  " + value.getName() + "(");
+			
+			// Match C++ WriteEnumValueDocComment behavior
+			printer.println("    /**");
+			// Generate the enum value definition comment: <code>NAME = NUMBER;</code>
+			String valueDef = value.getName() + " = " + value.getNumber() + ";";
+			printer.println("     * <code>" + valueDef + "</code>");
+			printer.println("     */");
+			
+			// Add deprecation annotation if needed
+			if (value.getOptions().getDeprecated())
+			{
+				printer.println("    @java.lang.Deprecated");
+			}
+			
+			// Generate enum value with proper indentation (4 spaces)
+			printer.print("    " + value.getName() + "(");
 			if (ordinalIsIndex)
 			{
 				printer.print(value.getNumber());
@@ -77,13 +97,17 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			{
 				printer.print(value.getIndex() + ", " + value.getNumber());
 			}
-			printer.print(")");
+			printer.println("),");
 		}
 
+		// Add UNRECOGNIZED for proto3/open enums (before semicolon)
+		// Match C++ behavior: UNRECOGNIZED comes before semicolon
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println(",");
-			printer.print("  UNRECOGNIZED(");
+			printer.println("    /**");
+			printer.println("     * <code>UNRECOGNIZED = -1;</code>");
+			printer.println("     */");
+			printer.print("    UNRECOGNIZED(");
 			if (ordinalIsIndex)
 			{
 				printer.print("-1");
@@ -92,23 +116,46 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			{
 				printer.print("-1, -1");
 			}
-			printer.print(")");
+			printer.println("),");
 		}
 
-		printer.println(";");
+		// Semicolon on its own line (match C++ format)
+		printer.println("    ;");
 		printer.println();
+
+		// Static block with version validator (match C++ order)
+		printer.println("    static {");
+		printer.println("      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(");
+		printer.println("        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,");
+		printer.println("        /* major= */ 4,");
+		printer.println("        /* minor= */ 33,");
+		printer.println("        /* patch= */ 4,");
+		printer.println("        /* suffix= */ \"\",");
+		printer.println("        \"" + classname + "\");");
+		printer.println("    }");
 
 		// Aliases
 		for (Alias alias : aliases)
 		{
-			printer.println("  public static final " + classname + " " + alias.value.getName() + " = "
+			// Match C++ WriteEnumValueDocComment for aliases
+			printer.println("    /**");
+			String aliasDef = alias.value.getName() + " = " + alias.value.getNumber() + ";";
+			printer.println("     * <code>" + aliasDef + "</code>");
+			printer.println("     */");
+			printer.println("    public static final " + classname + " " + alias.value.getName() + " = "
 					+ alias.canonicalValue.getName() + ";");
 		}
 
 		// Value constants
 		for (EnumValueDescriptor value : descriptor.getValues())
 		{
-			printer.println("  public static final int " + value.getName() + "_VALUE = " + value.getNumber() + ";");
+			// Match C++ WriteEnumValueDocComment for value constants
+			printer.println("    /**");
+			String valueDef = value.getName() + " = " + value.getNumber() + ";";
+			printer.println("     * <code>" + valueDef + "</code>");
+			printer.println("     */");
+			String deprecationComment = value.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
+			printer.println("    " + deprecationComment + "public static final int " + value.getName() + "_VALUE = " + value.getNumber() + ";");
 		}
 		printer.println();
 

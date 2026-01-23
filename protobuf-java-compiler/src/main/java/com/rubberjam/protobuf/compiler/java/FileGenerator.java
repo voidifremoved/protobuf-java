@@ -21,6 +21,7 @@ public class FileGenerator
 
 	private final List<MessageGenerator> messageGenerators = new ArrayList<>();
 	private final List<ExtensionGenerator> extensionGenerators = new ArrayList<>();
+	private final List<EnumGenerator> enumGenerators = new ArrayList<>();
 
 	public FileGenerator(FileDescriptor file, Options options, boolean immutableApi)
 	{
@@ -51,6 +52,10 @@ public class FileGenerator
 		{
 			extensionGenerators.add(generatorFactory.newExtensionGenerator(extension));
 		}
+		for (com.google.protobuf.Descriptors.EnumDescriptor enumType : file.getEnumTypes())
+		{
+			enumGenerators.add(generatorFactory.newEnumGenerator(enumType));
+		}
 	}
 
 	public boolean validate(Consumer<String> error)
@@ -75,7 +80,12 @@ public class FileGenerator
 		}
 
 		printer.println("@com.google.protobuf.Generated");
-		printer.println("public final class " + className + " {");
+		// Match C++ behavior: extend GeneratedFile when HasDescriptorMethods returns true
+		// HasDescriptorMethods(file, enforceLite) returns !enforceLite
+		String extendsClause = !context.enforceLite() 
+			? " extends com.google.protobuf.GeneratedFile " 
+			: "";
+		printer.println("public final class " + className + extendsClause + "{");
 		printer.println("  private " + className + "() {}");
 		printer.println("  static {");
 		printer.println("    com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(");
@@ -84,7 +94,7 @@ public class FileGenerator
 		printer.println("      /* minor= */ 33,");
 		printer.println("      /* patch= */ 4,");
 		printer.println("      /* suffix= */ \"\",");
-		printer.println("      " + className + ".class.getName());");
+		printer.println("      \"" + className + "\");");
 		printer.println("  }");
 
 		printer.println("  public static void registerAllExtensions(");
@@ -100,27 +110,51 @@ public class FileGenerator
 		printer.println("  }");
 		printer.println();
 
-		printer.println("  public static void registerAllExtensions(");
-		printer.println("      com.google.protobuf.ExtensionRegistry registry) {");
-		printer.println("    registerAllExtensions(");
-		printer.println("        (com.google.protobuf.ExtensionRegistryLite) registry);");
-		printer.println("  }");
+		if (!context.enforceLite())
+		{
+			printer.println("  public static void registerAllExtensions(");
+			printer.println("      com.google.protobuf.ExtensionRegistry registry) {");
+			printer.println("    registerAllExtensions(");
+			printer.println("        (com.google.protobuf.ExtensionRegistryLite) registry);");
+			printer.println("  }");
+		}
 
+		// Match C++ order: enums first, then messages, then extensions, then static variables
+		// Generate enums (nested in file class) - only top-level enums
+		for (int i = 0; i < file.getEnumTypes().size(); i++)
+		{
+			com.google.protobuf.Descriptors.EnumDescriptor enumType = file.getEnumTypes().get(i);
+			// Check if enum is nested in file class (not nested in a message)
+			// For now, check if containingType is null (top-level enum)
+			if (enumType.getContainingType() == null)
+			{
+				enumGenerators.get(i).generate(printer);
+			}
+		}
+		
+		// Generate messages (nested in file class) - only top-level messages
+		for (int i = 0; i < file.getMessageTypes().size(); i++)
+		{
+			com.google.protobuf.Descriptors.Descriptor messageType = file.getMessageTypes().get(i);
+			// Check if message is nested in file class (not nested in another message)
+			if (messageType.getContainingType() == null)
+			{
+				messageGenerators.get(i).generateInterface(printer);
+				messageGenerators.get(i).generate(printer);
+			}
+		}
+		
+		// Generate extensions (must be in outer class)
+		for (ExtensionGenerator generator : extensionGenerators)
+		{
+			generator.generate(printer);
+		}
+		
+		// Generate static variables after messages/extensions (match C++ order)
 		int[] bytecodeEstimate = new int[] { 0 };
 		for (MessageGenerator generator : messageGenerators)
 		{
 			generator.generateStaticVariables(printer, bytecodeEstimate);
-		}
-
-		// ... call generators
-		for (MessageGenerator generator : messageGenerators)
-		{
-			generator.generateInterface(printer);
-			generator.generate(printer);
-		}
-		for (ExtensionGenerator generator : extensionGenerators)
-		{
-			generator.generate(printer);
 		}
 
 		// Descriptor Initialization

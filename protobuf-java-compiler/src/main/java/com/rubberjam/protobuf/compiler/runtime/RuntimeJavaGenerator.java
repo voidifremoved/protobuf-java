@@ -175,7 +175,22 @@ public final class RuntimeJavaGenerator
 		FileDescriptorProto proto = protos.get(fileName);
 		if (proto == null)
 		{
-			throw new CompilationException("Missing dependency: " + fileName);
+			// Check if this is a well-known type
+			if (fileName.startsWith("google/protobuf/"))
+			{
+				FileDescriptor wellKnownDescriptor = getWellKnownTypeDescriptor(fileName);
+				if (wellKnownDescriptor != null)
+				{
+					// Convert FileDescriptor to FileDescriptorProto and add to map
+					proto = wellKnownDescriptor.toProto();
+					protos.put(fileName, proto);
+				}
+			}
+			
+			if (proto == null)
+			{
+				throw new CompilationException("Missing dependency: " + fileName);
+			}
 		}
 
 		FileDescriptor[] dependencies = new FileDescriptor[proto.getDependencyCount()];
@@ -195,6 +210,53 @@ public final class RuntimeJavaGenerator
 		catch (com.google.protobuf.Descriptors.DescriptorValidationException e)
 		{
 			throw new CompilationException("Error building file descriptor for " + fileName, e);
+		}
+	}
+
+	/**
+	 * Gets the FileDescriptor for a well-known type from the protobuf runtime.
+	 * Returns null if the type is not a well-known type or not found.
+	 */
+	private static FileDescriptor getWellKnownTypeDescriptor(String fileName)
+	{
+		try
+		{
+			// Map well-known type file names to their corresponding message classes
+			// and get their FileDescriptors
+			switch (fileName)
+			{
+				case "google/protobuf/any.proto":
+					return com.google.protobuf.Any.getDescriptor().getFile();
+				case "google/protobuf/timestamp.proto":
+					return com.google.protobuf.Timestamp.getDescriptor().getFile();
+				case "google/protobuf/duration.proto":
+					return com.google.protobuf.Duration.getDescriptor().getFile();
+				case "google/protobuf/struct.proto":
+					return com.google.protobuf.Struct.getDescriptor().getFile();
+				case "google/protobuf/empty.proto":
+					return com.google.protobuf.Empty.getDescriptor().getFile();
+				case "google/protobuf/field_mask.proto":
+					return com.google.protobuf.FieldMask.getDescriptor().getFile();
+				case "google/protobuf/wrappers.proto":
+					return com.google.protobuf.BoolValue.getDescriptor().getFile();
+				case "google/protobuf/api.proto":
+					return com.google.protobuf.Api.getDescriptor().getFile();
+				case "google/protobuf/type.proto":
+					return com.google.protobuf.Type.getDescriptor().getFile();
+				case "google/protobuf/source_context.proto":
+					return com.google.protobuf.SourceContext.getDescriptor().getFile();
+				case "google/protobuf/descriptor.proto":
+					// This is special - it's the descriptor proto itself
+					// Get it via FileDescriptorProto which is defined in descriptor.proto
+					return com.google.protobuf.DescriptorProtos.FileDescriptorProto.getDescriptor().getFile();
+				default:
+					return null;
+			}
+		}
+		catch (Exception e)
+		{
+			// If we can't get the descriptor, return null
+			return null;
 		}
 	}
 
