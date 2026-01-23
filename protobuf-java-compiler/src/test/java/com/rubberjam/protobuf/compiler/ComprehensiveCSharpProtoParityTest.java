@@ -195,9 +195,10 @@ public class ComprehensiveCSharpProtoParityTest
 		com.rubberjam.protobuf.compiler.Tokenizer tokenizer =
 			new com.rubberjam.protobuf.compiler.Tokenizer(
 				new java.io.StringReader(content), errorCollector);
+		com.rubberjam.protobuf.compiler.SourceLocationTable sourceLocationTable = new com.rubberjam.protobuf.compiler.SourceLocationTable();
 		com.rubberjam.protobuf.compiler.Parser parser =
 			new com.rubberjam.protobuf.compiler.Parser(
-				errorCollector, new com.rubberjam.protobuf.compiler.SourceLocationTable());
+				errorCollector, sourceLocationTable);
 
 		boolean parseSuccess = parser.parse(tokenizer, fileBuilder);
 
@@ -215,6 +216,10 @@ public class ComprehensiveCSharpProtoParityTest
 			throw new com.rubberjam.protobuf.compiler.CompilationException(errorMessage);
 		}
 
+		fileBuilder.setSourceCodeInfo(com.google.protobuf.DescriptorProtos.SourceCodeInfo.newBuilder().addAllLocation(sourceLocationTable.getLocations()));
+        if (sourceLocationTable.getLocations().isEmpty()) {
+            throw new RuntimeException("SourceLocationTable is empty! content length: " + content.length());
+        }
 		return fileBuilder.build();
 	}
 
@@ -251,7 +256,7 @@ public class ComprehensiveCSharpProtoParityTest
 
 		try
 		{
-			codeGenerator.generate(fileDescriptor, parameter, context);
+			codeGenerator.generate(fileDescriptor, rootProto, parameter, context);
 		}
 		catch (com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException e)
 		{

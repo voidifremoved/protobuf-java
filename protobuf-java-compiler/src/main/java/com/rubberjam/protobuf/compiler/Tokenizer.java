@@ -41,6 +41,7 @@ public class Tokenizer
 		public String text;
 		public int line;
 		public int column;
+		public String docComment;
 
 		@Override
 		public String toString()
@@ -50,6 +51,7 @@ public class Tokenizer
 					", text='" + text + '\'' +
 					", line=" + line +
 					", column=" + column +
+					", docComment='" + docComment + '\'' +
 					'}';
 		}
 	}
@@ -108,49 +110,81 @@ public class Tokenizer
 	{
 		previousToken = currentToken;
 		currentToken = new Token();
-		currentToken.line = line;
-		currentToken.column = column;
 
-		// Skip whitespace.
-		while (Character.isWhitespace(currentChar))
+		// Consume whitespace and comments
+		StringBuilder comments = new StringBuilder();
+		while (true)
 		{
-			nextChar();
-		}
-
-		// Skip comments.
-		if (currentChar == '/')
-		{
-			nextChar();
-			if (currentChar == '/')
+			if (Character.isWhitespace(currentChar))
 			{
-				// Line comment.
-				while (currentChar != '\n' && !atEnd)
-				{
-					nextChar();
-				}
-				return next();
+				nextChar();
 			}
-			else if (currentChar == '*')
+			else if (currentChar == '/')
 			{
-				// Block comment.
-				while (!atEnd)
+				nextChar();
+				if (currentChar == '/')
 				{
-					if (currentChar == '*')
+					// Line comment.
+					StringBuilder lineComment = new StringBuilder();
+					nextChar(); // consume second '/'
+					if (currentChar == ' ') nextChar(); // optional space
+					while (currentChar != '\n' && !atEnd)
 					{
+						lineComment.append(currentChar);
 						nextChar();
-						if (currentChar == '/')
+					}
+					if (comments.length() > 0) comments.append("\n");
+					comments.append(lineComment);
+				}
+				else if (currentChar == '*')
+				{
+					// Block comment.
+					StringBuilder blockComment = new StringBuilder();
+					nextChar(); // consume '*'
+					while (!atEnd)
+					{
+						if (currentChar == '*')
 						{
 							nextChar();
-							break;
+							if (currentChar == '/')
+							{
+								nextChar();
+								break;
+							}
+							blockComment.append('*');
+						}
+						else
+						{
+							blockComment.append(currentChar);
+							nextChar();
 						}
 					}
-					else
-					{
-						nextChar();
-					}
+					if (comments.length() > 0) comments.append("\n");
+					comments.append(blockComment.toString().trim());
 				}
-				return next();
+				else
+				{
+					// Not a comment, rollback (but we can't rollback easily with Reader)
+					// But wait, / followed by something else is a symbol '/' unless it's a comment start.
+					// We consumed one '/'.
+					// We need to support backtracking or handle this case.
+					// For protobuf, '/' is not a valid token start unless it's comment.
+					// Actually, standard protobuf grammar doesn't use '/' as operator.
+					// So assuming it is an error if not comment.
+					errorCollector.recordError(line, column, "Unexpected character: /");
+					return false;
+				}
 			}
+			else
+			{
+				break;
+			}
+		}
+
+		currentToken.line = line;
+		currentToken.column = column;
+		if (comments.length() > 0) {
+			currentToken.docComment = comments.toString();
 		}
 
 		if (atEnd)

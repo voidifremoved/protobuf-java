@@ -133,21 +133,28 @@ public final class Compiler
 			{
 				for (String language : languages)
 				{
+					CodeGenerator codeGenerator;
 					if (language.equals("java"))
 					{
-						JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
-						try
-						{
-							codeGenerator.generate(fileDescriptor, "", context);
-						}
-						catch (CodeGenerator.GenerationException e)
-						{
-							throw new CompilationException("Error generating code", e);
-						}
+						codeGenerator = new JavaCodeGenerator();
+					}
+					else if (language.equals("csharp"))
+					{
+						codeGenerator = new com.rubberjam.protobuf.compiler.csharp.CSharpCodeGenerator();
 					}
 					else
 					{
 						throw new CompilationException("Unsupported language: " + language);
+					}
+
+					try
+					{
+						FileDescriptorProto proto = fileDescriptorProtos.get(fileDescriptor.getName());
+						codeGenerator.generate(fileDescriptor, proto, "", context);
+					}
+					catch (CodeGenerator.GenerationException e)
+					{
+						throw new CompilationException("Error generating code", e);
 					}
 				}
 			}
@@ -212,11 +219,13 @@ public final class Compiler
 		};
 
 		Tokenizer tokenizer = new Tokenizer(new StringReader(content), errorCollector);
-		Parser parser = new Parser(errorCollector, new SourceLocationTable());
+		SourceLocationTable sourceLocationTable = new SourceLocationTable();
+		Parser parser = new Parser(errorCollector, sourceLocationTable);
 		if (!parser.parse(tokenizer, fileBuilder) || !errors.isEmpty())
 		{
 			throw new CompilationException("Error parsing proto file " + fileName + ":\n" + String.join("\n", errors));
 		}
+		fileBuilder.setSourceCodeInfo(com.google.protobuf.DescriptorProtos.SourceCodeInfo.newBuilder().addAllLocation(sourceLocationTable.getLocations()));
 		outProtos.put(fileName, fileBuilder.build());
 	}
 }
