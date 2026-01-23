@@ -543,6 +543,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			variables.put("type", context.getNameResolver().getImmutableClassName(descriptor.getMessageType()));
 			variables.put("group_or_message",
 					descriptor.getType() == FieldDescriptor.Type.GROUP ? "Group" : "Message");
+			variables.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
 		}
 
 		@Override

@@ -85,7 +85,15 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
 		
 		printer.println("  public static final class " + className + " extends");
-		printer.println("      com.google.protobuf.GeneratedMessage implements");
+		if (descriptor.isExtendable())
+		{
+			printer.println("      com.google.protobuf.GeneratedMessage.ExtendableMessage<");
+			printer.println("        " + className + "> implements");
+		}
+		else
+		{
+			printer.println("      com.google.protobuf.GeneratedMessage implements");
+		}
 		printer.println("      // @@protoc_insertion_point(message_implements:" + descriptor.getFullName() + ")");
 		printer.println("      " + className + "OrBuilder {");
 		printer.println("  private static final long serialVersionUID = 0L;");
@@ -99,7 +107,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("        \"" + className + "\");");
 		printer.println("    }");
 		printer.println("    // Use " + className + ".newBuilder() to construct.");
-		printer.println("    private " + className + "(com.google.protobuf.GeneratedMessage.Builder<?> builder) {");
+		if (descriptor.isExtendable())
+		{
+			printer.println("    private " + className + "(com.google.protobuf.GeneratedMessage.ExtendableBuilder<" + context.getNameResolver().getImmutableClassName(descriptor) + ", ?> builder) {");
+		}
+		else
+		{
+			printer.println("    private " + className + "(com.google.protobuf.GeneratedMessage.Builder<?> builder) {");
+		}
 		printer.println("      super(builder);");
 		printer.println("    }");
 		printer.println("    private " + className + "() {");
@@ -108,6 +123,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			fieldGenerator.generateInitializationCode(printer);
 		}
 		printer.println("    }");
+		printer.println();
 
 		printer.println("    public static final com.google.protobuf.Descriptors.Descriptor");
 		printer.println("        getDescriptor() {");
@@ -391,7 +407,15 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		String className = descriptor.getName();
 		printer.println("  public interface " + className + "OrBuilder extends");
 		printer.println("      // @@protoc_insertion_point(interface_extends:" + descriptor.getFullName() + ")");
-		printer.println("      com.google.protobuf.MessageOrBuilder {");
+		if (descriptor.isExtendable())
+		{
+			printer.println("      com.google.protobuf.GeneratedMessage.");
+			printer.println("          ExtendableMessageOrBuilder<" + className + "> {");
+		}
+		else
+		{
+			printer.println("      com.google.protobuf.MessageOrBuilder {");
+		}
 		printer.println();
 		boolean first = true;
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
@@ -409,6 +433,16 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	@Override
 	public void generateExtensionRegistrationCode(PrintWriter printer)
 	{
+		for (com.google.protobuf.Descriptors.FieldDescriptor extension : descriptor.getExtensions())
+		{
+			ImmutableExtensionGenerator extensionGenerator = new ImmutableExtensionGenerator(extension, context);
+			extensionGenerator.generateRegistrationCode(printer);
+		}
+
+		for (com.google.protobuf.Descriptors.Descriptor nestedType : descriptor.getNestedTypes())
+		{
+			new ImmutableMessageGenerator(nestedType, context).generateExtensionRegistrationCode(printer);
+		}
 	}
 
 	private String getUniqueFileScopeIdentifier(Descriptor descriptor)

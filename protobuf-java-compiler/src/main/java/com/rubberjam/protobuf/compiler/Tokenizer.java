@@ -41,6 +41,9 @@ public class Tokenizer
 		public String text;
 		public int line;
 		public int column;
+		public String leadingComments;
+		public String trailingComments;
+		public java.util.List<String> leadingDetachedComments;
 
 		@Override
 		public String toString()
@@ -50,6 +53,8 @@ public class Tokenizer
 					", text='" + text + '\'' +
 					", line=" + line +
 					", column=" + column +
+					", leadingComments='" + leadingComments + '\'' +
+					", trailingComments='" + trailingComments + '\'' +
 					'}';
 		}
 	}
@@ -108,49 +113,126 @@ public class Tokenizer
 	{
 		previousToken = currentToken;
 		currentToken = new Token();
-		currentToken.line = line;
-		currentToken.column = column;
 
-		// Skip whitespace.
-		while (Character.isWhitespace(currentChar))
+		// Phase 1: Check for trailing comments on the same line as previous token
+		if (previousToken.type != TokenType.START)
 		{
-			nextChar();
-		}
-
-		// Skip comments.
-		if (currentChar == '/')
-		{
-			nextChar();
-			if (currentChar == '/')
+			StringBuilder trailingComments = new StringBuilder();
+			while (true)
 			{
-				// Line comment.
-				while (currentChar != '\n' && !atEnd)
+				// Skip horizontal whitespace only
+				while (Character.isWhitespace(currentChar) && currentChar != '\n')
 				{
 					nextChar();
 				}
-				return next();
-			}
-			else if (currentChar == '*')
-			{
-				// Block comment.
-				while (!atEnd)
+
+				if (currentChar == '\n')
 				{
-					if (currentChar == '*')
+					// Newline found, end of trailing comments opportunities
+					nextChar();
+					break;
+				}
+
+				if (atEnd)
+				{
+					break;
+				}
+
+				// Check for comment start
+				if (currentChar == '/')
+				{
+					// Try to read next char to verify it is a comment
+					// We have to consume '/' temporarily.
+					nextChar();
+					if (currentChar == '/' || currentChar == '*')
 					{
-						nextChar();
-						if (currentChar == '/')
-						{
-							nextChar();
-							break;
-						}
+						// It is a comment. Parse it.
+						// We already consumed first '/'. currentChar is second '/' or '*'
+						String comment = parseCommentBody();
+						trailingComments.append(comment);
 					}
 					else
 					{
-						nextChar();
+						// Not a comment. It's a symbol '/'.
+						// We consumed '/', so previous char was '/'.
+						// Since we can't unread easily, we must handle this state.
+						// We set currentToken to '/' and return.
+						currentToken.text = "/";
+						currentToken.type = TokenType.SYMBOL;
+						currentToken.line = line;
+						currentToken.column = column - 1; // Approx
+
+						// If we found trailing comments before this slash, attach them
+						if (trailingComments.length() > 0)
+						{
+							previousToken.trailingComments = trailingComments.toString();
+						}
+						return true;
 					}
 				}
-				return next();
+				else
+				{
+					// Not whitespace, newline, or comment - start of next token
+					break;
+				}
 			}
+
+			if (trailingComments.length() > 0)
+			{
+				previousToken.trailingComments = trailingComments.toString();
+			}
+		}
+
+		// Phase 2: Leading comments for current token
+		StringBuilder leadingComments = new StringBuilder();
+		while (true)
+		{
+			// Skip any whitespace (including newlines)
+			while (Character.isWhitespace(currentChar))
+			{
+				nextChar();
+			}
+
+			if (atEnd)
+			{
+				break;
+			}
+
+			if (currentChar == '/')
+			{
+				nextChar();
+				if (currentChar == '/' || currentChar == '*')
+				{
+					String comment = parseCommentBody();
+					leadingComments.append(comment);
+				}
+				else
+				{
+					// Not a comment. Return '/' symbol.
+					currentToken.text = "/";
+					currentToken.type = TokenType.SYMBOL;
+					currentToken.line = line;
+					currentToken.column = column - 1;
+
+					if (leadingComments.length() > 0)
+					{
+						currentToken.leadingComments = leadingComments.toString();
+					}
+					return true;
+				}
+			}
+			else
+			{
+				break;
+			}
+		}
+
+		currentToken.line = line;
+		currentToken.column = column;
+
+		if (leadingComments.length() > 0)
+		{
+			currentToken.leadingComments = leadingComments.toString();
 		}
 
 		if (atEnd)
@@ -255,6 +337,72 @@ public class Tokenizer
 		}
 
 		return true;
+	}
+
+	private String parseCommentBody()
+	{
+		StringBuilder comment = new StringBuilder();
+		if (currentChar == '/')
+		{
+			// Line comment.
+			nextChar(); // Skip second '/'
+			while (currentChar != '\n' && !atEnd)
+			{
+				comment.append(currentChar);
+				nextChar();
+			}
+			// Don't consume newline here, let loop handle it
+
+			String c = comment.toString();
+			if (c.startsWith(" "))
+			{
+				c = c.substring(1);
+			}
+			return c + "\n";
+		}
+		else if (currentChar == '*')
+		{
+			// Block comment.
+			nextChar(); // Skip '*'
+			StringBuilder rawComment = new StringBuilder();
+			while (!atEnd)
+			{
+				if (currentChar == '*')
+				{
+					nextChar();
+					if (currentChar == '/')
+					{
+						nextChar();
+						break;
+					}
+					rawComment.append('*');
+				}
+				else
+				{
+					rawComment.append(currentChar);
+					nextChar();
+				}
+			}
+
+			// Clean up block comment
+			String[] lines = rawComment.toString().split("\n");
+			StringBuilder cleaned = new StringBuilder();
+			for (String l : lines)
+			{
+				String trimmed = l.trim();
+				if (trimmed.startsWith("*"))
+				{
+					trimmed = trimmed.substring(1);
+				}
+				if (trimmed.startsWith(" "))
+				{
+					trimmed = trimmed.substring(1);
+				}
+				cleaned.append(trimmed).append('\n');
+			}
+			return cleaned.toString();
+		}
+		return "";
 	}
 
 	private void nextChar()

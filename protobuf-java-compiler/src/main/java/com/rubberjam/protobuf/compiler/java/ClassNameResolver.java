@@ -57,7 +57,7 @@ public final class ClassNameResolver
 		{
 			result += getFileClassName(file, immutable);
 			result += ".";
-			result += nameWithoutPackage.replace(".", "$");
+			result += nameWithoutPackage;
 		}
 		return result;
 	}
@@ -87,17 +87,23 @@ public final class ClassNameResolver
 		return getClassName(descriptor, true);
 	}
 
+	private String classNameWithoutPackage(com.google.protobuf.Descriptors.EnumDescriptor descriptor)
+	{
+		String result;
+		if (descriptor.getContainingType() != null)
+		{
+			result = classNameWithoutPackage(descriptor.getContainingType()) + ".";
+		}
+		else
+		{
+			result = "";
+		}
+		return result + descriptor.getName();
+	}
+
 	public String getImmutableClassName(com.google.protobuf.Descriptors.EnumDescriptor descriptor)
 	{
-		return getClassName(descriptor.getName(), descriptor.getFile(), true); // Simplified:
-																				// Enum
-																				// nesting
-																				// not
-																				// fully
-																				// handled
-																				// in
-																				// this
-																				// stub
+		return getClassName(classNameWithoutPackage(descriptor), descriptor.getFile(), true);
 	}
 
 	public String getImmutableClassName(FileDescriptor file)

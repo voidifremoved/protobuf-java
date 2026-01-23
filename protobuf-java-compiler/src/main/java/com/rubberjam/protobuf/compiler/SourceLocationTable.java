@@ -22,7 +22,7 @@ public class SourceLocationTable
 	/**
 	 * Adds a location to the table.
 	 */
-	public void add(int[] path, int[] span)
+	public void add(int[] path, int[] span, String leadingComments, String trailingComments)
 	{
 		SourceCodeInfo.Location.Builder location = SourceCodeInfo.Location.newBuilder();
 		for (int p : path)
@@ -33,7 +33,20 @@ public class SourceLocationTable
 		{
 			location.addSpan(s);
 		}
+		if (leadingComments != null)
+		{
+			location.setLeadingComments(leadingComments);
+		}
+		if (trailingComments != null)
+		{
+			location.setTrailingComments(trailingComments);
+		}
 		locations.add(location.build());
+	}
+
+	public void add(int[] path, int[] span)
+	{
+		add(path, span, null, null);
 	}
 
 	/**
