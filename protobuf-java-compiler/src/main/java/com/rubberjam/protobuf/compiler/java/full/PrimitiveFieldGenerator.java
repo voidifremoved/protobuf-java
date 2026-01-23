@@ -40,6 +40,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public FieldDescriptor getDescriptor()
+	{
+		return descriptor;
+	}
+
 	private void setPrimitiveVariables(
 			FieldDescriptor descriptor,
 			int messageBitIndex,
@@ -384,6 +390,15 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	}
 
 	@Override
+	public void generateWriteToCode(PrintWriter printer)
+	{
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        output.write" + variables.get("capitalized_type") + "("
+				+ variables.get("number") + ", " + variables.get("name") + "_);");
+		printer.println("      }");
+	}
+
+	@Override
 	public void generateFieldBuilderInitializationCode(PrintWriter printer)
 	{
 		// no-op
@@ -492,6 +507,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 					context.getFieldGeneratorInfo(descriptor),
 					variables,
 					context);
+		}
+
+		@Override
+		public FieldDescriptor getDescriptor()
+		{
+			return descriptor;
 		}
 
 		private void setPrimitiveVariables(
@@ -680,7 +701,16 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateSerializedSizeCode(PrintWriter printer)
 		{
-			// Placeholder
+			printer.println("      size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("capitalized_type") + "Size("
+					+ variables.get("number") + ", " + variables.get("name") + "_);");
+		}
+
+		@Override
+		public void generateWriteToCode(PrintWriter printer)
+		{
+			printer.println("      output.write" + variables.get("capitalized_type") + "("
+					+ variables.get("number") + ", " + variables.get("name") + "_);");
 		}
 
 		@Override

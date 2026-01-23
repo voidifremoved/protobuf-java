@@ -36,6 +36,12 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public FieldDescriptor getDescriptor()
+	{
+		return descriptor;
+	}
+
 	private void setMessageVariables(
 			FieldDescriptor descriptor,
 			int messageBitIndex,
@@ -271,7 +277,20 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        size += com.google.protobuf.CodedOutputStream");
+		printer.println("          .computeMessageSize(" + variables.get("number") + ", get"
+				+ variables.get("capitalized_name") + "());");
+		printer.println("      }");
+	}
+
+	@Override
+	public void generateWriteToCode(PrintWriter printer)
+	{
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        output.writeMessage(" + variables.get("number") + ", get"
+				+ variables.get("capitalized_name") + "());");
+		printer.println("      }");
 	}
 
 	@Override

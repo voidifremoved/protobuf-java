@@ -38,6 +38,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public FieldDescriptor getDescriptor()
+	{
+		return descriptor;
+	}
+
 	private void setMessageVariables(
 			FieldDescriptor descriptor,
 			int messageBitIndex,
@@ -451,6 +457,15 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	}
 
 	@Override
+	public void generateWriteToCode(PrintWriter printer)
+	{
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        output.writeMessage(" + variables.get("number") + ", get"
+				+ variables.get("capitalized_name") + "());");
+		printer.println("      }");
+	}
+
+	@Override
 	public void generateFieldBuilderInitializationCode(PrintWriter printer)
 	{
 		printer.println("          internalGet" + variables.get("capitalized_name") + "FieldBuilder();");
@@ -508,6 +523,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					context.getFieldGeneratorInfo(descriptor),
 					variables,
 					context);
+		}
+
+		@Override
+		public FieldDescriptor getDescriptor()
+		{
+			return descriptor;
 		}
 
 		private void setMessageVariables(
@@ -1150,6 +1171,14 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
 			printer.println("        size += com.google.protobuf.CodedOutputStream");
 			printer.println("          .computeMessageSize(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("      }");
+		}
+
+		@Override
+		public void generateWriteToCode(PrintWriter printer)
+		{
+			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("        output.writeMessage(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
 			printer.println("      }");
 		}
 

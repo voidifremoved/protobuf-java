@@ -412,7 +412,7 @@ public final class DocComment
 	{
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc);
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, " ");
 		writeDebugString(out, field, options, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
@@ -470,7 +470,7 @@ public final class DocComment
 	{
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc);
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, " ");
 		writeDebugString(out, field, options, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{

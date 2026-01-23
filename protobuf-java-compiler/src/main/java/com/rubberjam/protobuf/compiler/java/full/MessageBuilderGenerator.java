@@ -42,7 +42,9 @@ public class MessageBuilderGenerator
 		printer.println("    public static final com.google.protobuf.Descriptors.Descriptor");
 		printer.println("        getDescriptor() {");
 		String identifier = getUniqueFileScopeIdentifier(descriptor);
-		String outerClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
+		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
 		printer.println("      return " + outerClassName + ".internal_" + identifier + "_descriptor;");
 		printer.println("    }");
 

@@ -6,6 +6,8 @@ import com.rubberjam.protobuf.compiler.java.FieldGenerator;
 
 public abstract class ImmutableFieldGenerator extends FieldGenerator
 {
+	public abstract com.google.protobuf.Descriptors.FieldDescriptor getDescriptor();
+
 	public abstract int getMessageBitIndex();
 
 	public abstract int getBuilderBitIndex();
@@ -31,6 +33,8 @@ public abstract class ImmutableFieldGenerator extends FieldGenerator
 	public abstract void generateBuilderParsingCode(PrintWriter printer);
 
 	public abstract void generateSerializedSizeCode(PrintWriter printer);
+
+	public abstract void generateWriteToCode(PrintWriter printer);
 
 	public abstract void generateFieldBuilderInitializationCode(PrintWriter printer);
 

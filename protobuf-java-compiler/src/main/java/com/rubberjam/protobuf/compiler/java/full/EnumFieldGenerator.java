@@ -35,6 +35,12 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 				context);
 	}
 
+	@Override
+	public FieldDescriptor getDescriptor()
+	{
+		return descriptor;
+	}
+
 	private void setEnumVariables(
 			FieldDescriptor descriptor,
 			int messageBitIndex,
@@ -194,7 +200,18 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        size += com.google.protobuf.CodedOutputStream");
+		printer.println("          .computeEnumSize(" + variables.get("number") + ", " + variables.get("name") + "_);");
+		printer.println("      }");
+	}
+
+	@Override
+	public void generateWriteToCode(PrintWriter printer)
+	{
+		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("        output.writeEnum(" + variables.get("number") + ", " + variables.get("name") + "_);");
+		printer.println("      }");
 	}
 
 	@Override

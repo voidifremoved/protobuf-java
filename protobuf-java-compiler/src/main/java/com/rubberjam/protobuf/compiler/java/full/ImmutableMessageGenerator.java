@@ -77,7 +77,9 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	public void generate(PrintWriter printer)
 	{
 		String className = descriptor.getName();
-		String outerClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
+		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
 		
 		// Match C++ WriteMessageDocComment behavior - use DocComment utility
 		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
@@ -123,11 +125,177 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		printer.println();
 
+		// bitField0_ for tracking field presence
+		printer.println("    private int bitField0_;");
+		printer.println();
+
+		// FIELD_NUMBER constants (before fields)
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			com.google.protobuf.Descriptors.FieldDescriptor field = fieldGenerator.getDescriptor();
+			printer.println("    public static final int " + StringUtils.fieldConstantName(field) + " = " + field.getNumber() + ";");
+		}
+		printer.println();
+
 		// Fields
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
 			fieldGenerator.generateMembers(printer);
 		}
+
+		// isInitialized()
+		printer.println("    private byte memoizedIsInitialized = -1;");
+		printer.println("    @java.lang.Override");
+		printer.println("    public final boolean isInitialized() {");
+		printer.println("      byte isInitialized = memoizedIsInitialized;");
+		printer.println("      if (isInitialized == 1) return true;");
+		printer.println("      if (isInitialized == 0) return false;");
+		printer.println();
+		printer.println("      memoizedIsInitialized = 1;");
+		printer.println("      return true;");
+		printer.println("    }");
+		printer.println();
+
+		// writeTo()
+		printer.println("    @java.lang.Override");
+		printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
+		printer.println("                        throws java.io.IOException {");
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			fieldGenerator.generateWriteToCode(printer);
+		}
+		printer.println("      getUnknownFields().writeTo(output);");
+		printer.println("    }");
+		printer.println();
+
+		// getSerializedSize()
+		printer.println("    @java.lang.Override");
+		printer.println("    public int getSerializedSize() {");
+		printer.println("      int size = memoizedSize;");
+		printer.println("      if (size != -1) return size;");
+		printer.println();
+		printer.println("      size = 0;");
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			fieldGenerator.generateSerializedSizeCode(printer);
+		}
+		printer.println("      size += getUnknownFields().getSerializedSize();");
+		printer.println("      memoizedSize = size;");
+		printer.println("      return size;");
+		printer.println("    }");
+		printer.println();
+
+		// equals()
+		printer.println("    @java.lang.Override");
+		printer.println("    public boolean equals(final java.lang.Object obj) {");
+		printer.println("      if (obj == this) {");
+		printer.println("       return true;");
+		printer.println("      }");
+		printer.println("      if (!(obj instanceof " + outerClassName + "." + className + ")) {");
+		printer.println("        return super.equals(obj);");
+		printer.println("      }");
+		printer.println("      " + outerClassName + "." + className + " other = (" + outerClassName + "." + className + ") obj;");
+		printer.println();
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			fieldGenerator.generateEqualsCode(printer);
+		}
+		printer.println("      if (!getUnknownFields().equals(other.getUnknownFields())) return false;");
+		printer.println("      return true;");
+		printer.println("    }");
+		printer.println();
+
+		// hashCode()
+		printer.println("    @java.lang.Override");
+		printer.println("    public int hashCode() {");
+		printer.println("      if (memoizedHashCode != 0) {");
+		printer.println("        return memoizedHashCode;");
+		printer.println("      }");
+		printer.println("      int hash = 41;");
+		printer.println("      hash = (19 * hash) + getDescriptor().hashCode();");
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			fieldGenerator.generateHashCode(printer);
+		}
+		printer.println("      hash = (29 * hash) + getUnknownFields().hashCode();");
+		printer.println("      memoizedHashCode = hash;");
+		printer.println("      return hash;");
+		printer.println("    }");
+		printer.println();
+
+		// parseFrom() methods
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        java.nio.ByteBuffer data)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        java.nio.ByteBuffer data,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        com.google.protobuf.ByteString data)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        com.google.protobuf.ByteString data,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(byte[] data)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        byte[] data,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(java.io.InputStream input)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseWithIOException(PARSER, input);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        java.io.InputStream input,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseWithIOException(PARSER, input, extensionRegistry);");
+		printer.println("    }");
+		printer.println();
+		printer.println("    public static " + outerClassName + "." + className + " parseDelimitedFrom(java.io.InputStream input)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseDelimitedWithIOException(PARSER, input);");
+		printer.println("    }");
+		printer.println();
+		printer.println("    public static " + outerClassName + "." + className + " parseDelimitedFrom(");
+		printer.println("        java.io.InputStream input,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        com.google.protobuf.CodedInputStream input)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseWithIOException(PARSER, input);");
+		printer.println("    }");
+		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("        com.google.protobuf.CodedInputStream input,");
+		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("        throws java.io.IOException {");
+		printer.println("      return com.google.protobuf.GeneratedMessage");
+		printer.println("          .parseWithIOException(PARSER, input, extensionRegistry);");
+		printer.println("    }");
+		printer.println();
 
 		// Builder methods
 		printer.println("    public static Builder newBuilder() {");
@@ -175,6 +343,40 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		printer.println();
 
+		// PARSER field
+		printer.println("    private static final com.google.protobuf.Parser<" + className + ">");
+		printer.println("        PARSER = new com.google.protobuf.AbstractParser<" + className + ">() {");
+		printer.println("      @java.lang.Override");
+		printer.println("      public " + className + " parsePartialFrom(");
+		printer.println("          com.google.protobuf.CodedInputStream input,");
+		printer.println("          com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+		printer.println("          throws com.google.protobuf.InvalidProtocolBufferException {");
+		printer.println("        Builder builder = newBuilder();");
+		printer.println("        try {");
+		printer.println("          builder.mergeFrom(input, extensionRegistry);");
+		printer.println("        } catch (com.google.protobuf.InvalidProtocolBufferException e) {");
+		printer.println("          throw e.setUnfinishedMessage(builder.buildPartial());");
+		printer.println("        } catch (com.google.protobuf.UninitializedMessageException e) {");
+		printer.println("          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());");
+		printer.println("        } catch (java.io.IOException e) {");
+		printer.println("          throw new com.google.protobuf.InvalidProtocolBufferException(e)");
+		printer.println("              .setUnfinishedMessage(builder.buildPartial());");
+		printer.println("        }");
+		printer.println("        return builder.buildPartial();");
+		printer.println("      }");
+		printer.println("    };");
+		printer.println();
+		printer.println("    public static com.google.protobuf.Parser<" + className + "> parser() {");
+		printer.println("      return PARSER;");
+		printer.println("    }");
+		printer.println();
+
+		printer.println("    @java.lang.Override");
+		printer.println("    public com.google.protobuf.Parser<" + className + "> getParserForType() {");
+		printer.println("      return PARSER;");
+		printer.println("    }");
+		printer.println();
+
 		printer.println("    @java.lang.Override");
 		printer.println("    public " + className + " getDefaultInstanceForType() {");
 		printer.println("      return DEFAULT_INSTANCE;");
@@ -191,8 +393,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      // @@protoc_insertion_point(interface_extends:" + descriptor.getFullName() + ")");
 		printer.println("      com.google.protobuf.MessageOrBuilder {");
 		printer.println();
+		boolean first = true;
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
+			if (!first)
+			{
+				printer.println();
+			}
+			first = false;
 			fieldGenerator.generateInterfaceMembers(printer);
 		}
 		printer.println("  }");
