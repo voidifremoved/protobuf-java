@@ -270,6 +270,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
+			printer.println("      @java.lang.Override");
 			printer.println("      " + variables.get("deprecation") + "public boolean has"
 					+ variables.get("capitalized_name") + "() {");
 			printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
@@ -287,6 +288,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
+		printer.println("      @java.lang.Override");
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
 		printer.println("        return " + variables.get("name") + "_;");
@@ -308,6 +310,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		if (!variables.get("null_check").isEmpty())
 		{
 			printer.println("        " + variables.get("null_check"));
+		}
+		else
+		{
+			printer.println();
 		}
 		printer.println("        " + variables.get("name") + "_ = value;");
 		printer.println("        " + variables.get("set_has_field_bit_builder"));
@@ -686,16 +692,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    }");
 			printer.println("  }");
 
+			printer.println("  @java.lang.Override");
 			printer.println("  public java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name")
 					+ "List() {");
 			printer.println("    " + variables.get("name") + "_.makeImmutable();");
 			printer.println("    return " + variables.get("name") + "_;");
 			printer.println("  }");
 
+			printer.println("  @java.lang.Override");
 			printer.println("  public int get" + variables.get("capitalized_name") + "Count() {");
 			printer.println("    return " + variables.get("name") + "_.size();");
 			printer.println("  }");
 
+			printer.println("  @java.lang.Override");
 			printer.println("  public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("    return " + variables.get("repeated_get") + "(index);");
 			printer.println("  }");
