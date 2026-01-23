@@ -230,11 +230,18 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("    }");
 		printer.println("    public static com.google.protobuf.Descriptors.EnumDescriptor");
 		printer.println("        getDescriptor() {");
-		// TODO: Handle nested vs top-level descriptor access correctly
-		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
-		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
-		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
-		printer.println("      return " + outerClassName + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
+		if (descriptor.getContainingType() == null)
+		{
+			String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
+			String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+			String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
+			printer.println("      return " + outerClassName + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
+		}
+		else
+		{
+			String parentMessage = context.getNameResolver().getImmutableClassName(descriptor.getContainingType());
+			printer.println("      return " + parentMessage + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
+		}
 		printer.println("    }");
 		printer.println();
 

@@ -137,9 +137,22 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("        internalGetFieldAccessorTable() {");
 		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
 		printer.println("          .ensureFieldAccessorsInitialized(");
-		printer.println("              " + outerClassName + "." + className + ".class, " + outerClassName + "." + className + ".Builder.class);");
+		String fullClassName = context.getNameResolver().getImmutableClassName(descriptor);
+		printer.println("              " + fullClassName + ".class, " + fullClassName + ".Builder.class);");
 		printer.println("    }");
 		printer.println();
+
+		for (com.google.protobuf.Descriptors.EnumDescriptor enumDescriptor : descriptor.getEnumTypes())
+		{
+			new ImmutableEnumGenerator(enumDescriptor, context).generate(printer);
+		}
+
+		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
+		{
+			ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
+			messageGenerator.generateInterface(printer);
+			messageGenerator.generate(printer);
+		}
 
 		// bitField0_ for tracking field presence
 		printer.println("    private int bitField0_;");
@@ -168,6 +181,13 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      if (isInitialized == 1) return true;");
 		printer.println("      if (isInitialized == 0) return false;");
 		printer.println();
+		if (descriptor.isExtendable())
+		{
+			printer.println("      if (!extensionsAreInitialized()) {");
+			printer.println("        memoizedIsInitialized = 0;");
+			printer.println("        return false;");
+			printer.println("      }");
+		}
 		printer.println("      memoizedIsInitialized = 1;");
 		printer.println("      return true;");
 		printer.println("    }");
@@ -177,9 +197,26 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
 		printer.println("                        throws java.io.IOException {");
+		if (descriptor.isExtendable())
+		{
+			printer.println("      com.google.protobuf.GeneratedMessage");
+			printer.println("        .ExtendableMessage.ExtensionSerializer");
+			printer.println("          extensionWriter = newExtensionSerializer();");
+		}
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
 		{
 			fieldGenerator.generateWriteToCode(printer);
+		}
+		if (descriptor.isExtendable())
+		{
+			int limit = 536870912;
+			if (!descriptor.toProto().getExtensionRangeList().isEmpty())
+			{
+				limit = descriptor.toProto().getExtensionRangeList().stream()
+						.mapToInt(com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange::getEnd)
+						.max().orElse(536870912);
+			}
+			printer.println("      extensionWriter.writeUntil(" + limit + ", output);");
 		}
 		printer.println("      getUnknownFields().writeTo(output);");
 		printer.println("    }");
@@ -196,6 +233,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		{
 			fieldGenerator.generateSerializedSizeCode(printer);
 		}
+		if (descriptor.isExtendable())
+		{
+			printer.println("      size += extensionsSerializedSize();");
+		}
 		printer.println("      size += getUnknownFields().getSerializedSize();");
 		printer.println("      memoizedSize = size;");
 		printer.println("      return size;");
@@ -208,16 +249,22 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      if (obj == this) {");
 		printer.println("       return true;");
 		printer.println("      }");
-		printer.println("      if (!(obj instanceof " + outerClassName + "." + className + ")) {");
+		// fullClassName is already defined in internalGetFieldAccessorTable block
+		printer.println("      if (!(obj instanceof " + fullClassName + ")) {");
 		printer.println("        return super.equals(obj);");
 		printer.println("      }");
-		printer.println("      " + outerClassName + "." + className + " other = (" + outerClassName + "." + className + ") obj;");
+		printer.println("      " + fullClassName + " other = (" + fullClassName + ") obj;");
 		printer.println();
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
 			fieldGenerator.generateEqualsCode(printer);
 		}
 		printer.println("      if (!getUnknownFields().equals(other.getUnknownFields())) return false;");
+		if (descriptor.isExtendable())
+		{
+			printer.println("      if (!getExtensionFields().equals(other.getExtensionFields()))");
+			printer.println("        return false;");
+		}
 		printer.println("      return true;");
 		printer.println("    }");
 		printer.println();
@@ -233,6 +280,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
 			fieldGenerator.generateHashCode(printer);
+		}
+		if (descriptor.isExtendable())
+		{
+			printer.println("      hash = hashFields(hash, getExtensionFields());");
 		}
 		printer.println("      hash = (29 * hash) + getUnknownFields().hashCode();");
 		printer.println("      memoizedHashCode = hash;");

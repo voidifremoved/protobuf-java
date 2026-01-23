@@ -184,7 +184,7 @@ public class FileGenerator
 		printer.println("  }");
 
 		printer.println("  // @@protoc_insertion_point(outer_class_scope)");
-		printer.println("}");
+		printer.print("}");
 	}
 
 	public String getClassName()
