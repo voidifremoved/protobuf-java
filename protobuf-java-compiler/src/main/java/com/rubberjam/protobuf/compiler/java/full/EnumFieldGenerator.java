@@ -269,7 +269,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("    " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		printer.println("        " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
 	}
 
 	@Override
@@ -281,7 +281,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("      result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+		printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
 	}
 
 	@Override

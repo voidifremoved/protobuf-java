@@ -354,7 +354,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	{
 		if (!Helpers.isDefaultValueJavaDefault(descriptor))
 		{
-			printer.println("    " + variables.get("name") + "_ = " + variables.get("default") + ";");
+			printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
 		}
 	}
 
@@ -376,13 +376,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("      if (" + variables.get("get_has_field_bit_from_local") + ") {");
-		printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+		printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+		printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
 		if (getNumBitsForMessage() > 0)
 		{
-			printer.println("        " + variables.get("set_has_field_bit_to_local"));
+			printer.println("          " + variables.get("set_has_field_bit_to_local"));
 		}
-		printer.println("      }");
+		printer.println("        }");
 	}
 
 	@Override
@@ -686,10 +686,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 					+ variables.get("empty_list") + ";");
 
 			printer.println("  private void ensure" + variables.get("capitalized_name") + "IsMutable() {");
-			printer.println("    if (!" + variables.get("get_has_field_bit_builder") + ") {");
+			printer.println("    if (!" + variables.get("name") + ".isModifiable()) {");
 			printer.println("      " + variables.get("name") + "_ = makeMutableCopy(" + variables.get("name") + "_);");
-			printer.println("      " + variables.get("set_has_field_bit_builder"));
 			printer.println("    }");
+			printer.println("    " + variables.get("set_has_field_bit_builder"));
 			printer.println("  }");
 
 			printer.println("  @java.lang.Override");
@@ -743,13 +743,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateInitializationCode(PrintWriter printer)
 		{
-			printer.println("    " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
+			printer.println("        " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
 		}
 
 		@Override
 		public void generateBuilderClearCode(PrintWriter printer)
 		{
-			printer.println("    " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
+			printer.println("        " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
 		}
 
 		@Override

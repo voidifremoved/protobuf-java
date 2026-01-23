@@ -365,7 +365,7 @@ public final class DocComment
 			if (field.hasDefaultValue())
 			{
 				sb.append(" [default = ");
-				sb.append(field.getDefaultValue());
+				sb.append(getDefaultValueString(field));
 				sb.append("]");
 			}
 			
@@ -382,6 +382,16 @@ public final class DocComment
 		{
 			out.print(" * <code>" + escapeJavadoc(fieldComment) + "</code>\n");
 		}
+	}
+
+	protected static Object getDefaultValueString(FieldDescriptor field)
+	{
+		Object defaultValue = field.getDefaultValue();
+		if (defaultValue instanceof String)
+		{
+			return "\"" + defaultValue + "\"";
+		}
+		return defaultValue;
 	}
 
 	public static void writeMessageDocComment(

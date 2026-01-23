@@ -387,7 +387,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 		printer.println("    @java.lang.Override");
 		printer.println("    protected Builder newBuilderForType(");
-		printer.println("         com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
+		printer.println("        com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
 		printer.println("      Builder builder = new Builder(parent);");
 		printer.println("      return builder;");
 		printer.println("    }");
@@ -451,7 +451,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    public " + outerClassName + "." +className + " getDefaultInstanceForType() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
-
+		
 		printer.println("  }");
 	}
 

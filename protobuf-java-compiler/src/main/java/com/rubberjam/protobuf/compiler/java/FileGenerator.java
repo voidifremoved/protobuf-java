@@ -142,8 +142,10 @@ public class FileGenerator
 			// Check if message is nested in file class (not nested in another message)
 			if (messageType.getContainingType() == null)
 			{
+				
 				messageGenerators.get(i).generateInterface(printer);
 				messageGenerators.get(i).generate(printer);
+				
 			}
 		}
 		

@@ -78,7 +78,7 @@ public class MessageBuilderGenerator
 		printer.println();
 
 		printer.println("      private Builder(");
-		printer.println("          com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
+		printer.println("        com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
 		printer.println("        super(parent);");
 		printer.println();
 		printer.println("      }");

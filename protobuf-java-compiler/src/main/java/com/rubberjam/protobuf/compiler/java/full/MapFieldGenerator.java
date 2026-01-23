@@ -260,7 +260,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("    internalGetMutable" + variables.get("capitalized_name") + "().clear();");
+		printer.println("        internalGetMutable" + variables.get("capitalized_name") + "().clear();");
 	}
 
 	@Override
@@ -272,8 +272,8 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("      result." + variables.get("name") + "_ = internalGet" + variables.get("capitalized_name") + "();");
-		printer.println("      result." + variables.get("name") + "_.makeImmutable();");
+		printer.println("        result." + variables.get("name") + "_ = internalGet" + variables.get("capitalized_name") + "();");
+		printer.println("        result." + variables.get("name") + "_.makeImmutable();");
 	}
 
 	@Override
@@ -285,20 +285,20 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .computeMessageSize(" + variables.get("number") + ", get"
+		printer.println("        if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("          size += com.google.protobuf.CodedOutputStream");
+		printer.println("            .computeMessageSize(" + variables.get("number") + ", get"
 				+ variables.get("capitalized_name") + "());");
-		printer.println("      }");
+		printer.println("        }");
 	}
 
 	@Override
 	public void generateWriteToCode(PrintWriter printer)
 	{
-		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.writeMessage(" + variables.get("number") + ", get"
+		printer.println("        if (" + variables.get("is_field_present_message") + ") {");
+		printer.println("          output.writeMessage(" + variables.get("number") + ", get"
 				+ variables.get("capitalized_name") + "());");
-		printer.println("      }");
+		printer.println("        }");
 	}
 
 	@Override
