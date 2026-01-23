@@ -5,6 +5,9 @@ import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
+import com.rubberjam.protobuf.compiler.java.DocComment;
+import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
+import com.rubberjam.protobuf.compiler.java.Helpers;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -64,13 +67,22 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 
 		variables.put("type", context.getNameResolver().getImmutableClassName(descriptor.getEnumType()));
-		variables.put("default", StringUtils.defaultValue(descriptor));
+		variables.put("default", variables.get("type") + "."
+				+ ((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getName());
 		variables.put("default_number", String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber()));
 
-		// Simplified bit logic
-		variables.put("is_field_present_message", "true");
-		variables.put("set_has_field_bit_builder", "");
-		variables.put("clear_has_field_bit_builder", "");
+		if (descriptor.hasPresence())
+		{
+			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
+			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
+			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
+		}
+		else
+		{
+			variables.put("is_field_present_message", variables.get("name") + "_ != " + variables.get("default_number"));
+			variables.put("set_has_field_bit_builder", "");
+			variables.put("clear_has_field_bit_builder", "");
+		}
 
 		variables.put("unknown",
 				// Logic for unknown enum value support (check syntax)
@@ -106,34 +118,103 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateInterfaceMembers(PrintWriter printer)
 	{
-		printer.println("  boolean has" + variables.get("capitalized_name") + "();");
-		printer.println("  " + variables.get("type") + " get" + variables.get("capitalized_name") + "();");
+		if (descriptor.hasPresence())
+		{
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.HAZZER,
+							context.getOptions(),
+							false,
+							false,
+							false));
+			printer.println("    boolean has" + variables.get("capitalized_name") + "();");
+		}
 		if (supportUnknownEnumValue(descriptor))
 		{
-			printer.println("  int get" + variables.get("capitalized_name") + "Value();");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.GETTER,
+							context.getOptions(),
+							false,
+							false,
+							false));
+			printer.println("    int get" + variables.get("capitalized_name") + "Value();");
 		}
+		Helpers.writeDocComment(
+				printer,
+				"    ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.GETTER,
+						context.getOptions(),
+						false,
+						false,
+						false));
+		printer.println("    " + variables.get("type") + " get" + variables.get("capitalized_name") + "();");
 	}
 
 	@Override
 	public void generateMembers(PrintWriter printer)
 	{
-		printer.println("  private int " + variables.get("name") + "_;");
+		printer.println("  private int " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
 
-		printer.println("  @java.lang.Override");
-		printer.println("  public boolean has" + variables.get("capitalized_name") + "() {");
-		printer.println("    return false;"); // TODO
-		printer.println("  }");
+		if (descriptor.hasPresence())
+		{
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.HAZZER,
+							context.getOptions(),
+							false,
+							false,
+							false));
+			printer.println("  @java.lang.Override public boolean has" + variables.get("capitalized_name") + "() {");
+			printer.println("    return " + variables.get("is_field_present_message") + ";");
+			printer.println("  }");
+		}
 
 		if (supportUnknownEnumValue(descriptor))
 		{
-			printer.println("  @java.lang.Override");
-			printer.println("  public int get" + variables.get("capitalized_name") + "Value() {");
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.GETTER,
+							context.getOptions(),
+							false,
+							false,
+							false));
+			printer.println("  @java.lang.Override public int get" + variables.get("capitalized_name") + "Value() {");
 			printer.println("    return " + variables.get("name") + "_;");
 			printer.println("  }");
 		}
 
-		printer.println("  @java.lang.Override");
-		printer.println("  public " + variables.get("type") + " get" + variables.get("capitalized_name") + "() {");
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.GETTER,
+						context.getOptions(),
+						false,
+						false,
+						false));
+		printer.println("  @java.lang.Override public " + variables.get("type") + " get" + variables.get("capitalized_name") + "() {");
 		printer.println("    " + variables.get("type") + " result = " + variables.get("type") + ".forNumber("
 				+ variables.get("name") + "_);");
 		printer.println("    return result == null ? " + variables.get("unknown") + " : result;");

@@ -46,7 +46,7 @@ public class MessageBuilderGenerator
 		printer.println("    public static final class Builder extends");
 		if (descriptor.isExtendable())
 		{
-			printer.println("        com.google.protobuf.GeneratedMessage.ExtendableBuilder<" + context.getNameResolver().getImmutableClassName(descriptor) + ", Builder> implements");
+			printer.println("        com.google.protobuf.GeneratedMessage.ExtendableBuilder<" + className + ", Builder> implements");
 		}
 		else
 		{
