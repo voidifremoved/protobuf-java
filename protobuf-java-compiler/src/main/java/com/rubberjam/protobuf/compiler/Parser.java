@@ -15,6 +15,7 @@ import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileOptions;
 import com.google.protobuf.DescriptorProtos.MethodDescriptorProto;
 import com.google.protobuf.DescriptorProtos.ServiceDescriptorProto;
+import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
 import com.google.protobuf.ByteString;
 import com.google.protobuf.DescriptorProtos.UninterpretedOption;
 import java.util.ArrayList;
@@ -100,6 +101,12 @@ public class Parser
 			}
 		}
 
+		if (!hadErrors)
+		{
+			fileBuilder.setSourceCodeInfo(
+					SourceCodeInfo.newBuilder().addAllLocation(sourceLocationTable.getLocations()));
+		}
+
 		return !hadErrors;
 	}
 
@@ -126,14 +133,20 @@ public class Parser
 		}
 		else if (lookingAt("message"))
 		{
+			location.addPath(FileDescriptorProto.MESSAGE_TYPE_FIELD_NUMBER);
+			location.addPath(fileBuilder.getMessageTypeCount());
 			return parseMessageDefinition(fileBuilder.addMessageTypeBuilder(), location);
 		}
 		else if (lookingAt("enum"))
 		{
+			location.addPath(FileDescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+			location.addPath(fileBuilder.getEnumTypeCount());
 			return parseEnumDefinition(fileBuilder.addEnumTypeBuilder(), location);
 		}
 		else if (lookingAt("service"))
 		{
+			location.addPath(FileDescriptorProto.SERVICE_FIELD_NUMBER);
+			location.addPath(fileBuilder.getServiceCount());
 			return parseServiceDefinition(fileBuilder.addServiceBuilder(), location);
 		}
 		else if (lookingAt("extend"))
@@ -343,12 +356,12 @@ public class Parser
 	{
 		tokenizer.next(); // consume "message"
 		messageBuilder.setName(consumeIdentifier("Expected message name."));
-		boolean result = parseMessageBlock(messageBuilder, location);
+		boolean result = parseMessageBlock(messageBuilder, location.path);
 		location.end();
 		return result;
 	}
 
-	private boolean parseMessageBlock(DescriptorProto.Builder messageBuilder, LocationRecorder location)
+	private boolean parseMessageBlock(DescriptorProto.Builder messageBuilder, List<Integer> scopePath)
 	{
 		consume("{", "Expected '{' to start message block.");
 		while (!tryConsume("}"))
@@ -358,7 +371,7 @@ public class Parser
 				recordError("Reached end of input in message definition (missing '}').");
 				return false;
 			}
-			if (!parseMessageStatement(messageBuilder, location))
+			if (!parseMessageStatement(messageBuilder, scopePath))
 			{
 				skipStatement();
 			}
@@ -366,8 +379,7 @@ public class Parser
 		return true;
 	}
 
-	private boolean parseMessageStatement(DescriptorProto.Builder messageBuilder,
-			LocationRecorder location)
+	private boolean parseMessageStatement(DescriptorProto.Builder messageBuilder, List<Integer> scopePath)
 	{
 		// Match C++ ParseMessageStatement behavior
 		if (tryConsume(";"))
@@ -375,12 +387,19 @@ public class Parser
 			// empty statement
 			return true;
 		}
+
+		LocationRecorder location = new LocationRecorder(this, scopePath);
+
 		if (lookingAt("message"))
 		{
+			location.addPath(DescriptorProto.NESTED_TYPE_FIELD_NUMBER);
+			location.addPath(messageBuilder.getNestedTypeCount());
 			return parseMessageDefinition(messageBuilder.addNestedTypeBuilder(), location);
 		}
 		if (lookingAt("enum"))
 		{
+			location.addPath(DescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+			location.addPath(messageBuilder.getEnumTypeCount());
 			return parseEnumDefinition(messageBuilder.addEnumTypeBuilder(), location);
 		}
 		if (lookingAt("extensions"))
@@ -393,7 +412,7 @@ public class Parser
 		}
 		if (lookingAt("extend"))
 		{
-			return parseExtend(messageBuilder, location);
+			return parseExtend(messageBuilder, scopePath);
 		}
 		if (lookingAt("option"))
 		{
@@ -403,13 +422,27 @@ public class Parser
 		}
 		if (lookingAt("oneof"))
 		{
-			return parseOneof(messageBuilder, location);
+			location.addPath(DescriptorProto.ONEOF_DECL_FIELD_NUMBER);
+			location.addPath(messageBuilder.getOneofDeclCount());
+			boolean result = parseOneof(messageBuilder, location, scopePath);
+			if (result)
+			{
+				location.end();
+			}
+			return result;
 		}
 		// Default: try to parse as a field
-		return parseField(messageBuilder.addFieldBuilder(), -1, location, messageBuilder);
+		location.addPath(DescriptorProto.FIELD_FIELD_NUMBER);
+		location.addPath(messageBuilder.getFieldCount());
+		boolean result = parseField(messageBuilder.addFieldBuilder(), -1, location, messageBuilder);
+		if (result)
+		{
+			location.end();
+		}
+		return result;
 	}
 
-	private boolean parseOneof(DescriptorProto.Builder messageBuilder, LocationRecorder location)
+	private boolean parseOneof(DescriptorProto.Builder messageBuilder, LocationRecorder location, List<Integer> scopePath)
 	{
 		tokenizer.next(); // consume "oneof"
 		String oneofName = consumeIdentifier("Expected oneof name.");
@@ -424,7 +457,15 @@ public class Parser
 				recordError("Reached end of input in oneof definition (missing '}').");
 				return false;
 			}
-			parseField(messageBuilder.addFieldBuilder(), oneofIndex, location, messageBuilder);
+
+			LocationRecorder fieldLocation = new LocationRecorder(this, scopePath);
+			fieldLocation.addPath(DescriptorProto.FIELD_FIELD_NUMBER);
+			fieldLocation.addPath(messageBuilder.getFieldCount());
+			boolean result = parseField(messageBuilder.addFieldBuilder(), oneofIndex, fieldLocation, messageBuilder);
+			if (result)
+			{
+				fieldLocation.end();
+			}
 		}
 		return true;
 	}
@@ -590,7 +631,7 @@ public class Parser
 			}
 			
 			// Parse the message block for the group (this will consume the "{")
-			if (!parseMessageBlock(groupBuilder, location))
+			if (!parseMessageBlock(groupBuilder, location.path))
 			{
 				return false;
 			}
@@ -663,6 +704,28 @@ public class Parser
 				consumeString("Expected string for JSON name.");
 				// Note: json_name is stored in field.json_name, not in options
 				// For now, we'll just consume it
+			}
+			else if (lookingAt("deprecated"))
+			{
+				tokenizer.next(); // consume "deprecated"
+				if (!tryConsume("="))
+				{
+					recordError("Expected '=' after deprecated.");
+					return false;
+				}
+				boolean value = consumeBoolean("Expected boolean.");
+				fieldBuilder.getOptionsBuilder().setDeprecated(value);
+			}
+			else if (lookingAt("packed"))
+			{
+				tokenizer.next(); // consume "packed"
+				if (!tryConsume("="))
+				{
+					recordError("Expected '=' after packed.");
+					return false;
+				}
+				boolean value = consumeBoolean("Expected boolean.");
+				fieldBuilder.getOptionsBuilder().setPacked(value);
 			}
 			else
 			{
@@ -1205,12 +1268,12 @@ public class Parser
 	{
 		tokenizer.next(); // consume "enum"
 		enumBuilder.setName(consumeIdentifier("Expected enum name."));
-		boolean result = parseEnumBlock(enumBuilder, location);
+		boolean result = parseEnumBlock(enumBuilder, location.path);
 		location.end();
 		return result;
 	}
 
-	private boolean parseEnumBlock(EnumDescriptorProto.Builder enumBuilder, LocationRecorder location)
+	private boolean parseEnumBlock(EnumDescriptorProto.Builder enumBuilder, List<Integer> scopePath)
 	{
 		consume("{", "Expected '{' to start enum block.");
 		while (!tryConsume("}"))
@@ -1220,7 +1283,7 @@ public class Parser
 				recordError("Reached end of input in enum definition (missing '}').");
 				return false;
 			}
-			if (!parseEnumStatement(enumBuilder, location))
+			if (!parseEnumStatement(enumBuilder, scopePath))
 			{
 				skipStatement();
 			}
@@ -1228,8 +1291,7 @@ public class Parser
 		return true;
 	}
 
-	private boolean parseEnumStatement(EnumDescriptorProto.Builder enumBuilder,
-			LocationRecorder location)
+	private boolean parseEnumStatement(EnumDescriptorProto.Builder enumBuilder, List<Integer> scopePath)
 	{
 		if (tryConsume(";"))
 		{
@@ -1332,7 +1394,15 @@ public class Parser
 		else
 		{
 			// Parse enum constant
-			return parseEnumConstant(enumBuilder.addValueBuilder(), location);
+			LocationRecorder location = new LocationRecorder(this, scopePath);
+			location.addPath(EnumDescriptorProto.VALUE_FIELD_NUMBER);
+			location.addPath(enumBuilder.getValueCount());
+			boolean result = parseEnumConstant(enumBuilder.addValueBuilder(), location);
+			if (result)
+			{
+				location.end();
+			}
+			return result;
 		}
 	}
 
@@ -1356,12 +1426,22 @@ public class Parser
 	{
 		do
 		{
-			String optionName = consumeIdentifier("Expected option name.");
-			UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
-			option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
-			consume("=", "Expected '=' after option name.");
-			parseOptionValue(option);
-			enumValueBuilder.getOptionsBuilder().addUninterpretedOption(option);
+			if (lookingAt("deprecated"))
+			{
+				tokenizer.next();
+				consume("=", "Expected '=' after deprecated.");
+				boolean value = consumeBoolean("Expected boolean.");
+				enumValueBuilder.getOptionsBuilder().setDeprecated(value);
+			}
+			else
+			{
+				String optionName = consumeIdentifier("Expected option name.");
+				UninterpretedOption.Builder option = UninterpretedOption.newBuilder();
+				option.addNameBuilder().setNamePart(optionName).setIsExtension(false);
+				consume("=", "Expected '=' after option name.");
+				parseOptionValue(option);
+				enumValueBuilder.getOptionsBuilder().addUninterpretedOption(option);
+			}
 		}
 		while (tryConsume(","));
 	}
@@ -1371,13 +1451,13 @@ public class Parser
 	{
 		tokenizer.next(); // consume "service"
 		serviceBuilder.setName(consumeIdentifier("Expected service name."));
-		boolean result = parseServiceBlock(serviceBuilder, location);
+		boolean result = parseServiceBlock(serviceBuilder, location.path);
 		location.end();
 		return result;
 	}
 
 	private boolean parseServiceBlock(ServiceDescriptorProto.Builder serviceBuilder,
-			LocationRecorder location)
+			List<Integer> scopePath)
 	{
 		consume("{", "Expected '{' to start service block.");
 		while (!tryConsume("}"))
@@ -1387,7 +1467,7 @@ public class Parser
 				recordError("Reached end of input in service definition (missing '}').");
 				return false;
 			}
-			if (!parseServiceStatement(serviceBuilder, location))
+			if (!parseServiceStatement(serviceBuilder, scopePath))
 			{
 				skipStatement();
 			}
@@ -1395,8 +1475,7 @@ public class Parser
 		return true;
 	}
 
-	private boolean parseServiceStatement(ServiceDescriptorProto.Builder serviceBuilder,
-			LocationRecorder location)
+	private boolean parseServiceStatement(ServiceDescriptorProto.Builder serviceBuilder, List<Integer> scopePath)
 	{
 		if (tryConsume(";"))
 		{
@@ -1429,7 +1508,15 @@ public class Parser
 		}
 		else
 		{
-			return parseServiceMethod(serviceBuilder.addMethodBuilder(), location);
+			LocationRecorder location = new LocationRecorder(this, scopePath);
+			location.addPath(ServiceDescriptorProto.METHOD_FIELD_NUMBER);
+			location.addPath(serviceBuilder.getMethodCount());
+			boolean result = parseServiceMethod(serviceBuilder.addMethodBuilder(), location);
+			if (result)
+			{
+				location.end();
+			}
+			return result;
 		}
 	}
 
@@ -1682,7 +1769,11 @@ public class Parser
 			}
 			
 			// Parse extension field
+			LocationRecorder fieldLocation = new LocationRecorder(this);
 			FieldDescriptorProto.Builder fieldBuilder = fileBuilder.addExtensionBuilder();
+			fieldLocation.addPath(FileDescriptorProto.EXTENSION_FIELD_NUMBER);
+			fieldLocation.addPath(fileBuilder.getExtensionCount() - 1);
+
 			fieldBuilder.setExtendee(extendee.toString());
 			
 			// Parse label (optional/repeated)
@@ -1720,7 +1811,7 @@ public class Parser
 			// Parse options
 			if (tryConsume("["))
 			{
-				if (!parseFieldOptions(fieldBuilder, location))
+				if (!parseFieldOptions(fieldBuilder, fieldLocation))
 				{
 					return false;
 				}
@@ -1737,13 +1828,14 @@ public class Parser
 				recordError("Expected ';' after extension field declaration.");
 				return false;
 			}
+			fieldLocation.end();
 		}
 		
 		return true;
 	}
 
 	private boolean parseExtend(DescriptorProto.Builder messageBuilder,
-			LocationRecorder location)
+			List<Integer> scopePath)
 	{
 		// Match C++ ParseExtend behavior - extend statements inside messages
 		if (!tryConsume("extend"))
@@ -1780,7 +1872,11 @@ public class Parser
 			}
 			
 			// Parse extension field
+			LocationRecorder fieldLocation = new LocationRecorder(this, scopePath);
 			FieldDescriptorProto.Builder fieldBuilder = messageBuilder.addExtensionBuilder();
+			fieldLocation.addPath(DescriptorProto.EXTENSION_FIELD_NUMBER);
+			fieldLocation.addPath(messageBuilder.getExtensionCount() - 1);
+
 			fieldBuilder.setExtendee(extendee.toString());
 			
 			// Parse label (optional/repeated)
@@ -1818,7 +1914,7 @@ public class Parser
 			// Parse options
 			if (tryConsume("["))
 			{
-				if (!parseFieldOptions(fieldBuilder, location))
+				if (!parseFieldOptions(fieldBuilder, fieldLocation))
 				{
 					return false;
 				}
@@ -1835,6 +1931,7 @@ public class Parser
 				recordError("Expected ';' after extension field declaration.");
 				return false;
 			}
+			fieldLocation.end();
 		}
 		
 		return true;
@@ -2053,12 +2150,23 @@ public class Parser
 		private int startColumn;
 		private int endLine;
 		private int endColumn;
+		private String leadingComments;
 
 		LocationRecorder(Parser parser)
+		{
+			this(parser, null);
+		}
+
+		LocationRecorder(Parser parser, List<Integer> parentPath)
 		{
 			this.parser = parser;
 			this.startLine = parser.tokenizer.current().line;
 			this.startColumn = parser.tokenizer.current().column;
+			this.leadingComments = parser.tokenizer.current().leadingComments;
+			if (parentPath != null)
+			{
+				this.path.addAll(parentPath);
+			}
 		}
 
 		void addPath(int pathComponent)
@@ -2078,7 +2186,8 @@ public class Parser
 			}
 
 			int[] spanArray = new int[] { startLine, startColumn, endLine, endColumn };
-			parser.sourceLocationTable.add(pathArray, spanArray);
+			String trailingComments = parser.tokenizer.previous().trailingComments;
+			parser.sourceLocationTable.add(pathArray, spanArray, leadingComments, trailingComments);
 		}
 	}
 }

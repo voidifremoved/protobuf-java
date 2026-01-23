@@ -325,11 +325,11 @@ public final class DocComment
 			FieldDescriptor.Type type = field.getType();
 			if (type == FieldDescriptor.Type.MESSAGE || type == FieldDescriptor.Type.GROUP)
 			{
-				sb.append(field.getMessageType().getName());
+				sb.append(".").append(field.getMessageType().getFullName());
 			}
 			else if (type == FieldDescriptor.Type.ENUM)
 			{
-				sb.append(field.getEnumType().getName());
+				sb.append(".").append(field.getEnumType().getFullName());
 			}
 			else
 			{
@@ -539,7 +539,16 @@ public final class DocComment
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, value.getFile(), getPath(value), options, false, indentPrefix);
 		// Match C++ format: <code>NAME = NUMBER;</code>
-		out.print(indentPrefix + " * <code>" + escapeJavadoc(value.getName() + " = " + value.getNumber() + ";") + "</code>\n");
+		StringBuilder sb = new StringBuilder();
+		sb.append(value.getName());
+		sb.append(" = ");
+		sb.append(value.getNumber());
+		if (value.getOptions().getDeprecated())
+		{
+			sb.append(" [deprecated = true]");
+		}
+		sb.append(";");
+		out.print(indentPrefix + " * <code>" + escapeJavadoc(sb.toString()) + "</code>\n");
 		out.print(indentPrefix + " */\n");
 	}
 
