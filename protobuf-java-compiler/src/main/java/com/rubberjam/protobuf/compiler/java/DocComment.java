@@ -361,6 +361,14 @@ public final class DocComment
 			sb.append(field.getName());
 			sb.append(" = ");
 			sb.append(field.getNumber());
+			
+			if (field.hasDefaultValue())
+			{
+				sb.append(" [default = ");
+				sb.append(field.getDefaultValue());
+				sb.append("]");
+			}
+			
 			sb.append(";");
 			
 			fieldComment = sb.toString();

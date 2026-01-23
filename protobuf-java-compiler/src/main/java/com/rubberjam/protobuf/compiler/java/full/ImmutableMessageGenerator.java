@@ -356,13 +356,13 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		// Default instance
 		printer.println("    // @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")");
-		printer.println("    private static final " + className + " DEFAULT_INSTANCE;");
+		printer.println("    private static final " + outerClassName + "." + className + " DEFAULT_INSTANCE;");
 		printer.println("    static {");
-		printer.println("      DEFAULT_INSTANCE = new " + className + "();");
+		printer.println("      DEFAULT_INSTANCE = new " + outerClassName + "." + className + "();");
 		printer.println("    }");
 		printer.println();
 
-		printer.println("    public static " + className + " getDefaultInstance() {");
+		printer.println("    public static " + outerClassName + "." + className + " getDefaultInstance() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
 		printer.println();
@@ -402,7 +402,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		printer.println("    @java.lang.Override");
-		printer.println("    public " + className + " getDefaultInstanceForType() {");
+		printer.println("    public " + outerClassName + "." +className + " getDefaultInstanceForType() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
 
