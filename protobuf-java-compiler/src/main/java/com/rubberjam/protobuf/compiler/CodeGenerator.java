@@ -34,6 +34,16 @@ public abstract class CodeGenerator
 			FileDescriptor file, String parameter, GeneratorContext generatorContext)
 			throws GenerationException;
 
+	public void generate(
+			FileDescriptor file,
+			com.google.protobuf.DescriptorProtos.FileDescriptorProto proto,
+			String parameter,
+			GeneratorContext generatorContext)
+			throws GenerationException
+	{
+		generate(file, parameter, generatorContext);
+	}
+
 	/**
 	 * Generates code for all given proto files.
 	 *

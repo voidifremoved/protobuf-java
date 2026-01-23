@@ -126,15 +126,33 @@ public class Parser
 		}
 		else if (lookingAt("message"))
 		{
-			return parseMessageDefinition(fileBuilder.addMessageTypeBuilder(), location);
+			boolean result = parseMessageDefinition(fileBuilder.addMessageTypeBuilder(), location);
+			if (result) {
+				location.addPath(FileDescriptorProto.MESSAGE_TYPE_FIELD_NUMBER);
+				location.addPath(fileBuilder.getMessageTypeCount() - 1);
+				location.end();
+			}
+			return result;
 		}
 		else if (lookingAt("enum"))
 		{
-			return parseEnumDefinition(fileBuilder.addEnumTypeBuilder(), location);
+			boolean result = parseEnumDefinition(fileBuilder.addEnumTypeBuilder(), location);
+			if (result) {
+				location.addPath(FileDescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+				location.addPath(fileBuilder.getEnumTypeCount() - 1);
+				location.end();
+			}
+			return result;
 		}
 		else if (lookingAt("service"))
 		{
-			return parseServiceDefinition(fileBuilder.addServiceBuilder(), location);
+			boolean result = parseServiceDefinition(fileBuilder.addServiceBuilder(), location);
+			if (result) {
+				location.addPath(FileDescriptorProto.SERVICE_FIELD_NUMBER);
+				location.addPath(fileBuilder.getServiceCount() - 1);
+				location.end();
+			}
+			return result;
 		}
 		else if (lookingAt("extend"))
 		{
@@ -367,7 +385,7 @@ public class Parser
 	}
 
 	private boolean parseMessageStatement(DescriptorProto.Builder messageBuilder,
-			LocationRecorder location)
+			LocationRecorder parentLocation)
 	{
 		// Match C++ ParseMessageStatement behavior
 		if (tryConsume(";"))
@@ -375,13 +393,30 @@ public class Parser
 			// empty statement
 			return true;
 		}
+
+		LocationRecorder location = new LocationRecorder(this);
+
 		if (lookingAt("message"))
 		{
-			return parseMessageDefinition(messageBuilder.addNestedTypeBuilder(), location);
+			// Nested messages are part of nested_type (field 3)
+			boolean result = parseMessageDefinition(messageBuilder.addNestedTypeBuilder(), location);
+			if (result) {
+				location.addPath(DescriptorProto.NESTED_TYPE_FIELD_NUMBER);
+				location.addPath(messageBuilder.getNestedTypeCount() - 1);
+				location.end();
+			}
+			return result;
 		}
 		if (lookingAt("enum"))
 		{
-			return parseEnumDefinition(messageBuilder.addEnumTypeBuilder(), location);
+			// Nested enums are part of enum_type (field 4)
+			boolean result = parseEnumDefinition(messageBuilder.addEnumTypeBuilder(), location);
+			if (result) {
+				location.addPath(DescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+				location.addPath(messageBuilder.getEnumTypeCount() - 1);
+				location.end();
+			}
+			return result;
 		}
 		if (lookingAt("extensions"))
 		{
@@ -406,7 +441,14 @@ public class Parser
 			return parseOneof(messageBuilder, location);
 		}
 		// Default: try to parse as a field
-		return parseField(messageBuilder.addFieldBuilder(), -1, location, messageBuilder);
+		// Fields are part of field (field 2)
+		boolean result = parseField(messageBuilder.addFieldBuilder(), -1, location, messageBuilder);
+		if (result) {
+			location.addPath(DescriptorProto.FIELD_FIELD_NUMBER);
+			location.addPath(messageBuilder.getFieldCount() - 1);
+			location.end();
+		}
+		return result;
 	}
 
 	private boolean parseOneof(DescriptorProto.Builder messageBuilder, LocationRecorder location)
@@ -1205,8 +1247,19 @@ public class Parser
 	{
 		tokenizer.next(); // consume "enum"
 		enumBuilder.setName(consumeIdentifier("Expected enum name."));
+		// Note: we don't call location.end() here because it's called by the caller
+		// But wait, the original code called location.end() here!
+		// If we changed caller to call end(), we should remove it here?
+		// No, parseMessageDefinition is called by parseTopLevelStatement which created location.
+		// So parseTopLevelStatement expects this to close location?
+		// My change in parseMessageStatement creates location and calls end().
+		// So parseMessageDefinition should NOT call end() if called from parseMessageStatement?
+		// But it SHOULD call end() if called from parseTopLevelStatement?
+		// This is confusing.
+		// Let's adopt a convention: callee DOES NOT close location. Caller closes it.
+		// But parsePackage closes it.
+		// Let's make parseMessageDefinition NOT close it.
 		boolean result = parseEnumBlock(enumBuilder, location);
-		location.end();
 		return result;
 	}
 
@@ -1372,7 +1425,6 @@ public class Parser
 		tokenizer.next(); // consume "service"
 		serviceBuilder.setName(consumeIdentifier("Expected service name."));
 		boolean result = parseServiceBlock(serviceBuilder, location);
-		location.end();
 		return result;
 	}
 
@@ -2053,12 +2105,14 @@ public class Parser
 		private int startColumn;
 		private int endLine;
 		private int endColumn;
+		private String leadingComments;
 
 		LocationRecorder(Parser parser)
 		{
 			this.parser = parser;
 			this.startLine = parser.tokenizer.current().line;
 			this.startColumn = parser.tokenizer.current().column;
+			this.leadingComments = parser.tokenizer.current().docComment;
 		}
 
 		void addPath(int pathComponent)
@@ -2078,7 +2132,7 @@ public class Parser
 			}
 
 			int[] spanArray = new int[] { startLine, startColumn, endLine, endColumn };
-			parser.sourceLocationTable.add(pathArray, spanArray);
+			parser.sourceLocationTable.add(pathArray, spanArray, leadingComments, null);
 		}
 	}
 }

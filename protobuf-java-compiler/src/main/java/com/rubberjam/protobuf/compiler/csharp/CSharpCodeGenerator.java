@@ -1,6 +1,7 @@
 package com.rubberjam.protobuf.compiler.csharp;
 
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.rubberjam.protobuf.compiler.CodeGenerator;
 import com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException;
 import com.rubberjam.protobuf.compiler.GeneratorContext;
@@ -13,6 +14,12 @@ public class CSharpCodeGenerator extends CodeGenerator {
     @Override
     public void generate(FileDescriptor file, String parameter, GeneratorContext generatorContext)
             throws GenerationException {
+        generate(file, null, parameter, generatorContext);
+    }
+
+    @Override
+    public void generate(FileDescriptor file, FileDescriptorProto proto, String parameter, GeneratorContext generatorContext)
+            throws GenerationException {
 
         String basename = file.getName();
         if (basename.endsWith(".proto")) {
@@ -21,7 +28,7 @@ public class CSharpCodeGenerator extends CodeGenerator {
 
         String csharpFilename = toPascalCase(basename) + ".cs";
 
-        CSharpFileGenerator fileGenerator = new CSharpFileGenerator(file);
+        CSharpFileGenerator fileGenerator = new CSharpFileGenerator(file, proto);
 
         try (PrintWriter writer = new PrintWriter(generatorContext.open(csharpFilename))) {
             fileGenerator.generate(writer);
