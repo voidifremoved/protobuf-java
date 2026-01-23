@@ -1,14 +1,12 @@
 package com.rubberjam.protobuf.compiler.runtime;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.google.protobuf.Descriptors;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.rubberjam.protobuf.compiler.CompilationException;
 import com.rubberjam.protobuf.compiler.java.FileGenerator;
-import com.rubberjam.protobuf.compiler.java.Options;
 
-import java.io.PrintWriter;
-import java.io.StringWriter;
+import java.io.ByteArrayOutputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -17,6 +15,7 @@ import java.util.Set;
 
 /**
  * Helper for generating Java source at runtime from descriptor protos.
+ * Uses the Compiler class to ensure proper code generation.
  */
 public final class RuntimeJavaGenerator
 {
@@ -74,6 +73,7 @@ public final class RuntimeJavaGenerator
 			throw new CompilationException("rootProto.name must be set");
 		}
 
+		// Build FileDescriptor from protos
 		Map<String, FileDescriptorProto> allProtos = new HashMap<>();
 		if (dependencyProtos != null)
 		{
@@ -87,24 +87,55 @@ public final class RuntimeJavaGenerator
 				new HashMap<>(),
 				new HashSet<>());
 
-		Options options = Options.fromParameter(parameter);
-		applyDefaultOptions(options);
-		validateOptions(options);
-
-		boolean immutableApi = !options.generateMutableCode;
-		FileGenerator fileGenerator = new FileGenerator(fileDescriptor, options, immutableApi);
-
-		StringWriter stringWriter = new StringWriter();
-		try (PrintWriter writer = new PrintWriter(stringWriter))
+		// Use Compiler's JavaCodeGenerator approach (same as Compiler.compile())
+		InMemoryGeneratorContext context = new InMemoryGeneratorContext();
+		
+		com.rubberjam.protobuf.compiler.JavaCodeGenerator codeGenerator = 
+				new com.rubberjam.protobuf.compiler.JavaCodeGenerator();
+		
+		try
 		{
-			fileGenerator.generate(writer);
+			codeGenerator.generate(fileDescriptor, parameter, context);
+		}
+		catch (com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException e)
+		{
+			throw new CompilationException("Error generating code", e);
 		}
 
+		Map<String, String> generatedFiles = context.getFiles();
+		if (generatedFiles.isEmpty())
+		{
+			throw new CompilationException("No files were generated");
+		}
+
+		// Find the main Java file (should be only one for single proto)
+		String fileName = null;
+		String source = null;
+		for (Map.Entry<String, String> entry : generatedFiles.entrySet())
+		{
+			if (entry.getKey().endsWith(".java") && !entry.getKey().endsWith(".pb.meta"))
+			{
+				fileName = entry.getKey();
+				source = entry.getValue();
+				break;
+			}
+		}
+
+		if (fileName == null || source == null)
+		{
+			throw new CompilationException("No Java file was generated");
+		}
+
+		// Extract package and class name from FileGenerator
+		com.rubberjam.protobuf.compiler.java.Options options = 
+				com.rubberjam.protobuf.compiler.java.Options.fromParameter(parameter);
+		boolean immutableApi = !options.generateMutableCode;
+		FileGenerator fileGenerator = new FileGenerator(fileDescriptor, options, immutableApi);
+		
 		String packageName = fileGenerator.getJavaPackage();
 		String className = fileGenerator.getClassName();
-		String packageDir = packageName.replace('.', '/');
-		String fileName = packageDir.isEmpty() ? className + ".java" : packageDir + "/" + className + ".java";
-		return new GeneratedJavaFile(fileName, packageName, className, stringWriter.toString());
+
+		return new GeneratedJavaFile(fileName, packageName, className, source);
 	}
 
 	public static Map<String, GeneratedJavaFile> generateJavaSources(
@@ -123,29 +154,6 @@ public final class RuntimeJavaGenerator
 			results.put(file.getFileName(), file);
 		}
 		return results;
-	}
-
-	private static void applyDefaultOptions(Options options)
-	{
-		if (!options.generateImmutableCode
-				&& !options.generateMutableCode
-				&& !options.generateSharedCode)
-		{
-			options.generateImmutableCode = true;
-			options.generateSharedCode = true;
-		}
-	}
-
-	private static void validateOptions(Options options) throws CompilationException
-	{
-		if (options.enforceLite && options.generateMutableCode)
-		{
-			throw new CompilationException("lite runtime generator option cannot be used with mutable API.");
-		}
-		if (options.generateImmutableCode && options.generateMutableCode)
-		{
-			throw new CompilationException("Immutable and mutable generation cannot both be enabled for runtime generation.");
-		}
 	}
 
 	private static FileDescriptor buildFileDescriptor(
@@ -184,9 +192,32 @@ public final class RuntimeJavaGenerator
 			building.remove(fileName);
 			return result;
 		}
-		catch (Descriptors.DescriptorValidationException e)
+		catch (com.google.protobuf.Descriptors.DescriptorValidationException e)
 		{
 			throw new CompilationException("Error building file descriptor for " + fileName, e);
+		}
+	}
+
+	private static class InMemoryGeneratorContext implements com.rubberjam.protobuf.compiler.GeneratorContext
+	{
+		private final Map<String, ByteArrayOutputStream> files = new HashMap<>();
+
+		@Override
+		public java.io.OutputStream open(String filename)
+		{
+			ByteArrayOutputStream stream = new ByteArrayOutputStream();
+			files.put(filename, stream);
+			return stream;
+		}
+
+		public Map<String, String> getFiles()
+		{
+			Map<String, String> result = new HashMap<>();
+			for (Map.Entry<String, ByteArrayOutputStream> entry : files.entrySet())
+			{
+				result.put(entry.getKey(), entry.getValue().toString(StandardCharsets.UTF_8));
+			}
+			return Collections.unmodifiableMap(result);
 		}
 	}
 }

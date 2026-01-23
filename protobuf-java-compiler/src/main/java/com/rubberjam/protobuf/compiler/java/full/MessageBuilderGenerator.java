@@ -41,23 +41,15 @@ public class MessageBuilderGenerator
 
 		printer.println("    public static final com.google.protobuf.Descriptors.Descriptor");
 		printer.println("        getDescriptor() {");
-		printer.println(
-				"      return "
-						+ context.getNameResolver().getFileClassName(descriptor.getFile(), true)
-						+ ".internal_"
-						+ descriptor.getName()
-						+ "_descriptor;");
+		String identifier = getUniqueFileScopeIdentifier(descriptor);
+		String outerClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		printer.println("      return " + outerClassName + ".internal_" + identifier + "_descriptor;");
 		printer.println("    }");
 
 		printer.println("    @java.lang.Override");
 		printer.println("    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
 		printer.println("        internalGetFieldAccessorTable() {");
-		printer.println(
-				"      return "
-						+ context.getNameResolver().getFileClassName(descriptor.getFile(), true)
-						+ ".internal_"
-						+ descriptor.getName()
-						+ "_fieldAccessorTable");
+		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
 		printer.println("          .ensureFieldAccessorsInitialized(");
 		printer.println("              " + className + ".class, " + className + ".Builder.class);");
 		printer.println("    }");
@@ -91,12 +83,7 @@ public class MessageBuilderGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    public com.google.protobuf.Descriptors.Descriptor");
 		printer.println("        getDescriptorForType() {");
-		printer.println(
-				"      return "
-						+ context.getNameResolver().getFileClassName(descriptor.getFile(), true)
-						+ ".internal_"
-						+ descriptor.getName()
-						+ "_descriptor;");
+		printer.println("      return " + outerClassName + ".internal_" + identifier + "_descriptor;");
 		printer.println("    }");
 
 		printer.println("    @java.lang.Override");
@@ -154,5 +141,10 @@ public class MessageBuilderGenerator
 	private static String getBitFieldName(int index)
 	{
 		return "bitField" + index + "_";
+	}
+
+	private String getUniqueFileScopeIdentifier(Descriptor descriptor)
+	{
+		return "static_" + descriptor.getFullName().replace('.', '_');
 	}
 }
