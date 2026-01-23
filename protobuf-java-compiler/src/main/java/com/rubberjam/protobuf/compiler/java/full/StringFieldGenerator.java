@@ -337,7 +337,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder set"
-				+ variables.get("capitalized_name") + "(" + variables.get("boxed_type") + " value) {");
+				+ variables.get("capitalized_name") + "(");
+		printer.println("          " + variables.get("boxed_type") + " value) {");
 		printer.println("        " + variables.get("null_check"));
 		printer.println("        " + variables.get("name") + "_ = value;");
 		printer.println("        " + variables.get("set_has_field_bit_builder"));
@@ -358,9 +359,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder clear"
 				+ variables.get("capitalized_name") + "() {");
-		printer.println("        " + variables.get("clear_has_field_bit_builder"));
 		printer.println("        " + variables.get("name") + "_ = getDefaultInstance().get"
 				+ variables.get("capitalized_name") + "();");
+		printer.println("        " + variables.get("clear_has_field_bit_builder"));
 		printer.println("        " + variables.get("on_changed"));
 		printer.println("        return this;");
 		printer.println("      }");
@@ -565,6 +566,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
 			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
 			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
+			variables.put("on_changed", "onChanged();");
 		}
 
 		@Override
@@ -662,7 +664,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    return " + variables.get("name") + "_.getByteString(index);");
 			printer.println("  }");
 
-			printer.println("  public Builder set" + variables.get("capitalized_name") + "(int index, java.lang.String value) {");
+			printer.println("  public Builder set" + variables.get("capitalized_name") + "(");
+			printer.println("      int index, java.lang.String value) {");
 			printer.println("    if (value == null) { throw new NullPointerException(); }");
 			printer.println("    ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("    " + variables.get("name") + "_.set(index, value);");
@@ -670,7 +673,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    return this;");
 			printer.println("  }");
 
-			printer.println("  public Builder add" + variables.get("capitalized_name") + "(java.lang.String value) {");
+			printer.println("  public Builder add" + variables.get("capitalized_name") + "(");
+			printer.println("      java.lang.String value) {");
 			printer.println("    if (value == null) { throw new NullPointerException(); }");
 			printer.println("    ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("    " + variables.get("name") + "_.add(value);");
@@ -678,8 +682,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    return this;");
 			printer.println("  }");
 
-			printer.println("  public Builder addAll" + variables.get("capitalized_name")
-					+ "(java.lang.Iterable<java.lang.String> values) {");
+			printer.println("  public Builder addAll" + variables.get("capitalized_name") + "(");
+			printer.println("      java.lang.Iterable<java.lang.String> values) {");
 			printer.println("    ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println(
 					"    com.google.protobuf.AbstractMessageLite.Builder.addAll(values, " + variables.get("name") + "_);");
@@ -689,11 +693,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 
 			printer.println("  public Builder clear" + variables.get("capitalized_name") + "() {");
 			printer.println("    " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
+			printer.println("    " + variables.get("clear_has_field_bit_builder"));
+			printer.println("    " + variables.get("on_changed"));
 			printer.println("    return this;");
 			printer.println("  }");
 
-			printer.println(
-					"  public Builder add" + variables.get("capitalized_name") + "Bytes(com.google.protobuf.ByteString value) {");
+			printer.println("  public Builder add" + variables.get("capitalized_name") + "Bytes(");
+			printer.println("      com.google.protobuf.ByteString value) {");
 			printer.println("    if (value == null) { throw new NullPointerException(); }");
 			printer.println("    // checkByteStringIsUtf8(value);");
 			printer.println("    ensure" + variables.get("capitalized_name") + "IsMutable();");

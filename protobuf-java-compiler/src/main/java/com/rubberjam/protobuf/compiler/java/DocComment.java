@@ -387,17 +387,23 @@ public final class DocComment
 	public static void writeMessageDocComment(
 			PrintWriter out, Descriptor message, Options options, boolean kdoc)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, message.getFile(), getPath(message), options, kdoc);
+		writeMessageDocComment(out, message, options, kdoc, "");
+	}
+
+	public static void writeMessageDocComment(
+			PrintWriter out, Descriptor message, Options options, boolean kdoc, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, message.getFile(), getPath(message), options, kdoc, indentPrefix);
 		if (kdoc)
 		{
-			out.print(" * Protobuf type `" + escapeKdoc(message.getFullName()) + "`\n");
+			out.print(indentPrefix + " * Protobuf type `" + escapeKdoc(message.getFullName()) + "`\n");
 		}
 		else
 		{
-			out.print(" * Protobuf type {@code " + escapeJavadoc(message.getFullName()) + "}\n");
+			out.print(indentPrefix + " * Protobuf type {@code " + escapeJavadoc(message.getFullName()) + "}\n");
 		}
-		out.print(" */\n");
+		out.print(indentPrefix + " */\n");
 	}
 
 	public static void writeFieldDocComment(

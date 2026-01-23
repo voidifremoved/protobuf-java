@@ -347,6 +347,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 
 		messageBuilderGenerator.generate(printer);
+		printer.println();
 
 		// Default instance
 		printer.println("    // @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")");
