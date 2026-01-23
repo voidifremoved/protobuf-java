@@ -1,0 +1,156 @@
+syntax = "proto2";
+
+package ComprehensiveTest.V2;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.v2";
+option java_outer_classname = "ComprehensiveTestV2";
+option java_multiple_files = false;
+option java_generic_services = true;
+option cc_generic_services = true;
+option optimize_for = SPEED;
+
+// Test enum
+enum TestEnum {
+  option allow_alias = true;
+  UNKNOWN = 0;
+  FIRST = 1;
+  SECOND = 2;
+  THIRD = 3;
+  ALIAS_THIRD = 3 [deprecated = true];
+}
+
+// Test message with all field types
+message AllFieldTypes {
+  // Integer types
+  optional int32 int32_field = 1;
+  optional int64 int64_field = 2;
+  optional uint32 uint32_field = 3;
+  optional uint64 uint64_field = 4;
+  optional sint32 sint32_field = 5;
+  optional sint64 sint64_field = 6;
+  optional fixed32 fixed32_field = 7;
+  optional fixed64 fixed64_field = 8;
+  optional sfixed32 sfixed32_field = 9;
+  optional sfixed64 sfixed64_field = 10;
+  
+  // Floating point types
+  optional float float_field = 11;
+  optional double double_field = 12;
+  
+  // Other primitive types
+  optional bool bool_field = 13;
+  optional string string_field = 14;
+  optional bytes bytes_field = 15;
+  
+  // Enum and message types
+  optional TestEnum enum_field = 16;
+  optional NestedMessage message_field = 17;
+  
+  // Repeated fields
+  repeated int32 repeated_int32 = 18;
+  repeated string repeated_string = 19;
+  repeated TestEnum repeated_enum = 20;
+  repeated NestedMessage repeated_message = 21;
+  
+  // Required fields (proto2 only)
+  required string required_string = 22;
+  required int32 required_int32 = 23;
+  
+  // Default values
+  optional int32 int32_with_default = 24 [default = 42];
+  optional string string_with_default = 25 [default = "hello"];
+  optional bool bool_with_default = 26 [default = true];
+  optional TestEnum enum_with_default = 27 [default = SECOND];
+  optional double double_with_default = 28 [default = 3.14159];
+  optional float float_with_default = 29 [default = 2.71828];
+  
+  // Deprecated field
+  optional string deprecated_field = 30 [deprecated = true];
+  
+  // Nested message
+  message NestedMessage {
+    optional string nested_string = 1;
+    optional int32 nested_int32 = 2;
+    
+    // Nested enum
+    enum NestedEnum {
+      NESTED_UNKNOWN = 0;
+      NESTED_FIRST = 1;
+    }
+    optional NestedEnum nested_enum = 3;
+  }
+  
+  // Nested enum
+  enum NestedEnum {
+    NESTED_UNKNOWN = 0;
+    NESTED_FIRST = 1;
+  }
+  optional NestedEnum nested_enum_field = 31;
+}
+
+// Message with oneof
+message OneofMessage {
+  oneof test_oneof {
+    string oneof_string = 1;
+    int32 oneof_int32 = 2;
+    TestEnum oneof_enum = 3;
+    AllFieldTypes oneof_message = 4;
+  }
+  
+  optional string regular_field = 5;
+}
+
+// Message with map fields
+message MapMessage {
+  map<string, int32> string_to_int32 = 1;
+  map<int32, string> int32_to_string = 2;
+  map<string, TestEnum> string_to_enum = 3;
+  map<string, AllFieldTypes> string_to_message = 4;
+  map<bool, string> bool_to_string = 5;
+  map<int64, bytes> int64_to_bytes = 6;
+}
+
+// Message with extensions
+message ExtendableMessage {
+  extensions 100 to 199;
+  extensions 500 to 599;
+  
+  optional string base_field = 1;
+}
+
+// Extension fields
+extend ExtendableMessage {
+  optional string extended_string = 100;
+  optional int32 extended_int32 = 101;
+  repeated string extended_repeated = 102;
+}
+
+// Message with groups (proto2 only)
+message GroupMessage {
+  optional group TestGroup = 1 {
+    optional string group_field = 1;
+    optional int32 group_int32 = 2;
+  }
+  
+  repeated group RepeatedGroup = 2 {
+    optional string repeated_group_field = 1;
+  }
+}
+
+// Message with reserved fields
+message ReservedMessage {
+  reserved 2, 15, 9 to 11;
+  reserved "foo", "bar";
+  
+  optional string field1 = 1;
+  optional int32 field3 = 3;
+}
+
+// Service definition
+service TestService {
+  rpc SimpleRpc(AllFieldTypes) returns (AllFieldTypes);
+  rpc StreamingRpc(stream AllFieldTypes) returns (stream AllFieldTypes);
+  rpc ClientStreamingRpc(stream AllFieldTypes) returns (AllFieldTypes);
+  rpc ServerStreamingRpc(AllFieldTypes) returns (stream AllFieldTypes);
+}
+

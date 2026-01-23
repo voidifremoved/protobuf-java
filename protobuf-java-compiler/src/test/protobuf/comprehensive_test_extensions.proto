@@ -1,0 +1,89 @@
+syntax = "proto2";
+
+package ComprehensiveTest.Extensions;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.extensions";
+option java_outer_classname = "ComprehensiveTestExtensions";
+option java_generic_services = false;
+option optimize_for = SPEED;
+
+// Base message for extensions
+message BaseMessage {
+  extensions 100 to 199;
+  extensions 500 to 599;
+  extensions 1000 to 1999;
+  
+  optional string base_field = 1;
+  optional int32 base_int32 = 2;
+}
+
+// Extend with various field types
+extend BaseMessage {
+  optional string extended_string = 100;
+  optional int32 extended_int32 = 101;
+  optional int64 extended_int64 = 102;
+  optional bool extended_bool = 103;
+  optional bytes extended_bytes = 104;
+  optional double extended_double = 105;
+  optional float extended_float = 106;
+  
+  repeated string extended_repeated_string = 107;
+  repeated int32 extended_repeated_int32 = 108;
+  
+  optional TestEnum extended_enum = 109;
+  repeated TestEnum extended_repeated_enum = 110;
+  
+  optional ExtensionMessage extended_message = 111;
+  repeated ExtensionMessage extended_repeated_message = 112;
+}
+
+// Enum for extension testing
+enum TestEnum {
+  EXT_UNKNOWN = 0;
+  EXT_FIRST = 1;
+  EXT_SECOND = 2;
+}
+
+// Message for extension testing
+message ExtensionMessage {
+  optional string ext_msg_field = 1;
+  optional int32 ext_msg_int32 = 2;
+}
+
+// Another extendable message
+message AnotherExtendable {
+  extensions 200 to 299;
+  
+  optional string another_field = 1;
+}
+
+extend AnotherExtendable {
+  optional string another_extended = 200;
+  optional int32 another_extended_int = 201;
+}
+
+// Nested extendable message
+message OuterMessage {
+  message InnerExtendable {
+    extensions 300 to 399;
+    
+    optional string inner_field = 1;
+  }
+  
+  extend InnerExtendable {
+    optional string inner_extended = 300;
+  }
+}
+
+// Extension with default values
+extend BaseMessage {
+  optional string extended_with_default = 113 [default = "default_value"];
+  optional int32 extended_int_with_default = 114 [default = 42];
+  optional bool extended_bool_with_default = 115 [default = true];
+}
+
+// Deprecated extension
+extend BaseMessage {
+  optional string deprecated_extension = 116 [deprecated = true];
+}
+

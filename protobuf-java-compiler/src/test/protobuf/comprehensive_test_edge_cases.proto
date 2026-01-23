@@ -1,0 +1,185 @@
+syntax = "proto2";
+
+package ComprehensiveTest.EdgeCases;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.edge";
+option java_outer_classname = "ComprehensiveTestEdgeCases";
+option optimize_for = SPEED;
+
+// Message with field number edge cases
+message EdgeCaseFields {
+  optional string field1 = 1;
+  optional string field19000 = 18000;  // High field number
+  
+  // Field numbers at boundaries
+  optional int32 field15 = 15;
+  optional int32 field16 = 16;
+  optional int32 field2047 = 2047;
+  optional int32 field2048 = 2048;
+}
+
+// Message with special string values
+message SpecialStrings {
+  optional string empty_string = 1 [default = ""];
+  optional string unicode_string = 2;
+  optional string newline_string = 3;
+  optional string tab_string = 4;
+  optional string quote_string = 5;
+  optional string backslash_string = 6;
+}
+
+// Message with extreme numeric defaults
+message ExtremeDefaults {
+  optional int32 max_int32 = 1 [default = 2147483647];
+  optional int32 min_int32 = 2 [default = -2147483648];
+  optional int64 max_int64 = 3 [default = 9223372036854775807];
+  optional int64 min_int64 = 4 [default = -9223372036854775808];
+  optional uint32 max_uint32 = 5 [default = 4294967295];
+  optional uint64 max_uint64 = 6 [default = 18446744073709551615];
+  optional float max_float = 7 [default = 3.4028235e+38];
+  optional float min_float = 8 [default = 1.4e-45];
+  optional double max_double = 9 [default = 1.7976931348623157e+308];
+  optional double min_double = 10 [default = 4.9e-324];
+  optional float inf_float = 11 [default = inf];
+  optional float neg_inf_float = 12 [default = -inf];
+  optional float nan_float = 13 [default = nan];
+  optional double inf_double = 14 [default = inf];
+  optional double neg_inf_double = 15 [default = -inf];
+  optional double nan_double = 16 [default = nan];
+}
+
+// Message with many repeated fields
+message ManyRepeatedFields {
+  repeated int32 repeated1 = 1;
+  repeated int32 repeated2 = 2;
+  repeated int32 repeated3 = 3;
+  repeated int32 repeated4 = 4;
+  repeated int32 repeated5 = 5;
+  repeated int32 repeated6 = 6;
+  repeated int32 repeated7 = 7;
+  repeated int32 repeated8 = 8;
+  repeated int32 repeated9 = 9;
+  repeated int32 repeated10 = 10;
+  repeated string repeated_string1 = 11;
+  repeated string repeated_string2 = 12;
+  repeated string repeated_string3 = 13;
+  repeated bool repeated_bool1 = 14;
+  repeated bool repeated_bool2 = 15;
+}
+
+// Message with many oneof fields
+message ManyOneofs {
+  oneof oneof1 {
+    string oneof1_string = 1;
+    int32 oneof1_int32 = 2;
+  }
+  oneof oneof2 {
+    string oneof2_string = 3;
+    int32 oneof2_int32 = 4;
+  }
+  oneof oneof3 {
+    string oneof3_string = 5;
+    int32 oneof3_int32 = 6;
+  }
+  oneof oneof4 {
+    string oneof4_string = 7;
+    int32 oneof4_int32 = 8;
+  }
+  oneof oneof5 {
+    string oneof5_string = 9;
+    int32 oneof5_int32 = 10;
+  }
+}
+
+// Message with many map fields
+message ManyMaps {
+  map<string, int32> map1 = 1;
+  map<string, int32> map2 = 2;
+  map<string, int32> map3 = 3;
+  map<int32, string> map4 = 4;
+  map<int32, string> map5 = 5;
+  map<bool, string> map6 = 6;
+  map<string, bool> map7 = 7;
+  map<int64, bytes> map8 = 8;
+  map<string, ManyRepeatedFields> map9 = 9;
+  map<int32, ManyOneofs> map10 = 10;
+}
+
+// Message with reserved ranges
+message ReservedRanges {
+  reserved 1, 2, 3;
+  reserved 10 to 20;
+  reserved 50 to 100;
+  reserved 200 to 300;
+  reserved "reserved1", "reserved2", "reserved3";
+  
+  optional string field4 = 4;
+  optional string field21 = 21;
+  optional string field101 = 101;
+}
+
+// Message with all field types in oneof
+message OneofAllTypes {
+  oneof all_types {
+    int32 oneof_int32 = 1;
+    int64 oneof_int64 = 2;
+    uint32 oneof_uint32 = 3;
+    uint64 oneof_uint64 = 4;
+    sint32 oneof_sint32 = 5;
+    sint64 oneof_sint64 = 6;
+    fixed32 oneof_fixed32 = 7;
+    fixed64 oneof_fixed64 = 8;
+    sfixed32 oneof_sfixed32 = 9;
+    sfixed64 oneof_sfixed64 = 10;
+    float oneof_float = 11;
+    double oneof_double = 12;
+    bool oneof_bool = 13;
+    string oneof_string = 14;
+    bytes oneof_bytes = 15;
+    TestEnum oneof_enum = 16;
+    AllTypesMessage oneof_message = 17;
+  }
+}
+
+enum TestEnum {
+  TEST_UNKNOWN = 0;
+  TEST_FIRST = 1;
+}
+
+message AllTypesMessage {
+  optional int32 field = 1;
+}
+
+// Empty message
+message EmptyMessage {
+}
+
+// Message with only reserved fields
+message OnlyReserved {
+  reserved 1 to 100;
+  reserved "field1", "field2";
+}
+
+// Message with single field
+message SingleField {
+  optional string field = 1;
+}
+
+// Message with single repeated field
+message SingleRepeated {
+  repeated string field = 1;
+}
+
+// Message with single map field
+message SingleMap {
+  map<string, int32> field = 1;
+}
+
+// Message with single oneof
+message SingleOneof {
+  oneof field {
+    string string_value = 1;
+    int32 int32_value = 2;
+  }
+}
+

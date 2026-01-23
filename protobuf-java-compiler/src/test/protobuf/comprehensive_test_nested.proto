@@ -1,0 +1,155 @@
+syntax = "proto2";
+
+package ComprehensiveTest.Nested;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.nested";
+option java_outer_classname = "ComprehensiveTestNested";
+option java_multiple_files = false;
+option optimize_for = SPEED;
+
+// Deeply nested messages
+message Level1 {
+  optional string level1_field = 1;
+  
+  message Level2 {
+    optional string level2_field = 1;
+    
+    message Level3 {
+      optional string level3_field = 1;
+      
+      message Level4 {
+        optional string level4_field = 1;
+        
+        enum Level4Enum {
+          LEVEL4_UNKNOWN = 0;
+          LEVEL4_FIRST = 1;
+        }
+        optional Level4Enum level4_enum = 2;
+      }
+      
+      optional Level4 level4_message = 2;
+      repeated Level4 repeated_level4 = 3;
+    }
+    
+    optional Level3 level3_message = 2;
+    repeated Level3 repeated_level3 = 3;
+    
+    enum Level2Enum {
+      LEVEL2_UNKNOWN = 0;
+      LEVEL2_FIRST = 1;
+    }
+    optional Level2Enum level2_enum = 4;
+  }
+  
+  optional Level2 level2_message = 2;
+  repeated Level2 repeated_level2 = 3;
+  
+  enum Level1Enum {
+    LEVEL1_UNKNOWN = 0;
+    LEVEL1_FIRST = 1;
+  }
+  optional Level1Enum level1_enum = 4;
+}
+
+// Multiple nested messages at same level
+message OuterWithMultipleNested {
+  optional string outer_field = 1;
+  
+  message FirstNested {
+    optional string first_field = 1;
+  }
+  
+  message SecondNested {
+    optional string second_field = 1;
+    
+    message DeeplyNested {
+      optional string deep_field = 1;
+    }
+    optional DeeplyNested deep_message = 2;
+  }
+  
+  message ThirdNested {
+    optional string third_field = 1;
+  }
+  
+  optional FirstNested first = 2;
+  optional SecondNested second = 3;
+  optional ThirdNested third = 4;
+  repeated FirstNested repeated_first = 5;
+}
+
+// Nested message with oneof
+message OuterWithNestedOneof {
+  optional string outer_field = 1;
+  
+  message NestedWithOneof {
+    oneof nested_oneof {
+      string oneof_string = 1;
+      int32 oneof_int32 = 2;
+    }
+    optional string regular_field = 3;
+  }
+  
+  optional NestedWithOneof nested = 2;
+}
+
+// Nested message with maps
+message OuterWithNestedMaps {
+  optional string outer_field = 1;
+  
+  message NestedWithMaps {
+    map<string, int32> nested_map = 1;
+    map<int32, string> reverse_map = 2;
+  }
+  
+  optional NestedWithMaps nested = 2;
+  map<string, NestedWithMaps> outer_map = 3;
+}
+
+// Nested enums
+message MessageWithNestedEnums {
+  enum NestedEnum1 {
+    NESTED1_UNKNOWN = 0;
+    NESTED1_FIRST = 1;
+  }
+  
+  enum NestedEnum2 {
+    NESTED2_UNKNOWN = 0;
+    NESTED2_FIRST = 1;
+    NESTED2_SECOND = 2;
+  }
+  
+  optional NestedEnum1 enum1 = 1;
+  optional NestedEnum2 enum2 = 2;
+  repeated NestedEnum1 repeated_enum1 = 3;
+  repeated NestedEnum2 repeated_enum2 = 4;
+  
+  message NestedMessage {
+    optional NestedEnum1 msg_enum1 = 1;
+    optional NestedEnum2 msg_enum2 = 2;
+  }
+  
+  optional NestedMessage nested = 5;
+}
+
+// Nested groups
+message MessageWithNestedGroups {
+  optional group Group1 = 1 {
+    optional string group1_field = 1;
+    
+    optional group Group1A = 2 {
+      optional string group1a_field = 1;
+    }
+    optional Group1A nested_group = 3;
+  }
+  
+  repeated group RepeatedGroup = 2 {
+    optional string repeated_group_field = 1;
+    
+    optional group InnerGroup = 2 {
+      optional string inner_field = 1;
+    }
+    optional InnerGroup inner = 3;
+  }
+}
+
