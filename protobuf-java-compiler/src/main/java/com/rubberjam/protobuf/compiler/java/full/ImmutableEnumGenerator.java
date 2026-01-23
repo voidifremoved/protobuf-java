@@ -74,7 +74,8 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			EnumValueDescriptor value = canonicalValues.get(i);
 			
 			// Match C++ WriteEnumValueDocComment behavior - use DocComment utility
-			DocComment.writeEnumValueDocComment(printer, value, context.getOptions());
+			// Add 4-space indentation prefix for enum values inside enum class
+			DocComment.writeEnumValueDocComment(printer, value, context.getOptions(), "    ");
 			
 			// Add deprecation annotation if needed
 			if (value.getOptions().getDeprecated())
@@ -99,6 +100,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		// Match C++ behavior: UNRECOGNIZED comes before semicolon
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
+			// Generate JavaDoc for UNRECOGNIZED manually (no EnumValueDescriptor exists for it)
 			printer.println("    /**");
 			printer.println("     * <code>UNRECOGNIZED = -1;</code>");
 			printer.println("     */");
@@ -133,7 +135,8 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		for (Alias alias : aliases)
 		{
 			// Match C++ WriteEnumValueDocComment for aliases - use DocComment utility
-			DocComment.writeEnumValueDocComment(printer, alias.value, context.getOptions());
+			// Add 4-space indentation prefix for aliases inside enum class
+			DocComment.writeEnumValueDocComment(printer, alias.value, context.getOptions(), "    ");
 			printer.println("    public static final " + classname + " " + alias.value.getName() + " = "
 					+ alias.canonicalValue.getName() + ";");
 		}
@@ -146,10 +149,12 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		for (EnumValueDescriptor value : descriptor.getValues())
 		{
 			// Match C++ WriteEnumValueDocComment for value constants - use DocComment utility
-			DocComment.writeEnumValueDocComment(printer, value, context.getOptions());
+			// Add 4-space indentation prefix for value constants inside enum class
+			DocComment.writeEnumValueDocComment(printer, value, context.getOptions(), "    ");
 			String deprecationComment = value.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
 			printer.println("    " + deprecationComment + "public static final int " + value.getName() + "_VALUE = " + value.getNumber() + ";");
 		}
+		printer.println();
 		printer.println();
 
 		// Standard methods
@@ -163,7 +168,23 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		}
 		printer.println("    return value;");
 		printer.println("  }");
+		printer.println();
 
+		printer.println("  /**");
+		printer.println("   * @param value The numeric wire value of the corresponding enum entry.");
+		printer.println("   * @return The enum associated with the given numeric wire value.");
+		printer.println("   * @deprecated Use {@link #forNumber(int)} instead.");
+		printer.println("   */");
+		printer.println("  @java.lang.Deprecated");
+		printer.println("  public static " + classname + " valueOf(int value) {");
+		printer.println("    return forNumber(value);");
+		printer.println("  }");
+		printer.println();
+
+		printer.println("  /**");
+		printer.println("   * @param value The numeric wire value of the corresponding enum entry.");
+		printer.println("   * @return The enum associated with the given numeric wire value.");
+		printer.println("   */");
 		printer.println("  public static " + classname + " forNumber(int value) {");
 		printer.println("    switch (value) {");
 		for (EnumValueDescriptor value : canonicalValues)
@@ -173,6 +194,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("      default: return null;");
 		printer.println("    }");
 		printer.println("  }");
+		printer.println();
 
 		// Internal map
 		printer.println("  public static com.google.protobuf.Internal.EnumLiteMap<" + classname + ">");
@@ -186,6 +208,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("            return " + classname + ".forNumber(number);");
 		printer.println("          }");
 		printer.println("        };");
+		printer.println();
 
 		// Reflection
 		printer.println("  public final com.google.protobuf.Descriptors.EnumValueDescriptor");
@@ -205,15 +228,18 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("      getDescriptorForType() {");
 		printer.println("    return getDescriptor();");
 		printer.println("  }");
-
-		printer.println("  public static final com.google.protobuf.Descriptors.EnumDescriptor");
+		printer.println("  public static com.google.protobuf.Descriptors.EnumDescriptor");
 		printer.println("      getDescriptor() {");
 		// TODO: Handle nested vs top-level descriptor access correctly
-		printer.println("    return " + context.getNameResolver().getFileClassName(descriptor.getFile(), true)
-				+ ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
+		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
+		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
+		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
+		printer.println("    return " + outerClassName + ".getDescriptor().getEnumTypes().get(" + descriptor.getIndex() + ");");
 		printer.println("  }");
+		printer.println();
 
-		printer.println("  private static final " + classname + "[] VALUES = values();");
+		printer.println("    private static final " + classname + "[] VALUES = values();");
+		printer.println();
 
 		printer.println("  public static " + classname + " valueOf(");
 		printer.println("      com.google.protobuf.Descriptors.EnumValueDescriptor desc) {");
@@ -223,29 +249,36 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("    }");
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println("    if (desc.getIndex() == -1) {");
+			printer.println("    if (desc.getNumber() == -1) {");
 			printer.println("      return UNRECOGNIZED;");
 			printer.println("    }");
 		}
 		printer.println("    return VALUES[desc.getIndex()];");
 		printer.println("  }");
+		printer.println();
 
-		printer.println("  private final int value;");
+		printer.println("    private final int value;");
+		printer.println();
+
 		if (ordinalIsIndex)
 		{
-			printer.println("  private " + classname + "(int value) {");
-			printer.println("    this.value = value;");
-			printer.println("  }");
+			printer.println("    private " + classname + "(int value) {");
+			printer.println("      this.value = value;");
+			printer.println("    }");
 		}
 		else
 		{
-			printer.println("  private final int index;");
-			printer.println("  private " + classname + "(int index, int value) {");
-			printer.println("    this.index = index;");
-			printer.println("    this.value = value;");
-			printer.println("  }");
+			printer.println("    private final int index;");
+			printer.println();
+			printer.println("    private " + classname + "(int index, int value) {");
+			printer.println("      this.index = index;");
+			printer.println("      this.value = value;");
+			printer.println("    }");
 		}
+		printer.println();
 
-		printer.println("}");
+		printer.println("    // @@protoc_insertion_point(enum_scope:" + descriptor.getFullName() + ")");
+		printer.println("  }");
+		printer.println();
 	}
 }

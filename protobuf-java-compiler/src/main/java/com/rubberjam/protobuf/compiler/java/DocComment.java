@@ -131,6 +131,12 @@ public final class DocComment
 	private static void writeDocCommentBodyForLocation(
 			PrintWriter out, SourceCodeInfo.Location location, Options options, boolean kdoc)
 	{
+		writeDocCommentBodyForLocation(out, location, options, kdoc, "");
+	}
+
+	private static void writeDocCommentBodyForLocation(
+			PrintWriter out, SourceCodeInfo.Location location, Options options, boolean kdoc, String indentPrefix)
+	{
 		if (options.stripNonfunctionalCodegen)
 		{
 			return;
@@ -156,37 +162,43 @@ public final class DocComment
 			}
 			if (kdoc)
 			{
-				out.print(" * ```\n");
+				out.print(indentPrefix + " * ```\n");
 			}
 			else
 			{
-				out.print(" * <pre>\n");
+				out.print(indentPrefix + " * <pre>\n");
 			}
 			for (int i = 0; i < last; i++)
 			{
-				out.print(" * " + lines[i] + "\n");
+				out.print(indentPrefix + " * " + lines[i] + "\n");
 			}
 			if (kdoc)
 			{
-				out.print(" * ```\n");
+				out.print(indentPrefix + " * ```\n");
 			}
 			else
 			{
-				out.print(" * </pre>\n");
+				out.print(indentPrefix + " * </pre>\n");
 			}
-			out.print(" *\n");
+			out.print(indentPrefix + " *\n");
 		}
 	}
 
 	private static void findLocationAndWriteComment(
 			PrintWriter out, FileDescriptor file, List<Integer> path, Options options, boolean kdoc)
 	{
+		findLocationAndWriteComment(out, file, path, options, kdoc, "");
+	}
+
+	private static void findLocationAndWriteComment(
+			PrintWriter out, FileDescriptor file, List<Integer> path, Options options, boolean kdoc, String indentPrefix)
+	{
 		SourceCodeInfo sourceCodeInfo = file.toProto().getSourceCodeInfo();
 		for (SourceCodeInfo.Location location : sourceCodeInfo.getLocationList())
 		{
 			if (location.getPathList().equals(path))
 			{
-				writeDocCommentBodyForLocation(out, location, options, kdoc);
+				writeDocCommentBodyForLocation(out, location, options, kdoc, indentPrefix);
 				return;
 			}
 		}
@@ -275,11 +287,85 @@ public final class DocComment
 	private static void writeDebugString(
 			PrintWriter out, FieldDescriptor field, Options options, boolean kdoc)
 	{
-		String fieldComment = firstLineOf(field.toProto().toString());
+		String fieldComment;
 		if (options.stripNonfunctionalCodegen)
 		{
 			fieldComment = field.getName();
 		}
+		else
+		{
+			// Build field declaration format: "optional string field1 = 1;"
+			// Match C++ DebugString() format
+			StringBuilder sb = new StringBuilder();
+			
+			// Add label (optional/required/repeated) for proto2 or explicitly optional proto3 fields
+			boolean isProto3 = !field.getFile().toProto().getSyntax().equals("proto2");
+			FieldDescriptorProto.Label label = field.toProto().getLabel();
+			if (!isProto3 || field.isOptional())
+			{
+				switch (label)
+				{
+					case LABEL_REQUIRED:
+						sb.append("required ");
+						break;
+					case LABEL_OPTIONAL:
+						sb.append("optional ");
+						break;
+					case LABEL_REPEATED:
+						sb.append("repeated ");
+						break;
+				}
+			}
+			else if (field.isRepeated())
+			{
+				sb.append("repeated ");
+			}
+			
+			// Add type name
+			FieldDescriptor.Type type = field.getType();
+			if (type == FieldDescriptor.Type.MESSAGE || type == FieldDescriptor.Type.GROUP)
+			{
+				sb.append(field.getMessageType().getName());
+			}
+			else if (type == FieldDescriptor.Type.ENUM)
+			{
+				sb.append(field.getEnumType().getName());
+			}
+			else
+			{
+				// Primitive type
+				switch (type)
+				{
+					case DOUBLE: sb.append("double"); break;
+					case FLOAT: sb.append("float"); break;
+					case INT64: sb.append("int64"); break;
+					case UINT64: sb.append("uint64"); break;
+					case INT32: sb.append("int32"); break;
+					case FIXED64: sb.append("fixed64"); break;
+					case FIXED32: sb.append("fixed32"); break;
+					case BOOL: sb.append("bool"); break;
+					case STRING: sb.append("string"); break;
+					case GROUP: sb.append("group"); break;
+					case MESSAGE: sb.append("message"); break;
+					case BYTES: sb.append("bytes"); break;
+					case UINT32: sb.append("uint32"); break;
+					case ENUM: sb.append("enum"); break;
+					case SFIXED32: sb.append("sfixed32"); break;
+					case SFIXED64: sb.append("sfixed64"); break;
+					case SINT32: sb.append("sint32"); break;
+					case SINT64: sb.append("sint64"); break;
+				}
+			}
+			
+			sb.append(" ");
+			sb.append(field.getName());
+			sb.append(" = ");
+			sb.append(field.getNumber());
+			sb.append(";");
+			
+			fieldComment = sb.toString();
+		}
+		
 		if (kdoc)
 		{
 			out.print(" * `" + escapeKdoc(fieldComment) + "`\n");
@@ -444,11 +530,17 @@ public final class DocComment
 	public static void writeEnumValueDocComment(
 			PrintWriter out, EnumValueDescriptor value, Options options)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, value.getFile(), getPath(value), options, false);
+		writeEnumValueDocComment(out, value, options, "");
+	}
+
+	public static void writeEnumValueDocComment(
+			PrintWriter out, EnumValueDescriptor value, Options options, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, value.getFile(), getPath(value), options, false, indentPrefix);
 		// Match C++ format: <code>NAME = NUMBER;</code>
-		out.print(" * <code>" + escapeJavadoc(value.getName() + " = " + value.getNumber() + ";") + "</code>\n");
-		out.print(" */\n");
+		out.print(indentPrefix + " * <code>" + escapeJavadoc(value.getName() + " = " + value.getNumber() + ";") + "</code>\n");
+		out.print(indentPrefix + " */\n");
 	}
 
 	public static void writeServiceDocComment(

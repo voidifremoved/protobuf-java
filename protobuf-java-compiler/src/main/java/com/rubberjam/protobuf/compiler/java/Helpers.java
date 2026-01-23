@@ -343,8 +343,15 @@ public final class Helpers
 		writer.accept(commentWriter);
 		commentWriter.flush();
 		String[] lines = buffer.toString().split("\n", -1);
-		for (String line : lines)
+		// Skip trailing empty lines
+		int lastNonEmpty = lines.length - 1;
+		while (lastNonEmpty >= 0 && lines[lastNonEmpty].isEmpty())
 		{
+			lastNonEmpty--;
+		}
+		for (int i = 0; i <= lastNonEmpty; i++)
+		{
+			String line = lines[i];
 			if (line.isEmpty())
 			{
 				out.println(indent);

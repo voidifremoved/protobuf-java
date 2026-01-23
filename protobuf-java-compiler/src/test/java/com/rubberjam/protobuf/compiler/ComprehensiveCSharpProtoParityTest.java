@@ -116,8 +116,8 @@ public class ComprehensiveCSharpProtoParityTest
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				// System.out.println("FULL EXPECTED FILE:\n" + expected);
-				// System.out.println("FULL ACTUAL FILE:\n" + actual);
+				System.out.println("FULL EXPECTED FILE:\n" + expected);
+				System.out.println("FULL ACTUAL FILE:\n" + actual);
 				assertEquals("Line " + (i + 1) + " mismatch", expectedLine.trim(), actualLine.trim());
 			}
 		}
