@@ -25,29 +25,53 @@
 				</configuration>
 			</plugin>
 			<plugin>
-				<groupId>io.github.ascopes</groupId>
-				<artifactId>protobuf-maven-plugin</artifactId>
-				<version>4.1.2</version>
-				<configuration>
-					<protoc>${protobuf.version}</protoc>
-					<sourceDirectories>
-						<sourceDirectory>src/test/protobuf</sourceDirectory>
-					</sourceDirectories>
-					<outputDirectory>src/test/resources/expected/java</outputDirectory>
-					<clearOutputDirectory>false</clearOutputDirectory>
-					<includeStdTypes>true</includeStdTypes>
-				</configuration>
+				<groupId>com.rubberjam.protobuf</groupId>
+				<artifactId>protoc-maven-plugin</artifactId>
+				<version>1.0-SNAPSHOT</version>
 				<executions>
 					<execution>
-						<id>generate-test-protos</id>
+						<id>java</id>
 						<phase>generate-test-sources</phase>
 						<goals>
-							<goal>generate</goal>
+							<goal>protoc-maven</goal>
 						</goals>
+						<configuration>
+							<protocVersion>${protobuf.version}</protocVersion>
+							<includeStdTypes>true</includeStdTypes>
+							<inputDirectories>
+								<include>${project.basedir}/src/test/protobuf</include>
+							</inputDirectories>
+							<outputTargets>
+								<outputTarget>
+									<type>java</type>
+									<outputDirectory>${project.basedir}/src/test/resources/expected/java</outputDirectory>
+								</outputTarget>
+							</outputTargets>
+						</configuration>
+					</execution>
+					<execution>
+						<id>csharp</id>
+						<phase>generate-test-sources</phase>
+						<goals>
+							<goal>protoc-maven</goal>
+						</goals>
+						<configuration>
+							<protocVersion>${protobuf.version}</protocVersion>
+							<includeStdTypes>true</includeStdTypes>
+							<inputDirectories>
+								<include>${project.basedir}/src/test/protobuf</include>
+							</inputDirectories>
+							<outputTargets>
+								<outputTarget>
+									<type>csharp</type>
+									<outputDirectory>${project.basedir}/src/test/resources/expected/csharp</outputDirectory>
+								</outputTarget>
+							</outputTargets>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
+			<!--<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>3.1.0</version>
@@ -79,8 +103,35 @@
 							</target>
 						</configuration>
 					</execution>
+					<execution>
+						<id>flatten-generated-csharp</id>
+						<phase>process-test-sources</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo message="Flattening generated C# files..."/>
+								<mkdir dir="${project.basedir}/src/test/resources/expected/csharp-temp"/>
+								<copy todir="${project.basedir}/src/test/resources/expected/csharp-temp" flatten="true" overwrite="true" failonerror="false">
+									<fileset dir="${project.basedir}/src/test/resources/expected/csharp">
+										<include name="**/*.cs"/>
+									</fileset>
+								</copy>
+								<delete dir="${project.basedir}/src/test/resources/expected/csharp" includeemptydirs="true"/>
+								<mkdir dir="${project.basedir}/src/test/resources/expected/csharp"/>
+								<move todir="${project.basedir}/src/test/resources/expected/csharp" failonerror="false">
+									<fileset dir="${project.basedir}/src/test/resources/expected/csharp-temp">
+										<include name="*.cs"/>
+									</fileset>
+								</move>
+								<delete dir="${project.basedir}/src/test/resources/expected/csharp-temp"/>
+								<echo message="C# flattening complete."/>
+							</target>
+						</configuration>
+					</execution>
 				</executions>
-			</plugin>
+			</plugin>-->
 		</plugins>
 	</build>
 
