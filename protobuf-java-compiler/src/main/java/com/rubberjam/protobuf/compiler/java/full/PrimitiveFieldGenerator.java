@@ -481,7 +481,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+		}
 		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
 		switch (StringUtils.getJavaType(descriptor))
 		{
@@ -511,7 +514,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		default:
 			break;
 		}
-		printer.println("      }");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      }");
+		}
 	}
 
 	@Override
@@ -606,6 +612,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			}
 
 			variables.put("name_make_immutable", variables.get("name") + "_.makeImmutable()");
+			variables.put("get_has_field_bit_builder", Helpers.generateGetBit(builderBitIndex));
+			variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
+			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
+			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 		}
 
 		@Override
@@ -617,7 +627,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public int getBuilderBitIndex()
 		{
-			return 0;
+			return builderBitIndex;
 		}
 
 		@Override
@@ -670,8 +680,9 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 					+ variables.get("empty_list") + ";");
 
 			printer.println("  private void ensure" + variables.get("capitalized_name") + "IsMutable() {");
-			printer.println("    if (!" + variables.get("name") + "_.isModifiable()) {");
+			printer.println("    if (!" + variables.get("get_has_field_bit_builder") + ") {");
 			printer.println("      " + variables.get("name") + "_ = makeMutableCopy(" + variables.get("name") + "_);");
+			printer.println("      " + variables.get("set_has_field_bit_builder"));
 			printer.println("    }");
 			printer.println("  }");
 
@@ -741,10 +752,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuildingCode(PrintWriter printer)
 		{
-			printer.println("      if (true) { // TODO: check if mutable");
+			printer.println("      if (" + variables.get("get_has_field_bit_from_local") + ") {");
 			printer.println("        " + variables.get("name") + "_.makeImmutable();");
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
 			printer.println("      }");
+			printer.println("      result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
 		}
 
 		@Override
