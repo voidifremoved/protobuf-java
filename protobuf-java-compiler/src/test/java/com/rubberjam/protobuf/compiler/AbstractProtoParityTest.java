@@ -13,54 +13,19 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator.GeneratedJavaFile;
 
-@RunWith(Parameterized.class)
-public class ComprehensiveProtoParityTest
+public abstract class AbstractProtoParityTest
 {
-	private final String protoFileName;
-	private final String expectedJavaFileName;
-
-	public ComprehensiveProtoParityTest(String protoFileName, String expectedJavaFileName)
-	{
-		this.protoFileName = protoFileName;
-		this.expectedJavaFileName = expectedJavaFileName;
-	}
-
-	@Parameters(name = "{0}")
-	public static Object[][] data()
-	{
-		return new Object[][] {
-			{ "comprehensive_test_edge_cases.proto", "ComprehensiveTestEdgeCases.java" },
-			{ "comprehensive_test_extensions.proto", "ComprehensiveTestExtensions.java" },
-			{ "comprehensive_test_nested.proto", "ComprehensiveTestNested.java" },
-			{ "comprehensive_test_v2.proto", "ComprehensiveTestV2.java" },
-			{ "comprehensive_test_v3.proto", "ComprehensiveTestV3.java" },
-		};
-	}
-
-	@Test
-	public void testProtoGeneratesExpectedJavaSource() throws Exception
+	protected void verifyParity(String protoFileName, String expectedJavaFileName) throws Exception
 	{
 		// Read the proto file
 		String protoContent = readProtoFile(protoFileName);
 		assertNotNull("Proto file not found: " + protoFileName, protoContent);
 
 		// Parse the proto file into FileDescriptorProto using Compiler
-		// We'll compile with an empty language list to just parse, then extract the FileDescriptorProto
-		Compiler compiler = new Compiler();
-		Map<String, String> protoFiles = Collections.singletonMap(protoFileName, protoContent);
-		
-		// Use Compiler to parse - compile with empty language list to just parse
-		// Then we need to extract the FileDescriptorProto from the compiler
-		// Actually, let's use a simpler approach - parse directly but with error limit
 		FileDescriptorProto fileDescriptorProto = parseProtoFile(protoFileName, protoContent);
 
 		// Generate Java source using RuntimeJavaGenerator
@@ -82,8 +47,15 @@ public class ComprehensiveProtoParityTest
 		String expectedTrimmed = expected.trim();
 
 		File expectedFile = new File("target/" + expectedJavaFileName + "_Expected.txt");
+		if (expectedFile.getParentFile() != null) {
+			expectedFile.getParentFile().mkdirs();
+		}
 		Files.writeString(expectedFile.toPath(), expectedTrimmed);
+
 		File actualFile = new File("target/" + expectedJavaFileName + "_Actual.txt");
+		if (actualFile.getParentFile() != null) {
+			actualFile.getParentFile().mkdirs();
+		}
 		Files.writeString(actualFile.toPath(), actual);
 		
 		// Compare line by line for better error messages
@@ -125,8 +97,6 @@ public class ComprehensiveProtoParityTest
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				//System.out.println("FULL EXPECTED FILE:\n" + expected);
-				//System.out.println("FULL ACTUAL FILE:\n" + actual);
 				assertEquals("Line " + (i + 1) + " mismatch", expectedLine.trim(), actualLine.trim());
 			}
 		}
@@ -135,7 +105,7 @@ public class ComprehensiveProtoParityTest
 		assertEquals("Generated Java source does not match expected", expectedTrimmed, actual);
 	}
 
-	private String readProtoFile(String fileName) throws Exception
+	protected String readProtoFile(String fileName) throws Exception
 	{
 		File protoFile = new File("src/test/protobuf", fileName);
 		if (!protoFile.exists())
@@ -150,7 +120,7 @@ public class ComprehensiveProtoParityTest
 		return new String(Files.readAllBytes(protoFile.toPath()), StandardCharsets.UTF_8);
 	}
 
-	private String readExpectedJavaFile(String fileName) throws Exception
+	protected String readExpectedJavaFile(String fileName) throws Exception
 	{
 		File javaFile = new File("src/test/resources/expected/java", fileName);
 		if (!javaFile.exists())
@@ -161,7 +131,7 @@ public class ComprehensiveProtoParityTest
 		if (!javaFile.exists())
 		{
 			// Try as resource
-			try (InputStream stream = ComprehensiveProtoParityTest.class.getClassLoader()
+			try (InputStream stream = AbstractProtoParityTest.class.getClassLoader()
 				.getResourceAsStream("expected/java/" + fileName))
 			{
 				if (stream != null)
@@ -181,12 +151,9 @@ public class ComprehensiveProtoParityTest
 		return null;
 	}
 
-	private FileDescriptorProto parseProtoFile(String fileName, String content)
+	protected FileDescriptorProto parseProtoFile(String fileName, String content)
 		throws Exception
 	{
-		// Use Compiler to parse - compile with empty language list to just parse
-		// Then extract the FileDescriptorProto from internal state
-		// Actually, let's parse manually but with error limit to prevent infinite loops
 		FileDescriptorProto.Builder fileBuilder = FileDescriptorProto.newBuilder();
 		fileBuilder.setName(fileName);
 
@@ -230,4 +197,3 @@ public class ComprehensiveProtoParityTest
 		return fileBuilder.build();
 	}
 }
-
