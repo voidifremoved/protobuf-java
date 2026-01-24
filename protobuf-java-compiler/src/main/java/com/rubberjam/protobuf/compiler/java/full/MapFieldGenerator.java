@@ -2,8 +2,11 @@ package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.DocComment;
+import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
+import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.JavaType;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
@@ -113,17 +116,75 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateInterfaceMembers(PrintWriter printer)
 	{
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.CLEARER,
+						context,
+						false,
+						false,
+						false));
 		printer.println("  int get" + variables.get("capitalized_name") + "Count();");
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.CLEARER,
+						context,
+						false,
+						false,
+						false));
 		printer.println("  boolean contains" + variables.get("capitalized_name") + "(");
 		printer.println("      " + variables.get("key_type") + " key);");
-		printer.println("  @Deprecated");
+		printer.println("  /**");
+		printer.println("   * Use {@link #get" + variables.get("capitalized_name") + "Map()} instead.");
+		printer.println("   */");
+		printer.println("  @java.lang.Deprecated");
 		printer.println("  java.util.Map<" + variables.get("type_parameters") + ">");
 		printer.println("  get" + variables.get("capitalized_name") + "();");
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.CLEARER,
+						context,
+						false,
+						false,
+						false));
 		printer.println("  java.util.Map<" + variables.get("type_parameters") + ">");
 		printer.println("  get" + variables.get("capitalized_name") + "Map();");
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.CLEARER,
+						context,
+						false,
+						false,
+						false));
 		printer.println("  " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
 		printer.println("      " + variables.get("key_type") + " key,");
 		printer.println("      " + variables.get("value_type") + " defaultValue);");
+		Helpers.writeDocComment(
+				printer,
+				"  ",
+				commentWriter -> DocComment.writeFieldAccessorDocComment(
+						commentWriter,
+						descriptor,
+						FieldAccessorType.CLEARER,
+						context,
+						false,
+						false,
+						false));
 		printer.println("  " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrThrow(");
 		printer.println("      " + variables.get("key_type") + " key);");
 	}

@@ -300,63 +300,47 @@ public final class DocComment
 			// Match C++ DebugString() format
 			StringBuilder sb = new StringBuilder();
 			
-			// Add label (optional/required/repeated) for proto2 or explicitly optional proto3 fields
-			boolean isProto3 = !field.getFile().toProto().getSyntax().equals("proto2");
-			FieldDescriptorProto.Label label = field.toProto().getLabel();
-			if (!isProto3 || field.isOptional())
+			if (field.isMapField())
 			{
-				switch (label)
-				{
-					case LABEL_REQUIRED:
-						sb.append("required ");
-						break;
-					case LABEL_OPTIONAL:
-						sb.append("optional ");
-						break;
-					case LABEL_REPEATED:
-						sb.append("repeated ");
-						break;
-				}
-			}
-			else if (field.isRepeated())
-			{
-				sb.append("repeated ");
-			}
-			
-			// Add type name
-			FieldDescriptor.Type type = field.getType();
-			if (type == FieldDescriptor.Type.MESSAGE || type == FieldDescriptor.Type.GROUP)
-			{
-				sb.append(".").append(field.getMessageType().getFullName());
-			}
-			else if (type == FieldDescriptor.Type.ENUM)
-			{
-				sb.append(".").append(field.getEnumType().getFullName());
+				Descriptor messageType = field.getMessageType();
+				FieldDescriptor key = messageType.findFieldByName("key");
+				FieldDescriptor value = messageType.findFieldByName("value");
+				sb.append("map<");
+				appendFieldType(sb, key);
+				sb.append(", ");
+				appendFieldType(sb, value);
+				sb.append(">");
 			}
 			else
 			{
-				// Primitive type
-				switch (type)
+				// Add label (optional/required/repeated) for proto2 or explicitly optional proto3 fields
+				boolean isProto3 = !field.getFile().toProto().getSyntax().equals("proto2");
+				FieldDescriptorProto.Label label = field.toProto().getLabel();
+				// Oneof fields do not have labels (except synthetic oneofs for proto3 optional)
+				boolean isSyntheticOneof = field.toProto().hasProto3Optional() && field.toProto().getProto3Optional();
+				boolean isRealOneof = field.getContainingOneof() != null && !isSyntheticOneof;
+
+				if (!isRealOneof && (!isProto3 || field.isOptional()))
 				{
-					case DOUBLE: sb.append("double"); break;
-					case FLOAT: sb.append("float"); break;
-					case INT64: sb.append("int64"); break;
-					case UINT64: sb.append("uint64"); break;
-					case INT32: sb.append("int32"); break;
-					case FIXED64: sb.append("fixed64"); break;
-					case FIXED32: sb.append("fixed32"); break;
-					case BOOL: sb.append("bool"); break;
-					case STRING: sb.append("string"); break;
-					case GROUP: sb.append("group"); break;
-					case MESSAGE: sb.append("message"); break;
-					case BYTES: sb.append("bytes"); break;
-					case UINT32: sb.append("uint32"); break;
-					case ENUM: sb.append("enum"); break;
-					case SFIXED32: sb.append("sfixed32"); break;
-					case SFIXED64: sb.append("sfixed64"); break;
-					case SINT32: sb.append("sint32"); break;
-					case SINT64: sb.append("sint64"); break;
+					switch (label)
+					{
+						case LABEL_REQUIRED:
+							sb.append("required ");
+							break;
+						case LABEL_OPTIONAL:
+							sb.append("optional ");
+							break;
+						case LABEL_REPEATED:
+							sb.append("repeated ");
+							break;
+					}
 				}
+				else if (field.isRepeated())
+				{
+					sb.append("repeated ");
+				}
+
+				appendFieldType(sb, field);
 			}
 			
 			sb.append(" ");
@@ -386,21 +370,96 @@ public final class DocComment
 		}
 	}
 
-	protected static Object getDefaultValueString(FieldDescriptor field)
+	private static void appendFieldType(StringBuilder sb, FieldDescriptor field)
 	{
-		if (field.getType() == FieldDescriptor.Type.FLOAT || field.getType() == FieldDescriptor.Type.DOUBLE)
+		FieldDescriptor.Type type = field.getType();
+		if (type == FieldDescriptor.Type.MESSAGE || type == FieldDescriptor.Type.GROUP)
 		{
-			if (field.toProto().hasDefaultValue())
+			sb.append(".").append(field.getMessageType().getFullName());
+		}
+		else if (type == FieldDescriptor.Type.ENUM)
+		{
+			sb.append(".").append(field.getEnumType().getFullName());
+		}
+		else
+		{
+			// Primitive type
+			switch (type)
 			{
-				return field.toProto().getDefaultValue();
+				case DOUBLE: sb.append("double"); break;
+				case FLOAT: sb.append("float"); break;
+				case INT64: sb.append("int64"); break;
+				case UINT64: sb.append("uint64"); break;
+				case INT32: sb.append("int32"); break;
+				case FIXED64: sb.append("fixed64"); break;
+				case FIXED32: sb.append("fixed32"); break;
+				case BOOL: sb.append("bool"); break;
+				case STRING: sb.append("string"); break;
+				case GROUP: sb.append("group"); break;
+				case MESSAGE: sb.append("message"); break;
+				case BYTES: sb.append("bytes"); break;
+				case UINT32: sb.append("uint32"); break;
+				case ENUM: sb.append("enum"); break;
+				case SFIXED32: sb.append("sfixed32"); break;
+				case SFIXED64: sb.append("sfixed64"); break;
+				case SINT32: sb.append("sint32"); break;
+				case SINT64: sb.append("sint64"); break;
 			}
 		}
+	}
+
+	protected static Object getDefaultValueString(FieldDescriptor field)
+	{
 		Object defaultValue = field.getDefaultValue();
 		if (defaultValue instanceof String)
 		{
 			return "\"" + defaultValue + "\"";
 		}
+		if (defaultValue instanceof Float)
+		{
+			return formatFloat((Float) defaultValue);
+		}
+		if (defaultValue instanceof Double)
+		{
+			return formatDouble((Double) defaultValue);
+		}
 		return defaultValue;
+	}
+
+	private static String formatFloat(float f)
+	{
+		if (Float.isNaN(f))
+		{
+			return "nan";
+		}
+		if (Float.isInfinite(f))
+		{
+			return f > 0 ? "inf" : "-inf";
+		}
+		String s = String.format(java.util.Locale.US, "%.9g", f);
+		if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+		{
+			s = s.replace("e", "e+");
+		}
+		return s;
+	}
+
+	private static String formatDouble(double d)
+	{
+		if (Double.isNaN(d))
+		{
+			return "nan";
+		}
+		if (Double.isInfinite(d))
+		{
+			return d > 0 ? "inf" : "-inf";
+		}
+		String s = String.format(java.util.Locale.US, "%.17g", d);
+		if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+		{
+			s = s.replace("e", "e+");
+		}
+		return s;
 	}
 
 	public static void writeMessageDocComment(

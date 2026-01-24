@@ -189,7 +189,12 @@ public final class Helpers
 			{
 				return "Double.NaN";
 			}
-			return Double.toString(value) + "D";
+			String s = String.format(java.util.Locale.US, "%.17g", value);
+			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+			{
+				s = s.replace("e", "e+");
+			}
+			return s + "D";
 		}
 		case FLOAT:
 		{
@@ -202,7 +207,12 @@ public final class Helpers
 			{
 				return "Float.NaN";
 			}
-			return Float.toString(value) + "F";
+			String s = String.format(java.util.Locale.US, "%.9g", value);
+			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+			{
+				s = s.replace("e", "e+");
+			}
+			return s + "F";
 		}
 		case BOOL:
 			return ((Boolean) field.getDefaultValue()) ? "true" : "false";
