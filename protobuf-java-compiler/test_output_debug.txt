@@ -5,9 +5,6 @@
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO]
-[INFO] --- clean:3.2.0:clean (default-clean) @ protobuf-java-compiler ---
-[INFO] Deleting /app/protobuf-java-compiler/target
-[INFO]
 [INFO] --- resources:3.3.1:resources (default-resources) @ protobuf-java-compiler ---
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /app/protobuf-java-compiler/src/main/resources
@@ -22,14 +19,7 @@
 [INFO] /app/protobuf-java-compiler/src/main/java/com/rubberjam/protobuf/compiler/runtime/RuntimeCompiler.java: Recompile with -Xlint:unchecked for details.
 [INFO]
 [INFO] --- protoc:1.0-SNAPSHOT:protoc-maven (java) @ protobuf-java-compiler ---
-[INFO] Protoc version: 4.33.4
-protoc-jar: protoc version: 4.33.4, detected platform: linux-x86_64 (linux/amd64)
-protoc-jar: using default maven settings, didn't find user settings.xml
-protoc-jar: cached: /tmp/protocjar.webcache/com/google/protobuf/protoc/maven-metadata.xml
-protoc-jar: cached: /tmp/protocjar.webcache/com/google/protobuf/protoc/4.33.4/protoc-4.33.4-linux-x86_64.exe
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, --version]
-libprotoc 33.4
-[INFO] Protoc command: /tmp/protocjar2135443875802616208/bin/protoc.exe
+[INFO] Skipping code generation, proto files appear unchanged since last compilation
 [INFO] Scanning for local protos in: /app/protobuf-java-compiler/src/test/protobuf
 [INFO] Extracting protos from dependencies...
 [INFO] Found 2 dependency artifacts to scan for proto files
@@ -61,26 +51,6 @@ protoc-jar: Standard types not embedded in JAR, using protoc built-in types
 protoc-jar: Standard types not embedded in JAR, using protoc built-in types
 protoc-jar: Standard types not embedded in JAR, using protoc built-in types
 protoc-jar: Standard types not embedded in JAR, using protoc built-in types
-[INFO] Standard types not found in JAR, extracting from protobuf-java dependency
-[INFO] Attempting to extract standard types from protobuf-java dependency
-[INFO] Found 2 dependency artifacts to scan for proto files
-[INFO]   (0 from resolved artifacts, 2 from dependency artifacts)
-[INFO] Found protobuf-java dependency, extracting standard types from: /home/jules/.m2/repository/com/google/protobuf/protobuf-java/4.33.4/protobuf-java-4.33.4.jar
-[INFO] Extracted 12 standard type proto files from protobuf-java
-[INFO] Successfully extracted 12 standard type proto files
-[INFO] Processing target: java -> /app/protobuf-java-compiler/src/test/resources/expected/java (add: main, clean: false, plugin: null, outputOptions: null)
-[INFO]     Processing (java): comprehensive_test_nested.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_nested.proto]
-[INFO]     Processing (java): comprehensive_test_edge_cases.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_edge_cases.proto]
-[INFO]     Processing (java): comprehensive_test_v2.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_v2.proto]
-[INFO]     Processing (java): comprehensive_test_edge_cases_minimal.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_edge_cases_minimal.proto]
-[INFO]     Processing (java): comprehensive_test_extensions.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_extensions.proto]
-[INFO]     Processing (java): comprehensive_test_v3.proto
-protoc-jar: executing: [/tmp/protocjar2135443875802616208/bin/protoc.exe, -I/app/protobuf-java-compiler/target/proto-sources/build/java, -I/app/protobuf-java-compiler/target/proto-sources/includes/include, -I/app/protobuf-java-compiler/target/proto-sources/build/java, --java_out=/app/protobuf-java-compiler/src/test/resources/expected/java, /app/protobuf-java-compiler/target/proto-sources/build/java/comprehensive_test_v3.proto]
 [INFO] Adding generated sources (java): /app/protobuf-java-compiler/src/test/resources/expected/java
 [INFO]
 [INFO] --- protoc:1.0-SNAPSHOT:protoc-maven (csharp) @ protobuf-java-compiler ---
@@ -122,7 +92,7 @@ protoc-jar: Standard types not embedded in JAR, using protoc built-in types
 [INFO] Executing tasks
 [WARNING]      [echo] Flattening generated Java files...
 [INFO]     [mkdir] Created dir: /app/protobuf-java-compiler/src/test/resources/expected/java-temp
-[INFO]      [copy] Copying 12 files to /app/protobuf-java-compiler/src/test/resources/expected/java-temp
+[INFO]      [copy] Copying 6 files to /app/protobuf-java-compiler/src/test/resources/expected/java-temp
 [INFO]    [delete] Deleting directory /app/protobuf-java-compiler/src/test/resources/expected/java
 [INFO]     [mkdir] Created dir: /app/protobuf-java-compiler/src/test/resources/expected/java
 [INFO]      [move] Moving 6 files to /app/protobuf-java-compiler/src/test/resources/expected/java
@@ -146,31 +116,57 @@ protoc-jar: Standard types not embedded in JAR, using protoc built-in types
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running com.rubberjam.protobuf.compiler.MinimalProtoParityTest
-Debug: javaType=INT capitalizedType=Int type=int
-Debug: javaType=INT capitalizedType=Int type=int
-Mismatch at line 1627:
-    1622 Expected:         infFloat_ = Float.POSITIVE_INFINITY;
-    1622 Actual:           infFloat_ = Float.POSITIVE_INFINITY;
-    1623 Expected:         onChanged();
-    1623 Actual:           onChanged();
-    1624 Expected:         return this;
-    1624 Actual:           return this;
-    1625 Expected:       }
-    1625 Actual:         }
-    1626 Expected:
-    1626 Actual:
->>> 1627 Expected:       private com.google.protobuf.Internal.IntList repeated1_ = emptyIntList();
->>> 1627 Actual:         private com.google.protobuf.Internal.IntList repeated1_ =
-    1628 Expected:       private void ensureRepeated1IsMutable() {
-    1628 Actual:             emptyIntList();
-    1629 Expected:         if (!repeated1_.isModifiable()) {
-    1629 Actual:         private void ensureRepeated1IsMutable() {
-    1630 Expected:           repeated1_ = makeMutableCopy(repeated1_);
-    1630 Actual:           if (!repeated1_.isModifiable()) {
-    1631 Expected:         }
-    1631 Actual:             repeated1_ = makeMutableCopy(repeated1_);
-    1632 Expected:         bitField0_ |= 0x00000020;
-    1632 Actual:           }
+Field: empty_string BuilderBits: 1 CurrentIndex: 0
+Field: unicode_string BuilderBits: 1 CurrentIndex: 1
+Field: max_float BuilderBits: 1 CurrentIndex: 2
+Field: max_double BuilderBits: 1 CurrentIndex: 3
+Field: inf_float BuilderBits: 1 CurrentIndex: 4
+Field: repeated1 BuilderBits: 1 CurrentIndex: 5
+Field: repeated_string1 BuilderBits: 1 CurrentIndex: 6
+Field: oneof1_string BuilderBits: 1 CurrentIndex: 7
+Field: oneof1_int32 BuilderBits: 1 CurrentIndex: 8
+Field: map1 BuilderBits: 1 CurrentIndex: 9
+Field: key BuilderBits: 1 CurrentIndex: 0
+Field: value BuilderBits: 1 CurrentIndex: 1
+Field: key BuilderBits: 1 CurrentIndex: 0
+Field: value BuilderBits: 1 CurrentIndex: 1
+Field: key BuilderBits: 1 CurrentIndex: 0
+Field: value BuilderBits: 1 CurrentIndex: 1
+Field: key BuilderBits: 1 CurrentIndex: 0
+Field: value BuilderBits: 1 CurrentIndex: 1
+Field: empty_string BuilderBits: 1 CurrentIndex: 0
+Field: unicode_string BuilderBits: 1 CurrentIndex: 1
+Field: max_float BuilderBits: 1 CurrentIndex: 2
+Field: max_double BuilderBits: 1 CurrentIndex: 3
+Field: inf_float BuilderBits: 1 CurrentIndex: 4
+Field: repeated1 BuilderBits: 1 CurrentIndex: 5
+Field: repeated_string1 BuilderBits: 1 CurrentIndex: 6
+Field: oneof1_string BuilderBits: 1 CurrentIndex: 7
+Field: oneof1_int32 BuilderBits: 1 CurrentIndex: 8
+Field: map1 BuilderBits: 1 CurrentIndex: 9
+Mismatch at line 1140:
+    1135 Expected:         }
+    1135 Actual:         }
+    1136 Expected:         if (((from_bitField0_ & 0x00000040) != 0)) {
+    1136 Actual:         if (((from_bitField0_ & 0x00000040) != 0)) {
+    1137 Expected:           repeatedString1_.makeImmutable();
+    1137 Actual:           repeatedString1_.makeImmutable();
+    1138 Expected:           result.repeatedString1_ = repeatedString1_;
+    1138 Actual:           result.repeatedString1_ = repeatedString1_;
+    1139 Expected:         }
+    1139 Actual:         }
+>>> 1140 Expected:         if (((from_bitField0_ & 0x00000200) != 0)) {
+>>> 1140 Actual:           if (((from_bitField0_ & 0x00000080) != 0)) {
+    1141 Expected:           result.map1_ = internalGetMap1();
+    1141 Actual:             result.oneof1String_ = oneof1String_;
+    1142 Expected:           result.map1_.makeImmutable();
+    1142 Actual:           }
+    1143 Expected:         }
+    1143 Actual:           if (((from_bitField0_ & 0x00000100) != 0)) {
+    1144 Expected:         result.bitField0_ |= to_bitField0_;
+    1144 Actual:             result.oneof1Int32_ = oneof1Int32_;
+    1145 Expected:       }
+    1145 Actual:           }
 FULL EXPECTED FILE:
 // Generated by the protocol buffer compiler.  DO NOT EDIT!
 // NO CHECKED-IN PROTOBUF GENCODE
@@ -3501,10 +3497,14 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         repeatedString1_.makeImmutable();
         result.repeatedString1_ = repeatedString1_;
       }
-        if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.map1_ = internalGetMap1();
-          result.map1_.makeImmutable();
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.oneof1String_ = oneof1String_;
         }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.oneof1Int32_ = oneof1Int32_;
+        }
+        result.map1_ = internalGetMap1();
+        result.map1_.makeImmutable();
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -3544,39 +3544,19 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         if (other.hasInfFloat()) {
           setInfFloat(other.getInfFloat());
         }
-        if (!other.repeated1_.isEmpty()) {
-          if (repeated1_.isEmpty()) {
-            repeated1_ = other.repeated1_;
-            repeated1_.makeImmutable();
-            bitField0_ |= 0x00000020;
-          } else {
-            ensureRepeated1IsMutable();
-            repeated1_.addAll(other.repeated1_);
-          }
-          onChanged();
-        }
-        if (!other.repeatedString1_.isEmpty()) {
-          if (repeatedString1_.isEmpty()) {
-            repeatedString1_ = other.repeatedString1_;
-            bitField0_ |= 0x00000040;
-          } else {
-            ensureRepeatedString1IsMutable();
-            repeatedString1_.addAll(other.repeatedString1_);
-          }
-          onChanged();
-        }
-        internalGetMutableMap1().mergeFrom(
-            other.internalGetMap1());
-        bitField0_ |= 0x00000200;
         switch (other.getOneof1Case()) {
           case ONEOF1_STRING: {
-            oneof1Case_ = 24;
-            oneof1_ = other.oneof1_;
-            onChanged();
+        if (other.hasOneof1String()) {
+          oneof1String_ = other.oneof1String_;
+          bitField0_ |= 0x00000080;
+          onChanged();
+        }
             break;
           }
           case ONEOF1_INT32: {
-            setOneof1Int32(other.getOneof1Int32());
+        if (other.hasOneof1Int32()) {
+          setOneof1Int32(other.getOneof1Int32());
+        }
             break;
           }
           case ONEOF1_NOT_SET: {
@@ -3610,12 +3590,14 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 done = true;
                 break;
               case 138: {
-                emptyString_ = input.readBytes();
+        emptyString_ =
+          null;
                 bitField0_ |= 0x00000001;
                 break;
               } // case 138
               case 146: {
-                unicodeString_ = input.readBytes();
+        unicodeString_ =
+          null;
                 bitField0_ |= 0x00000002;
                 break;
               } // case 146
@@ -3635,45 +3617,23 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 break;
               } // case 173
               case 176: {
-                int v = input.readInt32();
-                ensureRepeated1IsMutable();
-                repeated1_.addInt(v);
                 break;
               } // case 176
-              case 178: {
-                int length = input.readRawVarint32();
-                int limit = input.pushLimit(length);
-                ensureRepeated1IsMutable();
-                while (input.getBytesUntilLimit() > 0) {
-                  repeated1_.addInt(input.readInt32());
-                }
-                input.popLimit(limit);
-                break;
-              } // case 178
               case 186: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                ensureRepeatedString1IsMutable();
-                repeatedString1_.add(bs);
                 break;
               } // case 186
               case 194: {
-                com.google.protobuf.ByteString bs = input.readBytes();
-                oneof1Case_ = 24;
-                oneof1_ = bs;
+        oneof1String_ =
+          null;
+                bitField0_ |= 0x00000080;
                 break;
               } // case 194
               case 200: {
-                oneof1_ = input.readInt32();
-                oneof1Case_ = 25;
+                oneof1Int32_ = input.readInt32();
+                bitField0_ |= 0x00000100;
                 break;
               } // case 200
               case 210: {
-                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-                map1__ = input.readMessage(
-                    Map1DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableMap1().getMutableMap().put(
-                    map1__.getKey(), map1__.getValue());
-                bitField0_ |= 0x00000200;
                 break;
               } // case 210
               default: {
@@ -3691,23 +3651,10 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         } // finally
         return this;
       }
-      private int oneof1Case_ = 0;
-      private java.lang.Object oneof1_;
-      public Oneof1Case
-          getOneof1Case() {
-        return Oneof1Case.forNumber(
-            oneof1Case_);
-      }
-
-      public Builder clearOneof1() {
-        oneof1Case_ = 0;
-        oneof1_ = null;
-        onChanged();
-        return this;
-      }
-
       private int bitField0_;
 
+      private int oneof1Case_ = 0;
+      private java.lang.Object oneof1_;
       private java.lang.Object emptyString_ = "";
       /**
        * <code>optional string empty_string = 17 [default = ""];</code>
@@ -3881,6 +3828,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * <code>optional float max_float = 19 [default = 3.40282347e+38];</code>
        * @return The maxFloat.
        */
+      // Builder Bit Index: 2
       @java.lang.Override
       public float getMaxFloat() {
         return maxFloat_;
@@ -3921,6 +3869,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * <code>optional double max_double = 20 [default = 1.7976931348623157e+308];</code>
        * @return The maxDouble.
        */
+      // Builder Bit Index: 3
       @java.lang.Override
       public double getMaxDouble() {
         return maxDouble_;
@@ -3961,6 +3910,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * <code>optional float inf_float = 21 [default = inf];</code>
        * @return The infFloat.
        */
+      // Builder Bit Index: 4
       @java.lang.Override
       public float getInfFloat() {
         return infFloat_;
@@ -4197,6 +4147,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * <code>int32 oneof1_int32 = 25;</code>
        * @return The oneof1Int32.
        */
+      // Builder Bit Index: 8
       @java.lang.Override
       public int getOneof1Int32() {
         if (oneof1Case_ == 25) {
@@ -4238,6 +4189,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     }
     return map1_;
   }
+  // Builder Bit Index: 9
   private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
   internalGetMutableMap1() {
     if (map1_ == null) {
@@ -4247,8 +4199,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     if (!map1_.isMutable()) {
       map1_ = map1_.copy();
     }
-    bitField0_ |= 0x00000200;
-    onChanged();
     return map1_;
   }
   public int getMap1Count() {
@@ -4281,6 +4231,13 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         .putAll(values);
     return this;
   }
+
+      public Builder clearOneof1() {
+        oneof1Case_ = 0;
+        oneof1_ = null;
+        onChanged();
+        return this;
+      }
 
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal)
     }
@@ -4733,7 +4690,8 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 done = true;
                 break;
               case 10: {
-                key_ = input.readBytes();
+        key_ =
+          null;
                 bitField0_ |= 0x00000001;
                 break;
               } // case 10
@@ -4852,6 +4810,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * <code>optional int32 value = 2;</code>
        * @return The value.
        */
+      // Builder Bit Index: 1
       @java.lang.Override
       public int getValue() {
         return value_;
@@ -5032,9 +4991,9 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
   }
   // @@protoc_insertion_point(outer_class_scope)
 }
-[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.610 s <<< FAILURE! -- in com.rubberjam.protobuf.compiler.MinimalProtoParityTest
-[ERROR] com.rubberjam.protobuf.compiler.MinimalProtoParityTest.testProtoGeneratesExpectedJavaSource[comprehensive_test_edge_cases_minimal.proto] -- Time elapsed: 0.513 s <<< FAILURE!
-org.junit.ComparisonFailure: Line 1627 mismatch expected:<...IntList repeated1_ =[ emptyIntList();]> but was:<...IntList repeated1_ =[]>
+[ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.592 s <<< FAILURE! -- in com.rubberjam.protobuf.compiler.MinimalProtoParityTest
+[ERROR] com.rubberjam.protobuf.compiler.MinimalProtoParityTest.testProtoGeneratesExpectedJavaSource[comprehensive_test_edge_cases_minimal.proto] -- Time elapsed: 0.495 s <<< FAILURE!
+org.junit.ComparisonFailure: Line 1140 mismatch expected:<...bitField0_ & 0x00000[20]0) != 0)) {> but was:<...bitField0_ & 0x00000[08]0) != 0)) {>
 	at org.junit.Assert.assertEquals(Assert.java:117)
 	at com.rubberjam.protobuf.compiler.MinimalProtoParityTest.testProtoGeneratesExpectedJavaSource(MinimalProtoParityTest.java:127)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
@@ -5076,15 +5035,15 @@ org.junit.ComparisonFailure: Line 1627 mismatch expected:<...IntList repeated1_ 
 [INFO] Results:
 [INFO]
 [ERROR] Failures:
-[ERROR]   MinimalProtoParityTest.testProtoGeneratesExpectedJavaSource:127 Line 1627 mismatch expected:<...IntList repeated1_ =[ emptyIntList();]> but was:<...IntList repeated1_ =[]>
+[ERROR]   MinimalProtoParityTest.testProtoGeneratesExpectedJavaSource:127 Line 1140 mismatch expected:<...bitField0_ & 0x00000[20]0) != 0)) {> but was:<...bitField0_ & 0x00000[08]0) != 0)) {>
 [INFO]
 [ERROR] Tests run: 1, Failures: 1, Errors: 0, Skipped: 0
 [INFO]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  7.539 s
-[INFO] Finished at: 2026-01-24T20:58:21Z
+[INFO] Total time:  5.693 s
+[INFO] Finished at: 2026-01-24T20:15:00Z
 [INFO] ------------------------------------------------------------------------
 [ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.2.5:test (default-test) on project protobuf-java-compiler: There are test failures.
 [ERROR]

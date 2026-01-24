@@ -149,6 +149,12 @@ public class MessageBuilderGenerator
 		{
 			fieldGenerator.generateBuilderClearCode(printer);
 		}
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+			printer.println("        " + oneofName + "Case_ = 0;");
+			printer.println("        " + oneofName + "_ = null;");
+		}
 		printer.println("        return this;");
 		printer.println("      }");
 		printer.println();
@@ -179,35 +185,15 @@ public class MessageBuilderGenerator
 		printer.println("      @java.lang.Override");
 		printer.println("      public " + fullClassName + " buildPartial() {");
 		printer.println("        " + fullClassName + " result = new " + fullClassName + "(this);");
-		boolean hasRepeatedFields = false;
-		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
-		{
-			if (field.isRepeated())
-			{
-				hasRepeatedFields = true;
-				break;
-			}
-		}
-		if (hasRepeatedFields)
-		{
-			printer.println("        buildPartialRepeatedFields(result);");
-		}
 		for (int i = 0; i < totalBuilderPieces; i++)
 		{
 			printer.println("        if (" + getBitFieldName(i) + " != 0) { buildPartial" + i + "(result); }");
 		}
+		printer.println("        buildPartialOneofs(result);");
 		printer.println("        onBuilt();");
 		printer.println("        return result;");
 		printer.println("      }");
 		printer.println();
-
-		if (hasRepeatedFields)
-		{
-			printer.println("      private void buildPartialRepeatedFields(" + fullClassName + " result) {");
-			// TODO: repeated fields building
-			printer.println("      }");
-			printer.println();
-		}
 
 		int fieldIndex = 0;
 		for (int i = 0; i < totalBuilderPieces; i++)
@@ -223,6 +209,16 @@ public class MessageBuilderGenerator
 			printer.println("        result." + getBitFieldName(i) + " |= to_" + getBitFieldName(i) + ";");
 			printer.println("      }");
 		}
+		printer.println();
+
+		printer.println("      private void buildPartialOneofs(" + fullClassName + " result) {");
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+			printer.println("        result." + oneofName + "Case_ = " + oneofName + "Case_;");
+			printer.println("        result." + oneofName + "_ = this." + oneofName + "_;");
+		}
+		printer.println("      }");
 		printer.println();
 
 		// mergeFrom(Message other)
@@ -246,6 +242,22 @@ public class MessageBuilderGenerator
 			{
 				fieldGenerator.generateMergingCode(printer);
 			}
+		}
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+			printer.println("        switch (other.get" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case()) {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+			{
+				printer.println("          case " + field.getName().toUpperCase() + ": {");
+				fieldGenerators.get(field).generateMergingCode(printer);
+				printer.println("            break;");
+				printer.println("          }");
+			}
+			printer.println("          case " + oneof.getName().toUpperCase() + "_NOT_SET: {");
+			printer.println("            break;");
+			printer.println("          }");
+			printer.println("        }");
 		}
 		printer.println("        this.mergeUnknownFields(other.getUnknownFields());");
 		printer.println("        onChanged();");
@@ -316,6 +328,14 @@ public class MessageBuilderGenerator
 			fieldGenerator.generateBuilderParsingCode(printer);
 			printer.println("                break;");
 			printer.println("              } // case " + tag);
+			if (field.isPackable())
+			{
+				int packedTag = (field.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+				printer.println("              case " + packedTag + ": {");
+				fieldGenerator.generateBuilderParsingCodeFromPacked(printer);
+				printer.println("                break;");
+				printer.println("              } // case " + packedTag);
+			}
 		}
 		printer.println("              default: {");
 		printer.println("                if (!super.parseUnknownField(input, extensionRegistry, tag)) {");
@@ -333,19 +353,32 @@ public class MessageBuilderGenerator
 		printer.println("        return this;");
 		printer.println("      }");
 
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+			printer.println("      private int " + oneofName + "Case_ = 0;");
+			printer.println("      private java.lang.Object " + oneofName + "_;");
+			printer.println("      public " + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case");
+			printer.println("          get" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case() {");
+			printer.println("        return " + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case.forNumber(");
+			printer.println("            " + oneofName + "Case_);");
+			printer.println("      }");
+			printer.println();
+			printer.println("      public Builder clear" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "() {");
+			printer.println("        " + oneofName + "Case_ = 0;");
+			printer.println("        " + oneofName + "_ = null;");
+			printer.println("        onChanged();");
+			printer.println("        return this;");
+			printer.println("      }");
+			printer.println();
+		}
+
 		// bitField0_ for builder
 		for (int i = 0; i < totalBuilderPieces; i++)
 		{
 			printer.println("      private int " + getBitFieldName(i) + ";");
 		}
 		printer.println();
-
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
-			printer.println("      private int " + oneofName + "Case_ = 0;");
-			printer.println("      private java.lang.Object " + oneofName + "_;");
-		}
 
 		// Fields for builder
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())

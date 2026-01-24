@@ -117,6 +117,10 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			default: capitalizedKeyType = "String"; // Fallback
 		}
 		variables.put("capitalized_key_type", capitalizedKeyType);
+		variables.put("get_has_field_bit_builder", Helpers.generateGetBit(builderBitIndex));
+		variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
+		variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
+		variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 	}
 
 	@Override
@@ -342,6 +346,8 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    if (!" + variables.get("name") + "_.isMutable()) {");
 		printer.println("      " + variables.get("name") + "_ = " + variables.get("name") + "_.copy();");
 		printer.println("    }");
+		printer.println("    " + variables.get("set_has_field_bit_builder"));
+		printer.println("    onChanged();");
 		printer.println("    return " + variables.get("name") + "_;");
 		printer.println("  }");
 
@@ -401,20 +407,29 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateMergingCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("        internalGetMutable" + variables.get("capitalized_name") + "().mergeFrom(");
+		printer.println("            other.internalGet" + variables.get("capitalized_name") + "());");
+		printer.println("        " + variables.get("set_has_field_bit_builder"));
 	}
 
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("        result." + variables.get("name") + "_ = internalGet" + variables.get("capitalized_name") + "();");
-		printer.println("        result." + variables.get("name") + "_.makeImmutable();");
+		printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+		printer.println("          result." + variables.get("name") + "_ = internalGet" + variables.get("capitalized_name") + "();");
+		printer.println("          result." + variables.get("name") + "_.makeImmutable();");
+		printer.println("        }");
 	}
 
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("                com.google.protobuf.MapEntry<" + variables.get("type_parameters") + ">");
+		printer.println("                " + variables.get("name") + "__ = input.readMessage(");
+		printer.println("                    " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);");
+		printer.println("                internalGetMutable" + variables.get("capitalized_name") + "().getMutableMap().put(");
+		printer.println("                    " + variables.get("name") + "__.getKey(), " + variables.get("name") + "__.getValue());");
+		printer.println("                " + variables.get("set_has_field_bit_builder"));
 	}
 
 	@Override
