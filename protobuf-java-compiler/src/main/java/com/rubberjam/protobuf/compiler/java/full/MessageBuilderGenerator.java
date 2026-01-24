@@ -39,14 +39,23 @@ public class MessageBuilderGenerator
 		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
 		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
-		String fullClassName = outerClassName + "." + className;
 		
-		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false, "    ");
+		StringBuilder nameBuilder = new StringBuilder(className);
+		Descriptor parent = descriptor.getContainingType();
+		while (parent != null)
+		{
+			nameBuilder.insert(0, parent.getName() + ".");
+			parent = parent.getContainingType();
+		}
+		String fullClassName = outerClassName + "." + nameBuilder.toString();
+
+		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context, false, "    ");
 
 		printer.println("    public static final class Builder extends");
 		if (descriptor.isExtendable())
 		{
-			printer.println("        com.google.protobuf.GeneratedMessage.ExtendableBuilder<" + className + ", Builder> implements");
+			printer.println("        com.google.protobuf.GeneratedMessage.ExtendableBuilder<");
+			printer.println("          " + fullClassName + ", Builder> implements");
 		}
 		else
 		{
@@ -197,6 +206,37 @@ public class MessageBuilderGenerator
 		printer.println("        return this;");
 		printer.println("      }");
 		printer.println();
+
+		if (descriptor.isExtendable())
+		{
+			printer.println("      public <Type> Builder setExtension(");
+			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+			printer.println("              " + fullClassName + ", Type> extension,");
+			printer.println("          Type value) {");
+			printer.println("        return super.setExtension(extension, value);");
+			printer.println("      }");
+			printer.println();
+			printer.println("      public <Type> Builder setExtension(");
+			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+			printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+			printer.println("          int index, Type value) {");
+			printer.println("        return super.setExtension(extension, index, value);");
+			printer.println("      }");
+			printer.println();
+			printer.println("      public <Type> Builder addExtension(");
+			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+			printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+			printer.println("          Type value) {");
+			printer.println("        return super.addExtension(extension, value);");
+			printer.println("      }");
+			printer.println();
+			printer.println("      public <Type> Builder clearExtension(");
+			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+			printer.println("              " + fullClassName + ", ?> extension) {");
+			printer.println("        return super.clearExtension(extension);");
+			printer.println("      }");
+			printer.println();
+		}
 
 		// isInitialized()
 		printer.println("      @java.lang.Override");

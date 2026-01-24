@@ -23,12 +23,12 @@ public class FileGenerator
 	private final List<ExtensionGenerator> extensionGenerators = new ArrayList<>();
 	private final List<EnumGenerator> enumGenerators = new ArrayList<>();
 
-	public FileGenerator(FileDescriptor file, Options options, boolean immutableApi)
+	public FileGenerator(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options, boolean immutableApi)
 	{
 		this.file = file;
 		this.options = options;
 		this.immutableApi = immutableApi;
-		this.context = new Context(file, options);
+		this.context = new Context(file, sourceProto, options);
 		this.nameResolver = context.getNameResolver();
 		this.className = nameResolver.getFileClassName(file, immutableApi);
 		this.javaPackage = nameResolver.getFileJavaPackage(file);

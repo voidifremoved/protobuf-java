@@ -185,20 +185,22 @@ public final class DocComment
 	}
 
 	private static void findLocationAndWriteComment(
-			PrintWriter out, FileDescriptor file, List<Integer> path, Options options, boolean kdoc)
+			PrintWriter out, FileDescriptor file, List<Integer> path, Context context, boolean kdoc)
 	{
-		findLocationAndWriteComment(out, file, path, options, kdoc, "");
+		findLocationAndWriteComment(out, file, path, context, kdoc, "");
 	}
 
 	private static void findLocationAndWriteComment(
-			PrintWriter out, FileDescriptor file, List<Integer> path, Options options, boolean kdoc, String indentPrefix)
+			PrintWriter out, FileDescriptor file, List<Integer> path, Context context, boolean kdoc, String indentPrefix)
 	{
-		SourceCodeInfo sourceCodeInfo = file.toProto().getSourceCodeInfo();
+		SourceCodeInfo sourceCodeInfo = (context.getSourceProto() != null)
+				? context.getSourceProto().getSourceCodeInfo()
+				: file.toProto().getSourceCodeInfo();
 		for (SourceCodeInfo.Location location : sourceCodeInfo.getLocationList())
 		{
 			if (location.getPathList().equals(path))
 			{
-				writeDocCommentBodyForLocation(out, location, options, kdoc, indentPrefix);
+				writeDocCommentBodyForLocation(out, location, context.getOptions(), kdoc, indentPrefix);
 				return;
 			}
 		}
@@ -395,16 +397,16 @@ public final class DocComment
 	}
 
 	public static void writeMessageDocComment(
-			PrintWriter out, Descriptor message, Options options, boolean kdoc)
+			PrintWriter out, Descriptor message, Context context, boolean kdoc)
 	{
-		writeMessageDocComment(out, message, options, kdoc, "");
+		writeMessageDocComment(out, message, context, kdoc, "");
 	}
 
 	public static void writeMessageDocComment(
-			PrintWriter out, Descriptor message, Options options, boolean kdoc, String indentPrefix)
+			PrintWriter out, Descriptor message, Context context, boolean kdoc, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
-		findLocationAndWriteComment(out, message.getFile(), getPath(message), options, kdoc, indentPrefix);
+		findLocationAndWriteComment(out, message.getFile(), getPath(message), context, kdoc, indentPrefix);
 		if (kdoc)
 		{
 			out.print(indentPrefix + " * Protobuf type `" + escapeKdoc(message.getFullName()) + "`\n");
@@ -417,11 +419,11 @@ public final class DocComment
 	}
 
 	public static void writeFieldDocComment(
-			PrintWriter out, FieldDescriptor field, Options options, boolean kdoc)
+			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc)
 	{
 		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc);
-		writeDebugString(out, field, options, kdoc);
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc);
+		writeDebugString(out, field, context.getOptions(), kdoc);
 		out.print(" */\n");
 	}
 
@@ -429,7 +431,7 @@ public final class DocComment
 			PrintWriter out,
 			FieldDescriptor field,
 			FieldAccessorType type,
-			Options options,
+			Context context,
 			boolean builder,
 			boolean kdoc,
 			boolean isPrivate)
@@ -437,8 +439,8 @@ public final class DocComment
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, "");
-		writeDebugString(out, field, options, kdoc);
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
+		writeDebugString(out, field, context.getOptions(), kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			out.print(" * @deprecated\n");
@@ -488,7 +490,7 @@ public final class DocComment
 			PrintWriter out,
 			FieldDescriptor field,
 			FieldAccessorType type,
-			Options options,
+			Context context,
 			boolean builder,
 			boolean kdoc,
 			boolean isPrivate)
@@ -496,8 +498,8 @@ public final class DocComment
 		String camelcaseName = StringUtils.camelCaseFieldName(field);
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), options, kdoc, "");
-		writeDebugString(out, field, options, kdoc);
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
+		writeDebugString(out, field, context.getOptions(), kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			out.print(" * @deprecated\n");
@@ -538,16 +540,16 @@ public final class DocComment
 	}
 
 	public static void writeEnumDocComment(
-			PrintWriter out, EnumDescriptor enum_, Options options, boolean kdoc)
+			PrintWriter out, EnumDescriptor enum_, Context context, boolean kdoc)
 	{
-		writeEnumDocComment(out, enum_, options, kdoc, "");
+		writeEnumDocComment(out, enum_, context, kdoc, "");
 	}
 
 	public static void writeEnumDocComment(
-			PrintWriter out, EnumDescriptor enum_, Options options, boolean kdoc, String indentPrefix)
+			PrintWriter out, EnumDescriptor enum_, Context context, boolean kdoc, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
-		findLocationAndWriteComment(out, enum_.getFile(), getPath(enum_), options, kdoc, indentPrefix);
+		findLocationAndWriteComment(out, enum_.getFile(), getPath(enum_), context, kdoc, indentPrefix);
 		if (kdoc)
 		{
 			out.print(indentPrefix + " * Protobuf enum `" + escapeKdoc(enum_.getFullName()) + "`\n");
@@ -560,16 +562,16 @@ public final class DocComment
 	}
 
 	public static void writeEnumValueDocComment(
-			PrintWriter out, EnumValueDescriptor value, Options options)
+			PrintWriter out, EnumValueDescriptor value, Context context)
 	{
-		writeEnumValueDocComment(out, value, options, "");
+		writeEnumValueDocComment(out, value, context, "");
 	}
 
 	public static void writeEnumValueDocComment(
-			PrintWriter out, EnumValueDescriptor value, Options options, String indentPrefix)
+			PrintWriter out, EnumValueDescriptor value, Context context, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
-		findLocationAndWriteComment(out, value.getFile(), getPath(value), options, false, indentPrefix);
+		findLocationAndWriteComment(out, value.getFile(), getPath(value), context, false, indentPrefix);
 		// Match C++ format: <code>NAME = NUMBER;</code>
 		StringBuilder sb = new StringBuilder();
 		sb.append(value.getName());
@@ -585,19 +587,19 @@ public final class DocComment
 	}
 
 	public static void writeServiceDocComment(
-			PrintWriter out, ServiceDescriptor service, Options options)
+			PrintWriter out, ServiceDescriptor service, Context context)
 	{
 		out.print("/**\n");
-		findLocationAndWriteComment(out, service.getFile(), getPath(service), options, false);
+		findLocationAndWriteComment(out, service.getFile(), getPath(service), context, false);
 		out.print(" * Protobuf service {@code " + escapeJavadoc(service.getFullName()) + "}\n");
 		out.print(" */\n");
 	}
 
 	public static void writeMethodDocComment(
-			PrintWriter out, MethodDescriptor method, Options options)
+			PrintWriter out, MethodDescriptor method, Context context)
 	{
 		out.print("/**\n");
-		findLocationAndWriteComment(out, method.getFile(), getPath(method), options, false);
+		findLocationAndWriteComment(out, method.getFile(), getPath(method), context, false);
 		out.print(" * <code>" + escapeJavadoc(firstLineOf(method.toProto().toString())) + "</code>\n");
 		out.print(" */\n");
 	}

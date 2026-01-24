@@ -74,15 +74,20 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		if (descriptor.hasPresence())
 		{
 			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
+			variables.put("is_other_field_present_message", "other.has" + variables.get("capitalized_name") + "()");
+			variables.put("set_has_field_bit_to_local", Helpers.generateSetBitToLocal(messageBitIndex) + ";");
 			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
 			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 		}
 		else
 		{
 			variables.put("is_field_present_message", variables.get("name") + "_ != " + variables.get("default_number"));
+			variables.put("is_other_field_present_message", "other.get" + variables.get("capitalized_name") + "Value() != " + variables.get("default_number"));
 			variables.put("set_has_field_bit_builder", "");
 			variables.put("clear_has_field_bit_builder", "");
 		}
+		variables.put("get_has_field_bit_builder", Helpers.generateGetBit(builderBitIndex));
+		variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
 
 		variables.put("unknown",
 				// Logic for unknown enum value support (check syntax)
@@ -127,7 +132,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.HAZZER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -142,7 +147,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.GETTER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -155,7 +160,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -176,7 +181,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.HAZZER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -194,7 +199,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.GETTER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -210,7 +215,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -269,25 +274,57 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("        " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		printer.println("    " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
 	}
 
 	@Override
 	public void generateMergingCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("        if (" + variables.get("is_other_field_present_message") + ") {");
+		printer.println("          set" + variables.get("capitalized_name") + "(other.get"
+				+ variables.get("capitalized_name") + "());");
+		printer.println("        }");
 	}
 
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      if (" + variables.get("get_has_field_bit_from_local") + ") {");
+			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+			if (getNumBitsForMessage() > 0)
+			{
+				printer.println("        " + variables.get("set_has_field_bit_to_local"));
+			}
+			printer.println("      }");
+		}
+		else
+		{
+			printer.println("      result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+		}
 	}
 
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-		// Placeholder
+		if (supportUnknownEnumValue(descriptor))
+		{
+			printer.println("                " + variables.get("name") + "_ = input.readEnum();");
+			printer.println("                " + variables.get("set_has_field_bit_builder"));
+		}
+		else
+		{
+			printer.println("                int tmpRaw = input.readEnum();");
+			printer.println("                " + variables.get("type") + " tmpValue =");
+			printer.println("                    " + variables.get("type") + ".forNumber(tmpRaw);");
+			printer.println("                if (tmpValue == null) {");
+			printer.println("                  mergeUnknownVarintField(" + fieldNumber + ", tmpRaw);");
+			printer.println("                } else {");
+			printer.println("                  " + variables.get("name") + "_ = tmpRaw;");
+			printer.println("                  " + variables.get("set_has_field_bit_builder"));
+			printer.println("                }");
+		}
 	}
 
 	@Override
@@ -320,21 +357,28 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("      if (has" + variables.get("capitalized_name") + "() != other.has" + variables.get("capitalized_name") + "()) return false;");
 			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
-			printer.println("        if (get" + variables.get("capitalized_name") + "()");
-			printer.println("            != other.get" + variables.get("capitalized_name") + "()) return false;");
+			printer.println("        if (" + variables.get("name") + "_ != other." + variables.get("name") + "_) return false;");
 			printer.println("      }");
 		}
 		else
 		{
-			printer.println("      if (get" + variables.get("capitalized_name") + "()");
-			printer.println("          != other.get" + variables.get("capitalized_name") + "()) return false;");
+			printer.println("      if (" + variables.get("name") + "_ != other." + variables.get("name") + "_) return false;");
 		}
 	}
 
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		// Placeholder
+		if (descriptor.hasPresence())
+		{
+			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
+		}
+		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("        hash = (53 * hash) + " + variables.get("name") + "_;");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      }");
+		}
 	}
 
 	@Override
