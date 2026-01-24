@@ -189,11 +189,12 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		// bitField0_ for tracking field presence - only needed if there are optional fields
+		// Oneof fields don't need bitField0_ in the message class (they use oneofCase_ instead)
 		boolean needsBitField = false;
 		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
 		{
-			// Maps and repeated fields don't need bitField0_ in the message class
-			if (field.isMapField() || field.isRepeated())
+			// Maps, repeated fields, and oneof fields don't need bitField0_ in the message class
+			if (field.isMapField() || field.isRepeated() || field.getContainingOneof() != null)
 			{
 				continue;
 			}

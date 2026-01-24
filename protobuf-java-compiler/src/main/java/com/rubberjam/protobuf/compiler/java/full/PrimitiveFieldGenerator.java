@@ -240,6 +240,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
+			// Primitive oneof fields in message class SHOULD have @Override
+			// (unlike string oneof fields which don't have @Override)
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public boolean has"
 					+ variables.get("capitalized_name") + "() {");
@@ -249,14 +251,16 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		Helpers.writeDocComment(
 				printer,
 				"    ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
-						commentWriter,
-						descriptor,
-						FieldAccessorType.GETTER,
-						context,
-						false,
-						false,
-						false));
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.GETTER,
+							context,
+							false,
+							false,
+							false));
+		// Primitive oneof fields in message class SHOULD have @Override
+		// (unlike string oneof fields which don't have @Override)
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
@@ -296,10 +300,17 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("      @java.lang.Override");
+			if (descriptor.getContainingOneof() == null)
+			{
+				printer.println("      @java.lang.Override");
+			}
 			printer.println("      " + variables.get("deprecation") + "public boolean has"
 					+ variables.get("capitalized_name") + "() {");
-			printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
+			// For oneof fields, use oneofCase_ check; for regular fields, use bitField0_ check
+			String hasCheck = descriptor.getContainingOneof() != null 
+					? variables.get("is_field_present_message")
+					: variables.get("get_has_field_bit_builder");
+			printer.println("        return " + hasCheck + ";");
 			printer.println("      }");
 		}
 
@@ -314,7 +325,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
-		printer.println("      @java.lang.Override");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
 		if (descriptor.getContainingOneof() != null)

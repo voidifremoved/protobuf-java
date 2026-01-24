@@ -138,6 +138,68 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     com.google.protobuf.ByteString
         getRepeatedString1Bytes(int index);
+
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return Whether the oneof1String field is set.
+     */
+    boolean hasOneof1String();
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return The oneof1String.
+     */
+    java.lang.String getOneof1String();
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return The bytes for oneof1String.
+     */
+    com.google.protobuf.ByteString
+        getOneof1StringBytes();
+
+    /**
+     * <code>int32 oneof1_int32 = 25;</code>
+     * @return Whether the oneof1Int32 field is set.
+     */
+    boolean hasOneof1Int32();
+    /**
+     * <code>int32 oneof1_int32 = 25;</code>
+     * @return The oneof1Int32.
+     */
+    int getOneof1Int32();
+
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    int getMap1Count();
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    boolean containsMap1(
+        java.lang.String key);
+    /**
+     * Use {@link #getMap1Map()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMap1();
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getMap1Map();
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    int getMap1OrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    int getMap1OrThrow(
+        java.lang.String key);
+
+    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.EdgeCaseMinimal.Oneof1Case getOneof1Case();
   }
   /**
    * <pre>
@@ -180,6 +242,18 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor;
     }
 
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+        int number) {
+      switch (number) {
+        case 26:
+          return internalGetMap1();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
@@ -189,6 +263,48 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     }
 
     private int bitField0_;
+    private int oneof1Case_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object oneof1_;
+    public enum Oneof1Case
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF1_STRING(24),
+      ONEOF1_INT32(25),
+      ONEOF1_NOT_SET(0);
+      private final int value;
+      private Oneof1Case(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static Oneof1Case valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static Oneof1Case forNumber(int value) {
+        switch (value) {
+          case 24: return ONEOF1_STRING;
+          case 25: return ONEOF1_INT32;
+          case 0: return ONEOF1_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public Oneof1Case
+    getOneof1Case() {
+      return Oneof1Case.forNumber(
+          oneof1Case_);
+    }
+
     public static final int EMPTY_STRING_FIELD_NUMBER = 17;
     @SuppressWarnings("serial")
     private volatile java.lang.Object emptyString_ = "";
@@ -410,6 +526,156 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       return repeatedString1_.getByteString(index);
     }
 
+    public static final int ONEOF1_STRING_FIELD_NUMBER = 24;
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return Whether the oneof1String field is set.
+     */
+    public boolean hasOneof1String() {
+      return oneof1Case_ == 24;
+    }
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return The oneof1String.
+     */
+    public java.lang.String getOneof1String() {
+      java.lang.Object ref = "";
+      if (oneof1Case_ == 24) {
+        ref = oneof1_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8() && (oneof1Case_ == 24)) {
+          oneof1_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string oneof1_string = 24;</code>
+     * @return The bytes for oneof1String.
+     */
+    public com.google.protobuf.ByteString
+        getOneof1StringBytes() {
+      java.lang.Object ref = "";
+      if (oneof1Case_ == 24) {
+        ref = oneof1_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (oneof1Case_ == 24) {
+          oneof1_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF1_INT32_FIELD_NUMBER = 25;
+    /**
+     * <code>int32 oneof1_int32 = 25;</code>
+     * @return Whether the oneof1Int32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneof1Int32() {
+      return oneof1Case_ == 25;
+    }
+    /**
+     * <code>int32 oneof1_int32 = 25;</code>
+     * @return The oneof1Int32.
+     */
+    @java.lang.Override
+    public int getOneof1Int32() {
+      if (oneof1Case_ == 25) {
+        return (java.lang.Integer) oneof1_;
+      }
+      return 0;
+    }
+
+    public static final int MAP1_FIELD_NUMBER = 26;
+    private static final class Map1DefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> map1_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetMap1() {
+      if (map1_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Map1DefaultEntryHolder.defaultEntry);
+      }
+      return map1_;
+    }
+    public int getMap1Count() {
+      return internalGetMap1().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    @java.lang.Override
+    public boolean containsMap1(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetMap1().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getMap1Map()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getMap1() {
+      return getMap1Map();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getMap1Map() {
+      return internalGetMap1().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    @java.lang.Override
+    public int getMap1OrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMap1().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; map1 = 26;</code>
+     */
+    @java.lang.Override
+    public int getMap1OrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetMap1().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -445,6 +711,19 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       for (int i = 0; i < repeatedString1_.size(); i++) {
         com.google.protobuf.GeneratedMessage.writeString(output, 23, repeatedString1_.getRaw(i));
       }
+      if (oneof1Case_ == 24) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 24, oneof1_);
+      }
+      if (oneof1Case_ == 25) {
+        output.writeInt32(
+            25, (int)((java.lang.Integer) oneof1_));
+      }
+      com.google.protobuf.GeneratedMessage
+        .serializeStringMapTo(
+          output,
+          internalGetMap1(),
+          Map1DefaultEntryHolder.defaultEntry,
+          26);
       getUnknownFields().writeTo(output);
     }
 
@@ -488,6 +767,24 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         }
         size += dataSize;
         size += 2 * getRepeatedString1List().size();
+      }
+      if (oneof1Case_ == 24) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(24, oneof1_);
+      }
+      if (oneof1Case_ == 25) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(
+              25, (int)((java.lang.Integer) oneof1_));
+      }
+      for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
+           : internalGetMap1().getMap().entrySet()) {
+        com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+        map1__ = Map1DefaultEntryHolder.defaultEntry.newBuilderForType()
+            .setKey(entry.getKey())
+            .setValue(entry.getValue())
+            .build();
+        size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(26, map1__);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -536,6 +833,21 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           .equals(other.getRepeated1List())) return false;
       if (!getRepeatedString1List()
           .equals(other.getRepeatedString1List())) return false;
+      if (!internalGetMap1().equals(
+          other.internalGetMap1())) return false;
+      if (!getOneof1Case().equals(other.getOneof1Case())) return false;
+      switch (oneof1Case_) {
+        case 24:
+          if (!getOneof1String()
+              .equals(other.getOneof1String())) return false;
+          break;
+        case 25:
+          if (getOneof1Int32()
+              != other.getOneof1Int32()) return false;
+          break;
+        case 0:
+        default:
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -577,6 +889,22 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (getRepeatedString1Count() > 0) {
         hash = (37 * hash) + REPEATED_STRING1_FIELD_NUMBER;
         hash = (53 * hash) + getRepeatedString1List().hashCode();
+      }
+      if (!internalGetMap1().getMap().isEmpty()) {
+        hash = (37 * hash) + MAP1_FIELD_NUMBER;
+        hash = (53 * hash) + internalGetMap1().hashCode();
+      }
+      switch (oneof1Case_) {
+        case 24:
+          hash = (37 * hash) + ONEOF1_STRING_FIELD_NUMBER;
+          hash = (53 * hash) + getOneof1String().hashCode();
+          break;
+        case 25:
+          hash = (37 * hash) + ONEOF1_INT32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneof1Int32();
+          break;
+        case 0:
+        default:
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -691,6 +1019,28 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor;
       }
 
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 26:
+            return internalGetMap1();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 26:
+            return internalGetMutableMap1();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
@@ -721,6 +1071,9 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         repeated1_ = emptyIntList();
         repeatedString1_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
+        internalGetMutableMap1().clear();
+        oneof1Case_ = 0;
+        oneof1_ = null;
         return this;
       }
 
@@ -748,6 +1101,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.EdgeCaseMinimal buildPartial() {
         com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.EdgeCaseMinimal result = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.EdgeCaseMinimal(this);
         if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
         onBuilt();
         return result;
       }
@@ -783,7 +1137,16 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           repeatedString1_.makeImmutable();
           result.repeatedString1_ = repeatedString1_;
         }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.map1_ = internalGetMap1();
+          result.map1_.makeImmutable();
+        }
         result.bitField0_ |= to_bitField0_;
+      }
+
+      private void buildPartialOneofs(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.EdgeCaseMinimal result) {
+        result.oneof1Case_ = oneof1Case_;
+        result.oneof1_ = this.oneof1_;
       }
 
       @java.lang.Override
@@ -837,6 +1200,24 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
             repeatedString1_.addAll(other.repeatedString1_);
           }
           onChanged();
+        }
+        internalGetMutableMap1().mergeFrom(
+            other.internalGetMap1());
+        bitField0_ |= 0x00000200;
+        switch (other.getOneof1Case()) {
+          case ONEOF1_STRING: {
+            oneof1Case_ = 24;
+            oneof1_ = other.oneof1_;
+            onChanged();
+            break;
+          }
+          case ONEOF1_INT32: {
+            setOneof1Int32(other.getOneof1Int32());
+            break;
+          }
+          case ONEOF1_NOT_SET: {
+            break;
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -911,6 +1292,26 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 repeatedString1_.add(bs);
                 break;
               } // case 186
+              case 194: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                oneof1Case_ = 24;
+                oneof1_ = bs;
+                break;
+              } // case 194
+              case 200: {
+                oneof1_ = input.readInt32();
+                oneof1Case_ = 25;
+                break;
+              } // case 200
+              case 210: {
+                com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
+                map1__ = input.readMessage(
+                    Map1DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
+                internalGetMutableMap1().getMutableMap().put(
+                    map1__.getKey(), map1__.getValue());
+                bitField0_ |= 0x00000200;
+                break;
+              } // case 210
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -926,6 +1327,21 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         } // finally
         return this;
       }
+      private int oneof1Case_ = 0;
+      private java.lang.Object oneof1_;
+      public Oneof1Case
+          getOneof1Case() {
+        return Oneof1Case.forNumber(
+            oneof1Case_);
+      }
+
+      public Builder clearOneof1() {
+        oneof1Case_ = 0;
+        oneof1_ = null;
+        onChanged();
+        return this;
+      }
+
       private int bitField0_;
 
       private java.lang.Object emptyString_ = "";
@@ -1402,6 +1818,267 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         return this;
       }
 
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @return Whether the oneof1String field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneof1String() {
+        return oneof1Case_ == 24;
+      }
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @return The oneof1String.
+       */
+      @java.lang.Override
+      public java.lang.String getOneof1String() {
+        java.lang.Object ref = "";
+        if (oneof1Case_ == 24) {
+          ref = oneof1_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (oneof1Case_ == 24) {
+            if (bs.isValidUtf8()) {
+              oneof1_ = s;
+            }
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @return The bytes for oneof1String.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getOneof1StringBytes() {
+        java.lang.Object ref = "";
+        if (oneof1Case_ == 24) {
+          ref = oneof1_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (oneof1Case_ == 24) {
+            oneof1_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @param value The oneof1String to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneof1String(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        oneof1Case_ = 24;
+        oneof1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneof1String() {
+        if (oneof1Case_ == 24) {
+          oneof1Case_ = 0;
+          oneof1_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string oneof1_string = 24;</code>
+       * @param value The bytes for oneof1String to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneof1StringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        oneof1Case_ = 24;
+        oneof1_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>int32 oneof1_int32 = 25;</code>
+       * @return Whether the oneof1Int32 field is set.
+       */
+      public boolean hasOneof1Int32() {
+        return oneof1Case_ == 25;
+      }
+      /**
+       * <code>int32 oneof1_int32 = 25;</code>
+       * @return The oneof1Int32.
+       */
+      public int getOneof1Int32() {
+        if (oneof1Case_ == 25) {
+          return (java.lang.Integer) oneof1_;
+        }
+        return 0;
+      }
+      /**
+       * <code>int32 oneof1_int32 = 25;</code>
+       * @param value The oneof1Int32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneof1Int32(int value) {
+
+        oneof1Case_ = 25;
+        oneof1_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 oneof1_int32 = 25;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneof1Int32() {
+        if (oneof1Case_ == 25) {
+          oneof1Case_ = 0;
+          oneof1_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> map1_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMap1() {
+        if (map1_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Map1DefaultEntryHolder.defaultEntry);
+        }
+        return map1_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableMap1() {
+        if (map1_ == null) {
+          map1_ = com.google.protobuf.MapField.newMapField(
+              Map1DefaultEntryHolder.defaultEntry);
+        }
+        if (!map1_.isMutable()) {
+          map1_ = map1_.copy();
+        }
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return map1_;
+      }
+      public int getMap1Count() {
+        return internalGetMap1().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      @java.lang.Override
+      public boolean containsMap1(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetMap1().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getMap1Map()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getMap1() {
+        return getMap1Map();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getMap1Map() {
+        return internalGetMap1().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      @java.lang.Override
+      public int getMap1OrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMap1().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      @java.lang.Override
+      public int getMap1OrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetMap1().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearMap1() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        internalGetMutableMap1().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      public Builder removeMap1(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableMap1().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableMap1() {
+        bitField0_ |= 0x00000200;
+        return internalGetMutableMap1().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      public Builder putMap1(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableMap1().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; map1 = 26;</code>
+       */
+      public Builder putAllMap1(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableMap1().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000200;
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal)
     }
 
@@ -1458,6 +2135,11 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1469,14 +2151,19 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     java.lang.String[] descriptorData = {
       "\n+comprehensive_test_edge_cases_minimal." +
       "proto\022\"ComprehensiveTest.EdgeCasesMinima" +
-      "l\"\326\001\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 " +
+      "l\"\213\003\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 " +
       "\001(\t:\000\022\026\n\016unicode_string\030\022 \001(\t\022!\n\tmax_flo" +
       "at\030\023 \001(\002:\0163.40282347e+38\022+\n\nmax_double\030\024" +
       " \001(\001:\0271.7976931348623157e+308\022\026\n\tinf_flo" +
       "at\030\025 \001(\002:\003inf\022\021\n\trepeated1\030\026 \003(\005\022\030\n\020repe" +
-      "ated_string1\030\027 \003(\tBP\n)com.rubberjam.prot" +
-      "obuf.compiler.test.edgeB!ComprehensiveTe" +
-      "stEdgeCasesMinimalH\001"
+      "ated_string1\030\027 \003(\t\022\027\n\roneof1_string\030\030 \001(" +
+      "\tH\000\022\026\n\014oneof1_int32\030\031 \001(\005H\000\022K\n\004map1\030\032 \003(" +
+      "\0132=.ComprehensiveTest.EdgeCasesMinimal.E" +
+      "dgeCaseMinimal.Map1Entry\032+\n\tMap1Entry\022\013\n" +
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001B\010\n\006oneof1B" +
+      "P\n)com.rubberjam.protobuf.compiler.test." +
+      "edgeB!ComprehensiveTestEdgeCasesMinimalH" +
+      "\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1487,7 +2174,13 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor,
-        new java.lang.String[] { "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", });
+        new java.lang.String[] { "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", "Oneof1String", "Oneof1Int32", "Map1", "Oneof1", });
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_descriptor =
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

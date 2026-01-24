@@ -25,18 +25,22 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Citjb21wcmVoZW5zaXZlX3Rlc3RfZWRnZV9jYXNlc19taW5pbWFsLnByb3Rv",
-            "EiJDb21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXNNaW5pbWFsItYBCg9FZGdl",
+            "EiJDb21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXNNaW5pbWFsIosDCg9FZGdl",
             "Q2FzZU1pbmltYWwSFgoMZW1wdHlfc3RyaW5nGBEgASgJOgASFgoOdW5pY29k",
             "ZV9zdHJpbmcYEiABKAkSIQoJbWF4X2Zsb2F0GBMgASgCOg4zLjQwMjgyMzQ3",
             "ZSszOBIrCgptYXhfZG91YmxlGBQgASgBOhcxLjc5NzY5MzEzNDg2MjMxNTdl",
             "KzMwOBIWCglpbmZfZmxvYXQYFSABKAI6A2luZhIRCglyZXBlYXRlZDEYFiAD",
-            "KAUSGAoQcmVwZWF0ZWRfc3RyaW5nMRgXIAMoCUJQCiljb20ucnViYmVyamFt",
-            "LnByb3RvYnVmLmNvbXBpbGVyLnRlc3QuZWRnZUIhQ29tcHJlaGVuc2l2ZVRl",
-            "c3RFZGdlQ2FzZXNNaW5pbWFsSAE="));
+            "KAUSGAoQcmVwZWF0ZWRfc3RyaW5nMRgXIAMoCRIXCg1vbmVvZjFfc3RyaW5n",
+            "GBggASgJSAASFgoMb25lb2YxX2ludDMyGBkgASgFSAASSwoEbWFwMRgaIAMo",
+            "CzI9LkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlc01pbmltYWwuRWRnZUNh",
+            "c2VNaW5pbWFsLk1hcDFFbnRyeRorCglNYXAxRW50cnkSCwoDa2V5GAEgASgJ",
+            "Eg0KBXZhbHVlGAIgASgFOgI4AUIICgZvbmVvZjFCUAopY29tLnJ1YmJlcmph",
+            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0LmVkZ2VCIUNvbXByZWhlbnNpdmVU",
+            "ZXN0RWRnZUNhc2VzTWluaW1hbEgB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", "Oneof1String", "Oneof1Int32", "Map1" }, new[]{ "Oneof1" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
           }));
     }
     #endregion
@@ -90,6 +94,16 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       infFloat_ = other.infFloat_;
       repeated1_ = other.repeated1_.Clone();
       repeatedString1_ = other.repeatedString1_.Clone();
+      map1_ = other.map1_.Clone();
+      switch (other.Oneof1Case) {
+        case Oneof1OneofCase.Oneof1String:
+          Oneof1String = other.Oneof1String;
+          break;
+        case Oneof1OneofCase.Oneof1Int32:
+          Oneof1Int32 = other.Oneof1Int32;
+          break;
+      }
+
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -254,6 +268,90 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       get { return repeatedString1_; }
     }
 
+    /// <summary>Field number for the "oneof1_string" field.</summary>
+    public const int Oneof1StringFieldNumber = 24;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Oneof1String {
+      get { return HasOneof1String ? (string) oneof1_ : ""; }
+      set {
+        oneof1_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        oneof1Case_ = Oneof1OneofCase.Oneof1String;
+      }
+    }
+    /// <summary>Gets whether the "oneof1_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneof1String {
+      get { return oneof1Case_ == Oneof1OneofCase.Oneof1String; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof1_string" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneof1String() {
+      if (HasOneof1String) {
+        ClearOneof1();
+      }
+    }
+
+    /// <summary>Field number for the "oneof1_int32" field.</summary>
+    public const int Oneof1Int32FieldNumber = 25;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Oneof1Int32 {
+      get { return HasOneof1Int32 ? (int) oneof1_ : 0; }
+      set {
+        oneof1_ = value;
+        oneof1Case_ = Oneof1OneofCase.Oneof1Int32;
+      }
+    }
+    /// <summary>Gets whether the "oneof1_int32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneof1Int32 {
+      get { return oneof1Case_ == Oneof1OneofCase.Oneof1Int32; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof1_int32" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneof1Int32() {
+      if (HasOneof1Int32) {
+        ClearOneof1();
+      }
+    }
+
+    /// <summary>Field number for the "map1" field.</summary>
+    public const int Map1FieldNumber = 26;
+    private static readonly pbc::MapField<string, int>.Codec _map_map1_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 210);
+    private readonly pbc::MapField<string, int> map1_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> Map1 {
+      get { return map1_; }
+    }
+
+    private object oneof1_;
+    /// <summary>Enum of possible cases for the "oneof1" oneof.</summary>
+    public enum Oneof1OneofCase {
+      None = 0,
+      Oneof1String = 24,
+      Oneof1Int32 = 25,
+    }
+    private Oneof1OneofCase oneof1Case_ = Oneof1OneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public Oneof1OneofCase Oneof1Case {
+      get { return oneof1Case_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneof1() {
+      oneof1Case_ = Oneof1OneofCase.None;
+      oneof1_ = null;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -276,6 +374,10 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(InfFloat, other.InfFloat)) return false;
       if(!repeated1_.Equals(other.repeated1_)) return false;
       if(!repeatedString1_.Equals(other.repeatedString1_)) return false;
+      if (Oneof1String != other.Oneof1String) return false;
+      if (Oneof1Int32 != other.Oneof1Int32) return false;
+      if (!Map1.Equals(other.Map1)) return false;
+      if (Oneof1Case != other.Oneof1Case) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -290,6 +392,10 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(InfFloat);
       hash ^= repeated1_.GetHashCode();
       hash ^= repeatedString1_.GetHashCode();
+      if (HasOneof1String) hash ^= Oneof1String.GetHashCode();
+      if (HasOneof1Int32) hash ^= Oneof1Int32.GetHashCode();
+      hash ^= Map1.GetHashCode();
+      hash ^= (int) oneof1Case_;
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -330,6 +436,15 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       repeated1_.WriteTo(output, _repeated_repeated1_codec);
       repeatedString1_.WriteTo(output, _repeated_repeatedString1_codec);
+      if (HasOneof1String) {
+        output.WriteRawTag(194, 1);
+        output.WriteString(Oneof1String);
+      }
+      if (HasOneof1Int32) {
+        output.WriteRawTag(200, 1);
+        output.WriteInt32(Oneof1Int32);
+      }
+      map1_.WriteTo(output, _map_map1_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -362,6 +477,15 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       repeated1_.WriteTo(ref output, _repeated_repeated1_codec);
       repeatedString1_.WriteTo(ref output, _repeated_repeatedString1_codec);
+      if (HasOneof1String) {
+        output.WriteRawTag(194, 1);
+        output.WriteString(Oneof1String);
+      }
+      if (HasOneof1Int32) {
+        output.WriteRawTag(200, 1);
+        output.WriteInt32(Oneof1Int32);
+      }
+      map1_.WriteTo(ref output, _map_map1_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -389,6 +513,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       size += repeated1_.CalculateSize(_repeated_repeated1_codec);
       size += repeatedString1_.CalculateSize(_repeated_repeatedString1_codec);
+      if (HasOneof1String) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(Oneof1String);
+      }
+      if (HasOneof1Int32) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Oneof1Int32);
+      }
+      size += map1_.CalculateSize(_map_map1_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -418,6 +549,16 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       repeated1_.Add(other.repeated1_);
       repeatedString1_.Add(other.repeatedString1_);
+      map1_.MergeFrom(other.map1_);
+      switch (other.Oneof1Case) {
+        case Oneof1OneofCase.Oneof1String:
+          Oneof1String = other.Oneof1String;
+          break;
+        case Oneof1OneofCase.Oneof1Int32:
+          Oneof1Int32 = other.Oneof1Int32;
+          break;
+      }
+
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -466,6 +607,18 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
             repeatedString1_.AddEntriesFrom(input, _repeated_repeatedString1_codec);
             break;
           }
+          case 194: {
+            Oneof1String = input.ReadString();
+            break;
+          }
+          case 200: {
+            Oneof1Int32 = input.ReadInt32();
+            break;
+          }
+          case 210: {
+            map1_.AddEntriesFrom(input, _map_map1_codec);
+            break;
+          }
         }
       }
     #endif
@@ -512,6 +665,18 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           }
           case 186: {
             repeatedString1_.AddEntriesFrom(ref input, _repeated_repeatedString1_codec);
+            break;
+          }
+          case 194: {
+            Oneof1String = input.ReadString();
+            break;
+          }
+          case 200: {
+            Oneof1Int32 = input.ReadInt32();
+            break;
+          }
+          case 210: {
+            map1_.AddEntriesFrom(ref input, _map_map1_codec);
             break;
           }
         }

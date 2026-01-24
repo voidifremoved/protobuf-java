@@ -214,11 +214,11 @@ public class MessageBuilderGenerator
 			printer.println("      private void buildPartial" + i + "(" + fullClassName + " result) {");
 			printer.println("        int from_" + getBitFieldName(i) + " = " + getBitFieldName(i) + ";");
 			// Check if we need to_bitField0_ logic - only needed if result message has bitField0_
-			// Repeated fields and maps don't need bitField0_ in the message class
+			// Repeated fields, maps, and oneof fields don't need bitField0_ in the message class
 			boolean resultNeedsBitField = false;
 			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
 			{
-				if (field.isMapField() || field.isRepeated())
+				if (field.isMapField() || field.isRepeated() || field.getContainingOneof() != null)
 				{
 					continue;
 				}

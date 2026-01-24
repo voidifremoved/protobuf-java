@@ -83,9 +83,6 @@ public class SharedCodeGenerator
 			case '\n':
 				builder.append("\\n");
 				break;
-			case '\f':
-				builder.append("\\f");
-				break;
 			case '\r':
 				builder.append("\\r");
 				break;

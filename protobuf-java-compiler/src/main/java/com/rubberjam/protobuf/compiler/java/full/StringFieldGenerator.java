@@ -201,6 +201,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
+			// String oneof fields in message class should NOT have @Override
+			// (unlike primitive oneof fields which do have @Override)
 			if (descriptor.getContainingOneof() == null)
 			{
 				printer.println("    @java.lang.Override");
@@ -214,14 +216,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		Helpers.writeDocComment(
 				printer,
 				"    ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
-						commentWriter,
-						descriptor,
-						FieldAccessorType.GETTER,
-						context,
-						false,
-						false,
-						false));
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.GETTER,
+							context,
+							false,
+							false,
+							false));
+		// String oneof fields in message class should NOT have @Override
+		// (unlike primitive oneof fields which do have @Override)
 		if (descriptor.getContainingOneof() == null)
 		{
 			printer.println("    @java.lang.Override");
@@ -334,9 +338,18 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
+			// String oneof fields in builder class SHOULD have @Override
+			if (descriptor.getContainingOneof() != null)
+			{
+				printer.println("      @java.lang.Override");
+			}
 			printer.println("      " + variables.get("deprecation") + "public boolean has"
 					+ variables.get("capitalized_name") + "() {");
-			printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
+			// For oneof fields, use oneofCase_ check; for regular fields, use bitField0_ check
+			String hasCheck = descriptor.getContainingOneof() != null 
+					? variables.get("is_field_present_message")
+					: variables.get("get_has_field_bit_builder");
+			printer.println("        return " + hasCheck + ";");
 			printer.println("      }");
 		}
 
@@ -351,6 +364,11 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
+		// String oneof fields in builder class SHOULD have @Override
+		if (descriptor.getContainingOneof() != null)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public java.lang.String get"
 				+ variables.get("capitalized_name") + "() {");
 		if (descriptor.getContainingOneof() != null)
@@ -399,6 +417,11 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
+		// String oneof fields in builder class SHOULD have @Override
+		if (descriptor.getContainingOneof() != null)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public com.google.protobuf.ByteString");
 		printer.println("          get" + variables.get("capitalized_name") + "Bytes() {");
 		if (descriptor.getContainingOneof() != null)
