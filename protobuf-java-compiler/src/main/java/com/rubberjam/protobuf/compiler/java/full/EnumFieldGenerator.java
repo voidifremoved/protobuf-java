@@ -229,7 +229,10 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderMembers(PrintWriter printer)
 	{
-		printer.println("  private int " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("  private int " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		}
 
 		printer.println("  public boolean has" + variables.get("capitalized_name") + "() {");
 		printer.println("    return false;"); // TODO
@@ -274,7 +277,10 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("    " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("    " + variables.get("name") + "_ = " + variables.get("default_number") + ";");
+		}
 	}
 
 	@Override
@@ -379,6 +385,19 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("      }");
 		}
+	}
+
+	@Override
+	public void generateOneofEqualsCode(PrintWriter printer)
+	{
+		printer.println("          if (" + variables.get("name") + "_ != other." + variables.get("name") + "_) return false;");
+	}
+
+	@Override
+	public void generateOneofHashCode(PrintWriter printer)
+	{
+		printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("          hash = (53 * hash) + " + variables.get("name") + "_;");
 	}
 
 	@Override

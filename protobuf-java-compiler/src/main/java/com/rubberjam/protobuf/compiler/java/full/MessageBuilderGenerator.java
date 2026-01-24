@@ -71,6 +71,52 @@ public class MessageBuilderGenerator
 		printer.println("      }");
 		printer.println();
 
+		boolean hasMapFields = false;
+		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+		{
+			if (field.isMapField())
+			{
+				hasMapFields = true;
+				break;
+			}
+		}
+		if (hasMapFields)
+		{
+			printer.println("      @SuppressWarnings({\"rawtypes\"})");
+			printer.println("      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(");
+			printer.println("          int number) {");
+			printer.println("        switch (number) {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isMapField())
+				{
+					printer.println("          case " + field.getNumber() + ":");
+					printer.println("            return internalGet" + com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(field.getName(), true) + "();");
+				}
+			}
+			printer.println("          default:");
+			printer.println("            throw new RuntimeException(");
+			printer.println("                \"Invalid map field number: \" + number);");
+			printer.println("        }");
+			printer.println("      }");
+			printer.println("      @SuppressWarnings({\"rawtypes\"})");
+			printer.println("      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(");
+			printer.println("          int number) {");
+			printer.println("        switch (number) {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isMapField())
+				{
+					printer.println("          case " + field.getNumber() + ":");
+					printer.println("            return internalGetMutable" + com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(field.getName(), true) + "();");
+				}
+			}
+			printer.println("          default:");
+			printer.println("            throw new RuntimeException(");
+			printer.println("                \"Invalid map field number: \" + number);");
+			printer.println("        }");
+			printer.println("      }");
+		}
 		printer.println("      @java.lang.Override");
 		printer.println("      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
 		printer.println("          internalGetFieldAccessorTable() {");
@@ -293,6 +339,13 @@ public class MessageBuilderGenerator
 			printer.println("      private int " + getBitFieldName(i) + ";");
 		}
 		printer.println();
+
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+			printer.println("      private int " + oneofName + "Case_ = 0;");
+			printer.println("      private java.lang.Object " + oneofName + "_;");
+		}
 
 		// Fields for builder
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())

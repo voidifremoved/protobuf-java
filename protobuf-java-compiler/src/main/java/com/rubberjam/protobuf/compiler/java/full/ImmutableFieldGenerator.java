@@ -48,5 +48,15 @@ public abstract class ImmutableFieldGenerator extends FieldGenerator
 
 	public abstract void generateHashCode(PrintWriter printer);
 
+	public void generateOneofEqualsCode(PrintWriter printer)
+	{
+		throw new UnsupportedOperationException("Not supported.");
+	}
+
+	public void generateOneofHashCode(PrintWriter printer)
+	{
+		throw new UnsupportedOperationException("Not supported.");
+	}
+
 	public abstract String getBoxedType();
 }

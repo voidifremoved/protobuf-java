@@ -89,7 +89,17 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		variables.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
 		variables.put("on_changed", "onChanged();");
 
-		if (InternalHelpers.hasHasbit(descriptor))
+		if (descriptor.getContainingOneof() != null)
+		{
+			String oneofName = StringUtils.underscoresToCamelCase(descriptor.getContainingOneof().getName(), false);
+			variables.put("oneof_name", oneofName);
+			variables.put("oneof_case_variable", oneofName + "Case_");
+			variables.put("oneof_field_variable", oneofName + "_");
+			variables.put("set_has_field_bit_to_local", "");
+			variables.put("is_field_present_message", oneofName + "Case_ == " + descriptor.getNumber());
+			variables.put("is_other_field_present_message", "other.has" + variables.get("capitalized_name") + "()");
+		}
+		else if (InternalHelpers.hasHasbit(descriptor))
 		{
 			variables.put("set_has_field_bit_to_local", Helpers.generateSetBitToLocal(messageBitIndex) + ";");
 			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
@@ -211,9 +221,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateMembers(PrintWriter printer)
 	{
-		printer.println("    private " + variables.get("field_type") + " " + variables.get("name") + "_ = "
-				+ variables.get("default") + ";");
-		FieldCommon.printExtraFieldInfo(variables, printer);
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("    private " + variables.get("field_type") + " " + variables.get("name") + "_ = "
+					+ variables.get("default") + ";");
+			FieldCommon.printExtraFieldInfo(variables, printer);
+		}
 		if (descriptor.hasPresence())
 		{
 			Helpers.writeDocComment(
@@ -247,7 +260,17 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
-		printer.println("      return " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() != null)
+		{
+			printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("        return (" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ";");
+			printer.println("      }");
+			printer.println("      return " + variables.get("default") + ";");
+		}
+		else
+		{
+			printer.println("      return " + variables.get("name") + "_;");
+		}
 		printer.println("    }");
 	}
 
@@ -255,8 +278,11 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	public void generateBuilderMembers(PrintWriter printer)
 	{
 		JavaType javaType = StringUtils.getJavaType(descriptor);
-		printer.println("      private " + variables.get("field_type") + " " + variables.get("name") + "_ "
-				+ variables.get("default_init") + ";");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("      private " + variables.get("field_type") + " " + variables.get("name") + "_ "
+					+ variables.get("default_init") + ";");
+		}
 		if (descriptor.hasPresence())
 		{
 			Helpers.writeDocComment(
@@ -367,7 +393,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
+		}
 	}
 
 	@Override
@@ -403,9 +432,20 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .compute" + variables.get("capitalized_type") + "Size("
-				+ variables.get("number") + ", " + variables.get("name") + "_);");
+		String valueVar = variables.get("name") + "_";
+		if (descriptor.getContainingOneof() != null)
+		{
+			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			printer.println("        size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("capitalized_type") + "Size(");
+			printer.println("              " + variables.get("number") + ", " + valueVar + ");");
+		}
+		else
+		{
+			printer.println("        size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("capitalized_type") + "Size("
+					+ variables.get("number") + ", " + valueVar + ");");
+		}
 		printer.println("      }");
 	}
 
@@ -413,8 +453,18 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	public void generateWriteToCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.write" + variables.get("capitalized_type") + "("
-				+ variables.get("number") + ", " + variables.get("name") + "_);");
+		String valueVar = variables.get("name") + "_";
+		if (descriptor.getContainingOneof() != null)
+		{
+			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			printer.println("        output.write" + variables.get("capitalized_type") + "(");
+			printer.println("            " + variables.get("number") + ", " + valueVar + ");");
+		}
+		else
+		{
+			printer.println("        output.write" + variables.get("capitalized_type") + "("
+					+ variables.get("number") + ", " + valueVar + ");");
+		}
 		printer.println("      }");
 	}
 
@@ -533,11 +583,86 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	}
 
 	@Override
+	public void generateOneofEqualsCode(PrintWriter printer)
+	{
+		switch (StringUtils.getJavaType(descriptor))
+		{
+		case INT:
+		case LONG:
+		case BOOLEAN:
+			printer.println("          if (get" + variables.get("capitalized_name") + "()");
+			printer.println("              != other.get" + variables.get("capitalized_name") + "()) return false;");
+			break;
+		case FLOAT:
+			printer.println("          if (java.lang.Float.floatToIntBits(get" + variables.get("capitalized_name") + "())");
+			printer.println("              != java.lang.Float.floatToIntBits(");
+			printer.println("                  other.get" + variables.get("capitalized_name") + "())) return false;");
+			break;
+		case DOUBLE:
+			printer.println("          if (java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "())");
+			printer.println("              != java.lang.Double.doubleToLongBits(");
+			printer.println("                  other.get" + variables.get("capitalized_name") + "())) return false;");
+			break;
+		case STRING:
+		case BYTES:
+			printer.println("          if (!get" + variables.get("capitalized_name") + "()");
+			printer.println("              .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
+	public void generateOneofHashCode(PrintWriter printer)
+	{
+		printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		switch (StringUtils.getJavaType(descriptor))
+		{
+		case INT:
+			printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "();");
+			break;
+		case LONG:
+			printer.println("          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println("              get" + variables.get("capitalized_name") + "());");
+			break;
+		case BOOLEAN:
+			printer.println("          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(");
+			printer.println("              get" + variables.get("capitalized_name") + "());");
+			break;
+		case FLOAT:
+			printer.println("          hash = (53 * hash) + java.lang.Float.floatToIntBits(");
+			printer.println("              get" + variables.get("capitalized_name") + "());");
+			break;
+		case DOUBLE:
+			printer.println("          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println("              java.lang.Double.doubleToLongBits(get" + variables.get("capitalized_name") + "()));");
+			break;
+		case STRING:
+		case BYTES:
+			printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
+			break;
+		default:
+			break;
+		}
+	}
+
+	@Override
 	public void generateSerializationCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.write" + variables.get("capitalized_type") + "(" + variables.get("number")
-				+ ", " + variables.get("name") + "_);");
+		String valueVar = variables.get("name") + "_";
+		if (descriptor.getContainingOneof() != null)
+		{
+			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			printer.println("        output.write" + variables.get("capitalized_type") + "(");
+			printer.println("            " + variables.get("number") + ", " + valueVar + ");");
+		}
+		else
+		{
+			printer.println("        output.write" + variables.get("capitalized_type") + "(" + variables.get("number")
+					+ ", " + valueVar + ");");
+		}
 		printer.println("      }");
 	}
 
@@ -628,6 +753,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
 			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
 			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
+			variables.put("capitalized_type", Helpers.getCapitalizedType(descriptor));
+			variables.put("capitalized_java_type", StringUtils.toProperCase(variables.get("type")));
 		}
 
 		@Override
@@ -699,20 +826,53 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateMembers(PrintWriter printer)
 		{
-			printer.println("  private " + variables.get("field_list_type") + " " + variables.get("name") + "_;");
+			printer.println("  @SuppressWarnings(\"serial\")");
+			printer.println("  private " + variables.get("field_list_type") + " " + variables.get("name") + "_ =");
+			printer.println("      " + variables.get("empty_list") + ";");
 
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println("  @java.lang.Override");
-			printer.println("  public java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name")
-					+ "List() {");
+			printer.println("  public java.util.List<" + variables.get("boxed_type") + ">");
+			printer.println("      get" + variables.get("capitalized_name") + "List() {");
 			printer.println("    return " + variables.get("name") + "_;");
 			printer.println("  }");
 
-			printer.println("  @java.lang.Override");
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_COUNT,
+							context,
+							false,
+							false,
+							false));
 			printer.println("  public int get" + variables.get("capitalized_name") + "Count() {");
 			printer.println("    return " + variables.get("name") + "_.size();");
 			printer.println("  }");
 
-			printer.println("  @java.lang.Override");
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println("  public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("    return " + variables.get("repeated_get") + "(index);");
 			printer.println("  }");
@@ -815,16 +975,25 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateSerializedSizeCode(PrintWriter printer)
 		{
-			printer.println("      size += com.google.protobuf.CodedOutputStream");
-			printer.println("          .compute" + variables.get("capitalized_type") + "Size("
-					+ variables.get("number") + ", " + variables.get("name") + "_);");
+			printer.println("      {");
+			printer.println("        int dataSize = 0;");
+			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("          dataSize += com.google.protobuf.CodedOutputStream");
+			printer.println("            .compute" + variables.get("capitalized_type") + "SizeNoTag("
+					+ variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
+			printer.println("        }");
+			printer.println("        size += dataSize;");
+			printer.println("        size += " + Helpers.getTagSize(descriptor) + " * get" + variables.get("capitalized_name") + "List().size();");
+			printer.println("      }");
 		}
 
 		@Override
 		public void generateWriteToCode(PrintWriter printer)
 		{
-			printer.println("      output.write" + variables.get("capitalized_type") + "("
-					+ variables.get("number") + ", " + variables.get("name") + "_);");
+			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("        output.write" + variables.get("capitalized_type") + "("
+					+ variables.get("number") + ", " + variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
+			printer.println("      }");
 		}
 
 		@Override
@@ -836,13 +1005,29 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateEqualsCode(PrintWriter printer)
 		{
-			// Placeholder
+			printer.println("      if (!get" + variables.get("capitalized_name") + "List()");
+			printer.println("          .equals(other.get" + variables.get("capitalized_name") + "List())) return false;");
 		}
 
 		@Override
 		public void generateHashCode(PrintWriter printer)
 		{
-			// Placeholder
+			printer.println("      if (get" + variables.get("capitalized_name") + "Count() > 0) {");
+			printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+			printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
+			printer.println("      }");
+		}
+
+		@Override
+		public void generateOneofEqualsCode(PrintWriter printer)
+		{
+			throw new UnsupportedOperationException("Not supported.");
+		}
+
+		@Override
+		public void generateOneofHashCode(PrintWriter printer)
+		{
+			throw new UnsupportedOperationException("Not supported.");
 		}
 
 		@Override
