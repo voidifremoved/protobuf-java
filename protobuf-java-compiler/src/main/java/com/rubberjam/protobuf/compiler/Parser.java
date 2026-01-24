@@ -34,6 +34,8 @@ public class Parser
 	private SourceLocationTable sourceLocationTable;
 	private boolean hadErrors;
 	private String syntax;
+	private String packageName = "";
+	private final java.util.Stack<String> messageStack = new java.util.Stack<>();
 
 	private static final Map<String, FieldDescriptorProto.Type> typeNameToType = new HashMap<>();
 
@@ -196,7 +198,8 @@ public class Parser
 			packageName.append(consumeIdentifier("Expected package name component."));
 		}
 		consume(";", "Expected ';' after package declaration.");
-		fileBuilder.setPackage(packageName.toString());
+		this.packageName = packageName.toString();
+		fileBuilder.setPackage(this.packageName);
 		location.end();
 		return true;
 	}
@@ -355,8 +358,11 @@ public class Parser
 			LocationRecorder location)
 	{
 		tokenizer.next(); // consume "message"
-		messageBuilder.setName(consumeIdentifier("Expected message name."));
+		String messageName = consumeIdentifier("Expected message name.");
+		messageBuilder.setName(messageName);
+		messageStack.push(messageName);
 		boolean result = parseMessageBlock(messageBuilder, location.path);
+		messageStack.pop();
 		location.end();
 		return result;
 	}
@@ -903,7 +909,32 @@ public class Parser
 							}
 						}
 						
-						return value.toString();
+						String rawValue = value.toString();
+						try
+						{
+							if (type == FieldDescriptorProto.Type.TYPE_FLOAT)
+							{
+								float f = Float.parseFloat(rawValue);
+								if (Float.isInfinite(f))
+								{
+									return f > 0 ? "inf" : "-inf";
+								}
+								return String.format(java.util.Locale.US, "%.9g", f);
+							}
+							else
+							{
+								double d = Double.parseDouble(rawValue);
+								if (Double.isInfinite(d))
+								{
+									return d > 0 ? "inf" : "-inf";
+								}
+								return String.format(java.util.Locale.US, "%.17g", d);
+							}
+						}
+						catch (NumberFormatException e)
+						{
+							return rawValue;
+						}
 					}
 					recordError("Expected number for float/double default value.");
 					return null;
@@ -1227,7 +1258,20 @@ public class Parser
 	{
 		// Match C++ GenerateMapEntry behavior
 		String entryName = mapEntryName(fieldBuilder.getName());
-		fieldBuilder.setTypeName(entryName);
+
+		StringBuilder fullName = new StringBuilder();
+		if (!packageName.isEmpty())
+		{
+			fullName.append(".").append(packageName);
+		}
+		for (String parent : messageStack)
+		{
+			fullName.append(".").append(parent);
+		}
+		fullName.append(".").append(entryName);
+
+		fieldBuilder.setTypeName(fullName.toString());
+		fieldBuilder.setType(FieldDescriptorProto.Type.TYPE_MESSAGE);
 		
 		// Create the map entry message
 		DescriptorProto.Builder entryBuilder = messageBuilder.addNestedTypeBuilder();

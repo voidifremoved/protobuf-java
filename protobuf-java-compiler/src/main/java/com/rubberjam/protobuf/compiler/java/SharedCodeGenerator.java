@@ -74,9 +74,6 @@ public class SharedCodeGenerator
 			byte b = input.byteAt(i);
 			switch (b)
 			{
-			case '\b':
-				builder.append("\\b");
-				break;
 			case '\t':
 				builder.append("\\t");
 				break;
