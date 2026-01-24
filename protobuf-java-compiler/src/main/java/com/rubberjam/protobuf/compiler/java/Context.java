@@ -27,14 +27,26 @@ public final class Context
 
 	private final ClassNameResolver nameResolver;
 	private final Options options;
+	private final com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto;
 	private final Map<FieldDescriptor, FieldGeneratorInfo> fieldGeneratorInfoMap = new HashMap<>();
 	private final Map<OneofDescriptor, OneofGeneratorInfo> oneofGeneratorInfoMap = new HashMap<>();
 
 	public Context(FileDescriptor file, Options options)
 	{
+		this(file, null, options);
+	}
+
+	public Context(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options)
+	{
 		this.nameResolver = new ClassNameResolver();
 		this.options = options;
+		this.sourceProto = sourceProto;
 		initializeFieldGeneratorInfo(file);
+	}
+
+	public com.google.protobuf.DescriptorProtos.FileDescriptorProto getSourceProto()
+	{
+		return sourceProto;
 	}
 
 	public ClassNameResolver getNameResolver()

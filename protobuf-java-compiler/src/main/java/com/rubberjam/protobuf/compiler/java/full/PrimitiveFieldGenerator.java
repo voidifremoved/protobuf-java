@@ -187,7 +187,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.HAZZER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -200,7 +200,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -223,7 +223,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.HAZZER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -240,7 +240,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -266,7 +266,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							commentWriter,
 							descriptor,
 							FieldAccessorType.HAZZER,
-							context.getOptions(),
+							context,
 							false,
 							false,
 							false));
@@ -284,7 +284,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -301,7 +301,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.SETTER,
-						context.getOptions(),
+						context,
 						true,
 						false,
 						false));
@@ -328,7 +328,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.CLEARER,
-						context.getOptions(),
+						context,
 						true,
 						false,
 						false));

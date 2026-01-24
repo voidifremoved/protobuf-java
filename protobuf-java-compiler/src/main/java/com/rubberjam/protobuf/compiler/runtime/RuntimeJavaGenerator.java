@@ -130,7 +130,7 @@ public final class RuntimeJavaGenerator
 		com.rubberjam.protobuf.compiler.java.Options options = 
 				com.rubberjam.protobuf.compiler.java.Options.fromParameter(parameter);
 		boolean immutableApi = !options.generateMutableCode;
-		FileGenerator fileGenerator = new FileGenerator(fileDescriptor, options, immutableApi);
+		FileGenerator fileGenerator = new FileGenerator(fileDescriptor, rootProto, options, immutableApi);
 		
 		String packageName = fileGenerator.getJavaPackage();
 		String className = fileGenerator.getClassName();

@@ -122,7 +122,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.HAZZER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -134,7 +134,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -146,7 +146,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("    " + variables.get("deprecation") + variables.get("type") + "OrBuilder get"
 				+ variables.get("capitalized_name") + "OrBuilder();");
@@ -165,7 +165,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.HAZZER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -182,7 +182,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -199,7 +199,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
@@ -224,7 +224,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.HAZZER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -240,7 +240,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						commentWriter,
 						descriptor,
 						FieldAccessorType.GETTER,
-						context.getOptions(),
+						context,
 						false,
 						false,
 						false));
@@ -260,7 +260,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder set"
 				+ variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
@@ -283,7 +283,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder set"
 				+ variables.get("capitalized_name") + "(");
@@ -304,7 +304,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder merge"
 				+ variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
@@ -333,7 +333,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder clear"
 				+ variables.get("capitalized_name") + "() {");
@@ -353,7 +353,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder get"
 				+ variables.get("capitalized_name") + "Builder() {");
@@ -369,7 +369,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
 				+ variables.get("capitalized_name") + "OrBuilder() {");
@@ -387,7 +387,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						context.getOptions(),
+						context,
 						false));
 		printer.println("      private com.google.protobuf.SingleFieldBuilder<");
 		printer.println("          " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
@@ -610,7 +610,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    " + variables.get("deprecation") + "java.util.List<" + variables.get("type") + "> ");
 			printer.println("        get" + variables.get("capitalized_name") + "List();");
@@ -620,7 +620,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    " + variables.get("deprecation") + variables.get("type") + " get"
 					+ variables.get("capitalized_name") + "(int index);");
@@ -630,7 +630,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    " + variables.get("deprecation") + "int get" + variables.get("capitalized_name") + "Count();");
 			Helpers.writeDocComment(
@@ -639,7 +639,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    " + variables.get("deprecation") + "java.util.List<? extends " + variables.get("type")
 					+ "OrBuilder> ");
@@ -650,7 +650,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+						context,
 							false));
 			printer.println("    " + variables.get("deprecation") + variables.get("type") + "OrBuilder get"
 					+ variables.get("capitalized_name") + "OrBuilder(");
@@ -670,7 +670,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public java.util.List<" + variables.get("type") + "> get"
@@ -684,7 +684,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public java.util.List<? extends "
@@ -699,7 +699,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public int get" + variables.get("capitalized_name") + "Count() {");
@@ -712,7 +712,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + " get"
@@ -726,7 +726,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+						context,
 							false));
 			printer.println("    @java.lang.Override");
 			printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
@@ -759,7 +759,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public java.util.List<" + variables.get("type") + "> get"
 					+ variables.get("capitalized_name") + "List() {");
@@ -776,7 +776,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public int get"
 					+ variables.get("capitalized_name") + "Count() {");
@@ -793,7 +793,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 					+ variables.get("capitalized_name") + "(int index) {");
@@ -810,7 +810,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder set"
 					+ variables.get("capitalized_name") + "(");
@@ -834,7 +834,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder set"
 					+ variables.get("capitalized_name") + "(");
@@ -855,7 +855,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder add"
 					+ variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
@@ -878,7 +878,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder add"
 					+ variables.get("capitalized_name") + "(");
@@ -902,7 +902,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder add"
 					+ variables.get("capitalized_name") + "(" + variables.get("type") + ".Builder builderForValue) {");
@@ -922,7 +922,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder add"
 					+ variables.get("capitalized_name") + "(");
@@ -943,7 +943,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder addAll"
 					+ variables.get("capitalized_name") + "(");
@@ -965,7 +965,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder clear"
 					+ variables.get("capitalized_name") + "() {");
@@ -985,7 +985,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder remove"
 					+ variables.get("capitalized_name") + "(int index) {");
@@ -1005,7 +1005,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder get"
 					+ variables.get("capitalized_name") + "Builder(");
@@ -1019,7 +1019,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
 					+ variables.get("capitalized_name") + "OrBuilder(");
@@ -1037,7 +1037,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public java.util.List<? extends "
 					+ variables.get("type") + "OrBuilder> ");
@@ -1055,7 +1055,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public java.util.List<" + variables.get("type")
 					+ ".Builder> ");
@@ -1069,7 +1069,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder add"
 					+ variables.get("capitalized_name") + "Builder() {");
@@ -1083,7 +1083,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder add"
 					+ variables.get("capitalized_name") + "Builder(");
@@ -1098,7 +1098,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldDocComment(
 							commentWriter,
 							descriptor,
-							context.getOptions(),
+							context,
 							false));
 			printer.println("      private com.google.protobuf.RepeatedFieldBuilder<");
 			printer.println("          " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
