@@ -82,6 +82,11 @@ public class ComprehensiveProtoParityTest
 		String actual = generated.getSource().trim();
 		String expectedTrimmed = expected.trim();
 
+		File expectedFile = new File("target/" + expectedJavaFileName + "_Expected.txt");
+		Files.writeString(expectedFile.toPath(), expectedTrimmed);
+		File actualFile = new File("target/" + expectedJavaFileName + "_Actual.txt");
+		Files.writeString(actualFile.toPath(), actual);
+		
 		// Compare line by line for better error messages
 		String[] actualLines = actual.split("\n");
 		String[] expectedLines = expectedTrimmed.split("\n");
