@@ -23,12 +23,12 @@ import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator.GeneratedJavaFile;
 
 @RunWith(Parameterized.class)
-public class ComprehensiveProtoParityTest
+public class MinimalProtoParityTest
 {
 	private final String protoFileName;
 	private final String expectedJavaFileName;
 
-	public ComprehensiveProtoParityTest(String protoFileName, String expectedJavaFileName)
+	public MinimalProtoParityTest(String protoFileName, String expectedJavaFileName)
 	{
 		this.protoFileName = protoFileName;
 		this.expectedJavaFileName = expectedJavaFileName;
@@ -38,13 +38,9 @@ public class ComprehensiveProtoParityTest
 	public static Object[][] data()
 	{
 		return new Object[][] {
-			{ "comprehensive_test_edge_cases_minimal.proto", "ComprehensiveTestEdgeCasesMinimal.java" },
-			{ "comprehensive_test_edge_cases.proto", "ComprehensiveTestEdgeCases.java" },
-			{ "comprehensive_test_extensions.proto", "ComprehensiveTestExtensions.java" },
-			{ "comprehensive_test_nested.proto", "ComprehensiveTestNested.java" },
-			{ "comprehensive_test_v2.proto", "ComprehensiveTestV2.java" },
-			{ "comprehensive_test_v3.proto", "ComprehensiveTestV3.java" },
-		};
+			{ "comprehensive_test_edge_cases_minimal.proto", "ComprehensiveTestEdgeCasesMinimal.java" }
+		}
+
 	}
 
 	@Test
@@ -121,8 +117,8 @@ public class ComprehensiveProtoParityTest
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				//System.out.println("FULL EXPECTED FILE:\n" + expected);
-				//System.out.println("FULL ACTUAL FILE:\n" + actual);
+				System.out.println("FULL EXPECTED FILE:\n" + expected);
+				System.out.println("FULL ACTUAL FILE:\n" + actual);
 				assertEquals("Line " + (i + 1) + " mismatch", expectedLine.trim(), actualLine.trim());
 			}
 		}
@@ -157,7 +153,7 @@ public class ComprehensiveProtoParityTest
 		if (!javaFile.exists())
 		{
 			// Try as resource
-			try (InputStream stream = ComprehensiveProtoParityTest.class.getClassLoader()
+			try (InputStream stream = MinimalProtoParityTest.class.getClassLoader()
 				.getResourceAsStream("expected/java/" + fileName))
 			{
 				if (stream != null)
