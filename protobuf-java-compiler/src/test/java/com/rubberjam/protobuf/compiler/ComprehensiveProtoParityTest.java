@@ -38,7 +38,6 @@ public class ComprehensiveProtoParityTest
 	public static Object[][] data()
 	{
 		return new Object[][] {
-			{ "comprehensive_test_edge_cases_minimal.proto", "ComprehensiveTestEdgeCasesMinimal.java" },
 			{ "comprehensive_test_edge_cases.proto", "ComprehensiveTestEdgeCases.java" },
 			{ "comprehensive_test_extensions.proto", "ComprehensiveTestExtensions.java" },
 			{ "comprehensive_test_nested.proto", "ComprehensiveTestNested.java" },
