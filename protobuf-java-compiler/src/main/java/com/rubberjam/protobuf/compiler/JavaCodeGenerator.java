@@ -14,6 +14,12 @@ public class JavaCodeGenerator extends CodeGenerator
 	public void generate(FileDescriptor file, String parameter, GeneratorContext generatorContext)
 			throws GenerationException
 	{
+		generate(file, null, parameter, generatorContext);
+	}
+
+	public void generate(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, String parameter, GeneratorContext generatorContext)
+			throws GenerationException
+	{
 		Options fileOptions = Options.fromParameter(parameter);
 
 		if (fileOptions.enforceLite && fileOptions.generateMutableCode)
@@ -38,13 +44,13 @@ public class JavaCodeGenerator extends CodeGenerator
 		List<FileGenerator> fileGenerators = new ArrayList<>();
 		if (fileOptions.generateImmutableCode)
 		{
-			fileGenerators.add(new FileGenerator(file, fileOptions, /*
+			fileGenerators.add(new FileGenerator(file, sourceProto, fileOptions, /*
 																	 * immutable=
 																	 */ true));
 		}
 		if (fileOptions.generateMutableCode)
 		{
-			fileGenerators.add(new FileGenerator(file, fileOptions, /*
+			fileGenerators.add(new FileGenerator(file, sourceProto, fileOptions, /*
 																	 * immutable=
 																	 */ false));
 		}

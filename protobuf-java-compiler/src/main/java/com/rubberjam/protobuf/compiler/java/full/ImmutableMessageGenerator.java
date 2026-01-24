@@ -80,9 +80,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		String packageName = context.getNameResolver().getFileJavaPackage(descriptor.getFile());
 		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
+		String fullClassName = context.getNameResolver().getImmutableClassName(descriptor);
 		
 		// Match C++ WriteMessageDocComment behavior - use DocComment utility
-		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
+		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context, false);
 		
 		printer.println("  public static final class " + className + " extends");
 		if (descriptor.isExtendable())
@@ -137,7 +138,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("        internalGetFieldAccessorTable() {");
 		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
 		printer.println("          .ensureFieldAccessorsInitialized(");
-		String fullClassName = context.getNameResolver().getImmutableClassName(descriptor);
+		// fullClassName is already defined in generate method
 		printer.println("              " + fullClassName + ".class, " + fullClassName + ".Builder.class);");
 		printer.println("    }");
 		printer.println();
@@ -292,44 +293,45 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		// parseFrom() methods
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		// fullClassName is already defined in internalGetFieldAccessorTable block
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        java.nio.ByteBuffer data)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        java.nio.ByteBuffer data,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        com.google.protobuf.ByteString data)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        com.google.protobuf.ByteString data,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(byte[] data)");
+		printer.println("    public static " + fullClassName + " parseFrom(byte[] data)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        byte[] data,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws com.google.protobuf.InvalidProtocolBufferException {");
 		printer.println("      return PARSER.parseFrom(data, extensionRegistry);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(java.io.InputStream input)");
+		printer.println("    public static " + fullClassName + " parseFrom(java.io.InputStream input)");
 		printer.println("        throws java.io.IOException {");
 		printer.println("      return com.google.protobuf.GeneratedMessage");
 		printer.println("          .parseWithIOException(PARSER, input);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        java.io.InputStream input,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws java.io.IOException {");
@@ -337,26 +339,26 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("          .parseWithIOException(PARSER, input, extensionRegistry);");
 		printer.println("    }");
 		printer.println();
-		printer.println("    public static " + outerClassName + "." + className + " parseDelimitedFrom(java.io.InputStream input)");
+		printer.println("    public static " + fullClassName + " parseDelimitedFrom(java.io.InputStream input)");
 		printer.println("        throws java.io.IOException {");
 		printer.println("      return com.google.protobuf.GeneratedMessage");
 		printer.println("          .parseDelimitedWithIOException(PARSER, input);");
 		printer.println("    }");
 		printer.println();
-		printer.println("    public static " + outerClassName + "." + className + " parseDelimitedFrom(");
+		printer.println("    public static " + fullClassName + " parseDelimitedFrom(");
 		printer.println("        java.io.InputStream input,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws java.io.IOException {");
 		printer.println("      return com.google.protobuf.GeneratedMessage");
 		printer.println("          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        com.google.protobuf.CodedInputStream input)");
 		printer.println("        throws java.io.IOException {");
 		printer.println("      return com.google.protobuf.GeneratedMessage");
 		printer.println("          .parseWithIOException(PARSER, input);");
 		printer.println("    }");
-		printer.println("    public static " + outerClassName + "." + className + " parseFrom(");
+		printer.println("    public static " + fullClassName + " parseFrom(");
 		printer.println("        com.google.protobuf.CodedInputStream input,");
 		printer.println("        com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
 		printer.println("        throws java.io.IOException {");
@@ -374,7 +376,8 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		
 
-		printer.println("    public static Builder newBuilder(" + outerClassName + "." + className + " prototype) {");
+		// fullClassName is already defined in generate method
+		printer.println("    public static Builder newBuilder(" + fullClassName + " prototype) {");
 		printer.println("      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);");
 		printer.println("    }");
 

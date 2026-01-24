@@ -138,7 +138,7 @@ public final class Compiler
 						JavaCodeGenerator codeGenerator = new JavaCodeGenerator();
 						try
 						{
-							codeGenerator.generate(fileDescriptor, "", context);
+							codeGenerator.generate(fileDescriptor, fileDescriptorProtos.get(fileDescriptor.getName()), "", context);
 						}
 						catch (CodeGenerator.GenerationException e)
 						{

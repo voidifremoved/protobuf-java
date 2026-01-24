@@ -52,7 +52,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 	public void generate(PrintWriter printer)
 	{
 		// Match C++ WriteEnumDocComment behavior - use DocComment utility with 2-space indent
-		DocComment.writeEnumDocComment(printer, descriptor, context.getOptions(), false, "  ");
+		DocComment.writeEnumDocComment(printer, descriptor, context, false, "  ");
 		
 		String classname = descriptor.getName();
 		String deprecation = descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
@@ -75,7 +75,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			
 			// Match C++ WriteEnumValueDocComment behavior - use DocComment utility
 			// Add 4-space indentation prefix for enum values inside enum class
-			DocComment.writeEnumValueDocComment(printer, value, context.getOptions(), "    ");
+			DocComment.writeEnumValueDocComment(printer, value, context, "    ");
 			
 			// Add deprecation annotation if needed
 			if (value.getOptions().getDeprecated())
@@ -136,7 +136,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		{
 			// Match C++ WriteEnumValueDocComment for aliases - use DocComment utility
 			// Add 4-space indentation prefix for aliases inside enum class
-			DocComment.writeEnumValueDocComment(printer, alias.value, context.getOptions(), "    ");
+			DocComment.writeEnumValueDocComment(printer, alias.value, context, "    ");
 			printer.println("    public static final " + classname + " " + alias.value.getName() + " = "
 					+ alias.canonicalValue.getName() + ";");
 		}
@@ -150,7 +150,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		{
 			// Match C++ WriteEnumValueDocComment for value constants - use DocComment utility
 			// Add 4-space indentation prefix for value constants inside enum class
-			DocComment.writeEnumValueDocComment(printer, value, context.getOptions(), "    ");
+			DocComment.writeEnumValueDocComment(printer, value, context, "    ");
 			String deprecationComment = value.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
 			printer.println("    " + deprecationComment + "public static final int " + value.getName() + "_VALUE = " + value.getNumber() + ";");
 		}
