@@ -388,6 +388,13 @@ public final class DocComment
 
 	protected static Object getDefaultValueString(FieldDescriptor field)
 	{
+		if (field.getType() == FieldDescriptor.Type.FLOAT || field.getType() == FieldDescriptor.Type.DOUBLE)
+		{
+			if (field.toProto().hasDefaultValue())
+			{
+				return field.toProto().getDefaultValue();
+			}
+		}
 		Object defaultValue = field.getDefaultValue();
 		if (defaultValue instanceof String)
 		{

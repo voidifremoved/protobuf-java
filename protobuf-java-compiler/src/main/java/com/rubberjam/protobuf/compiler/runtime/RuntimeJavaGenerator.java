@@ -95,7 +95,7 @@ public final class RuntimeJavaGenerator
 		
 		try
 		{
-			codeGenerator.generate(fileDescriptor, parameter, context);
+			codeGenerator.generate(fileDescriptor, rootProto, parameter, context);
 		}
 		catch (com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException e)
 		{
