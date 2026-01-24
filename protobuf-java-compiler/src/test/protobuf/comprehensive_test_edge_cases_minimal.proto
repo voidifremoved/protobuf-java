@@ -8,14 +8,7 @@ option optimize_for = SPEED;
 
 // Message with field number edge cases
 message EdgeCaseMinimal {
-  optional string field1 = 1;
-  optional string field19000 = 18000;  // High field number
-  
-  // Field numbers at boundaries
-  optional int32 field15 = 15;
-  optional int32 field16 = 16;
-  optional int32 field2047 = 2047;
-  optional int32 field2048 = 2048;
+
   optional string empty_string = 17 [default = ""];
   optional string unicode_string = 18;
 

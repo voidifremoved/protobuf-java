@@ -464,7 +464,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		{
 			return;
 		}
-		printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
+		printer.println("      " + variables.get("name") + "_ = " + variables.get("default") + ";");
 	}
 
 	@Override
@@ -691,7 +691,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		{
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -700,11 +700,11 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  java.util.List<java.lang.String>");
-			printer.println("      get" + variables.get("capitalized_name") + "List();");
+			printer.println("    java.util.List<java.lang.String>");
+			printer.println("        get" + variables.get("capitalized_name") + "List();");
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -713,10 +713,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  int get" + variables.get("capitalized_name") + "Count();");
+			printer.println("    int get" + variables.get("capitalized_name") + "Count();");
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -725,10 +725,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  java.lang.String get" + variables.get("capitalized_name") + "(int index);");
+			printer.println("    java.lang.String get" + variables.get("capitalized_name") + "(int index);");
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldStringBytesAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -737,20 +737,20 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  com.google.protobuf.ByteString");
-			printer.println("      get" + variables.get("capitalized_name") + "Bytes(int index);");
+			printer.println("    com.google.protobuf.ByteString");
+			printer.println("        get" + variables.get("capitalized_name") + "Bytes(int index);");
 		}
 
 		@Override
 		public void generateMembers(PrintWriter printer)
 		{
-			printer.println("  @SuppressWarnings(\"serial\")");
-			printer.println("  private com.google.protobuf.LazyStringArrayList " + variables.get("name") + "_ =");
-			printer.println("      " + variables.get("empty_list") + ";");
+			printer.println("    @SuppressWarnings(\"serial\")");
+			printer.println("    private com.google.protobuf.LazyStringArrayList " + variables.get("name") + "_ =");
+			printer.println("        " + variables.get("empty_list") + ";");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -759,14 +759,14 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public com.google.protobuf.ProtocolStringList");
-			printer.println("      get" + variables.get("capitalized_name") + "List() {");
-			printer.println("    return " + variables.get("name") + "_;");
-			printer.println("  }");
+			printer.println("    public com.google.protobuf.ProtocolStringList");
+			printer.println("        get" + variables.get("capitalized_name") + "List() {");
+			printer.println("      return " + variables.get("name") + "_;");
+			printer.println("    }");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -775,13 +775,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public int get" + variables.get("capitalized_name") + "Count() {");
-			printer.println("    return " + variables.get("name") + "_.size();");
-			printer.println("  }");
+			printer.println("    public int get" + variables.get("capitalized_name") + "Count() {");
+			printer.println("      return " + variables.get("name") + "_.size();");
+			printer.println("    }");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -790,13 +790,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public java.lang.String get" + variables.get("capitalized_name") + "(int index) {");
-			printer.println("    return " + variables.get("name") + "_.get(index);");
-			printer.println("  }");
+			printer.println("    public java.lang.String get" + variables.get("capitalized_name") + "(int index) {");
+			printer.println("      return " + variables.get("name") + "_.get(index);");
+			printer.println("    }");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldStringBytesAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -805,10 +805,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public com.google.protobuf.ByteString");
-			printer.println("      get" + variables.get("capitalized_name") + "Bytes(int index) {");
-			printer.println("    return " + variables.get("name") + "_.getByteString(index);");
-			printer.println("  }");
+			printer.println("    public com.google.protobuf.ByteString");
+			printer.println("        get" + variables.get("capitalized_name") + "Bytes(int index) {");
+			printer.println("      return " + variables.get("name") + "_.getByteString(index);");
+			printer.println("    }");
 		}
 
 		@Override
@@ -892,8 +892,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateInitializationCode(PrintWriter printer)
 		{
-			printer.println("        " + variables.get("name") + "_ =");
-			printer.println("            " + variables.get("empty_list") + ";");
+			printer.println("      " + variables.get("name") + "_ =");
+			printer.println("          " + variables.get("empty_list") + ";");
 		}
 
 		@Override

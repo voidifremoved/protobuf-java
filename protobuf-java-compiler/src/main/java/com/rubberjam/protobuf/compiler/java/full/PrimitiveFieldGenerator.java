@@ -386,7 +386,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		}
 		if (!Helpers.isDefaultValueJavaDefault(descriptor))
 		{
-			printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
+			printer.println("      " + variables.get("name") + "_ = " + variables.get("default") + ";");
 		}
 	}
 
@@ -786,7 +786,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		{
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -796,10 +796,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false));
 			printer.println(
-					"  java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name") + "List();");
+					"    java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name") + "List();");
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -808,10 +808,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  int get" + variables.get("capitalized_name") + "Count();");
+			printer.println("    int get" + variables.get("capitalized_name") + "Count();");
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -820,19 +820,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index);");
+			printer.println("    " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index);");
 		}
 
 		@Override
 		public void generateMembers(PrintWriter printer)
 		{
-			printer.println("  @SuppressWarnings(\"serial\")");
-			printer.println("  private " + variables.get("field_list_type") + " " + variables.get("name") + "_ =");
-			printer.println("      " + variables.get("empty_list") + ";");
+			printer.println("    @SuppressWarnings(\"serial\")");
+			printer.println("    private " + variables.get("field_list_type") + " " + variables.get("name") + "_ =");
+			printer.println("        " + variables.get("empty_list") + ";");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -841,15 +841,15 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  @java.lang.Override");
-			printer.println("  public java.util.List<" + variables.get("boxed_type") + ">");
-			printer.println("      get" + variables.get("capitalized_name") + "List() {");
-			printer.println("    return " + variables.get("name") + "_;");
-			printer.println("  }");
+			printer.println("    @java.lang.Override");
+			printer.println("    public java.util.List<" + variables.get("boxed_type") + ">");
+			printer.println("        get" + variables.get("capitalized_name") + "List() {");
+			printer.println("      return " + variables.get("name") + "_;");
+			printer.println("    }");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -858,13 +858,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public int get" + variables.get("capitalized_name") + "Count() {");
-			printer.println("    return " + variables.get("name") + "_.size();");
-			printer.println("  }");
+			printer.println("    public int get" + variables.get("capitalized_name") + "Count() {");
+			printer.println("      return " + variables.get("name") + "_.size();");
+			printer.println("    }");
 
 			Helpers.writeDocComment(
 					printer,
-					"  ",
+					"    ",
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
@@ -873,9 +873,9 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("  public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
-			printer.println("    return " + variables.get("repeated_get") + "(index);");
-			printer.println("  }");
+			printer.println("    public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
+			printer.println("      return " + variables.get("repeated_get") + "(index);");
+			printer.println("    }");
 		}
 
 		@Override
@@ -942,7 +942,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateInitializationCode(PrintWriter printer)
 		{
-			printer.println("        " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
+			printer.println("      " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
 		}
 
 		@Override

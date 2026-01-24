@@ -27,8 +27,9 @@ public class ImmutableMessageGenerator extends MessageGenerator
 	{
 		String identifier = getUniqueFileScopeIdentifier(descriptor);
 		printer.println("  private static final com.google.protobuf.Descriptors.Descriptor");
-		printer.println("      internal_" + identifier + "_descriptor;");
-		printer.println("  private static final com.google.protobuf.GeneratedMessage.FieldAccessorTable");
+		printer.println("    internal_" + identifier + "_descriptor;");
+		printer.println("  private static final ");
+		printer.println("    com.google.protobuf.GeneratedMessage.FieldAccessorTable");
 		printer.println("      internal_" + identifier + "_fieldAccessorTable;");
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
@@ -44,27 +45,32 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		if (descriptor.getContainingType() == null)
 		{
 			printer.println("    internal_" + identifier + "_descriptor =");
-			printer.println("        getDescriptor().getMessageTypes().get(" + descriptor.getIndex() + ");");
+			printer.println("      getDescriptor().getMessageType(" + descriptor.getIndex() + ");");
 		}
 		else
 		{
 			String parentIdentifier = getUniqueFileScopeIdentifier(descriptor.getContainingType());
 			printer.println("    internal_" + identifier + "_descriptor =");
-			printer.println("        internal_" + parentIdentifier + "_descriptor.getNestedTypes().get(" + descriptor.getIndex() + ");");
+			printer.println("      internal_" + parentIdentifier + "_descriptor.getNestedType(" + descriptor.getIndex() + ");");
 		}
-		printer.println("    internal_" + identifier + "_fieldAccessorTable =");
-		printer.println("        new com.google.protobuf.GeneratedMessage.FieldAccessorTable(");
-		printer.print("            internal_" + identifier + "_descriptor,");
-		printer.print("            new java.lang.String[] {");
+		printer.println("    internal_" + identifier + "_fieldAccessorTable = new");
+		printer.println("      com.google.protobuf.GeneratedMessage.FieldAccessorTable(");
+		printer.println("        internal_" + identifier + "_descriptor,");
+		printer.print("        new java.lang.String[] {");
 		for (int i = 0; i < descriptor.getFields().size(); i++)
 		{
 			if (i > 0)
 			{
 				printer.print(", ");
 			}
-			printer.print("\"" + StringUtils.capitalizedFieldName(descriptor.getFields().get(i)) + "\"");
+			printer.print(" \"" + StringUtils.capitalizedFieldName(descriptor.getFields().get(i)) + "\"");
 		}
-		printer.println("});");
+		// Add Oneof field names for oneofs
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
+		}
+		printer.println(", });");
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
@@ -82,8 +88,8 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
 		String fullClassName = context.getNameResolver().getImmutableClassName(descriptor);
 		
-		// Match C++ WriteMessageDocComment behavior - use DocComment utility
-		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context, false);
+		// Match C++ WriteMessageDocComment behavior - use DocComment utility with 2-space indent
+		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context, false, "  ");
 		
 		printer.println("  public static final class " + className + " extends");
 		if (descriptor.isExtendable())

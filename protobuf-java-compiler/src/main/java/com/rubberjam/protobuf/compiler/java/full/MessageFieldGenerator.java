@@ -1141,7 +1141,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateInitializationCode(PrintWriter printer)
 		{
-			printer.println("        " + variables.get("name") + "_ = java.util.Collections.emptyList();");
+			printer.println("      " + variables.get("name") + "_ = java.util.Collections.emptyList();");
 		}
 
 		@Override

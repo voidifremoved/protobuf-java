@@ -167,7 +167,7 @@ public class FileGenerator
 		printer.println("      getDescriptor() {");
 		printer.println("    return descriptor;");
 		printer.println("  }");
-		printer.println("  private static com.google.protobuf.Descriptors.FileDescriptor");
+		printer.println("  private static  com.google.protobuf.Descriptors.FileDescriptor");
 		printer.println("      descriptor;");
 		printer.println("  static {");
 		SharedCodeGenerator sharedCodeGenerator = new SharedCodeGenerator(file, options);
@@ -183,6 +183,7 @@ public class FileGenerator
 			generator.generateNonNestedInitializationCode(printer);
 		}
 
+		printer.println("    descriptor.resolveAllFeaturesImmutable();");
 		printer.println("  }");
 
 		printer.println("  // @@protoc_insertion_point(outer_class_scope)");
