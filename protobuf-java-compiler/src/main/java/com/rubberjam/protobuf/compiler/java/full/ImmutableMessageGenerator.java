@@ -133,7 +133,104 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		printer.println();
 
+		boolean hasMapFields = false;
+		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+		{
+			if (field.isMapField())
+			{
+				hasMapFields = true;
+				break;
+			}
+		}
+		if (hasMapFields)
+		{
+			printer.println("    @SuppressWarnings({\"rawtypes\"})");
+			printer.println("    @java.lang.Override");
+			printer.println("    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(");
+			printer.println("        int number) {");
+			printer.println("      switch (number) {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isMapField())
+				{
+					printer.println("        case " + field.getNumber() + ":");
+					printer.println("          return internalGet" + StringUtils.capitalizedFieldName(field) + "();");
+				}
+			}
+			printer.println("        default:");
+			printer.println("          throw new RuntimeException(");
+			printer.println("              \"Invalid map field number: \" + number);");
+			printer.println("      }");
+			printer.println("    }");
+		}
+
 		printer.println("    @java.lang.Override");
+		printer.println("    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
+		printer.println("        internalGetFieldAccessorTable() {");
+		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
+		printer.println("          .ensureFieldAccessorsInitialized(");
+		printer.println("              " + fullClassName + ".class, " + fullClassName + ".Builder.class);");
+		printer.println("    }");
+		printer.println();
+
+		// bitField0_ for tracking field presence
+		printer.println();
+		printer.println("    private int bitField0_;");
+
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+				printer.println("    private int " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_ = 0;");
+				printer.println("    @SuppressWarnings(\"serial\")");
+				printer.println("    private java.lang.Object " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "_;");
+				printer.println("    public enum " + camelCaseName + "Case");
+				printer.println("        implements com.google.protobuf.Internal.EnumLite,");
+				printer.println("            com.google.protobuf.AbstractMessage.InternalOneOfEnum {");
+				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				{
+					printer.println("      " + field.getName().toUpperCase() + "(" + field.getNumber() + "),");
+				}
+				printer.println("      " + oneof.getName().toUpperCase() + "_NOT_SET(0);");
+				printer.println("      private final int value;");
+				printer.println("      private " + camelCaseName + "Case(int value) {");
+				printer.println("        this.value = value;");
+				printer.println("      }");
+				printer.println("      /**");
+				printer.println("       * @param value The number of the enum to look for.");
+				printer.println("       * @return The enum associated with the given number.");
+				printer.println("       * @deprecated Use {@link #forNumber(int)} instead.");
+				printer.println("       */");
+				printer.println("      @java.lang.Deprecated");
+				printer.println("      public static " + camelCaseName + "Case valueOf(int value) {");
+				printer.println("        return forNumber(value);");
+				printer.println("      }");
+				printer.println();
+				printer.println("      public static " + camelCaseName + "Case forNumber(int value) {");
+				printer.println("        switch (value) {");
+				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				{
+					printer.println("          case " + field.getNumber() + ": return " + field.getName().toUpperCase() + ";");
+				}
+				printer.println("          case 0: return " + oneof.getName().toUpperCase() + "_NOT_SET;");
+				printer.println("          default: return null;");
+				printer.println("        }");
+				printer.println("      }");
+				printer.println("      public int getNumber() {");
+				printer.println("        return this.value;");
+				printer.println("      }");
+				printer.println("    };");
+				printer.println();
+				printer.println("    public " + camelCaseName + "Case");
+				printer.println("    get" + camelCaseName + "Case() {");
+				printer.println("      return " + camelCaseName + "Case.forNumber(");
+				printer.println("          " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_);");
+				printer.println("    }");
+				printer.println();
+			}
+		}
 		printer.println("    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
 		printer.println("        internalGetFieldAccessorTable() {");
 		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
@@ -142,6 +239,18 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("              " + fullClassName + ".class, " + fullClassName + ".Builder.class);");
 		printer.println("    }");
 		printer.println();
+
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), false);
+				printer.println("    private int " + camelCaseName + "Case_ = 0;");
+				printer.println("    @SuppressWarnings(\"serial\")");
+				printer.println("    private java.lang.Object " + camelCaseName + "_;");
+			}
+		}
 
 		for (com.google.protobuf.Descriptors.EnumDescriptor enumDescriptor : descriptor.getEnumTypes())
 		{
@@ -154,9 +263,6 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			messageGenerator.generateInterface(printer);
 			messageGenerator.generate(printer);
 		}
-
-		// bitField0_ for tracking field presence
-		printer.println("    private int bitField0_;");
 
 		// Fields (each with its FIELD_NUMBER constant before it)
 		java.util.List<ImmutableFieldGenerator> generators = fieldGenerators.getFieldGenerators();
@@ -483,6 +589,17 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			}
 			first = false;
 			fieldGenerator.generateInterfaceMembers(printer);
+		}
+
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				printer.println();
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+				printer.println("    " + context.getNameResolver().getImmutableClassName(descriptor) + "." + camelCaseName + "Case get" + camelCaseName + "Case();");
+			}
 		}
 		printer.println("  }");
 	}

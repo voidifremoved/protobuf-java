@@ -352,6 +352,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateInitializationCode(PrintWriter printer)
 	{
+		boolean isSyntheticOneof = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		boolean isRealOneof = descriptor.getContainingOneof() != null && !isSyntheticOneof;
+		if (isRealOneof)
+		{
+			return;
+		}
 		if (!Helpers.isDefaultValueJavaDefault(descriptor))
 		{
 			printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
@@ -651,9 +657,42 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateInterfaceMembers(PrintWriter printer)
 		{
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println(
 					"  java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name") + "List();");
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_COUNT,
+							context,
+							false,
+							false,
+							false));
 			printer.println("  int get" + variables.get("capitalized_name") + "Count();");
+			Helpers.writeDocComment(
+					printer,
+					"  ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println("  " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index);");
 		}
 
