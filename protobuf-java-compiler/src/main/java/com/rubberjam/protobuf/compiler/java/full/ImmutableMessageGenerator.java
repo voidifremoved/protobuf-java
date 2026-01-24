@@ -34,11 +34,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
-			// Skip map entry types
-			if (!isMapEntryType(nestedType))
-			{
-				new ImmutableMessageGenerator(nestedType, context).generateStaticVariables(printer, bytecodeEstimate);
-			}
+			new ImmutableMessageGenerator(nestedType, context).generateStaticVariables(printer, bytecodeEstimate);
 		}
 	}
 
@@ -79,11 +75,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
-			// Skip map entry types
-			if (!isMapEntryType(nestedType))
-			{
-				new ImmutableMessageGenerator(nestedType, context).generateStaticVariableInitializers(printer);
-			}
+			new ImmutableMessageGenerator(nestedType, context).generateStaticVariableInitializers(printer);
 		}
 		return 0;
 	}
