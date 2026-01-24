@@ -212,7 +212,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderMembers(PrintWriter printer)
 	{
-		printer.println("      private " + variables.get("type") + " " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("      private " + variables.get("type") + " " + variables.get("name") + "_;");
+		}
 		printer.println("      private com.google.protobuf.SingleFieldBuilder<");
 		printer.println("          " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
 				+ variables.get("type") + "OrBuilder> " + variables.get("name") + "Builder_;");
@@ -415,7 +418,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		printer.println("        " + variables.get("name") + "_ = null;");
+		if (descriptor.getContainingOneof() == null)
+		{
+			printer.println("        " + variables.get("name") + "_ = null;");
+		}
 		printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
 		printer.println("          " + variables.get("name") + "Builder_.dispose();");
 		printer.println("          " + variables.get("name") + "Builder_ = null;");
@@ -504,6 +510,20 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
 		printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
 		printer.println("      }");
+	}
+
+	@Override
+	public void generateOneofEqualsCode(PrintWriter printer)
+	{
+		printer.println("          if (!get" + variables.get("capitalized_name") + "()");
+		printer.println("              .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
+	}
+
+	@Override
+	public void generateOneofHashCode(PrintWriter printer)
+	{
+		printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "().hashCode();");
 	}
 
 	@Override
@@ -1230,10 +1250,22 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateHashCode(PrintWriter printer)
 		{
-			printer.println("        if (has" + variables.get("capitalized_name") + "()) {");
+			printer.println("        if (get" + variables.get("capitalized_name") + "Count() > 0) {");
 			printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
 			printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
 			printer.println("        }");	
+		}
+
+		@Override
+		public void generateOneofEqualsCode(PrintWriter printer)
+		{
+			throw new UnsupportedOperationException("Not supported.");
+		}
+
+		@Override
+		public void generateOneofHashCode(PrintWriter printer)
+		{
+			throw new UnsupportedOperationException("Not supported.");
 		}
 
 		@Override

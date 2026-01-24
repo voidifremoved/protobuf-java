@@ -174,7 +174,6 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		// bitField0_ for tracking field presence
-		printer.println();
 		printer.println("    private int bitField0_;");
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
@@ -182,10 +181,19 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
 			if (!isSynthetic)
 			{
-				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
-				printer.println("    private int " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_ = 0;");
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), false);
+				printer.println("    private int " + camelCaseName + "Case_ = 0;");
 				printer.println("    @SuppressWarnings(\"serial\")");
-				printer.println("    private java.lang.Object " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "_;");
+				printer.println("    private java.lang.Object " + camelCaseName + "_;");
+			}
+		}
+
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
 				printer.println("    public enum " + camelCaseName + "Case");
 				printer.println("        implements com.google.protobuf.Internal.EnumLite,");
 				printer.println("            com.google.protobuf.AbstractMessage.InternalOneOfEnum {");
@@ -231,37 +239,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println();
 			}
 		}
-		printer.println("    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable");
-		printer.println("        internalGetFieldAccessorTable() {");
-		printer.println("      return " + outerClassName + ".internal_" + identifier + "_fieldAccessorTable");
-		printer.println("          .ensureFieldAccessorsInitialized(");
-		// fullClassName is already defined in generate method
-		printer.println("              " + fullClassName + ".class, " + fullClassName + ".Builder.class);");
-		printer.println("    }");
-		printer.println();
-
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
-			{
-				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), false);
-				printer.println("    private int " + camelCaseName + "Case_ = 0;");
-				printer.println("    @SuppressWarnings(\"serial\")");
-				printer.println("    private java.lang.Object " + camelCaseName + "_;");
-			}
-		}
 
 		for (com.google.protobuf.Descriptors.EnumDescriptor enumDescriptor : descriptor.getEnumTypes())
 		{
 			new ImmutableEnumGenerator(enumDescriptor, context).generate(printer);
-		}
-
-		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
-		{
-			ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
-			messageGenerator.generateInterface(printer);
-			messageGenerator.generate(printer);
 		}
 
 		// Fields (each with its FIELD_NUMBER constant before it)
@@ -364,7 +345,31 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
-			fieldGenerator.generateEqualsCode(printer);
+			boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
+			boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
+			if (!isRealOneof)
+			{
+				fieldGenerator.generateEqualsCode(printer);
+			}
+		}
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+				printer.println("      if (!get" + camelCaseName + "Case().equals(other.get" + camelCaseName + "Case())) return false;");
+				printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
+				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				{
+					printer.println("        case " + field.getNumber() + ":");
+					fieldGenerators.get(field).generateOneofEqualsCode(printer);
+					printer.println("          break;");
+				}
+				printer.println("        case 0:");
+				printer.println("        default:");
+				printer.println("      }");
+			}
 		}
 		printer.println("      if (!getUnknownFields().equals(other.getUnknownFields())) return false;");
 		if (descriptor.isExtendable())
@@ -386,7 +391,29 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      hash = (19 * hash) + getDescriptor().hashCode();");
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{
-			fieldGenerator.generateHashCode(printer);
+			boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
+			boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
+			if (!isRealOneof)
+			{
+				fieldGenerator.generateHashCode(printer);
+			}
+		}
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
+				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				{
+					printer.println("        case " + field.getNumber() + ":");
+					fieldGenerators.get(field).generateOneofHashCode(printer);
+					printer.println("          break;");
+				}
+				printer.println("        case 0:");
+				printer.println("        default:");
+				printer.println("      }");
+			}
 		}
 		if (descriptor.isExtendable())
 		{
@@ -508,6 +535,13 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		messageBuilderGenerator.generate(printer);
 		printer.println();
+
+		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
+		{
+			ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
+			messageGenerator.generateInterface(printer);
+			messageGenerator.generate(printer);
+		}
 
 		// Default instance
 		printer.println("    // @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")");

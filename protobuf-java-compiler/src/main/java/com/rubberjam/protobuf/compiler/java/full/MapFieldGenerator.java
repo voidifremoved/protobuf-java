@@ -87,6 +87,36 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 
 		variables.put("type_parameters", variables.get("boxed_key_type") + ", " + variables.get("boxed_value_type"));
+
+		FieldDescriptor keyField = descriptor.getMessageType().findFieldByName("key");
+		FieldDescriptor valueField = descriptor.getMessageType().findFieldByName("value");
+
+		variables.put("key_wire_type", "com.google.protobuf.WireFormat.FieldType." + keyField.getLiteType().name());
+		variables.put("value_wire_type", "com.google.protobuf.WireFormat.FieldType." + valueField.getLiteType().name());
+
+		variables.put("key_default_value", Helpers.defaultValue(keyField, context.getNameResolver(), context.getOptions(), true));
+		variables.put("value_default_value", Helpers.defaultValue(valueField, context.getNameResolver(), context.getOptions(), true));
+
+		if (Helpers.isReferenceType(StringUtils.getJavaType(keyField)))
+		{
+			variables.put("null_check", "if (key == null) { throw new NullPointerException(\"map key\"); }");
+		}
+
+		String mapEntryProtoName = descriptor.getMessageType().getFullName();
+		String mapEntryDescriptorName = "internal_static_" + mapEntryProtoName.replace('.', '_') + "_descriptor";
+		String outerClassName = context.getNameResolver().getImmutableClassName(descriptor.getFile());
+		variables.put("descriptor_call", outerClassName + "." + mapEntryDescriptorName);
+
+		JavaType keyJavaType = StringUtils.getJavaType(keyField);
+		String capitalizedKeyType;
+		switch (keyJavaType) {
+			case INT: capitalizedKeyType = "Integer"; break;
+			case LONG: capitalizedKeyType = "Long"; break;
+			case BOOLEAN: capitalizedKeyType = "Boolean"; break;
+			case STRING: capitalizedKeyType = "String"; break;
+			default: capitalizedKeyType = "String"; // Fallback
+		}
+		variables.put("capitalized_key_type", capitalizedKeyType);
 	}
 
 	@Override
@@ -118,130 +148,174 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	{
 		Helpers.writeDocComment(
 				printer,
-				"  ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						FieldAccessorType.CLEARER,
 						context,
-						false,
-						false,
 						false));
-		printer.println("  int get" + variables.get("capitalized_name") + "Count();");
+		printer.println("    int get" + variables.get("capitalized_name") + "Count();");
 		Helpers.writeDocComment(
 				printer,
-				"  ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						FieldAccessorType.CLEARER,
 						context,
-						false,
-						false,
 						false));
-		printer.println("  boolean contains" + variables.get("capitalized_name") + "(");
-		printer.println("      " + variables.get("key_type") + " key);");
-		printer.println("  /**");
-		printer.println("   * Use {@link #get" + variables.get("capitalized_name") + "Map()} instead.");
-		printer.println("   */");
-		printer.println("  @java.lang.Deprecated");
-		printer.println("  java.util.Map<" + variables.get("type_parameters") + ">");
-		printer.println("  get" + variables.get("capitalized_name") + "();");
+		printer.println("    boolean contains" + variables.get("capitalized_name") + "(");
+		printer.println("        " + variables.get("key_type") + " key);");
+		printer.println("    /**");
+		printer.println("     * Use {@link #get" + variables.get("capitalized_name") + "Map()} instead.");
+		printer.println("     */");
+		printer.println("    @java.lang.Deprecated");
+		printer.println("    java.util.Map<" + variables.get("type_parameters") + ">");
+		printer.println("    get" + variables.get("capitalized_name") + "();");
 		Helpers.writeDocComment(
 				printer,
-				"  ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						FieldAccessorType.CLEARER,
 						context,
-						false,
-						false,
 						false));
-		printer.println("  java.util.Map<" + variables.get("type_parameters") + ">");
-		printer.println("  get" + variables.get("capitalized_name") + "Map();");
+		printer.println("    java.util.Map<" + variables.get("type_parameters") + ">");
+		printer.println("    get" + variables.get("capitalized_name") + "Map();");
 		Helpers.writeDocComment(
 				printer,
-				"  ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						FieldAccessorType.CLEARER,
 						context,
-						false,
-						false,
 						false));
-		printer.println("  " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
-		printer.println("      " + variables.get("key_type") + " key,");
-		printer.println("      " + variables.get("value_type") + " defaultValue);");
+		printer.println("    " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+		printer.println("        " + variables.get("key_type") + " key,");
+		printer.println("        " + variables.get("value_type") + " defaultValue);");
 		Helpers.writeDocComment(
 				printer,
-				"  ",
-				commentWriter -> DocComment.writeFieldAccessorDocComment(
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
 						commentWriter,
 						descriptor,
-						FieldAccessorType.CLEARER,
 						context,
-						false,
-						false,
 						false));
-		printer.println("  " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrThrow(");
-		printer.println("      " + variables.get("key_type") + " key);");
+		printer.println("    " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrThrow(");
+		printer.println("        " + variables.get("key_type") + " key);");
 	}
 
 	@Override
 	public void generateMembers(PrintWriter printer)
 	{
-		printer.println("  private com.google.protobuf.MapField<" + variables.get("type_parameters") + "> "
-				+ variables.get("name") + "_;");
-		printer.println("  private com.google.protobuf.MapField<" + variables.get("type_parameters") + ">");
-		printer.println("  internalGet" + variables.get("capitalized_name") + "() {");
-		printer.println("    if (" + variables.get("name") + "_ == null) {");
-		printer.println("      return com.google.protobuf.MapField.emptyMapField(");
-		printer.println("          com.google.protobuf.MapEntry.newDefaultInstance(");
-		printer.println("              null, null, null, null, null)); // Placeholder descriptor/types");
+		printer.println("    private static final class " + variables.get("capitalized_name") + "DefaultEntryHolder {");
+		printer.println("      static final com.google.protobuf.MapEntry<");
+		printer.println("          " + variables.get("type_parameters") + "> defaultEntry =");
+		printer.println("              com.google.protobuf.MapEntry");
+		printer.println("              .<" + variables.get("type_parameters") + ">newDefaultInstance(");
+		printer.println("                  " + variables.get("descriptor_call") + ", ");
+		printer.println("                  " + variables.get("key_wire_type") + ",");
+		printer.println("                  " + variables.get("key_default_value") + ",");
+		printer.println("                  " + variables.get("value_wire_type") + ",");
+		printer.println("                  " + variables.get("value_default_value") + ");");
 		printer.println("    }");
-		printer.println("    return " + variables.get("name") + "_;");
-		printer.println("  }");
+		printer.println("    @SuppressWarnings(\"serial\")");
+		printer.println("    private com.google.protobuf.MapField<");
+		printer.println("        " + variables.get("type_parameters") + "> " + variables.get("name") + "_;");
+		printer.println("    private com.google.protobuf.MapField<" + variables.get("type_parameters") + ">");
+		printer.println("    internalGet" + variables.get("capitalized_name") + "() {");
+		printer.println("      if (" + variables.get("name") + "_ == null) {");
+		printer.println("        return com.google.protobuf.MapField.emptyMapField(");
+		printer.println("            " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry);");
+		printer.println("      }");
+		printer.println("      return " + variables.get("name") + "_;");
+		printer.println("    }");
 
-		printer.println("  public int get" + variables.get("capitalized_name") + "Count() {");
-		printer.println("    return internalGet" + variables.get("capitalized_name") + "().getMap().size();");
-		printer.println("  }");
+		printer.println("    public int get" + variables.get("capitalized_name") + "Count() {");
+		printer.println("      return internalGet" + variables.get("capitalized_name") + "().getMap().size();");
+		printer.println("    }");
 
-		printer.println("  public boolean contains" + variables.get("capitalized_name") + "(");
-		printer.println("      " + variables.get("key_type") + " key) {");
-		// Null check
-		printer.println("    return internalGet" + variables.get("capitalized_name") + "().getMap().containsKey(key);");
-		printer.println("  }");
+		Helpers.writeDocComment(
+				printer,
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
+						commentWriter,
+						descriptor,
+						context,
+						false));
+		printer.println("    @java.lang.Override");
+		printer.println("    public boolean contains" + variables.get("capitalized_name") + "(");
+		printer.println("        " + variables.get("key_type") + " key) {");
+		if (variables.containsKey("null_check")) { // Reference types need null check?
+			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
+		}
+		printer.println("      return internalGet" + variables.get("capitalized_name") + "().getMap().containsKey(key);");
+		printer.println("    }");
 
-		printer.println("  @Deprecated");
-		printer.println("  public java.util.Map<" + variables.get("type_parameters") + "> get" + variables.get("capitalized_name")
+		printer.println("    /**");
+		printer.println("     * Use {@link #get" + variables.get("capitalized_name") + "Map()} instead.");
+		printer.println("     */");
+		printer.println("    @java.lang.Override");
+		printer.println("    @java.lang.Deprecated");
+		printer.println("    public java.util.Map<" + variables.get("type_parameters") + "> get" + variables.get("capitalized_name")
 				+ "() {");
-		printer.println("    return get" + variables.get("capitalized_name") + "Map();");
-		printer.println("  }");
-
-		printer.println("  public java.util.Map<" + variables.get("type_parameters") + "> get" + variables.get("capitalized_name")
-				+ "Map() {");
-		printer.println("    return internalGet" + variables.get("capitalized_name") + "().getMap();");
-		printer.println("  }");
-
-		printer.println("  public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
-		printer.println("      " + variables.get("key_type") + " key,");
-		printer.println("      " + variables.get("value_type") + " defaultValue) {");
-		printer.println("    java.util.Map<" + variables.get("type_parameters") + "> map =");
-		printer.println("        internalGet" + variables.get("capitalized_name") + "().getMap();");
-		printer.println("    return map.containsKey(key) ? map.get(key) : defaultValue;");
-		printer.println("  }");
-
-		printer.println("  public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrThrow(");
-		printer.println("      " + variables.get("key_type") + " key) {");
-		printer.println("    java.util.Map<" + variables.get("type_parameters") + "> map =");
-		printer.println("        internalGet" + variables.get("capitalized_name") + "().getMap();");
-		printer.println("    if (!map.containsKey(key)) {");
-		printer.println("      throw new java.lang.IllegalArgumentException();");
+		printer.println("      return get" + variables.get("capitalized_name") + "Map();");
 		printer.println("    }");
-		printer.println("    return map.get(key);");
-		printer.println("  }");
+
+		Helpers.writeDocComment(
+				printer,
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
+						commentWriter,
+						descriptor,
+						context,
+						false));
+		printer.println("    @java.lang.Override");
+		printer.println("    public java.util.Map<" + variables.get("type_parameters") + "> get" + variables.get("capitalized_name")
+				+ "Map() {");
+		printer.println("      return internalGet" + variables.get("capitalized_name") + "().getMap();");
+		printer.println("    }");
+
+		Helpers.writeDocComment(
+				printer,
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
+						commentWriter,
+						descriptor,
+						context,
+						false));
+		printer.println("    @java.lang.Override");
+		printer.println("    public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+		printer.println("        " + variables.get("key_type") + " key,");
+		printer.println("        " + variables.get("value_type") + " defaultValue) {");
+		if (variables.containsKey("null_check")) {
+			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
+		}
+		printer.println("      java.util.Map<" + variables.get("type_parameters") + "> map =");
+		printer.println("          internalGet" + variables.get("capitalized_name") + "().getMap();");
+		printer.println("      return map.containsKey(key) ? map.get(key) : defaultValue;");
+		printer.println("    }");
+
+		Helpers.writeDocComment(
+				printer,
+				"    ",
+				commentWriter -> DocComment.writeFieldDocComment(
+						commentWriter,
+						descriptor,
+						context,
+						false));
+		printer.println("    @java.lang.Override");
+		printer.println("    public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrThrow(");
+		printer.println("        " + variables.get("key_type") + " key) {");
+		if (variables.containsKey("null_check")) {
+			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
+		}
+		printer.println("      java.util.Map<" + variables.get("type_parameters") + "> map =");
+		printer.println("          internalGet" + variables.get("capitalized_name") + "().getMap();");
+		printer.println("      if (!map.containsKey(key)) {");
+		printer.println("        throw new java.lang.IllegalArgumentException();");
+		printer.println("      }");
+		printer.println("      return map.get(key);");
+		printer.println("    }");
 	}
 
 	@Override
@@ -254,7 +328,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("  internalGet" + variables.get("capitalized_name") + "() {");
 		printer.println("    if (" + variables.get("name") + "_ == null) {");
 		printer.println("      return com.google.protobuf.MapField.emptyMapField(");
-		printer.println("          com.google.protobuf.MapEntry.newDefaultInstance(null, null, null, null, null));");
+		printer.println("          " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry);");
 		printer.println("    }");
 		printer.println("    return " + variables.get("name") + "_;");
 		printer.println("  }");
@@ -263,7 +337,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("  internalGetMutable" + variables.get("capitalized_name") + "() {");
 		printer.println("    if (" + variables.get("name") + "_ == null) {");
 		printer.println("      " + variables.get("name") + "_ = com.google.protobuf.MapField.newMapField(");
-		printer.println("          com.google.protobuf.MapEntry.newDefaultInstance(null, null, null, null, null));");
+		printer.println("          " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry);");
 		printer.println("    }");
 		printer.println("    if (!" + variables.get("name") + "_.isMutable()) {");
 		printer.println("      " + variables.get("name") + "_ = " + variables.get("name") + "_.copy();");
@@ -346,20 +420,27 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-		printer.println("        if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("          size += com.google.protobuf.CodedOutputStream");
-		printer.println("            .computeMessageSize(" + variables.get("number") + ", get"
-				+ variables.get("capitalized_name") + "());");
-		printer.println("        }");
+		printer.println("      for (java.util.Map.Entry<" + variables.get("type_parameters") + "> entry");
+		printer.println("           : internalGet" + variables.get("capitalized_name") + "().getMap().entrySet()) {");
+		printer.println("        com.google.protobuf.MapEntry<" + variables.get("type_parameters") + ">");
+		printer.println("        " + variables.get("name") + "__ = " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry.newBuilderForType()");
+		printer.println("            .setKey(entry.getKey())");
+		printer.println("            .setValue(entry.getValue())");
+		printer.println("            .build();");
+		printer.println("        size += com.google.protobuf.CodedOutputStream");
+		printer.println("            .computeMessageSize(" + variables.get("number") + ", " + variables.get("name") + "__);");
+		printer.println("      }");
 	}
 
 	@Override
 	public void generateWriteToCode(PrintWriter printer)
 	{
-		printer.println("        if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("          output.writeMessage(" + variables.get("number") + ", get"
-				+ variables.get("capitalized_name") + "());");
-		printer.println("        }");
+		printer.println("      com.google.protobuf.GeneratedMessage");
+		printer.println("        .serialize" + variables.get("capitalized_key_type") + "MapTo(");
+		printer.println("          output,");
+		printer.println("          internalGet" + variables.get("capitalized_name") + "(),");
+		printer.println("          " + variables.get("capitalized_name") + "DefaultEntryHolder.defaultEntry,");
+		printer.println("          " + variables.get("number") + ");");
 	}
 
 	@Override
@@ -371,25 +452,29 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateEqualsCode(PrintWriter printer)
 	{
-		if (descriptor.hasPresence())
-		{
-			printer.println("      if (has" + variables.get("capitalized_name") + "() != other.has" + variables.get("capitalized_name") + "()) return false;");
-			printer.println("      if (has" + variables.get("capitalized_name") + "()) {");
-			printer.println("        if (!get" + variables.get("capitalized_name") + "()");
-			printer.println("            .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
-			printer.println("      }");
-		}
-		else
-		{
-			printer.println("      if (!get" + variables.get("capitalized_name") + "()");
-			printer.println("          .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
-		}
+		printer.println("      if (!internalGet" + variables.get("capitalized_name") + "().equals(");
+		printer.println("          other.internalGet" + variables.get("capitalized_name") + "())) return false;");
 	}
 
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		// Placeholder
+		printer.println("      if (!internalGet" + variables.get("capitalized_name") + "().getMap().isEmpty()) {");
+		printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+		printer.println("        hash = (53 * hash) + internalGet" + variables.get("capitalized_name") + "().hashCode();");
+		printer.println("      }");
+	}
+
+	@Override
+	public void generateOneofEqualsCode(PrintWriter printer)
+	{
+		throw new UnsupportedOperationException("Not supported.");
+	}
+
+	@Override
+	public void generateOneofHashCode(PrintWriter printer)
+	{
+		throw new UnsupportedOperationException("Not supported.");
 	}
 
 	@Override
