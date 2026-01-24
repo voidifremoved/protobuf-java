@@ -79,9 +79,9 @@ public class MinimalProtoParityTest
 		String expectedTrimmed = expected.trim();
 
 
-		File expectedFile = new File("ComprehensiveTestEdgeCasesMinimal_Expected.txt");
+		File expectedFile = new File("target/ComprehensiveTestEdgeCasesMinimal_Expected.txt");
 		Files.writeString(expectedFile.toPath(), expectedTrimmed);
-		File actualFile = new File("ComprehensiveTestEdgeCasesMinimal_Actual.txt");
+		File actualFile = new File("target/ComprehensiveTestEdgeCasesMinimal_Actual.txt");
 		Files.writeString(actualFile.toPath(), actual);
 		// Compare line by line for better error messages
 		String[] actualLines = actual.split("\n");
