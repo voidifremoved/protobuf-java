@@ -806,6 +806,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 			variables.put("capitalized_type", Helpers.getCapitalizedType(descriptor));
 			variables.put("capitalized_java_type", StringUtils.toProperCase(variables.get("type")));
+			variables.put("on_changed", "onChanged();");
 		}
 
 		@Override
@@ -932,8 +933,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuilderMembers(PrintWriter printer)
 		{
-			printer.println("      private " + variables.get("field_list_type") + " " + variables.get("name") + "_ =");
-			printer.println("          " + variables.get("empty_list") + ";");
+			printer.println("      private " + variables.get("field_list_type") + " " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
 
 			printer.println("      private void ensure" + variables.get("capitalized_name") + "IsMutable() {");
 			printer.println("        if (!" + variables.get("name") + "_.isModifiable()) {");
@@ -942,48 +942,124 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("      }");
 
-			printer.println("      @java.lang.Override");
-			printer.println("      public java.util.List<" + variables.get("boxed_type") + "> get" + variables.get("capitalized_name")
-					+ "List() {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("      public java.util.List<" + variables.get("boxed_type") + ">");
+			printer.println("          get" + variables.get("capitalized_name") + "List() {");
 			printer.println("        " + variables.get("name") + "_.makeImmutable();");
 			printer.println("        return " + variables.get("name") + "_;");
 			printer.println("      }");
-
-			printer.println("      @java.lang.Override");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_COUNT,
+							context,
+							false,
+							false,
+							false));
 			printer.println("      public int get" + variables.get("capitalized_name") + "Count() {");
 			printer.println("        return " + variables.get("name") + "_.size();");
 			printer.println("      }");
-
-			printer.println("      @java.lang.Override");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println("      public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("        return " + variables.get("repeated_get") + "(index);");
 			printer.println("      }");
 
-			printer.println("      public Builder set" + variables.get("capitalized_name") + "(int index, " + variables.get("type")
-					+ " value) {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_SETTER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder set" + variables.get("capitalized_name") + "(");
+			printer.println("          int index, " + variables.get("type") + " value) {");
+			printer.println();
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("repeated_set") + "(index, value);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
 
-			printer.println(
-					"      public Builder add" + variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_ADDER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder add" + variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
+			printer.println();
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("repeated_add") + "(value);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
 
-			printer.println("      public Builder addAll" + variables.get("capitalized_name") + "(java.lang.Iterable<? extends "
-					+ variables.get("boxed_type") + "> values) {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_MULTI_ADDER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder addAll" + variables.get("capitalized_name") + "(");
+			printer.println("          java.lang.Iterable<? extends " + variables.get("boxed_type") + "> values) {");
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
-			printer.println(
-					"        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, " + variables.get("name") + "_);");
+			printer.println("        com.google.protobuf.AbstractMessageLite.Builder.addAll(");
+			printer.println("            values, " + variables.get("name") + "_);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
 
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.CLEARER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder clear" + variables.get("capitalized_name") + "() {");
 			printer.println("        " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
 			printer.println("        " + variables.get("clear_has_field_bit_builder"));
@@ -1023,10 +1099,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuildingCode(PrintWriter printer)
 		{
-			printer.println("      if (" + variables.get("get_has_field_bit_from_local") + ") {");
-			printer.println("        " + variables.get("name") + "_.makeImmutable();");
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
-			printer.println("      }");
+			printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+			printer.println("          " + variables.get("name") + "_.makeImmutable();");
+			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+			printer.println("        }");
 		}
 
 		@Override

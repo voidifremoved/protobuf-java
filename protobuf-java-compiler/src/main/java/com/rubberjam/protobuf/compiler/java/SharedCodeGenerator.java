@@ -2,28 +2,35 @@ package com.rubberjam.protobuf.compiler.java;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.Descriptors.FileDescriptor;
-import com.rubberjam.protobuf.compiler.GeneratorContext;
 
 import java.io.PrintWriter;
-import java.util.List;
-import java.util.ArrayList;
 
 public class SharedCodeGenerator
 {
 	private final FileDescriptor file;
+	private final FileDescriptorProto sourceProto;
 	private final Options options;
 	private final ClassNameResolver nameResolver;
 
-	public SharedCodeGenerator(FileDescriptor file, Options options)
+	public SharedCodeGenerator(FileDescriptor file, FileDescriptorProto sourceProto, Options options)
 	{
 		this.file = file;
+		this.sourceProto = sourceProto;
 		this.options = options;
 		this.nameResolver = new ClassNameResolver();
 	}
 
 	public void generateDescriptors(PrintWriter printer)
 	{
+		// Use file.toProto() and clear source code info to match expected output format
+		// This ensures we use the resolved descriptor format rather than sourceProto which may have different encoding
 		FileDescriptorProto fileProto = file.toProto();
+		FileDescriptorProto.Builder fileProtoBuilder = fileProto.toBuilder();
+		fileProtoBuilder.clearSourceCodeInfo();
+		// Clear syntax field to match expected output format (proto2 is default)
+		fileProtoBuilder.clearSyntax();
+		// Build the cleaned proto
+		fileProto = fileProtoBuilder.build();
 		com.google.protobuf.ByteString byteString = fileProto.toByteString();
 
 		printer.println("    java.lang.String[] descriptorData = {");

@@ -133,7 +133,7 @@ public class MessageBuilderGenerator
 		printer.println();
 
 		printer.println("      private Builder(");
-		printer.println("        com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
+		printer.println("          com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
 		printer.println("        super(parent);");
 		printer.println();
 		printer.println("      }");
@@ -189,7 +189,20 @@ public class MessageBuilderGenerator
 		{
 			printer.println("        if (" + getBitFieldName(i) + " != 0) { buildPartial" + i + "(result); }");
 		}
-		printer.println("        buildPartialOneofs(result);");
+		boolean hasOneofs = false;
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				hasOneofs = true;
+				break;
+			}
+		}
+		if (hasOneofs)
+		{
+			printer.println("        buildPartialOneofs(result);");
+		}
 		printer.println("        onBuilt();");
 		printer.println("        return result;");
 		printer.println("      }");
@@ -200,26 +213,54 @@ public class MessageBuilderGenerator
 		{
 			printer.println("      private void buildPartial" + i + "(" + fullClassName + " result) {");
 			printer.println("        int from_" + getBitFieldName(i) + " = " + getBitFieldName(i) + ";");
-			printer.println("        int to_" + getBitFieldName(i) + " = 0;");
+			// Check if we need to_bitField0_ logic - only needed if result message has bitField0_
+			// Repeated fields and maps don't need bitField0_ in the message class
+			boolean resultNeedsBitField = false;
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isMapField() || field.isRepeated())
+				{
+					continue;
+				}
+				if (field.hasPresence() || !field.isRequired())
+				{
+					resultNeedsBitField = true;
+					break;
+				}
+			}
+			if (resultNeedsBitField)
+			{
+				printer.println("        int to_" + getBitFieldName(i) + " = 0;");
+			}
 			int end = Math.min(fieldIndex + 32, totalFields);
 			for (; fieldIndex < end; fieldIndex++)
 			{
 				fieldGenerators.getFieldGenerators().get(fieldIndex).generateBuildingCode(printer);
 			}
-			printer.println("        result." + getBitFieldName(i) + " |= to_" + getBitFieldName(i) + ";");
+			if (resultNeedsBitField)
+			{
+				printer.println("        result." + getBitFieldName(i) + " |= to_" + getBitFieldName(i) + ";");
+			}
 			printer.println("      }");
 		}
 		printer.println();
 
-		printer.println("      private void buildPartialOneofs(" + fullClassName + " result) {");
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		if (hasOneofs)
 		{
-			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
-			printer.println("        result." + oneofName + "Case_ = " + oneofName + "Case_;");
-			printer.println("        result." + oneofName + "_ = this." + oneofName + "_;");
+			printer.println("      private void buildPartialOneofs(" + fullClassName + " result) {");
+			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+			{
+				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+				if (!isSynthetic)
+				{
+					String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+					printer.println("        result." + oneofName + "Case_ = " + oneofName + "Case_;");
+					printer.println("        result." + oneofName + "_ = this." + oneofName + "_;");
+				}
+			}
+			printer.println("      }");
+			printer.println();
 		}
-		printer.println("      }");
-		printer.println();
 
 		// mergeFrom(Message other)
 		printer.println("      @java.lang.Override");

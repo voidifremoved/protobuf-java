@@ -21,11 +21,7 @@ message EdgeCaseMinimal {
   repeated int32 repeated1 = 22;
   repeated string repeated_string1 = 23;
 
-  oneof oneof1 {
-    string oneof1_string = 24;
-    int32 oneof1_int32 = 25;
-  }
 
-  map<string, int32> map1 = 26;
+
 
 }

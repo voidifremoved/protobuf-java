@@ -34,7 +34,11 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
-			new ImmutableMessageGenerator(nestedType, context).generateStaticVariables(printer, bytecodeEstimate);
+			// Skip map entry types
+			if (!isMapEntryType(nestedType))
+			{
+				new ImmutableMessageGenerator(nestedType, context).generateStaticVariables(printer, bytecodeEstimate);
+			}
 		}
 	}
 
@@ -61,7 +65,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		{
 			if (i > 0)
 			{
-				printer.print(", ");
+				printer.print(",");
 			}
 			printer.print(" \"" + StringUtils.capitalizedFieldName(descriptor.getFields().get(i)) + "\"");
 		}
@@ -71,10 +75,15 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
 		}
 		printer.println(", });");
+		
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
 		{
-			new ImmutableMessageGenerator(nestedType, context).generateStaticVariableInitializers(printer);
+			// Skip map entry types
+			if (!isMapEntryType(nestedType))
+			{
+				new ImmutableMessageGenerator(nestedType, context).generateStaticVariableInitializers(printer);
+			}
 		}
 		return 0;
 	}
@@ -179,8 +188,26 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		printer.println();
 
-		// bitField0_ for tracking field presence
-		printer.println("    private int bitField0_;");
+		// bitField0_ for tracking field presence - only needed if there are optional fields
+		boolean needsBitField = false;
+		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+		{
+			// Maps and repeated fields don't need bitField0_ in the message class
+			if (field.isMapField() || field.isRepeated())
+			{
+				continue;
+			}
+			// Optional fields (proto2) or proto3 optional fields need bitField0_
+			if (field.hasPresence() || !field.isRequired())
+			{
+				needsBitField = true;
+				break;
+			}
+		}
+		if (needsBitField)
+		{
+			printer.println("    private int bitField0_;");
+		}
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
@@ -544,9 +571,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
 		{
-			ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
-			messageGenerator.generateInterface(printer);
-			messageGenerator.generate(printer);
+			// Skip map entry types - they are synthetic types created for map fields
+			// and should not be generated as separate nested classes
+			if (!isMapEntryType(nestedDescriptor))
+			{
+				ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
+				messageGenerator.generateInterface(printer);
+				messageGenerator.generate(printer);
+			}
 		}
 
 		// Default instance
@@ -600,8 +632,9 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    public " + outerClassName + "." +className + " getDefaultInstanceForType() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
-		
+		printer.println();
 		printer.println("  }");
+		printer.println();
 	}
 
 	@Override
@@ -655,12 +688,46 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (com.google.protobuf.Descriptors.Descriptor nestedType : descriptor.getNestedTypes())
 		{
-			new ImmutableMessageGenerator(nestedType, context).generateExtensionRegistrationCode(printer);
+			// Skip map entry types
+			if (!isMapEntryType(nestedType))
+			{
+				new ImmutableMessageGenerator(nestedType, context).generateExtensionRegistrationCode(printer);
+			}
 		}
 	}
 
 	private String getUniqueFileScopeIdentifier(Descriptor descriptor)
 	{
 		return "static_" + descriptor.getFullName().replace('.', '_');
+	}
+
+	/**
+	 * Checks if a nested type is a map entry type (synthetic type created for map fields).
+	 * Map entry types should not be generated as separate nested classes.
+	 */
+	private boolean isMapEntryType(com.google.protobuf.Descriptors.Descriptor nestedType)
+	{
+		if (nestedType.getFields().size() != 2)
+		{
+			return false;
+		}
+		com.google.protobuf.Descriptors.FieldDescriptor field1 = nestedType.getFields().get(0);
+		com.google.protobuf.Descriptors.FieldDescriptor field2 = nestedType.getFields().get(1);
+		if (!((field1.getName().equals("key") && field2.getName().equals("value")) ||
+			(field1.getName().equals("value") && field2.getName().equals("key"))))
+		{
+			return false;
+		}
+		// Check if any map field in the parent uses this nested type
+		// Use full name comparison since descriptor objects may not be == equal
+		String nestedTypeFullName = nestedType.getFullName();
+		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+		{
+			if (field.isMapField() && field.getMessageType().getFullName().equals(nestedTypeFullName))
+			{
+				return true;
+			}
+		}
+		return false;
 	}
 }

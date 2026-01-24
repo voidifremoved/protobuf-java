@@ -913,65 +913,160 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("      }");
 
-			printer.println(
-					"      public com.google.protobuf.ProtocolStringList get" + variables.get("capitalized_name") + "List() {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("      public com.google.protobuf.ProtocolStringList");
+			printer.println("          get" + variables.get("capitalized_name") + "List() {");
 			printer.println("        " + variables.get("name") + "_.makeImmutable();");
 			printer.println("        return " + variables.get("name") + "_;");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_COUNT,
+							context,
+							false,
+							false,
+							false));
 			printer.println("      public int get" + variables.get("capitalized_name") + "Count() {");
 			printer.println("        return " + variables.get("name") + "_.size();");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_GETTER,
+							context,
+							false,
+							false,
+							false));
 			printer.println("      public java.lang.String get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("        return " + variables.get("name") + "_.get(index);");
 			printer.println("      }");
-
-			printer.println(
-					"      public com.google.protobuf.ByteString get" + variables.get("capitalized_name") + "Bytes(int index) {");
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldStringBytesAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("      public com.google.protobuf.ByteString");
+			printer.println("          get" + variables.get("capitalized_name") + "Bytes(int index) {");
 			printer.println("        return " + variables.get("name") + "_.getByteString(index);");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_SETTER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder set" + variables.get("capitalized_name") + "(");
 			printer.println("          int index, java.lang.String value) {");
 			printer.println("        if (value == null) { throw new NullPointerException(); }");
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("name") + "_.set(index, value);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_ADDER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder add" + variables.get("capitalized_name") + "(");
 			printer.println("          java.lang.String value) {");
 			printer.println("        if (value == null) { throw new NullPointerException(); }");
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("name") + "_.add(value);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_MULTI_ADDER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder addAll" + variables.get("capitalized_name") + "(");
 			printer.println("          java.lang.Iterable<java.lang.String> values) {");
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
-			printer.println(
-					"        com.google.protobuf.AbstractMessageLite.Builder.addAll(values, " + variables.get("name") + "_);");
+			printer.println("        com.google.protobuf.AbstractMessageLite.Builder.addAll(");
+			printer.println("            values, " + variables.get("name") + "_);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.CLEARER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder clear" + variables.get("capitalized_name") + "() {");
-			printer.println("        " + variables.get("name") + "_ = " + variables.get("empty_list") + ";");
-			printer.println("        " + variables.get("clear_has_field_bit_builder"));
+			printer.println("        " + variables.get("name") + "_ =");
+			printer.println("          " + variables.get("empty_list") + ";");
+			printer.println("        " + variables.get("clear_has_field_bit_builder") + ";");
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
-
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldStringBytesAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_ADDER,
+							context,
+							true,
+							false,
+							false));
 			printer.println("      public Builder add" + variables.get("capitalized_name") + "Bytes(");
 			printer.println("          com.google.protobuf.ByteString value) {");
 			printer.println("        if (value == null) { throw new NullPointerException(); }");
-			printer.println("        // checkByteStringIsUtf8(value);");
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("name") + "_.add(value);");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
@@ -988,7 +1083,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		public void generateBuilderClearCode(PrintWriter printer)
 		{
 			printer.println("        " + variables.get("name") + "_ =");
-			printer.println("          " + variables.get("empty_list") + ";");
+			printer.println("            " + variables.get("empty_list") + ";");
 		}
 
 		@Override
@@ -1009,10 +1104,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuildingCode(PrintWriter printer)
 		{
-			printer.println("      if (" + variables.get("get_has_field_bit_from_local") + ") {");
-			printer.println("        " + variables.get("name") + "_.makeImmutable();");
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
-			printer.println("      }");
+			printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+			printer.println("          " + variables.get("name") + "_.makeImmutable();");
+			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+			printer.println("        }");
 		}
 
 		@Override

@@ -11,6 +11,7 @@ import java.util.function.Consumer;
 public class FileGenerator
 {
 	private final FileDescriptor file;
+	private final com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto;
 	private final Options options;
 	private final boolean immutableApi;
 	private final Context context;
@@ -26,6 +27,7 @@ public class FileGenerator
 	public FileGenerator(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options, boolean immutableApi)
 	{
 		this.file = file;
+		this.sourceProto = sourceProto;
 		this.options = options;
 		this.immutableApi = immutableApi;
 		this.context = new Context(file, sourceProto, options);
@@ -163,6 +165,7 @@ public class FileGenerator
 		}
 
 		// Descriptor Initialization
+		printer.println();
 		printer.println("  public static com.google.protobuf.Descriptors.FileDescriptor");
 		printer.println("      getDescriptor() {");
 		printer.println("    return descriptor;");
@@ -170,7 +173,7 @@ public class FileGenerator
 		printer.println("  private static  com.google.protobuf.Descriptors.FileDescriptor");
 		printer.println("      descriptor;");
 		printer.println("  static {");
-		SharedCodeGenerator sharedCodeGenerator = new SharedCodeGenerator(file, options);
+		SharedCodeGenerator sharedCodeGenerator = new SharedCodeGenerator(file, sourceProto, options);
 		sharedCodeGenerator.generateDescriptors(printer);
 
 		// Internal init
@@ -185,7 +188,7 @@ public class FileGenerator
 
 		printer.println("    descriptor.resolveAllFeaturesImmutable();");
 		printer.println("  }");
-
+		printer.println();
 		printer.println("  // @@protoc_insertion_point(outer_class_scope)");
 		printer.print("}");
 	}
