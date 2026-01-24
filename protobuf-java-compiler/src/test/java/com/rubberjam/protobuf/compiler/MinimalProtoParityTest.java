@@ -39,7 +39,7 @@ public class MinimalProtoParityTest
 	{
 		return new Object[][] {
 			{ "comprehensive_test_edge_cases_minimal.proto", "ComprehensiveTestEdgeCasesMinimal.java" }
-		}
+		};
 
 	}
 
