@@ -25,35 +25,19 @@ namespace ComprehensiveTest.NestedMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidjb21wcmVoZW5zaXZlX3Rlc3RfbmVzdGVkX21pbmltYWwucHJvdG8SH0Nv",
-            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwi8QcKBkxldmVsMRIUCgxs",
+            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwiiwIKBkxldmVsMRIUCgxs",
             "ZXZlbDFfZmllbGQYASABKAkSRgoObGV2ZWwyX21lc3NhZ2UYAiABKAsyLi5D",
-            "b21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIS",
-            "RwoPcmVwZWF0ZWRfbGV2ZWwyGAMgAygLMi4uQ29tcHJlaGVuc2l2ZVRlc3Qu",
-            "TmVzdGVkTWluaW1hbC5MZXZlbDEuTGV2ZWwyEkcKC2xldmVsMV9lbnVtGAQg",
-            "ASgOMjIuQ29tcHJlaGVuc2l2ZVRlc3QuTmVzdGVkTWluaW1hbC5MZXZlbDEu",
-            "TGV2ZWwxRW51bRrCBQoGTGV2ZWwyEhQKDGxldmVsMl9maWVsZBgBIAEoCRJN",
-            "Cg5sZXZlbDNfbWVzc2FnZRgCIAEoCzI1LkNvbXByZWhlbnNpdmVUZXN0Lk5l",
-            "c3RlZE1pbmltYWwuTGV2ZWwxLkxldmVsMi5MZXZlbDMSTgoPcmVwZWF0ZWRf",
-            "bGV2ZWwzGAMgAygLMjUuQ29tcHJlaGVuc2l2ZVRlc3QuTmVzdGVkTWluaW1h",
-            "bC5MZXZlbDEuTGV2ZWwyLkxldmVsMxJOCgtsZXZlbDJfZW51bRgEIAEoDjI5",
-            "LkNvbXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTGV2ZWwxLkxldmVs",
-            "Mi5MZXZlbDJFbnVtGv4CCgZMZXZlbDMSFAoMbGV2ZWwzX2ZpZWxkGAEgASgJ",
-            "ElQKDmxldmVsNF9tZXNzYWdlGAIgASgLMjwuQ29tcHJlaGVuc2l2ZVRlc3Qu",
-            "TmVzdGVkTWluaW1hbC5MZXZlbDEuTGV2ZWwyLkxldmVsMy5MZXZlbDQSVQoP",
-            "cmVwZWF0ZWRfbGV2ZWw0GAMgAygLMjwuQ29tcHJlaGVuc2l2ZVRlc3QuTmVz",
-            "dGVkTWluaW1hbC5MZXZlbDEuTGV2ZWwyLkxldmVsMy5MZXZlbDQasAEKBkxl",
-            "dmVsNBIUCgxsZXZlbDRfZmllbGQYASABKAkSXAoLbGV2ZWw0X2VudW0YAiAB",
-            "KA4yRy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5M",
-            "ZXZlbDIuTGV2ZWwzLkxldmVsNC5MZXZlbDRFbnVtIjIKCkxldmVsNEVudW0S",
-            "EgoOTEVWRUw0X1VOS05PV04QABIQCgxMRVZFTDRfRklSU1QQASIyCgpMZXZl",
-            "bDJFbnVtEhIKDkxFVkVMMl9VTktOT1dOEAASEAoMTEVWRUwyX0ZJUlNUEAEi",
-            "MgoKTGV2ZWwxRW51bRISCg5MRVZFTDFfVU5LTk9XThAAEhAKDExFVkVMMV9G",
-            "SVJTVBABQlEKK2NvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVz",
-            "dC5uZXN0ZWRCHkNvbXByZWhlbnNpdmVUZXN0TmVzdGVkTWluaW1hbEgBUAA="));
+            "b21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIa",
+            "ogEKBkxldmVsMhIUCgxsZXZlbDJfZmllbGQYASABKAkSTgoLbGV2ZWwyX2Vu",
+            "dW0YBCABKA4yOS5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxl",
+            "dmVsMS5MZXZlbDIuTGV2ZWwyRW51bSIyCgpMZXZlbDJFbnVtEhIKDkxFVkVM",
+            "Ml9VTktOT1dOEAASEAoMTEVWRUwyX0ZJUlNUEAFCUQorY29tLnJ1YmJlcmph",
+            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0Lm5lc3RlZEIeQ29tcHJlaGVuc2l2",
+            "ZVRlc3ROZXN0ZWRNaW5pbWFsSAFQAA=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message", "RepeatedLevel2", "Level1Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level3Message", "RepeatedLevel3", "Level2Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser, new[]{ "Level3Field", "Level4Message", "RepeatedLevel4" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Parser, new[]{ "Level4Field", "Level4Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) }, null, null)})})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level2Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) }, null, null)})
           }));
     }
     #endregion
@@ -71,7 +55,6 @@ namespace ComprehensiveTest.NestedMinimal {
   {
     private static readonly pb::MessageParser<Level1> _parser = new pb::MessageParser<Level1>(() => new Level1());
     private pb::UnknownFieldSet _unknownFields;
-    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<Level1> Parser { get { return _parser; } }
@@ -99,11 +82,8 @@ namespace ComprehensiveTest.NestedMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public Level1(Level1 other) : this() {
-      _hasBits0 = other._hasBits0;
       level1Field_ = other.level1Field_;
       level2Message_ = other.level2Message_ != null ? other.level2Message_.Clone() : null;
-      repeatedLevel2_ = other.repeatedLevel2_.Clone();
-      level1Enum_ = other.level1Enum_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -151,44 +131,6 @@ namespace ComprehensiveTest.NestedMinimal {
       }
     }
 
-    /// <summary>Field number for the "repeated_level2" field.</summary>
-    public const int RepeatedLevel2FieldNumber = 3;
-    private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2> _repeated_repeatedLevel2_codec
-        = pb::FieldCodec.ForMessage(26, global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser);
-    private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2> repeatedLevel2_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2> RepeatedLevel2 {
-      get { return repeatedLevel2_; }
-    }
-
-    /// <summary>Field number for the "level1_enum" field.</summary>
-    public const int Level1EnumFieldNumber = 4;
-    private readonly static global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum Level1EnumDefaultValue = global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum.Level1Unknown;
-
-    private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum level1Enum_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum Level1Enum {
-      get { if ((_hasBits0 & 1) != 0) { return level1Enum_; } else { return Level1EnumDefaultValue; } }
-      set {
-        _hasBits0 |= 1;
-        level1Enum_ = value;
-      }
-    }
-    /// <summary>Gets whether the "level1_enum" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasLevel1Enum {
-      get { return (_hasBits0 & 1) != 0; }
-    }
-    /// <summary>Clears the value of the "level1_enum" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearLevel1Enum() {
-      _hasBits0 &= ~1;
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -206,8 +148,6 @@ namespace ComprehensiveTest.NestedMinimal {
       }
       if (Level1Field != other.Level1Field) return false;
       if (!object.Equals(Level2Message, other.Level2Message)) return false;
-      if(!repeatedLevel2_.Equals(other.repeatedLevel2_)) return false;
-      if (Level1Enum != other.Level1Enum) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -217,8 +157,6 @@ namespace ComprehensiveTest.NestedMinimal {
       int hash = 1;
       if (HasLevel1Field) hash ^= Level1Field.GetHashCode();
       if (level2Message_ != null) hash ^= Level2Message.GetHashCode();
-      hash ^= repeatedLevel2_.GetHashCode();
-      if (HasLevel1Enum) hash ^= Level1Enum.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -245,11 +183,6 @@ namespace ComprehensiveTest.NestedMinimal {
         output.WriteRawTag(18);
         output.WriteMessage(Level2Message);
       }
-      repeatedLevel2_.WriteTo(output, _repeated_repeatedLevel2_codec);
-      if (HasLevel1Enum) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) Level1Enum);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -268,11 +201,6 @@ namespace ComprehensiveTest.NestedMinimal {
         output.WriteRawTag(18);
         output.WriteMessage(Level2Message);
       }
-      repeatedLevel2_.WriteTo(ref output, _repeated_repeatedLevel2_codec);
-      if (HasLevel1Enum) {
-        output.WriteRawTag(32);
-        output.WriteEnum((int) Level1Enum);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -288,10 +216,6 @@ namespace ComprehensiveTest.NestedMinimal {
       }
       if (level2Message_ != null) {
         size += 1 + pb::CodedOutputStream.ComputeMessageSize(Level2Message);
-      }
-      size += repeatedLevel2_.CalculateSize(_repeated_repeatedLevel2_codec);
-      if (HasLevel1Enum) {
-        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Level1Enum);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -313,10 +237,6 @@ namespace ComprehensiveTest.NestedMinimal {
           Level2Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2();
         }
         Level2Message.MergeFrom(other.Level2Message);
-      }
-      repeatedLevel2_.Add(other.repeatedLevel2_);
-      if (other.HasLevel1Enum) {
-        Level1Enum = other.Level1Enum;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -346,14 +266,6 @@ namespace ComprehensiveTest.NestedMinimal {
               Level2Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2();
             }
             input.ReadMessage(Level2Message);
-            break;
-          }
-          case 26: {
-            repeatedLevel2_.AddEntriesFrom(input, _repeated_repeatedLevel2_codec);
-            break;
-          }
-          case 32: {
-            Level1Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum) input.ReadEnum();
             break;
           }
         }
@@ -386,14 +298,6 @@ namespace ComprehensiveTest.NestedMinimal {
             input.ReadMessage(Level2Message);
             break;
           }
-          case 26: {
-            repeatedLevel2_.AddEntriesFrom(ref input, _repeated_repeatedLevel2_codec);
-            break;
-          }
-          case 32: {
-            Level1Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level1Enum) input.ReadEnum();
-            break;
-          }
         }
       }
     }
@@ -404,11 +308,6 @@ namespace ComprehensiveTest.NestedMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
-      public enum Level1Enum {
-        [pbr::OriginalName("LEVEL1_UNKNOWN")] Level1Unknown = 0,
-        [pbr::OriginalName("LEVEL1_FIRST")] Level1First = 1,
-      }
-
       [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
       public sealed partial class Level2 : pb::IMessage<Level2>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
@@ -447,8 +346,6 @@ namespace ComprehensiveTest.NestedMinimal {
         public Level2(Level2 other) : this() {
           _hasBits0 = other._hasBits0;
           level2Field_ = other.level2Field_;
-          level3Message_ = other.level3Message_ != null ? other.level3Message_.Clone() : null;
-          repeatedLevel3_ = other.repeatedLevel3_.Clone();
           level2Enum_ = other.level2Enum_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
@@ -483,29 +380,6 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public void ClearLevel2Field() {
           level2Field_ = null;
-        }
-
-        /// <summary>Field number for the "level3_message" field.</summary>
-        public const int Level3MessageFieldNumber = 2;
-        private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3 level3Message_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3 Level3Message {
-          get { return level3Message_; }
-          set {
-            level3Message_ = value;
-          }
-        }
-
-        /// <summary>Field number for the "repeated_level3" field.</summary>
-        public const int RepeatedLevel3FieldNumber = 3;
-        private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> _repeated_repeatedLevel3_codec
-            = pb::FieldCodec.ForMessage(26, global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser);
-        private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> repeatedLevel3_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3>();
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> RepeatedLevel3 {
-          get { return repeatedLevel3_; }
         }
 
         /// <summary>Field number for the "level2_enum" field.</summary>
@@ -551,8 +425,6 @@ namespace ComprehensiveTest.NestedMinimal {
             return true;
           }
           if (Level2Field != other.Level2Field) return false;
-          if (!object.Equals(Level3Message, other.Level3Message)) return false;
-          if(!repeatedLevel3_.Equals(other.repeatedLevel3_)) return false;
           if (Level2Enum != other.Level2Enum) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
@@ -562,8 +434,6 @@ namespace ComprehensiveTest.NestedMinimal {
         public override int GetHashCode() {
           int hash = 1;
           if (HasLevel2Field) hash ^= Level2Field.GetHashCode();
-          if (level3Message_ != null) hash ^= Level3Message.GetHashCode();
-          hash ^= repeatedLevel3_.GetHashCode();
           if (HasLevel2Enum) hash ^= Level2Enum.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
@@ -587,11 +457,6 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
-          if (level3Message_ != null) {
-            output.WriteRawTag(18);
-            output.WriteMessage(Level3Message);
-          }
-          repeatedLevel3_.WriteTo(output, _repeated_repeatedLevel3_codec);
           if (HasLevel2Enum) {
             output.WriteRawTag(32);
             output.WriteEnum((int) Level2Enum);
@@ -610,11 +475,6 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
-          if (level3Message_ != null) {
-            output.WriteRawTag(18);
-            output.WriteMessage(Level3Message);
-          }
-          repeatedLevel3_.WriteTo(ref output, _repeated_repeatedLevel3_codec);
           if (HasLevel2Enum) {
             output.WriteRawTag(32);
             output.WriteEnum((int) Level2Enum);
@@ -632,10 +492,6 @@ namespace ComprehensiveTest.NestedMinimal {
           if (HasLevel2Field) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Level2Field);
           }
-          if (level3Message_ != null) {
-            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Level3Message);
-          }
-          size += repeatedLevel3_.CalculateSize(_repeated_repeatedLevel3_codec);
           if (HasLevel2Enum) {
             size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Level2Enum);
           }
@@ -654,13 +510,6 @@ namespace ComprehensiveTest.NestedMinimal {
           if (other.HasLevel2Field) {
             Level2Field = other.Level2Field;
           }
-          if (other.level3Message_ != null) {
-            if (level3Message_ == null) {
-              Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
-            }
-            Level3Message.MergeFrom(other.Level3Message);
-          }
-          repeatedLevel3_.Add(other.repeatedLevel3_);
           if (other.HasLevel2Enum) {
             Level2Enum = other.Level2Enum;
           }
@@ -685,17 +534,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 break;
               case 10: {
                 Level2Field = input.ReadString();
-                break;
-              }
-              case 18: {
-                if (level3Message_ == null) {
-                  Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
-                }
-                input.ReadMessage(Level3Message);
-                break;
-              }
-              case 26: {
-                repeatedLevel3_.AddEntriesFrom(input, _repeated_repeatedLevel3_codec);
                 break;
               }
               case 32: {
@@ -725,17 +563,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 Level2Field = input.ReadString();
                 break;
               }
-              case 18: {
-                if (level3Message_ == null) {
-                  Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
-                }
-                input.ReadMessage(Level3Message);
-                break;
-              }
-              case 26: {
-                repeatedLevel3_.AddEntriesFrom(ref input, _repeated_repeatedLevel3_codec);
-                break;
-              }
               case 32: {
                 Level2Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) input.ReadEnum();
                 break;
@@ -753,577 +580,6 @@ namespace ComprehensiveTest.NestedMinimal {
           public enum Level2Enum {
             [pbr::OriginalName("LEVEL2_UNKNOWN")] Level2Unknown = 0,
             [pbr::OriginalName("LEVEL2_FIRST")] Level2First = 1,
-          }
-
-          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-          public sealed partial class Level3 : pb::IMessage<Level3>
-          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              , pb::IBufferMessage
-          #endif
-          {
-            private static readonly pb::MessageParser<Level3> _parser = new pb::MessageParser<Level3>(() => new Level3());
-            private pb::UnknownFieldSet _unknownFields;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pb::MessageParser<Level3> Parser { get { return _parser; } }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static pbr::MessageDescriptor Descriptor {
-              get { return global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Descriptor.NestedTypes[0]; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            pbr::MessageDescriptor pb::IMessage.Descriptor {
-              get { return Descriptor; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Level3() {
-              OnConstruction();
-            }
-
-            partial void OnConstruction();
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Level3(Level3 other) : this() {
-              level3Field_ = other.level3Field_;
-              level4Message_ = other.level4Message_ != null ? other.level4Message_.Clone() : null;
-              repeatedLevel4_ = other.repeatedLevel4_.Clone();
-              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public Level3 Clone() {
-              return new Level3(this);
-            }
-
-            /// <summary>Field number for the "level3_field" field.</summary>
-            public const int Level3FieldFieldNumber = 1;
-            private readonly static string Level3FieldDefaultValue = "";
-
-            private string level3Field_;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public string Level3Field {
-              get { return level3Field_ ?? Level3FieldDefaultValue; }
-              set {
-                level3Field_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-              }
-            }
-            /// <summary>Gets whether the "level3_field" field is set</summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public bool HasLevel3Field {
-              get { return level3Field_ != null; }
-            }
-            /// <summary>Clears the value of the "level3_field" field</summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void ClearLevel3Field() {
-              level3Field_ = null;
-            }
-
-            /// <summary>Field number for the "level4_message" field.</summary>
-            public const int Level4MessageFieldNumber = 2;
-            private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4 level4Message_;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4 Level4Message {
-              get { return level4Message_; }
-              set {
-                level4Message_ = value;
-              }
-            }
-
-            /// <summary>Field number for the "repeated_level4" field.</summary>
-            public const int RepeatedLevel4FieldNumber = 3;
-            private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> _repeated_repeatedLevel4_codec
-                = pb::FieldCodec.ForMessage(26, global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Parser);
-            private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> repeatedLevel4_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4>();
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> RepeatedLevel4 {
-              get { return repeatedLevel4_; }
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override bool Equals(object other) {
-              return Equals(other as Level3);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public bool Equals(Level3 other) {
-              if (ReferenceEquals(other, null)) {
-                return false;
-              }
-              if (ReferenceEquals(other, this)) {
-                return true;
-              }
-              if (Level3Field != other.Level3Field) return false;
-              if (!object.Equals(Level4Message, other.Level4Message)) return false;
-              if(!repeatedLevel4_.Equals(other.repeatedLevel4_)) return false;
-              return Equals(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override int GetHashCode() {
-              int hash = 1;
-              if (HasLevel3Field) hash ^= Level3Field.GetHashCode();
-              if (level4Message_ != null) hash ^= Level4Message.GetHashCode();
-              hash ^= repeatedLevel4_.GetHashCode();
-              if (_unknownFields != null) {
-                hash ^= _unknownFields.GetHashCode();
-              }
-              return hash;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public override string ToString() {
-              return pb::JsonFormatter.ToDiagnosticString(this);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void WriteTo(pb::CodedOutputStream output) {
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              output.WriteRawMessage(this);
-            #else
-              if (HasLevel3Field) {
-                output.WriteRawTag(10);
-                output.WriteString(Level3Field);
-              }
-              if (level4Message_ != null) {
-                output.WriteRawTag(18);
-                output.WriteMessage(Level4Message);
-              }
-              repeatedLevel4_.WriteTo(output, _repeated_repeatedLevel4_codec);
-              if (_unknownFields != null) {
-                _unknownFields.WriteTo(output);
-              }
-            #endif
-            }
-
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-              if (HasLevel3Field) {
-                output.WriteRawTag(10);
-                output.WriteString(Level3Field);
-              }
-              if (level4Message_ != null) {
-                output.WriteRawTag(18);
-                output.WriteMessage(Level4Message);
-              }
-              repeatedLevel4_.WriteTo(ref output, _repeated_repeatedLevel4_codec);
-              if (_unknownFields != null) {
-                _unknownFields.WriteTo(ref output);
-              }
-            }
-            #endif
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public int CalculateSize() {
-              int size = 0;
-              if (HasLevel3Field) {
-                size += 1 + pb::CodedOutputStream.ComputeStringSize(Level3Field);
-              }
-              if (level4Message_ != null) {
-                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Level4Message);
-              }
-              size += repeatedLevel4_.CalculateSize(_repeated_repeatedLevel4_codec);
-              if (_unknownFields != null) {
-                size += _unknownFields.CalculateSize();
-              }
-              return size;
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(Level3 other) {
-              if (other == null) {
-                return;
-              }
-              if (other.HasLevel3Field) {
-                Level3Field = other.Level3Field;
-              }
-              if (other.level4Message_ != null) {
-                if (level4Message_ == null) {
-                  Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                }
-                Level4Message.MergeFrom(other.Level4Message);
-              }
-              repeatedLevel4_.Add(other.repeatedLevel4_);
-              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-            }
-
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public void MergeFrom(pb::CodedInputStream input) {
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-              input.ReadRawMessage(this);
-            #else
-              uint tag;
-              while ((tag = input.ReadTag()) != 0) {
-              if ((tag & 7) == 4) {
-                // Abort on any end group tag.
-                return;
-              }
-              switch(tag) {
-                  default:
-                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                    break;
-                  case 10: {
-                    Level3Field = input.ReadString();
-                    break;
-                  }
-                  case 18: {
-                    if (level4Message_ == null) {
-                      Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                    }
-                    input.ReadMessage(Level4Message);
-                    break;
-                  }
-                  case 26: {
-                    repeatedLevel4_.AddEntriesFrom(input, _repeated_repeatedLevel4_codec);
-                    break;
-                  }
-                }
-              }
-            #endif
-            }
-
-            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-              uint tag;
-              while ((tag = input.ReadTag()) != 0) {
-              if ((tag & 7) == 4) {
-                // Abort on any end group tag.
-                return;
-              }
-              switch(tag) {
-                  default:
-                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                    break;
-                  case 10: {
-                    Level3Field = input.ReadString();
-                    break;
-                  }
-                  case 18: {
-                    if (level4Message_ == null) {
-                      Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                    }
-                    input.ReadMessage(Level4Message);
-                    break;
-                  }
-                  case 26: {
-                    repeatedLevel4_.AddEntriesFrom(ref input, _repeated_repeatedLevel4_codec);
-                    break;
-                  }
-                }
-              }
-            }
-            #endif
-
-            #region Nested types
-            /// <summary>Container for nested types declared in the Level3 message type.</summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static partial class Types {
-              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-              public sealed partial class Level4 : pb::IMessage<Level4>
-              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  , pb::IBufferMessage
-              #endif
-              {
-                private static readonly pb::MessageParser<Level4> _parser = new pb::MessageParser<Level4>(() => new Level4());
-                private pb::UnknownFieldSet _unknownFields;
-                private int _hasBits0;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pb::MessageParser<Level4> Parser { get { return _parser; } }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pbr::MessageDescriptor Descriptor {
-                  get { return global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Descriptor.NestedTypes[0]; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                pbr::MessageDescriptor pb::IMessage.Descriptor {
-                  get { return Descriptor; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4() {
-                  OnConstruction();
-                }
-
-                partial void OnConstruction();
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4(Level4 other) : this() {
-                  _hasBits0 = other._hasBits0;
-                  level4Field_ = other.level4Field_;
-                  level4Enum_ = other.level4Enum_;
-                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4 Clone() {
-                  return new Level4(this);
-                }
-
-                /// <summary>Field number for the "level4_field" field.</summary>
-                public const int Level4FieldFieldNumber = 1;
-                private readonly static string Level4FieldDefaultValue = "";
-
-                private string level4Field_;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public string Level4Field {
-                  get { return level4Field_ ?? Level4FieldDefaultValue; }
-                  set {
-                    level4Field_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-                  }
-                }
-                /// <summary>Gets whether the "level4_field" field is set</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool HasLevel4Field {
-                  get { return level4Field_ != null; }
-                }
-                /// <summary>Clears the value of the "level4_field" field</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void ClearLevel4Field() {
-                  level4Field_ = null;
-                }
-
-                /// <summary>Field number for the "level4_enum" field.</summary>
-                public const int Level4EnumFieldNumber = 2;
-                private readonly static global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum Level4EnumDefaultValue = global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum.Level4Unknown;
-
-                private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum level4Enum_;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum Level4Enum {
-                  get { if ((_hasBits0 & 1) != 0) { return level4Enum_; } else { return Level4EnumDefaultValue; } }
-                  set {
-                    _hasBits0 |= 1;
-                    level4Enum_ = value;
-                  }
-                }
-                /// <summary>Gets whether the "level4_enum" field is set</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool HasLevel4Enum {
-                  get { return (_hasBits0 & 1) != 0; }
-                }
-                /// <summary>Clears the value of the "level4_enum" field</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void ClearLevel4Enum() {
-                  _hasBits0 &= ~1;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override bool Equals(object other) {
-                  return Equals(other as Level4);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool Equals(Level4 other) {
-                  if (ReferenceEquals(other, null)) {
-                    return false;
-                  }
-                  if (ReferenceEquals(other, this)) {
-                    return true;
-                  }
-                  if (Level4Field != other.Level4Field) return false;
-                  if (Level4Enum != other.Level4Enum) return false;
-                  return Equals(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override int GetHashCode() {
-                  int hash = 1;
-                  if (HasLevel4Field) hash ^= Level4Field.GetHashCode();
-                  if (HasLevel4Enum) hash ^= Level4Enum.GetHashCode();
-                  if (_unknownFields != null) {
-                    hash ^= _unknownFields.GetHashCode();
-                  }
-                  return hash;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override string ToString() {
-                  return pb::JsonFormatter.ToDiagnosticString(this);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void WriteTo(pb::CodedOutputStream output) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  output.WriteRawMessage(this);
-                #else
-                  if (HasLevel4Field) {
-                    output.WriteRawTag(10);
-                    output.WriteString(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    output.WriteRawTag(16);
-                    output.WriteEnum((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(output);
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-                  if (HasLevel4Field) {
-                    output.WriteRawTag(10);
-                    output.WriteString(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    output.WriteRawTag(16);
-                    output.WriteEnum((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(ref output);
-                  }
-                }
-                #endif
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public int CalculateSize() {
-                  int size = 0;
-                  if (HasLevel4Field) {
-                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    size += _unknownFields.CalculateSize();
-                  }
-                  return size;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(Level4 other) {
-                  if (other == null) {
-                    return;
-                  }
-                  if (other.HasLevel4Field) {
-                    Level4Field = other.Level4Field;
-                  }
-                  if (other.HasLevel4Enum) {
-                    Level4Enum = other.Level4Enum;
-                  }
-                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(pb::CodedInputStream input) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  input.ReadRawMessage(this);
-                #else
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                  if ((tag & 7) == 4) {
-                    // Abort on any end group tag.
-                    return;
-                  }
-                  switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                        break;
-                      case 10: {
-                        Level4Field = input.ReadString();
-                        break;
-                      }
-                      case 16: {
-                        Level4Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) input.ReadEnum();
-                        break;
-                      }
-                    }
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                  if ((tag & 7) == 4) {
-                    // Abort on any end group tag.
-                    return;
-                  }
-                  switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                        break;
-                      case 10: {
-                        Level4Field = input.ReadString();
-                        break;
-                      }
-                      case 16: {
-                        Level4Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) input.ReadEnum();
-                        break;
-                      }
-                    }
-                  }
-                }
-                #endif
-
-                #region Nested types
-                /// <summary>Container for nested types declared in the Level4 message type.</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static partial class Types {
-                  public enum Level4Enum {
-                    [pbr::OriginalName("LEVEL4_UNKNOWN")] Level4Unknown = 0,
-                    [pbr::OriginalName("LEVEL4_FIRST")] Level4First = 1,
-                  }
-
-                }
-                #endregion
-
-              }
-
-            }
-            #endregion
-
           }
 
         }

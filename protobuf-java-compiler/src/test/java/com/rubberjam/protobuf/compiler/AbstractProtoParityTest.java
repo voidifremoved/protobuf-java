@@ -97,7 +97,7 @@ public abstract class AbstractProtoParityTest
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				assertEquals("Line " + (i + 1) + " mismatch", expectedLine.trim(), actualLine.trim());
+				assertEquals("Line " + (i + 1) + " mismatch", expectedLine, actualLine);
 			}
 		}
 

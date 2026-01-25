@@ -14,25 +14,6 @@ message Level1 {
   message Level2 {
     optional string level2_field = 1;
     
-    message Level3 {
-      optional string level3_field = 1;
-      
-      message Level4 {
-        optional string level4_field = 1;
-        
-        enum Level4Enum {
-          LEVEL4_UNKNOWN = 0;
-          LEVEL4_FIRST = 1;
-        }
-        optional Level4Enum level4_enum = 2;
-      }
-      
-      optional Level4 level4_message = 2;
-      repeated Level4 repeated_level4 = 3;
-    }
-    
-    optional Level3 level3_message = 2;
-    repeated Level3 repeated_level3 = 3;
     
     enum Level2Enum {
       LEVEL2_UNKNOWN = 0;
@@ -42,13 +23,8 @@ message Level1 {
   }
   
   optional Level2 level2_message = 2;
-  repeated Level2 repeated_level2 = 3;
-  
-  enum Level1Enum {
-    LEVEL1_UNKNOWN = 0;
-    LEVEL1_FIRST = 1;
-  }
-  optional Level1Enum level1_enum = 4;
+
+
 }
 
 
