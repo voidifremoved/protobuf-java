@@ -25,16 +25,20 @@ namespace ComprehensiveTest.NestedMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidjb21wcmVoZW5zaXZlX3Rlc3RfbmVzdGVkX21pbmltYWwucHJvdG8SH0Nv",
-            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwihgEKBkxldmVsMRIUCgxs",
+            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwixgIKBkxldmVsMRIUCgxs",
             "ZXZlbDFfZmllbGQYASABKAkSRgoObGV2ZWwyX21lc3NhZ2UYAiABKAsyLi5D",
             "b21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIa",
-            "HgoGTGV2ZWwyEhQKDGxldmVsMl9maWVsZBgBIAEoCUJRCitjb20ucnViYmVy",
-            "amFtLnByb3RvYnVmLmNvbXBpbGVyLnRlc3QubmVzdGVkQh5Db21wcmVoZW5z",
-            "aXZlVGVzdE5lc3RlZE1pbmltYWxIAVAA"));
+            "3QEKBkxldmVsMhIUCgxsZXZlbDJfZmllbGQYASABKAkSTQoObGV2ZWwzX21l",
+            "c3NhZ2UYAiABKAsyNS5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFs",
+            "LkxldmVsMS5MZXZlbDIuTGV2ZWwzEk4KD3JlcGVhdGVkX2xldmVsMxgDIAMo",
+            "CzI1LkNvbXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTGV2ZWwxLkxl",
+            "dmVsMi5MZXZlbDMaHgoGTGV2ZWwzEhQKDGxldmVsM19maWVsZBgBIAEoCUJR",
+            "Citjb20ucnViYmVyamFtLnByb3RvYnVmLmNvbXBpbGVyLnRlc3QubmVzdGVk",
+            "Qh5Db21wcmVoZW5zaXZlVGVzdE5lc3RlZE1pbmltYWxIAVAA"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field" }, null, null, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level3Message", "RepeatedLevel3" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser, new[]{ "Level3Field" }, null, null, null, null)})})
           }));
     }
     #endregion
@@ -341,6 +345,8 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public Level2(Level2 other) : this() {
           level2Field_ = other.level2Field_;
+          level3Message_ = other.level3Message_ != null ? other.level3Message_.Clone() : null;
+          repeatedLevel3_ = other.repeatedLevel3_.Clone();
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -376,6 +382,29 @@ namespace ComprehensiveTest.NestedMinimal {
           level2Field_ = null;
         }
 
+        /// <summary>Field number for the "level3_message" field.</summary>
+        public const int Level3MessageFieldNumber = 2;
+        private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3 level3Message_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3 Level3Message {
+          get { return level3Message_; }
+          set {
+            level3Message_ = value;
+          }
+        }
+
+        /// <summary>Field number for the "repeated_level3" field.</summary>
+        public const int RepeatedLevel3FieldNumber = 3;
+        private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> _repeated_repeatedLevel3_codec
+            = pb::FieldCodec.ForMessage(26, global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser);
+        private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> repeatedLevel3_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3> RepeatedLevel3 {
+          get { return repeatedLevel3_; }
+        }
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
@@ -392,6 +421,8 @@ namespace ComprehensiveTest.NestedMinimal {
             return true;
           }
           if (Level2Field != other.Level2Field) return false;
+          if (!object.Equals(Level3Message, other.Level3Message)) return false;
+          if(!repeatedLevel3_.Equals(other.repeatedLevel3_)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -400,6 +431,8 @@ namespace ComprehensiveTest.NestedMinimal {
         public override int GetHashCode() {
           int hash = 1;
           if (HasLevel2Field) hash ^= Level2Field.GetHashCode();
+          if (level3Message_ != null) hash ^= Level3Message.GetHashCode();
+          hash ^= repeatedLevel3_.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -422,6 +455,11 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
+          if (level3Message_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Level3Message);
+          }
+          repeatedLevel3_.WriteTo(output, _repeated_repeatedLevel3_codec);
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -436,6 +474,11 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
+          if (level3Message_ != null) {
+            output.WriteRawTag(18);
+            output.WriteMessage(Level3Message);
+          }
+          repeatedLevel3_.WriteTo(ref output, _repeated_repeatedLevel3_codec);
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
           }
@@ -449,6 +492,10 @@ namespace ComprehensiveTest.NestedMinimal {
           if (HasLevel2Field) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Level2Field);
           }
+          if (level3Message_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Level3Message);
+          }
+          size += repeatedLevel3_.CalculateSize(_repeated_repeatedLevel3_codec);
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -464,6 +511,13 @@ namespace ComprehensiveTest.NestedMinimal {
           if (other.HasLevel2Field) {
             Level2Field = other.Level2Field;
           }
+          if (other.level3Message_ != null) {
+            if (level3Message_ == null) {
+              Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
+            }
+            Level3Message.MergeFrom(other.Level3Message);
+          }
+          repeatedLevel3_.Add(other.repeatedLevel3_);
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -485,6 +539,17 @@ namespace ComprehensiveTest.NestedMinimal {
                 break;
               case 10: {
                 Level2Field = input.ReadString();
+                break;
+              }
+              case 18: {
+                if (level3Message_ == null) {
+                  Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
+                }
+                input.ReadMessage(Level3Message);
+                break;
+              }
+              case 26: {
+                repeatedLevel3_.AddEntriesFrom(input, _repeated_repeatedLevel3_codec);
                 break;
               }
             }
@@ -510,10 +575,241 @@ namespace ComprehensiveTest.NestedMinimal {
                 Level2Field = input.ReadString();
                 break;
               }
+              case 18: {
+                if (level3Message_ == null) {
+                  Level3Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3();
+                }
+                input.ReadMessage(Level3Message);
+                break;
+              }
+              case 26: {
+                repeatedLevel3_.AddEntriesFrom(ref input, _repeated_repeatedLevel3_codec);
+                break;
+              }
             }
           }
         }
         #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Level2 message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Level3 : pb::IMessage<Level3>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Level3> _parser = new pb::MessageParser<Level3>(() => new Level3());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Level3> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Level3() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Level3(Level3 other) : this() {
+              level3Field_ = other.level3Field_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Level3 Clone() {
+              return new Level3(this);
+            }
+
+            /// <summary>Field number for the "level3_field" field.</summary>
+            public const int Level3FieldFieldNumber = 1;
+            private readonly static string Level3FieldDefaultValue = "";
+
+            private string level3Field_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Level3Field {
+              get { return level3Field_ ?? Level3FieldDefaultValue; }
+              set {
+                level3Field_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+            /// <summary>Gets whether the "level3_field" field is set</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool HasLevel3Field {
+              get { return level3Field_ != null; }
+            }
+            /// <summary>Clears the value of the "level3_field" field</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void ClearLevel3Field() {
+              level3Field_ = null;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Level3);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Level3 other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Level3Field != other.Level3Field) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (HasLevel3Field) hash ^= Level3Field.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (HasLevel3Field) {
+                output.WriteRawTag(10);
+                output.WriteString(Level3Field);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (HasLevel3Field) {
+                output.WriteRawTag(10);
+                output.WriteString(Level3Field);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (HasLevel3Field) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Level3Field);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Level3 other) {
+              if (other == null) {
+                return;
+              }
+              if (other.HasLevel3Field) {
+                Level3Field = other.Level3Field;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Level3Field = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Level3Field = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+          }
+
+        }
+        #endregion
 
       }
 

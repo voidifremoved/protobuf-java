@@ -14,6 +14,15 @@ message Level1 {
   message Level2 {
     optional string level2_field = 1;
     
+    message Level3 {
+      optional string level3_field = 1;
+      
+
+    }
+    
+    optional Level3 level3_message = 2;
+    repeated Level3 repeated_level3 = 3;
+    
   }
   
   optional Level2 level2_message = 2;

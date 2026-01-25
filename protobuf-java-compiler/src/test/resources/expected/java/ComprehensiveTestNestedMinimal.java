@@ -124,6 +124,45 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
        */
       com.google.protobuf.ByteString
           getLevel2FieldBytes();
+
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       * @return Whether the level3Message field is set.
+       */
+      boolean hasLevel3Message();
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       * @return The level3Message.
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getLevel3Message();
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getLevel3MessageOrBuilder();
+
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> 
+          getRepeatedLevel3List();
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getRepeatedLevel3(int index);
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      int getRepeatedLevel3Count();
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> 
+          getRepeatedLevel3OrBuilderList();
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getRepeatedLevel3OrBuilder(
+          int index);
     }
     /**
      * Protobuf type {@code ComprehensiveTest.NestedMinimal.Level1.Level2}
@@ -148,6 +187,7 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
       }
       private Level2() {
         level2Field_ = "";
+        repeatedLevel3_ = java.util.Collections.emptyList();
       }
 
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -161,6 +201,548 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Builder.class);
+      }
+
+      public interface Level3OrBuilder extends
+          // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.Level1.Level2.Level3)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return Whether the level3Field field is set.
+         */
+        boolean hasLevel3Field();
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return The level3Field.
+         */
+        java.lang.String getLevel3Field();
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return The bytes for level3Field.
+         */
+        com.google.protobuf.ByteString
+            getLevel3FieldBytes();
+      }
+      /**
+       * Protobuf type {@code ComprehensiveTest.NestedMinimal.Level1.Level2.Level3}
+       */
+      public static final class Level3 extends
+          com.google.protobuf.GeneratedMessage implements
+          // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.Level1.Level2.Level3)
+          Level3OrBuilder {
+      private static final long serialVersionUID = 0L;
+        static {
+          com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+            com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+            /* major= */ 4,
+            /* minor= */ 33,
+            /* patch= */ 4,
+            /* suffix= */ "",
+            "Level3");
+        }
+        // Use Level3.newBuilder() to construct.
+        private Level3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+          super(builder);
+        }
+        private Level3() {
+          level3Field_ = "";
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder.class);
+        }
+
+        private int bitField0_;
+        public static final int LEVEL3_FIELD_FIELD_NUMBER = 1;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object level3Field_ = "";
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return Whether the level3Field field is set.
+         */
+        @java.lang.Override
+        public boolean hasLevel3Field() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return The level3Field.
+         */
+        @java.lang.Override
+        public java.lang.String getLevel3Field() {
+          java.lang.Object ref = level3Field_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
+          } else {
+            com.google.protobuf.ByteString bs = 
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              level3Field_ = s;
+            }
+            return s;
+          }
+        }
+        /**
+         * <code>optional string level3_field = 1;</code>
+         * @return The bytes for level3Field.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getLevel3FieldBytes() {
+          java.lang.Object ref = level3Field_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            level3Field_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            com.google.protobuf.GeneratedMessage.writeString(output, 1, level3Field_);
+          }
+          getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (((bitField0_ & 0x00000001) != 0)) {
+            size += com.google.protobuf.GeneratedMessage.computeStringSize(1, level3Field_);
+          }
+          size += getUnknownFields().getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3)) {
+            return super.equals(obj);
+          }
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3) obj;
+
+          if (hasLevel3Field() != other.hasLevel3Field()) return false;
+          if (hasLevel3Field()) {
+            if (!getLevel3Field()
+                .equals(other.getLevel3Field())) return false;
+          }
+          if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          if (hasLevel3Field()) {
+            hash = (37 * hash) + LEVEL3_FIELD_FIELD_NUMBER;
+            hash = (53 * hash) + getLevel3Field().hashCode();
+          }
+          hash = (29 * hash) + getUnknownFields().hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code ComprehensiveTest.NestedMinimal.Level1.Level2.Level3}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.Level1.Level2.Level3)
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder.class);
+          }
+
+          // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.newBuilder()
+          private Builder() {
+
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            super(parent);
+
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            bitField0_ = 0;
+            level3Field_ = "";
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getDefaultInstanceForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 build() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 buildPartial() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3(this);
+            if (bitField0_ != 0) { buildPartial0(result); }
+            onBuilt();
+            return result;
+          }
+
+          private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 result) {
+            int from_bitField0_ = bitField0_;
+            int to_bitField0_ = 0;
+            if (((from_bitField0_ & 0x00000001) != 0)) {
+              result.level3Field_ = level3Field_;
+              to_bitField0_ |= 0x00000001;
+            }
+            result.bitField0_ |= to_bitField0_;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3) {
+              return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 other) {
+            if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance()) return this;
+            if (other.hasLevel3Field()) {
+              level3Field_ = other.level3Field_;
+              bitField0_ |= 0x00000001;
+              onChanged();
+            }
+            this.mergeUnknownFields(other.getUnknownFields());
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            if (extensionRegistry == null) {
+              throw new java.lang.NullPointerException();
+            }
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  case 10: {
+                    level3Field_ = input.readBytes();
+                    bitField0_ |= 0x00000001;
+                    break;
+                  } // case 10
+                  default: {
+                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                      done = true; // was an endgroup tag
+                    }
+                    break;
+                  } // default:
+                } // switch (tag)
+              } // while (!done)
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.unwrapIOException();
+            } finally {
+              onChanged();
+            } // finally
+            return this;
+          }
+          private int bitField0_;
+
+          private java.lang.Object level3Field_ = "";
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @return Whether the level3Field field is set.
+           */
+          public boolean hasLevel3Field() {
+            return ((bitField0_ & 0x00000001) != 0);
+          }
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @return The level3Field.
+           */
+          public java.lang.String getLevel3Field() {
+            java.lang.Object ref = level3Field_;
+            if (!(ref instanceof java.lang.String)) {
+              com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
+              if (bs.isValidUtf8()) {
+                level3Field_ = s;
+              }
+              return s;
+            } else {
+              return (java.lang.String) ref;
+            }
+          }
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @return The bytes for level3Field.
+           */
+          public com.google.protobuf.ByteString
+              getLevel3FieldBytes() {
+            java.lang.Object ref = level3Field_;
+            if (ref instanceof String) {
+              com.google.protobuf.ByteString b = 
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                      (java.lang.String) ref);
+              level3Field_ = b;
+              return b;
+            } else {
+              return (com.google.protobuf.ByteString) ref;
+            }
+          }
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @param value The level3Field to set.
+           * @return This builder for chaining.
+           */
+          public Builder setLevel3Field(
+              java.lang.String value) {
+            if (value == null) { throw new NullPointerException(); }
+            level3Field_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearLevel3Field() {
+            level3Field_ = getDefaultInstance().getLevel3Field();
+            bitField0_ = (bitField0_ & ~0x00000001);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string level3_field = 1;</code>
+           * @param value The bytes for level3Field to set.
+           * @return This builder for chaining.
+           */
+          public Builder setLevel3FieldBytes(
+              com.google.protobuf.ByteString value) {
+            if (value == null) { throw new NullPointerException(); }
+            level3Field_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.Level1.Level2.Level3)
+        }
+
+        // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.Level1.Level2.Level3)
+        private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3();
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Level3>
+            PARSER = new com.google.protobuf.AbstractParser<Level3>() {
+          @java.lang.Override
+          public Level3 parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
+        public static com.google.protobuf.Parser<Level3> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Level3> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
       }
 
       private int bitField0_;
@@ -213,6 +795,73 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         }
       }
 
+      public static final int LEVEL3_MESSAGE_FIELD_NUMBER = 2;
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 level3Message_;
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       * @return Whether the level3Message field is set.
+       */
+      @java.lang.Override
+      public boolean hasLevel3Message() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       * @return The level3Message.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getLevel3Message() {
+        return level3Message_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance() : level3Message_;
+      }
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getLevel3MessageOrBuilder() {
+        return level3Message_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance() : level3Message_;
+      }
+
+      public static final int REPEATED_LEVEL3_FIELD_NUMBER = 3;
+      @SuppressWarnings("serial")
+      private java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> repeatedLevel3_;
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> getRepeatedLevel3List() {
+        return repeatedLevel3_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> 
+          getRepeatedLevel3OrBuilderList() {
+        return repeatedLevel3_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      @java.lang.Override
+      public int getRepeatedLevel3Count() {
+        return repeatedLevel3_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getRepeatedLevel3(int index) {
+        return repeatedLevel3_.get(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getRepeatedLevel3OrBuilder(
+          int index) {
+        return repeatedLevel3_.get(index);
+      }
+
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -230,6 +879,12 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         if (((bitField0_ & 0x00000001) != 0)) {
           com.google.protobuf.GeneratedMessage.writeString(output, 1, level2Field_);
         }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeMessage(2, getLevel3Message());
+        }
+        for (int i = 0; i < repeatedLevel3_.size(); i++) {
+          output.writeMessage(3, repeatedLevel3_.get(i));
+        }
         getUnknownFields().writeTo(output);
       }
 
@@ -241,6 +896,14 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.GeneratedMessage.computeStringSize(1, level2Field_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(2, getLevel3Message());
+        }
+        for (int i = 0; i < repeatedLevel3_.size(); i++) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, repeatedLevel3_.get(i));
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -262,6 +925,13 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           if (!getLevel2Field()
               .equals(other.getLevel2Field())) return false;
         }
+        if (hasLevel3Message() != other.hasLevel3Message()) return false;
+        if (hasLevel3Message()) {
+          if (!getLevel3Message()
+              .equals(other.getLevel3Message())) return false;
+        }
+        if (!getRepeatedLevel3List()
+            .equals(other.getRepeatedLevel3List())) return false;
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -276,6 +946,14 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         if (hasLevel2Field()) {
           hash = (37 * hash) + LEVEL2_FIELD_FIELD_NUMBER;
           hash = (53 * hash) + getLevel2Field().hashCode();
+        }
+        if (hasLevel3Message()) {
+          hash = (37 * hash) + LEVEL3_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getLevel3Message().hashCode();
+        }
+        if (getRepeatedLevel3Count() > 0) {
+          hash = (37 * hash) + REPEATED_LEVEL3_FIELD_NUMBER;
+          hash = (53 * hash) + getRepeatedLevel3List().hashCode();
         }
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
@@ -396,19 +1074,38 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
 
         // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.newBuilder()
         private Builder() {
-
+          maybeForceBuilderInitialization();
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessage.BuilderParent parent) {
           super(parent);
-
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage
+                  .alwaysUseFieldBuilders) {
+            internalGetLevel3MessageFieldBuilder();
+            internalGetRepeatedLevel3FieldBuilder();
+          }
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
           bitField0_ = 0;
           level2Field_ = "";
+          level3Message_ = null;
+          if (level3MessageBuilder_ != null) {
+            level3MessageBuilder_.dispose();
+            level3MessageBuilder_ = null;
+          }
+          if (repeatedLevel3Builder_ == null) {
+            repeatedLevel3_ = java.util.Collections.emptyList();
+          } else {
+            repeatedLevel3_ = null;
+            repeatedLevel3Builder_.clear();
+          }
+          bitField0_ = (bitField0_ & ~0x00000004);
           return this;
         }
 
@@ -435,9 +1132,22 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         @java.lang.Override
         public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2 buildPartial() {
           com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2 result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2(this);
+          buildPartialRepeatedFields(result);
           if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
+        }
+
+        private void buildPartialRepeatedFields(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2 result) {
+          if (repeatedLevel3Builder_ == null) {
+            if (((bitField0_ & 0x00000004) != 0)) {
+              repeatedLevel3_ = java.util.Collections.unmodifiableList(repeatedLevel3_);
+              bitField0_ = (bitField0_ & ~0x00000004);
+            }
+            result.repeatedLevel3_ = repeatedLevel3_;
+          } else {
+            result.repeatedLevel3_ = repeatedLevel3Builder_.build();
+          }
         }
 
         private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2 result) {
@@ -446,6 +1156,12 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           if (((from_bitField0_ & 0x00000001) != 0)) {
             result.level2Field_ = level2Field_;
             to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.level3Message_ = level3MessageBuilder_ == null
+                ? level3Message_
+                : level3MessageBuilder_.build();
+            to_bitField0_ |= 0x00000002;
           }
           result.bitField0_ |= to_bitField0_;
         }
@@ -466,6 +1182,35 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
             level2Field_ = other.level2Field_;
             bitField0_ |= 0x00000001;
             onChanged();
+          }
+          if (other.hasLevel3Message()) {
+            mergeLevel3Message(other.getLevel3Message());
+          }
+          if (repeatedLevel3Builder_ == null) {
+            if (!other.repeatedLevel3_.isEmpty()) {
+              if (repeatedLevel3_.isEmpty()) {
+                repeatedLevel3_ = other.repeatedLevel3_;
+                bitField0_ = (bitField0_ & ~0x00000004);
+              } else {
+                ensureRepeatedLevel3IsMutable();
+                repeatedLevel3_.addAll(other.repeatedLevel3_);
+              }
+              onChanged();
+            }
+          } else {
+            if (!other.repeatedLevel3_.isEmpty()) {
+              if (repeatedLevel3Builder_.isEmpty()) {
+                repeatedLevel3Builder_.dispose();
+                repeatedLevel3Builder_ = null;
+                repeatedLevel3_ = other.repeatedLevel3_;
+                bitField0_ = (bitField0_ & ~0x00000004);
+                repeatedLevel3Builder_ = 
+                  com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                     internalGetRepeatedLevel3FieldBuilder() : null;
+              } else {
+                repeatedLevel3Builder_.addAllMessages(other.repeatedLevel3_);
+              }
+            }
           }
           this.mergeUnknownFields(other.getUnknownFields());
           onChanged();
@@ -498,6 +1243,26 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
                   bitField0_ |= 0x00000001;
                   break;
                 } // case 10
+                case 18: {
+                  input.readMessage(
+                      internalGetLevel3MessageFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 18
+                case 26: {
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 m =
+                      input.readMessage(
+                          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.parser(),
+                          extensionRegistry);
+                  if (repeatedLevel3Builder_ == null) {
+                    ensureRepeatedLevel3IsMutable();
+                    repeatedLevel3_.add(m);
+                  } else {
+                    repeatedLevel3Builder_.addMessage(m);
+                  }
+                  break;
+                } // case 26
                 default: {
                   if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                     done = true; // was an endgroup tag
@@ -593,6 +1358,367 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           bitField0_ |= 0x00000001;
           onChanged();
           return this;
+        }
+
+        private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 level3Message_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> level3MessageBuilder_;
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         * @return Whether the level3Message field is set.
+         */
+        public boolean hasLevel3Message() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         * @return The level3Message.
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getLevel3Message() {
+          if (level3MessageBuilder_ == null) {
+            return level3Message_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance() : level3Message_;
+          } else {
+            return level3MessageBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public Builder setLevel3Message(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 value) {
+          if (level3MessageBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            level3Message_ = value;
+          } else {
+            level3MessageBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public Builder setLevel3Message(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder builderForValue) {
+          if (level3MessageBuilder_ == null) {
+            level3Message_ = builderForValue.build();
+          } else {
+            level3MessageBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public Builder mergeLevel3Message(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 value) {
+          if (level3MessageBuilder_ == null) {
+            if (((bitField0_ & 0x00000002) != 0) &&
+              level3Message_ != null &&
+              level3Message_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance()) {
+              getLevel3MessageBuilder().mergeFrom(value);
+            } else {
+              level3Message_ = value;
+            }
+          } else {
+            level3MessageBuilder_.mergeFrom(value);
+          }
+          if (level3Message_ != null) {
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public Builder clearLevel3Message() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          level3Message_ = null;
+          if (level3MessageBuilder_ != null) {
+            level3MessageBuilder_.dispose();
+            level3MessageBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder getLevel3MessageBuilder() {
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return internalGetLevel3MessageFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getLevel3MessageOrBuilder() {
+          if (level3MessageBuilder_ != null) {
+            return level3MessageBuilder_.getMessageOrBuilder();
+          } else {
+            return level3Message_ == null ?
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance() : level3Message_;
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 level3_message = 2;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> 
+            internalGetLevel3MessageFieldBuilder() {
+          if (level3MessageBuilder_ == null) {
+            level3MessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder>(
+                    getLevel3Message(),
+                    getParentForChildren(),
+                    isClean());
+            level3Message_ = null;
+          }
+          return level3MessageBuilder_;
+        }
+
+        private java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> repeatedLevel3_ =
+          java.util.Collections.emptyList();
+        private void ensureRepeatedLevel3IsMutable() {
+          if (!((bitField0_ & 0x00000004) != 0)) {
+            repeatedLevel3_ = new java.util.ArrayList<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3>(repeatedLevel3_);
+            bitField0_ |= 0x00000004;
+           }
+        }
+
+        private com.google.protobuf.RepeatedFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> repeatedLevel3Builder_;
+
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> getRepeatedLevel3List() {
+          if (repeatedLevel3Builder_ == null) {
+            return java.util.Collections.unmodifiableList(repeatedLevel3_);
+          } else {
+            return repeatedLevel3Builder_.getMessageList();
+          }
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public int getRepeatedLevel3Count() {
+          if (repeatedLevel3Builder_ == null) {
+            return repeatedLevel3_.size();
+          } else {
+            return repeatedLevel3Builder_.getCount();
+          }
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 getRepeatedLevel3(int index) {
+          if (repeatedLevel3Builder_ == null) {
+            return repeatedLevel3_.get(index);
+          } else {
+            return repeatedLevel3Builder_.getMessage(index);
+          }
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder setRepeatedLevel3(
+            int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 value) {
+          if (repeatedLevel3Builder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.set(index, value);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.setMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder setRepeatedLevel3(
+            int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder builderForValue) {
+          if (repeatedLevel3Builder_ == null) {
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.set(index, builderForValue.build());
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.setMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder addRepeatedLevel3(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 value) {
+          if (repeatedLevel3Builder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.add(value);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.addMessage(value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder addRepeatedLevel3(
+            int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3 value) {
+          if (repeatedLevel3Builder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.add(index, value);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.addMessage(index, value);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder addRepeatedLevel3(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder builderForValue) {
+          if (repeatedLevel3Builder_ == null) {
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.add(builderForValue.build());
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.addMessage(builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder addRepeatedLevel3(
+            int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder builderForValue) {
+          if (repeatedLevel3Builder_ == null) {
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.add(index, builderForValue.build());
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.addMessage(index, builderForValue.build());
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder addAllRepeatedLevel3(
+            java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3> values) {
+          if (repeatedLevel3Builder_ == null) {
+            ensureRepeatedLevel3IsMutable();
+            com.google.protobuf.AbstractMessageLite.Builder.addAll(
+                values, repeatedLevel3_);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.addAllMessages(values);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder clearRepeatedLevel3() {
+          if (repeatedLevel3Builder_ == null) {
+            repeatedLevel3_ = java.util.Collections.emptyList();
+            bitField0_ = (bitField0_ & ~0x00000004);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.clear();
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public Builder removeRepeatedLevel3(int index) {
+          if (repeatedLevel3Builder_ == null) {
+            ensureRepeatedLevel3IsMutable();
+            repeatedLevel3_.remove(index);
+            onChanged();
+          } else {
+            repeatedLevel3Builder_.remove(index);
+          }
+          return this;
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder getRepeatedLevel3Builder(
+            int index) {
+          return internalGetRepeatedLevel3FieldBuilder().getBuilder(index);
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder getRepeatedLevel3OrBuilder(
+            int index) {
+          if (repeatedLevel3Builder_ == null) {
+            return repeatedLevel3_.get(index);  } else {
+            return repeatedLevel3Builder_.getMessageOrBuilder(index);
+          }
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> 
+             getRepeatedLevel3OrBuilderList() {
+          if (repeatedLevel3Builder_ != null) {
+            return repeatedLevel3Builder_.getMessageOrBuilderList();
+          } else {
+            return java.util.Collections.unmodifiableList(repeatedLevel3_);
+          }
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder addRepeatedLevel3Builder() {
+          return internalGetRepeatedLevel3FieldBuilder().addBuilder(
+              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder addRepeatedLevel3Builder(
+            int index) {
+          return internalGetRepeatedLevel3FieldBuilder().addBuilder(
+              index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.getDefaultInstance());
+        }
+        /**
+         * <code>repeated .ComprehensiveTest.NestedMinimal.Level1.Level2.Level3 repeated_level3 = 3;</code>
+         */
+        public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder> 
+             getRepeatedLevel3BuilderList() {
+          return internalGetRepeatedLevel3FieldBuilder().getBuilderList();
+        }
+        private com.google.protobuf.RepeatedFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder> 
+            internalGetRepeatedLevel3FieldBuilder() {
+          if (repeatedLevel3Builder_ == null) {
+            repeatedLevel3Builder_ = new com.google.protobuf.RepeatedFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level3OrBuilder>(
+                    repeatedLevel3_,
+                    ((bitField0_ & 0x00000004) != 0),
+                    getParentForChildren(),
+                    isClean());
+            repeatedLevel3_ = null;
+          }
+          return repeatedLevel3Builder_;
         }
 
         // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.Level1.Level2)
@@ -1333,6 +2459,11 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1343,13 +2474,18 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
   static {
     java.lang.String[] descriptorData = {
       "\n\'comprehensive_test_nested_minimal.prot" +
-      "o\022\037ComprehensiveTest.NestedMinimal\"\206\001\n\006L" +
+      "o\022\037ComprehensiveTest.NestedMinimal\"\306\002\n\006L" +
       "evel1\022\024\n\014level1_field\030\001 \001(\t\022F\n\016level2_me" +
       "ssage\030\002 \001(\0132..ComprehensiveTest.NestedMi" +
-      "nimal.Level1.Level2\032\036\n\006Level2\022\024\n\014level2_" +
-      "field\030\001 \001(\tBQ\n+com.rubberjam.protobuf.co" +
-      "mpiler.test.nestedB\036ComprehensiveTestNes" +
-      "tedMinimalH\001P\000"
+      "nimal.Level1.Level2\032\335\001\n\006Level2\022\024\n\014level2" +
+      "_field\030\001 \001(\t\022M\n\016level3_message\030\002 \001(\01325.C" +
+      "omprehensiveTest.NestedMinimal.Level1.Le" +
+      "vel2.Level3\022N\n\017repeated_level3\030\003 \003(\01325.C" +
+      "omprehensiveTest.NestedMinimal.Level1.Le" +
+      "vel2.Level3\032\036\n\006Level3\022\024\n\014level3_field\030\001 " +
+      "\001(\tBQ\n+com.rubberjam.protobuf.compiler.t" +
+      "est.nestedB\036ComprehensiveTestNestedMinim" +
+      "alH\001P\000"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1366,7 +2502,13 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
     internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_descriptor,
-        new java.lang.String[] { "Level2Field", });
+        new java.lang.String[] { "Level2Field", "Level3Message", "RepeatedLevel3", });
+    internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor =
+      internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor,
+        new java.lang.String[] { "Level3Field", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
