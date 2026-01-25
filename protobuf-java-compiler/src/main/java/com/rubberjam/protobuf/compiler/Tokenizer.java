@@ -128,6 +128,13 @@ public class Tokenizer
 
 				if (currentChar == '\n')
 				{
+					// For block openers like '{', we don't want to attach comments on the next line
+					// as trailing comments. They should be leading comments for the first item in the block.
+					if (previousToken.text != null && previousToken.text.equals("{"))
+					{
+						break;
+					}
+
 					// Newline found. Check if the next line starts with a comment (and no blank line)
 					nextChar(); // consume newline
 

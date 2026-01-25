@@ -239,7 +239,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				continue;
 			}
 			// Optional fields (proto2) or proto3 optional fields need bitField0_
-			if (field.hasPresence() || !field.isRequired())
+			if (field.hasPresence())
 			{
 				needsBitField = true;
 				break;
@@ -368,169 +368,172 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		}
 		printer.println();
 
-		// isInitialized()
-		printer.println("    private byte memoizedIsInitialized = -1;");
-		printer.println("    @java.lang.Override");
-		printer.println("    public final boolean isInitialized() {");
-		printer.println("      byte isInitialized = memoizedIsInitialized;");
-		printer.println("      if (isInitialized == 1) return true;");
-		printer.println("      if (isInitialized == 0) return false;");
-		printer.println();
-		if (descriptor.isExtendable())
+		if (descriptor.getFile().getOptions().getOptimizeFor() != com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.CODE_SIZE)
 		{
-			printer.println("      if (!extensionsAreInitialized()) {");
-			printer.println("        memoizedIsInitialized = 0;");
-			printer.println("        return false;");
+			// isInitialized()
+			printer.println("    private byte memoizedIsInitialized = -1;");
+			printer.println("    @java.lang.Override");
+			printer.println("    public final boolean isInitialized() {");
+			printer.println("      byte isInitialized = memoizedIsInitialized;");
+			printer.println("      if (isInitialized == 1) return true;");
+			printer.println("      if (isInitialized == 0) return false;");
+			printer.println();
+			if (descriptor.isExtendable())
+			{
+				printer.println("      if (!extensionsAreInitialized()) {");
+				printer.println("        memoizedIsInitialized = 0;");
+				printer.println("        return false;");
+				printer.println("      }");
+			}
+			printer.println("      memoizedIsInitialized = 1;");
+			printer.println("      return true;");
+			printer.println("    }");
+			printer.println();
+
+			// writeTo()
+			printer.println("    @java.lang.Override");
+			printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
+			printer.println("                        throws java.io.IOException {");
+			if (descriptor.isExtendable())
+			{
+				printer.println("      com.google.protobuf.GeneratedMessage");
+				printer.println("        .ExtendableMessage.ExtensionSerializer");
+				printer.println("          extensionWriter = newExtensionSerializer();");
+			}
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
+			{
+				fieldGenerator.generateWriteToCode(printer);
+			}
+			if (descriptor.isExtendable())
+			{
+				int limit = 536870912;
+				if (!descriptor.toProto().getExtensionRangeList().isEmpty())
+				{
+					limit = descriptor.toProto().getExtensionRangeList().stream()
+							.mapToInt(com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange::getEnd)
+							.max().orElse(536870912);
+				}
+				printer.println("      extensionWriter.writeUntil(" + limit + ", output);");
+			}
+			printer.println("      getUnknownFields().writeTo(output);");
+			printer.println("    }");
+			printer.println();
+
+			// getSerializedSize()
+			printer.println("    @java.lang.Override");
+			printer.println("    public int getSerializedSize() {");
+			printer.println("      int size = memoizedSize;");
+			printer.println("      if (size != -1) return size;");
+			printer.println();
+			printer.println("      size = 0;");
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
+			{
+				fieldGenerator.generateSerializedSizeCode(printer);
+			}
+			if (descriptor.isExtendable())
+			{
+				printer.println("      size += extensionsSerializedSize();");
+			}
+			printer.println("      size += getUnknownFields().getSerializedSize();");
+			printer.println("      memoizedSize = size;");
+			printer.println("      return size;");
+			printer.println("    }");
+			printer.println();
+
+			// equals()
+			printer.println("    @java.lang.Override");
+			printer.println("    public boolean equals(final java.lang.Object obj) {");
+			printer.println("      if (obj == this) {");
+			printer.println("       return true;");
 			printer.println("      }");
-		}
-		printer.println("      memoizedIsInitialized = 1;");
-		printer.println("      return true;");
-		printer.println("    }");
-		printer.println();
-
-		// writeTo()
-		printer.println("    @java.lang.Override");
-		printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
-		printer.println("                        throws java.io.IOException {");
-		if (descriptor.isExtendable())
-		{
-			printer.println("      com.google.protobuf.GeneratedMessage");
-			printer.println("        .ExtendableMessage.ExtensionSerializer");
-			printer.println("          extensionWriter = newExtensionSerializer();");
-		}
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
-		{
-			fieldGenerator.generateWriteToCode(printer);
-		}
-		if (descriptor.isExtendable())
-		{
-			int limit = 536870912;
-			if (!descriptor.toProto().getExtensionRangeList().isEmpty())
+			// fullClassName is already defined in internalGetFieldAccessorTable block
+			printer.println("      if (!(obj instanceof " + fullClassName + ")) {");
+			printer.println("        return super.equals(obj);");
+			printer.println("      }");
+			printer.println("      " + fullClassName + " other = (" + fullClassName + ") obj;");
+			printer.println();
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 			{
-				limit = descriptor.toProto().getExtensionRangeList().stream()
-						.mapToInt(com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange::getEnd)
-						.max().orElse(536870912);
-			}
-			printer.println("      extensionWriter.writeUntil(" + limit + ", output);");
-		}
-		printer.println("      getUnknownFields().writeTo(output);");
-		printer.println("    }");
-		printer.println();
-
-		// getSerializedSize()
-		printer.println("    @java.lang.Override");
-		printer.println("    public int getSerializedSize() {");
-		printer.println("      int size = memoizedSize;");
-		printer.println("      if (size != -1) return size;");
-		printer.println();
-		printer.println("      size = 0;");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
-		{
-			fieldGenerator.generateSerializedSizeCode(printer);
-		}
-		if (descriptor.isExtendable())
-		{
-			printer.println("      size += extensionsSerializedSize();");
-		}
-		printer.println("      size += getUnknownFields().getSerializedSize();");
-		printer.println("      memoizedSize = size;");
-		printer.println("      return size;");
-		printer.println("    }");
-		printer.println();
-
-		// equals()
-		printer.println("    @java.lang.Override");
-		printer.println("    public boolean equals(final java.lang.Object obj) {");
-		printer.println("      if (obj == this) {");
-		printer.println("       return true;");
-		printer.println("      }");
-		// fullClassName is already defined in internalGetFieldAccessorTable block
-		printer.println("      if (!(obj instanceof " + fullClassName + ")) {");
-		printer.println("        return super.equals(obj);");
-		printer.println("      }");
-		printer.println("      " + fullClassName + " other = (" + fullClassName + ") obj;");
-		printer.println();
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
-		{
-			boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
-			boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
-			if (!isRealOneof)
-			{
-				fieldGenerator.generateEqualsCode(printer);
-			}
-		}
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
-			{
-				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
-				printer.println("      if (!get" + camelCaseName + "Case().equals(other.get" + camelCaseName + "Case())) return false;");
-				printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
-				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
+				boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
+				if (!isRealOneof)
 				{
-					printer.println("        case " + field.getNumber() + ":");
-					fieldGenerators.get(field).generateOneofEqualsCode(printer);
-					printer.println("          break;");
+					fieldGenerator.generateEqualsCode(printer);
 				}
-				printer.println("        case 0:");
-				printer.println("        default:");
-				printer.println("      }");
 			}
-		}
-		printer.println("      if (!getUnknownFields().equals(other.getUnknownFields())) return false;");
-		if (descriptor.isExtendable())
-		{
-			printer.println("      if (!getExtensionFields().equals(other.getExtensionFields()))");
-			printer.println("        return false;");
-		}
-		printer.println("      return true;");
-		printer.println("    }");
-		printer.println();
-
-		// hashCode()
-		printer.println("    @java.lang.Override");
-		printer.println("    public int hashCode() {");
-		printer.println("      if (memoizedHashCode != 0) {");
-		printer.println("        return memoizedHashCode;");
-		printer.println("      }");
-		printer.println("      int hash = 41;");
-		printer.println("      hash = (19 * hash) + getDescriptor().hashCode();");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
-		{
-			boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
-			boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
-			if (!isRealOneof)
+			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 			{
-				fieldGenerator.generateHashCode(printer);
-			}
-		}
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
-			{
-				printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
-				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+				if (!isSynthetic)
 				{
-					printer.println("        case " + field.getNumber() + ":");
-					fieldGenerators.get(field).generateOneofHashCode(printer);
-					printer.println("          break;");
+					String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+					printer.println("      if (!get" + camelCaseName + "Case().equals(other.get" + camelCaseName + "Case())) return false;");
+					printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
+					for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+					{
+						printer.println("        case " + field.getNumber() + ":");
+						fieldGenerators.get(field).generateOneofEqualsCode(printer);
+						printer.println("          break;");
+					}
+					printer.println("        case 0:");
+					printer.println("        default:");
+					printer.println("      }");
 				}
-				printer.println("        case 0:");
-				printer.println("        default:");
-				printer.println("      }");
 			}
+			printer.println("      if (!getUnknownFields().equals(other.getUnknownFields())) return false;");
+			if (descriptor.isExtendable())
+			{
+				printer.println("      if (!getExtensionFields().equals(other.getExtensionFields()))");
+				printer.println("        return false;");
+			}
+			printer.println("      return true;");
+			printer.println("    }");
+			printer.println();
+
+			// hashCode()
+			printer.println("    @java.lang.Override");
+			printer.println("    public int hashCode() {");
+			printer.println("      if (memoizedHashCode != 0) {");
+			printer.println("        return memoizedHashCode;");
+			printer.println("      }");
+			printer.println("      int hash = 41;");
+			printer.println("      hash = (19 * hash) + getDescriptor().hashCode();");
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+			{
+				boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
+				boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
+				if (!isRealOneof)
+				{
+					fieldGenerator.generateHashCode(printer);
+				}
+			}
+			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+			{
+				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+				if (!isSynthetic)
+				{
+					printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
+					for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+					{
+						printer.println("        case " + field.getNumber() + ":");
+						fieldGenerators.get(field).generateOneofHashCode(printer);
+						printer.println("          break;");
+					}
+					printer.println("        case 0:");
+					printer.println("        default:");
+					printer.println("      }");
+				}
+			}
+			if (descriptor.isExtendable())
+			{
+				printer.println("      hash = hashFields(hash, getExtensionFields());");
+			}
+			printer.println("      hash = (29 * hash) + getUnknownFields().hashCode();");
+			printer.println("      memoizedHashCode = hash;");
+			printer.println("      return hash;");
+			printer.println("    }");
+			printer.println();
 		}
-		if (descriptor.isExtendable())
-		{
-			printer.println("      hash = hashFields(hash, getExtensionFields());");
-		}
-		printer.println("      hash = (29 * hash) + getUnknownFields().hashCode();");
-		printer.println("      memoizedHashCode = hash;");
-		printer.println("      return hash;");
-		printer.println("    }");
-		printer.println();
 
 		// parseFrom() methods
 		// fullClassName is already defined in internalGetFieldAccessorTable block

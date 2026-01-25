@@ -276,3 +276,14 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   For Map fields where values are nullable (e.g. messages), the Java generator has a quirk where the return type and the default value parameter in `get...OrDefault` methods are NOT indented relative to the `/* nullable */` comment.
     *   This applies to both the interface definition and the implementation (message and builder).
     *   To match this behavior, `IndentPrinter` was extended with `printNoIndent(String)` to bypass indentation for these specific lines.
+
+*   **Tokenizer Sticky Trailing Comments**: The logic for "sticky" trailing comments (attaching comments from the next line to the previous token) must be disabled for block openers like `{`. This ensures that comments immediately following a block opener are treated as leading comments for the *first element inside the block* (e.g., a field), rather than being consumed as trailing comments of the block opener.
+
+*   **CODE_SIZE Optimization**:
+    *   When `optimize_for = CODE_SIZE` is used, the generated `Message` class skips generating methods like `isInitialized`, `writeTo`, `getSerializedSize`, `equals`, and `hashCode` (relying on reflection in `GeneratedMessage`).
+    *   The generated `Builder` class also skips `mergeFrom` variants and `isInitialized`.
+    *   Field generation in the `Builder` must be carefully ordered. For standard `SPEED` optimization, fields come *after* `mergeFrom` methods. For `CODE_SIZE`, since `mergeFrom` is skipped, fields naturally follow `buildPartial` methods.
+
+*   **BitField Generation**:
+    *   The generation of `bitField0_` (and `to_bitField0_` in builders) must strictly check `field.hasPresence()`.
+    *   For Proto3 implicit fields (no label, not optional), `hasPresence()` is false, and thus no bitfield should be generated in the Message or Builder logic. This corrects a bug where `bitField0_` was generated incorrectly for Proto3 messages.
