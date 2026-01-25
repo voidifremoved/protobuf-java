@@ -34,7 +34,8 @@ class CodeGenerator {
 
 The Java generator uses a deep object-oriented structure where generators hold state (`Context`) and recursively instantiate other generators for nested types.
 
-### 1. Entry Point & File Structure (`java/file.cc`)
+### 1. Entry Point & File Structure
+*   **Source**: `java/file.cc`
 *   **Entry**: `JavaGenerator::Generate` (in `java/generator.cc`) creates a `FileGenerator`.
 *   **Outer Class**: `FileGenerator::Generate` produces the outer wrapper class (named after the file or `java_outer_classname`).
 *   **Nesting Logic**:
@@ -42,8 +43,9 @@ The Java generator uses a deep object-oriented structure where generators hold s
     *   If `java_multiple_files` is **false**, it calls `Generate()` on these message generators, which writes the code as static nested classes *inside* the outer class.
     *   If `java_multiple_files` is **true**, it generates sibling files using `GenerateSiblings`.
 
-### 2. Message Generation Loop (`java/full/message.cc`)
-The `ImmutableMessageGenerator` class handles message generation.
+### 2. Message Generation Loop
+*   **Source**: `java/full/message.cc`
+*   **Class**: `ImmutableMessageGenerator`
 *   **Constructor**: Initializes a `FieldGenerator` for every field using the `MakeImmutableFieldGenerator` factory.
 *   **`Generate()` Method Control Flow**:
     1.  **Header**: Prints class declaration (`public final class ...`).
@@ -61,6 +63,7 @@ The `ImmutableMessageGenerator` class handles message generation.
     6.  **Methods**: Generates `isInitialized`, `writeTo`, `getSerializedSize`, `equals`, `hashCode` using helper methods.
 
 ### 3. Field Ordering & Serialization
+*   **Source**: `java/full/message.cc` (Function: `GenerateMessageSerializationMethods`, approx line 1050)
 *   **Ordering**:
     *   Inside `GenerateMessageSerializationMethods`, fields are **sorted by field number** using `SortFieldsByNumber`.
     *   This ensures canonical serialization order regardless of declaration order in the `.proto` file.
@@ -68,41 +71,72 @@ The `ImmutableMessageGenerator` class handles message generation.
     *   The code iterates through the *sorted* fields.
     *   For each field, it calls `field_generators_.get(field).GenerateSerializationCode(printer)`.
 
-### 4. Bit Field Comparisons (`java/full/primitive_field.cc`)
-Java uses integer bitmasks to track field presence (for optional fields and proto3 messages).
-*   **Generation**: `GenerateGetBit` creates code like `((bitField0_ & 0x00000001) != 0)`.
+### 4. Bit Field Comparisons
+*   **Source**: `java/full/primitive_field.cc` (Function: `GenerateGetBit`, approx line 250)
+*   **Logic**:
+    *   Java uses integer bitmasks to track field presence (for optional fields and proto3 messages).
+    *   `GenerateGetBit` creates code like `((bitField0_ & 0x00000001) != 0)`.
 *   **Usage**:
     *   **Getters**: `return ((bitField0_ & 0x00000001) != 0) ? myField_ : getDefaultInstance().getMyField();`
     *   **WriteTo**: `if ((bitField0_ & 0x00000001) != 0) { output.write...(1, myField_); }`
     *   **Builder Merging**: `if (other.hasMyField()) { setMyField(other.getMyField()); }`
 
-### 5. Comments & Formatting (`java/doc_comment.cc`)
-*   **Source**: Comments are extracted from `SourceCodeInfo` in the `FileDescriptor`.
-*   **Escaping**:
-    *   `/*` and `*/` are escaped to `&#42;` and `&#47;` to prevent breaking the comment block.
-    *   `@` is escaped to `&#64;` to avoid accidental Javadoc tags.
-    *   HTML tags (`<`, `>`) are escaped (`&lt;`, `&gt;`) to prevent interpretation as HTML.
+### 5. Specialized Field Types
+
+#### Repeated Fields
+*   **Source**: `java/full/primitive_field.cc` (Class: `RepeatedImmutablePrimitiveFieldGenerator`, approx line 638)
+*   **Implementation**:
+    *   Uses `ProtobufList` (e.g., `IntList`, `LongList`).
+    *   **Mutability**: The builder uses `ensureMyFieldIsMutable()` which checks `isModifiable()`. If not, it calls `makeMutableCopy()`.
+    *   **Optimization**: `GenerateMergingCode` checks if the target list is empty to avoid copy-on-write overhead (`result = other` instead of `addAll`).
+
+#### Map Fields
+*   **Source**: `java/full/map_field.cc` (Class: `ImmutableMapFieldGenerator`, approx line 53)
 *   **Structure**:
-    ```java
-    /**
-     * <pre>
-     * [Comment Body]
-     * </pre>
-     *
-     * <code>optional int32 foo = 1;</code>
-     */
-    ```
+    *   Generates a `MapField` member (e.g., `private MapField<String, Integer> myMap_;`).
+    *   Generates a static `DefaultEntryHolder` class to store the default entry instance (used for wire format serialization).
+*   **Serialization**: Uses `MapEntry` logic. The wire format for maps is a repeated message containing key/value fields.
 
-### 6. Default Value Formatting (`java/helpers.cc`)
-Default values are generated as literals or static lookups:
-*   **Integers**: `123`
-*   **Longs**: `123L`
-*   **Floats**: `123F`, `Float.NaN`, `Float.POSITIVE_INFINITY`
-*   **Doubles**: `123D`, `Double.NaN` (checked via `value != value`).
-*   **Strings**: Escaped using `CEscape` (e.g., `\n` becomes `\\n`). Non-ASCII characters are octal escaped (`\377`).
-*   **Bytes**: `com.google.protobuf.Internal.bytesDefaultValue("...")`
+#### Groups (Proto2)
+*   **Source**: `java/full/message_field.cc` (Approx line 701)
+*   **Logic**:
+    *   Detected via `GetType(descriptor) == FieldDescriptor::TYPE_GROUP`.
+    *   Uses `writeGroup` instead of `writeMessage`.
+    *   Writes `WIRETYPE_START_GROUP` and `WIRETYPE_END_GROUP` tags instead of length delimiters.
 
-### 7. Naming & Nesting (`java/name_resolver.cc`)
+#### Extensions
+*   **Source**: `java/full/extension.cc` (Class: `ImmutableExtensionGenerator`, approx line 27)
+*   **Generation**:
+    *   Generates `public static final GeneratedExtension<ContainingType, Type> myExtension;`.
+    *   **Registration**: `GenerateRegistrationCode` (line 143) adds the extension to the `ExtensionRegistry`.
+    *   **Initialization**: Extensions are initialized in the `_clinit` of the outer class.
+
+#### Any Fields
+*   **Source**: `java/full/message.cc` (Function: `GenerateAnyMethods`, approx line 1171)
+*   **Special Handling**:
+    *   If the message descriptor full name is `google.protobuf.Any`.
+    *   Generates `pack(Message)`, `unpack(Class)`, `is(Class)` methods directly in the generated class to support dynamic typing.
+
+### 6. Comments & Formatting
+*   **Source**: `java/doc_comment.cc`
+*   **Logic**: Comments are extracted from `SourceCodeInfo` in the `FileDescriptor`.
+*   **Escaping**:
+    *   `/*` and `*/` are escaped to `&#42;` and `&#47;`.
+    *   `@` is escaped to `&#64;`.
+    *   HTML tags (`<`, `>`) are escaped (`&lt;`, `&gt;`).
+
+### 7. Default Value Formatting
+*   **Source**: `java/helpers.cc`
+*   **Logic**: Default values are generated as literals or static lookups:
+    *   **Integers**: `123`
+    *   **Longs**: `123L`
+    *   **Floats**: `123F`, `Float.NaN`, `Float.POSITIVE_INFINITY`
+    *   **Doubles**: `123D`, `Double.NaN` (checked via `value != value`).
+    *   **Strings**: Escaped using `CEscape` (e.g., `\n` becomes `\\n`). Non-ASCII characters are octal escaped (`\377`).
+    *   **Bytes**: `com.google.protobuf.Internal.bytesDefaultValue("...")`
+
+### 8. Naming & Nesting
+*   **Source**: `java/name_resolver.cc`
 *   **Class Names**: Calculated by `ClassNameResolver`.
     *   Converts `foo_bar.proto` -> `FooBar` (CamelCase).
     *   Resolves conflicts (e.g., if message name == outer class name, appends `OuterClass`).
@@ -119,7 +153,8 @@ Default values are generated as literals or static lookups:
 
 The C# generator is structurally flatter. It generates `sealed partial` classes and relies heavily on C# properties.
 
-### 1. Entry Point & Reflection (`csharp_generator.cc`)
+### 1. Entry Point & Reflection
+*   **Source**: `csharp_generator.cc` / `csharp_reflection_class.cc`
 *   **Entry**: `Generator::Generate`.
 *   **Reflection Class**: `ReflectionClassGenerator` creates the file-level container (e.g., `MyFileReflection`).
 *   **Descriptor Embedding**:
@@ -132,7 +167,9 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
           "Base64Chunk2...");
         ```
 
-### 2. Message Generation (`csharp_message.cc`)
+### 2. Message Generation
+*   **Source**: `csharp_message.cc`
+*   **Class**: `MessageGenerator`
 *   **Class Structure**: `sealed partial class MyMessage : pb::IMessage<MyMessage>`.
 *   **Nesting Logic**:
     *   `Generate()` calls `HasNestedGeneratedTypes()`.
@@ -143,8 +180,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   It calls `std::sort` using `CompareFieldNumbers`.
     *   All subsequent generation (properties, serialization, sizing) iterates over this **sorted** list.
 
-### 3. Bit Field Logic (`csharp_primitive_field.cc`)
-C# uses an `int` array for presence bits, but handles them uniquely:
+### 3. Bit Field Logic
+*   **Source**: `csharp_message.cc` (approx line 140) and `csharp_primitive_field.cc`
 *   **Definition**: `private int _hasBits0;` (up to `_hasBitsN` based on count).
 *   **Masking**:
     *   Bit index is calculated: `i % 32`.
@@ -155,28 +192,57 @@ C# uses an `int` array for presence bits, but handles them uniquely:
     *   **Properties**: The getter checks the bit. If unset, returns the *explicit default* value.
     *   **WriteTo**: Checks the bit before writing the tag.
 
-### 4. Comments (`csharp_doc_comment.cc`)
+### 4. Specialized Field Types
+
+#### Repeated Fields
+*   **Source**: `csharp_repeated_message_field.cc` / `csharp_repeated_primitive_field.cc`
+*   **Implementation**:
+    *   Uses `pbc::RepeatedField<T>`.
+    *   **Serialization**: Iterates over the collection. For packed fields, calculates size and writes the length delimiter.
+    *   **Access**: Generates a read-only property returning the collection.
+
+#### Map Fields
+*   **Source**: `csharp_map_field.cc` (Class: `MapFieldGenerator`, approx line 24)
+*   **Structure**:
+    *   Uses `pbc::MapField<KeyType, ValueType>`.
+    *   **Serialization**: `_mapField_.WriteTo(output, _map_entry_codec)`.
+    *   **Codec**: Generates a static `_map_entry_codec` using `pb::FieldCodec.ForMap`.
+
+#### Groups (Proto2)
+*   **Source**: `csharp_helpers.cc` (Approx line 83/292)
+*   **Logic**:
+    *   `GetCSharpType` handles `TYPE_GROUP`.
+    *   Generates start/end group tags in `GenerateSerializationCode` (typically handled by the underlying C# runtime `WriteGroup` method).
+
+#### Extensions
+*   **Source**: `csharp_reflection_class.cc` (Approx line 198) and `csharp_repeated_message_field.cc` (line 127)
+*   **Logic**:
+    *   Extensions are generated as `public static readonly pb::Extension<...>`.
+    *   They are registered in the reflection class via `new pb::Extension[] { ... }`.
+    *   Accessors (`GetExtension`, `SetExtension`) are generated in `MessageGenerator` (line 300+ in `csharp_message.cc`) if `has_extension_ranges_` is true.
+
+#### Any Fields
+*   **Source**: `csharp_message.cc`
+*   **Handling**: C# generally relies on the runtime library `Google.Protobuf.WellKnownTypes.Any` class rather than generating custom `Pack`/`Unpack` methods on the message itself (unlike Java). The logic handles it as a standard message field unless specific well-known type handling is invoked.
+
+### 5. Comments
+*   **Source**: `csharp_doc_comment.cc` (Function: `WriteDocCommentBodyImpl`)
 *   **Format**: XML Documentation (`///`).
 *   **Escaping**:
     *   `&` -> `&amp;`
     *   `<` -> `&lt;`
-    *   Function `WriteDocCommentBodyImpl` handles this.
-*   **Structure**:
-    ```csharp
-    /// <summary>
-    /// [Comment Body]
-    /// </summary>
-    ```
+    *   `>` -> `&gt;`
 
-### 5. Default Values (`csharp_helpers.cc`)
+### 6. Default Values
+*   **Source**: `csharp_helpers.cc`
 *   **Logic**:
-    *   **Explicit Presence** (Proto2/Optional): Generates a static readonly field:
-        `private readonly static int MyFieldDefaultValue = 123;`
-    *   **Implicit Presence** (Proto3): No default field. The property getter returns the type's default (0, null) if the field is unset (though in strict Proto3, the field is just the value).
+    *   **Explicit Presence** (Proto2/Optional): Generates a static readonly field: `private readonly static int MyFieldDefaultValue = 123;`
+    *   **Implicit Presence** (Proto3): No default field. The property getter returns the type's default (0, null) if the field is unset.
 *   **Formatting**:
     *   Float/Double: `123F`, `123D`. Special handling for `double.PositiveInfinity`, `double.NaN`.
 
-### 6. Naming & Nesting (`names.cc`)
+### 7. Naming & Nesting
+*   **Source**: `csharp/names.cc`
 *   **Namespace**: Converted from proto package (CamelCase).
 *   **PascalCase**: All properties and class names are converted using `UnderscoresToPascalCase` (`foo_bar` -> `FooBar`).
 *   **Nested Types**:
@@ -190,15 +256,3 @@ C# uses an `int` array for presence bits, but handles them uniquely:
         }
         ```
     *   Reference: `Outer.Types.Inner`.
-
-### 7. Comparison Summary
-
-| Feature | Java Detail | C# Detail |
-| :--- | :--- | :--- |
-| **Field Order** | Sorted by Number in `writeTo` method | Sorted by Number in Generator Constructor |
-| **Bit Fields** | `int bitField0_` | `int _hasBits0` |
-| **Bit Check** | `((bitField0_ & 0x01) != 0)` | `(_hasBits0 & 1) != 0` |
-| **Nested Types** | Direct static nested class | Nested inside `static partial class Types` |
-| **Comments** | Javadoc (`/** ... */`) with HTML escaping | XML Doc (`/// <summary>`) with XML escaping |
-| **Strings** | Octal escape (`\377`) | Standard string literals |
-| **Class Names** | `ClassNameResolver` (complex conflict resolution) | `ToCSharpName` (Global scope qualification) |
