@@ -60,4 +60,21 @@ public class IndentPrinter extends PrintWriter {
     public void println() {
         write('\n');
     }
+
+    /**
+     * Prints a string without adding indentation, even if at the start of a line.
+     * Updates the internal state (atStartOfLine) correctly.
+     */
+    public void printNoIndent(String s) {
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (c == '\n') {
+                super.write(c);
+                atStartOfLine = true;
+            } else {
+                super.write(c);
+                atStartOfLine = false;
+            }
+        }
+    }
 }

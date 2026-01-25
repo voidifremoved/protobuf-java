@@ -271,3 +271,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   Serialization methods (`writeTo`, `getSerializedSize`, `generateSerializationCode`) in `RepeatedMessageFieldGenerator` should use 6 spaces indentation to match `MessageFieldGenerator`.
     *   `generateBuildingCode` in `RepeatedMessageFieldGenerator` should use 8 spaces indentation to match the context within `buildPartialRepeatedFields`.
     *   Builder getters like `get...OrBuilderList` and `get...BuilderList` in `RepeatedMessageFieldGenerator` require 11 spaces explicit indentation for the second line (continuation), whereas `RepeatedPrimitiveFieldGenerator` uses 10 spaces. This discrepancy ensures parity with standard `protoc` output.
+
+*   **Nullable Map Field Indentation**:
+    *   For Map fields where values are nullable (e.g. messages), the Java generator has a quirk where the return type and the default value parameter in `get...OrDefault` methods are NOT indented relative to the `/* nullable */` comment.
+    *   This applies to both the interface definition and the implementation (message and builder).
+    *   To match this behavior, `IndentPrinter` was extended with `printNoIndent(String)` to bypass indentation for these specific lines.
