@@ -126,17 +126,43 @@ public class MessageBuilderGenerator
 		printer.println("      }");
 		printer.println();
 
+		// Check if we need to generate initialization code
+		java.io.StringWriter initCodeWriter = new java.io.StringWriter();
+		java.io.PrintWriter initCodePrinter = new java.io.PrintWriter(initCodeWriter);
+		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
+		{
+			fieldGenerator.generateFieldBuilderInitializationCode(initCodePrinter);
+		}
+		String initCode = initCodeWriter.toString();
+
 		printer.println("      // Construct using " + fullClassName + ".newBuilder()");
 		printer.println("      private Builder() {");
-		printer.println();
+		if (!initCode.isEmpty()) {
+			printer.println("        maybeForceBuilderInitialization();");
+		} else {
+			printer.println();
+		}
 		printer.println("      }");
 		printer.println();
 
 		printer.println("      private Builder(");
 		printer.println("          com.google.protobuf.GeneratedMessage.BuilderParent parent) {");
 		printer.println("        super(parent);");
-		printer.println();
+		if (!initCode.isEmpty()) {
+			printer.println("        maybeForceBuilderInitialization();");
+		} else {
+			printer.println();
+		}
 		printer.println("      }");
+
+		if (!initCode.isEmpty()) {
+			printer.println("      private void maybeForceBuilderInitialization() {");
+			printer.println("        if (com.google.protobuf.GeneratedMessage");
+			printer.println("                .alwaysUseFieldBuilders) {");
+			printer.print(initCode);
+			printer.println("        }");
+			printer.println("      }");
+		}
 
 		printer.println("      @java.lang.Override");
 		printer.println("      public Builder clear() {");
@@ -185,6 +211,18 @@ public class MessageBuilderGenerator
 		printer.println("      @java.lang.Override");
 		printer.println("      public " + fullClassName + " buildPartial() {");
 		printer.println("        " + fullClassName + " result = new " + fullClassName + "(this);");
+		boolean hasRepeated = false;
+		for (ImmutableFieldGenerator gen : fieldGenerators.getFieldGenerators()) {
+			if (gen.getDescriptor().isRepeated()
+					&& gen.getDescriptor().getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE
+					&& !gen.getDescriptor().isMapField()) {
+				hasRepeated = true;
+				break;
+			}
+		}
+		if (hasRepeated) {
+			printer.println("        buildPartialRepeatedFields(result);");
+		}
 		for (int i = 0; i < totalBuilderPieces; i++)
 		{
 			printer.println("        if (" + getBitFieldName(i) + " != 0) { buildPartial" + i + "(result); }");
@@ -207,6 +245,22 @@ public class MessageBuilderGenerator
 		printer.println("        return result;");
 		printer.println("      }");
 		printer.println();
+
+		if (hasRepeated)
+		{
+			printer.println("      private void buildPartialRepeatedFields(" + fullClassName + " result) {");
+			for (ImmutableFieldGenerator gen : fieldGenerators.getFieldGenerators())
+			{
+				if (gen.getDescriptor().isRepeated()
+						&& gen.getDescriptor().getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE
+						&& !gen.getDescriptor().isMapField())
+				{
+					gen.generateBuildingCode(printer);
+				}
+			}
+			printer.println("      }");
+			printer.println();
+		}
 
 		int fieldIndex = 0;
 		for (int i = 0; i < totalBuilderPieces; i++)
@@ -235,7 +289,13 @@ public class MessageBuilderGenerator
 			int end = Math.min(fieldIndex + 32, totalFields);
 			for (; fieldIndex < end; fieldIndex++)
 			{
-				fieldGenerators.getFieldGenerators().get(fieldIndex).generateBuildingCode(printer);
+				ImmutableFieldGenerator gen = fieldGenerators.getFieldGenerators().get(fieldIndex);
+				if (!(gen.getDescriptor().isRepeated()
+						&& gen.getDescriptor().getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE
+						&& !gen.getDescriptor().isMapField()))
+				{
+					gen.generateBuildingCode(printer);
+				}
 			}
 			if (resultNeedsBitField)
 			{
@@ -295,7 +355,7 @@ public class MessageBuilderGenerator
 				printer.println("            break;");
 				printer.println("          }");
 			}
-			printer.println("          case " + oneof.getName().toUpperCase() + "_NOT_SET: {");
+			printer.println("          case " + oneofName.toUpperCase() + "_NOT_SET: {");
 			printer.println("            break;");
 			printer.println("          }");
 			printer.println("        }");

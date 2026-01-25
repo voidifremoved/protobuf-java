@@ -340,22 +340,36 @@ public final class DocComment
 					sb.append("repeated ");
 				}
 
-				appendFieldType(sb, field);
+				if (field.getType() == FieldDescriptor.Type.GROUP)
+				{
+					sb.append("group ");
+					sb.append(field.getMessageType().getName());
+					sb.append(" = ");
+					sb.append(field.getNumber());
+					sb.append(" { ... }");
+				}
+				else
+				{
+					appendFieldType(sb, field);
+				}
 			}
-			
-			sb.append(" ");
-			sb.append(field.getName());
-			sb.append(" = ");
-			sb.append(field.getNumber());
-			
-			if (field.hasDefaultValue())
+
+			if (field.getType() != FieldDescriptor.Type.GROUP)
 			{
-				sb.append(" [default = ");
-				sb.append(getDefaultValueString(field));
-				sb.append("]");
+				sb.append(" ");
+				sb.append(field.getName());
+				sb.append(" = ");
+				sb.append(field.getNumber());
+
+				if (field.hasDefaultValue())
+				{
+					sb.append(" [default = ");
+					sb.append(getDefaultValueString(field));
+					sb.append("]");
+				}
+
+				sb.append(";");
 			}
-			
-			sb.append(";");
 			
 			fieldComment = sb.toString();
 		}
@@ -502,7 +516,12 @@ public final class DocComment
 			boolean kdoc,
 			boolean isPrivate)
 	{
-		String camelcaseName = StringUtils.camelCaseFieldName(field);
+		String camelcaseName = StringUtils.javadocFieldName(field);
+		if (field.getType() == FieldDescriptor.Type.GROUP)
+		{
+			// Groups in Javadoc documentation text use lower-case names
+			camelcaseName = camelcaseName.toLowerCase();
+		}
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
@@ -561,7 +580,12 @@ public final class DocComment
 			boolean kdoc,
 			boolean isPrivate)
 	{
-		String camelcaseName = StringUtils.camelCaseFieldName(field);
+		String camelcaseName = StringUtils.javadocFieldName(field);
+		if (field.getType() == FieldDescriptor.Type.GROUP)
+		{
+			// Groups in Javadoc documentation text use lower-case names
+			camelcaseName = camelcaseName.toLowerCase();
+		}
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");

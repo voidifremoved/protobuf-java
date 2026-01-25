@@ -174,8 +174,17 @@ public final class Context
 		{
 			FieldDescriptor field = fields.get(i);
 			FieldGeneratorInfo info = new FieldGeneratorInfo();
-			info.name = StringUtils.camelCaseFieldName(field);
-			info.capitalizedName = StringUtils.capitalizedFieldName(field);
+			if (field.getType() == FieldDescriptor.Type.GROUP)
+			{
+				String groupName = field.getMessageType().getName();
+				info.name = StringUtils.underscoresToCamelCase(groupName, false);
+				info.capitalizedName = StringUtils.underscoresToCamelCase(groupName, true);
+			}
+			else
+			{
+				info.name = StringUtils.camelCaseFieldName(field);
+				info.capitalizedName = StringUtils.capitalizedFieldName(field);
+			}
 			if (isConflict[i])
 			{
 				info.name += field.getNumber();

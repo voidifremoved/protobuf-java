@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java;
 
-import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.DescriptorProtos.*;
+import com.google.protobuf.Descriptors.*;
 
 import java.io.PrintWriter;
 
@@ -29,6 +29,9 @@ public class SharedCodeGenerator
 		fileProtoBuilder.clearSourceCodeInfo();
 		// Clear syntax field to match expected output format (proto2 is default)
 		fileProtoBuilder.clearSyntax();
+
+		normalizeDescriptor(fileProtoBuilder);
+
 		// Build the cleaned proto
 		fileProto = fileProtoBuilder.build();
 		com.google.protobuf.ByteString byteString = fileProto.toByteString();
@@ -83,6 +86,9 @@ public class SharedCodeGenerator
 			case '\r':
 				builder.append("\\r");
 				break;
+			case '\'':
+				builder.append("\\\'");
+				break;
 			case '\"':
 				builder.append("\\\"");
 				break;
@@ -102,5 +108,64 @@ public class SharedCodeGenerator
 			}
 		}
 		return builder.toString();
+	}
+
+	private void normalizeDescriptor(FileDescriptorProto.Builder fileBuilder)
+	{
+		// Fix top-level extensions
+		for (int i = 0; i < file.getExtensions().size(); i++)
+		{
+			fixField(fileBuilder.getExtensionBuilder(i), file.getExtensions().get(i));
+		}
+
+		// Fix messages
+		for (int i = 0; i < file.getMessageTypes().size(); i++)
+		{
+			fixMessage(fileBuilder.getMessageTypeBuilder(i), file.getMessageTypes().get(i));
+		}
+
+		// Clean options
+		if (fileBuilder.hasOptions())
+		{
+			// No-op: Don't strip options. Protobuf preserves explicit options in the descriptor.
+		}
+	}
+
+	private void fixMessage(DescriptorProto.Builder messageBuilder, Descriptor messageDescriptor)
+	{
+		for (int i = 0; i < messageDescriptor.getFields().size(); i++)
+		{
+			fixField(messageBuilder.getFieldBuilder(i), messageDescriptor.getFields().get(i));
+		}
+		for (int i = 0; i < messageDescriptor.getExtensions().size(); i++)
+		{
+			fixField(messageBuilder.getExtensionBuilder(i), messageDescriptor.getExtensions().get(i));
+		}
+		for (int i = 0; i < messageDescriptor.getNestedTypes().size(); i++)
+		{
+			fixMessage(messageBuilder.getNestedTypeBuilder(i), messageDescriptor.getNestedTypes().get(i));
+		}
+	}
+
+	private void fixField(FieldDescriptorProto.Builder fieldBuilder, FieldDescriptor fieldDescriptor)
+	{
+		// Fix type name
+		if (fieldDescriptor.getType() == FieldDescriptor.Type.MESSAGE ||
+				fieldDescriptor.getType() == FieldDescriptor.Type.GROUP)
+		{
+			fieldBuilder.setTypeName("." + fieldDescriptor.getMessageType().getFullName());
+			fieldBuilder.setType(fieldDescriptor.getType().toProto());
+		}
+		else if (fieldDescriptor.getType() == FieldDescriptor.Type.ENUM)
+		{
+			fieldBuilder.setTypeName("." + fieldDescriptor.getEnumType().getFullName());
+			fieldBuilder.setType(fieldDescriptor.getType().toProto());
+		}
+
+		// Fix extendee
+		if (fieldDescriptor.isExtension())
+		{
+			fieldBuilder.setExtendee("." + fieldDescriptor.getContainingType().getFullName());
+		}
 	}
 }

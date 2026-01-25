@@ -21,6 +21,7 @@ public final class StringUtils
 
 	public static String underscoresToCamelCase(String input, boolean capNextLetter)
 	{
+		boolean capitalizeAfterDigit = capNextLetter;
 		StringBuilder result = new StringBuilder();
 		for (int i = 0; i < input.length(); i++)
 		{
@@ -52,7 +53,7 @@ public final class StringUtils
 			else if ('0' <= c && c <= '9')
 			{
 				result.append(c);
-				capNextLetter = true;
+				capNextLetter = capitalizeAfterDigit;
 			}
 			else
 			{
@@ -72,6 +73,25 @@ public final class StringUtils
 	}
 
 	public static String camelCaseFieldName(FieldDescriptor field)
+	{
+		String fieldName = underscoresToCamelCase(field.getName(), true);
+		if (!fieldName.isEmpty())
+		{
+			char first = fieldName.charAt(0);
+			if (Character.isUpperCase(first))
+			{
+				fieldName = Character.toLowerCase(first) + fieldName.substring(1);
+			}
+		}
+
+		if (fieldName.matches("^[0-9].*"))
+		{
+			return "_" + fieldName;
+		}
+		return fieldName;
+	}
+
+	public static String javadocFieldName(FieldDescriptor field)
 	{
 		String fieldName = underscoresToCamelCase(field.getName(), false);
 		if (fieldName.matches("^[0-9].*"))
