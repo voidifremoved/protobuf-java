@@ -14,12 +14,6 @@ message Level1 {
   message Level2 {
     optional string level2_field = 1;
     
-    
-    enum Level2Enum {
-      LEVEL2_UNKNOWN = 0;
-      LEVEL2_FIRST = 1;
-    }
-    optional Level2Enum level2_enum = 4;
   }
   
   optional Level2 level2_message = 2;

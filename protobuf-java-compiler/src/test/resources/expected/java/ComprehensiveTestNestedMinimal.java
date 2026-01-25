@@ -124,17 +124,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
        */
       com.google.protobuf.ByteString
           getLevel2FieldBytes();
-
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-       * @return Whether the level2Enum field is set.
-       */
-      boolean hasLevel2Enum();
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-       * @return The level2Enum.
-       */
-      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum getLevel2Enum();
     }
     /**
      * Protobuf type {@code ComprehensiveTest.NestedMinimal.Level1.Level2}
@@ -159,7 +148,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
       }
       private Level2() {
         level2Field_ = "";
-        level2Enum_ = 0;
       }
 
       public static final com.google.protobuf.Descriptors.Descriptor
@@ -173,111 +161,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Builder.class);
-      }
-
-      /**
-       * Protobuf enum {@code ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum}
-       */
-      public enum Level2Enum
-          implements com.google.protobuf.ProtocolMessageEnum {
-        /**
-         * <code>LEVEL2_UNKNOWN = 0;</code>
-         */
-        LEVEL2_UNKNOWN(0),
-        /**
-         * <code>LEVEL2_FIRST = 1;</code>
-         */
-        LEVEL2_FIRST(1),
-        ;
-
-        static {
-          com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
-            com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
-            /* major= */ 4,
-            /* minor= */ 33,
-            /* patch= */ 4,
-            /* suffix= */ "",
-            "Level2Enum");
-        }
-        /**
-         * <code>LEVEL2_UNKNOWN = 0;</code>
-         */
-        public static final int LEVEL2_UNKNOWN_VALUE = 0;
-        /**
-         * <code>LEVEL2_FIRST = 1;</code>
-         */
-        public static final int LEVEL2_FIRST_VALUE = 1;
-
-
-        public final int getNumber() {
-          return value;
-        }
-
-        /**
-         * @param value The numeric wire value of the corresponding enum entry.
-         * @return The enum associated with the given numeric wire value.
-         * @deprecated Use {@link #forNumber(int)} instead.
-         */
-        @java.lang.Deprecated
-        public static Level2Enum valueOf(int value) {
-          return forNumber(value);
-        }
-
-        /**
-         * @param value The numeric wire value of the corresponding enum entry.
-         * @return The enum associated with the given numeric wire value.
-         */
-        public static Level2Enum forNumber(int value) {
-          switch (value) {
-            case 0: return LEVEL2_UNKNOWN;
-            case 1: return LEVEL2_FIRST;
-            default: return null;
-          }
-        }
-
-        public static com.google.protobuf.Internal.EnumLiteMap<Level2Enum>
-            internalGetValueMap() {
-          return internalValueMap;
-        }
-        private static final com.google.protobuf.Internal.EnumLiteMap<
-            Level2Enum> internalValueMap =
-              new com.google.protobuf.Internal.EnumLiteMap<Level2Enum>() {
-                public Level2Enum findValueByNumber(int number) {
-                  return Level2Enum.forNumber(number);
-                }
-              };
-
-        public final com.google.protobuf.Descriptors.EnumValueDescriptor
-            getValueDescriptor() {
-          return getDescriptor().getValues().get(ordinal());
-        }
-        public final com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptorForType() {
-          return getDescriptor();
-        }
-        public static com.google.protobuf.Descriptors.EnumDescriptor
-            getDescriptor() {
-          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.getDescriptor().getEnumTypes().get(0);
-        }
-
-        private static final Level2Enum[] VALUES = values();
-
-        public static Level2Enum valueOf(
-            com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
-          if (desc.getType() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "EnumValueDescriptor is not for this type.");
-          }
-          return VALUES[desc.getIndex()];
-        }
-
-        private final int value;
-
-        private Level2Enum(int value) {
-          this.value = value;
-        }
-
-        // @@protoc_insertion_point(enum_scope:ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum)
       }
 
       private int bitField0_;
@@ -330,24 +213,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         }
       }
 
-      public static final int LEVEL2_ENUM_FIELD_NUMBER = 4;
-      private int level2Enum_ = 0;
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-       * @return Whether the level2Enum field is set.
-       */
-      @java.lang.Override public boolean hasLevel2Enum() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-       * @return The level2Enum.
-       */
-      @java.lang.Override public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum getLevel2Enum() {
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum result = com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum.forNumber(level2Enum_);
-        return result == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum.LEVEL2_UNKNOWN : result;
-      }
-
       private byte memoizedIsInitialized = -1;
       @java.lang.Override
       public final boolean isInitialized() {
@@ -365,9 +230,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         if (((bitField0_ & 0x00000001) != 0)) {
           com.google.protobuf.GeneratedMessage.writeString(output, 1, level2Field_);
         }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          output.writeEnum(4, level2Enum_);
-        }
         getUnknownFields().writeTo(output);
       }
 
@@ -379,10 +241,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         size = 0;
         if (((bitField0_ & 0x00000001) != 0)) {
           size += com.google.protobuf.GeneratedMessage.computeStringSize(1, level2Field_);
-        }
-        if (((bitField0_ & 0x00000002) != 0)) {
-          size += com.google.protobuf.CodedOutputStream
-            .computeEnumSize(4, level2Enum_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -404,10 +262,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           if (!getLevel2Field()
               .equals(other.getLevel2Field())) return false;
         }
-        if (hasLevel2Enum() != other.hasLevel2Enum()) return false;
-        if (hasLevel2Enum()) {
-          if (level2Enum_ != other.level2Enum_) return false;
-        }
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -422,10 +276,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
         if (hasLevel2Field()) {
           hash = (37 * hash) + LEVEL2_FIELD_FIELD_NUMBER;
           hash = (53 * hash) + getLevel2Field().hashCode();
-        }
-        if (hasLevel2Enum()) {
-          hash = (37 * hash) + LEVEL2_ENUM_FIELD_NUMBER;
-          hash = (53 * hash) + level2Enum_;
         }
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
@@ -559,7 +409,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           super.clear();
           bitField0_ = 0;
           level2Field_ = "";
-          level2Enum_ = 0;
           return this;
         }
 
@@ -598,10 +447,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
             result.level2Field_ = level2Field_;
             to_bitField0_ |= 0x00000001;
           }
-          if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.level2Enum_ = level2Enum_;
-            to_bitField0_ |= 0x00000002;
-          }
           result.bitField0_ |= to_bitField0_;
         }
 
@@ -621,9 +466,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
             level2Field_ = other.level2Field_;
             bitField0_ |= 0x00000001;
             onChanged();
-          }
-          if (other.hasLevel2Enum()) {
-            setLevel2Enum(other.getLevel2Enum());
           }
           this.mergeUnknownFields(other.getUnknownFields());
           onChanged();
@@ -656,18 +498,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
                   bitField0_ |= 0x00000001;
                   break;
                 } // case 10
-                case 32: {
-                  int tmpRaw = input.readEnum();
-                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum tmpValue =
-                      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum.forNumber(tmpRaw);
-                  if (tmpValue == null) {
-                    mergeUnknownVarintField(4, tmpRaw);
-                  } else {
-                    level2Enum_ = tmpRaw;
-                    bitField0_ |= 0x00000002;
-                  }
-                  break;
-                } // case 32
                 default: {
                   if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                     done = true; // was an endgroup tag
@@ -761,46 +591,6 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
           if (value == null) { throw new NullPointerException(); }
           level2Field_ = value;
           bitField0_ |= 0x00000001;
-          onChanged();
-          return this;
-        }
-
-        private int level2Enum_ = 0;
-        /**
-         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-         * @return Whether the level2Enum field is set.
-         */
-        @java.lang.Override public boolean hasLevel2Enum() {
-          return ((bitField0_ & 0x00000002) != 0);
-        }
-        /**
-         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-         * @return The level2Enum.
-         */
-        @java.lang.Override
-        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum getLevel2Enum() {
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum result = com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum.forNumber(level2Enum_);
-          return result == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum.LEVEL2_UNKNOWN : result;
-        }
-        /**
-         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-         * @param value The level2Enum to set.
-         * @return This builder for chaining.
-         */
-        public Builder setLevel2Enum(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Level1.Level2.Level2Enum value) {
-          if (value == null) { throw new NullPointerException(); }
-          bitField0_ |= 0x00000002;
-          level2Enum_ = value.getNumber();
-          onChanged();
-          return this;
-        }
-        /**
-         * <code>optional .ComprehensiveTest.NestedMinimal.Level1.Level2.Level2Enum level2_enum = 4;</code>
-         * @return This builder for chaining.
-         */
-        public Builder clearLevel2Enum() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          level2Enum_ = 0;
           onChanged();
           return this;
         }
@@ -1553,16 +1343,13 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
   static {
     java.lang.String[] descriptorData = {
       "\n\'comprehensive_test_nested_minimal.prot" +
-      "o\022\037ComprehensiveTest.NestedMinimal\"\213\002\n\006L" +
+      "o\022\037ComprehensiveTest.NestedMinimal\"\206\001\n\006L" +
       "evel1\022\024\n\014level1_field\030\001 \001(\t\022F\n\016level2_me" +
       "ssage\030\002 \001(\0132..ComprehensiveTest.NestedMi" +
-      "nimal.Level1.Level2\032\242\001\n\006Level2\022\024\n\014level2" +
-      "_field\030\001 \001(\t\022N\n\013level2_enum\030\004 \001(\01629.Comp" +
-      "rehensiveTest.NestedMinimal.Level1.Level" +
-      "2.Level2Enum\"2\n\nLevel2Enum\022\022\n\016LEVEL2_UNK" +
-      "NOWN\020\000\022\020\n\014LEVEL2_FIRST\020\001BQ\n+com.rubberja" +
-      "m.protobuf.compiler.test.nestedB\036Compreh" +
-      "ensiveTestNestedMinimalH\001P\000"
+      "nimal.Level1.Level2\032\036\n\006Level2\022\024\n\014level2_" +
+      "field\030\001 \001(\tBQ\n+com.rubberjam.protobuf.co" +
+      "mpiler.test.nestedB\036ComprehensiveTestNes" +
+      "tedMinimalH\001P\000"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1579,7 +1366,7 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
     internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_descriptor,
-        new java.lang.String[] { "Level2Field", "Level2Enum", });
+        new java.lang.String[] { "Level2Field", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

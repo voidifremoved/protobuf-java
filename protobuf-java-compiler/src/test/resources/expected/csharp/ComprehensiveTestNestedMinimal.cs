@@ -25,19 +25,16 @@ namespace ComprehensiveTest.NestedMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidjb21wcmVoZW5zaXZlX3Rlc3RfbmVzdGVkX21pbmltYWwucHJvdG8SH0Nv",
-            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwiiwIKBkxldmVsMRIUCgxs",
+            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwihgEKBkxldmVsMRIUCgxs",
             "ZXZlbDFfZmllbGQYASABKAkSRgoObGV2ZWwyX21lc3NhZ2UYAiABKAsyLi5D",
             "b21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIa",
-            "ogEKBkxldmVsMhIUCgxsZXZlbDJfZmllbGQYASABKAkSTgoLbGV2ZWwyX2Vu",
-            "dW0YBCABKA4yOS5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxl",
-            "dmVsMS5MZXZlbDIuTGV2ZWwyRW51bSIyCgpMZXZlbDJFbnVtEhIKDkxFVkVM",
-            "Ml9VTktOT1dOEAASEAoMTEVWRUwyX0ZJUlNUEAFCUQorY29tLnJ1YmJlcmph",
-            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0Lm5lc3RlZEIeQ29tcHJlaGVuc2l2",
-            "ZVRlc3ROZXN0ZWRNaW5pbWFsSAFQAA=="));
+            "HgoGTGV2ZWwyEhQKDGxldmVsMl9maWVsZBgBIAEoCUJRCitjb20ucnViYmVy",
+            "amFtLnByb3RvYnVmLmNvbXBpbGVyLnRlc3QubmVzdGVkQh5Db21wcmVoZW5z",
+            "aXZlVGVzdE5lc3RlZE1pbmltYWxIAVAA"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level2Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) }, null, null)})
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -316,7 +313,6 @@ namespace ComprehensiveTest.NestedMinimal {
       {
         private static readonly pb::MessageParser<Level2> _parser = new pb::MessageParser<Level2>(() => new Level2());
         private pb::UnknownFieldSet _unknownFields;
-        private int _hasBits0;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pb::MessageParser<Level2> Parser { get { return _parser; } }
@@ -344,9 +340,7 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public Level2(Level2 other) : this() {
-          _hasBits0 = other._hasBits0;
           level2Field_ = other.level2Field_;
-          level2Enum_ = other.level2Enum_;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
@@ -382,33 +376,6 @@ namespace ComprehensiveTest.NestedMinimal {
           level2Field_ = null;
         }
 
-        /// <summary>Field number for the "level2_enum" field.</summary>
-        public const int Level2EnumFieldNumber = 4;
-        private readonly static global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum Level2EnumDefaultValue = global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum.Level2Unknown;
-
-        private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum level2Enum_;
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum Level2Enum {
-          get { if ((_hasBits0 & 1) != 0) { return level2Enum_; } else { return Level2EnumDefaultValue; } }
-          set {
-            _hasBits0 |= 1;
-            level2Enum_ = value;
-          }
-        }
-        /// <summary>Gets whether the "level2_enum" field is set</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool HasLevel2Enum {
-          get { return (_hasBits0 & 1) != 0; }
-        }
-        /// <summary>Clears the value of the "level2_enum" field</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void ClearLevel2Enum() {
-          _hasBits0 &= ~1;
-        }
-
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
@@ -425,7 +392,6 @@ namespace ComprehensiveTest.NestedMinimal {
             return true;
           }
           if (Level2Field != other.Level2Field) return false;
-          if (Level2Enum != other.Level2Enum) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -434,7 +400,6 @@ namespace ComprehensiveTest.NestedMinimal {
         public override int GetHashCode() {
           int hash = 1;
           if (HasLevel2Field) hash ^= Level2Field.GetHashCode();
-          if (HasLevel2Enum) hash ^= Level2Enum.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -457,10 +422,6 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
-          if (HasLevel2Enum) {
-            output.WriteRawTag(32);
-            output.WriteEnum((int) Level2Enum);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -475,10 +436,6 @@ namespace ComprehensiveTest.NestedMinimal {
             output.WriteRawTag(10);
             output.WriteString(Level2Field);
           }
-          if (HasLevel2Enum) {
-            output.WriteRawTag(32);
-            output.WriteEnum((int) Level2Enum);
-          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
           }
@@ -491,9 +448,6 @@ namespace ComprehensiveTest.NestedMinimal {
           int size = 0;
           if (HasLevel2Field) {
             size += 1 + pb::CodedOutputStream.ComputeStringSize(Level2Field);
-          }
-          if (HasLevel2Enum) {
-            size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Level2Enum);
           }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
@@ -509,9 +463,6 @@ namespace ComprehensiveTest.NestedMinimal {
           }
           if (other.HasLevel2Field) {
             Level2Field = other.Level2Field;
-          }
-          if (other.HasLevel2Enum) {
-            Level2Enum = other.Level2Enum;
           }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
@@ -534,10 +485,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 break;
               case 10: {
                 Level2Field = input.ReadString();
-                break;
-              }
-              case 32: {
-                Level2Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) input.ReadEnum();
                 break;
               }
             }
@@ -563,27 +510,10 @@ namespace ComprehensiveTest.NestedMinimal {
                 Level2Field = input.ReadString();
                 break;
               }
-              case 32: {
-                Level2Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level2Enum) input.ReadEnum();
-                break;
-              }
             }
           }
         }
         #endif
-
-        #region Nested types
-        /// <summary>Container for nested types declared in the Level2 message type.</summary>
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static partial class Types {
-          public enum Level2Enum {
-            [pbr::OriginalName("LEVEL2_UNKNOWN")] Level2Unknown = 0,
-            [pbr::OriginalName("LEVEL2_FIRST")] Level2First = 1,
-          }
-
-        }
-        #endregion
 
       }
 
