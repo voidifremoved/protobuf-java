@@ -76,7 +76,7 @@ public abstract class AbstractProtoParityTest
 			{
 				assertEquals("Line " + (i + 1) + ": Extra line in generated code", expectedLine, actualLine);
 			}
-			else if (!actualLine.trim().equals(expectedLine.trim()))
+			else if (!actualLine.equals(expectedLine))
 			{
 				// Print context for debugging - show 5 lines before and after
 				System.out.println("Mismatch at line " + (i + 1) + ":");
