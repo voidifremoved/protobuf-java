@@ -25,28 +25,37 @@ namespace ComprehensiveTest.NestedMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cidjb21wcmVoZW5zaXZlX3Rlc3RfbmVzdGVkX21pbmltYWwucHJvdG8SH0Nv",
-            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwipwUKBkxldmVsMRIUCgxs",
+            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwixgIKBkxldmVsMRIUCgxs",
             "ZXZlbDFfZmllbGQYASABKAkSRgoObGV2ZWwyX21lc3NhZ2UYAiABKAsyLi5D",
             "b21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIa",
-            "vgQKBkxldmVsMhIUCgxsZXZlbDJfZmllbGQYASABKAkSTQoObGV2ZWwzX21l",
+            "3QEKBkxldmVsMhIUCgxsZXZlbDJfZmllbGQYASABKAkSTQoObGV2ZWwzX21l",
             "c3NhZ2UYAiABKAsyNS5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFs",
             "LkxldmVsMS5MZXZlbDIuTGV2ZWwzEk4KD3JlcGVhdGVkX2xldmVsMxgDIAMo",
             "CzI1LkNvbXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTGV2ZWwxLkxl",
-            "dmVsMi5MZXZlbDMa/gIKBkxldmVsMxIUCgxsZXZlbDNfZmllbGQYASABKAkS",
-            "VAoObGV2ZWw0X21lc3NhZ2UYAiABKAsyPC5Db21wcmVoZW5zaXZlVGVzdC5O",
-            "ZXN0ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIuTGV2ZWwzLkxldmVsNBJVCg9y",
-            "ZXBlYXRlZF9sZXZlbDQYAyADKAsyPC5Db21wcmVoZW5zaXZlVGVzdC5OZXN0",
-            "ZWRNaW5pbWFsLkxldmVsMS5MZXZlbDIuTGV2ZWwzLkxldmVsNBqwAQoGTGV2",
-            "ZWw0EhQKDGxldmVsNF9maWVsZBgBIAEoCRJcCgtsZXZlbDRfZW51bRgCIAEo",
-            "DjJHLkNvbXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTGV2ZWwxLkxl",
-            "dmVsMi5MZXZlbDMuTGV2ZWw0LkxldmVsNEVudW0iMgoKTGV2ZWw0RW51bRIS",
-            "Cg5MRVZFTDRfVU5LTk9XThAAEhAKDExFVkVMNF9GSVJTVBABQlEKK2NvbS5y",
-            "dWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC5uZXN0ZWRCHkNvbXBy",
-            "ZWhlbnNpdmVUZXN0TmVzdGVkTWluaW1hbEgBUAA="));
+            "dmVsMi5MZXZlbDMaHgoGTGV2ZWwzEhQKDGxldmVsM19maWVsZBgBIAEoCSKW",
+            "BQoTT3V0ZXJXaXRoTmVzdGVkTWFwcxITCgtvdXRlcl9maWVsZBgBIAEoCRJT",
+            "CgZuZXN0ZWQYAiABKAsyQy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5p",
+            "bWFsLk91dGVyV2l0aE5lc3RlZE1hcHMuTmVzdGVkV2l0aE1hcHMSVQoJb3V0",
+            "ZXJfbWFwGAMgAygLMkIuQ29tcHJlaGVuc2l2ZVRlc3QuTmVzdGVkTWluaW1h",
+            "bC5PdXRlcldpdGhOZXN0ZWRNYXBzLk91dGVyTWFwRW50cnkaxwIKDk5lc3Rl",
+            "ZFdpdGhNYXBzEmYKCm5lc3RlZF9tYXAYASADKAsyUi5Db21wcmVoZW5zaXZl",
+            "VGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVyV2l0aE5lc3RlZE1hcHMuTmVzdGVk",
+            "V2l0aE1hcHMuTmVzdGVkTWFwRW50cnkSaAoLcmV2ZXJzZV9tYXAYAiADKAsy",
+            "Uy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVyV2l0aE5l",
+            "c3RlZE1hcHMuTmVzdGVkV2l0aE1hcHMuUmV2ZXJzZU1hcEVudHJ5GjAKDk5l",
+            "c3RlZE1hcEVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEa",
+            "MQoPUmV2ZXJzZU1hcEVudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEo",
+            "CToCOAEadAoNT3V0ZXJNYXBFbnRyeRILCgNrZXkYASABKAkSUgoFdmFsdWUY",
+            "AiABKAsyQy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVy",
+            "V2l0aE5lc3RlZE1hcHMuTmVzdGVkV2l0aE1hcHM6AjgBQlEKK2NvbS5ydWJi",
+            "ZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC5uZXN0ZWRCHkNvbXByZWhl",
+            "bnNpdmVUZXN0TmVzdGVkTWluaW1hbEgBUAA="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level3Message", "RepeatedLevel3" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser, new[]{ "Level3Field", "Level4Message", "RepeatedLevel4" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Parser, new[]{ "Level4Field", "Level4Enum" }, null, new[]{ typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) }, null, null)})})})
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level3Message", "RepeatedLevel3" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser, new[]{ "Level3Field" }, null, null, null, null)})}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps), global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Parser, new[]{ "OuterField", "Nested", "OuterMap" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps), global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps.Parser, new[]{ "NestedMap", "ReverseMap" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
+            null, })
           }));
     }
     #endregion
@@ -640,8 +649,6 @@ namespace ComprehensiveTest.NestedMinimal {
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public Level3(Level3 other) : this() {
               level3Field_ = other.level3Field_;
-              level4Message_ = other.level4Message_ != null ? other.level4Message_.Clone() : null;
-              repeatedLevel4_ = other.repeatedLevel4_.Clone();
               _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
             }
 
@@ -677,29 +684,6 @@ namespace ComprehensiveTest.NestedMinimal {
               level3Field_ = null;
             }
 
-            /// <summary>Field number for the "level4_message" field.</summary>
-            public const int Level4MessageFieldNumber = 2;
-            private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4 level4Message_;
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4 Level4Message {
-              get { return level4Message_; }
-              set {
-                level4Message_ = value;
-              }
-            }
-
-            /// <summary>Field number for the "repeated_level4" field.</summary>
-            public const int RepeatedLevel4FieldNumber = 3;
-            private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> _repeated_repeatedLevel4_codec
-                = pb::FieldCodec.ForMessage(26, global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Parser);
-            private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> repeatedLevel4_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4>();
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4> RepeatedLevel4 {
-              get { return repeatedLevel4_; }
-            }
-
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
             [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
             public override bool Equals(object other) {
@@ -716,8 +700,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 return true;
               }
               if (Level3Field != other.Level3Field) return false;
-              if (!object.Equals(Level4Message, other.Level4Message)) return false;
-              if(!repeatedLevel4_.Equals(other.repeatedLevel4_)) return false;
               return Equals(_unknownFields, other._unknownFields);
             }
 
@@ -726,8 +708,6 @@ namespace ComprehensiveTest.NestedMinimal {
             public override int GetHashCode() {
               int hash = 1;
               if (HasLevel3Field) hash ^= Level3Field.GetHashCode();
-              if (level4Message_ != null) hash ^= Level4Message.GetHashCode();
-              hash ^= repeatedLevel4_.GetHashCode();
               if (_unknownFields != null) {
                 hash ^= _unknownFields.GetHashCode();
               }
@@ -750,11 +730,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 output.WriteRawTag(10);
                 output.WriteString(Level3Field);
               }
-              if (level4Message_ != null) {
-                output.WriteRawTag(18);
-                output.WriteMessage(Level4Message);
-              }
-              repeatedLevel4_.WriteTo(output, _repeated_repeatedLevel4_codec);
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(output);
               }
@@ -769,11 +744,6 @@ namespace ComprehensiveTest.NestedMinimal {
                 output.WriteRawTag(10);
                 output.WriteString(Level3Field);
               }
-              if (level4Message_ != null) {
-                output.WriteRawTag(18);
-                output.WriteMessage(Level4Message);
-              }
-              repeatedLevel4_.WriteTo(ref output, _repeated_repeatedLevel4_codec);
               if (_unknownFields != null) {
                 _unknownFields.WriteTo(ref output);
               }
@@ -787,10 +757,6 @@ namespace ComprehensiveTest.NestedMinimal {
               if (HasLevel3Field) {
                 size += 1 + pb::CodedOutputStream.ComputeStringSize(Level3Field);
               }
-              if (level4Message_ != null) {
-                size += 1 + pb::CodedOutputStream.ComputeMessageSize(Level4Message);
-              }
-              size += repeatedLevel4_.CalculateSize(_repeated_repeatedLevel4_codec);
               if (_unknownFields != null) {
                 size += _unknownFields.CalculateSize();
               }
@@ -806,13 +772,6 @@ namespace ComprehensiveTest.NestedMinimal {
               if (other.HasLevel3Field) {
                 Level3Field = other.Level3Field;
               }
-              if (other.level4Message_ != null) {
-                if (level4Message_ == null) {
-                  Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                }
-                Level4Message.MergeFrom(other.Level4Message);
-              }
-              repeatedLevel4_.Add(other.repeatedLevel4_);
               _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
             }
 
@@ -834,17 +793,6 @@ namespace ComprehensiveTest.NestedMinimal {
                     break;
                   case 10: {
                     Level3Field = input.ReadString();
-                    break;
-                  }
-                  case 18: {
-                    if (level4Message_ == null) {
-                      Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                    }
-                    input.ReadMessage(Level4Message);
-                    break;
-                  }
-                  case 26: {
-                    repeatedLevel4_.AddEntriesFrom(input, _repeated_repeatedLevel4_codec);
                     break;
                   }
                 }
@@ -870,313 +818,523 @@ namespace ComprehensiveTest.NestedMinimal {
                     Level3Field = input.ReadString();
                     break;
                   }
-                  case 18: {
-                    if (level4Message_ == null) {
-                      Level4Message = new global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4();
-                    }
-                    input.ReadMessage(Level4Message);
-                    break;
-                  }
-                  case 26: {
-                    repeatedLevel4_.AddEntriesFrom(ref input, _repeated_repeatedLevel4_codec);
-                    break;
-                  }
                 }
               }
             }
             #endif
 
-            #region Nested types
-            /// <summary>Container for nested types declared in the Level3 message type.</summary>
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-            public static partial class Types {
-              [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-              public sealed partial class Level4 : pb::IMessage<Level4>
-              #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  , pb::IBufferMessage
-              #endif
-              {
-                private static readonly pb::MessageParser<Level4> _parser = new pb::MessageParser<Level4>(() => new Level4());
-                private pb::UnknownFieldSet _unknownFields;
-                private int _hasBits0;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pb::MessageParser<Level4> Parser { get { return _parser; } }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static pbr::MessageDescriptor Descriptor {
-                  get { return global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Descriptor.NestedTypes[0]; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                pbr::MessageDescriptor pb::IMessage.Descriptor {
-                  get { return Descriptor; }
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4() {
-                  OnConstruction();
-                }
-
-                partial void OnConstruction();
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4(Level4 other) : this() {
-                  _hasBits0 = other._hasBits0;
-                  level4Field_ = other.level4Field_;
-                  level4Enum_ = other.level4Enum_;
-                  _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public Level4 Clone() {
-                  return new Level4(this);
-                }
-
-                /// <summary>Field number for the "level4_field" field.</summary>
-                public const int Level4FieldFieldNumber = 1;
-                private readonly static string Level4FieldDefaultValue = "";
-
-                private string level4Field_;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public string Level4Field {
-                  get { return level4Field_ ?? Level4FieldDefaultValue; }
-                  set {
-                    level4Field_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-                  }
-                }
-                /// <summary>Gets whether the "level4_field" field is set</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool HasLevel4Field {
-                  get { return level4Field_ != null; }
-                }
-                /// <summary>Clears the value of the "level4_field" field</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void ClearLevel4Field() {
-                  level4Field_ = null;
-                }
-
-                /// <summary>Field number for the "level4_enum" field.</summary>
-                public const int Level4EnumFieldNumber = 2;
-                private readonly static global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum Level4EnumDefaultValue = global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum.Level4Unknown;
-
-                private global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum level4Enum_;
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum Level4Enum {
-                  get { if ((_hasBits0 & 1) != 0) { return level4Enum_; } else { return Level4EnumDefaultValue; } }
-                  set {
-                    _hasBits0 |= 1;
-                    level4Enum_ = value;
-                  }
-                }
-                /// <summary>Gets whether the "level4_enum" field is set</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool HasLevel4Enum {
-                  get { return (_hasBits0 & 1) != 0; }
-                }
-                /// <summary>Clears the value of the "level4_enum" field</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void ClearLevel4Enum() {
-                  _hasBits0 &= ~1;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override bool Equals(object other) {
-                  return Equals(other as Level4);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public bool Equals(Level4 other) {
-                  if (ReferenceEquals(other, null)) {
-                    return false;
-                  }
-                  if (ReferenceEquals(other, this)) {
-                    return true;
-                  }
-                  if (Level4Field != other.Level4Field) return false;
-                  if (Level4Enum != other.Level4Enum) return false;
-                  return Equals(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override int GetHashCode() {
-                  int hash = 1;
-                  if (HasLevel4Field) hash ^= Level4Field.GetHashCode();
-                  if (HasLevel4Enum) hash ^= Level4Enum.GetHashCode();
-                  if (_unknownFields != null) {
-                    hash ^= _unknownFields.GetHashCode();
-                  }
-                  return hash;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public override string ToString() {
-                  return pb::JsonFormatter.ToDiagnosticString(this);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void WriteTo(pb::CodedOutputStream output) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  output.WriteRawMessage(this);
-                #else
-                  if (HasLevel4Field) {
-                    output.WriteRawTag(10);
-                    output.WriteString(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    output.WriteRawTag(16);
-                    output.WriteEnum((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(output);
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-                  if (HasLevel4Field) {
-                    output.WriteRawTag(10);
-                    output.WriteString(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    output.WriteRawTag(16);
-                    output.WriteEnum((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    _unknownFields.WriteTo(ref output);
-                  }
-                }
-                #endif
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public int CalculateSize() {
-                  int size = 0;
-                  if (HasLevel4Field) {
-                    size += 1 + pb::CodedOutputStream.ComputeStringSize(Level4Field);
-                  }
-                  if (HasLevel4Enum) {
-                    size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) Level4Enum);
-                  }
-                  if (_unknownFields != null) {
-                    size += _unknownFields.CalculateSize();
-                  }
-                  return size;
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(Level4 other) {
-                  if (other == null) {
-                    return;
-                  }
-                  if (other.HasLevel4Field) {
-                    Level4Field = other.Level4Field;
-                  }
-                  if (other.HasLevel4Enum) {
-                    Level4Enum = other.Level4Enum;
-                  }
-                  _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
-                }
-
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public void MergeFrom(pb::CodedInputStream input) {
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                  input.ReadRawMessage(this);
-                #else
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                  if ((tag & 7) == 4) {
-                    // Abort on any end group tag.
-                    return;
-                  }
-                  switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
-                        break;
-                      case 10: {
-                        Level4Field = input.ReadString();
-                        break;
-                      }
-                      case 16: {
-                        Level4Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) input.ReadEnum();
-                        break;
-                      }
-                    }
-                  }
-                #endif
-                }
-
-                #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
-                  uint tag;
-                  while ((tag = input.ReadTag()) != 0) {
-                  if ((tag & 7) == 4) {
-                    // Abort on any end group tag.
-                    return;
-                  }
-                  switch(tag) {
-                      default:
-                        _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
-                        break;
-                      case 10: {
-                        Level4Field = input.ReadString();
-                        break;
-                      }
-                      case 16: {
-                        Level4Enum = (global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Types.Level4.Types.Level4Enum) input.ReadEnum();
-                        break;
-                      }
-                    }
-                  }
-                }
-                #endif
-
-                #region Nested types
-                /// <summary>Container for nested types declared in the Level4 message type.</summary>
-                [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-                [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-                public static partial class Types {
-                  public enum Level4Enum {
-                    [pbr::OriginalName("LEVEL4_UNKNOWN")] Level4Unknown = 0,
-                    [pbr::OriginalName("LEVEL4_FIRST")] Level4First = 1,
-                  }
-
-                }
-                #endregion
-
-              }
-
-            }
-            #endregion
-
           }
 
         }
         #endregion
+
+      }
+
+    }
+    #endregion
+
+  }
+
+  /// <summary>
+  /// Nested message with maps
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class OuterWithNestedMaps : pb::IMessage<OuterWithNestedMaps>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<OuterWithNestedMaps> _parser = new pb::MessageParser<OuterWithNestedMaps>(() => new OuterWithNestedMaps());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<OuterWithNestedMaps> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.NestedMinimal.ComprehensiveTestNestedMinimalReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterWithNestedMaps() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterWithNestedMaps(OuterWithNestedMaps other) : this() {
+      outerField_ = other.outerField_;
+      nested_ = other.nested_ != null ? other.nested_.Clone() : null;
+      outerMap_ = other.outerMap_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterWithNestedMaps Clone() {
+      return new OuterWithNestedMaps(this);
+    }
+
+    /// <summary>Field number for the "outer_field" field.</summary>
+    public const int OuterFieldFieldNumber = 1;
+    private readonly static string OuterFieldDefaultValue = "";
+
+    private string outerField_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OuterField {
+      get { return outerField_ ?? OuterFieldDefaultValue; }
+      set {
+        outerField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "outer_field" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOuterField {
+      get { return outerField_ != null; }
+    }
+    /// <summary>Clears the value of the "outer_field" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOuterField() {
+      outerField_ = null;
+    }
+
+    /// <summary>Field number for the "nested" field.</summary>
+    public const int NestedFieldNumber = 2;
+    private global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps nested_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps Nested {
+      get { return nested_; }
+      set {
+        nested_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "outer_map" field.</summary>
+    public const int OuterMapFieldNumber = 3;
+    private static readonly pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>.Codec _map_outerMap_codec
+        = new pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps.Parser), 26);
+    private readonly pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps> outerMap_ = new pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps> OuterMap {
+      get { return outerMap_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as OuterWithNestedMaps);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(OuterWithNestedMaps other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (OuterField != other.OuterField) return false;
+      if (!object.Equals(Nested, other.Nested)) return false;
+      if (!OuterMap.Equals(other.OuterMap)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasOuterField) hash ^= OuterField.GetHashCode();
+      if (nested_ != null) hash ^= Nested.GetHashCode();
+      hash ^= OuterMap.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasOuterField) {
+        output.WriteRawTag(10);
+        output.WriteString(OuterField);
+      }
+      if (nested_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Nested);
+      }
+      outerMap_.WriteTo(output, _map_outerMap_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasOuterField) {
+        output.WriteRawTag(10);
+        output.WriteString(OuterField);
+      }
+      if (nested_ != null) {
+        output.WriteRawTag(18);
+        output.WriteMessage(Nested);
+      }
+      outerMap_.WriteTo(ref output, _map_outerMap_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasOuterField) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OuterField);
+      }
+      if (nested_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Nested);
+      }
+      size += outerMap_.CalculateSize(_map_outerMap_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(OuterWithNestedMaps other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasOuterField) {
+        OuterField = other.OuterField;
+      }
+      if (other.nested_ != null) {
+        if (nested_ == null) {
+          Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+        }
+        Nested.MergeFrom(other.Nested);
+      }
+      outerMap_.MergeFrom(other.outerMap_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            OuterField = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (nested_ == null) {
+              Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+            }
+            input.ReadMessage(Nested);
+            break;
+          }
+          case 26: {
+            outerMap_.AddEntriesFrom(input, _map_outerMap_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            OuterField = input.ReadString();
+            break;
+          }
+          case 18: {
+            if (nested_ == null) {
+              Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+            }
+            input.ReadMessage(Nested);
+            break;
+          }
+          case 26: {
+            outerMap_.AddEntriesFrom(ref input, _map_outerMap_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the OuterWithNestedMaps message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+      public sealed partial class NestedWithMaps : pb::IMessage<NestedWithMaps>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<NestedWithMaps> _parser = new pb::MessageParser<NestedWithMaps>(() => new NestedWithMaps());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<NestedWithMaps> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public NestedWithMaps() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public NestedWithMaps(NestedWithMaps other) : this() {
+          nestedMap_ = other.nestedMap_.Clone();
+          reverseMap_ = other.reverseMap_.Clone();
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public NestedWithMaps Clone() {
+          return new NestedWithMaps(this);
+        }
+
+        /// <summary>Field number for the "nested_map" field.</summary>
+        public const int NestedMapFieldNumber = 1;
+        private static readonly pbc::MapField<string, int>.Codec _map_nestedMap_codec
+            = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 10);
+        private readonly pbc::MapField<string, int> nestedMap_ = new pbc::MapField<string, int>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public pbc::MapField<string, int> NestedMap {
+          get { return nestedMap_; }
+        }
+
+        /// <summary>Field number for the "reverse_map" field.</summary>
+        public const int ReverseMapFieldNumber = 2;
+        private static readonly pbc::MapField<int, string>.Codec _map_reverseMap_codec
+            = new pbc::MapField<int, string>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForString(18, ""), 18);
+        private readonly pbc::MapField<int, string> reverseMap_ = new pbc::MapField<int, string>();
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public pbc::MapField<int, string> ReverseMap {
+          get { return reverseMap_; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as NestedWithMaps);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(NestedWithMaps other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (!NestedMap.Equals(other.NestedMap)) return false;
+          if (!ReverseMap.Equals(other.ReverseMap)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          hash ^= NestedMap.GetHashCode();
+          hash ^= ReverseMap.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          nestedMap_.WriteTo(output, _map_nestedMap_codec);
+          reverseMap_.WriteTo(output, _map_reverseMap_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          nestedMap_.WriteTo(ref output, _map_nestedMap_codec);
+          reverseMap_.WriteTo(ref output, _map_reverseMap_codec);
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          size += nestedMap_.CalculateSize(_map_nestedMap_codec);
+          size += reverseMap_.CalculateSize(_map_reverseMap_codec);
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(NestedWithMaps other) {
+          if (other == null) {
+            return;
+          }
+          nestedMap_.MergeFrom(other.nestedMap_);
+          reverseMap_.MergeFrom(other.reverseMap_);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                nestedMap_.AddEntriesFrom(input, _map_nestedMap_codec);
+                break;
+              }
+              case 18: {
+                reverseMap_.AddEntriesFrom(input, _map_reverseMap_codec);
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                nestedMap_.AddEntriesFrom(ref input, _map_nestedMap_codec);
+                break;
+              }
+              case 18: {
+                reverseMap_.AddEntriesFrom(ref input, _map_reverseMap_codec);
+                break;
+              }
+            }
+          }
+        }
+        #endif
 
       }
 

@@ -17,18 +17,8 @@ message Level1 {
     message Level3 {
       optional string level3_field = 1;
       
-      message Level4 {
-        optional string level4_field = 1;
-        
-        enum Level4Enum {
-          LEVEL4_UNKNOWN = 0;
-          LEVEL4_FIRST = 1;
-        }
-        optional Level4Enum level4_enum = 2;
-      }
-      
-      optional Level4 level4_message = 2;
-      repeated Level4 repeated_level4 = 3;
+
+
     }
     
     optional Level3 level3_message = 2;
@@ -39,6 +29,19 @@ message Level1 {
   optional Level2 level2_message = 2;
 
 
+}
+
+// Nested message with maps
+message OuterWithNestedMaps {
+  optional string outer_field = 1;
+  
+  message NestedWithMaps {
+    map<string, int32> nested_map = 1;
+    map<int32, string> reverse_map = 2;
+  }
+  
+  optional NestedWithMaps nested = 2;
+  map<string, NestedWithMaps> outer_map = 3;
 }
 
 
