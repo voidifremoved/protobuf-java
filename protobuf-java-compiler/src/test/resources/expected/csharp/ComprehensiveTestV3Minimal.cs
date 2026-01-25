@@ -25,30 +25,16 @@ namespace ComprehensiveTest.V3Minimmal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCKbBQoPQWxsRmllbGRUeXBlc1YzEhMK",
-            "C2ludDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVp",
-            "bnQzMl9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2lu",
-            "dDMyX2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhl",
-            "ZDMyX2ZpZWxkGAcgASgHEhUKDWZpeGVkNjRfZmllbGQYCCABKAYSFgoOc2Zp",
-            "eGVkMzJfZmllbGQYCSABKA8SFgoOc2ZpeGVkNjRfZmllbGQYCiABKBASEwoL",
-            "ZmxvYXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJv",
-            "b2xfZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVz",
-            "X2ZpZWxkGA8gASgMEjwKCmVudW1fZmllbGQYECABKA4yKC5Db21wcmVoZW5z",
-            "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjMSFgoOcmVwZWF0ZWRfaW50",
-            "MzIYEiADKAUSFwoPcmVwZWF0ZWRfc3RyaW5nGBMgAygJEj8KDXJlcGVhdGVk",
-            "X2VudW0YFCADKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLlRl",
-            "c3RFbnVtVjMSHAoPb3B0aW9uYWxfc3RyaW5nGBYgASgJSACIAQESGwoOb3B0",
-            "aW9uYWxfaW50MzIYFyABKAVIAYgBARIaCg1vcHRpb25hbF9ib29sGBggASgI",
-            "SAKIAQFCEgoQX29wdGlvbmFsX3N0cmluZ0IRCg9fb3B0aW9uYWxfaW50MzJC",
-            "EAoOX29wdGlvbmFsX2Jvb2wqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VOS05P",
-            "V04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpURVNU",
-            "X1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50",
-            "ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEAYgZw",
-            "cm90bzM="));
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCI7Cg9BbGxGaWVsZFR5cGVzVjMSEwoL",
+            "aW50MzJfZmllbGQYASABKAUSEwoLaW50NjRfZmllbGQYAiABKAMqTwoKVGVz",
+            "dEVudW1WMxIQCgxURVNUX1VOS05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoL",
+            "VEVTVF9TRUNPTkQQAhIOCgpURVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmph",
+            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVz",
+            "dFYzTWluaW1hbEgCgAEAiAEAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field" }, null, null, null, null)
           }));
     }
     #endregion
@@ -82,7 +68,6 @@ namespace ComprehensiveTest.V3Minimmal {
   {
     private static readonly pb::MessageParser<AllFieldTypesV3> _parser = new pb::MessageParser<AllFieldTypesV3>(() => new AllFieldTypesV3());
     private pb::UnknownFieldSet _unknownFields;
-    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<AllFieldTypesV3> Parser { get { return _parser; } }
@@ -110,29 +95,8 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AllFieldTypesV3(AllFieldTypesV3 other) : this() {
-      _hasBits0 = other._hasBits0;
       int32Field_ = other.int32Field_;
       int64Field_ = other.int64Field_;
-      uint32Field_ = other.uint32Field_;
-      uint64Field_ = other.uint64Field_;
-      sint32Field_ = other.sint32Field_;
-      sint64Field_ = other.sint64Field_;
-      fixed32Field_ = other.fixed32Field_;
-      fixed64Field_ = other.fixed64Field_;
-      sfixed32Field_ = other.sfixed32Field_;
-      sfixed64Field_ = other.sfixed64Field_;
-      floatField_ = other.floatField_;
-      doubleField_ = other.doubleField_;
-      boolField_ = other.boolField_;
-      stringField_ = other.stringField_;
-      bytesField_ = other.bytesField_;
-      enumField_ = other.enumField_;
-      repeatedInt32_ = other.repeatedInt32_.Clone();
-      repeatedString_ = other.repeatedString_.Clone();
-      repeatedEnum_ = other.repeatedEnum_.Clone();
-      optionalString_ = other.optionalString_;
-      optionalInt32_ = other.optionalInt32_;
-      optionalBool_ = other.optionalBool_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -169,302 +133,6 @@ namespace ComprehensiveTest.V3Minimmal {
       }
     }
 
-    /// <summary>Field number for the "uint32_field" field.</summary>
-    public const int Uint32FieldFieldNumber = 3;
-    private uint uint32Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Uint32Field {
-      get { return uint32Field_; }
-      set {
-        uint32Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "uint64_field" field.</summary>
-    public const int Uint64FieldFieldNumber = 4;
-    private ulong uint64Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong Uint64Field {
-      get { return uint64Field_; }
-      set {
-        uint64Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sint32_field" field.</summary>
-    public const int Sint32FieldFieldNumber = 5;
-    private int sint32Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Sint32Field {
-      get { return sint32Field_; }
-      set {
-        sint32Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sint64_field" field.</summary>
-    public const int Sint64FieldFieldNumber = 6;
-    private long sint64Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Sint64Field {
-      get { return sint64Field_; }
-      set {
-        sint64Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "fixed32_field" field.</summary>
-    public const int Fixed32FieldFieldNumber = 7;
-    private uint fixed32Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public uint Fixed32Field {
-      get { return fixed32Field_; }
-      set {
-        fixed32Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "fixed64_field" field.</summary>
-    public const int Fixed64FieldFieldNumber = 8;
-    private ulong fixed64Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public ulong Fixed64Field {
-      get { return fixed64Field_; }
-      set {
-        fixed64Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sfixed32_field" field.</summary>
-    public const int Sfixed32FieldFieldNumber = 9;
-    private int sfixed32Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int Sfixed32Field {
-      get { return sfixed32Field_; }
-      set {
-        sfixed32Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "sfixed64_field" field.</summary>
-    public const int Sfixed64FieldFieldNumber = 10;
-    private long sfixed64Field_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public long Sfixed64Field {
-      get { return sfixed64Field_; }
-      set {
-        sfixed64Field_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "float_field" field.</summary>
-    public const int FloatFieldFieldNumber = 11;
-    private float floatField_;
-    /// <summary>
-    /// Floating point types
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public float FloatField {
-      get { return floatField_; }
-      set {
-        floatField_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "double_field" field.</summary>
-    public const int DoubleFieldFieldNumber = 12;
-    private double doubleField_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double DoubleField {
-      get { return doubleField_; }
-      set {
-        doubleField_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "bool_field" field.</summary>
-    public const int BoolFieldFieldNumber = 13;
-    private bool boolField_;
-    /// <summary>
-    /// Other primitive types
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool BoolField {
-      get { return boolField_; }
-      set {
-        boolField_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "string_field" field.</summary>
-    public const int StringFieldFieldNumber = 14;
-    private string stringField_ = "";
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string StringField {
-      get { return stringField_; }
-      set {
-        stringField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "bytes_field" field.</summary>
-    public const int BytesFieldFieldNumber = 15;
-    private pb::ByteString bytesField_ = pb::ByteString.Empty;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pb::ByteString BytesField {
-      get { return bytesField_; }
-      set {
-        bytesField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-
-    /// <summary>Field number for the "enum_field" field.</summary>
-    public const int EnumFieldFieldNumber = 16;
-    private global::ComprehensiveTest.V3Minimmal.TestEnumV3 enumField_ = global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown;
-    /// <summary>
-    /// Enum and message types
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.V3Minimmal.TestEnumV3 EnumField {
-      get { return enumField_; }
-      set {
-        enumField_ = value;
-      }
-    }
-
-    /// <summary>Field number for the "repeated_int32" field.</summary>
-    public const int RepeatedInt32FieldNumber = 18;
-    private static readonly pb::FieldCodec<int> _repeated_repeatedInt32_codec
-        = pb::FieldCodec.ForInt32(146);
-    private readonly pbc::RepeatedField<int> repeatedInt32_ = new pbc::RepeatedField<int>();
-    /// <summary>
-    /// Repeated fields
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<int> RepeatedInt32 {
-      get { return repeatedInt32_; }
-    }
-
-    /// <summary>Field number for the "repeated_string" field.</summary>
-    public const int RepeatedStringFieldNumber = 19;
-    private static readonly pb::FieldCodec<string> _repeated_repeatedString_codec
-        = pb::FieldCodec.ForString(154);
-    private readonly pbc::RepeatedField<string> repeatedString_ = new pbc::RepeatedField<string>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<string> RepeatedString {
-      get { return repeatedString_; }
-    }
-
-    /// <summary>Field number for the "repeated_enum" field.</summary>
-    public const int RepeatedEnumFieldNumber = 20;
-    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimmal.TestEnumV3> _repeated_repeatedEnum_codec
-        = pb::FieldCodec.ForEnum(162, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x);
-    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> repeatedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> RepeatedEnum {
-      get { return repeatedEnum_; }
-    }
-
-    /// <summary>Field number for the "optional_string" field.</summary>
-    public const int OptionalStringFieldNumber = 22;
-    private readonly static string OptionalStringDefaultValue = "";
-
-    private string optionalString_;
-    /// <summary>
-    /// Proto3 optional fields (explicit presence)
-    /// </summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string OptionalString {
-      get { return optionalString_ ?? OptionalStringDefaultValue; }
-      set {
-        optionalString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
-      }
-    }
-    /// <summary>Gets whether the "optional_string" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasOptionalString {
-      get { return optionalString_ != null; }
-    }
-    /// <summary>Clears the value of the "optional_string" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearOptionalString() {
-      optionalString_ = null;
-    }
-
-    /// <summary>Field number for the "optional_int32" field.</summary>
-    public const int OptionalInt32FieldNumber = 23;
-    private readonly static int OptionalInt32DefaultValue = 0;
-
-    private int optionalInt32_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public int OptionalInt32 {
-      get { if ((_hasBits0 & 1) != 0) { return optionalInt32_; } else { return OptionalInt32DefaultValue; } }
-      set {
-        _hasBits0 |= 1;
-        optionalInt32_ = value;
-      }
-    }
-    /// <summary>Gets whether the "optional_int32" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasOptionalInt32 {
-      get { return (_hasBits0 & 1) != 0; }
-    }
-    /// <summary>Clears the value of the "optional_int32" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearOptionalInt32() {
-      _hasBits0 &= ~1;
-    }
-
-    /// <summary>Field number for the "optional_bool" field.</summary>
-    public const int OptionalBoolFieldNumber = 24;
-    private readonly static bool OptionalBoolDefaultValue = false;
-
-    private bool optionalBool_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool OptionalBool {
-      get { if ((_hasBits0 & 2) != 0) { return optionalBool_; } else { return OptionalBoolDefaultValue; } }
-      set {
-        _hasBits0 |= 2;
-        optionalBool_ = value;
-      }
-    }
-    /// <summary>Gets whether the "optional_bool" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasOptionalBool {
-      get { return (_hasBits0 & 2) != 0; }
-    }
-    /// <summary>Clears the value of the "optional_bool" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearOptionalBool() {
-      _hasBits0 &= ~2;
-    }
-
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -482,26 +150,6 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (Int32Field != other.Int32Field) return false;
       if (Int64Field != other.Int64Field) return false;
-      if (Uint32Field != other.Uint32Field) return false;
-      if (Uint64Field != other.Uint64Field) return false;
-      if (Sint32Field != other.Sint32Field) return false;
-      if (Sint64Field != other.Sint64Field) return false;
-      if (Fixed32Field != other.Fixed32Field) return false;
-      if (Fixed64Field != other.Fixed64Field) return false;
-      if (Sfixed32Field != other.Sfixed32Field) return false;
-      if (Sfixed64Field != other.Sfixed64Field) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatField, other.FloatField)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DoubleField, other.DoubleField)) return false;
-      if (BoolField != other.BoolField) return false;
-      if (StringField != other.StringField) return false;
-      if (BytesField != other.BytesField) return false;
-      if (EnumField != other.EnumField) return false;
-      if(!repeatedInt32_.Equals(other.repeatedInt32_)) return false;
-      if(!repeatedString_.Equals(other.repeatedString_)) return false;
-      if(!repeatedEnum_.Equals(other.repeatedEnum_)) return false;
-      if (OptionalString != other.OptionalString) return false;
-      if (OptionalInt32 != other.OptionalInt32) return false;
-      if (OptionalBool != other.OptionalBool) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -511,26 +159,6 @@ namespace ComprehensiveTest.V3Minimmal {
       int hash = 1;
       if (Int32Field != 0) hash ^= Int32Field.GetHashCode();
       if (Int64Field != 0L) hash ^= Int64Field.GetHashCode();
-      if (Uint32Field != 0) hash ^= Uint32Field.GetHashCode();
-      if (Uint64Field != 0UL) hash ^= Uint64Field.GetHashCode();
-      if (Sint32Field != 0) hash ^= Sint32Field.GetHashCode();
-      if (Sint64Field != 0L) hash ^= Sint64Field.GetHashCode();
-      if (Fixed32Field != 0) hash ^= Fixed32Field.GetHashCode();
-      if (Fixed64Field != 0UL) hash ^= Fixed64Field.GetHashCode();
-      if (Sfixed32Field != 0) hash ^= Sfixed32Field.GetHashCode();
-      if (Sfixed64Field != 0L) hash ^= Sfixed64Field.GetHashCode();
-      if (FloatField != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatField);
-      if (DoubleField != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DoubleField);
-      if (BoolField != false) hash ^= BoolField.GetHashCode();
-      if (StringField.Length != 0) hash ^= StringField.GetHashCode();
-      if (BytesField.Length != 0) hash ^= BytesField.GetHashCode();
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) hash ^= EnumField.GetHashCode();
-      hash ^= repeatedInt32_.GetHashCode();
-      hash ^= repeatedString_.GetHashCode();
-      hash ^= repeatedEnum_.GetHashCode();
-      if (HasOptionalString) hash ^= OptionalString.GetHashCode();
-      if (HasOptionalInt32) hash ^= OptionalInt32.GetHashCode();
-      if (HasOptionalBool) hash ^= OptionalBool.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -557,77 +185,6 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(16);
         output.WriteInt64(Int64Field);
       }
-      if (Uint32Field != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Uint32Field);
-      }
-      if (Uint64Field != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(Uint64Field);
-      }
-      if (Sint32Field != 0) {
-        output.WriteRawTag(40);
-        output.WriteSInt32(Sint32Field);
-      }
-      if (Sint64Field != 0L) {
-        output.WriteRawTag(48);
-        output.WriteSInt64(Sint64Field);
-      }
-      if (Fixed32Field != 0) {
-        output.WriteRawTag(61);
-        output.WriteFixed32(Fixed32Field);
-      }
-      if (Fixed64Field != 0UL) {
-        output.WriteRawTag(65);
-        output.WriteFixed64(Fixed64Field);
-      }
-      if (Sfixed32Field != 0) {
-        output.WriteRawTag(77);
-        output.WriteSFixed32(Sfixed32Field);
-      }
-      if (Sfixed64Field != 0L) {
-        output.WriteRawTag(81);
-        output.WriteSFixed64(Sfixed64Field);
-      }
-      if (FloatField != 0F) {
-        output.WriteRawTag(93);
-        output.WriteFloat(FloatField);
-      }
-      if (DoubleField != 0D) {
-        output.WriteRawTag(97);
-        output.WriteDouble(DoubleField);
-      }
-      if (BoolField != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(BoolField);
-      }
-      if (StringField.Length != 0) {
-        output.WriteRawTag(114);
-        output.WriteString(StringField);
-      }
-      if (BytesField.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteBytes(BytesField);
-      }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
-        output.WriteRawTag(128, 1);
-        output.WriteEnum((int) EnumField);
-      }
-      repeatedInt32_.WriteTo(output, _repeated_repeatedInt32_codec);
-      repeatedString_.WriteTo(output, _repeated_repeatedString_codec);
-      repeatedEnum_.WriteTo(output, _repeated_repeatedEnum_codec);
-      if (HasOptionalString) {
-        output.WriteRawTag(178, 1);
-        output.WriteString(OptionalString);
-      }
-      if (HasOptionalInt32) {
-        output.WriteRawTag(184, 1);
-        output.WriteInt32(OptionalInt32);
-      }
-      if (HasOptionalBool) {
-        output.WriteRawTag(192, 1);
-        output.WriteBool(OptionalBool);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -646,77 +203,6 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(16);
         output.WriteInt64(Int64Field);
       }
-      if (Uint32Field != 0) {
-        output.WriteRawTag(24);
-        output.WriteUInt32(Uint32Field);
-      }
-      if (Uint64Field != 0UL) {
-        output.WriteRawTag(32);
-        output.WriteUInt64(Uint64Field);
-      }
-      if (Sint32Field != 0) {
-        output.WriteRawTag(40);
-        output.WriteSInt32(Sint32Field);
-      }
-      if (Sint64Field != 0L) {
-        output.WriteRawTag(48);
-        output.WriteSInt64(Sint64Field);
-      }
-      if (Fixed32Field != 0) {
-        output.WriteRawTag(61);
-        output.WriteFixed32(Fixed32Field);
-      }
-      if (Fixed64Field != 0UL) {
-        output.WriteRawTag(65);
-        output.WriteFixed64(Fixed64Field);
-      }
-      if (Sfixed32Field != 0) {
-        output.WriteRawTag(77);
-        output.WriteSFixed32(Sfixed32Field);
-      }
-      if (Sfixed64Field != 0L) {
-        output.WriteRawTag(81);
-        output.WriteSFixed64(Sfixed64Field);
-      }
-      if (FloatField != 0F) {
-        output.WriteRawTag(93);
-        output.WriteFloat(FloatField);
-      }
-      if (DoubleField != 0D) {
-        output.WriteRawTag(97);
-        output.WriteDouble(DoubleField);
-      }
-      if (BoolField != false) {
-        output.WriteRawTag(104);
-        output.WriteBool(BoolField);
-      }
-      if (StringField.Length != 0) {
-        output.WriteRawTag(114);
-        output.WriteString(StringField);
-      }
-      if (BytesField.Length != 0) {
-        output.WriteRawTag(122);
-        output.WriteBytes(BytesField);
-      }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
-        output.WriteRawTag(128, 1);
-        output.WriteEnum((int) EnumField);
-      }
-      repeatedInt32_.WriteTo(ref output, _repeated_repeatedInt32_codec);
-      repeatedString_.WriteTo(ref output, _repeated_repeatedString_codec);
-      repeatedEnum_.WriteTo(ref output, _repeated_repeatedEnum_codec);
-      if (HasOptionalString) {
-        output.WriteRawTag(178, 1);
-        output.WriteString(OptionalString);
-      }
-      if (HasOptionalInt32) {
-        output.WriteRawTag(184, 1);
-        output.WriteInt32(OptionalInt32);
-      }
-      if (HasOptionalBool) {
-        output.WriteRawTag(192, 1);
-        output.WriteBool(OptionalBool);
-      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -732,60 +218,6 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (Int64Field != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Int64Field);
-      }
-      if (Uint32Field != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uint32Field);
-      }
-      if (Uint64Field != 0UL) {
-        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Uint64Field);
-      }
-      if (Sint32Field != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Sint32Field);
-      }
-      if (Sint64Field != 0L) {
-        size += 1 + pb::CodedOutputStream.ComputeSInt64Size(Sint64Field);
-      }
-      if (Fixed32Field != 0) {
-        size += 1 + 4;
-      }
-      if (Fixed64Field != 0UL) {
-        size += 1 + 8;
-      }
-      if (Sfixed32Field != 0) {
-        size += 1 + 4;
-      }
-      if (Sfixed64Field != 0L) {
-        size += 1 + 8;
-      }
-      if (FloatField != 0F) {
-        size += 1 + 4;
-      }
-      if (DoubleField != 0D) {
-        size += 1 + 8;
-      }
-      if (BoolField != false) {
-        size += 1 + 1;
-      }
-      if (StringField.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(StringField);
-      }
-      if (BytesField.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesField);
-      }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
-        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumField);
-      }
-      size += repeatedInt32_.CalculateSize(_repeated_repeatedInt32_codec);
-      size += repeatedString_.CalculateSize(_repeated_repeatedString_codec);
-      size += repeatedEnum_.CalculateSize(_repeated_repeatedEnum_codec);
-      if (HasOptionalString) {
-        size += 2 + pb::CodedOutputStream.ComputeStringSize(OptionalString);
-      }
-      if (HasOptionalInt32) {
-        size += 2 + pb::CodedOutputStream.ComputeInt32Size(OptionalInt32);
-      }
-      if (HasOptionalBool) {
-        size += 2 + 1;
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -804,60 +236,6 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (other.Int64Field != 0L) {
         Int64Field = other.Int64Field;
-      }
-      if (other.Uint32Field != 0) {
-        Uint32Field = other.Uint32Field;
-      }
-      if (other.Uint64Field != 0UL) {
-        Uint64Field = other.Uint64Field;
-      }
-      if (other.Sint32Field != 0) {
-        Sint32Field = other.Sint32Field;
-      }
-      if (other.Sint64Field != 0L) {
-        Sint64Field = other.Sint64Field;
-      }
-      if (other.Fixed32Field != 0) {
-        Fixed32Field = other.Fixed32Field;
-      }
-      if (other.Fixed64Field != 0UL) {
-        Fixed64Field = other.Fixed64Field;
-      }
-      if (other.Sfixed32Field != 0) {
-        Sfixed32Field = other.Sfixed32Field;
-      }
-      if (other.Sfixed64Field != 0L) {
-        Sfixed64Field = other.Sfixed64Field;
-      }
-      if (other.FloatField != 0F) {
-        FloatField = other.FloatField;
-      }
-      if (other.DoubleField != 0D) {
-        DoubleField = other.DoubleField;
-      }
-      if (other.BoolField != false) {
-        BoolField = other.BoolField;
-      }
-      if (other.StringField.Length != 0) {
-        StringField = other.StringField;
-      }
-      if (other.BytesField.Length != 0) {
-        BytesField = other.BytesField;
-      }
-      if (other.EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
-        EnumField = other.EnumField;
-      }
-      repeatedInt32_.Add(other.repeatedInt32_);
-      repeatedString_.Add(other.repeatedString_);
-      repeatedEnum_.Add(other.repeatedEnum_);
-      if (other.HasOptionalString) {
-        OptionalString = other.OptionalString;
-      }
-      if (other.HasOptionalInt32) {
-        OptionalInt32 = other.OptionalInt32;
-      }
-      if (other.HasOptionalBool) {
-        OptionalBool = other.OptionalBool;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -886,88 +264,6 @@ namespace ComprehensiveTest.V3Minimmal {
             Int64Field = input.ReadInt64();
             break;
           }
-          case 24: {
-            Uint32Field = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            Uint64Field = input.ReadUInt64();
-            break;
-          }
-          case 40: {
-            Sint32Field = input.ReadSInt32();
-            break;
-          }
-          case 48: {
-            Sint64Field = input.ReadSInt64();
-            break;
-          }
-          case 61: {
-            Fixed32Field = input.ReadFixed32();
-            break;
-          }
-          case 65: {
-            Fixed64Field = input.ReadFixed64();
-            break;
-          }
-          case 77: {
-            Sfixed32Field = input.ReadSFixed32();
-            break;
-          }
-          case 81: {
-            Sfixed64Field = input.ReadSFixed64();
-            break;
-          }
-          case 93: {
-            FloatField = input.ReadFloat();
-            break;
-          }
-          case 97: {
-            DoubleField = input.ReadDouble();
-            break;
-          }
-          case 104: {
-            BoolField = input.ReadBool();
-            break;
-          }
-          case 114: {
-            StringField = input.ReadString();
-            break;
-          }
-          case 122: {
-            BytesField = input.ReadBytes();
-            break;
-          }
-          case 128: {
-            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
-            break;
-          }
-          case 146:
-          case 144: {
-            repeatedInt32_.AddEntriesFrom(input, _repeated_repeatedInt32_codec);
-            break;
-          }
-          case 154: {
-            repeatedString_.AddEntriesFrom(input, _repeated_repeatedString_codec);
-            break;
-          }
-          case 162:
-          case 160: {
-            repeatedEnum_.AddEntriesFrom(input, _repeated_repeatedEnum_codec);
-            break;
-          }
-          case 178: {
-            OptionalString = input.ReadString();
-            break;
-          }
-          case 184: {
-            OptionalInt32 = input.ReadInt32();
-            break;
-          }
-          case 192: {
-            OptionalBool = input.ReadBool();
-            break;
-          }
         }
       }
     #endif
@@ -993,88 +289,6 @@ namespace ComprehensiveTest.V3Minimmal {
           }
           case 16: {
             Int64Field = input.ReadInt64();
-            break;
-          }
-          case 24: {
-            Uint32Field = input.ReadUInt32();
-            break;
-          }
-          case 32: {
-            Uint64Field = input.ReadUInt64();
-            break;
-          }
-          case 40: {
-            Sint32Field = input.ReadSInt32();
-            break;
-          }
-          case 48: {
-            Sint64Field = input.ReadSInt64();
-            break;
-          }
-          case 61: {
-            Fixed32Field = input.ReadFixed32();
-            break;
-          }
-          case 65: {
-            Fixed64Field = input.ReadFixed64();
-            break;
-          }
-          case 77: {
-            Sfixed32Field = input.ReadSFixed32();
-            break;
-          }
-          case 81: {
-            Sfixed64Field = input.ReadSFixed64();
-            break;
-          }
-          case 93: {
-            FloatField = input.ReadFloat();
-            break;
-          }
-          case 97: {
-            DoubleField = input.ReadDouble();
-            break;
-          }
-          case 104: {
-            BoolField = input.ReadBool();
-            break;
-          }
-          case 114: {
-            StringField = input.ReadString();
-            break;
-          }
-          case 122: {
-            BytesField = input.ReadBytes();
-            break;
-          }
-          case 128: {
-            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
-            break;
-          }
-          case 146:
-          case 144: {
-            repeatedInt32_.AddEntriesFrom(ref input, _repeated_repeatedInt32_codec);
-            break;
-          }
-          case 154: {
-            repeatedString_.AddEntriesFrom(ref input, _repeated_repeatedString_codec);
-            break;
-          }
-          case 162:
-          case 160: {
-            repeatedEnum_.AddEntriesFrom(ref input, _repeated_repeatedEnum_codec);
-            break;
-          }
-          case 178: {
-            OptionalString = input.ReadString();
-            break;
-          }
-          case 184: {
-            OptionalInt32 = input.ReadInt32();
-            break;
-          }
-          case 192: {
-            OptionalBool = input.ReadBool();
             break;
           }
         }
