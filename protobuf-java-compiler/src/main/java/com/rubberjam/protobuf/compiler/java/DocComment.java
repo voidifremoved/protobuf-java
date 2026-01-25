@@ -328,7 +328,10 @@ public final class DocComment
 							sb.append("required ");
 							break;
 						case LABEL_OPTIONAL:
-							sb.append("optional ");
+							if (!isProto3)
+							{
+								sb.append("optional ");
+							}
 							break;
 						case LABEL_REPEATED:
 							sb.append("repeated ");
@@ -537,6 +540,9 @@ public final class DocComment
 			break;
 		case GETTER:
 			out.print(" * @return The " + camelcaseName + ".\n");
+			break;
+		case VALUE_GETTER:
+			out.print(" * @return The enum numeric value on the wire for " + camelcaseName + ".\n");
 			break;
 		case SETTER:
 			out.print(" * @param value The " + camelcaseName + " to set.\n");

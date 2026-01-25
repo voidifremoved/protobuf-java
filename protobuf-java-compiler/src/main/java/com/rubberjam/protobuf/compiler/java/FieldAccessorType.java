@@ -14,6 +14,7 @@ public enum FieldAccessorType
 {
 	HAZZER,
 	GETTER,
+	VALUE_GETTER,
 	SETTER,
 	CLEARER,
 	// Repeated

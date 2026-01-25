@@ -256,7 +256,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println("      }");
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
-			printer.println("      if (desc.getNumber() == -1) {");
+			printer.println("      if (desc.getIndex() == -1) {");
 			printer.println("        return UNRECOGNIZED;");
 			printer.println("      }");
 		}
