@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package ComprehensiveTest.V3Minimmal;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.v3";
+option java_outer_classname = "ComprehensiveTestV3Minimal";
+option java_generic_services = false;
+option cc_generic_services = false;
+option optimize_for = CODE_SIZE;
+
+// Test enum (proto3 - open enum)
+enum TestEnumV3 {
+  TEST_UNKNOWN = 0;
+  TEST_FIRST = 1;
+  TEST_SECOND = 2;
+  TEST_THIRD = 3;
+  // Proto3 enums are open, so unknown values are preserved
+}
+
+
+
