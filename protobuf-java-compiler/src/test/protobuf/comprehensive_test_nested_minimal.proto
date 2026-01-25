@@ -31,18 +31,25 @@ message Level1 {
 
 }
 
-// Nested message with maps
-message OuterWithNestedMaps {
-  optional string outer_field = 1;
-  
-  message NestedWithMaps {
-    map<string, int32> nested_map = 1;
-    map<int32, string> reverse_map = 2;
+// Nested groups
+message MessageWithNestedGroups {
+  optional group Group1 = 1 {
+    optional string group1_field = 1;
+    
+    optional group Group1A = 2 {
+      optional string group1a_field = 1;
+    }
+    optional Group1A nested_group = 3;
   }
   
-  optional NestedWithMaps nested = 2;
-  map<string, NestedWithMaps> outer_map = 3;
+  repeated group RepeatedGroup = 2 {
+    optional string repeated_group_field = 1;
+    
+    optional group InnerGroup = 2 {
+      optional string inner_field = 1;
+    }
+    optional InnerGroup inner = 3;
+  }
 }
-
 
 

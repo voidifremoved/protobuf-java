@@ -173,6 +173,2276 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3Minimmal.TestEnumV3)
   }
 
+  public interface AllFieldTypesV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <pre>
+     * Integer types
+     * </pre>
+     *
+     * <code>int32 int32_field = 1;</code>
+     * @return The int32Field.
+     */
+    int getInt32Field();
+
+    /**
+     * <code>int64 int64_field = 2;</code>
+     * @return The int64Field.
+     */
+    long getInt64Field();
+
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    int getUint32Field();
+
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    long getUint64Field();
+
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    int getSint32Field();
+
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    long getSint64Field();
+
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    int getFixed32Field();
+
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    long getFixed64Field();
+
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    int getSfixed32Field();
+
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    long getSfixed64Field();
+
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    float getFloatField();
+
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    double getDoubleField();
+
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    boolean getBoolField();
+
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    java.lang.String getStringField();
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    com.google.protobuf.ByteString
+        getStringFieldBytes();
+
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    com.google.protobuf.ByteString getBytesField();
+
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    int getEnumFieldValue();
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField();
+
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    java.util.List<java.lang.Integer> getRepeatedInt32List();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    int getRepeatedInt32Count();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    int getRepeatedInt32(int index);
+
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedStringList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    int getRepeatedStringCount();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    java.lang.String getRepeatedString(int index);
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    int getRepeatedEnumCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    int getRepeatedEnumValue(int index);
+
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    boolean hasOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    java.lang.String getOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    com.google.protobuf.ByteString
+        getOptionalStringBytes();
+
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    boolean hasOptionalInt32();
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    int getOptionalInt32();
+
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    boolean hasOptionalBool();
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    boolean getOptionalBool();
+  }
+  /**
+   * <pre>
+   * Message with all field types (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3Minimmal.AllFieldTypesV3}
+   */
+  public static final class AllFieldTypesV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+      AllFieldTypesV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "AllFieldTypesV3");
+    }
+    // Use AllFieldTypesV3.newBuilder() to construct.
+    private AllFieldTypesV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AllFieldTypesV3() {
+      stringField_ = "";
+      bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      enumField_ = 0;
+      repeatedInt32_ = emptyIntList();
+      repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedEnum_ = emptyIntList();
+      optionalString_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int INT32_FIELD_FIELD_NUMBER = 1;
+    private int int32Field_ = 0;
+    /**
+     * <pre>
+     * Integer types
+     * </pre>
+     *
+     * <code>int32 int32_field = 1;</code>
+     * @return The int32Field.
+     */
+    @java.lang.Override
+    public int getInt32Field() {
+      return int32Field_;
+    }
+
+    public static final int INT64_FIELD_FIELD_NUMBER = 2;
+    private long int64Field_ = 0L;
+    /**
+     * <code>int64 int64_field = 2;</code>
+     * @return The int64Field.
+     */
+    @java.lang.Override
+    public long getInt64Field() {
+      return int64Field_;
+    }
+
+    public static final int UINT32_FIELD_FIELD_NUMBER = 3;
+    private int uint32Field_ = 0;
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    @java.lang.Override
+    public int getUint32Field() {
+      return uint32Field_;
+    }
+
+    public static final int UINT64_FIELD_FIELD_NUMBER = 4;
+    private long uint64Field_ = 0L;
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    @java.lang.Override
+    public long getUint64Field() {
+      return uint64Field_;
+    }
+
+    public static final int SINT32_FIELD_FIELD_NUMBER = 5;
+    private int sint32Field_ = 0;
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    @java.lang.Override
+    public int getSint32Field() {
+      return sint32Field_;
+    }
+
+    public static final int SINT64_FIELD_FIELD_NUMBER = 6;
+    private long sint64Field_ = 0L;
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    @java.lang.Override
+    public long getSint64Field() {
+      return sint64Field_;
+    }
+
+    public static final int FIXED32_FIELD_FIELD_NUMBER = 7;
+    private int fixed32Field_ = 0;
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    @java.lang.Override
+    public int getFixed32Field() {
+      return fixed32Field_;
+    }
+
+    public static final int FIXED64_FIELD_FIELD_NUMBER = 8;
+    private long fixed64Field_ = 0L;
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    @java.lang.Override
+    public long getFixed64Field() {
+      return fixed64Field_;
+    }
+
+    public static final int SFIXED32_FIELD_FIELD_NUMBER = 9;
+    private int sfixed32Field_ = 0;
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    @java.lang.Override
+    public int getSfixed32Field() {
+      return sfixed32Field_;
+    }
+
+    public static final int SFIXED64_FIELD_FIELD_NUMBER = 10;
+    private long sfixed64Field_ = 0L;
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    @java.lang.Override
+    public long getSfixed64Field() {
+      return sfixed64Field_;
+    }
+
+    public static final int FLOAT_FIELD_FIELD_NUMBER = 11;
+    private float floatField_ = 0F;
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    @java.lang.Override
+    public float getFloatField() {
+      return floatField_;
+    }
+
+    public static final int DOUBLE_FIELD_FIELD_NUMBER = 12;
+    private double doubleField_ = 0D;
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    @java.lang.Override
+    public double getDoubleField() {
+      return doubleField_;
+    }
+
+    public static final int BOOL_FIELD_FIELD_NUMBER = 13;
+    private boolean boolField_ = false;
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    @java.lang.Override
+    public boolean getBoolField() {
+      return boolField_;
+    }
+
+    public static final int STRING_FIELD_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stringField_ = "";
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    @java.lang.Override
+    public java.lang.String getStringField() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        stringField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStringFieldBytes() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stringField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTES_FIELD_FIELD_NUMBER = 15;
+    private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getBytesField() {
+      return bytesField_;
+    }
+
+    public static final int ENUM_FIELD_FIELD_NUMBER = 16;
+    private int enumField_ = 0;
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    @java.lang.Override public int getEnumFieldValue() {
+      return enumField_;
+    }
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField() {
+      com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(enumField_);
+      return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+    }
+
+    public static final int REPEATED_INT32_FIELD_NUMBER = 18;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedInt32_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeatedInt32List() {
+      return repeatedInt32_;
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    public int getRepeatedInt32Count() {
+      return repeatedInt32_.size();
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    public int getRepeatedInt32(int index) {
+      return repeatedInt32_.getInt(index);
+    }
+    private int repeatedInt32MemoizedSerializedSize = -1;
+
+    public static final int REPEATED_STRING_FIELD_NUMBER = 19;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedStringList() {
+      return repeatedString_;
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    public int getRepeatedStringCount() {
+      return repeatedString_.size();
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    public java.lang.String getRepeatedString(int index) {
+      return repeatedString_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index) {
+      return repeatedString_.getByteString(index);
+    }
+
+    public static final int REPEATED_ENUM_FIELD_NUMBER = 20;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedEnum_ =
+        emptyIntList();
+    private static final     com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> repeatedEnum_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>() {
+              public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 convert(int from) {
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(from);
+                return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumCount() {
+      return repeatedEnum_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index) {
+      return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList() {
+      return repeatedEnum_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumValue(int index) {
+      return repeatedEnum_.getInt(index);
+    }
+    private int repeatedEnumMemoizedSerializedSize;
+
+    public static final int OPTIONAL_STRING_FIELD_NUMBER = 22;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object optionalString_ = "";
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalString() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    @java.lang.Override
+    public java.lang.String getOptionalString() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        optionalString_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOptionalStringBytes() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        optionalString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OPTIONAL_INT32_FIELD_NUMBER = 23;
+    private int optionalInt32_ = 0;
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalInt32() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    @java.lang.Override
+    public int getOptionalInt32() {
+      return optionalInt32_;
+    }
+
+    public static final int OPTIONAL_BOOL_FIELD_NUMBER = 24;
+    private boolean optionalBool_ = false;
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalBool() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    @java.lang.Override
+    public boolean getOptionalBool() {
+      return optionalBool_;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with all field types (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3Minimmal.AllFieldTypesV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        int32Field_ = 0;
+        int64Field_ = 0L;
+        uint32Field_ = 0;
+        uint64Field_ = 0L;
+        sint32Field_ = 0;
+        sint64Field_ = 0L;
+        fixed32Field_ = 0;
+        fixed64Field_ = 0L;
+        sfixed32Field_ = 0;
+        sfixed64Field_ = 0L;
+        floatField_ = 0F;
+        doubleField_ = 0D;
+        boolField_ = false;
+        stringField_ = "";
+        bytesField_ = com.google.protobuf.ByteString.EMPTY;
+        enumField_ = 0;
+        repeatedInt32_ = emptyIntList();
+        repeatedString_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedEnum_ = emptyIntList();
+        optionalString_ = "";
+        optionalInt32_ = 0;
+        optionalBool_ = false;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.int32Field_ = int32Field_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.int64Field_ = int64Field_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.uint32Field_ = uint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.uint64Field_ = uint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.sint32Field_ = sint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.sint64Field_ = sint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.fixed32Field_ = fixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fixed64Field_ = fixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.sfixed32Field_ = sfixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.sfixed64Field_ = sfixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.floatField_ = floatField_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          result.doubleField_ = doubleField_;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.boolField_ = boolField_;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          result.stringField_ = stringField_;
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          result.bytesField_ = bytesField_;
+        }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.enumField_ = enumField_;
+        }
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          repeatedInt32_.makeImmutable();
+          result.repeatedInt32_ = repeatedInt32_;
+        }
+        if (((from_bitField0_ & 0x00020000) != 0)) {
+          repeatedString_.makeImmutable();
+          result.repeatedString_ = repeatedString_;
+        }
+        if (((from_bitField0_ & 0x00040000) != 0)) {
+          repeatedEnum_.makeImmutable();
+          result.repeatedEnum_ = repeatedEnum_;
+        }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00080000) != 0)) {
+          result.optionalString_ = optionalString_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00100000) != 0)) {
+          result.optionalInt32_ = optionalInt32_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00200000) != 0)) {
+          result.optionalBool_ = optionalBool_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      private int bitField0_;
+
+      private int int32Field_ ;
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @return The int32Field.
+       */
+      @java.lang.Override
+      public int getInt32Field() {
+        return int32Field_;
+      }
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @param value The int32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInt32Field(int value) {
+
+        int32Field_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Integer types
+       * </pre>
+       *
+       * <code>int32 int32_field = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInt32Field() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        int32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long int64Field_ ;
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @return The int64Field.
+       */
+      @java.lang.Override
+      public long getInt64Field() {
+        return int64Field_;
+      }
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @param value The int64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setInt64Field(long value) {
+
+        int64Field_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 int64_field = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearInt64Field() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        int64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int uint32Field_ ;
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return The uint32Field.
+       */
+      @java.lang.Override
+      public int getUint32Field() {
+        return uint32Field_;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @param value The uint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint32Field(int value) {
+
+        uint32Field_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        uint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long uint64Field_ ;
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return The uint64Field.
+       */
+      @java.lang.Override
+      public long getUint64Field() {
+        return uint64Field_;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @param value The uint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint64Field(long value) {
+
+        uint64Field_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        uint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sint32Field_ ;
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return The sint32Field.
+       */
+      @java.lang.Override
+      public int getSint32Field() {
+        return sint32Field_;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @param value The sint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint32Field(int value) {
+
+        sint32Field_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sint64Field_ ;
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return The sint64Field.
+       */
+      @java.lang.Override
+      public long getSint64Field() {
+        return sint64Field_;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @param value The sint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint64Field(long value) {
+
+        sint64Field_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int fixed32Field_ ;
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return The fixed32Field.
+       */
+      @java.lang.Override
+      public int getFixed32Field() {
+        return fixed32Field_;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @param value The fixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed32Field(int value) {
+
+        fixed32Field_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        fixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long fixed64Field_ ;
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return The fixed64Field.
+       */
+      @java.lang.Override
+      public long getFixed64Field() {
+        return fixed64Field_;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @param value The fixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed64Field(long value) {
+
+        fixed64Field_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        fixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sfixed32Field_ ;
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return The sfixed32Field.
+       */
+      @java.lang.Override
+      public int getSfixed32Field() {
+        return sfixed32Field_;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @param value The sfixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed32Field(int value) {
+
+        sfixed32Field_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        sfixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sfixed64Field_ ;
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return The sfixed64Field.
+       */
+      @java.lang.Override
+      public long getSfixed64Field() {
+        return sfixed64Field_;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @param value The sfixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed64Field(long value) {
+
+        sfixed64Field_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        sfixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private float floatField_ ;
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return The floatField.
+       */
+      @java.lang.Override
+      public float getFloatField() {
+        return floatField_;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @param value The floatField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFloatField(float value) {
+
+        floatField_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFloatField() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        floatField_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private double doubleField_ ;
+      /**
+       * <code>double double_field = 12;</code>
+       * @return The doubleField.
+       */
+      @java.lang.Override
+      public double getDoubleField() {
+        return doubleField_;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @param value The doubleField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDoubleField(double value) {
+
+        doubleField_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDoubleField() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        doubleField_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private boolean boolField_ ;
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return The boolField.
+       */
+      @java.lang.Override
+      public boolean getBoolField() {
+        return boolField_;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @param value The boolField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBoolField(boolean value) {
+
+        boolField_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBoolField() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        boolField_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object stringField_ = "";
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The stringField.
+       */
+      public java.lang.String getStringField() {
+        java.lang.Object ref = stringField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          stringField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The bytes for stringField.
+       */
+      public com.google.protobuf.ByteString
+          getStringFieldBytes() {
+        java.lang.Object ref = stringField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stringField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStringField() {
+        stringField_ = getDefaultInstance().getStringField();
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The bytes for stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return The bytesField.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getBytesField() {
+        return bytesField_;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @param value The bytesField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBytesField(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        bytesField_ = value;
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBytesField() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        bytesField_ = getDefaultInstance().getBytesField();
+        onChanged();
+        return this;
+      }
+
+      private int enumField_ = 0;
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return The enum numeric value on the wire for enumField.
+       */
+      @java.lang.Override public int getEnumFieldValue() {
+        return enumField_;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @param value The enum numeric value on the wire for enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumFieldValue(int value) {
+        enumField_ = value;
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return The enumField.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(enumField_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @param value The enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x00008000;
+        enumField_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnumField() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        enumField_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedInt32_ = emptyIntList();
+      private void ensureRepeatedInt32IsMutable() {
+        if (!repeatedInt32_.isModifiable()) {
+          repeatedInt32_ = makeMutableCopy(repeatedInt32_);
+        }
+        bitField0_ |= 0x00010000;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return A list containing the repeatedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeatedInt32List() {
+        repeatedInt32_.makeImmutable();
+        return repeatedInt32_;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return The count of repeatedInt32.
+       */
+      public int getRepeatedInt32Count() {
+        return repeatedInt32_.size();
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedInt32 at the given index.
+       */
+      public int getRepeatedInt32(int index) {
+        return repeatedInt32_.getInt(index);
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedInt32(
+          int index, int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.setInt(index, value);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param value The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedInt32(int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.addInt(value);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param values The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeatedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedInt32_);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedInt32() {
+        repeatedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00010000);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedStringIsMutable() {
+        if (!repeatedString_.isModifiable()) {
+          repeatedString_ = new com.google.protobuf.LazyStringArrayList(repeatedString_);
+        }
+        bitField0_ |= 0x00020000;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return A list containing the repeatedString.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedStringList() {
+        repeatedString_.makeImmutable();
+        return repeatedString_;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return The count of repeatedString.
+       */
+      public int getRepeatedStringCount() {
+        return repeatedString_.size();
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString at the given index.
+       */
+      public java.lang.String getRepeatedString(int index) {
+        return repeatedString_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedStringBytes(int index) {
+        return repeatedString_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.set(index, value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param values The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedStringIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString_);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString() {
+        repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00020000);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The bytes of the repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedEnum_ = emptyIntList();
+      private void ensureRepeatedEnumIsMutable() {
+        if (!repeatedEnum_.isModifiable()) {
+          repeatedEnum_ = makeMutableCopy(repeatedEnum_);
+        }
+        bitField0_ |= 0x00040000;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the repeatedEnum.
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return The count of repeatedEnum.
+       */
+      public int getRepeatedEnumCount() {
+        return repeatedEnum_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedEnum at the given index.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index) {
+        return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnum(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnum(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> values) {
+        ensureRepeatedEnumIsMutable();
+        for (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value : values) {
+          repeatedEnum_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedEnum() {
+        repeatedEnum_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00040000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the enum numeric values on the wire for repeatedEnum.
+       */
+      public java.util.List<java.lang.Integer>
+      getRepeatedEnumValueList() {
+        repeatedEnum_.makeImmutable();
+        return repeatedEnum_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of repeatedEnum at the given index.
+       */
+      public int getRepeatedEnumValue(int index) {
+        return repeatedEnum_.getInt(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The enum numeric value on the wire for repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnumValue(
+          int index, int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The enum numeric value on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnumValue(int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The enum numeric values on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnumValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensureRepeatedEnumIsMutable();
+        for (int value : values) {
+          repeatedEnum_.addInt(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object optionalString_ = "";
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return Whether the optionalString field is set.
+       */
+      public boolean hasOptionalString() {
+        return ((bitField0_ & 0x00080000) != 0);
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The optionalString.
+       */
+      public java.lang.String getOptionalString() {
+        java.lang.Object ref = optionalString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          optionalString_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The bytes for optionalString.
+       */
+      public com.google.protobuf.ByteString
+          getOptionalStringBytes() {
+        java.lang.Object ref = optionalString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          optionalString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        optionalString_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalString() {
+        optionalString_ = getDefaultInstance().getOptionalString();
+        bitField0_ = (bitField0_ & ~0x00080000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The bytes for optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        optionalString_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+
+      private int optionalInt32_ ;
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return Whether the optionalInt32 field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalInt32() {
+        return ((bitField0_ & 0x00100000) != 0);
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return The optionalInt32.
+       */
+      @java.lang.Override
+      public int getOptionalInt32() {
+        return optionalInt32_;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @param value The optionalInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalInt32(int value) {
+
+        optionalInt32_ = value;
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalInt32() {
+        bitField0_ = (bitField0_ & ~0x00100000);
+        optionalInt32_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean optionalBool_ ;
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return Whether the optionalBool field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalBool() {
+        return ((bitField0_ & 0x00200000) != 0);
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return The optionalBool.
+       */
+      @java.lang.Override
+      public boolean getOptionalBool() {
+        return optionalBool_;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @param value The optionalBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalBool(boolean value) {
+
+        optionalBool_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalBool() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        optionalBool_ = false;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AllFieldTypesV3>
+        PARSER = new com.google.protobuf.AbstractParser<AllFieldTypesV3>() {
+      @java.lang.Override
+      public AllFieldTypesV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AllFieldTypesV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllFieldTypesV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -183,16 +2453,39 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal*O\n\nTestEnumV" +
-      "3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013T" +
-      "EST_SECOND\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubb" +
-      "erjam.protobuf.compiler.test.v3B\032Compreh" +
-      "ensiveTestV3MinimalH\002\200\001\000\210\001\000b\006proto3"
+      "omprehensiveTest.V3Minimmal\"\233\005\n\017AllField" +
+      "TypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fi" +
+      "eld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint6" +
+      "4_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014s" +
+      "int64_field\030\006 \001(\022\022\025\n\rfixed32_field\030\007 \001(\007" +
+      "\022\025\n\rfixed64_field\030\010 \001(\006\022\026\n\016sfixed32_fiel" +
+      "d\030\t \001(\017\022\026\n\016sfixed64_field\030\n \001(\020\022\023\n\013float" +
+      "_field\030\013 \001(\002\022\024\n\014double_field\030\014 \001(\001\022\022\n\nbo" +
+      "ol_field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013" +
+      "bytes_field\030\017 \001(\014\022<\n\nenum_field\030\020 \001(\0162(." +
+      "ComprehensiveTest.V3Minimmal.TestEnumV3\022" +
+      "\026\n\016repeated_int32\030\022 \003(\005\022\027\n\017repeated_stri" +
+      "ng\030\023 \003(\t\022?\n\rrepeated_enum\030\024 \003(\0162(.Compre" +
+      "hensiveTest.V3Minimmal.TestEnumV3\022\034\n\017opt" +
+      "ional_string\030\026 \001(\tH\000\210\001\001\022\033\n\016optional_int3" +
+      "2\030\027 \001(\005H\001\210\001\001\022\032\n\roptional_bool\030\030 \001(\010H\002\210\001\001" +
+      "B\022\n\020_optional_stringB\021\n\017_optional_int32B" +
+      "\020\n\016_optional_bool*O\n\nTestEnumV3\022\020\n\014TEST_" +
+      "UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND" +
+      "\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.prot" +
+      "obuf.compiler.test.v3B\032ComprehensiveTest" +
+      "V3MinimalH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
+    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor =
+      getDescriptor().getMessageType(0);
+    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

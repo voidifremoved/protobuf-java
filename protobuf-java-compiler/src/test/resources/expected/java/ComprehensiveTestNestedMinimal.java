@@ -2449,87 +2449,60 @@ public final class ComprehensiveTestNestedMinimal extends com.google.protobuf.Ge
 
   }
 
-  public interface OuterWithNestedMapsOrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps)
+  public interface MessageWithNestedGroupsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups)
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return Whether the outerField field is set.
+     * <code>optional group Group1 = 1 { ... }</code>
+     * @return Whether the group1 field is set.
      */
-    boolean hasOuterField();
+    boolean hasGroup1();
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return The outerField.
+     * <code>optional group Group1 = 1 { ... }</code>
+     * @return The group1.
      */
-    java.lang.String getOuterField();
+    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getGroup1();
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return The bytes for outerField.
+     * <code>optional group Group1 = 1 { ... }</code>
      */
-    com.google.protobuf.ByteString
-        getOuterFieldBytes();
+    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder getGroup1OrBuilder();
 
     /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-     * @return Whether the nested field is set.
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
-    boolean hasNested();
+    java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> 
+        getRepeatedGroupList();
     /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-     * @return The nested.
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
-    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getNested();
+    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getRepeatedGroup(int index);
     /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
-    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder getNestedOrBuilder();
-
+    int getRepeatedGroupCount();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
-    int getOuterMapCount();
+    java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder> 
+        getRepeatedGroupOrBuilderList();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
-    boolean containsOuterMap(
-        java.lang.String key);
-    /**
-     * Use {@link #getOuterMapMap()} instead.
-     */
-    @java.lang.Deprecated
-    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-    getOuterMap();
-    /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-     */
-    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-    getOuterMapMap();
-    /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-     */
-    /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrDefault(
-        java.lang.String key,
-        /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps defaultValue);
-    /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-     */
-    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrThrow(
-        java.lang.String key);
+    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder getRepeatedGroupOrBuilder(
+        int index);
   }
   /**
    * <pre>
-   * Nested message with maps
+   * Nested groups
    * </pre>
    *
-   * Protobuf type {@code ComprehensiveTest.NestedMinimal.OuterWithNestedMaps}
+   * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups}
    */
-  public static final class OuterWithNestedMaps extends
+  public static final class MessageWithNestedGroups extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps)
-      OuterWithNestedMapsOrBuilder {
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups)
+      MessageWithNestedGroupsOrBuilder {
   private static final long serialVersionUID = 0L;
     static {
       com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -2538,118 +2511,87 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
         /* minor= */ 33,
         /* patch= */ 4,
         /* suffix= */ "",
-        "OuterWithNestedMaps");
+        "MessageWithNestedGroups");
     }
-    // Use OuterWithNestedMaps.newBuilder() to construct.
-    private OuterWithNestedMaps(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+    // Use MessageWithNestedGroups.newBuilder() to construct.
+    private MessageWithNestedGroups(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
       super(builder);
     }
-    private OuterWithNestedMaps() {
-      outerField_ = "";
+    private MessageWithNestedGroups() {
+      repeatedGroup_ = java.util.Collections.emptyList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor;
+      return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor;
     }
 
-    @SuppressWarnings({"rawtypes"})
-    @java.lang.Override
-    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-        int number) {
-      switch (number) {
-        case 3:
-          return internalGetOuterMap();
-        default:
-          throw new RuntimeException(
-              "Invalid map field number: " + number);
-      }
-    }
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_fieldAccessorTable
+      return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.Builder.class);
+              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Builder.class);
     }
 
-    public interface NestedWithMapsOrBuilder extends
-        // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps)
+    public interface Group1OrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1)
         com.google.protobuf.MessageOrBuilder {
 
       /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
+       * <code>optional string group1_field = 1;</code>
+       * @return Whether the group1Field field is set.
        */
-      int getNestedMapCount();
+      boolean hasGroup1Field();
       /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
+       * <code>optional string group1_field = 1;</code>
+       * @return The group1Field.
        */
-      boolean containsNestedMap(
-          java.lang.String key);
+      java.lang.String getGroup1Field();
       /**
-       * Use {@link #getNestedMapMap()} instead.
+       * <code>optional string group1_field = 1;</code>
+       * @return The bytes for group1Field.
        */
-      @java.lang.Deprecated
-      java.util.Map<java.lang.String, java.lang.Integer>
-      getNestedMap();
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      java.util.Map<java.lang.String, java.lang.Integer>
-      getNestedMapMap();
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      int getNestedMapOrDefault(
-          java.lang.String key,
-          int defaultValue);
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      int getNestedMapOrThrow(
-          java.lang.String key);
+      com.google.protobuf.ByteString
+          getGroup1FieldBytes();
 
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional group Group1A = 2 { ... }</code>
+       * @return Whether the group1a field is set.
        */
-      int getReverseMapCount();
+      boolean hasGroup1A();
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional group Group1A = 2 { ... }</code>
+       * @return The group1a.
        */
-      boolean containsReverseMap(
-          int key);
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getGroup1A();
       /**
-       * Use {@link #getReverseMapMap()} instead.
+       * <code>optional group Group1A = 2 { ... }</code>
        */
-      @java.lang.Deprecated
-      java.util.Map<java.lang.Integer, java.lang.String>
-      getReverseMap();
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getGroup1AOrBuilder();
+
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+       * @return Whether the nestedGroup field is set.
        */
-      java.util.Map<java.lang.Integer, java.lang.String>
-      getReverseMapMap();
+      boolean hasNestedGroup();
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+       * @return The nestedGroup.
        */
-      /* nullable */
-java.lang.String getReverseMapOrDefault(
-          int key,
-          /* nullable */
-java.lang.String defaultValue);
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getNestedGroup();
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
        */
-      java.lang.String getReverseMapOrThrow(
-          int key);
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getNestedGroupOrBuilder();
     }
     /**
-     * Protobuf type {@code ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps}
+     * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1}
      */
-    public static final class NestedWithMaps extends
+    public static final class Group1 extends
         com.google.protobuf.GeneratedMessage implements
-        // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps)
-        NestedWithMapsOrBuilder {
+        // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1)
+        Group1OrBuilder {
     private static final long serialVersionUID = 0L;
       static {
         com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
@@ -2658,196 +2600,671 @@ java.lang.String defaultValue);
           /* minor= */ 33,
           /* patch= */ 4,
           /* suffix= */ "",
-          "NestedWithMaps");
+          "Group1");
       }
-      // Use NestedWithMaps.newBuilder() to construct.
-      private NestedWithMaps(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      // Use Group1.newBuilder() to construct.
+      private Group1(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
         super(builder);
       }
-      private NestedWithMaps() {
+      private Group1() {
+        group1Field_ = "";
       }
 
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor;
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      @java.lang.Override
-      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-          int number) {
-        switch (number) {
-          case 1:
-            return internalGetNestedMap();
-          case 2:
-            return internalGetReverseMap();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder.class);
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder.class);
       }
 
-      public static final int NESTED_MAP_FIELD_NUMBER = 1;
-      private static final class NestedMapDefaultEntryHolder {
-        static final com.google.protobuf.MapEntry<
-            java.lang.String, java.lang.Integer> defaultEntry =
-                com.google.protobuf.MapEntry
-                .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_descriptor, 
-                    com.google.protobuf.WireFormat.FieldType.STRING,
-                    "",
-                    com.google.protobuf.WireFormat.FieldType.INT32,
-                    0);
+      public interface Group1AOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return Whether the group1aField field is set.
+         */
+        boolean hasGroup1AField();
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return The group1aField.
+         */
+        java.lang.String getGroup1AField();
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return The bytes for group1aField.
+         */
+        com.google.protobuf.ByteString
+            getGroup1AFieldBytes();
       }
+      /**
+       * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A}
+       */
+      public static final class Group1A extends
+          com.google.protobuf.GeneratedMessage implements
+          // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A)
+          Group1AOrBuilder {
+      private static final long serialVersionUID = 0L;
+        static {
+          com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+            com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+            /* major= */ 4,
+            /* minor= */ 33,
+            /* patch= */ 4,
+            /* suffix= */ "",
+            "Group1A");
+        }
+        // Use Group1A.newBuilder() to construct.
+        private Group1A(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+          super(builder);
+        }
+        private Group1A() {
+          group1AField_ = "";
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder.class);
+        }
+
+        private int bitField0_;
+        public static final int GROUP1A_FIELD_FIELD_NUMBER = 1;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object group1AField_ = "";
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return Whether the group1aField field is set.
+         */
+        @java.lang.Override
+        public boolean hasGroup1AField() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return The group1aField.
+         */
+        @java.lang.Override
+        public java.lang.String getGroup1AField() {
+          java.lang.Object ref = group1AField_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
+          } else {
+            com.google.protobuf.ByteString bs = 
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              group1AField_ = s;
+            }
+            return s;
+          }
+        }
+        /**
+         * <code>optional string group1a_field = 1;</code>
+         * @return The bytes for group1aField.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getGroup1AFieldBytes() {
+          java.lang.Object ref = group1AField_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            group1AField_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            com.google.protobuf.GeneratedMessage.writeString(output, 1, group1AField_);
+          }
+          getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (((bitField0_ & 0x00000001) != 0)) {
+            size += com.google.protobuf.GeneratedMessage.computeStringSize(1, group1AField_);
+          }
+          size += getUnknownFields().getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A)) {
+            return super.equals(obj);
+          }
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A) obj;
+
+          if (hasGroup1AField() != other.hasGroup1AField()) return false;
+          if (hasGroup1AField()) {
+            if (!getGroup1AField()
+                .equals(other.getGroup1AField())) return false;
+          }
+          if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          if (hasGroup1AField()) {
+            hash = (37 * hash) + GROUP1A_FIELD_FIELD_NUMBER;
+            hash = (53 * hash) + getGroup1AField().hashCode();
+          }
+          hash = (29 * hash) + getUnknownFields().hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A)
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder.class);
+          }
+
+          // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.newBuilder()
+          private Builder() {
+
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            super(parent);
+
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            bitField0_ = 0;
+            group1AField_ = "";
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getDefaultInstanceForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A build() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A buildPartial() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A(this);
+            if (bitField0_ != 0) { buildPartial0(result); }
+            onBuilt();
+            return result;
+          }
+
+          private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A result) {
+            int from_bitField0_ = bitField0_;
+            int to_bitField0_ = 0;
+            if (((from_bitField0_ & 0x00000001) != 0)) {
+              result.group1AField_ = group1AField_;
+              to_bitField0_ |= 0x00000001;
+            }
+            result.bitField0_ |= to_bitField0_;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A) {
+              return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A other) {
+            if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance()) return this;
+            if (other.hasGroup1AField()) {
+              group1AField_ = other.group1AField_;
+              bitField0_ |= 0x00000001;
+              onChanged();
+            }
+            this.mergeUnknownFields(other.getUnknownFields());
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            if (extensionRegistry == null) {
+              throw new java.lang.NullPointerException();
+            }
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  case 10: {
+                    group1AField_ = input.readBytes();
+                    bitField0_ |= 0x00000001;
+                    break;
+                  } // case 10
+                  default: {
+                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                      done = true; // was an endgroup tag
+                    }
+                    break;
+                  } // default:
+                } // switch (tag)
+              } // while (!done)
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.unwrapIOException();
+            } finally {
+              onChanged();
+            } // finally
+            return this;
+          }
+          private int bitField0_;
+
+          private java.lang.Object group1AField_ = "";
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @return Whether the group1aField field is set.
+           */
+          public boolean hasGroup1AField() {
+            return ((bitField0_ & 0x00000001) != 0);
+          }
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @return The group1aField.
+           */
+          public java.lang.String getGroup1AField() {
+            java.lang.Object ref = group1AField_;
+            if (!(ref instanceof java.lang.String)) {
+              com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
+              if (bs.isValidUtf8()) {
+                group1AField_ = s;
+              }
+              return s;
+            } else {
+              return (java.lang.String) ref;
+            }
+          }
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @return The bytes for group1aField.
+           */
+          public com.google.protobuf.ByteString
+              getGroup1AFieldBytes() {
+            java.lang.Object ref = group1AField_;
+            if (ref instanceof String) {
+              com.google.protobuf.ByteString b = 
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                      (java.lang.String) ref);
+              group1AField_ = b;
+              return b;
+            } else {
+              return (com.google.protobuf.ByteString) ref;
+            }
+          }
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @param value The group1aField to set.
+           * @return This builder for chaining.
+           */
+          public Builder setGroup1AField(
+              java.lang.String value) {
+            if (value == null) { throw new NullPointerException(); }
+            group1AField_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearGroup1AField() {
+            group1AField_ = getDefaultInstance().getGroup1AField();
+            bitField0_ = (bitField0_ & ~0x00000001);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string group1a_field = 1;</code>
+           * @param value The bytes for group1aField to set.
+           * @return This builder for chaining.
+           */
+          public Builder setGroup1AFieldBytes(
+              com.google.protobuf.ByteString value) {
+            if (value == null) { throw new NullPointerException(); }
+            group1AField_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A)
+        }
+
+        // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A)
+        private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A();
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<Group1A>
+            PARSER = new com.google.protobuf.AbstractParser<Group1A>() {
+          @java.lang.Override
+          public Group1A parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
+        public static com.google.protobuf.Parser<Group1A> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Group1A> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
+      }
+
+      private int bitField0_;
+      public static final int GROUP1_FIELD_FIELD_NUMBER = 1;
       @SuppressWarnings("serial")
-      private com.google.protobuf.MapField<
-          java.lang.String, java.lang.Integer> nestedMap_;
-      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-      internalGetNestedMap() {
-        if (nestedMap_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              NestedMapDefaultEntryHolder.defaultEntry);
+      private volatile java.lang.Object group1Field_ = "";
+      /**
+       * <code>optional string group1_field = 1;</code>
+       * @return Whether the group1Field field is set.
+       */
+      @java.lang.Override
+      public boolean hasGroup1Field() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string group1_field = 1;</code>
+       * @return The group1Field.
+       */
+      @java.lang.Override
+      public java.lang.String getGroup1Field() {
+        java.lang.Object ref = group1Field_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            group1Field_ = s;
+          }
+          return s;
         }
-        return nestedMap_;
-      }
-      public int getNestedMapCount() {
-        return internalGetNestedMap().getMap().size();
       }
       /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
+       * <code>optional string group1_field = 1;</code>
+       * @return The bytes for group1Field.
        */
       @java.lang.Override
-      public boolean containsNestedMap(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        return internalGetNestedMap().getMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getNestedMapMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, java.lang.Integer> getNestedMap() {
-        return getNestedMapMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, java.lang.Integer> getNestedMapMap() {
-        return internalGetNestedMap().getMap();
-      }
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      @java.lang.Override
-      public int getNestedMapOrDefault(
-          java.lang.String key,
-          int defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetNestedMap().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-       */
-      @java.lang.Override
-      public int getNestedMapOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, java.lang.Integer> map =
-            internalGetNestedMap().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+      public com.google.protobuf.ByteString
+          getGroup1FieldBytes() {
+        java.lang.Object ref = group1Field_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          group1Field_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
         }
-        return map.get(key);
       }
 
-      public static final int REVERSE_MAP_FIELD_NUMBER = 2;
-      private static final class ReverseMapDefaultEntryHolder {
-        static final com.google.protobuf.MapEntry<
-            java.lang.Integer, java.lang.String> defaultEntry =
-                com.google.protobuf.MapEntry
-                .<java.lang.Integer, java.lang.String>newDefaultInstance(
-                    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_descriptor, 
-                    com.google.protobuf.WireFormat.FieldType.INT32,
-                    0,
-                    com.google.protobuf.WireFormat.FieldType.STRING,
-                    "");
-      }
-      @SuppressWarnings("serial")
-      private com.google.protobuf.MapField<
-          java.lang.Integer, java.lang.String> reverseMap_;
-      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-      internalGetReverseMap() {
-        if (reverseMap_ == null) {
-          return com.google.protobuf.MapField.emptyMapField(
-              ReverseMapDefaultEntryHolder.defaultEntry);
-        }
-        return reverseMap_;
-      }
-      public int getReverseMapCount() {
-        return internalGetReverseMap().getMap().size();
-      }
+      public static final int GROUP1A_FIELD_NUMBER = 2;
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A group1A_;
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional group Group1A = 2 { ... }</code>
+       * @return Whether the group1a field is set.
        */
       @java.lang.Override
-      public boolean containsReverseMap(
-          int key) {
+      public boolean hasGroup1A() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional group Group1A = 2 { ... }</code>
+       * @return The group1a.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getGroup1A() {
+        return group1A_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : group1A_;
+      }
+      /**
+       * <code>optional group Group1A = 2 { ... }</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getGroup1AOrBuilder() {
+        return group1A_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : group1A_;
+      }
 
-        return internalGetReverseMap().getMap().containsKey(key);
-      }
+      public static final int NESTED_GROUP_FIELD_NUMBER = 3;
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A nestedGroup_;
       /**
-       * Use {@link #getReverseMapMap()} instead.
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+       * @return Whether the nestedGroup field is set.
        */
       @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.Integer, java.lang.String> getReverseMap() {
-        return getReverseMapMap();
+      public boolean hasNestedGroup() {
+        return ((bitField0_ & 0x00000004) != 0);
       }
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+       * @return The nestedGroup.
        */
       @java.lang.Override
-      public java.util.Map<java.lang.Integer, java.lang.String> getReverseMapMap() {
-        return internalGetReverseMap().getMap();
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getNestedGroup() {
+        return nestedGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : nestedGroup_;
       }
       /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
        */
       @java.lang.Override
-      public /* nullable */
-java.lang.String getReverseMapOrDefault(
-          int key,
-          /* nullable */
-java.lang.String defaultValue) {
-
-        java.util.Map<java.lang.Integer, java.lang.String> map =
-            internalGetReverseMap().getMap();
-        return map.containsKey(key) ? map.get(key) : defaultValue;
-      }
-      /**
-       * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-       */
-      @java.lang.Override
-      public java.lang.String getReverseMapOrThrow(
-          int key) {
-
-        java.util.Map<java.lang.Integer, java.lang.String> map =
-            internalGetReverseMap().getMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
-        }
-        return map.get(key);
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getNestedGroupOrBuilder() {
+        return nestedGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : nestedGroup_;
       }
 
       private byte memoizedIsInitialized = -1;
@@ -2864,18 +3281,15 @@ java.lang.String defaultValue) {
       @java.lang.Override
       public void writeTo(com.google.protobuf.CodedOutputStream output)
                           throws java.io.IOException {
-        com.google.protobuf.GeneratedMessage
-          .serializeStringMapTo(
-            output,
-            internalGetNestedMap(),
-            NestedMapDefaultEntryHolder.defaultEntry,
-            1);
-        com.google.protobuf.GeneratedMessage
-          .serializeIntegerMapTo(
-            output,
-            internalGetReverseMap(),
-            ReverseMapDefaultEntryHolder.defaultEntry,
-            2);
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, group1Field_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeGroup(2, getGroup1A());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          output.writeMessage(3, getNestedGroup());
+        }
         getUnknownFields().writeTo(output);
       }
 
@@ -2885,25 +3299,16 @@ java.lang.String defaultValue) {
         if (size != -1) return size;
 
         size = 0;
-        for (java.util.Map.Entry<java.lang.String, java.lang.Integer> entry
-             : internalGetNestedMap().getMap().entrySet()) {
-          com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-          nestedMap__ = NestedMapDefaultEntryHolder.defaultEntry.newBuilderForType()
-              .setKey(entry.getKey())
-              .setValue(entry.getValue())
-              .build();
-          size += com.google.protobuf.CodedOutputStream
-              .computeMessageSize(1, nestedMap__);
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, group1Field_);
         }
-        for (java.util.Map.Entry<java.lang.Integer, java.lang.String> entry
-             : internalGetReverseMap().getMap().entrySet()) {
-          com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-          reverseMap__ = ReverseMapDefaultEntryHolder.defaultEntry.newBuilderForType()
-              .setKey(entry.getKey())
-              .setValue(entry.getValue())
-              .build();
+        if (((bitField0_ & 0x00000002) != 0)) {
           size += com.google.protobuf.CodedOutputStream
-              .computeMessageSize(2, reverseMap__);
+            .computeGroupSize(2, getGroup1A());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, getNestedGroup());
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSize = size;
@@ -2915,15 +3320,26 @@ java.lang.String defaultValue) {
         if (obj == this) {
          return true;
         }
-        if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps)) {
+        if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1)) {
           return super.equals(obj);
         }
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) obj;
+        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1) obj;
 
-        if (!internalGetNestedMap().equals(
-            other.internalGetNestedMap())) return false;
-        if (!internalGetReverseMap().equals(
-            other.internalGetReverseMap())) return false;
+        if (hasGroup1Field() != other.hasGroup1Field()) return false;
+        if (hasGroup1Field()) {
+          if (!getGroup1Field()
+              .equals(other.getGroup1Field())) return false;
+        }
+        if (hasGroup1A() != other.hasGroup1A()) return false;
+        if (hasGroup1A()) {
+          if (!getGroup1A()
+              .equals(other.getGroup1A())) return false;
+        }
+        if (hasNestedGroup() != other.hasNestedGroup()) return false;
+        if (hasNestedGroup()) {
+          if (!getNestedGroup()
+              .equals(other.getNestedGroup())) return false;
+        }
         if (!getUnknownFields().equals(other.getUnknownFields())) return false;
         return true;
       }
@@ -2935,57 +3351,61 @@ java.lang.String defaultValue) {
         }
         int hash = 41;
         hash = (19 * hash) + getDescriptor().hashCode();
-        if (!internalGetNestedMap().getMap().isEmpty()) {
-          hash = (37 * hash) + NESTED_MAP_FIELD_NUMBER;
-          hash = (53 * hash) + internalGetNestedMap().hashCode();
+        if (hasGroup1Field()) {
+          hash = (37 * hash) + GROUP1_FIELD_FIELD_NUMBER;
+          hash = (53 * hash) + getGroup1Field().hashCode();
         }
-        if (!internalGetReverseMap().getMap().isEmpty()) {
-          hash = (37 * hash) + REVERSE_MAP_FIELD_NUMBER;
-          hash = (53 * hash) + internalGetReverseMap().hashCode();
+        if (hasGroup1A()) {
+          hash = (37 * hash) + GROUP1A_FIELD_NUMBER;
+          hash = (53 * hash) + getGroup1A().hashCode();
+        }
+        if (hasNestedGroup()) {
+          hash = (37 * hash) + NESTED_GROUP_FIELD_NUMBER;
+          hash = (53 * hash) + getNestedGroup().hashCode();
         }
         hash = (29 * hash) + getUnknownFields().hashCode();
         memoizedHashCode = hash;
         return hash;
       }
 
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           java.nio.ByteBuffer data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           java.nio.ByteBuffer data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           com.google.protobuf.ByteString data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           com.google.protobuf.ByteString data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(byte[] data)
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(byte[] data)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           byte[] data,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
         return PARSER.parseFrom(data, extensionRegistry);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(java.io.InputStream input)
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessage
             .parseWithIOException(PARSER, input);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -2993,26 +3413,26 @@ java.lang.String defaultValue) {
             .parseWithIOException(PARSER, input, extensionRegistry);
       }
 
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseDelimitedFrom(java.io.InputStream input)
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseDelimitedFrom(java.io.InputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessage
             .parseDelimitedWithIOException(PARSER, input);
       }
 
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseDelimitedFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseDelimitedFrom(
           java.io.InputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessage
             .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           com.google.protobuf.CodedInputStream input)
           throws java.io.IOException {
         return com.google.protobuf.GeneratedMessage
             .parseWithIOException(PARSER, input);
       }
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps parseFrom(
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 parseFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws java.io.IOException {
@@ -3025,7 +3445,7 @@ java.lang.String defaultValue) {
       public static Builder newBuilder() {
         return DEFAULT_INSTANCE.toBuilder();
       }
-      public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps prototype) {
+      public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 prototype) {
         return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
       }
       @java.lang.Override
@@ -3041,84 +3461,74 @@ java.lang.String defaultValue) {
         return builder;
       }
       /**
-       * Protobuf type {@code ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps}
+       * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1}
        */
       public static final class Builder extends
           com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-          // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps)
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder {
+          // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1)
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder {
         public static final com.google.protobuf.Descriptors.Descriptor
             getDescriptor() {
-          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor;
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor;
         }
 
-        @SuppressWarnings({"rawtypes"})
-        protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-            int number) {
-          switch (number) {
-            case 1:
-              return internalGetNestedMap();
-            case 2:
-              return internalGetReverseMap();
-            default:
-              throw new RuntimeException(
-                  "Invalid map field number: " + number);
-          }
-        }
-        @SuppressWarnings({"rawtypes"})
-        protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
-            int number) {
-          switch (number) {
-            case 1:
-              return internalGetMutableNestedMap();
-            case 2:
-              return internalGetMutableReverseMap();
-            default:
-              throw new RuntimeException(
-                  "Invalid map field number: " + number);
-          }
-        }
         @java.lang.Override
         protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
             internalGetFieldAccessorTable() {
-          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_fieldAccessorTable
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_fieldAccessorTable
               .ensureFieldAccessorsInitialized(
-                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder.class);
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder.class);
         }
 
-        // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.newBuilder()
+        // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.newBuilder()
         private Builder() {
-
+          maybeForceBuilderInitialization();
         }
 
         private Builder(
             com.google.protobuf.GeneratedMessage.BuilderParent parent) {
           super(parent);
-
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage
+                  .alwaysUseFieldBuilders) {
+            internalGetGroup1AFieldBuilder();
+            internalGetNestedGroupFieldBuilder();
+          }
         }
         @java.lang.Override
         public Builder clear() {
           super.clear();
           bitField0_ = 0;
-          internalGetMutableNestedMap().clear();
-          internalGetMutableReverseMap().clear();
+          group1Field_ = "";
+          group1A_ = null;
+          if (group1ABuilder_ != null) {
+            group1ABuilder_.dispose();
+            group1ABuilder_ = null;
+          }
+          nestedGroup_ = null;
+          if (nestedGroupBuilder_ != null) {
+            nestedGroupBuilder_.dispose();
+            nestedGroupBuilder_ = null;
+          }
           return this;
         }
 
         @java.lang.Override
         public com.google.protobuf.Descriptors.Descriptor
             getDescriptorForType() {
-          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor;
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor;
         }
 
         @java.lang.Override
-        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getDefaultInstanceForType() {
-          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance();
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getDefaultInstanceForType() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance();
         }
 
         @java.lang.Override
-        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps build() {
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps result = buildPartial();
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 build() {
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 result = buildPartial();
           if (!result.isInitialized()) {
             throw newUninitializedMessageException(result);
           }
@@ -3126,43 +3536,58 @@ java.lang.String defaultValue) {
         }
 
         @java.lang.Override
-        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps buildPartial() {
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps(this);
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 buildPartial() {
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1(this);
           if (bitField0_ != 0) { buildPartial0(result); }
           onBuilt();
           return result;
         }
 
-        private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps result) {
+        private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 result) {
           int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
           if (((from_bitField0_ & 0x00000001) != 0)) {
-            result.nestedMap_ = internalGetNestedMap();
-            result.nestedMap_.makeImmutable();
+            result.group1Field_ = group1Field_;
+            to_bitField0_ |= 0x00000001;
           }
           if (((from_bitField0_ & 0x00000002) != 0)) {
-            result.reverseMap_ = internalGetReverseMap();
-            result.reverseMap_.makeImmutable();
+            result.group1A_ = group1ABuilder_ == null
+                ? group1A_
+                : group1ABuilder_.build();
+            to_bitField0_ |= 0x00000002;
           }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.nestedGroup_ = nestedGroupBuilder_ == null
+                ? nestedGroup_
+                : nestedGroupBuilder_.build();
+            to_bitField0_ |= 0x00000004;
+          }
+          result.bitField0_ |= to_bitField0_;
         }
 
         @java.lang.Override
         public Builder mergeFrom(com.google.protobuf.Message other) {
-          if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) {
-            return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps)other);
+          if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1) {
+            return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1)other);
           } else {
             super.mergeFrom(other);
             return this;
           }
         }
 
-        public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps other) {
-          if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance()) return this;
-          internalGetMutableNestedMap().mergeFrom(
-              other.internalGetNestedMap());
-          bitField0_ |= 0x00000001;
-          internalGetMutableReverseMap().mergeFrom(
-              other.internalGetReverseMap());
-          bitField0_ |= 0x00000002;
+        public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 other) {
+          if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance()) return this;
+          if (other.hasGroup1Field()) {
+            group1Field_ = other.group1Field_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          if (other.hasGroup1A()) {
+            mergeGroup1A(other.getGroup1A());
+          }
+          if (other.hasNestedGroup()) {
+            mergeNestedGroup(other.getNestedGroup());
+          }
           this.mergeUnknownFields(other.getUnknownFields());
           onChanged();
           return this;
@@ -3190,23 +3615,24 @@ java.lang.String defaultValue) {
                   done = true;
                   break;
                 case 10: {
-                  com.google.protobuf.MapEntry<java.lang.String, java.lang.Integer>
-                  nestedMap__ = input.readMessage(
-                      NestedMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                  internalGetMutableNestedMap().getMutableMap().put(
-                      nestedMap__.getKey(), nestedMap__.getValue());
+                  group1Field_ = input.readBytes();
                   bitField0_ |= 0x00000001;
                   break;
                 } // case 10
-                case 18: {
-                  com.google.protobuf.MapEntry<java.lang.Integer, java.lang.String>
-                  reverseMap__ = input.readMessage(
-                      ReverseMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                  internalGetMutableReverseMap().getMutableMap().put(
-                      reverseMap__.getKey(), reverseMap__.getValue());
+                case 19: {
+                  input.readGroup(2,
+                      internalGetGroup1AFieldBuilder().getBuilder(),
+                      extensionRegistry);
                   bitField0_ |= 0x00000002;
                   break;
-                } // case 18
+                } // case 19
+                case 26: {
+                  input.readMessage(
+                      internalGetNestedGroupFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
                 default: {
                   if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                     done = true; // was an endgroup tag
@@ -3224,275 +3650,345 @@ java.lang.String defaultValue) {
         }
         private int bitField0_;
 
-        private com.google.protobuf.MapField<
-            java.lang.String, java.lang.Integer> nestedMap_;
-        private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-            internalGetNestedMap() {
-          if (nestedMap_ == null) {
-            return com.google.protobuf.MapField.emptyMapField(
-                NestedMapDefaultEntryHolder.defaultEntry);
+        private java.lang.Object group1Field_ = "";
+        /**
+         * <code>optional string group1_field = 1;</code>
+         * @return Whether the group1Field field is set.
+         */
+        public boolean hasGroup1Field() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string group1_field = 1;</code>
+         * @return The group1Field.
+         */
+        public java.lang.String getGroup1Field() {
+          java.lang.Object ref = group1Field_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              group1Field_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
           }
-          return nestedMap_;
         }
-        private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
-            internalGetMutableNestedMap() {
-          if (nestedMap_ == null) {
-            nestedMap_ = com.google.protobuf.MapField.newMapField(
-                NestedMapDefaultEntryHolder.defaultEntry);
+        /**
+         * <code>optional string group1_field = 1;</code>
+         * @return The bytes for group1Field.
+         */
+        public com.google.protobuf.ByteString
+            getGroup1FieldBytes() {
+          java.lang.Object ref = group1Field_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            group1Field_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
           }
-          if (!nestedMap_.isMutable()) {
-            nestedMap_ = nestedMap_.copy();
-          }
-          bitField0_ |= 0x00000001;
-          onChanged();
-          return nestedMap_;
-        }
-        public int getNestedMapCount() {
-          return internalGetNestedMap().getMap().size();
         }
         /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
+         * <code>optional string group1_field = 1;</code>
+         * @param value The group1Field to set.
+         * @return This builder for chaining.
          */
-        @java.lang.Override
-        public boolean containsNestedMap(
-            java.lang.String key) {
-          if (key == null) { throw new NullPointerException("map key"); }
-          return internalGetNestedMap().getMap().containsKey(key);
-        }
-        /**
-         * Use {@link #getNestedMapMap()} instead.
-         */
-        @java.lang.Override
-        @java.lang.Deprecated
-        public java.util.Map<java.lang.String, java.lang.Integer> getNestedMap() {
-          return getNestedMapMap();
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        @java.lang.Override
-        public java.util.Map<java.lang.String, java.lang.Integer> getNestedMapMap() {
-          return internalGetNestedMap().getMap();
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        @java.lang.Override
-        public int getNestedMapOrDefault(
-            java.lang.String key,
-            int defaultValue) {
-          if (key == null) { throw new NullPointerException("map key"); }
-          java.util.Map<java.lang.String, java.lang.Integer> map =
-              internalGetNestedMap().getMap();
-          return map.containsKey(key) ? map.get(key) : defaultValue;
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        @java.lang.Override
-        public int getNestedMapOrThrow(
-            java.lang.String key) {
-          if (key == null) { throw new NullPointerException("map key"); }
-          java.util.Map<java.lang.String, java.lang.Integer> map =
-              internalGetNestedMap().getMap();
-          if (!map.containsKey(key)) {
-            throw new java.lang.IllegalArgumentException();
-          }
-          return map.get(key);
-        }
-        public Builder clearNestedMap() {
-          bitField0_ = (bitField0_ & ~0x00000001);
-          internalGetMutableNestedMap().getMutableMap()
-              .clear();
-          return this;
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        public Builder removeNestedMap(
-            java.lang.String key) {
-          if (key == null) { throw new NullPointerException("map key"); }
-          internalGetMutableNestedMap().getMutableMap()
-              .remove(key);
-          return this;
-        }
-        /**
-         * Use alternate mutation accessors instead.
-         */
-        @java.lang.Deprecated
-        public java.util.Map<java.lang.String, java.lang.Integer>
-            getMutableNestedMap() {
-          bitField0_ |= 0x00000001;
-          return internalGetMutableNestedMap().getMutableMap();
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        public Builder putNestedMap(
-            java.lang.String key,
-            int value) {
-          if (key == null) { throw new NullPointerException("map key"); }
-
-          internalGetMutableNestedMap().getMutableMap()
-              .put(key, value);
-          bitField0_ |= 0x00000001;
-          return this;
-        }
-        /**
-         * <code>map&lt;string, int32&gt; nested_map = 1;</code>
-         */
-        public Builder putAllNestedMap(
-            java.util.Map<java.lang.String, java.lang.Integer> values) {
-          internalGetMutableNestedMap().getMutableMap()
-              .putAll(values);
-          bitField0_ |= 0x00000001;
-          return this;
-        }
-
-        private com.google.protobuf.MapField<
-            java.lang.Integer, java.lang.String> reverseMap_;
-        private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-            internalGetReverseMap() {
-          if (reverseMap_ == null) {
-            return com.google.protobuf.MapField.emptyMapField(
-                ReverseMapDefaultEntryHolder.defaultEntry);
-          }
-          return reverseMap_;
-        }
-        private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
-            internalGetMutableReverseMap() {
-          if (reverseMap_ == null) {
-            reverseMap_ = com.google.protobuf.MapField.newMapField(
-                ReverseMapDefaultEntryHolder.defaultEntry);
-          }
-          if (!reverseMap_.isMutable()) {
-            reverseMap_ = reverseMap_.copy();
-          }
-          bitField0_ |= 0x00000002;
-          onChanged();
-          return reverseMap_;
-        }
-        public int getReverseMapCount() {
-          return internalGetReverseMap().getMap().size();
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        @java.lang.Override
-        public boolean containsReverseMap(
-            int key) {
-
-          return internalGetReverseMap().getMap().containsKey(key);
-        }
-        /**
-         * Use {@link #getReverseMapMap()} instead.
-         */
-        @java.lang.Override
-        @java.lang.Deprecated
-        public java.util.Map<java.lang.Integer, java.lang.String> getReverseMap() {
-          return getReverseMapMap();
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        @java.lang.Override
-        public java.util.Map<java.lang.Integer, java.lang.String> getReverseMapMap() {
-          return internalGetReverseMap().getMap();
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        @java.lang.Override
-        public /* nullable */
-java.lang.String getReverseMapOrDefault(
-            int key,
-            /* nullable */
-java.lang.String defaultValue) {
-
-          java.util.Map<java.lang.Integer, java.lang.String> map =
-              internalGetReverseMap().getMap();
-          return map.containsKey(key) ? map.get(key) : defaultValue;
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        @java.lang.Override
-        public java.lang.String getReverseMapOrThrow(
-            int key) {
-
-          java.util.Map<java.lang.Integer, java.lang.String> map =
-              internalGetReverseMap().getMap();
-          if (!map.containsKey(key)) {
-            throw new java.lang.IllegalArgumentException();
-          }
-          return map.get(key);
-        }
-        public Builder clearReverseMap() {
-          bitField0_ = (bitField0_ & ~0x00000002);
-          internalGetMutableReverseMap().getMutableMap()
-              .clear();
-          return this;
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        public Builder removeReverseMap(
-            int key) {
-
-          internalGetMutableReverseMap().getMutableMap()
-              .remove(key);
-          return this;
-        }
-        /**
-         * Use alternate mutation accessors instead.
-         */
-        @java.lang.Deprecated
-        public java.util.Map<java.lang.Integer, java.lang.String>
-            getMutableReverseMap() {
-          bitField0_ |= 0x00000002;
-          return internalGetMutableReverseMap().getMutableMap();
-        }
-        /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
-         */
-        public Builder putReverseMap(
-            int key,
+        public Builder setGroup1Field(
             java.lang.String value) {
-
-          if (value == null) { throw new NullPointerException("map value"); }
-          internalGetMutableReverseMap().getMutableMap()
-              .put(key, value);
-          bitField0_ |= 0x00000002;
+          if (value == null) { throw new NullPointerException(); }
+          group1Field_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
           return this;
         }
         /**
-         * <code>map&lt;int32, string&gt; reverse_map = 2;</code>
+         * <code>optional string group1_field = 1;</code>
+         * @return This builder for chaining.
          */
-        public Builder putAllReverseMap(
-            java.util.Map<java.lang.Integer, java.lang.String> values) {
-          internalGetMutableReverseMap().getMutableMap()
-              .putAll(values);
-          bitField0_ |= 0x00000002;
+        public Builder clearGroup1Field() {
+          group1Field_ = getDefaultInstance().getGroup1Field();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string group1_field = 1;</code>
+         * @param value The bytes for group1Field to set.
+         * @return This builder for chaining.
+         */
+        public Builder setGroup1FieldBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          group1Field_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
           return this;
         }
 
-        // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps)
+        private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A group1A_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder> group1ABuilder_;
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         * @return Whether the group1a field is set.
+         */
+        public boolean hasGroup1A() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         * @return The group1a.
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getGroup1A() {
+          if (group1ABuilder_ == null) {
+            return group1A_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : group1A_;
+          } else {
+            return group1ABuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public Builder setGroup1A(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A value) {
+          if (group1ABuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            group1A_ = value;
+          } else {
+            group1ABuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public Builder setGroup1A(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder builderForValue) {
+          if (group1ABuilder_ == null) {
+            group1A_ = builderForValue.build();
+          } else {
+            group1ABuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public Builder mergeGroup1A(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A value) {
+          if (group1ABuilder_ == null) {
+            if (((bitField0_ & 0x00000002) != 0) &&
+              group1A_ != null &&
+              group1A_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance()) {
+              getGroup1ABuilder().mergeFrom(value);
+            } else {
+              group1A_ = value;
+            }
+          } else {
+            group1ABuilder_.mergeFrom(value);
+          }
+          if (group1A_ != null) {
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public Builder clearGroup1A() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          group1A_ = null;
+          if (group1ABuilder_ != null) {
+            group1ABuilder_.dispose();
+            group1ABuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder getGroup1ABuilder() {
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return internalGetGroup1AFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getGroup1AOrBuilder() {
+          if (group1ABuilder_ != null) {
+            return group1ABuilder_.getMessageOrBuilder();
+          } else {
+            return group1A_ == null ?
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : group1A_;
+          }
+        }
+        /**
+         * <code>optional group Group1A = 2 { ... }</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder> 
+            internalGetGroup1AFieldBuilder() {
+          if (group1ABuilder_ == null) {
+            group1ABuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder>(
+                    getGroup1A(),
+                    getParentForChildren(),
+                    isClean());
+            group1A_ = null;
+          }
+          return group1ABuilder_;
+        }
+
+        private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A nestedGroup_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder> nestedGroupBuilder_;
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         * @return Whether the nestedGroup field is set.
+         */
+        public boolean hasNestedGroup() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         * @return The nestedGroup.
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A getNestedGroup() {
+          if (nestedGroupBuilder_ == null) {
+            return nestedGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : nestedGroup_;
+          } else {
+            return nestedGroupBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public Builder setNestedGroup(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A value) {
+          if (nestedGroupBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            nestedGroup_ = value;
+          } else {
+            nestedGroupBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public Builder setNestedGroup(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder builderForValue) {
+          if (nestedGroupBuilder_ == null) {
+            nestedGroup_ = builderForValue.build();
+          } else {
+            nestedGroupBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public Builder mergeNestedGroup(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A value) {
+          if (nestedGroupBuilder_ == null) {
+            if (((bitField0_ & 0x00000004) != 0) &&
+              nestedGroup_ != null &&
+              nestedGroup_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance()) {
+              getNestedGroupBuilder().mergeFrom(value);
+            } else {
+              nestedGroup_ = value;
+            }
+          } else {
+            nestedGroupBuilder_.mergeFrom(value);
+          }
+          if (nestedGroup_ != null) {
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public Builder clearNestedGroup() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          nestedGroup_ = null;
+          if (nestedGroupBuilder_ != null) {
+            nestedGroupBuilder_.dispose();
+            nestedGroupBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder getNestedGroupBuilder() {
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return internalGetNestedGroupFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder getNestedGroupOrBuilder() {
+          if (nestedGroupBuilder_ != null) {
+            return nestedGroupBuilder_.getMessageOrBuilder();
+          } else {
+            return nestedGroup_ == null ?
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.getDefaultInstance() : nestedGroup_;
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1.Group1A nested_group = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder> 
+            internalGetNestedGroupFieldBuilder() {
+          if (nestedGroupBuilder_ == null) {
+            nestedGroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1A.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Group1AOrBuilder>(
+                    getNestedGroup(),
+                    getParentForChildren(),
+                    isClean());
+            nestedGroup_ = null;
+          }
+          return nestedGroupBuilder_;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1)
       }
 
-      // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps)
-      private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps DEFAULT_INSTANCE;
+      // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Group1)
+      private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 DEFAULT_INSTANCE;
       static {
-        DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps();
+        DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1();
       }
 
-      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getDefaultInstance() {
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getDefaultInstance() {
         return DEFAULT_INSTANCE;
       }
 
-      private static final com.google.protobuf.Parser<NestedWithMaps>
-          PARSER = new com.google.protobuf.AbstractParser<NestedWithMaps>() {
+      private static final com.google.protobuf.Parser<Group1>
+          PARSER = new com.google.protobuf.AbstractParser<Group1>() {
         @java.lang.Override
-        public NestedWithMaps parsePartialFrom(
+        public Group1 parsePartialFrom(
             com.google.protobuf.CodedInputStream input,
             com.google.protobuf.ExtensionRegistryLite extensionRegistry)
             throws com.google.protobuf.InvalidProtocolBufferException {
@@ -3511,175 +4007,1577 @@ java.lang.String defaultValue) {
         }
       };
 
-      public static com.google.protobuf.Parser<NestedWithMaps> parser() {
+      public static com.google.protobuf.Parser<Group1> parser() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.google.protobuf.Parser<NestedWithMaps> getParserForType() {
+      public com.google.protobuf.Parser<Group1> getParserForType() {
         return PARSER;
       }
 
       @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getDefaultInstanceForType() {
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getDefaultInstanceForType() {
+        return DEFAULT_INSTANCE;
+      }
+
+    }
+
+    public interface RepeatedGroupOrBuilder extends
+        // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup)
+        com.google.protobuf.MessageOrBuilder {
+
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return Whether the repeatedGroupField field is set.
+       */
+      boolean hasRepeatedGroupField();
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return The repeatedGroupField.
+       */
+      java.lang.String getRepeatedGroupField();
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return The bytes for repeatedGroupField.
+       */
+      com.google.protobuf.ByteString
+          getRepeatedGroupFieldBytes();
+
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       * @return Whether the innergroup field is set.
+       */
+      boolean hasInnerGroup();
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       * @return The innergroup.
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInnerGroup();
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerGroupOrBuilder();
+
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       * @return Whether the inner field is set.
+       */
+      boolean hasInner();
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       * @return The inner.
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInner();
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       */
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerOrBuilder();
+    }
+    /**
+     * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup}
+     */
+    public static final class RepeatedGroup extends
+        com.google.protobuf.GeneratedMessage implements
+        // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup)
+        RepeatedGroupOrBuilder {
+    private static final long serialVersionUID = 0L;
+      static {
+        com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+          com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+          /* major= */ 4,
+          /* minor= */ 33,
+          /* patch= */ 4,
+          /* suffix= */ "",
+          "RepeatedGroup");
+      }
+      // Use RepeatedGroup.newBuilder() to construct.
+      private RepeatedGroup(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+        super(builder);
+      }
+      private RepeatedGroup() {
+        repeatedGroupField_ = "";
+      }
+
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder.class);
+      }
+
+      public interface InnerGroupOrBuilder extends
+          // @@protoc_insertion_point(interface_extends:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)
+          com.google.protobuf.MessageOrBuilder {
+
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return Whether the innerField field is set.
+         */
+        boolean hasInnerField();
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return The innerField.
+         */
+        java.lang.String getInnerField();
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return The bytes for innerField.
+         */
+        com.google.protobuf.ByteString
+            getInnerFieldBytes();
+      }
+      /**
+       * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup}
+       */
+      public static final class InnerGroup extends
+          com.google.protobuf.GeneratedMessage implements
+          // @@protoc_insertion_point(message_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)
+          InnerGroupOrBuilder {
+      private static final long serialVersionUID = 0L;
+        static {
+          com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+            com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+            /* major= */ 4,
+            /* minor= */ 33,
+            /* patch= */ 4,
+            /* suffix= */ "",
+            "InnerGroup");
+        }
+        // Use InnerGroup.newBuilder() to construct.
+        private InnerGroup(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+          super(builder);
+        }
+        private InnerGroup() {
+          innerField_ = "";
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder.class);
+        }
+
+        private int bitField0_;
+        public static final int INNER_FIELD_FIELD_NUMBER = 1;
+        @SuppressWarnings("serial")
+        private volatile java.lang.Object innerField_ = "";
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return Whether the innerField field is set.
+         */
+        @java.lang.Override
+        public boolean hasInnerField() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return The innerField.
+         */
+        @java.lang.Override
+        public java.lang.String getInnerField() {
+          java.lang.Object ref = innerField_;
+          if (ref instanceof java.lang.String) {
+            return (java.lang.String) ref;
+          } else {
+            com.google.protobuf.ByteString bs = 
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              innerField_ = s;
+            }
+            return s;
+          }
+        }
+        /**
+         * <code>optional string inner_field = 1;</code>
+         * @return The bytes for innerField.
+         */
+        @java.lang.Override
+        public com.google.protobuf.ByteString
+            getInnerFieldBytes() {
+          java.lang.Object ref = innerField_;
+          if (ref instanceof java.lang.String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            innerField_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+
+        private byte memoizedIsInitialized = -1;
+        @java.lang.Override
+        public final boolean isInitialized() {
+          byte isInitialized = memoizedIsInitialized;
+          if (isInitialized == 1) return true;
+          if (isInitialized == 0) return false;
+
+          memoizedIsInitialized = 1;
+          return true;
+        }
+
+        @java.lang.Override
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+                            throws java.io.IOException {
+          if (((bitField0_ & 0x00000001) != 0)) {
+            com.google.protobuf.GeneratedMessage.writeString(output, 1, innerField_);
+          }
+          getUnknownFields().writeTo(output);
+        }
+
+        @java.lang.Override
+        public int getSerializedSize() {
+          int size = memoizedSize;
+          if (size != -1) return size;
+
+          size = 0;
+          if (((bitField0_ & 0x00000001) != 0)) {
+            size += com.google.protobuf.GeneratedMessage.computeStringSize(1, innerField_);
+          }
+          size += getUnknownFields().getSerializedSize();
+          memoizedSize = size;
+          return size;
+        }
+
+        @java.lang.Override
+        public boolean equals(final java.lang.Object obj) {
+          if (obj == this) {
+           return true;
+          }
+          if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)) {
+            return super.equals(obj);
+          }
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup) obj;
+
+          if (hasInnerField() != other.hasInnerField()) return false;
+          if (hasInnerField()) {
+            if (!getInnerField()
+                .equals(other.getInnerField())) return false;
+          }
+          if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+          return true;
+        }
+
+        @java.lang.Override
+        public int hashCode() {
+          if (memoizedHashCode != 0) {
+            return memoizedHashCode;
+          }
+          int hash = 41;
+          hash = (19 * hash) + getDescriptor().hashCode();
+          if (hasInnerField()) {
+            hash = (37 * hash) + INNER_FIELD_FIELD_NUMBER;
+            hash = (53 * hash) + getInnerField().hashCode();
+          }
+          hash = (29 * hash) + getUnknownFields().hashCode();
+          memoizedHashCode = hash;
+          return hash;
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            java.nio.ByteBuffer data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            java.nio.ByteBuffer data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          return PARSER.parseFrom(data, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input);
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input);
+        }
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          return com.google.protobuf.GeneratedMessage
+              .parseWithIOException(PARSER, input, extensionRegistry);
+        }
+
+        @java.lang.Override
+        public Builder newBuilderForType() { return newBuilder(); }
+        public static Builder newBuilder() {
+          return DEFAULT_INSTANCE.toBuilder();
+        }
+        public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup prototype) {
+          return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+        }
+        @java.lang.Override
+        public Builder toBuilder() {
+          return this == DEFAULT_INSTANCE
+              ? new Builder() : new Builder().mergeFrom(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          Builder builder = new Builder(parent);
+          return builder;
+        }
+        /**
+         * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+            // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder {
+          public static final com.google.protobuf.Descriptors.Descriptor
+              getDescriptor() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor;
+          }
+
+          @java.lang.Override
+          protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+              internalGetFieldAccessorTable() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder.class);
+          }
+
+          // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.newBuilder()
+          private Builder() {
+
+          }
+
+          private Builder(
+              com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            super(parent);
+
+          }
+          @java.lang.Override
+          public Builder clear() {
+            super.clear();
+            bitField0_ = 0;
+            innerField_ = "";
+            return this;
+          }
+
+          @java.lang.Override
+          public com.google.protobuf.Descriptors.Descriptor
+              getDescriptorForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getDefaultInstanceForType() {
+            return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance();
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup build() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup result = buildPartial();
+            if (!result.isInitialized()) {
+              throw newUninitializedMessageException(result);
+            }
+            return result;
+          }
+
+          @java.lang.Override
+          public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup buildPartial() {
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup(this);
+            if (bitField0_ != 0) { buildPartial0(result); }
+            onBuilt();
+            return result;
+          }
+
+          private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup result) {
+            int from_bitField0_ = bitField0_;
+            int to_bitField0_ = 0;
+            if (((from_bitField0_ & 0x00000001) != 0)) {
+              result.innerField_ = innerField_;
+              to_bitField0_ |= 0x00000001;
+            }
+            result.bitField0_ |= to_bitField0_;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(com.google.protobuf.Message other) {
+            if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup) {
+              return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)other);
+            } else {
+              super.mergeFrom(other);
+              return this;
+            }
+          }
+
+          public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup other) {
+            if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance()) return this;
+            if (other.hasInnerField()) {
+              innerField_ = other.innerField_;
+              bitField0_ |= 0x00000001;
+              onChanged();
+            }
+            this.mergeUnknownFields(other.getUnknownFields());
+            onChanged();
+            return this;
+          }
+
+          @java.lang.Override
+          public final boolean isInitialized() {
+            return true;
+          }
+
+          @java.lang.Override
+          public Builder mergeFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws java.io.IOException {
+            if (extensionRegistry == null) {
+              throw new java.lang.NullPointerException();
+            }
+            try {
+              boolean done = false;
+              while (!done) {
+                int tag = input.readTag();
+                switch (tag) {
+                  case 0:
+                    done = true;
+                    break;
+                  case 10: {
+                    innerField_ = input.readBytes();
+                    bitField0_ |= 0x00000001;
+                    break;
+                  } // case 10
+                  default: {
+                    if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                      done = true; // was an endgroup tag
+                    }
+                    break;
+                  } // default:
+                } // switch (tag)
+              } // while (!done)
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.unwrapIOException();
+            } finally {
+              onChanged();
+            } // finally
+            return this;
+          }
+          private int bitField0_;
+
+          private java.lang.Object innerField_ = "";
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @return Whether the innerField field is set.
+           */
+          public boolean hasInnerField() {
+            return ((bitField0_ & 0x00000001) != 0);
+          }
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @return The innerField.
+           */
+          public java.lang.String getInnerField() {
+            java.lang.Object ref = innerField_;
+            if (!(ref instanceof java.lang.String)) {
+              com.google.protobuf.ByteString bs =
+                  (com.google.protobuf.ByteString) ref;
+              java.lang.String s = bs.toStringUtf8();
+              if (bs.isValidUtf8()) {
+                innerField_ = s;
+              }
+              return s;
+            } else {
+              return (java.lang.String) ref;
+            }
+          }
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @return The bytes for innerField.
+           */
+          public com.google.protobuf.ByteString
+              getInnerFieldBytes() {
+            java.lang.Object ref = innerField_;
+            if (ref instanceof String) {
+              com.google.protobuf.ByteString b = 
+                  com.google.protobuf.ByteString.copyFromUtf8(
+                      (java.lang.String) ref);
+              innerField_ = b;
+              return b;
+            } else {
+              return (com.google.protobuf.ByteString) ref;
+            }
+          }
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @param value The innerField to set.
+           * @return This builder for chaining.
+           */
+          public Builder setInnerField(
+              java.lang.String value) {
+            if (value == null) { throw new NullPointerException(); }
+            innerField_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @return This builder for chaining.
+           */
+          public Builder clearInnerField() {
+            innerField_ = getDefaultInstance().getInnerField();
+            bitField0_ = (bitField0_ & ~0x00000001);
+            onChanged();
+            return this;
+          }
+          /**
+           * <code>optional string inner_field = 1;</code>
+           * @param value The bytes for innerField to set.
+           * @return This builder for chaining.
+           */
+          public Builder setInnerFieldBytes(
+              com.google.protobuf.ByteString value) {
+            if (value == null) { throw new NullPointerException(); }
+            innerField_ = value;
+            bitField0_ |= 0x00000001;
+            onChanged();
+            return this;
+          }
+
+          // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)
+        }
+
+        // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup)
+        private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup DEFAULT_INSTANCE;
+        static {
+          DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup();
+        }
+
+        public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getDefaultInstance() {
+          return DEFAULT_INSTANCE;
+        }
+
+        private static final com.google.protobuf.Parser<InnerGroup>
+            PARSER = new com.google.protobuf.AbstractParser<InnerGroup>() {
+          @java.lang.Override
+          public InnerGroup parsePartialFrom(
+              com.google.protobuf.CodedInputStream input,
+              com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+              throws com.google.protobuf.InvalidProtocolBufferException {
+            Builder builder = newBuilder();
+            try {
+              builder.mergeFrom(input, extensionRegistry);
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+              throw e.setUnfinishedMessage(builder.buildPartial());
+            } catch (com.google.protobuf.UninitializedMessageException e) {
+              throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+            } catch (java.io.IOException e) {
+              throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                  .setUnfinishedMessage(builder.buildPartial());
+            }
+            return builder.buildPartial();
+          }
+        };
+
+        public static com.google.protobuf.Parser<InnerGroup> parser() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<InnerGroup> getParserForType() {
+          return PARSER;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getDefaultInstanceForType() {
+          return DEFAULT_INSTANCE;
+        }
+
+      }
+
+      private int bitField0_;
+      public static final int REPEATED_GROUP_FIELD_FIELD_NUMBER = 1;
+      @SuppressWarnings("serial")
+      private volatile java.lang.Object repeatedGroupField_ = "";
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return Whether the repeatedGroupField field is set.
+       */
+      @java.lang.Override
+      public boolean hasRepeatedGroupField() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return The repeatedGroupField.
+       */
+      @java.lang.Override
+      public java.lang.String getRepeatedGroupField() {
+        java.lang.Object ref = repeatedGroupField_;
+        if (ref instanceof java.lang.String) {
+          return (java.lang.String) ref;
+        } else {
+          com.google.protobuf.ByteString bs = 
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            repeatedGroupField_ = s;
+          }
+          return s;
+        }
+      }
+      /**
+       * <code>optional string repeated_group_field = 1;</code>
+       * @return The bytes for repeatedGroupField.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getRepeatedGroupFieldBytes() {
+        java.lang.Object ref = repeatedGroupField_;
+        if (ref instanceof java.lang.String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          repeatedGroupField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+
+      public static final int INNERGROUP_FIELD_NUMBER = 2;
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup innerGroup_;
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       * @return Whether the innergroup field is set.
+       */
+      @java.lang.Override
+      public boolean hasInnerGroup() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       * @return The innergroup.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInnerGroup() {
+        return innerGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : innerGroup_;
+      }
+      /**
+       * <code>optional group InnerGroup = 2 { ... }</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerGroupOrBuilder() {
+        return innerGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : innerGroup_;
+      }
+
+      public static final int INNER_FIELD_NUMBER = 3;
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner_;
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       * @return Whether the inner field is set.
+       */
+      @java.lang.Override
+      public boolean hasInner() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       * @return The inner.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInner() {
+        return inner_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : inner_;
+      }
+      /**
+       * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerOrBuilder() {
+        return inner_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : inner_;
+      }
+
+      private byte memoizedIsInitialized = -1;
+      @java.lang.Override
+      public final boolean isInitialized() {
+        byte isInitialized = memoizedIsInitialized;
+        if (isInitialized == 1) return true;
+        if (isInitialized == 0) return false;
+
+        memoizedIsInitialized = 1;
+        return true;
+      }
+
+      @java.lang.Override
+      public void writeTo(com.google.protobuf.CodedOutputStream output)
+                          throws java.io.IOException {
+        if (((bitField0_ & 0x00000001) != 0)) {
+          com.google.protobuf.GeneratedMessage.writeString(output, 1, repeatedGroupField_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          output.writeGroup(2, getInnerGroup());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          output.writeMessage(3, getInner());
+        }
+        getUnknownFields().writeTo(output);
+      }
+
+      @java.lang.Override
+      public int getSerializedSize() {
+        int size = memoizedSize;
+        if (size != -1) return size;
+
+        size = 0;
+        if (((bitField0_ & 0x00000001) != 0)) {
+          size += com.google.protobuf.GeneratedMessage.computeStringSize(1, repeatedGroupField_);
+        }
+        if (((bitField0_ & 0x00000002) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeGroupSize(2, getInnerGroup());
+        }
+        if (((bitField0_ & 0x00000004) != 0)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeMessageSize(3, getInner());
+        }
+        size += getUnknownFields().getSerializedSize();
+        memoizedSize = size;
+        return size;
+      }
+
+      @java.lang.Override
+      public boolean equals(final java.lang.Object obj) {
+        if (obj == this) {
+         return true;
+        }
+        if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup)) {
+          return super.equals(obj);
+        }
+        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup) obj;
+
+        if (hasRepeatedGroupField() != other.hasRepeatedGroupField()) return false;
+        if (hasRepeatedGroupField()) {
+          if (!getRepeatedGroupField()
+              .equals(other.getRepeatedGroupField())) return false;
+        }
+        if (hasInnerGroup() != other.hasInnerGroup()) return false;
+        if (hasInnerGroup()) {
+          if (!getInnerGroup()
+              .equals(other.getInnerGroup())) return false;
+        }
+        if (hasInner() != other.hasInner()) return false;
+        if (hasInner()) {
+          if (!getInner()
+              .equals(other.getInner())) return false;
+        }
+        if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+        return true;
+      }
+
+      @java.lang.Override
+      public int hashCode() {
+        if (memoizedHashCode != 0) {
+          return memoizedHashCode;
+        }
+        int hash = 41;
+        hash = (19 * hash) + getDescriptor().hashCode();
+        if (hasRepeatedGroupField()) {
+          hash = (37 * hash) + REPEATED_GROUP_FIELD_FIELD_NUMBER;
+          hash = (53 * hash) + getRepeatedGroupField().hashCode();
+        }
+        if (hasInnerGroup()) {
+          hash = (37 * hash) + INNERGROUP_FIELD_NUMBER;
+          hash = (53 * hash) + getInnerGroup().hashCode();
+        }
+        if (hasInner()) {
+          hash = (37 * hash) + INNER_FIELD_NUMBER;
+          hash = (53 * hash) + getInner().hashCode();
+        }
+        hash = (29 * hash) + getUnknownFields().hashCode();
+        memoizedHashCode = hash;
+        return hash;
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          java.nio.ByteBuffer data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          java.nio.ByteBuffer data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          com.google.protobuf.ByteString data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          com.google.protobuf.ByteString data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(byte[] data)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          byte[] data,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return PARSER.parseFrom(data, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseDelimitedFrom(java.io.InputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input);
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseDelimitedFrom(
+          java.io.InputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          com.google.protobuf.CodedInputStream input)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input);
+      }
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup parseFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        return com.google.protobuf.GeneratedMessage
+            .parseWithIOException(PARSER, input, extensionRegistry);
+      }
+
+      @java.lang.Override
+      public Builder newBuilderForType() { return newBuilder(); }
+      public static Builder newBuilder() {
+        return DEFAULT_INSTANCE.toBuilder();
+      }
+      public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup prototype) {
+        return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+      }
+      @java.lang.Override
+      public Builder toBuilder() {
+        return this == DEFAULT_INSTANCE
+            ? new Builder() : new Builder().mergeFrom(this);
+      }
+
+      @java.lang.Override
+      protected Builder newBuilderForType(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        Builder builder = new Builder(parent);
+        return builder;
+      }
+      /**
+       * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup}
+       */
+      public static final class Builder extends
+          com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+          // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup)
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder {
+        public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor;
+        }
+
+        @java.lang.Override
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_fieldAccessorTable
+              .ensureFieldAccessorsInitialized(
+                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder.class);
+        }
+
+        // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.newBuilder()
+        private Builder() {
+          maybeForceBuilderInitialization();
+        }
+
+        private Builder(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+          super(parent);
+          maybeForceBuilderInitialization();
+        }
+        private void maybeForceBuilderInitialization() {
+          if (com.google.protobuf.GeneratedMessage
+                  .alwaysUseFieldBuilders) {
+            internalGetInnerGroupFieldBuilder();
+            internalGetInnerFieldBuilder();
+          }
+        }
+        @java.lang.Override
+        public Builder clear() {
+          super.clear();
+          bitField0_ = 0;
+          repeatedGroupField_ = "";
+          innerGroup_ = null;
+          if (innerGroupBuilder_ != null) {
+            innerGroupBuilder_.dispose();
+            innerGroupBuilder_ = null;
+          }
+          inner_ = null;
+          if (innerBuilder_ != null) {
+            innerBuilder_.dispose();
+            innerBuilder_ = null;
+          }
+          return this;
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getDefaultInstanceForType() {
+          return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.getDefaultInstance();
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup build() {
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup result = buildPartial();
+          if (!result.isInitialized()) {
+            throw newUninitializedMessageException(result);
+          }
+          return result;
+        }
+
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup buildPartial() {
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup(this);
+          if (bitField0_ != 0) { buildPartial0(result); }
+          onBuilt();
+          return result;
+        }
+
+        private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup result) {
+          int from_bitField0_ = bitField0_;
+          int to_bitField0_ = 0;
+          if (((from_bitField0_ & 0x00000001) != 0)) {
+            result.repeatedGroupField_ = repeatedGroupField_;
+            to_bitField0_ |= 0x00000001;
+          }
+          if (((from_bitField0_ & 0x00000002) != 0)) {
+            result.innerGroup_ = innerGroupBuilder_ == null
+                ? innerGroup_
+                : innerGroupBuilder_.build();
+            to_bitField0_ |= 0x00000002;
+          }
+          if (((from_bitField0_ & 0x00000004) != 0)) {
+            result.inner_ = innerBuilder_ == null
+                ? inner_
+                : innerBuilder_.build();
+            to_bitField0_ |= 0x00000004;
+          }
+          result.bitField0_ |= to_bitField0_;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(com.google.protobuf.Message other) {
+          if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup) {
+            return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup)other);
+          } else {
+            super.mergeFrom(other);
+            return this;
+          }
+        }
+
+        public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup other) {
+          if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.getDefaultInstance()) return this;
+          if (other.hasRepeatedGroupField()) {
+            repeatedGroupField_ = other.repeatedGroupField_;
+            bitField0_ |= 0x00000001;
+            onChanged();
+          }
+          if (other.hasInnerGroup()) {
+            mergeInnerGroup(other.getInnerGroup());
+          }
+          if (other.hasInner()) {
+            mergeInner(other.getInner());
+          }
+          this.mergeUnknownFields(other.getUnknownFields());
+          onChanged();
+          return this;
+        }
+
+        @java.lang.Override
+        public final boolean isInitialized() {
+          return true;
+        }
+
+        @java.lang.Override
+        public Builder mergeFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+          if (extensionRegistry == null) {
+            throw new java.lang.NullPointerException();
+          }
+          try {
+            boolean done = false;
+            while (!done) {
+              int tag = input.readTag();
+              switch (tag) {
+                case 0:
+                  done = true;
+                  break;
+                case 10: {
+                  repeatedGroupField_ = input.readBytes();
+                  bitField0_ |= 0x00000001;
+                  break;
+                } // case 10
+                case 19: {
+                  input.readGroup(2,
+                      internalGetInnerGroupFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000002;
+                  break;
+                } // case 19
+                case 26: {
+                  input.readMessage(
+                      internalGetInnerFieldBuilder().getBuilder(),
+                      extensionRegistry);
+                  bitField0_ |= 0x00000004;
+                  break;
+                } // case 26
+                default: {
+                  if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                    done = true; // was an endgroup tag
+                  }
+                  break;
+                } // default:
+              } // switch (tag)
+            } // while (!done)
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.unwrapIOException();
+          } finally {
+            onChanged();
+          } // finally
+          return this;
+        }
+        private int bitField0_;
+
+        private java.lang.Object repeatedGroupField_ = "";
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @return Whether the repeatedGroupField field is set.
+         */
+        public boolean hasRepeatedGroupField() {
+          return ((bitField0_ & 0x00000001) != 0);
+        }
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @return The repeatedGroupField.
+         */
+        public java.lang.String getRepeatedGroupField() {
+          java.lang.Object ref = repeatedGroupField_;
+          if (!(ref instanceof java.lang.String)) {
+            com.google.protobuf.ByteString bs =
+                (com.google.protobuf.ByteString) ref;
+            java.lang.String s = bs.toStringUtf8();
+            if (bs.isValidUtf8()) {
+              repeatedGroupField_ = s;
+            }
+            return s;
+          } else {
+            return (java.lang.String) ref;
+          }
+        }
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @return The bytes for repeatedGroupField.
+         */
+        public com.google.protobuf.ByteString
+            getRepeatedGroupFieldBytes() {
+          java.lang.Object ref = repeatedGroupField_;
+          if (ref instanceof String) {
+            com.google.protobuf.ByteString b = 
+                com.google.protobuf.ByteString.copyFromUtf8(
+                    (java.lang.String) ref);
+            repeatedGroupField_ = b;
+            return b;
+          } else {
+            return (com.google.protobuf.ByteString) ref;
+          }
+        }
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @param value The repeatedGroupField to set.
+         * @return This builder for chaining.
+         */
+        public Builder setRepeatedGroupField(
+            java.lang.String value) {
+          if (value == null) { throw new NullPointerException(); }
+          repeatedGroupField_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @return This builder for chaining.
+         */
+        public Builder clearRepeatedGroupField() {
+          repeatedGroupField_ = getDefaultInstance().getRepeatedGroupField();
+          bitField0_ = (bitField0_ & ~0x00000001);
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional string repeated_group_field = 1;</code>
+         * @param value The bytes for repeatedGroupField to set.
+         * @return This builder for chaining.
+         */
+        public Builder setRepeatedGroupFieldBytes(
+            com.google.protobuf.ByteString value) {
+          if (value == null) { throw new NullPointerException(); }
+          repeatedGroupField_ = value;
+          bitField0_ |= 0x00000001;
+          onChanged();
+          return this;
+        }
+
+        private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup innerGroup_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder> innerGroupBuilder_;
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         * @return Whether the innergroup field is set.
+         */
+        public boolean hasInnerGroup() {
+          return ((bitField0_ & 0x00000002) != 0);
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         * @return The innergroup.
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInnerGroup() {
+          if (innerGroupBuilder_ == null) {
+            return innerGroup_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : innerGroup_;
+          } else {
+            return innerGroupBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public Builder setInnerGroup(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup value) {
+          if (innerGroupBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            innerGroup_ = value;
+          } else {
+            innerGroupBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public Builder setInnerGroup(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder builderForValue) {
+          if (innerGroupBuilder_ == null) {
+            innerGroup_ = builderForValue.build();
+          } else {
+            innerGroupBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public Builder mergeInnerGroup(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup value) {
+          if (innerGroupBuilder_ == null) {
+            if (((bitField0_ & 0x00000002) != 0) &&
+              innerGroup_ != null &&
+              innerGroup_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance()) {
+              getInnerGroupBuilder().mergeFrom(value);
+            } else {
+              innerGroup_ = value;
+            }
+          } else {
+            innerGroupBuilder_.mergeFrom(value);
+          }
+          if (innerGroup_ != null) {
+            bitField0_ |= 0x00000002;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public Builder clearInnerGroup() {
+          bitField0_ = (bitField0_ & ~0x00000002);
+          innerGroup_ = null;
+          if (innerGroupBuilder_ != null) {
+            innerGroupBuilder_.dispose();
+            innerGroupBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder getInnerGroupBuilder() {
+          bitField0_ |= 0x00000002;
+          onChanged();
+          return internalGetInnerGroupFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerGroupOrBuilder() {
+          if (innerGroupBuilder_ != null) {
+            return innerGroupBuilder_.getMessageOrBuilder();
+          } else {
+            return innerGroup_ == null ?
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : innerGroup_;
+          }
+        }
+        /**
+         * <code>optional group InnerGroup = 2 { ... }</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder> 
+            internalGetInnerGroupFieldBuilder() {
+          if (innerGroupBuilder_ == null) {
+            innerGroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder>(
+                    getInnerGroup(),
+                    getParentForChildren(),
+                    isClean());
+            innerGroup_ = null;
+          }
+          return innerGroupBuilder_;
+        }
+
+        private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner_;
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder> innerBuilder_;
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         * @return Whether the inner field is set.
+         */
+        public boolean hasInner() {
+          return ((bitField0_ & 0x00000004) != 0);
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         * @return The inner.
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup getInner() {
+          if (innerBuilder_ == null) {
+            return inner_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : inner_;
+          } else {
+            return innerBuilder_.getMessage();
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public Builder setInner(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup value) {
+          if (innerBuilder_ == null) {
+            if (value == null) {
+              throw new NullPointerException();
+            }
+            inner_ = value;
+          } else {
+            innerBuilder_.setMessage(value);
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public Builder setInner(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder builderForValue) {
+          if (innerBuilder_ == null) {
+            inner_ = builderForValue.build();
+          } else {
+            innerBuilder_.setMessage(builderForValue.build());
+          }
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public Builder mergeInner(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup value) {
+          if (innerBuilder_ == null) {
+            if (((bitField0_ & 0x00000004) != 0) &&
+              inner_ != null &&
+              inner_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance()) {
+              getInnerBuilder().mergeFrom(value);
+            } else {
+              inner_ = value;
+            }
+          } else {
+            innerBuilder_.mergeFrom(value);
+          }
+          if (inner_ != null) {
+            bitField0_ |= 0x00000004;
+            onChanged();
+          }
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public Builder clearInner() {
+          bitField0_ = (bitField0_ & ~0x00000004);
+          inner_ = null;
+          if (innerBuilder_ != null) {
+            innerBuilder_.dispose();
+            innerBuilder_ = null;
+          }
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder getInnerBuilder() {
+          bitField0_ |= 0x00000004;
+          onChanged();
+          return internalGetInnerFieldBuilder().getBuilder();
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder getInnerOrBuilder() {
+          if (innerBuilder_ != null) {
+            return innerBuilder_.getMessageOrBuilder();
+          } else {
+            return inner_ == null ?
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.getDefaultInstance() : inner_;
+          }
+        }
+        /**
+         * <code>optional .ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup inner = 3;</code>
+         */
+        private com.google.protobuf.SingleFieldBuilder<
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder> 
+            internalGetInnerFieldBuilder() {
+          if (innerBuilder_ == null) {
+            innerBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.InnerGroupOrBuilder>(
+                    getInner(),
+                    getParentForChildren(),
+                    isClean());
+            inner_ = null;
+          }
+          return innerBuilder_;
+        }
+
+        // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup)
+      }
+
+      // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.RepeatedGroup)
+      private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup DEFAULT_INSTANCE;
+      static {
+        DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup();
+      }
+
+      public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getDefaultInstance() {
+        return DEFAULT_INSTANCE;
+      }
+
+      private static final com.google.protobuf.Parser<RepeatedGroup>
+          PARSER = new com.google.protobuf.AbstractParser<RepeatedGroup>() {
+        @java.lang.Override
+        public RepeatedGroup parsePartialFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+          Builder builder = newBuilder();
+          try {
+            builder.mergeFrom(input, extensionRegistry);
+          } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+            throw e.setUnfinishedMessage(builder.buildPartial());
+          } catch (com.google.protobuf.UninitializedMessageException e) {
+            throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+          } catch (java.io.IOException e) {
+            throw new com.google.protobuf.InvalidProtocolBufferException(e)
+                .setUnfinishedMessage(builder.buildPartial());
+          }
+          return builder.buildPartial();
+        }
+      };
+
+      public static com.google.protobuf.Parser<RepeatedGroup> parser() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Parser<RepeatedGroup> getParserForType() {
+        return PARSER;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getDefaultInstanceForType() {
         return DEFAULT_INSTANCE;
       }
 
     }
 
     private int bitField0_;
-    public static final int OUTER_FIELD_FIELD_NUMBER = 1;
-    @SuppressWarnings("serial")
-    private volatile java.lang.Object outerField_ = "";
+    public static final int GROUP1_FIELD_NUMBER = 1;
+    private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 group1_;
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return Whether the outerField field is set.
+     * <code>optional group Group1 = 1 { ... }</code>
+     * @return Whether the group1 field is set.
      */
     @java.lang.Override
-    public boolean hasOuterField() {
+    public boolean hasGroup1() {
       return ((bitField0_ & 0x00000001) != 0);
     }
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return The outerField.
+     * <code>optional group Group1 = 1 { ... }</code>
+     * @return The group1.
      */
     @java.lang.Override
-    public java.lang.String getOuterField() {
-      java.lang.Object ref = outerField_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        if (bs.isValidUtf8()) {
-          outerField_ = s;
-        }
-        return s;
-      }
+    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getGroup1() {
+      return group1_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance() : group1_;
     }
     /**
-     * <code>optional string outer_field = 1;</code>
-     * @return The bytes for outerField.
+     * <code>optional group Group1 = 1 { ... }</code>
      */
     @java.lang.Override
-    public com.google.protobuf.ByteString
-        getOuterFieldBytes() {
-      java.lang.Object ref = outerField_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        outerField_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder getGroup1OrBuilder() {
+      return group1_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance() : group1_;
     }
 
-    public static final int NESTED_FIELD_NUMBER = 2;
-    private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps nested_;
-    /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-     * @return Whether the nested field is set.
-     */
-    @java.lang.Override
-    public boolean hasNested() {
-      return ((bitField0_ & 0x00000002) != 0);
-    }
-    /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-     * @return The nested.
-     */
-    @java.lang.Override
-    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getNested() {
-      return nested_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance() : nested_;
-    }
-    /**
-     * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-     */
-    @java.lang.Override
-    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder getNestedOrBuilder() {
-      return nested_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance() : nested_;
-    }
-
-    public static final int OUTER_MAP_FIELD_NUMBER = 3;
-    private static final class OuterMapDefaultEntryHolder {
-      static final com.google.protobuf.MapEntry<
-          java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> defaultEntry =
-              com.google.protobuf.MapEntry
-              .<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_descriptor, 
-                  com.google.protobuf.WireFormat.FieldType.STRING,
-                  "",
-                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
-                  com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance());
-    }
+    public static final int REPEATEDGROUP_FIELD_NUMBER = 2;
     @SuppressWarnings("serial")
-    private com.google.protobuf.MapField<
-        java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> outerMap_;
-    private com.google.protobuf.MapField<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-    internalGetOuterMap() {
-      if (outerMap_ == null) {
-        return com.google.protobuf.MapField.emptyMapField(
-            OuterMapDefaultEntryHolder.defaultEntry);
-      }
-      return outerMap_;
-    }
-    public int getOuterMapCount() {
-      return internalGetOuterMap().getMap().size();
-    }
+    private java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> repeatedGroup_;
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
     @java.lang.Override
-    public boolean containsOuterMap(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      return internalGetOuterMap().getMap().containsKey(key);
+    public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> getRepeatedGroupList() {
+      return repeatedGroup_;
     }
     /**
-     * Use {@link #getOuterMapMap()} instead.
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
     @java.lang.Override
-    @java.lang.Deprecated
-    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> getOuterMap() {
-      return getOuterMapMap();
+    public java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder> 
+        getRepeatedGroupOrBuilderList() {
+      return repeatedGroup_;
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
     @java.lang.Override
-    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> getOuterMapMap() {
-      return internalGetOuterMap().getMap();
+    public int getRepeatedGroupCount() {
+      return repeatedGroup_.size();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
     @java.lang.Override
-    public /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrDefault(
-        java.lang.String key,
-        /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps defaultValue) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> map =
-          internalGetOuterMap().getMap();
-      return map.containsKey(key) ? map.get(key) : defaultValue;
+    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getRepeatedGroup(int index) {
+      return repeatedGroup_.get(index);
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+     * <code>repeated group RepeatedGroup = 2 { ... }</code>
      */
     @java.lang.Override
-    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrThrow(
-        java.lang.String key) {
-      if (key == null) { throw new NullPointerException("map key"); }
-      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> map =
-          internalGetOuterMap().getMap();
-      if (!map.containsKey(key)) {
-        throw new java.lang.IllegalArgumentException();
-      }
-      return map.get(key);
+    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder getRepeatedGroupOrBuilder(
+        int index) {
+      return repeatedGroup_.get(index);
     }
 
     private byte memoizedIsInitialized = -1;
@@ -3697,17 +5595,11 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       if (((bitField0_ & 0x00000001) != 0)) {
-        com.google.protobuf.GeneratedMessage.writeString(output, 1, outerField_);
+        output.writeGroup(1, getGroup1());
       }
-      if (((bitField0_ & 0x00000002) != 0)) {
-        output.writeMessage(2, getNested());
+      for (int i = 0; i < repeatedGroup_.size(); i++) {
+        output.writeGroup(2, repeatedGroup_.get(i));
       }
-      com.google.protobuf.GeneratedMessage
-        .serializeStringMapTo(
-          output,
-          internalGetOuterMap(),
-          OuterMapDefaultEntryHolder.defaultEntry,
-          3);
       getUnknownFields().writeTo(output);
     }
 
@@ -3718,21 +5610,12 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
 
       size = 0;
       if (((bitField0_ & 0x00000001) != 0)) {
-        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, outerField_);
-      }
-      if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(2, getNested());
+          .computeGroupSize(1, getGroup1());
       }
-      for (java.util.Map.Entry<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> entry
-           : internalGetOuterMap().getMap().entrySet()) {
-        com.google.protobuf.MapEntry<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-        outerMap__ = OuterMapDefaultEntryHolder.defaultEntry.newBuilderForType()
-            .setKey(entry.getKey())
-            .setValue(entry.getValue())
-            .build();
+      for (int i = 0; i < repeatedGroup_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-            .computeMessageSize(3, outerMap__);
+          .computeGroupSize(2, repeatedGroup_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -3744,23 +5627,18 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       if (obj == this) {
        return true;
       }
-      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps)) {
+      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups)) {
         return super.equals(obj);
       }
-      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps) obj;
+      com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups other = (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups) obj;
 
-      if (hasOuterField() != other.hasOuterField()) return false;
-      if (hasOuterField()) {
-        if (!getOuterField()
-            .equals(other.getOuterField())) return false;
+      if (hasGroup1() != other.hasGroup1()) return false;
+      if (hasGroup1()) {
+        if (!getGroup1()
+            .equals(other.getGroup1())) return false;
       }
-      if (hasNested() != other.hasNested()) return false;
-      if (hasNested()) {
-        if (!getNested()
-            .equals(other.getNested())) return false;
-      }
-      if (!internalGetOuterMap().equals(
-          other.internalGetOuterMap())) return false;
+      if (!getRepeatedGroupList()
+          .equals(other.getRepeatedGroupList())) return false;
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -3772,61 +5650,57 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
-      if (hasOuterField()) {
-        hash = (37 * hash) + OUTER_FIELD_FIELD_NUMBER;
-        hash = (53 * hash) + getOuterField().hashCode();
+      if (hasGroup1()) {
+        hash = (37 * hash) + GROUP1_FIELD_NUMBER;
+        hash = (53 * hash) + getGroup1().hashCode();
       }
-      if (hasNested()) {
-        hash = (37 * hash) + NESTED_FIELD_NUMBER;
-        hash = (53 * hash) + getNested().hashCode();
-      }
-      if (!internalGetOuterMap().getMap().isEmpty()) {
-        hash = (37 * hash) + OUTER_MAP_FIELD_NUMBER;
-        hash = (53 * hash) + internalGetOuterMap().hashCode();
+      if (getRepeatedGroupCount() > 0) {
+        hash = (37 * hash) + REPEATEDGROUP_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedGroupList().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
       return hash;
     }
 
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         java.nio.ByteBuffer data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(byte[] data)
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return PARSER.parseFrom(data, extensionRegistry);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(java.io.InputStream input)
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3834,26 +5708,26 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
           .parseWithIOException(PARSER, input, extensionRegistry);
     }
 
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseDelimitedFrom(java.io.InputStream input)
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input);
     }
 
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseDelimitedFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return com.google.protobuf.GeneratedMessage
           .parseWithIOException(PARSER, input);
     }
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps parseFrom(
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -3866,7 +5740,7 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
     public static Builder newBuilder() {
       return DEFAULT_INSTANCE.toBuilder();
     }
-    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps prototype) {
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups prototype) {
       return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
     }
     @java.lang.Override
@@ -3883,51 +5757,29 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
     }
     /**
      * <pre>
-     * Nested message with maps
+     * Nested groups
      * </pre>
      *
-     * Protobuf type {@code ComprehensiveTest.NestedMinimal.OuterWithNestedMaps}
+     * Protobuf type {@code ComprehensiveTest.NestedMinimal.MessageWithNestedGroups}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps)
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMapsOrBuilder {
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups)
+        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroupsOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor;
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor;
       }
 
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
-          int number) {
-        switch (number) {
-          case 3:
-            return internalGetOuterMap();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
-      @SuppressWarnings({"rawtypes"})
-      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
-          int number) {
-        switch (number) {
-          case 3:
-            return internalGetMutableOuterMap();
-          default:
-            throw new RuntimeException(
-                "Invalid map field number: " + number);
-        }
-      }
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
-                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.Builder.class);
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.class, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Builder.class);
       }
 
-      // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.newBuilder()
+      // Construct using com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -3940,37 +5792,43 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage
                 .alwaysUseFieldBuilders) {
-          internalGetNestedFieldBuilder();
+          internalGetGroup1FieldBuilder();
+          internalGetRepeatedGroupFieldBuilder();
         }
       }
       @java.lang.Override
       public Builder clear() {
         super.clear();
         bitField0_ = 0;
-        outerField_ = "";
-        nested_ = null;
-        if (nestedBuilder_ != null) {
-          nestedBuilder_.dispose();
-          nestedBuilder_ = null;
+        group1_ = null;
+        if (group1Builder_ != null) {
+          group1Builder_.dispose();
+          group1Builder_ = null;
         }
-        internalGetMutableOuterMap().clear();
+        if (repeatedGroupBuilder_ == null) {
+          repeatedGroup_ = java.util.Collections.emptyList();
+        } else {
+          repeatedGroup_ = null;
+          repeatedGroupBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
 
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor;
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor;
       }
 
       @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps getDefaultInstanceForType() {
-        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.getDefaultInstance();
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.getDefaultInstance();
       }
 
       @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps build() {
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps result = buildPartial();
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups build() {
+        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
@@ -3978,55 +5836,79 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       }
 
       @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps buildPartial() {
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps(this);
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups buildPartial() {
+        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups result = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups(this);
+        buildPartialRepeatedFields(result);
         if (bitField0_ != 0) { buildPartial0(result); }
         onBuilt();
         return result;
       }
 
-      private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps result) {
+      private void buildPartialRepeatedFields(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups result) {
+        if (repeatedGroupBuilder_ == null) {
+          if (((bitField0_ & 0x00000002) != 0)) {
+            repeatedGroup_ = java.util.Collections.unmodifiableList(repeatedGroup_);
+            bitField0_ = (bitField0_ & ~0x00000002);
+          }
+          result.repeatedGroup_ = repeatedGroup_;
+        } else {
+          result.repeatedGroup_ = repeatedGroupBuilder_.build();
+        }
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups result) {
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) != 0)) {
-          result.outerField_ = outerField_;
+          result.group1_ = group1Builder_ == null
+              ? group1_
+              : group1Builder_.build();
           to_bitField0_ |= 0x00000001;
-        }
-        if (((from_bitField0_ & 0x00000002) != 0)) {
-          result.nested_ = nestedBuilder_ == null
-              ? nested_
-              : nestedBuilder_.build();
-          to_bitField0_ |= 0x00000002;
-        }
-        if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.outerMap_ = internalGetOuterMap().build(OuterMapDefaultEntryHolder.defaultEntry);
         }
         result.bitField0_ |= to_bitField0_;
       }
 
       @java.lang.Override
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps) {
-          return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps)other);
+        if (other instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups) {
+          return mergeFrom((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
 
-      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps other) {
-        if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.getDefaultInstance()) return this;
-        if (other.hasOuterField()) {
-          outerField_ = other.outerField_;
-          bitField0_ |= 0x00000001;
-          onChanged();
+      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups other) {
+        if (other == com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.getDefaultInstance()) return this;
+        if (other.hasGroup1()) {
+          mergeGroup1(other.getGroup1());
         }
-        if (other.hasNested()) {
-          mergeNested(other.getNested());
+        if (repeatedGroupBuilder_ == null) {
+          if (!other.repeatedGroup_.isEmpty()) {
+            if (repeatedGroup_.isEmpty()) {
+              repeatedGroup_ = other.repeatedGroup_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+            } else {
+              ensureRepeatedGroupIsMutable();
+              repeatedGroup_.addAll(other.repeatedGroup_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.repeatedGroup_.isEmpty()) {
+            if (repeatedGroupBuilder_.isEmpty()) {
+              repeatedGroupBuilder_.dispose();
+              repeatedGroupBuilder_ = null;
+              repeatedGroup_ = other.repeatedGroup_;
+              bitField0_ = (bitField0_ & ~0x00000002);
+              repeatedGroupBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   internalGetRepeatedGroupFieldBuilder() : null;
+            } else {
+              repeatedGroupBuilder_.addAllMessages(other.repeatedGroup_);
+            }
+          }
         }
-        internalGetMutableOuterMap().mergeFrom(
-            other.internalGetOuterMap());
-        bitField0_ |= 0x00000004;
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
         return this;
@@ -4053,27 +5935,26 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
               case 0:
                 done = true;
                 break;
-              case 10: {
-                outerField_ = input.readBytes();
+              case 11: {
+                input.readGroup(1,
+                    internalGetGroup1FieldBuilder().getBuilder(),
+                    extensionRegistry);
                 bitField0_ |= 0x00000001;
                 break;
-              } // case 10
-              case 18: {
-                input.readMessage(
-                    internalGetNestedFieldBuilder().getBuilder(),
-                    extensionRegistry);
-                bitField0_ |= 0x00000002;
+              } // case 11
+              case 19: {
+                com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup m =
+                    input.readGroup(2,
+                        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.parser(),
+                        extensionRegistry);
+                if (repeatedGroupBuilder_ == null) {
+                  ensureRepeatedGroupIsMutable();
+                  repeatedGroup_.add(m);
+                } else {
+                  repeatedGroupBuilder_.addMessage(m);
+                }
                 break;
-              } // case 18
-              case 26: {
-                com.google.protobuf.MapEntry<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-                outerMap__ = input.readMessage(
-                    OuterMapDefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);
-                internalGetMutableOuterMap().ensureBuilderMap().put(
-                    outerMap__.getKey(), outerMap__.getValue());
-                bitField0_ |= 0x00000004;
-                break;
-              } // case 26
+              } // case 19
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -4091,379 +5972,384 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       }
       private int bitField0_;
 
-      private java.lang.Object outerField_ = "";
+      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 group1_;
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder> group1Builder_;
       /**
-       * <code>optional string outer_field = 1;</code>
-       * @return Whether the outerField field is set.
+       * <code>optional group Group1 = 1 { ... }</code>
+       * @return Whether the group1 field is set.
        */
-      public boolean hasOuterField() {
+      public boolean hasGroup1() {
         return ((bitField0_ & 0x00000001) != 0);
       }
       /**
-       * <code>optional string outer_field = 1;</code>
-       * @return The outerField.
+       * <code>optional group Group1 = 1 { ... }</code>
+       * @return The group1.
        */
-      public java.lang.String getOuterField() {
-        java.lang.Object ref = outerField_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          if (bs.isValidUtf8()) {
-            outerField_ = s;
-          }
-          return s;
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 getGroup1() {
+        if (group1Builder_ == null) {
+          return group1_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance() : group1_;
         } else {
-          return (java.lang.String) ref;
+          return group1Builder_.getMessage();
         }
       }
       /**
-       * <code>optional string outer_field = 1;</code>
-       * @return The bytes for outerField.
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public com.google.protobuf.ByteString
-          getOuterFieldBytes() {
-        java.lang.Object ref = outerField_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          outerField_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>optional string outer_field = 1;</code>
-       * @param value The outerField to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOuterField(
-          java.lang.String value) {
-        if (value == null) { throw new NullPointerException(); }
-        outerField_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string outer_field = 1;</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearOuterField() {
-        outerField_ = getDefaultInstance().getOuterField();
-        bitField0_ = (bitField0_ & ~0x00000001);
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional string outer_field = 1;</code>
-       * @param value The bytes for outerField to set.
-       * @return This builder for chaining.
-       */
-      public Builder setOuterFieldBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) { throw new NullPointerException(); }
-        outerField_ = value;
-        bitField0_ |= 0x00000001;
-        onChanged();
-        return this;
-      }
-
-      private com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps nested_;
-      private com.google.protobuf.SingleFieldBuilder<
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder> nestedBuilder_;
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-       * @return Whether the nested field is set.
-       */
-      public boolean hasNested() {
-        return ((bitField0_ & 0x00000002) != 0);
-      }
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-       * @return The nested.
-       */
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getNested() {
-        if (nestedBuilder_ == null) {
-          return nested_ == null ? com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance() : nested_;
-        } else {
-          return nestedBuilder_.getMessage();
-        }
-      }
-      /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
-       */
-      public Builder setNested(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps value) {
-        if (nestedBuilder_ == null) {
+      public Builder setGroup1(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 value) {
+        if (group1Builder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          nested_ = value;
+          group1_ = value;
         } else {
-          nestedBuilder_.setMessage(value);
+          group1Builder_.setMessage(value);
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public Builder setNested(
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder builderForValue) {
-        if (nestedBuilder_ == null) {
-          nested_ = builderForValue.build();
+      public Builder setGroup1(
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder builderForValue) {
+        if (group1Builder_ == null) {
+          group1_ = builderForValue.build();
         } else {
-          nestedBuilder_.setMessage(builderForValue.build());
+          group1Builder_.setMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000002;
+        bitField0_ |= 0x00000001;
         onChanged();
         return this;
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public Builder mergeNested(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps value) {
-        if (nestedBuilder_ == null) {
-          if (((bitField0_ & 0x00000002) != 0) &&
-            nested_ != null &&
-            nested_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance()) {
-            getNestedBuilder().mergeFrom(value);
+      public Builder mergeGroup1(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1 value) {
+        if (group1Builder_ == null) {
+          if (((bitField0_ & 0x00000001) != 0) &&
+            group1_ != null &&
+            group1_ != com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance()) {
+            getGroup1Builder().mergeFrom(value);
           } else {
-            nested_ = value;
+            group1_ = value;
           }
         } else {
-          nestedBuilder_.mergeFrom(value);
+          group1Builder_.mergeFrom(value);
         }
-        if (nested_ != null) {
-          bitField0_ |= 0x00000002;
+        if (group1_ != null) {
+          bitField0_ |= 0x00000001;
           onChanged();
         }
         return this;
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public Builder clearNested() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        nested_ = null;
-        if (nestedBuilder_ != null) {
-          nestedBuilder_.dispose();
-          nestedBuilder_ = null;
+      public Builder clearGroup1() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        group1_ = null;
+        if (group1Builder_ != null) {
+          group1Builder_.dispose();
+          group1Builder_ = null;
         }
         onChanged();
         return this;
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder getNestedBuilder() {
-        bitField0_ |= 0x00000002;
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder getGroup1Builder() {
+        bitField0_ |= 0x00000001;
         onChanged();
-        return internalGetNestedFieldBuilder().getBuilder();
+        return internalGetGroup1FieldBuilder().getBuilder();
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder getNestedOrBuilder() {
-        if (nestedBuilder_ != null) {
-          return nestedBuilder_.getMessageOrBuilder();
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder getGroup1OrBuilder() {
+        if (group1Builder_ != null) {
+          return group1Builder_.getMessageOrBuilder();
         } else {
-          return nested_ == null ?
-              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.getDefaultInstance() : nested_;
+          return group1_ == null ?
+              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.getDefaultInstance() : group1_;
         }
       }
       /**
-       * <code>optional .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps nested = 2;</code>
+       * <code>optional group Group1 = 1 { ... }</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder> 
-          internalGetNestedFieldBuilder() {
-        if (nestedBuilder_ == null) {
-          nestedBuilder_ = new com.google.protobuf.SingleFieldBuilder<
-              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder>(
-                  getNested(),
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder> 
+          internalGetGroup1FieldBuilder() {
+        if (group1Builder_ == null) {
+          group1Builder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.Group1OrBuilder>(
+                  getGroup1(),
                   getParentForChildren(),
                   isClean());
-          nested_ = null;
+          group1_ = null;
         }
-        return nestedBuilder_;
+        return group1Builder_;
       }
 
-      private static final class OuterMapConverter implements com.google.protobuf.MapFieldBuilder.Converter<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> {
-        @java.lang.Override
-        public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps build(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder val) {
-          if (val instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) { return (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) val; }
-          return ((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder) val).build();
-        }
+      private java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> repeatedGroup_ =
+        java.util.Collections.emptyList();
+      private void ensureRepeatedGroupIsMutable() {
+        if (!((bitField0_ & 0x00000002) != 0)) {
+          repeatedGroup_ = new java.util.ArrayList<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup>(repeatedGroup_);
+          bitField0_ |= 0x00000002;
+         }
+      }
 
-        @java.lang.Override
-        public com.google.protobuf.MapEntry<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> defaultEntry() {
-          return OuterMapDefaultEntryHolder.defaultEntry;
-        }
-      };
-      private static final OuterMapConverter outerMapConverter = new OuterMapConverter();
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder> repeatedGroupBuilder_;
 
-      private com.google.protobuf.MapFieldBuilder<
-          java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder> outerMap_;
-      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder>
-          internalGetOuterMap() {
-        if (outerMap_ == null) {
-          return new com.google.protobuf.MapFieldBuilder<>(outerMapConverter);
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> getRepeatedGroupList() {
+        if (repeatedGroupBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(repeatedGroup_);
+        } else {
+          return repeatedGroupBuilder_.getMessageList();
         }
-        return outerMap_;
       }
-      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder>
-          internalGetMutableOuterMap() {
-        if (outerMap_ == null) {
-          outerMap_ = new com.google.protobuf.MapFieldBuilder<>(outerMapConverter);
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public int getRepeatedGroupCount() {
+        if (repeatedGroupBuilder_ == null) {
+          return repeatedGroup_.size();
+        } else {
+          return repeatedGroupBuilder_.getCount();
         }
-        bitField0_ |= 0x00000004;
-        onChanged();
-        return outerMap_;
-      }
-      public int getOuterMapCount() {
-        return internalGetOuterMap().ensureBuilderMap().size();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
        */
-      @java.lang.Override
-      public boolean containsOuterMap(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        return internalGetOuterMap().ensureBuilderMap().containsKey(key);
-      }
-      /**
-       * Use {@link #getOuterMapMap()} instead.
-       */
-      @java.lang.Override
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> getOuterMap() {
-        return getOuterMapMap();
-      }
-      /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-       */
-      @java.lang.Override
-      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> getOuterMapMap() {
-        return internalGetOuterMap().getImmutableMap();
-      }
-      /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-       */
-      @java.lang.Override
-      public /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrDefault(
-          java.lang.String key,
-          /* nullable */
-com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps defaultValue) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder> map = internalGetMutableOuterMap().ensureBuilderMap();
-        return map.containsKey(key) ? outerMapConverter.build(map.get(key)) : defaultValue;
-      }
-      /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-       */
-      @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps getOuterMapOrThrow(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder> map = internalGetMutableOuterMap().ensureBuilderMap();
-        if (!map.containsKey(key)) {
-          throw new java.lang.IllegalArgumentException();
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup getRepeatedGroup(int index) {
+        if (repeatedGroupBuilder_ == null) {
+          return repeatedGroup_.get(index);
+        } else {
+          return repeatedGroupBuilder_.getMessage(index);
         }
-        return outerMapConverter.build(map.get(key));
-      }
-      public Builder clearOuterMap() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        internalGetMutableOuterMap().clear();
-        return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
        */
-      public Builder removeOuterMap(
-          java.lang.String key) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        internalGetMutableOuterMap().ensureBuilderMap()
-            .remove(key);
-        return this;
-      }
-      /**
-       * Use alternate mutation accessors instead.
-       */
-      @java.lang.Deprecated
-      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps>
-          getMutableOuterMap() {
-        bitField0_ |= 0x00000004;
-        return internalGetMutableOuterMap().ensureMessageMap();
-      }
-      /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-       */
-      public Builder putOuterMap(
-          java.lang.String key,
-          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps value) {
-        if (key == null) { throw new NullPointerException("map key"); }
-        if (value == null) { throw new NullPointerException("map value"); }
-        internalGetMutableOuterMap().ensureBuilderMap()
-            .put(key, value);
-        bitField0_ |= 0x00000004;
-        return this;
-      }
-      /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
-       */
-      public Builder putAllOuterMap(
-          java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> values) {
-        for (java.util.Map.Entry<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps> e : values.entrySet()) {
-          if (e.getKey() == null || e.getValue() == null) {
+      public Builder setRepeatedGroup(
+          int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup value) {
+        if (repeatedGroupBuilder_ == null) {
+          if (value == null) {
             throw new NullPointerException();
           }
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.set(index, value);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.setMessage(index, value);
         }
-        internalGetMutableOuterMap().ensureBuilderMap()
-            .putAll(values);
-        bitField0_ |= 0x00000004;
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.NestedWithMaps&gt; outer_map = 3;</code>
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
        */
-      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder putOuterMapBuilderIfAbsent(
-          java.lang.String key) {
-        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder> builderMap = internalGetMutableOuterMap().ensureBuilderMap();
-        com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMapsOrBuilder entry = builderMap.get(key);
-        if (entry == null) {
-          entry = com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.newBuilder();
-          builderMap.put(key, entry);
+      public Builder setRepeatedGroup(
+          int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder builderForValue) {
+        if (repeatedGroupBuilder_ == null) {
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.setMessage(index, builderForValue.build());
         }
-        if (entry instanceof com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) {
-          entry = ((com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps) entry).toBuilder();
-          builderMap.put(key, entry);
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder addRepeatedGroup(com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup value) {
+        if (repeatedGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.add(value);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.addMessage(value);
         }
-        return (com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps.NestedWithMaps.Builder) entry;
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder addRepeatedGroup(
+          int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup value) {
+        if (repeatedGroupBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.add(index, value);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder addRepeatedGroup(
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder builderForValue) {
+        if (repeatedGroupBuilder_ == null) {
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.add(builderForValue.build());
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder addRepeatedGroup(
+          int index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder builderForValue) {
+        if (repeatedGroupBuilder_ == null) {
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder addAllRepeatedGroup(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup> values) {
+        if (repeatedGroupBuilder_ == null) {
+          ensureRepeatedGroupIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, repeatedGroup_);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder clearRepeatedGroup() {
+        if (repeatedGroupBuilder_ == null) {
+          repeatedGroup_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000002);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public Builder removeRepeatedGroup(int index) {
+        if (repeatedGroupBuilder_ == null) {
+          ensureRepeatedGroupIsMutable();
+          repeatedGroup_.remove(index);
+          onChanged();
+        } else {
+          repeatedGroupBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder getRepeatedGroupBuilder(
+          int index) {
+        return internalGetRepeatedGroupFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder getRepeatedGroupOrBuilder(
+          int index) {
+        if (repeatedGroupBuilder_ == null) {
+          return repeatedGroup_.get(index);  } else {
+          return repeatedGroupBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public java.util.List<? extends com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder> 
+           getRepeatedGroupOrBuilderList() {
+        if (repeatedGroupBuilder_ != null) {
+          return repeatedGroupBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(repeatedGroup_);
+        }
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder addRepeatedGroupBuilder() {
+        return internalGetRepeatedGroupFieldBuilder().addBuilder(
+            com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.getDefaultInstance());
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder addRepeatedGroupBuilder(
+          int index) {
+        return internalGetRepeatedGroupFieldBuilder().addBuilder(
+            index, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.getDefaultInstance());
+      }
+      /**
+       * <code>repeated group RepeatedGroup = 2 { ... }</code>
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder> 
+           getRepeatedGroupBuilderList() {
+        return internalGetRepeatedGroupFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder> 
+          internalGetRepeatedGroupFieldBuilder() {
+        if (repeatedGroupBuilder_ == null) {
+          repeatedGroupBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroup.Builder, com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups.RepeatedGroupOrBuilder>(
+                  repeatedGroup_,
+                  ((bitField0_ & 0x00000002) != 0),
+                  getParentForChildren(),
+                  isClean());
+          repeatedGroup_ = null;
+        }
+        return repeatedGroupBuilder_;
       }
 
-      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps)
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups)
     }
 
-    // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.OuterWithNestedMaps)
-    private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps DEFAULT_INSTANCE;
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.NestedMinimal.MessageWithNestedGroups)
+    private static final com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups DEFAULT_INSTANCE;
     static {
-      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps();
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups();
     }
 
-    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps getDefaultInstance() {
+    public static com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups getDefaultInstance() {
       return DEFAULT_INSTANCE;
     }
 
-    private static final com.google.protobuf.Parser<OuterWithNestedMaps>
-        PARSER = new com.google.protobuf.AbstractParser<OuterWithNestedMaps>() {
+    private static final com.google.protobuf.Parser<MessageWithNestedGroups>
+        PARSER = new com.google.protobuf.AbstractParser<MessageWithNestedGroups>() {
       @java.lang.Override
-      public OuterWithNestedMaps parsePartialFrom(
+      public MessageWithNestedGroups parsePartialFrom(
           com.google.protobuf.CodedInputStream input,
           com.google.protobuf.ExtensionRegistryLite extensionRegistry)
           throws com.google.protobuf.InvalidProtocolBufferException {
@@ -4482,17 +6368,17 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       }
     };
 
-    public static com.google.protobuf.Parser<OuterWithNestedMaps> parser() {
+    public static com.google.protobuf.Parser<MessageWithNestedGroups> parser() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.google.protobuf.Parser<OuterWithNestedMaps> getParserForType() {
+    public com.google.protobuf.Parser<MessageWithNestedGroups> getParserForType() {
       return PARSER;
     }
 
     @java.lang.Override
-    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.OuterWithNestedMaps getDefaultInstanceForType() {
+    public com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.MessageWithNestedGroups getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -4514,30 +6400,30 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor;
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_fieldAccessorTable;
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor;
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_fieldAccessorTable;
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_descriptor;
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_descriptor;
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_descriptor;
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4557,25 +6443,27 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       "vel2.Level3\022N\n\017repeated_level3\030\003 \003(\01325.C" +
       "omprehensiveTest.NestedMinimal.Level1.Le" +
       "vel2.Level3\032\036\n\006Level3\022\024\n\014level3_field\030\001 " +
-      "\001(\t\"\226\005\n\023OuterWithNestedMaps\022\023\n\013outer_fie" +
-      "ld\030\001 \001(\t\022S\n\006nested\030\002 \001(\0132C.Comprehensive" +
-      "Test.NestedMinimal.OuterWithNestedMaps.N" +
-      "estedWithMaps\022U\n\touter_map\030\003 \003(\0132B.Compr" +
-      "ehensiveTest.NestedMinimal.OuterWithNest" +
-      "edMaps.OuterMapEntry\032\307\002\n\016NestedWithMaps\022" +
-      "f\n\nnested_map\030\001 \003(\0132R.ComprehensiveTest." +
-      "NestedMinimal.OuterWithNestedMaps.Nested" +
-      "WithMaps.NestedMapEntry\022h\n\013reverse_map\030\002" +
-      " \003(\0132S.ComprehensiveTest.NestedMinimal.O" +
-      "uterWithNestedMaps.NestedWithMaps.Revers" +
-      "eMapEntry\0320\n\016NestedMapEntry\022\013\n\003key\030\001 \001(\t" +
-      "\022\r\n\005value\030\002 \001(\005:\0028\001\0321\n\017ReverseMapEntry\022\013" +
-      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032t\n\rOuterM" +
-      "apEntry\022\013\n\003key\030\001 \001(\t\022R\n\005value\030\002 \001(\0132C.Co" +
-      "mprehensiveTest.NestedMinimal.OuterWithN" +
-      "estedMaps.NestedWithMaps:\0028\001BQ\n+com.rubb" +
-      "erjam.protobuf.compiler.test.nestedB\036Com" +
-      "prehensiveTestNestedMinimalH\001P\000"
+      "\001(\t\"\341\005\n\027MessageWithNestedGroups\022O\n\006group" +
+      "1\030\001 \001(\n2?.ComprehensiveTest.NestedMinima" +
+      "l.MessageWithNestedGroups.Group1\022]\n\rrepe" +
+      "atedgroup\030\002 \003(\n2F.ComprehensiveTest.Nest" +
+      "edMinimal.MessageWithNestedGroups.Repeat" +
+      "edGroup\032\371\001\n\006Group1\022\024\n\014group1_field\030\001 \001(\t" +
+      "\022X\n\007group1a\030\002 \001(\n2G.ComprehensiveTest.Ne" +
+      "stedMinimal.MessageWithNestedGroups.Grou" +
+      "p1.Group1A\022]\n\014nested_group\030\003 \001(\0132G.Compr" +
+      "ehensiveTest.NestedMinimal.MessageWithNe" +
+      "stedGroups.Group1.Group1A\032 \n\007Group1A\022\025\n\r" +
+      "group1a_field\030\001 \001(\t\032\231\002\n\rRepeatedGroup\022\034\n" +
+      "\024repeated_group_field\030\001 \001(\t\022e\n\ninnergrou" +
+      "p\030\002 \001(\n2Q.ComprehensiveTest.NestedMinima" +
+      "l.MessageWithNestedGroups.RepeatedGroup." +
+      "InnerGroup\022`\n\005inner\030\003 \001(\0132Q.Comprehensiv" +
+      "eTest.NestedMinimal.MessageWithNestedGro" +
+      "ups.RepeatedGroup.InnerGroup\032!\n\nInnerGro" +
+      "up\022\023\n\013inner_field\030\001 \001(\tBQ\n+com.rubberjam" +
+      ".protobuf.compiler.test.nestedB\036Comprehe" +
+      "nsiveTestNestedMinimalH\001P\000"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4599,36 +6487,36 @@ com.rubberjam.protobuf.compiler.test.nested.ComprehensiveTestNestedMinimal.Outer
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_NestedMinimal_Level1_Level2_Level3_descriptor,
         new java.lang.String[] { "Level3Field", });
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor =
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor =
       getDescriptor().getMessageType(1);
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor,
-        new java.lang.String[] { "OuterField", "Nested", "OuterMap", });
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor =
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor.getNestedType(0);
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_fieldAccessorTable = new
+        internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor,
+        new java.lang.String[] { "Group1", "RepeatedGroup", });
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor =
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor,
-        new java.lang.String[] { "NestedMap", "ReverseMap", });
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_descriptor =
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor.getNestedType(0);
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_fieldAccessorTable = new
+        internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor,
+        new java.lang.String[] { "Group1Field", "Group1A", "NestedGroup", });
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor =
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_NestedMapEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_descriptor =
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_descriptor.getNestedType(1);
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_fieldAccessorTable = new
+        internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_Group1_Group1A_descriptor,
+        new java.lang.String[] { "Group1AField", });
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor =
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_descriptor.getNestedType(1);
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_NestedWithMaps_ReverseMapEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_descriptor =
-      internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_descriptor.getNestedType(1);
-    internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_fieldAccessorTable = new
+        internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor,
+        new java.lang.String[] { "RepeatedGroupField", "InnerGroup", "Inner", });
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor =
+      internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_NestedMinimal_OuterWithNestedMaps_OuterMapEntry_descriptor,
-        new java.lang.String[] { "Key", "Value", });
+        internal_static_ComprehensiveTest_NestedMinimal_MessageWithNestedGroups_RepeatedGroup_InnerGroup_descriptor,
+        new java.lang.String[] { "InnerField", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

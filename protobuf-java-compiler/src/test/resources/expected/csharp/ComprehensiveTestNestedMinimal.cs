@@ -32,30 +32,32 @@ namespace ComprehensiveTest.NestedMinimal {
             "c3NhZ2UYAiABKAsyNS5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFs",
             "LkxldmVsMS5MZXZlbDIuTGV2ZWwzEk4KD3JlcGVhdGVkX2xldmVsMxgDIAMo",
             "CzI1LkNvbXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTGV2ZWwxLkxl",
-            "dmVsMi5MZXZlbDMaHgoGTGV2ZWwzEhQKDGxldmVsM19maWVsZBgBIAEoCSKW",
-            "BQoTT3V0ZXJXaXRoTmVzdGVkTWFwcxITCgtvdXRlcl9maWVsZBgBIAEoCRJT",
-            "CgZuZXN0ZWQYAiABKAsyQy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5p",
-            "bWFsLk91dGVyV2l0aE5lc3RlZE1hcHMuTmVzdGVkV2l0aE1hcHMSVQoJb3V0",
-            "ZXJfbWFwGAMgAygLMkIuQ29tcHJlaGVuc2l2ZVRlc3QuTmVzdGVkTWluaW1h",
-            "bC5PdXRlcldpdGhOZXN0ZWRNYXBzLk91dGVyTWFwRW50cnkaxwIKDk5lc3Rl",
-            "ZFdpdGhNYXBzEmYKCm5lc3RlZF9tYXAYASADKAsyUi5Db21wcmVoZW5zaXZl",
-            "VGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVyV2l0aE5lc3RlZE1hcHMuTmVzdGVk",
-            "V2l0aE1hcHMuTmVzdGVkTWFwRW50cnkSaAoLcmV2ZXJzZV9tYXAYAiADKAsy",
-            "Uy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVyV2l0aE5l",
-            "c3RlZE1hcHMuTmVzdGVkV2l0aE1hcHMuUmV2ZXJzZU1hcEVudHJ5GjAKDk5l",
-            "c3RlZE1hcEVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEa",
-            "MQoPUmV2ZXJzZU1hcEVudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEo",
-            "CToCOAEadAoNT3V0ZXJNYXBFbnRyeRILCgNrZXkYASABKAkSUgoFdmFsdWUY",
-            "AiABKAsyQy5Db21wcmVoZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk91dGVy",
-            "V2l0aE5lc3RlZE1hcHMuTmVzdGVkV2l0aE1hcHM6AjgBQlEKK2NvbS5ydWJi",
-            "ZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC5uZXN0ZWRCHkNvbXByZWhl",
-            "bnNpdmVUZXN0TmVzdGVkTWluaW1hbEgBUAA="));
+            "dmVsMi5MZXZlbDMaHgoGTGV2ZWwzEhQKDGxldmVsM19maWVsZBgBIAEoCSLh",
+            "BQoXTWVzc2FnZVdpdGhOZXN0ZWRHcm91cHMSTwoGZ3JvdXAxGAEgASgKMj8u",
+            "Q29tcHJlaGVuc2l2ZVRlc3QuTmVzdGVkTWluaW1hbC5NZXNzYWdlV2l0aE5l",
+            "c3RlZEdyb3Vwcy5Hcm91cDESXQoNcmVwZWF0ZWRncm91cBgCIAMoCjJGLkNv",
+            "bXByZWhlbnNpdmVUZXN0Lk5lc3RlZE1pbmltYWwuTWVzc2FnZVdpdGhOZXN0",
+            "ZWRHcm91cHMuUmVwZWF0ZWRHcm91cBr5AQoGR3JvdXAxEhQKDGdyb3VwMV9m",
+            "aWVsZBgBIAEoCRJYCgdncm91cDFhGAIgASgKMkcuQ29tcHJlaGVuc2l2ZVRl",
+            "c3QuTmVzdGVkTWluaW1hbC5NZXNzYWdlV2l0aE5lc3RlZEdyb3Vwcy5Hcm91",
+            "cDEuR3JvdXAxQRJdCgxuZXN0ZWRfZ3JvdXAYAyABKAsyRy5Db21wcmVoZW5z",
+            "aXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk1lc3NhZ2VXaXRoTmVzdGVkR3JvdXBz",
+            "Lkdyb3VwMS5Hcm91cDFBGiAKB0dyb3VwMUESFQoNZ3JvdXAxYV9maWVsZBgB",
+            "IAEoCRqZAgoNUmVwZWF0ZWRHcm91cBIcChRyZXBlYXRlZF9ncm91cF9maWVs",
+            "ZBgBIAEoCRJlCgppbm5lcmdyb3VwGAIgASgKMlEuQ29tcHJlaGVuc2l2ZVRl",
+            "c3QuTmVzdGVkTWluaW1hbC5NZXNzYWdlV2l0aE5lc3RlZEdyb3Vwcy5SZXBl",
+            "YXRlZEdyb3VwLklubmVyR3JvdXASYAoFaW5uZXIYAyABKAsyUS5Db21wcmVo",
+            "ZW5zaXZlVGVzdC5OZXN0ZWRNaW5pbWFsLk1lc3NhZ2VXaXRoTmVzdGVkR3Jv",
+            "dXBzLlJlcGVhdGVkR3JvdXAuSW5uZXJHcm91cBohCgpJbm5lckdyb3VwEhMK",
+            "C2lubmVyX2ZpZWxkGAEgASgJQlEKK2NvbS5ydWJiZXJqYW0ucHJvdG9idWYu",
+            "Y29tcGlsZXIudGVzdC5uZXN0ZWRCHkNvbXByZWhlbnNpdmVUZXN0TmVzdGVk",
+            "TWluaW1hbEgBUAA="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1), global::ComprehensiveTest.NestedMinimal.Level1.Parser, new[]{ "Level1Field", "Level2Message" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Parser, new[]{ "Level2Field", "Level3Message", "RepeatedLevel3" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3), global::ComprehensiveTest.NestedMinimal.Level1.Types.Level2.Types.Level3.Parser, new[]{ "Level3Field" }, null, null, null, null)})}),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps), global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Parser, new[]{ "OuterField", "Nested", "OuterMap" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps), global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps.Parser, new[]{ "NestedMap", "ReverseMap" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, }),
-            null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups), global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Parser, new[]{ "Group1", "RepeatedGroup" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1), global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Parser, new[]{ "Group1Field", "Group1A", "NestedGroup" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A), global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A.Parser, new[]{ "Group1AField" }, null, null, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup), global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Parser, new[]{ "RepeatedGroupField", "InnerGroup", "Inner" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup), global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup.Parser, new[]{ "InnerField" }, null, null, null, null)})})
           }));
     }
     #endregion
@@ -836,19 +838,19 @@ namespace ComprehensiveTest.NestedMinimal {
   }
 
   /// <summary>
-  /// Nested message with maps
+  /// Nested groups
   /// </summary>
   [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-  public sealed partial class OuterWithNestedMaps : pb::IMessage<OuterWithNestedMaps>
+  public sealed partial class MessageWithNestedGroups : pb::IMessage<MessageWithNestedGroups>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<OuterWithNestedMaps> _parser = new pb::MessageParser<OuterWithNestedMaps>(() => new OuterWithNestedMaps());
+    private static readonly pb::MessageParser<MessageWithNestedGroups> _parser = new pb::MessageParser<MessageWithNestedGroups>(() => new MessageWithNestedGroups());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<OuterWithNestedMaps> Parser { get { return _parser; } }
+    public static pb::MessageParser<MessageWithNestedGroups> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -864,7 +866,7 @@ namespace ComprehensiveTest.NestedMinimal {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public OuterWithNestedMaps() {
+    public MessageWithNestedGroups() {
       OnConstruction();
     }
 
@@ -872,86 +874,70 @@ namespace ComprehensiveTest.NestedMinimal {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public OuterWithNestedMaps(OuterWithNestedMaps other) : this() {
-      outerField_ = other.outerField_;
-      nested_ = other.nested_ != null ? other.nested_.Clone() : null;
-      outerMap_ = other.outerMap_.Clone();
+    public MessageWithNestedGroups(MessageWithNestedGroups other) : this() {
+      group1_ = other.HasGroup1 ? other.group1_.Clone() : null;
+      repeatedGroup_ = other.repeatedGroup_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public OuterWithNestedMaps Clone() {
-      return new OuterWithNestedMaps(this);
+    public MessageWithNestedGroups Clone() {
+      return new MessageWithNestedGroups(this);
     }
 
-    /// <summary>Field number for the "outer_field" field.</summary>
-    public const int OuterFieldFieldNumber = 1;
-    private readonly static string OuterFieldDefaultValue = "";
-
-    private string outerField_;
+    /// <summary>Field number for the "group1" field.</summary>
+    public const int Group1FieldNumber = 1;
+    private global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1 group1_;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string OuterField {
-      get { return outerField_ ?? OuterFieldDefaultValue; }
+    public global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1 Group1 {
+      get { return group1_; }
       set {
-        outerField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        group1_ = value;
       }
     }
-    /// <summary>Gets whether the "outer_field" field is set</summary>
+    /// <summary>Gets whether the group1 field is set</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasOuterField {
-      get { return outerField_ != null; }
+    public bool HasGroup1 {
+      get { return group1_ != null; }
     }
-    /// <summary>Clears the value of the "outer_field" field</summary>
+    /// <summary>Clears the value of the group1 field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearOuterField() {
-      outerField_ = null;
-    }
-
-    /// <summary>Field number for the "nested" field.</summary>
-    public const int NestedFieldNumber = 2;
-    private global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps nested_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps Nested {
-      get { return nested_; }
-      set {
-        nested_ = value;
-      }
+    public void ClearGroup1() {
+      group1_ = null;
     }
 
-    /// <summary>Field number for the "outer_map" field.</summary>
-    public const int OuterMapFieldNumber = 3;
-    private static readonly pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>.Codec _map_outerMap_codec
-        = new pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps.Parser), 26);
-    private readonly pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps> outerMap_ = new pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps>();
+    /// <summary>Field number for the "repeatedgroup" field.</summary>
+    public const int RepeatedGroupFieldNumber = 2;
+    private static readonly pb::FieldCodec<global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup> _repeated_repeatedGroup_codec
+        = pb::FieldCodec.ForGroup(19, 20, global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Parser);
+    private readonly pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup> repeatedGroup_ = new pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps> OuterMap {
-      get { return outerMap_; }
+    public pbc::RepeatedField<global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup> RepeatedGroup {
+      get { return repeatedGroup_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as OuterWithNestedMaps);
+      return Equals(other as MessageWithNestedGroups);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(OuterWithNestedMaps other) {
+    public bool Equals(MessageWithNestedGroups other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (OuterField != other.OuterField) return false;
-      if (!object.Equals(Nested, other.Nested)) return false;
-      if (!OuterMap.Equals(other.OuterMap)) return false;
+      if (!object.Equals(Group1, other.Group1)) return false;
+      if(!repeatedGroup_.Equals(other.repeatedGroup_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -959,9 +945,8 @@ namespace ComprehensiveTest.NestedMinimal {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (HasOuterField) hash ^= OuterField.GetHashCode();
-      if (nested_ != null) hash ^= Nested.GetHashCode();
-      hash ^= OuterMap.GetHashCode();
+      if (HasGroup1) hash ^= Group1.GetHashCode();
+      hash ^= repeatedGroup_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -980,15 +965,12 @@ namespace ComprehensiveTest.NestedMinimal {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (HasOuterField) {
-        output.WriteRawTag(10);
-        output.WriteString(OuterField);
+      if (HasGroup1) {
+        output.WriteRawTag(11);
+        output.WriteGroup(Group1);
+        output.WriteRawTag(12);
       }
-      if (nested_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Nested);
-      }
-      outerMap_.WriteTo(output, _map_outerMap_codec);
+      repeatedGroup_.WriteTo(output, _repeated_repeatedGroup_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -999,15 +981,12 @@ namespace ComprehensiveTest.NestedMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (HasOuterField) {
-        output.WriteRawTag(10);
-        output.WriteString(OuterField);
+      if (HasGroup1) {
+        output.WriteRawTag(11);
+        output.WriteGroup(Group1);
+        output.WriteRawTag(12);
       }
-      if (nested_ != null) {
-        output.WriteRawTag(18);
-        output.WriteMessage(Nested);
-      }
-      outerMap_.WriteTo(ref output, _map_outerMap_codec);
+      repeatedGroup_.WriteTo(ref output, _repeated_repeatedGroup_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -1018,13 +997,10 @@ namespace ComprehensiveTest.NestedMinimal {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (HasOuterField) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(OuterField);
+      if (HasGroup1) {
+        size += 2 + pb::CodedOutputStream.ComputeGroupSize(Group1);
       }
-      if (nested_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Nested);
-      }
-      size += outerMap_.CalculateSize(_map_outerMap_codec);
+      size += repeatedGroup_.CalculateSize(_repeated_repeatedGroup_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -1033,20 +1009,17 @@ namespace ComprehensiveTest.NestedMinimal {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(OuterWithNestedMaps other) {
+    public void MergeFrom(MessageWithNestedGroups other) {
       if (other == null) {
         return;
       }
-      if (other.HasOuterField) {
-        OuterField = other.OuterField;
-      }
-      if (other.nested_ != null) {
-        if (nested_ == null) {
-          Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+      if (other.HasGroup1) {
+        if (!HasGroup1) {
+          Group1 = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1();
         }
-        Nested.MergeFrom(other.Nested);
+        Group1.MergeFrom(other.Group1);
       }
-      outerMap_.MergeFrom(other.outerMap_);
+      repeatedGroup_.Add(other.repeatedGroup_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -1066,19 +1039,15 @@ namespace ComprehensiveTest.NestedMinimal {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
-          case 10: {
-            OuterField = input.ReadString();
-            break;
-          }
-          case 18: {
-            if (nested_ == null) {
-              Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+          case 11: {
+            if (!HasGroup1) {
+              Group1 = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1();
             }
-            input.ReadMessage(Nested);
+            input.ReadGroup(Group1);
             break;
           }
-          case 26: {
-            outerMap_.AddEntriesFrom(input, _map_outerMap_codec);
+          case 19: {
+            repeatedGroup_.AddEntriesFrom(input, _repeated_repeatedGroup_codec);
             break;
           }
         }
@@ -1100,19 +1069,15 @@ namespace ComprehensiveTest.NestedMinimal {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
-          case 10: {
-            OuterField = input.ReadString();
-            break;
-          }
-          case 18: {
-            if (nested_ == null) {
-              Nested = new global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Types.NestedWithMaps();
+          case 11: {
+            if (!HasGroup1) {
+              Group1 = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1();
             }
-            input.ReadMessage(Nested);
+            input.ReadGroup(Group1);
             break;
           }
-          case 26: {
-            outerMap_.AddEntriesFrom(ref input, _map_outerMap_codec);
+          case 19: {
+            repeatedGroup_.AddEntriesFrom(ref input, _repeated_repeatedGroup_codec);
             break;
           }
         }
@@ -1121,26 +1086,26 @@ namespace ComprehensiveTest.NestedMinimal {
     #endif
 
     #region Nested types
-    /// <summary>Container for nested types declared in the OuterWithNestedMaps message type.</summary>
+    /// <summary>Container for nested types declared in the MessageWithNestedGroups message type.</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static partial class Types {
       [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
-      public sealed partial class NestedWithMaps : pb::IMessage<NestedWithMaps>
+      public sealed partial class Group1 : pb::IMessage<Group1>
       #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           , pb::IBufferMessage
       #endif
       {
-        private static readonly pb::MessageParser<NestedWithMaps> _parser = new pb::MessageParser<NestedWithMaps>(() => new NestedWithMaps());
+        private static readonly pb::MessageParser<Group1> _parser = new pb::MessageParser<Group1>(() => new Group1());
         private pb::UnknownFieldSet _unknownFields;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public static pb::MessageParser<NestedWithMaps> Parser { get { return _parser; } }
+        public static pb::MessageParser<Group1> Parser { get { return _parser; } }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public static pbr::MessageDescriptor Descriptor {
-          get { return global::ComprehensiveTest.NestedMinimal.OuterWithNestedMaps.Descriptor.NestedTypes[0]; }
+          get { return global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Descriptor.NestedTypes[0]; }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1151,7 +1116,7 @@ namespace ComprehensiveTest.NestedMinimal {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public NestedWithMaps() {
+        public Group1() {
           OnConstruction();
         }
 
@@ -1159,57 +1124,99 @@ namespace ComprehensiveTest.NestedMinimal {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public NestedWithMaps(NestedWithMaps other) : this() {
-          nestedMap_ = other.nestedMap_.Clone();
-          reverseMap_ = other.reverseMap_.Clone();
+        public Group1(Group1 other) : this() {
+          group1Field_ = other.group1Field_;
+          group1A_ = other.HasGroup1A ? other.group1A_.Clone() : null;
+          nestedGroup_ = other.nestedGroup_ != null ? other.nestedGroup_.Clone() : null;
           _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public NestedWithMaps Clone() {
-          return new NestedWithMaps(this);
+        public Group1 Clone() {
+          return new Group1(this);
         }
 
-        /// <summary>Field number for the "nested_map" field.</summary>
-        public const int NestedMapFieldNumber = 1;
-        private static readonly pbc::MapField<string, int>.Codec _map_nestedMap_codec
-            = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 10);
-        private readonly pbc::MapField<string, int> nestedMap_ = new pbc::MapField<string, int>();
+        /// <summary>Field number for the "group1_field" field.</summary>
+        public const int Group1FieldFieldNumber = 1;
+        private readonly static string Group1FieldDefaultValue = "";
+
+        private string group1Field_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public pbc::MapField<string, int> NestedMap {
-          get { return nestedMap_; }
+        public string Group1Field {
+          get { return group1Field_ ?? Group1FieldDefaultValue; }
+          set {
+            group1Field_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+        /// <summary>Gets whether the "group1_field" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasGroup1Field {
+          get { return group1Field_ != null; }
+        }
+        /// <summary>Clears the value of the "group1_field" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearGroup1Field() {
+          group1Field_ = null;
         }
 
-        /// <summary>Field number for the "reverse_map" field.</summary>
-        public const int ReverseMapFieldNumber = 2;
-        private static readonly pbc::MapField<int, string>.Codec _map_reverseMap_codec
-            = new pbc::MapField<int, string>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForString(18, ""), 18);
-        private readonly pbc::MapField<int, string> reverseMap_ = new pbc::MapField<int, string>();
+        /// <summary>Field number for the "group1a" field.</summary>
+        public const int Group1AFieldNumber = 2;
+        private global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A group1A_;
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public pbc::MapField<int, string> ReverseMap {
-          get { return reverseMap_; }
+        public global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A Group1A {
+          get { return group1A_; }
+          set {
+            group1A_ = value;
+          }
+        }
+        /// <summary>Gets whether the group1a field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasGroup1A {
+          get { return group1A_ != null; }
+        }
+        /// <summary>Clears the value of the group1a field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearGroup1A() {
+          group1A_ = null;
+        }
+
+        /// <summary>Field number for the "nested_group" field.</summary>
+        public const int NestedGroupFieldNumber = 3;
+        private global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A nestedGroup_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A NestedGroup {
+          get { return nestedGroup_; }
+          set {
+            nestedGroup_ = value;
+          }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override bool Equals(object other) {
-          return Equals(other as NestedWithMaps);
+          return Equals(other as Group1);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public bool Equals(NestedWithMaps other) {
+        public bool Equals(Group1 other) {
           if (ReferenceEquals(other, null)) {
             return false;
           }
           if (ReferenceEquals(other, this)) {
             return true;
           }
-          if (!NestedMap.Equals(other.NestedMap)) return false;
-          if (!ReverseMap.Equals(other.ReverseMap)) return false;
+          if (Group1Field != other.Group1Field) return false;
+          if (!object.Equals(Group1A, other.Group1A)) return false;
+          if (!object.Equals(NestedGroup, other.NestedGroup)) return false;
           return Equals(_unknownFields, other._unknownFields);
         }
 
@@ -1217,8 +1224,9 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public override int GetHashCode() {
           int hash = 1;
-          hash ^= NestedMap.GetHashCode();
-          hash ^= ReverseMap.GetHashCode();
+          if (HasGroup1Field) hash ^= Group1Field.GetHashCode();
+          if (HasGroup1A) hash ^= Group1A.GetHashCode();
+          if (nestedGroup_ != null) hash ^= NestedGroup.GetHashCode();
           if (_unknownFields != null) {
             hash ^= _unknownFields.GetHashCode();
           }
@@ -1237,8 +1245,19 @@ namespace ComprehensiveTest.NestedMinimal {
         #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
           output.WriteRawMessage(this);
         #else
-          nestedMap_.WriteTo(output, _map_nestedMap_codec);
-          reverseMap_.WriteTo(output, _map_reverseMap_codec);
+          if (HasGroup1Field) {
+            output.WriteRawTag(10);
+            output.WriteString(Group1Field);
+          }
+          if (HasGroup1A) {
+            output.WriteRawTag(19);
+            output.WriteGroup(Group1A);
+            output.WriteRawTag(20);
+          }
+          if (nestedGroup_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(NestedGroup);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(output);
           }
@@ -1249,8 +1268,19 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-          nestedMap_.WriteTo(ref output, _map_nestedMap_codec);
-          reverseMap_.WriteTo(ref output, _map_reverseMap_codec);
+          if (HasGroup1Field) {
+            output.WriteRawTag(10);
+            output.WriteString(Group1Field);
+          }
+          if (HasGroup1A) {
+            output.WriteRawTag(19);
+            output.WriteGroup(Group1A);
+            output.WriteRawTag(20);
+          }
+          if (nestedGroup_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(NestedGroup);
+          }
           if (_unknownFields != null) {
             _unknownFields.WriteTo(ref output);
           }
@@ -1261,8 +1291,15 @@ namespace ComprehensiveTest.NestedMinimal {
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
         public int CalculateSize() {
           int size = 0;
-          size += nestedMap_.CalculateSize(_map_nestedMap_codec);
-          size += reverseMap_.CalculateSize(_map_reverseMap_codec);
+          if (HasGroup1Field) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(Group1Field);
+          }
+          if (HasGroup1A) {
+            size += 2 + pb::CodedOutputStream.ComputeGroupSize(Group1A);
+          }
+          if (nestedGroup_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(NestedGroup);
+          }
           if (_unknownFields != null) {
             size += _unknownFields.CalculateSize();
           }
@@ -1271,12 +1308,25 @@ namespace ComprehensiveTest.NestedMinimal {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
         [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-        public void MergeFrom(NestedWithMaps other) {
+        public void MergeFrom(Group1 other) {
           if (other == null) {
             return;
           }
-          nestedMap_.MergeFrom(other.nestedMap_);
-          reverseMap_.MergeFrom(other.reverseMap_);
+          if (other.HasGroup1Field) {
+            Group1Field = other.Group1Field;
+          }
+          if (other.HasGroup1A) {
+            if (!HasGroup1A) {
+              Group1A = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+            }
+            Group1A.MergeFrom(other.Group1A);
+          }
+          if (other.nestedGroup_ != null) {
+            if (nestedGroup_ == null) {
+              NestedGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+            }
+            NestedGroup.MergeFrom(other.NestedGroup);
+          }
           _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
         }
 
@@ -1297,11 +1347,21 @@ namespace ComprehensiveTest.NestedMinimal {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
                 break;
               case 10: {
-                nestedMap_.AddEntriesFrom(input, _map_nestedMap_codec);
+                Group1Field = input.ReadString();
                 break;
               }
-              case 18: {
-                reverseMap_.AddEntriesFrom(input, _map_reverseMap_codec);
+              case 19: {
+                if (!HasGroup1A) {
+                  Group1A = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+                }
+                input.ReadGroup(Group1A);
+                break;
+              }
+              case 26: {
+                if (nestedGroup_ == null) {
+                  NestedGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+                }
+                input.ReadMessage(NestedGroup);
                 break;
               }
             }
@@ -1324,17 +1384,785 @@ namespace ComprehensiveTest.NestedMinimal {
                 _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
                 break;
               case 10: {
-                nestedMap_.AddEntriesFrom(ref input, _map_nestedMap_codec);
+                Group1Field = input.ReadString();
                 break;
               }
-              case 18: {
-                reverseMap_.AddEntriesFrom(ref input, _map_reverseMap_codec);
+              case 19: {
+                if (!HasGroup1A) {
+                  Group1A = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+                }
+                input.ReadGroup(Group1A);
+                break;
+              }
+              case 26: {
+                if (nestedGroup_ == null) {
+                  NestedGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Types.Group1A();
+                }
+                input.ReadMessage(NestedGroup);
                 break;
               }
             }
           }
         }
         #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the Group1 message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class Group1A : pb::IMessage<Group1A>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<Group1A> _parser = new pb::MessageParser<Group1A>(() => new Group1A());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<Group1A> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.Group1.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Group1A() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Group1A(Group1A other) : this() {
+              group1AField_ = other.group1AField_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public Group1A Clone() {
+              return new Group1A(this);
+            }
+
+            /// <summary>Field number for the "group1a_field" field.</summary>
+            public const int Group1AFieldFieldNumber = 1;
+            private readonly static string Group1AFieldDefaultValue = "";
+
+            private string group1AField_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string Group1AField {
+              get { return group1AField_ ?? Group1AFieldDefaultValue; }
+              set {
+                group1AField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+            /// <summary>Gets whether the "group1a_field" field is set</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool HasGroup1AField {
+              get { return group1AField_ != null; }
+            }
+            /// <summary>Clears the value of the "group1a_field" field</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void ClearGroup1AField() {
+              group1AField_ = null;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as Group1A);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(Group1A other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (Group1AField != other.Group1AField) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (HasGroup1AField) hash ^= Group1AField.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (HasGroup1AField) {
+                output.WriteRawTag(10);
+                output.WriteString(Group1AField);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (HasGroup1AField) {
+                output.WriteRawTag(10);
+                output.WriteString(Group1AField);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (HasGroup1AField) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(Group1AField);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(Group1A other) {
+              if (other == null) {
+                return;
+              }
+              if (other.HasGroup1AField) {
+                Group1AField = other.Group1AField;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    Group1AField = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    Group1AField = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+          }
+
+        }
+        #endregion
+
+      }
+
+      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+      public sealed partial class RepeatedGroup : pb::IMessage<RepeatedGroup>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<RepeatedGroup> _parser = new pb::MessageParser<RepeatedGroup>(() => new RepeatedGroup());
+        private pb::UnknownFieldSet _unknownFields;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<RepeatedGroup> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Descriptor.NestedTypes[1]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RepeatedGroup() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RepeatedGroup(RepeatedGroup other) : this() {
+          repeatedGroupField_ = other.repeatedGroupField_;
+          innerGroup_ = other.HasInnerGroup ? other.innerGroup_.Clone() : null;
+          inner_ = other.inner_ != null ? other.inner_.Clone() : null;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public RepeatedGroup Clone() {
+          return new RepeatedGroup(this);
+        }
+
+        /// <summary>Field number for the "repeated_group_field" field.</summary>
+        public const int RepeatedGroupFieldFieldNumber = 1;
+        private readonly static string RepeatedGroupFieldDefaultValue = "";
+
+        private string repeatedGroupField_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public string RepeatedGroupField {
+          get { return repeatedGroupField_ ?? RepeatedGroupFieldDefaultValue; }
+          set {
+            repeatedGroupField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+        /// <summary>Gets whether the "repeated_group_field" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasRepeatedGroupField {
+          get { return repeatedGroupField_ != null; }
+        }
+        /// <summary>Clears the value of the "repeated_group_field" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearRepeatedGroupField() {
+          repeatedGroupField_ = null;
+        }
+
+        /// <summary>Field number for the "innergroup" field.</summary>
+        public const int InnerGroupFieldNumber = 2;
+        private global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup innerGroup_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup InnerGroup {
+          get { return innerGroup_; }
+          set {
+            innerGroup_ = value;
+          }
+        }
+        /// <summary>Gets whether the innergroup field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasInnerGroup {
+          get { return innerGroup_ != null; }
+        }
+        /// <summary>Clears the value of the innergroup field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearInnerGroup() {
+          innerGroup_ = null;
+        }
+
+        /// <summary>Field number for the "inner" field.</summary>
+        public const int InnerFieldNumber = 3;
+        private global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup inner_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup Inner {
+          get { return inner_; }
+          set {
+            inner_ = value;
+          }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as RepeatedGroup);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(RepeatedGroup other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (RepeatedGroupField != other.RepeatedGroupField) return false;
+          if (!object.Equals(InnerGroup, other.InnerGroup)) return false;
+          if (!object.Equals(Inner, other.Inner)) return false;
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (HasRepeatedGroupField) hash ^= RepeatedGroupField.GetHashCode();
+          if (HasInnerGroup) hash ^= InnerGroup.GetHashCode();
+          if (inner_ != null) hash ^= Inner.GetHashCode();
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (HasRepeatedGroupField) {
+            output.WriteRawTag(10);
+            output.WriteString(RepeatedGroupField);
+          }
+          if (HasInnerGroup) {
+            output.WriteRawTag(19);
+            output.WriteGroup(InnerGroup);
+            output.WriteRawTag(20);
+          }
+          if (inner_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(Inner);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (HasRepeatedGroupField) {
+            output.WriteRawTag(10);
+            output.WriteString(RepeatedGroupField);
+          }
+          if (HasInnerGroup) {
+            output.WriteRawTag(19);
+            output.WriteGroup(InnerGroup);
+            output.WriteRawTag(20);
+          }
+          if (inner_ != null) {
+            output.WriteRawTag(26);
+            output.WriteMessage(Inner);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (HasRepeatedGroupField) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(RepeatedGroupField);
+          }
+          if (HasInnerGroup) {
+            size += 2 + pb::CodedOutputStream.ComputeGroupSize(InnerGroup);
+          }
+          if (inner_ != null) {
+            size += 1 + pb::CodedOutputStream.ComputeMessageSize(Inner);
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(RepeatedGroup other) {
+          if (other == null) {
+            return;
+          }
+          if (other.HasRepeatedGroupField) {
+            RepeatedGroupField = other.RepeatedGroupField;
+          }
+          if (other.HasInnerGroup) {
+            if (!HasInnerGroup) {
+              InnerGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+            }
+            InnerGroup.MergeFrom(other.InnerGroup);
+          }
+          if (other.inner_ != null) {
+            if (inner_ == null) {
+              Inner = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+            }
+            Inner.MergeFrom(other.Inner);
+          }
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                break;
+              case 10: {
+                RepeatedGroupField = input.ReadString();
+                break;
+              }
+              case 19: {
+                if (!HasInnerGroup) {
+                  InnerGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+                }
+                input.ReadGroup(InnerGroup);
+                break;
+              }
+              case 26: {
+                if (inner_ == null) {
+                  Inner = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+                }
+                input.ReadMessage(Inner);
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                break;
+              case 10: {
+                RepeatedGroupField = input.ReadString();
+                break;
+              }
+              case 19: {
+                if (!HasInnerGroup) {
+                  InnerGroup = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+                }
+                input.ReadGroup(InnerGroup);
+                break;
+              }
+              case 26: {
+                if (inner_ == null) {
+                  Inner = new global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Types.InnerGroup();
+                }
+                input.ReadMessage(Inner);
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+        #region Nested types
+        /// <summary>Container for nested types declared in the RepeatedGroup message type.</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static partial class Types {
+          [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+          public sealed partial class InnerGroup : pb::IMessage<InnerGroup>
+          #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              , pb::IBufferMessage
+          #endif
+          {
+            private static readonly pb::MessageParser<InnerGroup> _parser = new pb::MessageParser<InnerGroup>(() => new InnerGroup());
+            private pb::UnknownFieldSet _unknownFields;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pb::MessageParser<InnerGroup> Parser { get { return _parser; } }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public static pbr::MessageDescriptor Descriptor {
+              get { return global::ComprehensiveTest.NestedMinimal.MessageWithNestedGroups.Types.RepeatedGroup.Descriptor.NestedTypes[0]; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            pbr::MessageDescriptor pb::IMessage.Descriptor {
+              get { return Descriptor; }
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public InnerGroup() {
+              OnConstruction();
+            }
+
+            partial void OnConstruction();
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public InnerGroup(InnerGroup other) : this() {
+              innerField_ = other.innerField_;
+              _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public InnerGroup Clone() {
+              return new InnerGroup(this);
+            }
+
+            /// <summary>Field number for the "inner_field" field.</summary>
+            public const int InnerFieldFieldNumber = 1;
+            private readonly static string InnerFieldDefaultValue = "";
+
+            private string innerField_;
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public string InnerField {
+              get { return innerField_ ?? InnerFieldDefaultValue; }
+              set {
+                innerField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+              }
+            }
+            /// <summary>Gets whether the "inner_field" field is set</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool HasInnerField {
+              get { return innerField_ != null; }
+            }
+            /// <summary>Clears the value of the "inner_field" field</summary>
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void ClearInnerField() {
+              innerField_ = null;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override bool Equals(object other) {
+              return Equals(other as InnerGroup);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public bool Equals(InnerGroup other) {
+              if (ReferenceEquals(other, null)) {
+                return false;
+              }
+              if (ReferenceEquals(other, this)) {
+                return true;
+              }
+              if (InnerField != other.InnerField) return false;
+              return Equals(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override int GetHashCode() {
+              int hash = 1;
+              if (HasInnerField) hash ^= InnerField.GetHashCode();
+              if (_unknownFields != null) {
+                hash ^= _unknownFields.GetHashCode();
+              }
+              return hash;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public override string ToString() {
+              return pb::JsonFormatter.ToDiagnosticString(this);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void WriteTo(pb::CodedOutputStream output) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              output.WriteRawMessage(this);
+            #else
+              if (HasInnerField) {
+                output.WriteRawTag(10);
+                output.WriteString(InnerField);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(output);
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+              if (HasInnerField) {
+                output.WriteRawTag(10);
+                output.WriteString(InnerField);
+              }
+              if (_unknownFields != null) {
+                _unknownFields.WriteTo(ref output);
+              }
+            }
+            #endif
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public int CalculateSize() {
+              int size = 0;
+              if (HasInnerField) {
+                size += 1 + pb::CodedOutputStream.ComputeStringSize(InnerField);
+              }
+              if (_unknownFields != null) {
+                size += _unknownFields.CalculateSize();
+              }
+              return size;
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(InnerGroup other) {
+              if (other == null) {
+                return;
+              }
+              if (other.HasInnerField) {
+                InnerField = other.InnerField;
+              }
+              _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+            }
+
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            public void MergeFrom(pb::CodedInputStream input) {
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+              input.ReadRawMessage(this);
+            #else
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                    break;
+                  case 10: {
+                    InnerField = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            #endif
+            }
+
+            #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+            [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+            void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+              uint tag;
+              while ((tag = input.ReadTag()) != 0) {
+              if ((tag & 7) == 4) {
+                // Abort on any end group tag.
+                return;
+              }
+              switch(tag) {
+                  default:
+                    _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                    break;
+                  case 10: {
+                    InnerField = input.ReadString();
+                    break;
+                  }
+                }
+              }
+            }
+            #endif
+
+          }
+
+        }
+        #endregion
 
       }
 
