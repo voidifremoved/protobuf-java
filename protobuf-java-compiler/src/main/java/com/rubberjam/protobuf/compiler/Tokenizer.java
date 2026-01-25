@@ -128,18 +128,70 @@ public class Tokenizer
 
 				if (currentChar == '\n')
 				{
-					// Newline found, end of trailing comments opportunities
-					nextChar();
-					break;
-				}
+					// Newline found. Check if the next line starts with a comment (and no blank line)
+					nextChar(); // consume newline
 
-				if (atEnd)
+					// Look ahead for comments on the next line
+					boolean foundCommentOnNextLine = false;
+
+					// Skip horizontal whitespace on the new line
+					while (Character.isWhitespace(currentChar) && currentChar != '\n')
+					{
+						nextChar();
+					}
+
+					if (currentChar == '\n')
+					{
+						// Blank line found (two consecutive newlines with only whitespace between).
+						// Stop trailing comment search.
+						break;
+					}
+
+					// Check for comment start on the new line
+					if (currentChar == '/')
+					{
+						// Try to read next char to verify it is a comment
+						nextChar();
+						if (currentChar == '/' || currentChar == '*')
+						{
+							// It is a comment. Parse it.
+							// We already consumed first '/'. currentChar is second '/' or '*'
+							String comment = parseCommentBody();
+							trailingComments.append(comment);
+							foundCommentOnNextLine = true;
+						}
+						else
+						{
+							// Not a comment. It's a symbol '/' starting the next line.
+							// This is the start of the next token.
+							// We must return this '/' as the next token.
+
+							currentToken.text = "/";
+							currentToken.type = TokenType.SYMBOL;
+							currentToken.line = line;
+							currentToken.column = column - 1;
+
+							if (trailingComments.length() > 0)
+							{
+								previousToken.trailingComments = trailingComments.toString();
+							}
+							return true;
+						}
+					}
+
+					if (!foundCommentOnNextLine)
+					{
+						// Next line does not start with a comment. It starts with a token.
+						// Stop trailing comment search.
+						break;
+					}
+					// If we found a comment, loop continues to look for more comments
+				}
+				else if (atEnd)
 				{
 					break;
 				}
-
-				// Check for comment start
-				if (currentChar == '/')
+				else if (currentChar == '/')
 				{
 					// Try to read next char to verify it is a comment
 					// We have to consume '/' temporarily.
