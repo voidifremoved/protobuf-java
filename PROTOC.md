@@ -1,6 +1,6 @@
 # Protocol Buffers Compiler (protoc) Internals - Java & C#
 
-This document explains the internal structure and operation of the C++-based Protocol Buffers compiler (`protoc`) code generation logic located in `src/google/protobuf/compiler`. It specifically focuses on how Java and C# code is generated.
+This document explains the internal structure and operation of the C++-based Protocol Buffers compiler (`protoc`) code generation logic located in `src/google/protobuf/compiler`. It specifically focuses on how Java and C# code is generated, detailing the control flow, state management, and specific formatting rules.
 
 ## High-Level Architecture
 
@@ -32,48 +32,84 @@ class CodeGenerator {
 
 **Location**: `src/google/protobuf/compiler/java`
 
-The Java generator is complex due to its support for multiple modes (Immutable, Mutable - *deprecated*, Lite) and its heavy use of a central `Context` object.
+The Java generator uses a deep object-oriented structure where generators hold state (`Context`) and recursively instantiate other generators for nested types.
 
-### 1. Entry Point
-*   **Class**: `JavaGenerator` in `java/generator.cc`.
-*   **Operation**:
-    1.  Parses options (e.g., `lite`, `immutable`).
-    2.  Creates a `FileGenerator`.
-    3.  Iterates through generators to produce the output `.java` files.
+### 1. Entry Point & File Structure (`java/file.cc`)
+*   **Entry**: `JavaGenerator::Generate` (in `java/generator.cc`) creates a `FileGenerator`.
+*   **Outer Class**: `FileGenerator::Generate` produces the outer wrapper class (named after the file or `java_outer_classname`).
+*   **Nesting Logic**:
+    *   It iterates over top-level messages and enums.
+    *   If `java_multiple_files` is **false**, it calls `Generate()` on these message generators, which writes the code as static nested classes *inside* the outer class.
+    *   If `java_multiple_files` is **true**, it generates sibling files using `GenerateSiblings`.
 
-### 2. State Management (`Context`)
-Unlike simple generators, the Java generator wraps the `FileDescriptor` and options into a `Context` object (`java/context.h`).
-*   **Role**: It acts as a shared state container passed to almost every generator class.
-*   **ClassNameResolver**: A helper within `Context` that calculates the fully qualified Java class names (handling `java_package` and `java_outer_classname` options).
+### 2. Message Generation Loop (`java/full/message.cc`)
+The `ImmutableMessageGenerator` class handles message generation.
+*   **Constructor**: Initializes a `FieldGenerator` for every field using the `MakeImmutableFieldGenerator` factory.
+*   **`Generate()` Method Control Flow**:
+    1.  **Header**: Prints class declaration (`public final class ...`).
+    2.  **Static Initialization**:
+        *   The compiler tracks a `bytecode_estimate`.
+        *   If the static block grows too large (near JVM 64k limit), it splits initialization into methods like `_clinit_autosplit_1()`.
+    3.  **Fields**: Iterates over `field_generators_` to generate constants (field numbers) and members.
+    4.  **Nested Types (Recursion)**:
+        *   Iterates over `nested_type_count()`.
+        *   Instantiates a **new** `ImmutableMessageGenerator` for the nested type.
+        *   Calls `GenerateInterface()` and `Generate()` on the nested generator. This writes the nested class definition *inline* within the current class body.
+    5.  **Bit Fields**:
+        *   Calculates `totalBits` required for presence.
+        *   Generates `private int bitField0_;`, `bitField1_;`, etc.
+    6.  **Methods**: Generates `isInitialized`, `writeTo`, `getSerializedSize`, `equals`, `hashCode` using helper methods.
 
-### 3. File Structure Generation
-*   **Class**: `FileGenerator` in `java/file.cc`.
-*   **Responsibilities**:
-    *   Generates the "Outer Class" (the wrapper class containing file-scoped extensions and the `getDescriptor()` method).
-    *   Generates `registerAllExtensions`.
-    *   Handles the `@Generated` annotation and `// NO CHECKED-IN PROTOBUF GENCODE` markers.
-    *   Orchestrates the generation of top-level Enums and Messages.
-    *   **Optimization**: Splits large static initialization blocks (`_clinit_autosplit_...`) to avoid hitting the JVM's 64k method size limit.
+### 3. Field Ordering & Serialization
+*   **Ordering**:
+    *   Inside `GenerateMessageSerializationMethods`, fields are **sorted by field number** using `SortFieldsByNumber`.
+    *   This ensures canonical serialization order regardless of declaration order in the `.proto` file.
+*   **Serialization Loop**:
+    *   The code iterates through the *sorted* fields.
+    *   For each field, it calls `field_generators_.get(field).GenerateSerializationCode(printer)`.
 
-### 4. Message Generation
-*   **Class**: `ImmutableMessageGenerator` in `java/full/message.cc` (for the full runtime).
-*   **Nested Messages**: The generator handles recursion. Inside `Generate()`, it iterates over `nested_types` and instantiates a new `ImmutableMessageGenerator` for each, calling `Generate()` on them.
-*   **Interface Separation**: It generates a separate `OrBuilder` interface (`GenerateInterface`) and the implementation class (`Generate`).
+### 4. Bit Field Comparisons (`java/full/primitive_field.cc`)
+Java uses integer bitmasks to track field presence (for optional fields and proto3 messages).
+*   **Generation**: `GenerateGetBit` creates code like `((bitField0_ & 0x00000001) != 0)`.
+*   **Usage**:
+    *   **Getters**: `return ((bitField0_ & 0x00000001) != 0) ? myField_ : getDefaultInstance().getMyField();`
+    *   **WriteTo**: `if ((bitField0_ & 0x00000001) != 0) { output.write...(1, myField_); }`
+    *   **Builder Merging**: `if (other.hasMyField()) { setMyField(other.getMyField()); }`
 
-### 5. Field Generation
-*   **Factory Pattern**: `java/full/make_field_gens.cc` decides which field generator to use based on type (Primitive, String, Message, Enum) and cardinality (Singular, Repeated).
-*   **Implementations**: Classes like `PrimitiveFieldGenerator`, `StringFieldGenerator`, `MessageFieldGenerator`.
-*   **Proto2 vs Proto3**:
-    *   **Equality/HashCode**: The `GenerateEquals` method checks `descriptor_->has_presence()` (which returns true for Proto2 optionals and Proto3 message fields) to decide if it should generate a `hasField()` check before comparing values.
-    *   **Initialization**: `GenerateIsInitialized` checks `is_required()` on fields to enforce Proto2 required field semantics.
+### 5. Comments & Formatting (`java/doc_comment.cc`)
+*   **Source**: Comments are extracted from `SourceCodeInfo` in the `FileDescriptor`.
+*   **Escaping**:
+    *   `/*` and `*/` are escaped to `&#42;` and `&#47;` to prevent breaking the comment block.
+    *   `@` is escaped to `&#64;` to avoid accidental Javadoc tags.
+    *   HTML tags (`<`, `>`) are escaped (`&lt;`, `&gt;`) to prevent interpretation as HTML.
+*   **Structure**:
+    ```java
+    /**
+     * <pre>
+     * [Comment Body]
+     * </pre>
+     *
+     * <code>optional int32 foo = 1;</code>
+     */
+    ```
 
-### 6. Extensions
-*   **Class**: `ImmutableExtensionGenerator` in `java/full/extension.cc`.
-*   **Operation**: Extensions are generated as static fields of type `GeneratedExtension`. The generator handles registration in `registerAllExtensions` by adding them to the `ExtensionRegistry`.
+### 6. Default Value Formatting (`java/helpers.cc`)
+Default values are generated as literals or static lookups:
+*   **Integers**: `123`
+*   **Longs**: `123L`
+*   **Floats**: `123F`, `Float.NaN`, `Float.POSITIVE_INFINITY`
+*   **Doubles**: `123D`, `Double.NaN` (checked via `value != value`).
+*   **Strings**: Escaped using `CEscape` (e.g., `\n` becomes `\\n`). Non-ASCII characters are octal escaped (`\377`).
+*   **Bytes**: `com.google.protobuf.Internal.bytesDefaultValue("...")`
 
-### 7. Comments
-*   **Class**: `doc_comment.cc`.
-*   **Mechanism**: It uses `SourceCodeInfo` from the descriptor. The logic matches the proto element's path in the `SourceCodeInfo` to find the corresponding comments and formatted them as Javadoc.
+### 7. Naming & Nesting (`java/name_resolver.cc`)
+*   **Class Names**: Calculated by `ClassNameResolver`.
+    *   Converts `foo_bar.proto` -> `FooBar` (CamelCase).
+    *   Resolves conflicts (e.g., if message name == outer class name, appends `OuterClass`).
+*   **Nested Classes**: Java uses static nested classes.
+    *   Proto: `message Outer { message Inner {} }`
+    *   Java: `public static final class Outer ... { public static final class Inner ... }`
+    *   Reference: `Outer.Inner`.
 
 ---
 
@@ -81,63 +117,88 @@ Unlike simple generators, the Java generator wraps the `FileDescriptor` and opti
 
 **Location**: `src/google/protobuf/compiler/csharp`
 
-The C# generator is flatter and delegates more logic directly compared to Java. It produces `sealed partial` classes.
+The C# generator is structurally flatter. It generates `sealed partial` classes and relies heavily on C# properties.
 
-### 1. Entry Point
-*   **Class**: `Generator` in `csharp/csharp_generator.cc`.
-*   **Operation**: Calculates the output filename based on the namespace and calls `ReflectionClassGenerator`.
+### 1. Entry Point & Reflection (`csharp_generator.cc`)
+*   **Entry**: `Generator::Generate`.
+*   **Reflection Class**: `ReflectionClassGenerator` creates the file-level container (e.g., `MyFileReflection`).
+*   **Descriptor Embedding**:
+    *   The `FileDescriptorProto` is serialized to bytes.
+    *   The bytes are **Base64 encoded**.
+    *   The Base64 string is split into 60-char chunks and concatenated in the C# source:
+        ```csharp
+        string.Concat(
+          "Base64Chunk1...",
+          "Base64Chunk2...");
+        ```
 
-### 2. Reflection & File Structure
-*   **Class**: `ReflectionClassGenerator` in `csharp/csharp_reflection_class.cc`.
-*   **Reflection Class**: Generates a static class containing the `FileDescriptor`.
-*   **Descriptor Embedding**: The raw `FileDescriptorProto` bytes are base64-encoded and embedded directly in the source code strings.
-*   **Registration**: Generates code to call `FileDescriptor.FromGeneratedCode`, passing dependencies and a `GeneratedClrTypeInfo` array which links the reflection metadata to the actual CLR types.
+### 2. Message Generation (`csharp_message.cc`)
+*   **Class Structure**: `sealed partial class MyMessage : pb::IMessage<MyMessage>`.
+*   **Nesting Logic**:
+    *   `Generate()` calls `HasNestedGeneratedTypes()`.
+    *   If true, it generates a `public static partial class Types`.
+    *   It recursively iterates over nested types and calls their generators *inside* the `Types` class block.
+*   **Field Sorting**:
+    *   The `MessageGenerator` constructor creates a vector `fields_by_number_`.
+    *   It calls `std::sort` using `CompareFieldNumbers`.
+    *   All subsequent generation (properties, serialization, sizing) iterates over this **sorted** list.
 
-### 3. Message Generation
-*   **Class**: `MessageGenerator` in `csharp/csharp_message.cc`.
-*   **Structure**: Generates a `sealed partial class` implementing `IMessage<T>`.
-*   **State Management**: Options are passed via a simple struct pointer.
-*   **Nested Types**: Handled recursively in `Generate()`. It generates a `public static partial class Types` to contain nested enums and messages.
+### 3. Bit Field Logic (`csharp_primitive_field.cc`)
+C# uses an `int` array for presence bits, but handles them uniquely:
+*   **Definition**: `private int _hasBits0;` (up to `_hasBitsN` based on count).
+*   **Masking**:
+    *   Bit index is calculated: `i % 32`.
+    *   Check: `(_hasBits0 & 1) != 0` (where `1` is the shifted mask).
+    *   Set: `_hasBits0 |= 1;`
+    *   Clear: `_hasBits0 &= ~1;`
+*   **Usage**:
+    *   **Properties**: The getter checks the bit. If unset, returns the *explicit default* value.
+    *   **WriteTo**: Checks the bit before writing the tag.
 
-### 4. Field Generation
-*   **Base Class**: `FieldGeneratorBase`.
-*   **Handling**:
-    *   **Primitive**: `PrimitiveFieldGenerator`. Generates property with getter/setter.
-    *   **Oneof**: `PrimitiveOneofFieldGenerator`. Generates properties that cast the shared `object` field.
-*   **Presence (Optional Fields)**:
-    *   The generator calculates `has_bit_field_count_` and generates `int _hasBits0`, `_hasBits1`, etc.
-    *   Setters for optional primitive fields flip the corresponding bit in `_hasBits`.
-    *   Getters check this bit to decide whether to return the value or the default.
-*   **Default Values**:
-    *   If explicit presence is supported, static `DefaultValue` fields are generated.
-    *   Otherwise, C# default values (0, null) are used.
+### 4. Comments (`csharp_doc_comment.cc`)
+*   **Format**: XML Documentation (`///`).
+*   **Escaping**:
+    *   `&` -> `&amp;`
+    *   `<` -> `&lt;`
+    *   Function `WriteDocCommentBodyImpl` handles this.
+*   **Structure**:
+    ```csharp
+    /// <summary>
+    /// [Comment Body]
+    /// </summary>
+    ```
 
-### 5. Extensions
-*   **Mechanism**: C# extensions are generated as static readonly fields in a static class (often the reflection class or a nested `Extensions` class).
-*   **Logic**: `FieldGeneratorBase::GenerateExtensionCode` creates `new pb::Extension<...>(...)` calls.
+### 5. Default Values (`csharp_helpers.cc`)
+*   **Logic**:
+    *   **Explicit Presence** (Proto2/Optional): Generates a static readonly field:
+        `private readonly static int MyFieldDefaultValue = 123;`
+    *   **Implicit Presence** (Proto3): No default field. The property getter returns the type's default (0, null) if the field is unset (though in strict Proto3, the field is just the value).
+*   **Formatting**:
+    *   Float/Double: `123F`, `123D`. Special handling for `double.PositiveInfinity`, `double.NaN`.
 
-### 6. Oneof Handling
-*   **Implementation**:
-    *   An `enum` is generated for the cases (e.g., `PayloadCase`).
-    *   A single `object` field (e.g., `payload_`) stores the value.
-    *   An `int` field (e.g., `payloadCase_`) stores the current enum case.
-    *   Properties cast `payload_` to the correct type.
-    *   `Clear...` method resets both fields.
+### 6. Naming & Nesting (`names.cc`)
+*   **Namespace**: Converted from proto package (CamelCase).
+*   **PascalCase**: All properties and class names are converted using `UnderscoresToPascalCase` (`foo_bar` -> `FooBar`).
+*   **Nested Types**:
+    *   Proto: `message Outer { message Inner {} }`
+    *   C#:
+        ```csharp
+        public sealed partial class Outer ... {
+            public static partial class Types {
+                public sealed partial class Inner ... { }
+            }
+        }
+        ```
+    *   Reference: `Outer.Types.Inner`.
 
-### 7. Comments
-*   **Class**: `csharp_doc_comment.cc`.
-*   **Mechanism**: Similar to Java, it extracts comments from `SourceCodeInfo` and generates XML documentation comments (`/// <summary>`).
+### 7. Comparison Summary
 
----
-
-## Comparison Summary
-
-| Feature | Java Implementation | C# Implementation |
+| Feature | Java Detail | C# Detail |
 | :--- | :--- | :--- |
-| **Class Type** | `final class` (Immutable) | `sealed partial class` |
-| **Nested Types** | Static nested classes | Static nested classes inside `Types` class |
-| **Reflection** | `getDescriptor()` returns cached object | `Descriptor` property (embedded Base64) |
-| **Oneofs** | `case_` int + `oneof_` object | `case_` int + `oneof_` object |
-| **Optional Primitive** | Bitfield (in `bitField0_`) | Bitfield (in `_hasBits0`) |
-| **Serialization** | `writeTo(CodedOutputStream)` | `WriteTo(CodedOutputStream)` |
-| **Code Style** | Java Beans (get/set) | C# Properties |
+| **Field Order** | Sorted by Number in `writeTo` method | Sorted by Number in Generator Constructor |
+| **Bit Fields** | `int bitField0_` | `int _hasBits0` |
+| **Bit Check** | `((bitField0_ & 0x01) != 0)` | `(_hasBits0 & 1) != 0` |
+| **Nested Types** | Direct static nested class | Nested inside `static partial class Types` |
+| **Comments** | Javadoc (`/** ... */`) with HTML escaping | XML Doc (`/// <summary>`) with XML escaping |
+| **Strings** | Octal escape (`\377`) | Standard string literals |
+| **Class Names** | `ClassNameResolver` (complex conflict resolution) | `ToCSharpName` (Global scope qualification) |
