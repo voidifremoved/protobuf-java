@@ -25,7 +25,8 @@ public class IndentPrinter extends PrintWriter {
 
     private void writeIndent() {
         if (atStartOfLine && currentIndent.length() > 0) {
-            super.write(currentIndent.toString());
+            String indent = currentIndent.toString();
+            super.write(indent.toCharArray(), 0, indent.length());
             atStartOfLine = false;
         }
     }

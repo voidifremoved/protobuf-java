@@ -89,9 +89,10 @@ public class JavaCodeGenerator extends CodeGenerator
 				}
 
 				// Generate main java file.
-				try (java.io.PrintWriter writer = new java.io.PrintWriter(generatorContext.open(javaFilename)))
+				try (java.io.Writer writer = new java.io.OutputStreamWriter(generatorContext.open(javaFilename), java.nio.charset.StandardCharsets.UTF_8);
+						com.rubberjam.protobuf.compiler.java.IndentPrinter printer = new com.rubberjam.protobuf.compiler.java.IndentPrinter(writer, "  "))
 				{
-					fileGenerator.generate(writer);
+					fileGenerator.generate(printer);
 				}
 
 				// Generate sibling files.
