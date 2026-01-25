@@ -28,7 +28,10 @@ public class SharedCodeGenerator
 		FileDescriptorProto.Builder fileProtoBuilder = fileProto.toBuilder();
 		fileProtoBuilder.clearSourceCodeInfo();
 		// Clear syntax field to match expected output format (proto2 is default)
-		fileProtoBuilder.clearSyntax();
+		if ("proto2".equals(fileProtoBuilder.getSyntax()))
+		{
+			fileProtoBuilder.clearSyntax();
+		}
 
 		normalizeDescriptor(fileProtoBuilder);
 

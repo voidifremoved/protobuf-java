@@ -101,9 +101,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
 		{
 			// Generate JavaDoc for UNRECOGNIZED manually (no EnumValueDescriptor exists for it)
-			printer.println("    /**");
-			printer.println("     * <code>UNRECOGNIZED = -1;</code>");
-			printer.println("     */");
 			printer.print("    UNRECOGNIZED(");
 			if (ordinalIsIndex)
 			{

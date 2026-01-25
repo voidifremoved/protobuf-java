@@ -256,3 +256,11 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
         }
         ```
     *   Reference: `Outer.Types.Inner`.
+
+---
+
+## Learnings
+
+*   **Tokenizer Trailing Comments**: The custom tokenizer implementation must look ahead to subsequent lines (checking for contiguous comments without blank lines) to correctly identify and attach trailing comments to the previous token, matching `protoc` behavior.
+*   **Descriptor Serialization**: The `FileDescriptorProto` embedded in the generated code must preserve the `syntax` field for Proto3 files (value "proto3"). Clearing it unconditionally (as was done for Proto2 default handling) causes parity mismatches.
+*   **UNRECOGNIZED Value**: For Proto3 open enums, the generated `UNRECOGNIZED` value should not have Javadoc comments generated for it, even though it is generated in the code.
