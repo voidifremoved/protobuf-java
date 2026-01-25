@@ -1075,7 +1075,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 							false));
 			printer.println("      " + variables.get("deprecation") + "public java.util.List<? extends "
 					+ variables.get("type") + "OrBuilder> ");
-			printer.println("          get" + variables.get("capitalized_name") + "OrBuilderList() {");
+			printer.println("           get" + variables.get("capitalized_name") + "OrBuilderList() {");
 			printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
 			printer.println("          return " + variables.get("name") + "Builder_.getMessageOrBuilderList();");
 			printer.println("        } else {");
@@ -1122,7 +1122,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 							false));
 			printer.println("      " + variables.get("deprecation") + "public java.util.List<" + variables.get("type")
 					+ ".Builder> ");
-			printer.println("          get" + variables.get("capitalized_name") + "BuilderList() {");
+			printer.println("           get" + variables.get("capitalized_name") + "BuilderList() {");
 			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilderList();");
 			printer.println("      }");
 
@@ -1196,16 +1196,16 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuildingCode(PrintWriter printer)
 		{
-			printer.println("      if (" + variables.get("name") + "Builder_ == null) {");
-			printer.println("        if (" + variables.get("get_mutable_bit_builder") + ") {");
-			printer.println("          " + variables.get("name") + "_ = java.util.Collections.unmodifiableList("
+			printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
+			printer.println("          if (" + variables.get("get_mutable_bit_builder") + ") {");
+			printer.println("            " + variables.get("name") + "_ = java.util.Collections.unmodifiableList("
 					+ variables.get("name") + "_);");
-			printer.println("          " + variables.get("clear_mutable_bit_builder") + ";");
+			printer.println("            " + variables.get("clear_mutable_bit_builder") + ";");
+			printer.println("          }");
+			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+			printer.println("        } else {");
+			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "Builder_.build();");
 			printer.println("        }");
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
-			printer.println("      } else {");
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "Builder_.build();");
-			printer.println("      }");
 		}
 
 		@Override
@@ -1235,18 +1235,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateSerializedSizeCode(PrintWriter printer)
 		{
-			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          size += com.google.protobuf.CodedOutputStream");
-			printer.println("            .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
-			printer.println("        }");
+			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("        size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("      }");
 		}
 
 		@Override
 		public void generateWriteToCode(PrintWriter printer)
 		{
-			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
-			printer.println("        }");
+			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("      }");
 		}
 
 		@Override
@@ -1258,17 +1258,17 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateEqualsCode(PrintWriter printer)
 		{
-			printer.println("        if (!get" + variables.get("capitalized_name") + "List()");
-			printer.println("            .equals(other.get" + variables.get("capitalized_name") + "List())) return false;");
+			printer.println("      if (!get" + variables.get("capitalized_name") + "List()");
+			printer.println("          .equals(other.get" + variables.get("capitalized_name") + "List())) return false;");
 		}
 
 		@Override
 		public void generateHashCode(PrintWriter printer)
 		{
-			printer.println("        if (get" + variables.get("capitalized_name") + "Count() > 0) {");
-			printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
-			printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
-			printer.println("        }");	
+			printer.println("      if (get" + variables.get("capitalized_name") + "Count() > 0) {");
+			printer.println("        hash = (37 * hash) + " + variables.get("constant_name") + ";");
+			printer.println("        hash = (53 * hash) + get" + variables.get("capitalized_name") + "List().hashCode();");
+			printer.println("      }");
 		}
 
 		@Override
@@ -1286,9 +1286,9 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateSerializationCode(PrintWriter printer)
 		{
-			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
-			printer.println("        }");
+			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+			printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("      }");
 		}
 
 		@Override
