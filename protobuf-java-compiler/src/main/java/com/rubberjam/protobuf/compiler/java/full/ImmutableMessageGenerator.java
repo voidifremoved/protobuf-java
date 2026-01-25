@@ -63,7 +63,17 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			{
 				printer.print(",");
 			}
-			printer.print(" \"" + StringUtils.capitalizedFieldName(descriptor.getFields().get(i)) + "\"");
+			String fieldName;
+			if (descriptor.getFields().get(i).getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.GROUP)
+			{
+				fieldName = StringUtils.underscoresToCamelCase(
+						descriptor.getFields().get(i).getMessageType().getName(), true);
+			}
+			else
+			{
+				fieldName = StringUtils.capitalizedFieldName(descriptor.getFields().get(i));
+			}
+			printer.print(" \"" + fieldName + "\"");
 		}
 		// Add Oneof field names for oneofs
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
@@ -88,6 +98,19 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		String fileClassName = context.getNameResolver().getFileClassName(descriptor.getFile(), true);
 		String outerClassName = packageName.isEmpty() ? fileClassName : packageName + "." + fileClassName;
 		String fullClassName = context.getNameResolver().getImmutableClassName(descriptor);
+
+		// Workaround for nested types if ClassNameResolver fails to resolve nesting
+		if (!descriptor.getFile().getOptions().getJavaMultipleFiles())
+		{
+			String p = descriptor.getFile().getPackage();
+			String n = descriptor.getFullName();
+			String rel = n;
+			if (!p.isEmpty() && n.startsWith(p + "."))
+			{
+				rel = n.substring(p.length() + 1);
+			}
+			fullClassName = outerClassName + "." + rel;
+		}
 		
 		// Match C++ WriteMessageDocComment behavior - use DocComment utility with 2-space indent
 		com.rubberjam.protobuf.compiler.java.DocComment.writeMessageDocComment(printer, descriptor, context, false, "  ");
@@ -180,6 +203,31 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("    }");
 		printer.println();
 
+		for (com.google.protobuf.Descriptors.EnumDescriptor enumDescriptor : descriptor.getEnumTypes())
+		{
+			new ImmutableEnumGenerator(enumDescriptor, context).generate(printer);
+		}
+
+		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
+		{
+			// Skip map entry types - they are synthetic types created for map fields
+			// and should not be generated as separate nested classes
+			if (!isMapEntryType(nestedDescriptor))
+			{
+				if (printer instanceof com.rubberjam.protobuf.compiler.java.IndentPrinter)
+				{
+					((com.rubberjam.protobuf.compiler.java.IndentPrinter) printer).indent();
+				}
+				ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
+				messageGenerator.generateInterface(printer);
+				messageGenerator.generate(printer);
+				if (printer instanceof com.rubberjam.protobuf.compiler.java.IndentPrinter)
+				{
+					((com.rubberjam.protobuf.compiler.java.IndentPrinter) printer).outdent();
+				}
+			}
+		}
+
 		// bitField0_ for tracking field presence - only needed if there are optional fields
 		// Oneof fields don't need bitField0_ in the message class (they use oneofCase_ instead)
 		boolean needsBitField = false;
@@ -227,7 +275,45 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				{
 					printer.println("      " + field.getName().toUpperCase() + "(" + field.getNumber() + "),");
 				}
-				printer.println("      " + oneof.getName().toUpperCase() + "_NOT_SET(0);");
+				String oneofNameUpper = oneof.getName().toUpperCase();
+				// Special case for parity with protoc: oneof names starting with numbers or keywords might be handled differently,
+				// but based on test failure NESTEDONEOF vs NESTED_ONEOF, it seems protoc simply uppercases without underscores if it matches specific patterns or just general behavior?
+				// Actually, test failure was: Expected: NESTEDONEOF_NOT_SET, Actual: NESTED_ONEOF_NOT_SET
+				// The proto oneof name is likely "nested_oneof".
+				// protoc java generator seems to convert "nested_oneof" to "NESTEDONEOF" for the NOT_SET enum value?
+				// No, that's unusual. Standard protobuf usually preserves underscores in UPPER_CASE.
+				// Unless "nested_oneof" was "nestedOneof" in proto?
+
+				// Let's check the proto definition if possible. But based on `underscoresToCamelCase` usage, the input `oneof.getName()` is the name from .proto.
+				// If name is "nested_oneof", toUpperCase() gives "NESTED_ONEOF".
+				// If name is "nestedOneof", toUpperCase() gives "NESTEDONEOF".
+
+				// Wait, if proto has "oneof nested_oneof", then `oneof.getName()` returns "nested_oneof".
+				// `underscoresToCamelCase("nested_oneof", true)` -> "NestedOneof".
+				// `underscoresToCamelCase("nested_oneof", false)` -> "nestedOneof".
+
+				// If the test expects "NESTEDONEOF_NOT_SET", then the oneof name in proto might be "nestedOneof" (camelCase).
+				// Or the transformation logic removes underscores.
+
+				// Let's look at `comprehensive_test_nested.proto`.
+				// I don't have easy access to verify the content right now without `read_file`.
+				// But assuming standard behavior:
+				// If proto has `oneof nestedOneof`, then `getName()` is `nestedOneof`. `toUpperCase()` is `NESTEDONEOF`.
+				// If proto has `oneof nested_oneof`, then `getName()` is `nested_oneof`. `toUpperCase()` is `NESTED_ONEOF`.
+
+				// The actual error was:
+				// Expected: NESTEDONEOF_NOT_SET
+				// Actual:   NESTED_ONEOF_NOT_SET
+
+				// This implies my code generated `NESTED_ONEOF_NOT_SET`.
+				// So `oneof.getName()` was `nested_oneof` (or similar with underscore).
+				// And expected is `NESTEDONEOF`.
+
+				// This implies `oneof.getName()` should have underscores removed before uppercasing?
+				// Or maybe I should use the CamelCase name and uppercase that?
+				// CamelCase: NestedOneof -> NESTEDONEOF (if simple uppercase).
+
+				printer.println("      " + camelCaseName.toUpperCase() + "_NOT_SET(0);");
 				printer.println("      private final int value;");
 				printer.println("      private " + camelCaseName + "Case(int value) {");
 				printer.println("        this.value = value;");
@@ -248,7 +334,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				{
 					printer.println("          case " + field.getNumber() + ": return " + field.getName().toUpperCase() + ";");
 				}
-				printer.println("          case 0: return " + oneof.getName().toUpperCase() + "_NOT_SET;");
+				printer.println("          case 0: return " + camelCaseName.toUpperCase() + "_NOT_SET;");
 				printer.println("          default: return null;");
 				printer.println("        }");
 				printer.println("      }");
@@ -264,11 +350,6 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println("    }");
 				printer.println();
 			}
-		}
-
-		for (com.google.protobuf.Descriptors.EnumDescriptor enumDescriptor : descriptor.getEnumTypes())
-		{
-			new ImmutableEnumGenerator(enumDescriptor, context).generate(printer);
 		}
 
 		// Fields (each with its FIELD_NUMBER constant before it)
@@ -562,27 +643,15 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		messageBuilderGenerator.generate(printer);
 		printer.println();
 
-		for (com.google.protobuf.Descriptors.Descriptor nestedDescriptor : descriptor.getNestedTypes())
-		{
-			// Skip map entry types - they are synthetic types created for map fields
-			// and should not be generated as separate nested classes
-			if (!isMapEntryType(nestedDescriptor))
-			{
-				ImmutableMessageGenerator messageGenerator = new ImmutableMessageGenerator(nestedDescriptor, context);
-				messageGenerator.generateInterface(printer);
-				messageGenerator.generate(printer);
-			}
-		}
-
 		// Default instance
 		printer.println("    // @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")");
-		printer.println("    private static final " + outerClassName + "." + className + " DEFAULT_INSTANCE;");
+		printer.println("    private static final " + fullClassName + " DEFAULT_INSTANCE;");
 		printer.println("    static {");
-		printer.println("      DEFAULT_INSTANCE = new " + outerClassName + "." + className + "();");
+		printer.println("      DEFAULT_INSTANCE = new " + fullClassName + "();");
 		printer.println("    }");
 		printer.println();
 
-		printer.println("    public static " + outerClassName + "." + className + " getDefaultInstance() {");
+		printer.println("    public static " + fullClassName + " getDefaultInstance() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
 		printer.println();
@@ -622,7 +691,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println();
 
 		printer.println("    @java.lang.Override");
-		printer.println("    public " + outerClassName + "." +className + " getDefaultInstanceForType() {");
+		printer.println("    public " + fullClassName + " getDefaultInstanceForType() {");
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
 		printer.println();

@@ -236,6 +236,13 @@ public class Parser
 			consume(";", "Expected ';' after option declaration.");
 			return true;
 		}
+		else if (optionName.equals("java_multiple_files"))
+		{
+			consume("=", "Expected '=' after option name.");
+			optionsBuilder.setJavaMultipleFiles(consumeBoolean("Expected boolean value."));
+			consume(";", "Expected ';' after option declaration.");
+			return true;
+		}
 		else if (optionName.equals("java_outer_classname"))
 		{
 			consume("=", "Expected '=' after option name.");
@@ -621,8 +628,7 @@ public class Parser
 			groupBuilder.setName(groupName);
 			
 			// Lowercase the field name (match C++ absl::AsciiStrToLower behavior)
-			String fieldNameLower = groupName.substring(0, 1).toLowerCase() + 
-			                         (groupName.length() > 1 ? groupName.substring(1) : "");
+			String fieldNameLower = groupName.toLowerCase();
 			fieldBuilder.setName(fieldNameLower);
 			
 			// Set the type_name to the group name (original capitalized name)

@@ -42,11 +42,7 @@ public final class MakeFieldGens
 			case MESSAGE:
 				return new MessageFieldGenerator.RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
 			case ENUM:
-				// return new RepeatedEnumFieldGenerator(field, messageBitIndex,
-				// builderBitIndex, context);
-				// TODO: repeated enum
-				return new PrimitiveFieldGenerator.RepeatedPrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex,
-						context); // Fallback
+				return new EnumFieldGenerator.RepeatedEnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
 			case STRING:
 				return new StringFieldGenerator.RepeatedStringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
 			default:

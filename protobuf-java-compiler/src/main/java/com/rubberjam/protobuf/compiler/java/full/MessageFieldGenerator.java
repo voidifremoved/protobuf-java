@@ -312,7 +312,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      " + variables.get("deprecation") + "public Builder merge"
 				+ variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
 		printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
-		printer.println("          if ((" + variables.get("get_has_field_bit_builder") + ") &&");
+		printer.println("          if (" + variables.get("get_has_field_bit_builder") + " &&");
 		printer.println("            " + variables.get("name") + "_ != null &&");
 		printer.println("            " + variables.get("name") + "_ != " + variables.get("type")
 				+ ".getDefaultInstance()) {");
@@ -454,9 +454,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-		printer.println("                input.readMessage(");
-		printer.println("                    internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilder(),");
-		printer.println("                    extensionRegistry);");
+		if (descriptor.getType() == FieldDescriptor.Type.GROUP)
+		{
+			printer.println("                input.readGroup(" + variables.get("number") + ",");
+			printer.println("                    internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilder(),");
+			printer.println("                    extensionRegistry);");
+		}
+		else
+		{
+			printer.println("                input.readMessage(");
+			printer.println("                    internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilder(),");
+			printer.println("                    extensionRegistry);");
+		}
 		printer.println("                " + variables.get("set_has_field_bit_builder"));
 	}
 
@@ -465,7 +474,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
 		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .computeMessageSize(" + variables.get("number") + ", get"
+		printer.println("          .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", get"
 				+ variables.get("capitalized_name") + "());");
 		printer.println("      }");
 	}
@@ -474,7 +483,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	public void generateWriteToCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.writeMessage(" + variables.get("number") + ", get"
+		printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", get"
 				+ variables.get("capitalized_name") + "());");
 		printer.println("      }");
 	}
@@ -530,7 +539,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	public void generateSerializationCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.writeMessage(" + variables.get("number") + ", get"
+		printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", get"
 				+ variables.get("capitalized_name") + "());");
 		printer.println("      }");
 	}
@@ -595,6 +604,9 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			variables.put("group_or_message",
 					descriptor.getType() == FieldDescriptor.Type.GROUP ? "Group" : "Message");
 			variables.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
+			variables.put("get_mutable_bit_builder", Helpers.generateGetBit(builderBitIndex));
+			variables.put("set_mutable_bit_builder", Helpers.generateSetBit(builderBitIndex));
+			variables.put("clear_mutable_bit_builder", Helpers.generateClearBit(builderBitIndex));
 		}
 
 		@Override
@@ -762,17 +774,19 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      private java.util.List<" + variables.get("type") + "> " + variables.get("name") + "_ =");
 			printer.println("        java.util.Collections.emptyList();");
 			printer.println("      private void ensure" + variables.get("capitalized_name") + "IsMutable() {");
-			printer.println("        if (!(" + variables.get("get_mutable_bit_builder") + ")) {");
+			printer.println("        if (!" + variables.get("get_mutable_bit_builder") + ") {");
 			printer.println("          " + variables.get("name") + "_ = new java.util.ArrayList<" + variables.get("type") + ">("
 					+ variables.get("name") + "_);");
 			printer.println("          " + variables.get("set_mutable_bit_builder") + ";");
 			printer.println("         }");
 			printer.println("      }");
+			printer.println();
 
 			printer.println("      private com.google.protobuf.RepeatedFieldBuilder<");
 			printer.println("          " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
 					+ variables.get("type") + "OrBuilder> " + variables.get("name") + "Builder_;");
 
+			printer.println();
 			Helpers.writeDocComment(
 					printer,
 					"      ",
@@ -925,7 +939,8 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 							context,
 							false));
 			printer.println("      " + variables.get("deprecation") + "public Builder add"
-					+ variables.get("capitalized_name") + "(" + variables.get("type") + ".Builder builderForValue) {");
+					+ variables.get("capitalized_name") + "(");
+			printer.println("          " + variables.get("type") + ".Builder builderForValue) {");
 			printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
 			printer.println("          ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("          " + variables.get("name") + "_.add(builderForValue.build());");
@@ -1045,8 +1060,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 					+ variables.get("capitalized_name") + "OrBuilder(");
 			printer.println("          int index) {");
 			printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
-			printer.println("          return " + variables.get("name") + "_.get(index);");
-			printer.println("        } else {");
+			printer.println("          return " + variables.get("name") + "_.get(index);  } else {");
 			printer.println("          return " + variables.get("name") + "Builder_.getMessageOrBuilder(index);");
 			printer.println("        }");
 			printer.println("      }");
@@ -1077,24 +1091,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 							descriptor,
 							context,
 							false));
-			printer.println("      " + variables.get("deprecation") + "public java.util.List<" + variables.get("type")
-					+ ".Builder> ");
-			printer.println("          get" + variables.get("capitalized_name") + "BuilderList() {");
-			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilderList();");
-			printer.println("      }");
-
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldDocComment(
-							commentWriter,
-							descriptor,
-							context,
-							false));
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder add"
 					+ variables.get("capitalized_name") + "Builder() {");
-			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder()");
-			printer.println("            .addBuilder(" + variables.get("type") + ".getDefaultInstance());");
+			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder().addBuilder(");
+			printer.println("            " + variables.get("type") + ".getDefaultInstance());");
 			printer.println("      }");
 
 			Helpers.writeDocComment(
@@ -1108,8 +1108,8 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder add"
 					+ variables.get("capitalized_name") + "Builder(");
 			printer.println("          int index) {");
-			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder()");
-			printer.println("            .addBuilder(index, " + variables.get("type") + ".getDefaultInstance());");
+			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder().addBuilder(");
+			printer.println("            index, " + variables.get("type") + ".getDefaultInstance());");
 			printer.println("      }");
 
 			Helpers.writeDocComment(
@@ -1120,6 +1120,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 							descriptor,
 							context,
 							false));
+			printer.println("      " + variables.get("deprecation") + "public java.util.List<" + variables.get("type")
+					+ ".Builder> ");
+			printer.println("          get" + variables.get("capitalized_name") + "BuilderList() {");
+			printer.println("        return internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilderList();");
+			printer.println("      }");
+
 			printer.println("      private com.google.protobuf.RepeatedFieldBuilder<");
 			printer.println("          " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
 					+ variables.get("type") + "OrBuilder> ");
@@ -1191,7 +1197,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		public void generateBuildingCode(PrintWriter printer)
 		{
 			printer.println("      if (" + variables.get("name") + "Builder_ == null) {");
-			printer.println("        if ((" + variables.get("get_mutable_bit_builder") + ")) {");
+			printer.println("        if (" + variables.get("get_mutable_bit_builder") + ") {");
 			printer.println("          " + variables.get("name") + "_ = java.util.Collections.unmodifiableList("
 					+ variables.get("name") + "_);");
 			printer.println("          " + variables.get("clear_mutable_bit_builder") + ";");
@@ -1206,9 +1212,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		public void generateBuilderParsingCode(PrintWriter printer)
 		{
 			printer.println("                " + variables.get("type") + " m =");
-			printer.println("                    input.readMessage(");
-			printer.println("                        " + variables.get("type") + ".parser(),");
-			printer.println("                        extensionRegistry);");
+			if (descriptor.getType() == FieldDescriptor.Type.GROUP)
+			{
+				printer.println("                    input.readGroup(" + variables.get("number") + ",");
+				printer.println("                        " + variables.get("type") + ".parser(),");
+				printer.println("                        extensionRegistry);");
+			}
+			else
+			{
+				printer.println("                    input.readMessage(");
+				printer.println("                        " + variables.get("type") + ".parser(),");
+				printer.println("                        extensionRegistry);");
+			}
 			printer.println("                if (" + variables.get("name") + "Builder_ == null) {");
 			printer.println("                  ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("                  " + variables.get("name") + "_.add(m);");
@@ -1222,7 +1237,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
 			printer.println("          size += com.google.protobuf.CodedOutputStream");
-			printer.println("            .computeMessageSize(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("            .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
 			printer.println("        }");
 		}
 
@@ -1230,7 +1245,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		public void generateWriteToCode(PrintWriter printer)
 		{
 			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          output.writeMessage(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("          output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
 			printer.println("        }");
 		}
 
@@ -1272,7 +1287,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		public void generateSerializationCode(PrintWriter printer)
 		{
 			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          output.writeMessage(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
+			printer.println("          output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", " + variables.get("name") + "_.get(i));");
 			printer.println("        }");
 		}
 
