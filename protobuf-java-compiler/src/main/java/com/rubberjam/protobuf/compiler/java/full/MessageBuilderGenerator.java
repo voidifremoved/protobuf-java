@@ -276,7 +276,7 @@ public class MessageBuilderGenerator
 				{
 					continue;
 				}
-				if (field.hasPresence() || !field.isRequired())
+				if (field.hasPresence())
 				{
 					resultNeedsBitField = true;
 					break;
@@ -322,137 +322,140 @@ public class MessageBuilderGenerator
 			printer.println();
 		}
 
-		// mergeFrom(Message other)
-		printer.println("      @java.lang.Override");
-		printer.println("      public Builder mergeFrom(com.google.protobuf.Message other) {");
-		printer.println("        if (other instanceof " + fullClassName + ") {");
-		printer.println("          return mergeFrom((" + fullClassName + ")other);");
-		printer.println("        } else {");
-		printer.println("          super.mergeFrom(other);");
-		printer.println("          return this;");
-		printer.println("        }");
-		printer.println("      }");
-		printer.println();
+		if (descriptor.getFile().getOptions().getOptimizeFor() != com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.CODE_SIZE)
+		{
+			// mergeFrom(Message other)
+			printer.println("      @java.lang.Override");
+			printer.println("      public Builder mergeFrom(com.google.protobuf.Message other) {");
+			printer.println("        if (other instanceof " + fullClassName + ") {");
+			printer.println("          return mergeFrom((" + fullClassName + ")other);");
+			printer.println("        } else {");
+			printer.println("          super.mergeFrom(other);");
+			printer.println("          return this;");
+			printer.println("        }");
+			printer.println("      }");
+			printer.println();
 
-		// mergeFrom(ClassName other)
-		printer.println("      public Builder mergeFrom(" + fullClassName + " other) {");
-		printer.println("        if (other == " + fullClassName + ".getDefaultInstance()) return this;");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
-		{
-			if (fieldGenerator.getDescriptor().getContainingOneof() == null)
+			// mergeFrom(ClassName other)
+			printer.println("      public Builder mergeFrom(" + fullClassName + " other) {");
+			printer.println("        if (other == " + fullClassName + ".getDefaultInstance()) return this;");
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 			{
-				fieldGenerator.generateMergingCode(printer);
+				if (fieldGenerator.getDescriptor().getContainingOneof() == null)
+				{
+					fieldGenerator.generateMergingCode(printer);
+				}
 			}
-		}
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
-			printer.println("        switch (other.get" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case()) {");
-			for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 			{
-				printer.println("          case " + field.getName().toUpperCase() + ": {");
-				fieldGenerators.get(field).generateMergingCode(printer);
+				String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
+				printer.println("        switch (other.get" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case()) {");
+				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+				{
+					printer.println("          case " + field.getName().toUpperCase() + ": {");
+					fieldGenerators.get(field).generateMergingCode(printer);
+					printer.println("            break;");
+					printer.println("          }");
+				}
+				printer.println("          case " + oneofName.toUpperCase() + "_NOT_SET: {");
 				printer.println("            break;");
 				printer.println("          }");
+				printer.println("        }");
 			}
-			printer.println("          case " + oneofName.toUpperCase() + "_NOT_SET: {");
-			printer.println("            break;");
-			printer.println("          }");
-			printer.println("        }");
-		}
-		printer.println("        this.mergeUnknownFields(other.getUnknownFields());");
-		printer.println("        onChanged();");
-		printer.println("        return this;");
-		printer.println("      }");
-		printer.println();
+			printer.println("        this.mergeUnknownFields(other.getUnknownFields());");
+			printer.println("        onChanged();");
+			printer.println("        return this;");
+			printer.println("      }");
+			printer.println();
 
-		if (descriptor.isExtendable())
-		{
-			printer.println("      public <Type> Builder setExtension(");
-			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-			printer.println("              " + fullClassName + ", Type> extension,");
-			printer.println("          Type value) {");
-			printer.println("        return super.setExtension(extension, value);");
-			printer.println("      }");
-			printer.println();
-			printer.println("      public <Type> Builder setExtension(");
-			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-			printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
-			printer.println("          int index, Type value) {");
-			printer.println("        return super.setExtension(extension, index, value);");
-			printer.println("      }");
-			printer.println();
-			printer.println("      public <Type> Builder addExtension(");
-			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-			printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
-			printer.println("          Type value) {");
-			printer.println("        return super.addExtension(extension, value);");
-			printer.println("      }");
-			printer.println();
-			printer.println("      public <Type> Builder clearExtension(");
-			printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-			printer.println("              " + fullClassName + ", ?> extension) {");
-			printer.println("        return super.clearExtension(extension);");
-			printer.println("      }");
-			printer.println();
-		}
-
-		// isInitialized()
-		printer.println("      @java.lang.Override");
-		printer.println("      public final boolean isInitialized() {");
-		printer.println("        return true;");
-		printer.println("      }");
-		printer.println();
-
-		// mergeFrom(CodedInputStream, ExtensionRegistryLite)
-		printer.println("      @java.lang.Override");
-		printer.println("      public Builder mergeFrom(");
-		printer.println("          com.google.protobuf.CodedInputStream input,");
-		printer.println("          com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
-		printer.println("          throws java.io.IOException {");
-		printer.println("        if (extensionRegistry == null) {");
-		printer.println("          throw new java.lang.NullPointerException();");
-		printer.println("        }");
-		printer.println("        try {");
-		printer.println("          boolean done = false;");
-		printer.println("          while (!done) {");
-		printer.println("            int tag = input.readTag();");
-		printer.println("            switch (tag) {");
-		printer.println("              case 0:");
-		printer.println("                done = true;");
-		printer.println("                break;");
-		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
-		{
-			com.google.protobuf.Descriptors.FieldDescriptor field = fieldGenerator.getDescriptor();
-			int tag = com.rubberjam.protobuf.compiler.java.Helpers.getTag(field);
-			printer.println("              case " + tag + ": {");
-			fieldGenerator.generateBuilderParsingCode(printer);
-			printer.println("                break;");
-			printer.println("              } // case " + tag);
-			if (field.isPackable())
+			if (descriptor.isExtendable())
 			{
-				int packedTag = (field.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
-				printer.println("              case " + packedTag + ": {");
-				fieldGenerator.generateBuilderParsingCodeFromPacked(printer);
-				printer.println("                break;");
-				printer.println("              } // case " + packedTag);
+				printer.println("      public <Type> Builder setExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", Type> extension,");
+				printer.println("          Type value) {");
+				printer.println("        return super.setExtension(extension, value);");
+				printer.println("      }");
+				printer.println();
+				printer.println("      public <Type> Builder setExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+				printer.println("          int index, Type value) {");
+				printer.println("        return super.setExtension(extension, index, value);");
+				printer.println("      }");
+				printer.println();
+				printer.println("      public <Type> Builder addExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+				printer.println("          Type value) {");
+				printer.println("        return super.addExtension(extension, value);");
+				printer.println("      }");
+				printer.println();
+				printer.println("      public <Type> Builder clearExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", ?> extension) {");
+				printer.println("        return super.clearExtension(extension);");
+				printer.println("      }");
+				printer.println();
 			}
+
+			// isInitialized()
+			printer.println("      @java.lang.Override");
+			printer.println("      public final boolean isInitialized() {");
+			printer.println("        return true;");
+			printer.println("      }");
+			printer.println();
+
+			// mergeFrom(CodedInputStream, ExtensionRegistryLite)
+			printer.println("      @java.lang.Override");
+			printer.println("      public Builder mergeFrom(");
+			printer.println("          com.google.protobuf.CodedInputStream input,");
+			printer.println("          com.google.protobuf.ExtensionRegistryLite extensionRegistry)");
+			printer.println("          throws java.io.IOException {");
+			printer.println("        if (extensionRegistry == null) {");
+			printer.println("          throw new java.lang.NullPointerException();");
+			printer.println("        }");
+			printer.println("        try {");
+			printer.println("          boolean done = false;");
+			printer.println("          while (!done) {");
+			printer.println("            int tag = input.readTag();");
+			printer.println("            switch (tag) {");
+			printer.println("              case 0:");
+			printer.println("                done = true;");
+			printer.println("                break;");
+			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getSortedFieldGenerators())
+			{
+				com.google.protobuf.Descriptors.FieldDescriptor field = fieldGenerator.getDescriptor();
+				int tag = com.rubberjam.protobuf.compiler.java.Helpers.getTag(field);
+				printer.println("              case " + tag + ": {");
+				fieldGenerator.generateBuilderParsingCode(printer);
+				printer.println("                break;");
+				printer.println("              } // case " + tag);
+				if (field.isPackable())
+				{
+					int packedTag = (field.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+					printer.println("              case " + packedTag + ": {");
+					fieldGenerator.generateBuilderParsingCodeFromPacked(printer);
+					printer.println("                break;");
+					printer.println("              } // case " + packedTag);
+				}
+			}
+			printer.println("              default: {");
+			printer.println("                if (!super.parseUnknownField(input, extensionRegistry, tag)) {");
+			printer.println("                  done = true; // was an endgroup tag");
+			printer.println("                }");
+			printer.println("                break;");
+			printer.println("              } // default:");
+			printer.println("            } // switch (tag)");
+			printer.println("          } // while (!done)");
+			printer.println("        } catch (com.google.protobuf.InvalidProtocolBufferException e) {");
+			printer.println("          throw e.unwrapIOException();");
+			printer.println("        } finally {");
+			printer.println("          onChanged();");
+			printer.println("        } // finally");
+			printer.println("        return this;");
+			printer.println("      }");
 		}
-		printer.println("              default: {");
-		printer.println("                if (!super.parseUnknownField(input, extensionRegistry, tag)) {");
-		printer.println("                  done = true; // was an endgroup tag");
-		printer.println("                }");
-		printer.println("                break;");
-		printer.println("              } // default:");
-		printer.println("            } // switch (tag)");
-		printer.println("          } // while (!done)");
-		printer.println("        } catch (com.google.protobuf.InvalidProtocolBufferException e) {");
-		printer.println("          throw e.unwrapIOException();");
-		printer.println("        } finally {");
-		printer.println("          onChanged();");
-		printer.println("        } // finally");
-		printer.println("        return this;");
-		printer.println("      }");
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
