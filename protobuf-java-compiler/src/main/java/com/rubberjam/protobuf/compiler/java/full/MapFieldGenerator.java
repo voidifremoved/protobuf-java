@@ -7,6 +7,7 @@ import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
 import com.rubberjam.protobuf.compiler.java.Helpers;
+import com.rubberjam.protobuf.compiler.java.IndentPrinter;
 import com.rubberjam.protobuf.compiler.java.JavaType;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
@@ -217,13 +218,25 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						false));
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("    /* nullable */");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(\n");
+			} else {
+				printer.println(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+			}
+		} else {
+			printer.println("    " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
 		}
-		printer.println("    " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
 		printer.println("        " + variables.get("key_type") + " key,");
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("        /* nullable */");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " defaultValue);\n");
+			} else {
+				printer.println(variables.get("value_type") + " defaultValue);");
+			}
+		} else {
+			printer.println("        " + variables.get("value_type") + " defaultValue);");
 		}
-		printer.println("        " + variables.get("value_type") + " defaultValue);");
 		Helpers.writeDocComment(
 				printer,
 				"    ",
@@ -320,15 +333,25 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("    public /* nullable */");
-			printer.println(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(\n");
+			} else {
+				printer.println(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+			}
 		} else {
 			printer.println("    public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
 		}
 		printer.println("        " + variables.get("key_type") + " key,");
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("        /* nullable */");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " defaultValue) {\n");
+			} else {
+				printer.println(variables.get("value_type") + " defaultValue) {");
+			}
+		} else {
+			printer.println("        " + variables.get("value_type") + " defaultValue) {");
 		}
-		printer.println("        " + variables.get("value_type") + " defaultValue) {");
 		if (variables.containsKey("null_check")) {
 			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
@@ -511,15 +534,25 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      @java.lang.Override");
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("      public /* nullable */");
-			printer.println(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(\n");
+			} else {
+				printer.println(variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
+			}
 		} else {
 			printer.println("      public " + variables.get("value_type") + " get" + variables.get("capitalized_name") + "OrDefault(");
 		}
 		printer.println("          " + variables.get("key_type") + " key,");
 		if (Boolean.parseBoolean(variables.get("is_value_nullable"))) {
 			printer.println("          /* nullable */");
+			if (printer instanceof IndentPrinter) {
+				((IndentPrinter) printer).printNoIndent(variables.get("value_type") + " defaultValue) {\n");
+			} else {
+				printer.println(variables.get("value_type") + " defaultValue) {");
+			}
+		} else {
+			printer.println("          " + variables.get("value_type") + " defaultValue) {");
 		}
-		printer.println("          " + variables.get("value_type") + " defaultValue) {");
 		if (variables.containsKey("null_check")) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
