@@ -8,6 +8,7 @@ import org.junit.Test;
 import com.google.protobuf.DescriptorProtos.DescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.Message.Builder;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeCompiler;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 
@@ -49,5 +50,22 @@ public class RuntimeJavaGeneratorTest
 		Class<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
 		
 		System.out.println(compiledClass);
+		
+		Class<?> compiledMessageClass = null;
+
+		for (Class<?> cls : compiledClass.getDeclaredClasses()) {
+		    if (cls.getSimpleName().equals("Person")) {
+		        compiledMessageClass = cls;
+		        break;
+		    }
+		}
+
+		if (compiledMessageClass == null) {
+		    throw new ClassNotFoundException("Inner class Person not found");
+		}
+		Builder builder = (Builder)compiledMessageClass.getMethod("newBuilder").invoke(null);
+		builder.getClass().getMethod("setName", String.class).invoke(builder, "TEST NAME");
+
+		System.out.println(builder.build());
 	}
 }
