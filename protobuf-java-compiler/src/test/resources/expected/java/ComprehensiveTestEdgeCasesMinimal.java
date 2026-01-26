@@ -26,6 +26,111 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  /**
+   * Protobuf enum {@code ComprehensiveTest.EdgeCasesMinimal.TestEnum}
+   */
+  public enum TestEnum
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>TEST_UNKNOWN = 0;</code>
+     */
+    TEST_UNKNOWN(0),
+    /**
+     * <code>TEST_FIRST = 1;</code>
+     */
+    TEST_FIRST(1),
+    ;
+
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "TestEnum");
+    }
+    /**
+     * <code>TEST_UNKNOWN = 0;</code>
+     */
+    public static final int TEST_UNKNOWN_VALUE = 0;
+    /**
+     * <code>TEST_FIRST = 1;</code>
+     */
+    public static final int TEST_FIRST_VALUE = 1;
+
+
+    public final int getNumber() {
+      return value;
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static TestEnum valueOf(int value) {
+      return forNumber(value);
+    }
+
+    /**
+     * @param value The numeric wire value of the corresponding enum entry.
+     * @return The enum associated with the given numeric wire value.
+     */
+    public static TestEnum forNumber(int value) {
+      switch (value) {
+        case 0: return TEST_UNKNOWN;
+        case 1: return TEST_FIRST;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<TestEnum>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static final com.google.protobuf.Internal.EnumLiteMap<
+        TestEnum> internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<TestEnum>() {
+            public TestEnum findValueByNumber(int number) {
+              return TestEnum.forNumber(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(ordinal());
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final TestEnum[] VALUES = values();
+
+    public static TestEnum valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int value;
+
+    private TestEnum(int value) {
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ComprehensiveTest.EdgeCasesMinimal.TestEnum)
+  }
+
   public interface EdgeCaseMinimalOrBuilder extends
       // @@protoc_insertion_point(interface_extends:ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal)
       com.google.protobuf.MessageOrBuilder {
@@ -5319,6 +5424,2880 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
 
   }
 
+  public interface OneofAllTypesOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 oneof_int32 = 1;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    boolean hasOneofInt32();
+    /**
+     * <code>int32 oneof_int32 = 1;</code>
+     * @return The oneofInt32.
+     */
+    int getOneofInt32();
+
+    /**
+     * <code>int64 oneof_int64 = 2;</code>
+     * @return Whether the oneofInt64 field is set.
+     */
+    boolean hasOneofInt64();
+    /**
+     * <code>int64 oneof_int64 = 2;</code>
+     * @return The oneofInt64.
+     */
+    long getOneofInt64();
+
+    /**
+     * <code>uint32 oneof_uint32 = 3;</code>
+     * @return Whether the oneofUint32 field is set.
+     */
+    boolean hasOneofUint32();
+    /**
+     * <code>uint32 oneof_uint32 = 3;</code>
+     * @return The oneofUint32.
+     */
+    int getOneofUint32();
+
+    /**
+     * <code>uint64 oneof_uint64 = 4;</code>
+     * @return Whether the oneofUint64 field is set.
+     */
+    boolean hasOneofUint64();
+    /**
+     * <code>uint64 oneof_uint64 = 4;</code>
+     * @return The oneofUint64.
+     */
+    long getOneofUint64();
+
+    /**
+     * <code>sint32 oneof_sint32 = 5;</code>
+     * @return Whether the oneofSint32 field is set.
+     */
+    boolean hasOneofSint32();
+    /**
+     * <code>sint32 oneof_sint32 = 5;</code>
+     * @return The oneofSint32.
+     */
+    int getOneofSint32();
+
+    /**
+     * <code>sint64 oneof_sint64 = 6;</code>
+     * @return Whether the oneofSint64 field is set.
+     */
+    boolean hasOneofSint64();
+    /**
+     * <code>sint64 oneof_sint64 = 6;</code>
+     * @return The oneofSint64.
+     */
+    long getOneofSint64();
+
+    /**
+     * <code>fixed32 oneof_fixed32 = 7;</code>
+     * @return Whether the oneofFixed32 field is set.
+     */
+    boolean hasOneofFixed32();
+    /**
+     * <code>fixed32 oneof_fixed32 = 7;</code>
+     * @return The oneofFixed32.
+     */
+    int getOneofFixed32();
+
+    /**
+     * <code>fixed64 oneof_fixed64 = 8;</code>
+     * @return Whether the oneofFixed64 field is set.
+     */
+    boolean hasOneofFixed64();
+    /**
+     * <code>fixed64 oneof_fixed64 = 8;</code>
+     * @return The oneofFixed64.
+     */
+    long getOneofFixed64();
+
+    /**
+     * <code>sfixed32 oneof_sfixed32 = 9;</code>
+     * @return Whether the oneofSfixed32 field is set.
+     */
+    boolean hasOneofSfixed32();
+    /**
+     * <code>sfixed32 oneof_sfixed32 = 9;</code>
+     * @return The oneofSfixed32.
+     */
+    int getOneofSfixed32();
+
+    /**
+     * <code>sfixed64 oneof_sfixed64 = 10;</code>
+     * @return Whether the oneofSfixed64 field is set.
+     */
+    boolean hasOneofSfixed64();
+    /**
+     * <code>sfixed64 oneof_sfixed64 = 10;</code>
+     * @return The oneofSfixed64.
+     */
+    long getOneofSfixed64();
+
+    /**
+     * <code>float oneof_float = 11;</code>
+     * @return Whether the oneofFloat field is set.
+     */
+    boolean hasOneofFloat();
+    /**
+     * <code>float oneof_float = 11;</code>
+     * @return The oneofFloat.
+     */
+    float getOneofFloat();
+
+    /**
+     * <code>double oneof_double = 12;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    boolean hasOneofDouble();
+    /**
+     * <code>double oneof_double = 12;</code>
+     * @return The oneofDouble.
+     */
+    double getOneofDouble();
+
+    /**
+     * <code>bool oneof_bool = 13;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    boolean hasOneofBool();
+    /**
+     * <code>bool oneof_bool = 13;</code>
+     * @return The oneofBool.
+     */
+    boolean getOneofBool();
+
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return Whether the oneofString field is set.
+     */
+    boolean hasOneofString();
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return The oneofString.
+     */
+    java.lang.String getOneofString();
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return The bytes for oneofString.
+     */
+    com.google.protobuf.ByteString
+        getOneofStringBytes();
+
+    /**
+     * <code>bytes oneof_bytes = 15;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    boolean hasOneofBytes();
+    /**
+     * <code>bytes oneof_bytes = 15;</code>
+     * @return The oneofBytes.
+     */
+    com.google.protobuf.ByteString getOneofBytes();
+
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    boolean hasOneofEnum();
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+     * @return The oneofEnum.
+     */
+    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum getOneofEnum();
+
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    boolean hasOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     * @return The oneofMessage.
+     */
+    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder getOneofMessageOrBuilder();
+
+    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.AllTypesCase getAllTypesCase();
+  }
+  /**
+   * <pre>
+   * Message with all field types in oneof
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes}
+   */
+  public static final class OneofAllTypes extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes)
+      OneofAllTypesOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "OneofAllTypes");
+    }
+    // Use OneofAllTypes.newBuilder() to construct.
+    private OneofAllTypes(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private OneofAllTypes() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.Builder.class);
+    }
+
+    private int allTypesCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object allTypes_;
+    public enum AllTypesCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF_INT32(1),
+      ONEOF_INT64(2),
+      ONEOF_UINT32(3),
+      ONEOF_UINT64(4),
+      ONEOF_SINT32(5),
+      ONEOF_SINT64(6),
+      ONEOF_FIXED32(7),
+      ONEOF_FIXED64(8),
+      ONEOF_SFIXED32(9),
+      ONEOF_SFIXED64(10),
+      ONEOF_FLOAT(11),
+      ONEOF_DOUBLE(12),
+      ONEOF_BOOL(13),
+      ONEOF_STRING(14),
+      ONEOF_BYTES(15),
+      ONEOF_ENUM(16),
+      ONEOF_MESSAGE(17),
+      ALLTYPES_NOT_SET(0);
+      private final int value;
+      private AllTypesCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static AllTypesCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static AllTypesCase forNumber(int value) {
+        switch (value) {
+          case 1: return ONEOF_INT32;
+          case 2: return ONEOF_INT64;
+          case 3: return ONEOF_UINT32;
+          case 4: return ONEOF_UINT64;
+          case 5: return ONEOF_SINT32;
+          case 6: return ONEOF_SINT64;
+          case 7: return ONEOF_FIXED32;
+          case 8: return ONEOF_FIXED64;
+          case 9: return ONEOF_SFIXED32;
+          case 10: return ONEOF_SFIXED64;
+          case 11: return ONEOF_FLOAT;
+          case 12: return ONEOF_DOUBLE;
+          case 13: return ONEOF_BOOL;
+          case 14: return ONEOF_STRING;
+          case 15: return ONEOF_BYTES;
+          case 16: return ONEOF_ENUM;
+          case 17: return ONEOF_MESSAGE;
+          case 0: return ALLTYPES_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public AllTypesCase
+    getAllTypesCase() {
+      return AllTypesCase.forNumber(
+          allTypesCase_);
+    }
+
+    public static final int ONEOF_INT32_FIELD_NUMBER = 1;
+    /**
+     * <code>int32 oneof_int32 = 1;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofInt32() {
+      return allTypesCase_ == 1;
+    }
+    /**
+     * <code>int32 oneof_int32 = 1;</code>
+     * @return The oneofInt32.
+     */
+    @java.lang.Override
+    public int getOneofInt32() {
+      if (allTypesCase_ == 1) {
+        return (java.lang.Integer) allTypes_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_INT64_FIELD_NUMBER = 2;
+    /**
+     * <code>int64 oneof_int64 = 2;</code>
+     * @return Whether the oneofInt64 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofInt64() {
+      return allTypesCase_ == 2;
+    }
+    /**
+     * <code>int64 oneof_int64 = 2;</code>
+     * @return The oneofInt64.
+     */
+    @java.lang.Override
+    public long getOneofInt64() {
+      if (allTypesCase_ == 2) {
+        return (java.lang.Long) allTypes_;
+      }
+      return 0L;
+    }
+
+    public static final int ONEOF_UINT32_FIELD_NUMBER = 3;
+    /**
+     * <code>uint32 oneof_uint32 = 3;</code>
+     * @return Whether the oneofUint32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofUint32() {
+      return allTypesCase_ == 3;
+    }
+    /**
+     * <code>uint32 oneof_uint32 = 3;</code>
+     * @return The oneofUint32.
+     */
+    @java.lang.Override
+    public int getOneofUint32() {
+      if (allTypesCase_ == 3) {
+        return (java.lang.Integer) allTypes_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_UINT64_FIELD_NUMBER = 4;
+    /**
+     * <code>uint64 oneof_uint64 = 4;</code>
+     * @return Whether the oneofUint64 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofUint64() {
+      return allTypesCase_ == 4;
+    }
+    /**
+     * <code>uint64 oneof_uint64 = 4;</code>
+     * @return The oneofUint64.
+     */
+    @java.lang.Override
+    public long getOneofUint64() {
+      if (allTypesCase_ == 4) {
+        return (java.lang.Long) allTypes_;
+      }
+      return 0L;
+    }
+
+    public static final int ONEOF_SINT32_FIELD_NUMBER = 5;
+    /**
+     * <code>sint32 oneof_sint32 = 5;</code>
+     * @return Whether the oneofSint32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofSint32() {
+      return allTypesCase_ == 5;
+    }
+    /**
+     * <code>sint32 oneof_sint32 = 5;</code>
+     * @return The oneofSint32.
+     */
+    @java.lang.Override
+    public int getOneofSint32() {
+      if (allTypesCase_ == 5) {
+        return (java.lang.Integer) allTypes_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_SINT64_FIELD_NUMBER = 6;
+    /**
+     * <code>sint64 oneof_sint64 = 6;</code>
+     * @return Whether the oneofSint64 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofSint64() {
+      return allTypesCase_ == 6;
+    }
+    /**
+     * <code>sint64 oneof_sint64 = 6;</code>
+     * @return The oneofSint64.
+     */
+    @java.lang.Override
+    public long getOneofSint64() {
+      if (allTypesCase_ == 6) {
+        return (java.lang.Long) allTypes_;
+      }
+      return 0L;
+    }
+
+    public static final int ONEOF_FIXED32_FIELD_NUMBER = 7;
+    /**
+     * <code>fixed32 oneof_fixed32 = 7;</code>
+     * @return Whether the oneofFixed32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofFixed32() {
+      return allTypesCase_ == 7;
+    }
+    /**
+     * <code>fixed32 oneof_fixed32 = 7;</code>
+     * @return The oneofFixed32.
+     */
+    @java.lang.Override
+    public int getOneofFixed32() {
+      if (allTypesCase_ == 7) {
+        return (java.lang.Integer) allTypes_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_FIXED64_FIELD_NUMBER = 8;
+    /**
+     * <code>fixed64 oneof_fixed64 = 8;</code>
+     * @return Whether the oneofFixed64 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofFixed64() {
+      return allTypesCase_ == 8;
+    }
+    /**
+     * <code>fixed64 oneof_fixed64 = 8;</code>
+     * @return The oneofFixed64.
+     */
+    @java.lang.Override
+    public long getOneofFixed64() {
+      if (allTypesCase_ == 8) {
+        return (java.lang.Long) allTypes_;
+      }
+      return 0L;
+    }
+
+    public static final int ONEOF_SFIXED32_FIELD_NUMBER = 9;
+    /**
+     * <code>sfixed32 oneof_sfixed32 = 9;</code>
+     * @return Whether the oneofSfixed32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofSfixed32() {
+      return allTypesCase_ == 9;
+    }
+    /**
+     * <code>sfixed32 oneof_sfixed32 = 9;</code>
+     * @return The oneofSfixed32.
+     */
+    @java.lang.Override
+    public int getOneofSfixed32() {
+      if (allTypesCase_ == 9) {
+        return (java.lang.Integer) allTypes_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_SFIXED64_FIELD_NUMBER = 10;
+    /**
+     * <code>sfixed64 oneof_sfixed64 = 10;</code>
+     * @return Whether the oneofSfixed64 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofSfixed64() {
+      return allTypesCase_ == 10;
+    }
+    /**
+     * <code>sfixed64 oneof_sfixed64 = 10;</code>
+     * @return The oneofSfixed64.
+     */
+    @java.lang.Override
+    public long getOneofSfixed64() {
+      if (allTypesCase_ == 10) {
+        return (java.lang.Long) allTypes_;
+      }
+      return 0L;
+    }
+
+    public static final int ONEOF_FLOAT_FIELD_NUMBER = 11;
+    /**
+     * <code>float oneof_float = 11;</code>
+     * @return Whether the oneofFloat field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofFloat() {
+      return allTypesCase_ == 11;
+    }
+    /**
+     * <code>float oneof_float = 11;</code>
+     * @return The oneofFloat.
+     */
+    @java.lang.Override
+    public float getOneofFloat() {
+      if (allTypesCase_ == 11) {
+        return (java.lang.Float) allTypes_;
+      }
+      return 0F;
+    }
+
+    public static final int ONEOF_DOUBLE_FIELD_NUMBER = 12;
+    /**
+     * <code>double oneof_double = 12;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofDouble() {
+      return allTypesCase_ == 12;
+    }
+    /**
+     * <code>double oneof_double = 12;</code>
+     * @return The oneofDouble.
+     */
+    @java.lang.Override
+    public double getOneofDouble() {
+      if (allTypesCase_ == 12) {
+        return (java.lang.Double) allTypes_;
+      }
+      return 0D;
+    }
+
+    public static final int ONEOF_BOOL_FIELD_NUMBER = 13;
+    /**
+     * <code>bool oneof_bool = 13;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBool() {
+      return allTypesCase_ == 13;
+    }
+    /**
+     * <code>bool oneof_bool = 13;</code>
+     * @return The oneofBool.
+     */
+    @java.lang.Override
+    public boolean getOneofBool() {
+      if (allTypesCase_ == 13) {
+        return (java.lang.Boolean) allTypes_;
+      }
+      return false;
+    }
+
+    public static final int ONEOF_STRING_FIELD_NUMBER = 14;
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return Whether the oneofString field is set.
+     */
+    public boolean hasOneofString() {
+      return allTypesCase_ == 14;
+    }
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return The oneofString.
+     */
+    public java.lang.String getOneofString() {
+      java.lang.Object ref = "";
+      if (allTypesCase_ == 14) {
+        ref = allTypes_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8() && (allTypesCase_ == 14)) {
+          allTypes_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string oneof_string = 14;</code>
+     * @return The bytes for oneofString.
+     */
+    public com.google.protobuf.ByteString
+        getOneofStringBytes() {
+      java.lang.Object ref = "";
+      if (allTypesCase_ == 14) {
+        ref = allTypes_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (allTypesCase_ == 14) {
+          allTypes_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF_BYTES_FIELD_NUMBER = 15;
+    /**
+     * <code>bytes oneof_bytes = 15;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBytes() {
+      return allTypesCase_ == 15;
+    }
+    /**
+     * <code>bytes oneof_bytes = 15;</code>
+     * @return The oneofBytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getOneofBytes() {
+      if (allTypesCase_ == 15) {
+        return (com.google.protobuf.ByteString) allTypes_;
+      }
+      return com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final int ONEOF_ENUM_FIELD_NUMBER = 16;
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    public boolean hasOneofEnum() {
+      return allTypesCase_ == 16;
+    }
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+     * @return The oneofEnum.
+     */
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum getOneofEnum() {
+      if (allTypesCase_ == 16) {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum result = com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.forNumber(
+            (java.lang.Integer) allTypes_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.TEST_UNKNOWN : result;
+      }
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.TEST_UNKNOWN;
+    }
+
+    public static final int ONEOF_MESSAGE_FIELD_NUMBER = 17;
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofMessage() {
+      return allTypesCase_ == 17;
+    }
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     * @return The oneofMessage.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getOneofMessage() {
+      if (allTypesCase_ == 17) {
+         return (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_;
+      }
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+    }
+    /**
+     * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder getOneofMessageOrBuilder() {
+      if (allTypesCase_ == 17) {
+         return (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_;
+      }
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (allTypesCase_ == 1) {
+        output.writeInt32(
+            1, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 2) {
+        output.writeInt64(
+            2, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 3) {
+        output.writeUInt32(
+            3, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 4) {
+        output.writeUInt64(
+            4, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 5) {
+        output.writeSInt32(
+            5, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 6) {
+        output.writeSInt64(
+            6, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 7) {
+        output.writeFixed32(
+            7, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 8) {
+        output.writeFixed64(
+            8, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 9) {
+        output.writeSFixed32(
+            9, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 10) {
+        output.writeSFixed64(
+            10, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 11) {
+        output.writeFloat(
+            11, (float)((java.lang.Float) allTypes_));
+      }
+      if (allTypesCase_ == 12) {
+        output.writeDouble(
+            12, (double)((java.lang.Double) allTypes_));
+      }
+      if (allTypesCase_ == 13) {
+        output.writeBool(
+            13, (boolean)((java.lang.Boolean) allTypes_));
+      }
+      if (allTypesCase_ == 14) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 14, allTypes_);
+      }
+      if (allTypesCase_ == 15) {
+        output.writeBytes(
+            15, (com.google.protobuf.ByteString) allTypes_);
+      }
+      if (allTypesCase_ == 16) {
+        output.writeEnum(16, ((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 17) {
+        output.writeMessage(17, (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (allTypesCase_ == 1) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(
+              1, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 2) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(
+              2, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(
+              3, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(
+              4, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 5) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSInt32Size(
+              5, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 6) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSInt64Size(
+              6, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 7) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed32Size(
+              7, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 8) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFixed64Size(
+              8, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 9) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSFixed32Size(
+              9, (int)((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 10) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeSFixed64Size(
+              10, (long)((java.lang.Long) allTypes_));
+      }
+      if (allTypesCase_ == 11) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(
+              11, (float)((java.lang.Float) allTypes_));
+      }
+      if (allTypesCase_ == 12) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(
+              12, (double)((java.lang.Double) allTypes_));
+      }
+      if (allTypesCase_ == 13) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBoolSize(
+              13, (boolean)((java.lang.Boolean) allTypes_));
+      }
+      if (allTypesCase_ == 14) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(14, allTypes_);
+      }
+      if (allTypesCase_ == 15) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(
+              15, (com.google.protobuf.ByteString) allTypes_);
+      }
+      if (allTypesCase_ == 16) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(16, ((java.lang.Integer) allTypes_));
+      }
+      if (allTypesCase_ == 17) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes)) {
+        return super.equals(obj);
+      }
+      com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes other = (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes) obj;
+
+      if (!getAllTypesCase().equals(other.getAllTypesCase())) return false;
+      switch (allTypesCase_) {
+        case 1:
+          if (getOneofInt32()
+              != other.getOneofInt32()) return false;
+          break;
+        case 2:
+          if (getOneofInt64()
+              != other.getOneofInt64()) return false;
+          break;
+        case 3:
+          if (getOneofUint32()
+              != other.getOneofUint32()) return false;
+          break;
+        case 4:
+          if (getOneofUint64()
+              != other.getOneofUint64()) return false;
+          break;
+        case 5:
+          if (getOneofSint32()
+              != other.getOneofSint32()) return false;
+          break;
+        case 6:
+          if (getOneofSint64()
+              != other.getOneofSint64()) return false;
+          break;
+        case 7:
+          if (getOneofFixed32()
+              != other.getOneofFixed32()) return false;
+          break;
+        case 8:
+          if (getOneofFixed64()
+              != other.getOneofFixed64()) return false;
+          break;
+        case 9:
+          if (getOneofSfixed32()
+              != other.getOneofSfixed32()) return false;
+          break;
+        case 10:
+          if (getOneofSfixed64()
+              != other.getOneofSfixed64()) return false;
+          break;
+        case 11:
+          if (java.lang.Float.floatToIntBits(getOneofFloat())
+              != java.lang.Float.floatToIntBits(
+                  other.getOneofFloat())) return false;
+          break;
+        case 12:
+          if (java.lang.Double.doubleToLongBits(getOneofDouble())
+              != java.lang.Double.doubleToLongBits(
+                  other.getOneofDouble())) return false;
+          break;
+        case 13:
+          if (getOneofBool()
+              != other.getOneofBool()) return false;
+          break;
+        case 14:
+          if (!getOneofString()
+              .equals(other.getOneofString())) return false;
+          break;
+        case 15:
+          if (!getOneofBytes()
+              .equals(other.getOneofBytes())) return false;
+          break;
+        case 16:
+          if (!getOneofEnum()
+              .equals(other.getOneofEnum())) return false;
+          break;
+        case 17:
+          if (!getOneofMessage()
+              .equals(other.getOneofMessage())) return false;
+          break;
+        case 0:
+        default:
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      switch (allTypesCase_) {
+        case 1:
+          hash = (37 * hash) + ONEOF_INT32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofInt32();
+          break;
+        case 2:
+          hash = (37 * hash) + ONEOF_INT64_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getOneofInt64());
+          break;
+        case 3:
+          hash = (37 * hash) + ONEOF_UINT32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofUint32();
+          break;
+        case 4:
+          hash = (37 * hash) + ONEOF_UINT64_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getOneofUint64());
+          break;
+        case 5:
+          hash = (37 * hash) + ONEOF_SINT32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofSint32();
+          break;
+        case 6:
+          hash = (37 * hash) + ONEOF_SINT64_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getOneofSint64());
+          break;
+        case 7:
+          hash = (37 * hash) + ONEOF_FIXED32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofFixed32();
+          break;
+        case 8:
+          hash = (37 * hash) + ONEOF_FIXED64_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getOneofFixed64());
+          break;
+        case 9:
+          hash = (37 * hash) + ONEOF_SFIXED32_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofSfixed32();
+          break;
+        case 10:
+          hash = (37 * hash) + ONEOF_SFIXED64_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              getOneofSfixed64());
+          break;
+        case 11:
+          hash = (37 * hash) + ONEOF_FLOAT_FIELD_NUMBER;
+          hash = (53 * hash) + java.lang.Float.floatToIntBits(
+              getOneofFloat());
+          break;
+        case 12:
+          hash = (37 * hash) + ONEOF_DOUBLE_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+              java.lang.Double.doubleToLongBits(getOneofDouble()));
+          break;
+        case 13:
+          hash = (37 * hash) + ONEOF_BOOL_FIELD_NUMBER;
+          hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
+              getOneofBool());
+          break;
+        case 14:
+          hash = (37 * hash) + ONEOF_STRING_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofString().hashCode();
+          break;
+        case 15:
+          hash = (37 * hash) + ONEOF_BYTES_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofBytes().hashCode();
+          break;
+        case 16:
+          hash = (37 * hash) + ONEOF_ENUM_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofEnum().getNumber();
+          break;
+        case 17:
+          hash = (37 * hash) + ONEOF_MESSAGE_FIELD_NUMBER;
+          hash = (53 * hash) + getOneofMessage().hashCode();
+          break;
+        case 0:
+        default:
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with all field types in oneof
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes)
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypesOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (oneofMessageBuilder_ != null) {
+          oneofMessageBuilder_.clear();
+        }
+        allTypesCase_ = 0;
+        allTypes_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes build() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes buildPartial() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes result = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes result) {
+        int from_bitField0_ = bitField0_;
+      }
+
+      private void buildPartialOneofs(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes result) {
+        result.allTypesCase_ = allTypesCase_;
+        result.allTypes_ = this.allTypes_;
+        if (allTypesCase_ == 17 &&
+            oneofMessageBuilder_ != null) {
+          result.allTypes_ = oneofMessageBuilder_.build();
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes) {
+          return mergeFrom((com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes other) {
+        if (other == com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes.getDefaultInstance()) return this;
+        switch (other.getAllTypesCase()) {
+          case ONEOF_INT32: {
+            setOneofInt32(other.getOneofInt32());
+            break;
+          }
+          case ONEOF_INT64: {
+            setOneofInt64(other.getOneofInt64());
+            break;
+          }
+          case ONEOF_UINT32: {
+            setOneofUint32(other.getOneofUint32());
+            break;
+          }
+          case ONEOF_UINT64: {
+            setOneofUint64(other.getOneofUint64());
+            break;
+          }
+          case ONEOF_SINT32: {
+            setOneofSint32(other.getOneofSint32());
+            break;
+          }
+          case ONEOF_SINT64: {
+            setOneofSint64(other.getOneofSint64());
+            break;
+          }
+          case ONEOF_FIXED32: {
+            setOneofFixed32(other.getOneofFixed32());
+            break;
+          }
+          case ONEOF_FIXED64: {
+            setOneofFixed64(other.getOneofFixed64());
+            break;
+          }
+          case ONEOF_SFIXED32: {
+            setOneofSfixed32(other.getOneofSfixed32());
+            break;
+          }
+          case ONEOF_SFIXED64: {
+            setOneofSfixed64(other.getOneofSfixed64());
+            break;
+          }
+          case ONEOF_FLOAT: {
+            setOneofFloat(other.getOneofFloat());
+            break;
+          }
+          case ONEOF_DOUBLE: {
+            setOneofDouble(other.getOneofDouble());
+            break;
+          }
+          case ONEOF_BOOL: {
+            setOneofBool(other.getOneofBool());
+            break;
+          }
+          case ONEOF_STRING: {
+            allTypesCase_ = 14;
+            allTypes_ = other.allTypes_;
+            onChanged();
+            break;
+          }
+          case ONEOF_BYTES: {
+            setOneofBytes(other.getOneofBytes());
+            break;
+          }
+          case ONEOF_ENUM: {
+            setOneofEnum(other.getOneofEnum());
+            break;
+          }
+          case ONEOF_MESSAGE: {
+            mergeOneofMessage(other.getOneofMessage());
+            break;
+          }
+          case ALLTYPES_NOT_SET: {
+            break;
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                allTypes_ = input.readInt32();
+                allTypesCase_ = 1;
+                break;
+              } // case 8
+              case 16: {
+                allTypes_ = input.readInt64();
+                allTypesCase_ = 2;
+                break;
+              } // case 16
+              case 24: {
+                allTypes_ = input.readUInt32();
+                allTypesCase_ = 3;
+                break;
+              } // case 24
+              case 32: {
+                allTypes_ = input.readUInt64();
+                allTypesCase_ = 4;
+                break;
+              } // case 32
+              case 40: {
+                allTypes_ = input.readSInt32();
+                allTypesCase_ = 5;
+                break;
+              } // case 40
+              case 48: {
+                allTypes_ = input.readSInt64();
+                allTypesCase_ = 6;
+                break;
+              } // case 48
+              case 61: {
+                allTypes_ = input.readFixed32();
+                allTypesCase_ = 7;
+                break;
+              } // case 61
+              case 65: {
+                allTypes_ = input.readFixed64();
+                allTypesCase_ = 8;
+                break;
+              } // case 65
+              case 77: {
+                allTypes_ = input.readSFixed32();
+                allTypesCase_ = 9;
+                break;
+              } // case 77
+              case 81: {
+                allTypes_ = input.readSFixed64();
+                allTypesCase_ = 10;
+                break;
+              } // case 81
+              case 93: {
+                allTypes_ = input.readFloat();
+                allTypesCase_ = 11;
+                break;
+              } // case 93
+              case 97: {
+                allTypes_ = input.readDouble();
+                allTypesCase_ = 12;
+                break;
+              } // case 97
+              case 104: {
+                allTypes_ = input.readBool();
+                allTypesCase_ = 13;
+                break;
+              } // case 104
+              case 114: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                allTypesCase_ = 14;
+                allTypes_ = bs;
+                break;
+              } // case 114
+              case 122: {
+                allTypes_ = input.readBytes();
+                allTypesCase_ = 15;
+                break;
+              } // case 122
+              case 128: {
+                int rawValue = input.readEnum();
+                com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum value =
+                    com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.forNumber(rawValue);
+                if (value == null) {
+                  mergeUnknownVarintField(16, rawValue);
+                } else {
+                  allTypesCase_ = 16;
+                  allTypes_ = rawValue;
+                }
+                break;
+              } // case 128
+              case 138: {
+                input.readMessage(
+                    internalGetOneofMessageFieldBuilder().getBuilder(),
+                    extensionRegistry);
+                allTypesCase_ = 17;
+                break;
+              } // case 138
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int allTypesCase_ = 0;
+      private java.lang.Object allTypes_;
+      public AllTypesCase
+          getAllTypesCase() {
+        return AllTypesCase.forNumber(
+            allTypesCase_);
+      }
+
+      public Builder clearAllTypes() {
+        allTypesCase_ = 0;
+        allTypes_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      /**
+       * <code>int32 oneof_int32 = 1;</code>
+       * @return Whether the oneofInt32 field is set.
+       */
+      public boolean hasOneofInt32() {
+        return allTypesCase_ == 1;
+      }
+      /**
+       * <code>int32 oneof_int32 = 1;</code>
+       * @return The oneofInt32.
+       */
+      public int getOneofInt32() {
+        if (allTypesCase_ == 1) {
+          return (java.lang.Integer) allTypes_;
+        }
+        return 0;
+      }
+      /**
+       * <code>int32 oneof_int32 = 1;</code>
+       * @param value The oneofInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofInt32(int value) {
+
+        allTypesCase_ = 1;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 oneof_int32 = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofInt32() {
+        if (allTypesCase_ == 1) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>int64 oneof_int64 = 2;</code>
+       * @return Whether the oneofInt64 field is set.
+       */
+      public boolean hasOneofInt64() {
+        return allTypesCase_ == 2;
+      }
+      /**
+       * <code>int64 oneof_int64 = 2;</code>
+       * @return The oneofInt64.
+       */
+      public long getOneofInt64() {
+        if (allTypesCase_ == 2) {
+          return (java.lang.Long) allTypes_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>int64 oneof_int64 = 2;</code>
+       * @param value The oneofInt64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofInt64(long value) {
+
+        allTypesCase_ = 2;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 oneof_int64 = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofInt64() {
+        if (allTypesCase_ == 2) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>uint32 oneof_uint32 = 3;</code>
+       * @return Whether the oneofUint32 field is set.
+       */
+      public boolean hasOneofUint32() {
+        return allTypesCase_ == 3;
+      }
+      /**
+       * <code>uint32 oneof_uint32 = 3;</code>
+       * @return The oneofUint32.
+       */
+      public int getOneofUint32() {
+        if (allTypesCase_ == 3) {
+          return (java.lang.Integer) allTypes_;
+        }
+        return 0;
+      }
+      /**
+       * <code>uint32 oneof_uint32 = 3;</code>
+       * @param value The oneofUint32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofUint32(int value) {
+
+        allTypesCase_ = 3;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 oneof_uint32 = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofUint32() {
+        if (allTypesCase_ == 3) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>uint64 oneof_uint64 = 4;</code>
+       * @return Whether the oneofUint64 field is set.
+       */
+      public boolean hasOneofUint64() {
+        return allTypesCase_ == 4;
+      }
+      /**
+       * <code>uint64 oneof_uint64 = 4;</code>
+       * @return The oneofUint64.
+       */
+      public long getOneofUint64() {
+        if (allTypesCase_ == 4) {
+          return (java.lang.Long) allTypes_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>uint64 oneof_uint64 = 4;</code>
+       * @param value The oneofUint64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofUint64(long value) {
+
+        allTypesCase_ = 4;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 oneof_uint64 = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofUint64() {
+        if (allTypesCase_ == 4) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>sint32 oneof_sint32 = 5;</code>
+       * @return Whether the oneofSint32 field is set.
+       */
+      public boolean hasOneofSint32() {
+        return allTypesCase_ == 5;
+      }
+      /**
+       * <code>sint32 oneof_sint32 = 5;</code>
+       * @return The oneofSint32.
+       */
+      public int getOneofSint32() {
+        if (allTypesCase_ == 5) {
+          return (java.lang.Integer) allTypes_;
+        }
+        return 0;
+      }
+      /**
+       * <code>sint32 oneof_sint32 = 5;</code>
+       * @param value The oneofSint32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofSint32(int value) {
+
+        allTypesCase_ = 5;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint32 oneof_sint32 = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofSint32() {
+        if (allTypesCase_ == 5) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>sint64 oneof_sint64 = 6;</code>
+       * @return Whether the oneofSint64 field is set.
+       */
+      public boolean hasOneofSint64() {
+        return allTypesCase_ == 6;
+      }
+      /**
+       * <code>sint64 oneof_sint64 = 6;</code>
+       * @return The oneofSint64.
+       */
+      public long getOneofSint64() {
+        if (allTypesCase_ == 6) {
+          return (java.lang.Long) allTypes_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>sint64 oneof_sint64 = 6;</code>
+       * @param value The oneofSint64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofSint64(long value) {
+
+        allTypesCase_ = 6;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 oneof_sint64 = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofSint64() {
+        if (allTypesCase_ == 6) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>fixed32 oneof_fixed32 = 7;</code>
+       * @return Whether the oneofFixed32 field is set.
+       */
+      public boolean hasOneofFixed32() {
+        return allTypesCase_ == 7;
+      }
+      /**
+       * <code>fixed32 oneof_fixed32 = 7;</code>
+       * @return The oneofFixed32.
+       */
+      public int getOneofFixed32() {
+        if (allTypesCase_ == 7) {
+          return (java.lang.Integer) allTypes_;
+        }
+        return 0;
+      }
+      /**
+       * <code>fixed32 oneof_fixed32 = 7;</code>
+       * @param value The oneofFixed32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofFixed32(int value) {
+
+        allTypesCase_ = 7;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed32 oneof_fixed32 = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofFixed32() {
+        if (allTypesCase_ == 7) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>fixed64 oneof_fixed64 = 8;</code>
+       * @return Whether the oneofFixed64 field is set.
+       */
+      public boolean hasOneofFixed64() {
+        return allTypesCase_ == 8;
+      }
+      /**
+       * <code>fixed64 oneof_fixed64 = 8;</code>
+       * @return The oneofFixed64.
+       */
+      public long getOneofFixed64() {
+        if (allTypesCase_ == 8) {
+          return (java.lang.Long) allTypes_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>fixed64 oneof_fixed64 = 8;</code>
+       * @param value The oneofFixed64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofFixed64(long value) {
+
+        allTypesCase_ = 8;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed64 oneof_fixed64 = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofFixed64() {
+        if (allTypesCase_ == 8) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>sfixed32 oneof_sfixed32 = 9;</code>
+       * @return Whether the oneofSfixed32 field is set.
+       */
+      public boolean hasOneofSfixed32() {
+        return allTypesCase_ == 9;
+      }
+      /**
+       * <code>sfixed32 oneof_sfixed32 = 9;</code>
+       * @return The oneofSfixed32.
+       */
+      public int getOneofSfixed32() {
+        if (allTypesCase_ == 9) {
+          return (java.lang.Integer) allTypes_;
+        }
+        return 0;
+      }
+      /**
+       * <code>sfixed32 oneof_sfixed32 = 9;</code>
+       * @param value The oneofSfixed32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofSfixed32(int value) {
+
+        allTypesCase_ = 9;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed32 oneof_sfixed32 = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofSfixed32() {
+        if (allTypesCase_ == 9) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>sfixed64 oneof_sfixed64 = 10;</code>
+       * @return Whether the oneofSfixed64 field is set.
+       */
+      public boolean hasOneofSfixed64() {
+        return allTypesCase_ == 10;
+      }
+      /**
+       * <code>sfixed64 oneof_sfixed64 = 10;</code>
+       * @return The oneofSfixed64.
+       */
+      public long getOneofSfixed64() {
+        if (allTypesCase_ == 10) {
+          return (java.lang.Long) allTypes_;
+        }
+        return 0L;
+      }
+      /**
+       * <code>sfixed64 oneof_sfixed64 = 10;</code>
+       * @param value The oneofSfixed64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofSfixed64(long value) {
+
+        allTypesCase_ = 10;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed64 oneof_sfixed64 = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofSfixed64() {
+        if (allTypesCase_ == 10) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>float oneof_float = 11;</code>
+       * @return Whether the oneofFloat field is set.
+       */
+      public boolean hasOneofFloat() {
+        return allTypesCase_ == 11;
+      }
+      /**
+       * <code>float oneof_float = 11;</code>
+       * @return The oneofFloat.
+       */
+      public float getOneofFloat() {
+        if (allTypesCase_ == 11) {
+          return (java.lang.Float) allTypes_;
+        }
+        return 0F;
+      }
+      /**
+       * <code>float oneof_float = 11;</code>
+       * @param value The oneofFloat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofFloat(float value) {
+
+        allTypesCase_ = 11;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>float oneof_float = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofFloat() {
+        if (allTypesCase_ == 11) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>double oneof_double = 12;</code>
+       * @return Whether the oneofDouble field is set.
+       */
+      public boolean hasOneofDouble() {
+        return allTypesCase_ == 12;
+      }
+      /**
+       * <code>double oneof_double = 12;</code>
+       * @return The oneofDouble.
+       */
+      public double getOneofDouble() {
+        if (allTypesCase_ == 12) {
+          return (java.lang.Double) allTypes_;
+        }
+        return 0D;
+      }
+      /**
+       * <code>double oneof_double = 12;</code>
+       * @param value The oneofDouble to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofDouble(double value) {
+
+        allTypesCase_ = 12;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double oneof_double = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofDouble() {
+        if (allTypesCase_ == 12) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>bool oneof_bool = 13;</code>
+       * @return Whether the oneofBool field is set.
+       */
+      public boolean hasOneofBool() {
+        return allTypesCase_ == 13;
+      }
+      /**
+       * <code>bool oneof_bool = 13;</code>
+       * @return The oneofBool.
+       */
+      public boolean getOneofBool() {
+        if (allTypesCase_ == 13) {
+          return (java.lang.Boolean) allTypes_;
+        }
+        return false;
+      }
+      /**
+       * <code>bool oneof_bool = 13;</code>
+       * @param value The oneofBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBool(boolean value) {
+
+        allTypesCase_ = 13;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool oneof_bool = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBool() {
+        if (allTypesCase_ == 13) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @return Whether the oneofString field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofString() {
+        return allTypesCase_ == 14;
+      }
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @return The oneofString.
+       */
+      @java.lang.Override
+      public java.lang.String getOneofString() {
+        java.lang.Object ref = "";
+        if (allTypesCase_ == 14) {
+          ref = allTypes_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (allTypesCase_ == 14) {
+            if (bs.isValidUtf8()) {
+              allTypes_ = s;
+            }
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @return The bytes for oneofString.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getOneofStringBytes() {
+        java.lang.Object ref = "";
+        if (allTypesCase_ == 14) {
+          ref = allTypes_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (allTypesCase_ == 14) {
+            allTypes_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @param value The oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        allTypesCase_ = 14;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofString() {
+        if (allTypesCase_ == 14) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 14;</code>
+       * @param value The bytes for oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        allTypesCase_ = 14;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>bytes oneof_bytes = 15;</code>
+       * @return Whether the oneofBytes field is set.
+       */
+      public boolean hasOneofBytes() {
+        return allTypesCase_ == 15;
+      }
+      /**
+       * <code>bytes oneof_bytes = 15;</code>
+       * @return The oneofBytes.
+       */
+      public com.google.protobuf.ByteString getOneofBytes() {
+        if (allTypesCase_ == 15) {
+          return (com.google.protobuf.ByteString) allTypes_;
+        }
+        return com.google.protobuf.ByteString.EMPTY;
+      }
+      /**
+       * <code>bytes oneof_bytes = 15;</code>
+       * @param value The oneofBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBytes(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        allTypesCase_ = 15;
+        allTypes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes oneof_bytes = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBytes() {
+        if (allTypesCase_ == 15) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+       * @return Whether the oneofEnum field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofEnum() {
+        return allTypesCase_ == 16;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+       * @return The oneofEnum.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum getOneofEnum() {
+        if (allTypesCase_ == 16) {
+          com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum result = com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.forNumber(
+              (java.lang.Integer) allTypes_);
+          return result == null ? com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.TEST_UNKNOWN : result;
+        }
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum.TEST_UNKNOWN;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+       * @param value The oneofEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofEnum(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.TestEnum value) {
+        if (value == null) { throw new NullPointerException(); }
+        allTypesCase_ = 16;
+        allTypes_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.TestEnum oneof_enum = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofEnum() {
+        if (allTypesCase_ == 16) {
+          allTypesCase_ = 0;
+          allTypes_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder> oneofMessageBuilder_;
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       * @return Whether the oneofMessage field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofMessage() {
+        return allTypesCase_ == 17;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       * @return The oneofMessage.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (allTypesCase_ == 17) {
+            return (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_;
+          }
+          return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+        } else {
+          if (allTypesCase_ == 17) {
+            return oneofMessageBuilder_.getMessage();
+          }
+          return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      public Builder setOneofMessage(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage value) {
+        if (oneofMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          allTypes_ = value;
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(value);
+        }
+        allTypesCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      public Builder setOneofMessage(
+          com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder builderForValue) {
+        if (oneofMessageBuilder_ == null) {
+          allTypes_ = builderForValue.build();
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(builderForValue.build());
+        }
+        allTypesCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      public Builder mergeOneofMessage(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage value) {
+        if (oneofMessageBuilder_ == null) {
+          if (allTypesCase_ == 17 &&
+              allTypes_ != com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance()) {
+            allTypes_ = com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.newBuilder((com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            allTypes_ = value;
+          }
+          onChanged();
+        } else {
+          if (allTypesCase_ == 17) {
+            oneofMessageBuilder_.mergeFrom(value);
+          } else {
+            oneofMessageBuilder_.setMessage(value);
+          }
+        }
+        allTypesCase_ = 17;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      public Builder clearOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (allTypesCase_ == 17) {
+            allTypesCase_ = 0;
+            allTypes_ = null;
+            onChanged();
+          }
+        } else {
+          if (allTypesCase_ == 17) {
+            allTypesCase_ = 0;
+            allTypes_ = null;
+          }
+          oneofMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder getOneofMessageBuilder() {
+        return internalGetOneofMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder getOneofMessageOrBuilder() {
+        if ((allTypesCase_ == 17) && (oneofMessageBuilder_ != null)) {
+          return oneofMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (allTypesCase_ == 17) {
+            return (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_;
+          }
+          return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage oneof_message = 17;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder> 
+          internalGetOneofMessageFieldBuilder() {
+        if (oneofMessageBuilder_ == null) {
+          if (!(allTypesCase_ == 17)) {
+            allTypes_ = com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+          }
+          oneofMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder>(
+                  (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) allTypes_,
+                  getParentForChildren(),
+                  isClean());
+          allTypes_ = null;
+        }
+        allTypesCase_ = 17;
+        onChanged();
+        return oneofMessageBuilder_;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes)
+    private static final com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OneofAllTypes>
+        PARSER = new com.google.protobuf.AbstractParser<OneofAllTypes>() {
+      @java.lang.Override
+      public OneofAllTypes parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<OneofAllTypes> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OneofAllTypes> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.OneofAllTypes getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface AllTypesMessageOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional int32 field = 1;</code>
+     * @return Whether the field field is set.
+     */
+    boolean hasField();
+    /**
+     * <code>optional int32 field = 1;</code>
+     * @return The field.
+     */
+    int getField();
+  }
+  /**
+   * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage}
+   */
+  public static final class AllTypesMessage extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage)
+      AllTypesMessageOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "AllTypesMessage");
+    }
+    // Use AllTypesMessage.newBuilder() to construct.
+    private AllTypesMessage(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private AllTypesMessage() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int FIELD_FIELD_NUMBER = 1;
+    private int field_ = 0;
+    /**
+     * <code>optional int32 field = 1;</code>
+     * @return Whether the field field is set.
+     */
+    @java.lang.Override
+    public boolean hasField() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional int32 field = 1;</code>
+     * @return The field.
+     */
+    @java.lang.Override
+    public int getField() {
+      return field_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        output.writeInt32(1, field_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, field_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage)) {
+        return super.equals(obj);
+      }
+      com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage other = (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) obj;
+
+      if (hasField() != other.hasField()) return false;
+      if (hasField()) {
+        if (getField()
+            != other.getField()) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasField()) {
+        hash = (37 * hash) + FIELD_FIELD_NUMBER;
+        hash = (53 * hash) + getField();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage)
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessageOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        field_ = 0;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage build() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage buildPartial() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage result = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.field_ = field_;
+          to_bitField0_ |= 0x00000001;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage) {
+          return mergeFrom((com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage other) {
+        if (other == com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage.getDefaultInstance()) return this;
+        if (other.hasField()) {
+          setField(other.getField());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                field_ = input.readInt32();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 8
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private int field_ ;
+      /**
+       * <code>optional int32 field = 1;</code>
+       * @return Whether the field field is set.
+       */
+      @java.lang.Override
+      public boolean hasField() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional int32 field = 1;</code>
+       * @return The field.
+       */
+      @java.lang.Override
+      public int getField() {
+        return field_;
+      }
+      /**
+       * <code>optional int32 field = 1;</code>
+       * @param value The field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField(int value) {
+
+        field_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 field = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage)
+    private static final com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<AllTypesMessage>
+        PARSER = new com.google.protobuf.AbstractParser<AllTypesMessage>() {
+      @java.lang.Override
+      public AllTypesMessage parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<AllTypesMessage> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AllTypesMessage> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.AllTypesMessage getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor;
   private static final 
@@ -5334,6 +8313,16 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5363,9 +8352,24 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       "eated10\030\n \003(\005\022\030\n\020repeated_string1\030\013 \003(\t\022" +
       "\030\n\020repeated_string2\030\014 \003(\t\022\030\n\020repeated_st" +
       "ring3\030\r \003(\t\022\026\n\016repeated_bool1\030\016 \003(\010\022\026\n\016r" +
-      "epeated_bool2\030\017 \003(\010BP\n)com.rubberjam.pro" +
-      "tobuf.compiler.test.edgeB!ComprehensiveT" +
-      "estEdgeCasesMinimalH\001"
+      "epeated_bool2\030\017 \003(\010\"\226\004\n\rOneofAllTypes\022\025\n" +
+      "\013oneof_int32\030\001 \001(\005H\000\022\025\n\013oneof_int64\030\002 \001(" +
+      "\003H\000\022\026\n\014oneof_uint32\030\003 \001(\rH\000\022\026\n\014oneof_uin" +
+      "t64\030\004 \001(\004H\000\022\026\n\014oneof_sint32\030\005 \001(\021H\000\022\026\n\014o" +
+      "neof_sint64\030\006 \001(\022H\000\022\027\n\roneof_fixed32\030\007 \001" +
+      "(\007H\000\022\027\n\roneof_fixed64\030\010 \001(\006H\000\022\030\n\016oneof_s" +
+      "fixed32\030\t \001(\017H\000\022\030\n\016oneof_sfixed64\030\n \001(\020H" +
+      "\000\022\025\n\013oneof_float\030\013 \001(\002H\000\022\026\n\014oneof_double" +
+      "\030\014 \001(\001H\000\022\024\n\noneof_bool\030\r \001(\010H\000\022\026\n\014oneof_" +
+      "string\030\016 \001(\tH\000\022\025\n\013oneof_bytes\030\017 \001(\014H\000\022B\n" +
+      "\noneof_enum\030\020 \001(\0162,.ComprehensiveTest.Ed" +
+      "geCasesMinimal.TestEnumH\000\022L\n\roneof_messa" +
+      "ge\030\021 \001(\01323.ComprehensiveTest.EdgeCasesMi" +
+      "nimal.AllTypesMessageH\000B\013\n\tall_types\" \n\017" +
+      "AllTypesMessage\022\r\n\005field\030\001 \001(\005*,\n\010TestEn" +
+      "um\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001BP\n)" +
+      "com.rubberjam.protobuf.compiler.test.edg" +
+      "eB!ComprehensiveTestEdgeCasesMinimalH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -5389,6 +8393,18 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor,
         new java.lang.String[] { "Repeated1", "Repeated2", "Repeated3", "Repeated4", "Repeated5", "Repeated6", "Repeated7", "Repeated8", "Repeated9", "Repeated10", "RepeatedString1", "RepeatedString2", "RepeatedString3", "RepeatedBool1", "RepeatedBool2", });
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor =
+      getDescriptor().getMessageType(2);
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_EdgeCasesMinimal_OneofAllTypes_descriptor,
+        new java.lang.String[] { "OneofInt32", "OneofInt64", "OneofUint32", "OneofUint64", "OneofSint32", "OneofSint64", "OneofFixed32", "OneofFixed64", "OneofSfixed32", "OneofSfixed64", "OneofFloat", "OneofDouble", "OneofBool", "OneofString", "OneofBytes", "OneofEnum", "OneofMessage", "AllTypes", });
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor =
+      getDescriptor().getMessageType(3);
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_EdgeCasesMinimal_AllTypesMessage_descriptor,
+        new java.lang.String[] { "Field", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
