@@ -127,6 +127,12 @@ public class SharedCodeGenerator
 			fixMessage(fileBuilder.getMessageTypeBuilder(i), file.getMessageTypes().get(i));
 		}
 
+		// Fix services
+		for (int i = 0; i < file.getServices().size(); i++)
+		{
+			fixService(fileBuilder.getServiceBuilder(i), file.getServices().get(i));
+		}
+
 		// Clean options
 		if (fileBuilder.hasOptions())
 		{
@@ -148,6 +154,20 @@ public class SharedCodeGenerator
 		{
 			fixMessage(messageBuilder.getNestedTypeBuilder(i), messageDescriptor.getNestedTypes().get(i));
 		}
+	}
+
+	private void fixService(ServiceDescriptorProto.Builder serviceBuilder, ServiceDescriptor serviceDescriptor)
+	{
+		for (int i = 0; i < serviceDescriptor.getMethods().size(); i++)
+		{
+			fixMethod(serviceBuilder.getMethodBuilder(i), serviceDescriptor.getMethods().get(i));
+		}
+	}
+
+	private void fixMethod(MethodDescriptorProto.Builder methodBuilder, MethodDescriptor methodDescriptor)
+	{
+		methodBuilder.setInputType("." + methodDescriptor.getInputType().getFullName());
+		methodBuilder.setOutputType("." + methodDescriptor.getOutputType().getFullName());
 	}
 
 	private void fixField(FieldDescriptorProto.Builder fieldBuilder, FieldDescriptor fieldDescriptor)

@@ -395,3 +395,16 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   The generated debug string for deprecated fields must include the `[deprecated = true]` option (e.g., `optional string deprecated_field = 30 [deprecated = true];`).
     *   An `@deprecated` tag must be generated with a specific message format: `<FieldFullName> is deprecated.\n *     See <FileName>;l=<LineNumber>`.
     *   The line number in the `See ...` link uses 0-based indexing (e.g., `l=50` for a field on line 51), matching `SourceCodeInfo.Location.span[0]`.
+*   **Reserved Range End**:
+    *   `DescriptorProto.ReservedRange` (used for message reserved ranges) treats the `end` field as **exclusive** (start to end-1). The parser must increment the user-provided end value by 1.
+    *   For `reserved 2`, proto file has `start=2`, `end=2`. `ReservedRange` must have `start=2`, `end=3`.
+    *   For `reserved max`, `ReservedRange` must set `end` to `536870912` (MAX_FIELD_NUMBER + 1).
+    *   Note: `EnumDescriptorProto.EnumReservedRange` uses an **inclusive** `end` field, so it does NOT require this increment.
+
+*   **Service Method Types Normalization**:
+    *   The `FileDescriptorProto` embedded in the generated code must have fully qualified names for `input_type` and `output_type` in `MethodDescriptorProto` (prefixed with `.`).
+    *   `SharedCodeGenerator.normalizeDescriptor` was updated to iterate over services and methods to enforce this full qualification, ensuring parity with `protoc` output.
+
+*   **Standard Method Options**:
+    *   `Parser.java` must explicitly handle standard method options (like `deprecated`) and set them in the dedicated fields of `MethodOptions` (e.g., `setDeprecated(true)`).
+    *   Treating them as generic `UninterpretedOption` results in a different (and larger) serialized descriptor, causing parity mismatches with `protoc` which uses the compact standard fields.
