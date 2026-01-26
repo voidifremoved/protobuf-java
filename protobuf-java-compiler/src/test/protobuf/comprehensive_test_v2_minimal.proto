@@ -44,5 +44,8 @@ message AllFieldTypes {
   
   optional TestEnum enum_with_default = 27 [default = SECOND];
   
+  optional double double_with_default = 28 [default = 3.14159];
+  optional float float_with_default = 29 [default = 2.71828];
+  
 }
 

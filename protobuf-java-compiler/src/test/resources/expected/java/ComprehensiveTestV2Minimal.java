@@ -374,6 +374,28 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
      * @return The enumWithDefault.
      */
     com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum getEnumWithDefault();
+
+    /**
+     * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+     * @return Whether the doubleWithDefault field is set.
+     */
+    boolean hasDoubleWithDefault();
+    /**
+     * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+     * @return The doubleWithDefault.
+     */
+    double getDoubleWithDefault();
+
+    /**
+     * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+     * @return Whether the floatWithDefault field is set.
+     */
+    boolean hasFloatWithDefault();
+    /**
+     * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+     * @return The floatWithDefault.
+     */
+    float getFloatWithDefault();
   }
   /**
    * <pre>
@@ -404,6 +426,8 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       stringField_ = "";
       bytesField_ = com.google.protobuf.ByteString.EMPTY;
       enumWithDefault_ = 2;
+      doubleWithDefault_ = 3.14159D;
+      floatWithDefault_ = 2.71828F;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -777,6 +801,44 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       return result == null ? com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.SECOND : result;
     }
 
+    public static final int DOUBLE_WITH_DEFAULT_FIELD_NUMBER = 28;
+    private double doubleWithDefault_ = 3.14159D;
+    /**
+     * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+     * @return Whether the doubleWithDefault field is set.
+     */
+    @java.lang.Override
+    public boolean hasDoubleWithDefault() {
+      return ((bitField0_ & 0x00010000) != 0);
+    }
+    /**
+     * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+     * @return The doubleWithDefault.
+     */
+    @java.lang.Override
+    public double getDoubleWithDefault() {
+      return doubleWithDefault_;
+    }
+
+    public static final int FLOAT_WITH_DEFAULT_FIELD_NUMBER = 29;
+    private float floatWithDefault_ = 2.71828F;
+    /**
+     * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+     * @return Whether the floatWithDefault field is set.
+     */
+    @java.lang.Override
+    public boolean hasFloatWithDefault() {
+      return ((bitField0_ & 0x00020000) != 0);
+    }
+    /**
+     * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+     * @return The floatWithDefault.
+     */
+    @java.lang.Override
+    public float getFloatWithDefault() {
+      return floatWithDefault_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -838,6 +900,12 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       }
       if (((bitField0_ & 0x00008000) != 0)) {
         output.writeEnum(27, enumWithDefault_);
+      }
+      if (((bitField0_ & 0x00010000) != 0)) {
+        output.writeDouble(28, doubleWithDefault_);
+      }
+      if (((bitField0_ & 0x00020000) != 0)) {
+        output.writeFloat(29, floatWithDefault_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -910,6 +978,14 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (((bitField0_ & 0x00008000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(27, enumWithDefault_);
+      }
+      if (((bitField0_ & 0x00010000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeDoubleSize(28, doubleWithDefault_);
+      }
+      if (((bitField0_ & 0x00020000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeFloatSize(29, floatWithDefault_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1007,6 +1083,18 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (hasEnumWithDefault()) {
         if (enumWithDefault_ != other.enumWithDefault_) return false;
       }
+      if (hasDoubleWithDefault() != other.hasDoubleWithDefault()) return false;
+      if (hasDoubleWithDefault()) {
+        if (java.lang.Double.doubleToLongBits(getDoubleWithDefault())
+            != java.lang.Double.doubleToLongBits(
+                other.getDoubleWithDefault())) return false;
+      }
+      if (hasFloatWithDefault() != other.hasFloatWithDefault()) return false;
+      if (hasFloatWithDefault()) {
+        if (java.lang.Float.floatToIntBits(getFloatWithDefault())
+            != java.lang.Float.floatToIntBits(
+                other.getFloatWithDefault())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1089,6 +1177,16 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (hasEnumWithDefault()) {
         hash = (37 * hash) + ENUM_WITH_DEFAULT_FIELD_NUMBER;
         hash = (53 * hash) + enumWithDefault_;
+      }
+      if (hasDoubleWithDefault()) {
+        hash = (37 * hash) + DOUBLE_WITH_DEFAULT_FIELD_NUMBER;
+        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+            java.lang.Double.doubleToLongBits(getDoubleWithDefault()));
+      }
+      if (hasFloatWithDefault()) {
+        hash = (37 * hash) + FLOAT_WITH_DEFAULT_FIELD_NUMBER;
+        hash = (53 * hash) + java.lang.Float.floatToIntBits(
+            getFloatWithDefault());
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1241,6 +1339,8 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         stringField_ = "";
         bytesField_ = com.google.protobuf.ByteString.EMPTY;
         enumWithDefault_ = 2;
+        doubleWithDefault_ = 3.14159D;
+        floatWithDefault_ = 2.71828F;
         return this;
       }
 
@@ -1339,6 +1439,14 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
           result.enumWithDefault_ = enumWithDefault_;
           to_bitField0_ |= 0x00008000;
         }
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          result.doubleWithDefault_ = doubleWithDefault_;
+          to_bitField0_ |= 0x00010000;
+        }
+        if (((from_bitField0_ & 0x00020000) != 0)) {
+          result.floatWithDefault_ = floatWithDefault_;
+          to_bitField0_ |= 0x00020000;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -1403,6 +1511,12 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         }
         if (other.hasEnumWithDefault()) {
           setEnumWithDefault(other.getEnumWithDefault());
+        }
+        if (other.hasDoubleWithDefault()) {
+          setDoubleWithDefault(other.getDoubleWithDefault());
+        }
+        if (other.hasFloatWithDefault()) {
+          setFloatWithDefault(other.getFloatWithDefault());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1517,6 +1631,16 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
                 }
                 break;
               } // case 216
+              case 225: {
+                doubleWithDefault_ = input.readDouble();
+                bitField0_ |= 0x00010000;
+                break;
+              } // case 225
+              case 237: {
+                floatWithDefault_ = input.readFloat();
+                bitField0_ |= 0x00020000;
+                break;
+              } // case 237
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2262,6 +2386,86 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private double doubleWithDefault_ = 3.14159D;
+      /**
+       * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+       * @return Whether the doubleWithDefault field is set.
+       */
+      @java.lang.Override
+      public boolean hasDoubleWithDefault() {
+        return ((bitField0_ & 0x00010000) != 0);
+      }
+      /**
+       * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+       * @return The doubleWithDefault.
+       */
+      @java.lang.Override
+      public double getDoubleWithDefault() {
+        return doubleWithDefault_;
+      }
+      /**
+       * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+       * @param value The doubleWithDefault to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDoubleWithDefault(double value) {
+
+        doubleWithDefault_ = value;
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional double double_with_default = 28 [default = 3.14159];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDoubleWithDefault() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        doubleWithDefault_ = 3.14159D;
+        onChanged();
+        return this;
+      }
+
+      private float floatWithDefault_ = 2.71828F;
+      /**
+       * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+       * @return Whether the floatWithDefault field is set.
+       */
+      @java.lang.Override
+      public boolean hasFloatWithDefault() {
+        return ((bitField0_ & 0x00020000) != 0);
+      }
+      /**
+       * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+       * @return The floatWithDefault.
+       */
+      @java.lang.Override
+      public float getFloatWithDefault() {
+        return floatWithDefault_;
+      }
+      /**
+       * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+       * @param value The floatWithDefault to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFloatWithDefault(float value) {
+
+        floatWithDefault_ = value;
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional float float_with_default = 29 [default = 2.71828];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFloatWithDefault() {
+        bitField0_ = (bitField0_ & ~0x00020000);
+        floatWithDefault_ = 2.71828F;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V2Minimal.AllFieldTypes)
     }
 
@@ -2328,7 +2532,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v2_minimal.proto\022\033C" +
-      "omprehensiveTest.V2Minimal\"\243\003\n\rAllFieldT" +
+      "omprehensiveTest.V2Minimal\"\356\003\n\rAllFieldT" +
       "ypes\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_field" +
       "\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint64_f" +
       "ield\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014sint" +
@@ -2339,11 +2543,13 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       "field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013byt" +
       "es_field\030\017 \001(\014\022H\n\021enum_with_default\030\033 \001(" +
       "\0162%.ComprehensiveTest.V2Minimal.TestEnum" +
-      ":\006SECOND*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIR" +
-      "ST\020\001\022\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THI" +
-      "RD\020\003\032\002\010\001\032\002\020\001BM\n\'com.rubberjam.protobuf.c" +
-      "ompiler.test.v2B\032ComprehensiveTestV2Mini" +
-      "malH\001\200\001\001\210\001\001"
+      ":\006SECOND\022$\n\023double_with_default\030\034 \001(\001:\0073" +
+      ".14159\022#\n\022float_with_default\030\035 \001(\002:\0072.71" +
+      "828*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIRST\020\001\022" +
+      "\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THIRD\020\003\032" +
+      "\002\010\001\032\002\020\001BM\n\'com.rubberjam.protobuf.compil" +
+      "er.test.v2B\032ComprehensiveTestV2MinimalH\001" +
+      "\200\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2354,7 +2560,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
