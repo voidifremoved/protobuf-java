@@ -318,7 +318,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			}
 			else
 			{
-				printer.println("      public boolean has" + variables.get("capitalized_name") + "() {");
+				printer.println("      @java.lang.Override public boolean has" + variables.get("capitalized_name") + "() {");
 				printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
 			}
 			printer.println("      }");
@@ -579,10 +579,10 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		String valueVar = variables.get("name") + "_";
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			valueVar = "(java.lang.Integer) " + variables.get("oneof_field_variable");
+			valueVar = "((java.lang.Integer) " + variables.get("oneof_field_variable") + ")";
 		}
 		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .computeEnumSize(" + variables.get("number") + ", (" + valueVar + "));");
+		printer.println("          .computeEnumSize(" + variables.get("number") + ", " + valueVar + ");");
 		printer.println("      }");
 	}
 
@@ -594,9 +594,9 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		String valueVar = variables.get("name") + "_";
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			valueVar = "(java.lang.Integer) " + variables.get("oneof_field_variable");
+			valueVar = "((java.lang.Integer) " + variables.get("oneof_field_variable") + ")";
 		}
-		printer.println("        output.writeEnum(" + variables.get("number") + ", (" + valueVar + "));");
+		printer.println("        output.writeEnum(" + variables.get("number") + ", " + valueVar + ");");
 		printer.println("      }");
 	}
 
