@@ -199,7 +199,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
-							FieldAccessorType.GETTER,
+							FieldAccessorType.VALUE_GETTER,
 							context,
 							false,
 							false,
@@ -261,7 +261,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
-							FieldAccessorType.GETTER,
+							FieldAccessorType.VALUE_GETTER,
 							context,
 							false,
 							false,
