@@ -1,0 +1,46 @@
+syntax = "proto2";
+
+package ComprehensiveTest.V2Minimal;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.v2";
+option java_outer_classname = "ComprehensiveTestV2Minimal";
+option java_generic_services = true;
+option cc_generic_services = true;
+option optimize_for = SPEED;
+
+// Test enum
+enum TestEnum {
+  option allow_alias = true;
+  UNKNOWN = 0;
+  FIRST = 1;
+  SECOND = 2;
+  THIRD = 3;
+  ALIAS_THIRD = 3 [deprecated = true];
+}
+
+// Test message with all field types
+message AllFieldTypes {
+  // Integer types
+  optional int32 int32_field = 1;
+  optional int64 int64_field = 2;
+  optional uint32 uint32_field = 3;
+  optional uint64 uint64_field = 4;
+  optional sint32 sint32_field = 5;
+  optional sint64 sint64_field = 6;
+  optional fixed32 fixed32_field = 7;
+  optional fixed64 fixed64_field = 8;
+  optional sfixed32 sfixed32_field = 9;
+  optional sfixed64 sfixed64_field = 10;
+  
+  // Floating point types
+  optional float float_field = 11;
+  optional double double_field = 12;
+  
+  // Other primitive types
+  optional bool bool_field = 13;
+  optional string string_field = 14;
+  optional bytes bytes_field = 15;
+  
+  
+}
+
