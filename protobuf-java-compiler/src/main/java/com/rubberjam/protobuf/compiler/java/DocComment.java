@@ -328,7 +328,7 @@ public final class DocComment
 							sb.append("required ");
 							break;
 						case LABEL_OPTIONAL:
-							if (!isProto3)
+							if (!isProto3 || isSyntheticOneof)
 							{
 								sb.append("optional ");
 							}

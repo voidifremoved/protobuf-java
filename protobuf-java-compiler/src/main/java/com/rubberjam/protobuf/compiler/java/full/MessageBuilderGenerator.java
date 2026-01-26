@@ -177,6 +177,8 @@ public class MessageBuilderGenerator
 		}
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (isSynthetic) continue;
 			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
 			printer.println("        " + oneofName + "Case_ = 0;");
 			printer.println("        " + oneofName + "_ = null;");
@@ -282,11 +284,8 @@ public class MessageBuilderGenerator
 					break;
 				}
 			}
-			if (resultNeedsBitField)
-			{
-				printer.println("        int to_" + getBitFieldName(i) + " = 0;");
-			}
 			int end = Math.min(fieldIndex + 32, totalFields);
+			boolean toBitFieldDeclared = false;
 			for (; fieldIndex < end; fieldIndex++)
 			{
 				ImmutableFieldGenerator gen = fieldGenerators.getFieldGenerators().get(fieldIndex);
@@ -294,10 +293,16 @@ public class MessageBuilderGenerator
 						&& gen.getDescriptor().getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE
 						&& !gen.getDescriptor().isMapField()))
 				{
+					boolean isSynthetic = gen.getDescriptor().toProto().hasProto3Optional() && gen.getDescriptor().toProto().getProto3Optional();
+					boolean fieldNeedsBitField = !gen.getDescriptor().isMapField() && !gen.getDescriptor().isRepeated() && (gen.getDescriptor().getContainingOneof() == null || isSynthetic);
+					if (gen.getDescriptor().hasPresence() && fieldNeedsBitField && !toBitFieldDeclared) {
+						printer.println("        int to_" + getBitFieldName(i) + " = 0;");
+						toBitFieldDeclared = true;
+					}
 					gen.generateBuildingCode(printer);
 				}
 			}
-			if (resultNeedsBitField)
+			if (toBitFieldDeclared)
 			{
 				printer.println("        result." + getBitFieldName(i) + " |= to_" + getBitFieldName(i) + ";");
 			}
@@ -341,13 +346,16 @@ public class MessageBuilderGenerator
 			printer.println("        if (other == " + fullClassName + ".getDefaultInstance()) return this;");
 			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 			{
-				if (fieldGenerator.getDescriptor().getContainingOneof() == null)
+				boolean isSynthetic = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
+				if (fieldGenerator.getDescriptor().getContainingOneof() == null || isSynthetic)
 				{
 					fieldGenerator.generateMergingCode(printer);
 				}
 			}
 			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 			{
+				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+				if (isSynthetic) continue;
 				String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
 				printer.println("        switch (other.get" + com.rubberjam.protobuf.compiler.java.StringUtils.toProperCase(oneofName) + "Case()) {");
 				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
@@ -459,6 +467,8 @@ public class MessageBuilderGenerator
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (isSynthetic) continue;
 			String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
 			printer.println("      private int " + oneofName + "Case_ = 0;");
 			printer.println("      private java.lang.Object " + oneofName + "_;");

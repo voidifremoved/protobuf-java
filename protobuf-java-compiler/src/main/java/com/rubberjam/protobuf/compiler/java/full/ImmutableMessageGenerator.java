@@ -78,7 +78,11 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		// Add Oneof field names for oneofs
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
-			printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
+			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+			if (!isSynthetic)
+			{
+				printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
+			}
 		}
 		printer.println(", });");
 		
@@ -234,7 +238,8 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
 		{
 			// Maps, repeated fields, and oneof fields don't need bitField0_ in the message class
-			if (field.isMapField() || field.isRepeated() || field.getContainingOneof() != null)
+			boolean isSynthetic = field.getContainingOneof() != null && field.toProto().hasProto3Optional() && field.toProto().getProto3Optional();
+			if (field.isMapField() || field.isRepeated() || (field.getContainingOneof() != null && !isSynthetic))
 			{
 				continue;
 			}

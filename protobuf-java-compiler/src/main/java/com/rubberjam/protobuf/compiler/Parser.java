@@ -575,6 +575,14 @@ public class Parser
 			return false;
 		}
 		fieldBuilder.setName(fieldName);
+
+		if (fieldBuilder.hasProto3Optional() && fieldBuilder.getProto3Optional())
+		{
+			String oneofName = "_" + fieldName;
+			int syntheticOneofIndex = messageBuilder.getOneofDeclCount();
+			messageBuilder.addOneofDeclBuilder().setName(oneofName);
+			fieldBuilder.setOneofIndex(syntheticOneofIndex);
+		}
 		
 		// Generate map entry if this is a map field (after field name is known)
 		if (mapFieldInfo != null)
@@ -1005,6 +1013,10 @@ public class Parser
 		if (tryConsume("optional"))
 		{
 			fieldBuilder.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
+			if ("proto3".equals(syntax))
+			{
+				fieldBuilder.setProto3Optional(true);
+			}
 		}
 		else if (tryConsume("repeated"))
 		{
