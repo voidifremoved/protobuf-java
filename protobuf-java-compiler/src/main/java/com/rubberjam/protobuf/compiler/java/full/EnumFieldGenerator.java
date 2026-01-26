@@ -308,8 +308,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("      @java.lang.Override");
-			printer.println("      public boolean has" + variables.get("capitalized_name") + "() {");
+			printer.println("      @java.lang.Override public boolean has" + variables.get("capitalized_name") + "() {");
 			if (descriptor.getContainingOneof() != null && !isSynthetic)
 			{
 				printer.println("        return " + variables.get("is_field_present_message") + ";");
