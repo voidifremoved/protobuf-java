@@ -933,7 +933,24 @@ public class Parser
 								{
 									return f > 0 ? "inf" : "-inf";
 								}
-								return String.format(java.util.Locale.US, "%.9g", f);
+								if (!rawValue.toLowerCase().contains("e"))
+								{
+									return rawValue;
+								}
+								String s = String.format(java.util.Locale.US, "%.9g", f);
+								if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+								{
+									s = s.replace("e", "e+");
+								}
+								if (!s.contains("e") && s.contains("."))
+								{
+									s = s.replaceAll("0*$", "");
+									if (s.endsWith("."))
+									{
+										s = s.substring(0, s.length() - 1);
+									}
+								}
+								return s;
 							}
 							else
 							{
@@ -942,7 +959,24 @@ public class Parser
 								{
 									return d > 0 ? "inf" : "-inf";
 								}
-								return String.format(java.util.Locale.US, "%.17g", d);
+								if (!rawValue.toLowerCase().contains("e"))
+								{
+									return rawValue;
+								}
+								String s = String.format(java.util.Locale.US, "%.17g", d);
+								if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
+								{
+									s = s.replace("e", "e+");
+								}
+								if (!s.contains("e") && s.contains("."))
+								{
+									s = s.replaceAll("0*$", "");
+									if (s.endsWith("."))
+									{
+										s = s.substring(0, s.length() - 1);
+									}
+								}
+								return s;
 							}
 						}
 						catch (NumberFormatException e)

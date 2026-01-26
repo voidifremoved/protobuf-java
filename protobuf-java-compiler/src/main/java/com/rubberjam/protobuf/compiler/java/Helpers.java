@@ -193,6 +193,10 @@ public final class Helpers
 			{
 				return "0D";
 			}
+			if (field.toProto().hasDefaultValue())
+			{
+				return field.toProto().getDefaultValue() + "D";
+			}
 			String s = String.format(java.util.Locale.US, "%.17g", value);
 			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
 			{
@@ -214,6 +218,10 @@ public final class Helpers
 			if (Float.floatToRawIntBits(value) == 0)
 			{
 				return "0F";
+			}
+			if (field.toProto().hasDefaultValue())
+			{
+				return field.toProto().getDefaultValue() + "F";
 			}
 			String s = String.format(java.util.Locale.US, "%.9g", value);
 			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
