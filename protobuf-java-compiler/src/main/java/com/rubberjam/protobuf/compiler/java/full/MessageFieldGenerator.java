@@ -633,7 +633,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		boolean isRealOneof = descriptor.getContainingOneof() != null && !isSyntheticOneof;
 		if (isRealOneof)
 		{
-			printer.println("          merge" + variables.get("capitalized_name") + "(other.get"
+			printer.println("            merge" + variables.get("capitalized_name") + "(other.get"
 					+ variables.get("capitalized_name") + "());");
 		}
 		else
