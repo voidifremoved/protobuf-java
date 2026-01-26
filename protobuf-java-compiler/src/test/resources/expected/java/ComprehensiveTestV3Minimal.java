@@ -5254,6 +5254,2477 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
   }
 
+  public interface MapMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.MapMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32Count();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    boolean containsStringToInt32(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToInt32Map()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToInt32();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToInt32Map();
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32OrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    int getStringToInt32OrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    int getInt32ToStringCount();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    boolean containsInt32ToString(
+        int key);
+    /**
+     * Use {@link #getInt32ToStringMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.String>
+    getInt32ToString();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.String>
+    getInt32ToStringMap();
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+        int key,
+        /* nullable */
+java.lang.String defaultValue);
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    java.lang.String getInt32ToStringOrThrow(
+        int key);
+
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumCount();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    boolean containsStringToEnum(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToEnumMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+    getStringToEnum();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+    getStringToEnumMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3         defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToEnumValueMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValue();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValueMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumValueOrDefault(
+        java.lang.String key,
+        int defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    int getStringToEnumValueOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    int getStringToMessageCount();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    boolean containsStringToMessage(
+        java.lang.String key);
+    /**
+     * Use {@link #getStringToMessageMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
+    getStringToMessage();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
+    getStringToMessageMap();
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 defaultValue);
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
+        java.lang.String key);
+
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    int getBoolToStringCount();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    boolean containsBoolToString(
+        boolean key);
+    /**
+     * Use {@link #getBoolToStringMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Boolean, java.lang.String>
+    getBoolToString();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    java.util.Map<java.lang.Boolean, java.lang.String>
+    getBoolToStringMap();
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    /* nullable */
+java.lang.String getBoolToStringOrDefault(
+        boolean key,
+        /* nullable */
+java.lang.String defaultValue);
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    java.lang.String getBoolToStringOrThrow(
+        boolean key);
+
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    int getInt64ToBytesCount();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    boolean containsInt64ToBytes(
+        long key);
+    /**
+     * Use {@link #getInt64ToBytesMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    getInt64ToBytes();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+    getInt64ToBytesMap();
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+        long key,
+        /* nullable */
+com.google.protobuf.ByteString defaultValue);
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+        long key);
+
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    int getUint32ToFloatCount();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    boolean containsUint32ToFloat(
+        int key);
+    /**
+     * Use {@link #getUint32ToFloatMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Integer, java.lang.Float>
+    getUint32ToFloat();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    java.util.Map<java.lang.Integer, java.lang.Float>
+    getUint32ToFloatMap();
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    float getUint32ToFloatOrDefault(
+        int key,
+        float defaultValue);
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    float getUint32ToFloatOrThrow(
+        int key);
+
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    int getFixed64ToDoubleCount();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    boolean containsFixed64ToDouble(
+        long key);
+    /**
+     * Use {@link #getFixed64ToDoubleMap()} instead.
+     */
+    @java.lang.Deprecated
+    java.util.Map<java.lang.Long, java.lang.Double>
+    getFixed64ToDouble();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    java.util.Map<java.lang.Long, java.lang.Double>
+    getFixed64ToDoubleMap();
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    double getFixed64ToDoubleOrDefault(
+        long key,
+        double defaultValue);
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    double getFixed64ToDoubleOrThrow(
+        long key);
+  }
+  /**
+   * <pre>
+   * Message with map fields (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3Minimmal.MapMessageV3}
+   */
+  public static final class MapMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.MapMessageV3)
+      MapMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "MapMessageV3");
+    }
+    // Use MapMessageV3.newBuilder() to construct.
+    private MapMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private MapMessageV3() {
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+    }
+
+    @SuppressWarnings({"rawtypes"})
+    @java.lang.Override
+    protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+        int number) {
+      switch (number) {
+        case 1:
+          return internalGetStringToInt32();
+        case 2:
+          return internalGetInt32ToString();
+        case 3:
+          return internalGetStringToEnum();
+        case 4:
+          return internalGetStringToMessage();
+        case 5:
+          return internalGetBoolToString();
+        case 6:
+          return internalGetInt64ToBytes();
+        case 7:
+          return internalGetUint32ToFloat();
+        case 8:
+          return internalGetFixed64ToDouble();
+        default:
+          throw new RuntimeException(
+              "Invalid map field number: " + number);
+      }
+    }
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.Builder.class);
+    }
+
+    public static final int STRING_TO_INT32_FIELD_NUMBER = 1;
+    private static final class StringToInt32DefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> stringToInt32_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetStringToInt32() {
+      if (stringToInt32_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToInt32DefaultEntryHolder.defaultEntry);
+      }
+      return stringToInt32_;
+    }
+    public int getStringToInt32Count() {
+      return internalGetStringToInt32().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToInt32(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToInt32().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToInt32Map()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32() {
+      return getStringToInt32Map();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32Map() {
+      return internalGetStringToInt32().getMap();
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public int getStringToInt32OrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToInt32().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+     */
+    @java.lang.Override
+    public int getStringToInt32OrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToInt32().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int INT32_TO_STRING_FIELD_NUMBER = 2;
+    private static final class Int32ToStringDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.String>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.String> int32ToString_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+    internalGetInt32ToString() {
+      if (int32ToString_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Int32ToStringDefaultEntryHolder.defaultEntry);
+      }
+      return int32ToString_;
+    }
+    public int getInt32ToStringCount() {
+      return internalGetInt32ToString().getMap().size();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public boolean containsInt32ToString(
+        int key) {
+
+      return internalGetInt32ToString().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInt32ToStringMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToString() {
+      return getInt32ToStringMap();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToStringMap() {
+      return internalGetInt32ToString().getMap();
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+        int key,
+        /* nullable */
+java.lang.String defaultValue) {
+
+      java.util.Map<java.lang.Integer, java.lang.String> map =
+          internalGetInt32ToString().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getInt32ToStringOrThrow(
+        int key) {
+
+      java.util.Map<java.lang.Integer, java.lang.String> map =
+          internalGetInt32ToString().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int STRING_TO_ENUM_FIELD_NUMBER = 3;
+    private static final class StringToEnumDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, java.lang.Integer> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, java.lang.Integer>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.ENUM,
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.TEST_UNKNOWN.getNumber());
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, java.lang.Integer> stringToEnum_;
+    private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+    internalGetStringToEnum() {
+      if (stringToEnum_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToEnumDefaultEntryHolder.defaultEntry);
+      }
+      return stringToEnum_;
+    }
+    private static final
+    com.google.protobuf.Internal.MapAdapter.Converter<
+        java.lang.Integer, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> stringToEnumValueConverter =
+            com.google.protobuf.Internal.MapAdapter.newEnumConverter(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.internalGetValueMap(),
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED);
+    private static final java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+    internalGetAdaptedStringToEnumMap(
+        java.util.Map<java.lang.String, java.lang.Integer> map) {
+      return new com.google.protobuf.Internal.MapAdapter<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3, java.lang.Integer>(
+              map, stringToEnumValueConverter);
+    }
+    public int getStringToEnumCount() {
+      return internalGetStringToEnum().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToEnum(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToEnum().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToEnumMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+    getStringToEnum() {
+      return getStringToEnumMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+    getStringToEnumMap() {
+      return internalGetAdaptedStringToEnumMap(
+          internalGetStringToEnum().getMap());}
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      return map.containsKey(key)
+             ? stringToEnumValueConverter.doForward(map.get(key))
+             : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return stringToEnumValueConverter.doForward(map.get(key));
+    }
+    /**
+     * Use {@link #getStringToEnumValueMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValue() {
+      return getStringToEnumValueMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, java.lang.Integer>
+    getStringToEnumValueMap() {
+      return internalGetStringToEnum().getMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public int getStringToEnumValueOrDefault(
+        java.lang.String key,
+        int defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     */
+    @java.lang.Override
+    public int getStringToEnumValueOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, java.lang.Integer> map =
+          internalGetStringToEnum().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int STRING_TO_MESSAGE_FIELD_NUMBER = 4;
+    private static final class StringToMessageDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "",
+                  com.google.protobuf.WireFormat.FieldType.MESSAGE,
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance());
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> stringToMessage_;
+    private com.google.protobuf.MapField<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
+    internalGetStringToMessage() {
+      if (stringToMessage_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            StringToMessageDefaultEntryHolder.defaultEntry);
+      }
+      return stringToMessage_;
+    }
+    public int getStringToMessageCount() {
+      return internalGetStringToMessage().getMap().size();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public boolean containsStringToMessage(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      return internalGetStringToMessage().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getStringToMessageMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessage() {
+      return getStringToMessageMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessageMap() {
+      return internalGetStringToMessage().getMap();
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrDefault(
+        java.lang.String key,
+        /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 defaultValue) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> map =
+          internalGetStringToMessage().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
+        java.lang.String key) {
+      if (key == null) { throw new NullPointerException("map key"); }
+      java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> map =
+          internalGetStringToMessage().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int BOOL_TO_STRING_FIELD_NUMBER = 5;
+    private static final class BoolToStringDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Boolean, java.lang.String> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Boolean, java.lang.String>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.BOOL,
+                  false,
+                  com.google.protobuf.WireFormat.FieldType.STRING,
+                  "");
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Boolean, java.lang.String> boolToString_;
+    private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+    internalGetBoolToString() {
+      if (boolToString_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            BoolToStringDefaultEntryHolder.defaultEntry);
+      }
+      return boolToString_;
+    }
+    public int getBoolToStringCount() {
+      return internalGetBoolToString().getMap().size();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public boolean containsBoolToString(
+        boolean key) {
+
+      return internalGetBoolToString().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getBoolToStringMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToString() {
+      return getBoolToStringMap();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToStringMap() {
+      return internalGetBoolToString().getMap();
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+java.lang.String getBoolToStringOrDefault(
+        boolean key,
+        /* nullable */
+java.lang.String defaultValue) {
+
+      java.util.Map<java.lang.Boolean, java.lang.String> map =
+          internalGetBoolToString().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+     */
+    @java.lang.Override
+    public java.lang.String getBoolToStringOrThrow(
+        boolean key) {
+
+      java.util.Map<java.lang.Boolean, java.lang.String> map =
+          internalGetBoolToString().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int INT64_TO_BYTES_FIELD_NUMBER = 6;
+    private static final class Int64ToBytesDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Long, com.google.protobuf.ByteString> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Long, com.google.protobuf.ByteString>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.INT64,
+                  0L,
+                  com.google.protobuf.WireFormat.FieldType.BYTES,
+                  com.google.protobuf.ByteString.EMPTY);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Long, com.google.protobuf.ByteString> int64ToBytes_;
+    private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+    internalGetInt64ToBytes() {
+      if (int64ToBytes_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Int64ToBytesDefaultEntryHolder.defaultEntry);
+      }
+      return int64ToBytes_;
+    }
+    public int getInt64ToBytesCount() {
+      return internalGetInt64ToBytes().getMap().size();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public boolean containsInt64ToBytes(
+        long key) {
+
+      return internalGetInt64ToBytes().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getInt64ToBytesMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytes() {
+      return getInt64ToBytesMap();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytesMap() {
+      return internalGetInt64ToBytes().getMap();
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+        long key,
+        /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+
+      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+          internalGetInt64ToBytes().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+        long key) {
+
+      java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+          internalGetInt64ToBytes().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int UINT32_TO_FLOAT_FIELD_NUMBER = 7;
+    private static final class Uint32ToFloatDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Integer, java.lang.Float> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Integer, java.lang.Float>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.UINT32,
+                  0,
+                  com.google.protobuf.WireFormat.FieldType.FLOAT,
+                  0F);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Integer, java.lang.Float> uint32ToFloat_;
+    private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+    internalGetUint32ToFloat() {
+      if (uint32ToFloat_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Uint32ToFloatDefaultEntryHolder.defaultEntry);
+      }
+      return uint32ToFloat_;
+    }
+    public int getUint32ToFloatCount() {
+      return internalGetUint32ToFloat().getMap().size();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public boolean containsUint32ToFloat(
+        int key) {
+
+      return internalGetUint32ToFloat().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getUint32ToFloatMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloat() {
+      return getUint32ToFloatMap();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloatMap() {
+      return internalGetUint32ToFloat().getMap();
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public float getUint32ToFloatOrDefault(
+        int key,
+        float defaultValue) {
+
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetUint32ToFloat().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+     */
+    @java.lang.Override
+    public float getUint32ToFloatOrThrow(
+        int key) {
+
+      java.util.Map<java.lang.Integer, java.lang.Float> map =
+          internalGetUint32ToFloat().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static final int FIXED64_TO_DOUBLE_FIELD_NUMBER = 8;
+    private static final class Fixed64ToDoubleDefaultEntryHolder {
+      static final com.google.protobuf.MapEntry<
+          java.lang.Long, java.lang.Double> defaultEntry =
+              com.google.protobuf.MapEntry
+              .<java.lang.Long, java.lang.Double>newDefaultInstance(
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor, 
+                  com.google.protobuf.WireFormat.FieldType.FIXED64,
+                  0L,
+                  com.google.protobuf.WireFormat.FieldType.DOUBLE,
+                  0D);
+    }
+    @SuppressWarnings("serial")
+    private com.google.protobuf.MapField<
+        java.lang.Long, java.lang.Double> fixed64ToDouble_;
+    private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+    internalGetFixed64ToDouble() {
+      if (fixed64ToDouble_ == null) {
+        return com.google.protobuf.MapField.emptyMapField(
+            Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+      }
+      return fixed64ToDouble_;
+    }
+    public int getFixed64ToDoubleCount() {
+      return internalGetFixed64ToDouble().getMap().size();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public boolean containsFixed64ToDouble(
+        long key) {
+
+      return internalGetFixed64ToDouble().getMap().containsKey(key);
+    }
+    /**
+     * Use {@link #getFixed64ToDoubleMap()} instead.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated
+    public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDouble() {
+      return getFixed64ToDoubleMap();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDoubleMap() {
+      return internalGetFixed64ToDouble().getMap();
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public double getFixed64ToDoubleOrDefault(
+        long key,
+        double defaultValue) {
+
+      java.util.Map<java.lang.Long, java.lang.Double> map =
+          internalGetFixed64ToDouble().getMap();
+      return map.containsKey(key) ? map.get(key) : defaultValue;
+    }
+    /**
+     * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+     */
+    @java.lang.Override
+    public double getFixed64ToDoubleOrThrow(
+        long key) {
+
+      java.util.Map<java.lang.Long, java.lang.Double> map =
+          internalGetFixed64ToDouble().getMap();
+      if (!map.containsKey(key)) {
+        throw new java.lang.IllegalArgumentException();
+      }
+      return map.get(key);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with map fields (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3Minimmal.MapMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.MapMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+      }
+
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetStringToInt32();
+          case 2:
+            return internalGetInt32ToString();
+          case 3:
+            return internalGetStringToEnum();
+          case 4:
+            return internalGetStringToMessage();
+          case 5:
+            return internalGetBoolToString();
+          case 6:
+            return internalGetInt64ToBytes();
+          case 7:
+            return internalGetUint32ToFloat();
+          case 8:
+            return internalGetFixed64ToDouble();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @SuppressWarnings({"rawtypes"})
+      protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(
+          int number) {
+        switch (number) {
+          case 1:
+            return internalGetMutableStringToInt32();
+          case 2:
+            return internalGetMutableInt32ToString();
+          case 3:
+            return internalGetMutableStringToEnum();
+          case 4:
+            return internalGetMutableStringToMessage();
+          case 5:
+            return internalGetMutableBoolToString();
+          case 6:
+            return internalGetMutableInt64ToBytes();
+          case 7:
+            return internalGetMutableUint32ToFloat();
+          case 8:
+            return internalGetMutableFixed64ToDouble();
+          default:
+            throw new RuntimeException(
+                "Invalid map field number: " + number);
+        }
+      }
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        internalGetMutableStringToInt32().clear();
+        internalGetMutableInt32ToString().clear();
+        internalGetMutableStringToEnum().clear();
+        internalGetMutableStringToMessage().clear();
+        internalGetMutableBoolToString().clear();
+        internalGetMutableInt64ToBytes().clear();
+        internalGetMutableUint32ToFloat().clear();
+        internalGetMutableFixed64ToDouble().clear();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.stringToInt32_ = internalGetStringToInt32();
+          result.stringToInt32_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.int32ToString_ = internalGetInt32ToString();
+          result.int32ToString_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.stringToEnum_ = internalGetStringToEnum();
+          result.stringToEnum_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.stringToMessage_ = internalGetStringToMessage().build(StringToMessageDefaultEntryHolder.defaultEntry);
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.boolToString_ = internalGetBoolToString();
+          result.boolToString_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.int64ToBytes_ = internalGetInt64ToBytes();
+          result.int64ToBytes_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.uint32ToFloat_ = internalGetUint32ToFloat();
+          result.uint32ToFloat_.makeImmutable();
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fixed64ToDouble_ = internalGetFixed64ToDouble();
+          result.fixed64ToDouble_.makeImmutable();
+        }
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> stringToInt32_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetStringToInt32() {
+        if (stringToInt32_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StringToInt32DefaultEntryHolder.defaultEntry);
+        }
+        return stringToInt32_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableStringToInt32() {
+        if (stringToInt32_ == null) {
+          stringToInt32_ = com.google.protobuf.MapField.newMapField(
+              StringToInt32DefaultEntryHolder.defaultEntry);
+        }
+        if (!stringToInt32_.isMutable()) {
+          stringToInt32_ = stringToInt32_.copy();
+        }
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return stringToInt32_;
+      }
+      public int getStringToInt32Count() {
+        return internalGetStringToInt32().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToInt32(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToInt32().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToInt32Map()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32() {
+        return getStringToInt32Map();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer> getStringToInt32Map() {
+        return internalGetStringToInt32().getMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public int getStringToInt32OrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToInt32().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      @java.lang.Override
+      public int getStringToInt32OrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToInt32().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearStringToInt32() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        internalGetMutableStringToInt32().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder removeStringToInt32(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToInt32().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+          getMutableStringToInt32() {
+        bitField0_ |= 0x00000001;
+        return internalGetMutableStringToInt32().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder putStringToInt32(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToInt32().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, int32&gt; string_to_int32 = 1;</code>
+       */
+      public Builder putAllStringToInt32(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableStringToInt32().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000001;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.String> int32ToString_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+          internalGetInt32ToString() {
+        if (int32ToString_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Int32ToStringDefaultEntryHolder.defaultEntry);
+        }
+        return int32ToString_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.String>
+          internalGetMutableInt32ToString() {
+        if (int32ToString_ == null) {
+          int32ToString_ = com.google.protobuf.MapField.newMapField(
+              Int32ToStringDefaultEntryHolder.defaultEntry);
+        }
+        if (!int32ToString_.isMutable()) {
+          int32ToString_ = int32ToString_.copy();
+        }
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return int32ToString_;
+      }
+      public int getInt32ToStringCount() {
+        return internalGetInt32ToString().getMap().size();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public boolean containsInt32ToString(
+          int key) {
+
+        return internalGetInt32ToString().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInt32ToStringMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToString() {
+        return getInt32ToStringMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.String> getInt32ToStringMap() {
+        return internalGetInt32ToString().getMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+java.lang.String getInt32ToStringOrDefault(
+          int key,
+          /* nullable */
+java.lang.String defaultValue) {
+
+        java.util.Map<java.lang.Integer, java.lang.String> map =
+            internalGetInt32ToString().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getInt32ToStringOrThrow(
+          int key) {
+
+        java.util.Map<java.lang.Integer, java.lang.String> map =
+            internalGetInt32ToString().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearInt32ToString() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        internalGetMutableInt32ToString().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder removeInt32ToString(
+          int key) {
+
+        internalGetMutableInt32ToString().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.String>
+          getMutableInt32ToString() {
+        bitField0_ |= 0x00000002;
+        return internalGetMutableInt32ToString().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder putInt32ToString(
+          int key,
+          java.lang.String value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableInt32ToString().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+      /**
+       * <code>map&lt;int32, string&gt; int32_to_string = 2;</code>
+       */
+      public Builder putAllInt32ToString(
+          java.util.Map<java.lang.Integer, java.lang.String> values) {
+        internalGetMutableInt32ToString().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000002;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.String, java.lang.Integer> stringToEnum_;
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetStringToEnum() {
+        if (stringToEnum_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              StringToEnumDefaultEntryHolder.defaultEntry);
+        }
+        return stringToEnum_;
+      }
+      private com.google.protobuf.MapField<java.lang.String, java.lang.Integer>
+          internalGetMutableStringToEnum() {
+        if (stringToEnum_ == null) {
+          stringToEnum_ = com.google.protobuf.MapField.newMapField(
+              StringToEnumDefaultEntryHolder.defaultEntry);
+        }
+        if (!stringToEnum_.isMutable()) {
+          stringToEnum_ = stringToEnum_.copy();
+        }
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return stringToEnum_;
+      }
+      public int getStringToEnumCount() {
+        return internalGetStringToEnum().getMap().size();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToEnum(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToEnum().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToEnumMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+      getStringToEnum() {
+        return getStringToEnumMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+      getStringToEnumMap() {
+        return internalGetAdaptedStringToEnumMap(
+            internalGetStringToEnum().getMap());}
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrDefault(
+          java.lang.String key,
+          /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        return map.containsKey(key)
+               ? stringToEnumValueConverter.doForward(map.get(key))
+               : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return stringToEnumValueConverter.doForward(map.get(key));
+      }
+      /**
+       * Use {@link #getStringToEnumValueMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getStringToEnumValue() {
+        return getStringToEnumValueMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getStringToEnumValueMap() {
+        return internalGetStringToEnum().getMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public int getStringToEnumValueOrDefault(
+          java.lang.String key,
+          int defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      @java.lang.Override
+      public int getStringToEnumValueOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, java.lang.Integer> map =
+            internalGetStringToEnum().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearStringToEnum() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        internalGetMutableStringToEnum().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder removeStringToEnum(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToEnum().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
+          getMutableStringToEnum() {
+        bitField0_ |= 0x00000004;
+        return internalGetAdaptedStringToEnumMap(
+             internalGetMutableStringToEnum().getMutableMap());
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putStringToEnum(
+          java.lang.String key,
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToEnum().getMutableMap()
+            .put(key, stringToEnumValueConverter.doBackward(value));
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putAllStringToEnum(
+          java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> values) {
+        internalGetAdaptedStringToEnumMap(
+            internalGetMutableStringToEnum().getMutableMap())
+                .putAll(values);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, java.lang.Integer>
+      getMutableStringToEnumValue() {
+        bitField0_ |= 0x00000004;
+        return internalGetMutableStringToEnum().getMutableMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putStringToEnumValue(
+          java.lang.String key,
+          int value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+
+        internalGetMutableStringToEnum().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       */
+      public Builder putAllStringToEnumValue(
+          java.util.Map<java.lang.String, java.lang.Integer> values) {
+        internalGetMutableStringToEnum().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000004;
+        return this;
+      }
+
+      private static final class StringToMessageConverter implements com.google.protobuf.MapFieldBuilder.Converter<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> {
+        @java.lang.Override
+        public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 build(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder val) {
+          if (val instanceof com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) { return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) val; }
+          return ((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder) val).build();
+        }
+
+        @java.lang.Override
+        public com.google.protobuf.MapEntry<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> defaultEntry() {
+          return StringToMessageDefaultEntryHolder.defaultEntry;
+        }
+      };
+      private static final StringToMessageConverter stringToMessageConverter = new StringToMessageConverter();
+
+      private com.google.protobuf.MapFieldBuilder<
+          java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder> stringToMessage_;
+      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder>
+          internalGetStringToMessage() {
+        if (stringToMessage_ == null) {
+          return new com.google.protobuf.MapFieldBuilder<>(stringToMessageConverter);
+        }
+        return stringToMessage_;
+      }
+      private com.google.protobuf.MapFieldBuilder<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder>
+          internalGetMutableStringToMessage() {
+        if (stringToMessage_ == null) {
+          stringToMessage_ = new com.google.protobuf.MapFieldBuilder<>(stringToMessageConverter);
+        }
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return stringToMessage_;
+      }
+      public int getStringToMessageCount() {
+        return internalGetStringToMessage().ensureBuilderMap().size();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public boolean containsStringToMessage(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        return internalGetStringToMessage().ensureBuilderMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getStringToMessageMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessage() {
+        return getStringToMessageMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessageMap() {
+        return internalGetStringToMessage().getImmutableMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrDefault(
+          java.lang.String key,
+          /* nullable */
+com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 defaultValue) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> map = internalGetMutableStringToMessage().ensureBuilderMap();
+        return map.containsKey(key) ? stringToMessageConverter.build(map.get(key)) : defaultValue;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> map = internalGetMutableStringToMessage().ensureBuilderMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return stringToMessageConverter.build(map.get(key));
+      }
+      public Builder clearStringToMessage() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        internalGetMutableStringToMessage().clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder removeStringToMessage(
+          java.lang.String key) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
+          getMutableStringToMessage() {
+        bitField0_ |= 0x00000008;
+        return internalGetMutableStringToMessage().ensureMessageMap();
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder putStringToMessage(
+          java.lang.String key,
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 value) {
+        if (key == null) { throw new NullPointerException("map key"); }
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .put(key, value);
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public Builder putAllStringToMessage(
+          java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> values) {
+        for (java.util.Map.Entry<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> e : values.entrySet()) {
+          if (e.getKey() == null || e.getValue() == null) {
+            throw new NullPointerException();
+          }
+        }
+        internalGetMutableStringToMessage().ensureBuilderMap()
+            .putAll(values);
+        bitField0_ |= 0x00000008;
+        return this;
+      }
+      /**
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder putStringToMessageBuilderIfAbsent(
+          java.lang.String key) {
+        java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> builderMap = internalGetMutableStringToMessage().ensureBuilderMap();
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder entry = builderMap.get(key);
+        if (entry == null) {
+          entry = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.newBuilder();
+          builderMap.put(key, entry);
+        }
+        if (entry instanceof com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) {
+          entry = ((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) entry).toBuilder();
+          builderMap.put(key, entry);
+        }
+        return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder) entry;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Boolean, java.lang.String> boolToString_;
+      private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+          internalGetBoolToString() {
+        if (boolToString_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              BoolToStringDefaultEntryHolder.defaultEntry);
+        }
+        return boolToString_;
+      }
+      private com.google.protobuf.MapField<java.lang.Boolean, java.lang.String>
+          internalGetMutableBoolToString() {
+        if (boolToString_ == null) {
+          boolToString_ = com.google.protobuf.MapField.newMapField(
+              BoolToStringDefaultEntryHolder.defaultEntry);
+        }
+        if (!boolToString_.isMutable()) {
+          boolToString_ = boolToString_.copy();
+        }
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return boolToString_;
+      }
+      public int getBoolToStringCount() {
+        return internalGetBoolToString().getMap().size();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public boolean containsBoolToString(
+          boolean key) {
+
+        return internalGetBoolToString().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getBoolToStringMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToString() {
+        return getBoolToStringMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Boolean, java.lang.String> getBoolToStringMap() {
+        return internalGetBoolToString().getMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+java.lang.String getBoolToStringOrDefault(
+          boolean key,
+          /* nullable */
+java.lang.String defaultValue) {
+
+        java.util.Map<java.lang.Boolean, java.lang.String> map =
+            internalGetBoolToString().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      @java.lang.Override
+      public java.lang.String getBoolToStringOrThrow(
+          boolean key) {
+
+        java.util.Map<java.lang.Boolean, java.lang.String> map =
+            internalGetBoolToString().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearBoolToString() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        internalGetMutableBoolToString().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder removeBoolToString(
+          boolean key) {
+
+        internalGetMutableBoolToString().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Boolean, java.lang.String>
+          getMutableBoolToString() {
+        bitField0_ |= 0x00000010;
+        return internalGetMutableBoolToString().getMutableMap();
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder putBoolToString(
+          boolean key,
+          java.lang.String value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableBoolToString().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+      /**
+       * <code>map&lt;bool, string&gt; bool_to_string = 5;</code>
+       */
+      public Builder putAllBoolToString(
+          java.util.Map<java.lang.Boolean, java.lang.String> values) {
+        internalGetMutableBoolToString().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000010;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Long, com.google.protobuf.ByteString> int64ToBytes_;
+      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+          internalGetInt64ToBytes() {
+        if (int64ToBytes_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Int64ToBytesDefaultEntryHolder.defaultEntry);
+        }
+        return int64ToBytes_;
+      }
+      private com.google.protobuf.MapField<java.lang.Long, com.google.protobuf.ByteString>
+          internalGetMutableInt64ToBytes() {
+        if (int64ToBytes_ == null) {
+          int64ToBytes_ = com.google.protobuf.MapField.newMapField(
+              Int64ToBytesDefaultEntryHolder.defaultEntry);
+        }
+        if (!int64ToBytes_.isMutable()) {
+          int64ToBytes_ = int64ToBytes_.copy();
+        }
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return int64ToBytes_;
+      }
+      public int getInt64ToBytesCount() {
+        return internalGetInt64ToBytes().getMap().size();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public boolean containsInt64ToBytes(
+          long key) {
+
+        return internalGetInt64ToBytes().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getInt64ToBytesMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytes() {
+        return getInt64ToBytesMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString> getInt64ToBytesMap() {
+        return internalGetInt64ToBytes().getMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public /* nullable */
+com.google.protobuf.ByteString getInt64ToBytesOrDefault(
+          long key,
+          /* nullable */
+com.google.protobuf.ByteString defaultValue) {
+
+        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+            internalGetInt64ToBytes().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getInt64ToBytesOrThrow(
+          long key) {
+
+        java.util.Map<java.lang.Long, com.google.protobuf.ByteString> map =
+            internalGetInt64ToBytes().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearInt64ToBytes() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder removeInt64ToBytes(
+          long key) {
+
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, com.google.protobuf.ByteString>
+          getMutableInt64ToBytes() {
+        bitField0_ |= 0x00000020;
+        return internalGetMutableInt64ToBytes().getMutableMap();
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder putInt64ToBytes(
+          long key,
+          com.google.protobuf.ByteString value) {
+
+        if (value == null) { throw new NullPointerException("map value"); }
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+      /**
+       * <code>map&lt;int64, bytes&gt; int64_to_bytes = 6;</code>
+       */
+      public Builder putAllInt64ToBytes(
+          java.util.Map<java.lang.Long, com.google.protobuf.ByteString> values) {
+        internalGetMutableInt64ToBytes().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000020;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Integer, java.lang.Float> uint32ToFloat_;
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+          internalGetUint32ToFloat() {
+        if (uint32ToFloat_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Uint32ToFloatDefaultEntryHolder.defaultEntry);
+        }
+        return uint32ToFloat_;
+      }
+      private com.google.protobuf.MapField<java.lang.Integer, java.lang.Float>
+          internalGetMutableUint32ToFloat() {
+        if (uint32ToFloat_ == null) {
+          uint32ToFloat_ = com.google.protobuf.MapField.newMapField(
+              Uint32ToFloatDefaultEntryHolder.defaultEntry);
+        }
+        if (!uint32ToFloat_.isMutable()) {
+          uint32ToFloat_ = uint32ToFloat_.copy();
+        }
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return uint32ToFloat_;
+      }
+      public int getUint32ToFloatCount() {
+        return internalGetUint32ToFloat().getMap().size();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public boolean containsUint32ToFloat(
+          int key) {
+
+        return internalGetUint32ToFloat().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getUint32ToFloatMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloat() {
+        return getUint32ToFloatMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Integer, java.lang.Float> getUint32ToFloatMap() {
+        return internalGetUint32ToFloat().getMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public float getUint32ToFloatOrDefault(
+          int key,
+          float defaultValue) {
+
+        java.util.Map<java.lang.Integer, java.lang.Float> map =
+            internalGetUint32ToFloat().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      @java.lang.Override
+      public float getUint32ToFloatOrThrow(
+          int key) {
+
+        java.util.Map<java.lang.Integer, java.lang.Float> map =
+            internalGetUint32ToFloat().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearUint32ToFloat() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder removeUint32ToFloat(
+          int key) {
+
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Integer, java.lang.Float>
+          getMutableUint32ToFloat() {
+        bitField0_ |= 0x00000040;
+        return internalGetMutableUint32ToFloat().getMutableMap();
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder putUint32ToFloat(
+          int key,
+          float value) {
+
+
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+      /**
+       * <code>map&lt;uint32, float&gt; uint32_to_float = 7;</code>
+       */
+      public Builder putAllUint32ToFloat(
+          java.util.Map<java.lang.Integer, java.lang.Float> values) {
+        internalGetMutableUint32ToFloat().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000040;
+        return this;
+      }
+
+      private com.google.protobuf.MapField<
+          java.lang.Long, java.lang.Double> fixed64ToDouble_;
+      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+          internalGetFixed64ToDouble() {
+        if (fixed64ToDouble_ == null) {
+          return com.google.protobuf.MapField.emptyMapField(
+              Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+        }
+        return fixed64ToDouble_;
+      }
+      private com.google.protobuf.MapField<java.lang.Long, java.lang.Double>
+          internalGetMutableFixed64ToDouble() {
+        if (fixed64ToDouble_ == null) {
+          fixed64ToDouble_ = com.google.protobuf.MapField.newMapField(
+              Fixed64ToDoubleDefaultEntryHolder.defaultEntry);
+        }
+        if (!fixed64ToDouble_.isMutable()) {
+          fixed64ToDouble_ = fixed64ToDouble_.copy();
+        }
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return fixed64ToDouble_;
+      }
+      public int getFixed64ToDoubleCount() {
+        return internalGetFixed64ToDouble().getMap().size();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public boolean containsFixed64ToDouble(
+          long key) {
+
+        return internalGetFixed64ToDouble().getMap().containsKey(key);
+      }
+      /**
+       * Use {@link #getFixed64ToDoubleMap()} instead.
+       */
+      @java.lang.Override
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDouble() {
+        return getFixed64ToDoubleMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public java.util.Map<java.lang.Long, java.lang.Double> getFixed64ToDoubleMap() {
+        return internalGetFixed64ToDouble().getMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public double getFixed64ToDoubleOrDefault(
+          long key,
+          double defaultValue) {
+
+        java.util.Map<java.lang.Long, java.lang.Double> map =
+            internalGetFixed64ToDouble().getMap();
+        return map.containsKey(key) ? map.get(key) : defaultValue;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      @java.lang.Override
+      public double getFixed64ToDoubleOrThrow(
+          long key) {
+
+        java.util.Map<java.lang.Long, java.lang.Double> map =
+            internalGetFixed64ToDouble().getMap();
+        if (!map.containsKey(key)) {
+          throw new java.lang.IllegalArgumentException();
+        }
+        return map.get(key);
+      }
+      public Builder clearFixed64ToDouble() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .clear();
+        return this;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder removeFixed64ToDouble(
+          long key) {
+
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .remove(key);
+        return this;
+      }
+      /**
+       * Use alternate mutation accessors instead.
+       */
+      @java.lang.Deprecated
+      public java.util.Map<java.lang.Long, java.lang.Double>
+          getMutableFixed64ToDouble() {
+        bitField0_ |= 0x00000080;
+        return internalGetMutableFixed64ToDouble().getMutableMap();
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder putFixed64ToDouble(
+          long key,
+          double value) {
+
+
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .put(key, value);
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+      /**
+       * <code>map&lt;fixed64, double&gt; fixed64_to_double = 8;</code>
+       */
+      public Builder putAllFixed64ToDouble(
+          java.util.Map<java.lang.Long, java.lang.Double> values) {
+        internalGetMutableFixed64ToDouble().getMutableMap()
+            .putAll(values);
+        bitField0_ |= 0x00000080;
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.MapMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.MapMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<MapMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<MapMessageV3>() {
+      @java.lang.Override
+      public MapMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<MapMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<MapMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
   private static final 
@@ -5269,6 +7740,51 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -5279,47 +7795,89 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal\"\233\005\n\017AllField" +
-      "TypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fi" +
-      "eld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint6" +
-      "4_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014s" +
-      "int64_field\030\006 \001(\022\022\025\n\rfixed32_field\030\007 \001(\007" +
-      "\022\025\n\rfixed64_field\030\010 \001(\006\022\026\n\016sfixed32_fiel" +
-      "d\030\t \001(\017\022\026\n\016sfixed64_field\030\n \001(\020\022\023\n\013float" +
-      "_field\030\013 \001(\002\022\024\n\014double_field\030\014 \001(\001\022\022\n\nbo" +
-      "ol_field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013" +
-      "bytes_field\030\017 \001(\014\022<\n\nenum_field\030\020 \001(\0162(." +
-      "ComprehensiveTest.V3Minimmal.TestEnumV3\022" +
-      "\026\n\016repeated_int32\030\022 \003(\005\022\027\n\017repeated_stri" +
-      "ng\030\023 \003(\t\022?\n\rrepeated_enum\030\024 \003(\0162(.Compre" +
-      "hensiveTest.V3Minimmal.TestEnumV3\022\034\n\017opt" +
-      "ional_string\030\026 \001(\tH\000\210\001\001\022\033\n\016optional_int3" +
-      "2\030\027 \001(\005H\001\210\001\001\022\032\n\roptional_bool\030\030 \001(\010H\002\210\001\001" +
-      "B\022\n\020_optional_stringB\021\n\017_optional_int32B" +
-      "\020\n\016_optional_bool\"\216\002\n\017PackedMessageV3\022\030\n" +
-      "\014packed_int32\030\001 \003(\005B\002\020\001\022\030\n\014packed_int64\030" +
-      "\002 \003(\003B\002\020\001\022\031\n\rpacked_uint32\030\003 \003(\rB\002\020\001\022\027\n\013" +
-      "packed_bool\030\004 \003(\010B\002\020\001\022A\n\013packed_enum\030\005 \003" +
-      "(\0162(.ComprehensiveTest.V3Minimmal.TestEn" +
-      "umV3B\002\020\001\022\032\n\016packed_fixed32\030\006 \003(\007B\002\020\001\022\030\n\014" +
-      "packed_float\030\007 \003(\002B\002\020\001\022\032\n\016unpacked_int32" +
-      "\030\010 \003(\005B\002\020\000\"\301\002\n\016OneofMessageV3\022\026\n\014oneof_s" +
-      "tring\030\001 \001(\tH\000\022\025\n\013oneof_int32\030\002 \001(\005H\000\022>\n\n" +
-      "oneof_enum\030\003 \001(\0162(.ComprehensiveTest.V3M" +
-      "inimmal.TestEnumV3H\000\022F\n\roneof_message\030\004 " +
-      "\001(\0132-.ComprehensiveTest.V3Minimmal.AllFi" +
-      "eldTypesV3H\000\022\025\n\013oneof_bytes\030\005 \001(\014H\000\022\025\n\rr" +
-      "egular_field\030\006 \001(\t\022\024\n\noneof_bool\030\007 \001(\010H\001" +
-      "\022\026\n\014oneof_double\030\010 \001(\001H\001B\014\n\ntest_oneofB\016" +
-      "\n\014second_oneof*O\n\nTestEnumV3\022\020\n\014TEST_UNK" +
-      "NOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022" +
-      "\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.protobu" +
-      "f.compiler.test.v3B\032ComprehensiveTestV3M" +
-      "inimalH\002\200\001\000\210\001\000b\006proto3"
+      "omprehensiveTest.V3Minimmal\032\031google/prot" +
+      "obuf/any.proto\032\037google/protobuf/timestam" +
+      "p.proto\032\036google/protobuf/duration.proto\032" +
+      "\034google/protobuf/struct.proto\032\033google/pr" +
+      "otobuf/empty.proto\032 google/protobuf/fiel" +
+      "d_mask.proto\"\233\005\n\017AllFieldTypesV3\022\023\n\013int3" +
+      "2_field\030\001 \001(\005\022\023\n\013int64_field\030\002 \001(\003\022\024\n\014ui" +
+      "nt32_field\030\003 \001(\r\022\024\n\014uint64_field\030\004 \001(\004\022\024" +
+      "\n\014sint32_field\030\005 \001(\021\022\024\n\014sint64_field\030\006 \001" +
+      "(\022\022\025\n\rfixed32_field\030\007 \001(\007\022\025\n\rfixed64_fie" +
+      "ld\030\010 \001(\006\022\026\n\016sfixed32_field\030\t \001(\017\022\026\n\016sfix" +
+      "ed64_field\030\n \001(\020\022\023\n\013float_field\030\013 \001(\002\022\024\n" +
+      "\014double_field\030\014 \001(\001\022\022\n\nbool_field\030\r \001(\010\022" +
+      "\024\n\014string_field\030\016 \001(\t\022\023\n\013bytes_field\030\017 \001" +
+      "(\014\022<\n\nenum_field\030\020 \001(\0162(.ComprehensiveTe" +
+      "st.V3Minimmal.TestEnumV3\022\026\n\016repeated_int" +
+      "32\030\022 \003(\005\022\027\n\017repeated_string\030\023 \003(\t\022?\n\rrep" +
+      "eated_enum\030\024 \003(\0162(.ComprehensiveTest.V3M" +
+      "inimmal.TestEnumV3\022\034\n\017optional_string\030\026 " +
+      "\001(\tH\000\210\001\001\022\033\n\016optional_int32\030\027 \001(\005H\001\210\001\001\022\032\n" +
+      "\roptional_bool\030\030 \001(\010H\002\210\001\001B\022\n\020_optional_s" +
+      "tringB\021\n\017_optional_int32B\020\n\016_optional_bo" +
+      "ol\"\216\002\n\017PackedMessageV3\022\030\n\014packed_int32\030\001" +
+      " \003(\005B\002\020\001\022\030\n\014packed_int64\030\002 \003(\003B\002\020\001\022\031\n\rpa" +
+      "cked_uint32\030\003 \003(\rB\002\020\001\022\027\n\013packed_bool\030\004 \003" +
+      "(\010B\002\020\001\022A\n\013packed_enum\030\005 \003(\0162(.Comprehens" +
+      "iveTest.V3Minimmal.TestEnumV3B\002\020\001\022\032\n\016pac" +
+      "ked_fixed32\030\006 \003(\007B\002\020\001\022\030\n\014packed_float\030\007 " +
+      "\003(\002B\002\020\001\022\032\n\016unpacked_int32\030\010 \003(\005B\002\020\000\"\301\002\n\016" +
+      "OneofMessageV3\022\026\n\014oneof_string\030\001 \001(\tH\000\022\025" +
+      "\n\013oneof_int32\030\002 \001(\005H\000\022>\n\noneof_enum\030\003 \001(" +
+      "\0162(.ComprehensiveTest.V3Minimmal.TestEnu" +
+      "mV3H\000\022F\n\roneof_message\030\004 \001(\0132-.Comprehen" +
+      "siveTest.V3Minimmal.AllFieldTypesV3H\000\022\025\n" +
+      "\013oneof_bytes\030\005 \001(\014H\000\022\025\n\rregular_field\030\006 " +
+      "\001(\t\022\024\n\noneof_bool\030\007 \001(\010H\001\022\026\n\014oneof_doubl" +
+      "e\030\010 \001(\001H\001B\014\n\ntest_oneofB\016\n\014second_oneof\"" +
+      "\332\t\n\014MapMessageV3\022V\n\017string_to_int32\030\001 \003(" +
+      "\0132=.ComprehensiveTest.V3Minimmal.MapMess" +
+      "ageV3.StringToInt32Entry\022V\n\017int32_to_str" +
+      "ing\030\002 \003(\0132=.ComprehensiveTest.V3Minimmal" +
+      ".MapMessageV3.Int32ToStringEntry\022T\n\016stri" +
+      "ng_to_enum\030\003 \003(\0132<.ComprehensiveTest.V3M" +
+      "inimmal.MapMessageV3.StringToEnumEntry\022Z" +
+      "\n\021string_to_message\030\004 \003(\0132?.Comprehensiv" +
+      "eTest.V3Minimmal.MapMessageV3.StringToMe" +
+      "ssageEntry\022T\n\016bool_to_string\030\005 \003(\0132<.Com" +
+      "prehensiveTest.V3Minimmal.MapMessageV3.B" +
+      "oolToStringEntry\022T\n\016int64_to_bytes\030\006 \003(\013" +
+      "2<.ComprehensiveTest.V3Minimmal.MapMessa" +
+      "geV3.Int64ToBytesEntry\022V\n\017uint32_to_floa" +
+      "t\030\007 \003(\0132=.ComprehensiveTest.V3Minimmal.M" +
+      "apMessageV3.Uint32ToFloatEntry\022Z\n\021fixed6" +
+      "4_to_double\030\010 \003(\0132?.ComprehensiveTest.V3" +
+      "Minimmal.MapMessageV3.Fixed64ToDoubleEnt" +
+      "ry\0324\n\022StringToInt32Entry\022\013\n\003key\030\001 \001(\t\022\r\n" +
+      "\005value\030\002 \001(\005:\0028\001\0324\n\022Int32ToStringEntry\022\013" +
+      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032]\n\021String" +
+      "ToEnumEntry\022\013\n\003key\030\001 \001(\t\0227\n\005value\030\002 \001(\0162" +
+      "(.ComprehensiveTest.V3Minimmal.TestEnumV" +
+      "3:\0028\001\032e\n\024StringToMessageEntry\022\013\n\003key\030\001 \001" +
+      "(\t\022<\n\005value\030\002 \001(\0132-.ComprehensiveTest.V3" +
+      "Minimmal.AllFieldTypesV3:\0028\001\0323\n\021BoolToSt" +
+      "ringEntry\022\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028" +
+      "\001\0323\n\021Int64ToBytesEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005v" +
+      "alue\030\002 \001(\014:\0028\001\0324\n\022Uint32ToFloatEntry\022\013\n\003" +
+      "key\030\001 \001(\r\022\r\n\005value\030\002 \001(\002:\0028\001\0326\n\024Fixed64T" +
+      "oDoubleEntry\022\013\n\003key\030\001 \001(\006\022\r\n\005value\030\002 \001(\001" +
+      ":\0028\001*O\n\nTestEnumV3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\n" +
+      "TEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nTEST_TH" +
+      "IRD\020\003BM\n\'com.rubberjam.protobuf.compiler" +
+      ".test.v3B\032ComprehensiveTestV3MinimalH\002\200\001" +
+      "\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
+          com.google.protobuf.AnyProto.getDescriptor(),
+          com.google.protobuf.TimestampProto.getDescriptor(),
+          com.google.protobuf.DurationProto.getDescriptor(),
+          com.google.protobuf.StructProto.getDescriptor(),
+          com.google.protobuf.EmptyProto.getDescriptor(),
+          com.google.protobuf.FieldMaskProto.getDescriptor(),
         });
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor =
       getDescriptor().getMessageType(0);
@@ -5339,7 +7897,67 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor,
         new java.lang.String[] { "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble", "TestOneof", "SecondOneof", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor =
+      getDescriptor().getMessageType(3);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor,
+        new java.lang.String[] { "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes", "Uint32ToFloat", "Fixed64ToDouble", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(1);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(2);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(3);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(4);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(5);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(6);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(7);
+    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor,
+        new java.lang.String[] { "Key", "Value", });
     descriptor.resolveAllFeaturesImmutable();
+    com.google.protobuf.AnyProto.getDescriptor();
+    com.google.protobuf.TimestampProto.getDescriptor();
+    com.google.protobuf.DurationProto.getDescriptor();
+    com.google.protobuf.StructProto.getDescriptor();
+    com.google.protobuf.EmptyProto.getDescriptor();
+    com.google.protobuf.FieldMaskProto.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

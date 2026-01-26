@@ -25,45 +25,78 @@ namespace ComprehensiveTest.V3Minimmal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCKbBQoPQWxsRmllbGRUeXBlc1YzEhMK",
-            "C2ludDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVp",
-            "bnQzMl9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2lu",
-            "dDMyX2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhl",
-            "ZDMyX2ZpZWxkGAcgASgHEhUKDWZpeGVkNjRfZmllbGQYCCABKAYSFgoOc2Zp",
-            "eGVkMzJfZmllbGQYCSABKA8SFgoOc2ZpeGVkNjRfZmllbGQYCiABKBASEwoL",
-            "ZmxvYXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJv",
-            "b2xfZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVz",
-            "X2ZpZWxkGA8gASgMEjwKCmVudW1fZmllbGQYECABKA4yKC5Db21wcmVoZW5z",
-            "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjMSFgoOcmVwZWF0ZWRfaW50",
-            "MzIYEiADKAUSFwoPcmVwZWF0ZWRfc3RyaW5nGBMgAygJEj8KDXJlcGVhdGVk",
-            "X2VudW0YFCADKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLlRl",
-            "c3RFbnVtVjMSHAoPb3B0aW9uYWxfc3RyaW5nGBYgASgJSACIAQESGwoOb3B0",
-            "aW9uYWxfaW50MzIYFyABKAVIAYgBARIaCg1vcHRpb25hbF9ib29sGBggASgI",
-            "SAKIAQFCEgoQX29wdGlvbmFsX3N0cmluZ0IRCg9fb3B0aW9uYWxfaW50MzJC",
-            "EAoOX29wdGlvbmFsX2Jvb2wijgIKD1BhY2tlZE1lc3NhZ2VWMxIYCgxwYWNr",
-            "ZWRfaW50MzIYASADKAVCAhABEhgKDHBhY2tlZF9pbnQ2NBgCIAMoA0ICEAES",
-            "GQoNcGFja2VkX3VpbnQzMhgDIAMoDUICEAESFwoLcGFja2VkX2Jvb2wYBCAD",
-            "KAhCAhABEkEKC3BhY2tlZF9lbnVtGAUgAygOMiguQ29tcHJlaGVuc2l2ZVRl",
-            "c3QuVjNNaW5pbW1hbC5UZXN0RW51bVYzQgIQARIaCg5wYWNrZWRfZml4ZWQz",
-            "MhgGIAMoB0ICEAESGAoMcGFja2VkX2Zsb2F0GAcgAygCQgIQARIaCg51bnBh",
-            "Y2tlZF9pbnQzMhgIIAMoBUICEAAiwQIKDk9uZW9mTWVzc2FnZVYzEhYKDG9u",
-            "ZW9mX3N0cmluZxgBIAEoCUgAEhUKC29uZW9mX2ludDMyGAIgASgFSAASPgoK",
-            "b25lb2ZfZW51bRgDIAEoDjIoLkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1t",
-            "YWwuVGVzdEVudW1WM0gAEkYKDW9uZW9mX21lc3NhZ2UYBCABKAsyLS5Db21w",
-            "cmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLkFsbEZpZWxkVHlwZXNWM0gAEhUK",
-            "C29uZW9mX2J5dGVzGAUgASgMSAASFQoNcmVndWxhcl9maWVsZBgGIAEoCRIU",
-            "CgpvbmVvZl9ib29sGAcgASgISAESFgoMb25lb2ZfZG91YmxlGAggASgBSAFC",
-            "DAoKdGVzdF9vbmVvZkIOCgxzZWNvbmRfb25lb2YqTwoKVGVzdEVudW1WMxIQ",
-            "CgxURVNUX1VOS05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNP",
-            "TkQQAhIOCgpURVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1",
-            "Zi5jb21waWxlci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1h",
-            "bEgCgAEAiAEAYgZwcm90bzM="));
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbBoZZ29vZ2xlL3Byb3RvYnVmL2FueS5w",
+            "cm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxoeZ29vZ2xl",
+            "L3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGhxnb29nbGUvcHJvdG9idWYvc3Ry",
+            "dWN0LnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aIGdvb2ds",
+            "ZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvIpsFCg9BbGxGaWVsZFR5cGVz",
+            "VjMSEwoLaW50MzJfZmllbGQYASABKAUSEwoLaW50NjRfZmllbGQYAiABKAMS",
+            "FAoMdWludDMyX2ZpZWxkGAMgASgNEhQKDHVpbnQ2NF9maWVsZBgEIAEoBBIU",
+            "CgxzaW50MzJfZmllbGQYBSABKBESFAoMc2ludDY0X2ZpZWxkGAYgASgSEhUK",
+            "DWZpeGVkMzJfZmllbGQYByABKAcSFQoNZml4ZWQ2NF9maWVsZBgIIAEoBhIW",
+            "Cg5zZml4ZWQzMl9maWVsZBgJIAEoDxIWCg5zZml4ZWQ2NF9maWVsZBgKIAEo",
+            "EBITCgtmbG9hdF9maWVsZBgLIAEoAhIUCgxkb3VibGVfZmllbGQYDCABKAES",
+            "EgoKYm9vbF9maWVsZBgNIAEoCBIUCgxzdHJpbmdfZmllbGQYDiABKAkSEwoL",
+            "Ynl0ZXNfZmllbGQYDyABKAwSPAoKZW51bV9maWVsZBgQIAEoDjIoLkNvbXBy",
+            "ZWhlbnNpdmVUZXN0LlYzTWluaW1tYWwuVGVzdEVudW1WMxIWCg5yZXBlYXRl",
+            "ZF9pbnQzMhgSIAMoBRIXCg9yZXBlYXRlZF9zdHJpbmcYEyADKAkSPwoNcmVw",
+            "ZWF0ZWRfZW51bRgUIAMoDjIoLkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1t",
+            "YWwuVGVzdEVudW1WMxIcCg9vcHRpb25hbF9zdHJpbmcYFiABKAlIAIgBARIb",
+            "Cg5vcHRpb25hbF9pbnQzMhgXIAEoBUgBiAEBEhoKDW9wdGlvbmFsX2Jvb2wY",
+            "GCABKAhIAogBAUISChBfb3B0aW9uYWxfc3RyaW5nQhEKD19vcHRpb25hbF9p",
+            "bnQzMkIQCg5fb3B0aW9uYWxfYm9vbCKOAgoPUGFja2VkTWVzc2FnZVYzEhgK",
+            "DHBhY2tlZF9pbnQzMhgBIAMoBUICEAESGAoMcGFja2VkX2ludDY0GAIgAygD",
+            "QgIQARIZCg1wYWNrZWRfdWludDMyGAMgAygNQgIQARIXCgtwYWNrZWRfYm9v",
+            "bBgEIAMoCEICEAESQQoLcGFja2VkX2VudW0YBSADKA4yKC5Db21wcmVoZW5z",
+            "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjNCAhABEhoKDnBhY2tlZF9m",
+            "aXhlZDMyGAYgAygHQgIQARIYCgxwYWNrZWRfZmxvYXQYByADKAJCAhABEhoK",
+            "DnVucGFja2VkX2ludDMyGAggAygFQgIQACLBAgoOT25lb2ZNZXNzYWdlVjMS",
+            "FgoMb25lb2Zfc3RyaW5nGAEgASgJSAASFQoLb25lb2ZfaW50MzIYAiABKAVI",
+            "ABI+CgpvbmVvZl9lbnVtGAMgASgOMiguQ29tcHJlaGVuc2l2ZVRlc3QuVjNN",
+            "aW5pbW1hbC5UZXN0RW51bVYzSAASRgoNb25lb2ZfbWVzc2FnZRgEIAEoCzIt",
+            "LkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1tYWwuQWxsRmllbGRUeXBlc1Yz",
+            "SAASFQoLb25lb2ZfYnl0ZXMYBSABKAxIABIVCg1yZWd1bGFyX2ZpZWxkGAYg",
+            "ASgJEhQKCm9uZW9mX2Jvb2wYByABKAhIARIWCgxvbmVvZl9kb3VibGUYCCAB",
+            "KAFIAUIMCgp0ZXN0X29uZW9mQg4KDHNlY29uZF9vbmVvZiLaCQoMTWFwTWVz",
+            "c2FnZVYzElYKD3N0cmluZ190b19pbnQzMhgBIAMoCzI9LkNvbXByZWhlbnNp",
+            "dmVUZXN0LlYzTWluaW1tYWwuTWFwTWVzc2FnZVYzLlN0cmluZ1RvSW50MzJF",
+            "bnRyeRJWCg9pbnQzMl90b19zdHJpbmcYAiADKAsyPS5Db21wcmVoZW5zaXZl",
+            "VGVzdC5WM01pbmltbWFsLk1hcE1lc3NhZ2VWMy5JbnQzMlRvU3RyaW5nRW50",
+            "cnkSVAoOc3RyaW5nX3RvX2VudW0YAyADKAsyPC5Db21wcmVoZW5zaXZlVGVz",
+            "dC5WM01pbmltbWFsLk1hcE1lc3NhZ2VWMy5TdHJpbmdUb0VudW1FbnRyeRJa",
+            "ChFzdHJpbmdfdG9fbWVzc2FnZRgEIAMoCzI/LkNvbXByZWhlbnNpdmVUZXN0",
+            "LlYzTWluaW1tYWwuTWFwTWVzc2FnZVYzLlN0cmluZ1RvTWVzc2FnZUVudHJ5",
+            "ElQKDmJvb2xfdG9fc3RyaW5nGAUgAygLMjwuQ29tcHJlaGVuc2l2ZVRlc3Qu",
+            "VjNNaW5pbW1hbC5NYXBNZXNzYWdlVjMuQm9vbFRvU3RyaW5nRW50cnkSVAoO",
+            "aW50NjRfdG9fYnl0ZXMYBiADKAsyPC5Db21wcmVoZW5zaXZlVGVzdC5WM01p",
+            "bmltbWFsLk1hcE1lc3NhZ2VWMy5JbnQ2NFRvQnl0ZXNFbnRyeRJWCg91aW50",
+            "MzJfdG9fZmxvYXQYByADKAsyPS5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmlt",
+            "bWFsLk1hcE1lc3NhZ2VWMy5VaW50MzJUb0Zsb2F0RW50cnkSWgoRZml4ZWQ2",
+            "NF90b19kb3VibGUYCCADKAsyPy5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmlt",
+            "bWFsLk1hcE1lc3NhZ2VWMy5GaXhlZDY0VG9Eb3VibGVFbnRyeRo0ChJTdHJp",
+            "bmdUb0ludDMyRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4",
+            "ARo0ChJJbnQzMlRvU3RyaW5nRW50cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVl",
+            "GAIgASgJOgI4ARpdChFTdHJpbmdUb0VudW1FbnRyeRILCgNrZXkYASABKAkS",
+            "NwoFdmFsdWUYAiABKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFs",
+            "LlRlc3RFbnVtVjM6AjgBGmUKFFN0cmluZ1RvTWVzc2FnZUVudHJ5EgsKA2tl",
+            "eRgBIAEoCRI8CgV2YWx1ZRgCIAEoCzItLkNvbXByZWhlbnNpdmVUZXN0LlYz",
+            "TWluaW1tYWwuQWxsRmllbGRUeXBlc1YzOgI4ARozChFCb29sVG9TdHJpbmdF",
+            "bnRyeRILCgNrZXkYASABKAgSDQoFdmFsdWUYAiABKAk6AjgBGjMKEUludDY0",
+            "VG9CeXRlc0VudHJ5EgsKA2tleRgBIAEoAxINCgV2YWx1ZRgCIAEoDDoCOAEa",
+            "NAoSVWludDMyVG9GbG9hdEVudHJ5EgsKA2tleRgBIAEoDRINCgV2YWx1ZRgC",
+            "IAEoAjoCOAEaNgoURml4ZWQ2NFRvRG91YmxlRW50cnkSCwoDa2V5GAEgASgG",
+            "Eg0KBXZhbHVlGAIgASgBOgI4ASpPCgpUZXN0RW51bVYzEhAKDFRFU1RfVU5L",
+            "Tk9XThAAEg4KClRFU1RfRklSU1QQARIPCgtURVNUX1NFQ09ORBACEg4KClRF",
+            "U1RfVEhJUkQQA0JNCidjb20ucnViYmVyamFtLnByb3RvYnVmLmNvbXBpbGVy",
+            "LnRlc3QudjNCGkNvbXByZWhlbnNpdmVUZXN0VjNNaW5pbWFsSAKAAQCIAQBi",
+            "BnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
-          new pbr::FileDescriptor[] { },
+          new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.PackedMessageV3), global::ComprehensiveTest.V3Minimmal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.OneofMessageV3), global::ComprehensiveTest.V3Minimmal.OneofMessageV3.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble" }, new[]{ "TestOneof", "SecondOneof" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.OneofMessageV3), global::ComprehensiveTest.V3Minimmal.OneofMessageV3.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble" }, new[]{ "TestOneof", "SecondOneof" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.MapMessageV3), global::ComprehensiveTest.V3Minimmal.MapMessageV3.Parser, new[]{ "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes", "Uint32ToFloat", "Fixed64ToDouble" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, null, null, null, null, })
           }));
     }
     #endregion
@@ -2115,6 +2148,378 @@ namespace ComprehensiveTest.V3Minimmal {
           }
           case 65: {
             OneofDouble = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with map fields (proto3)
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class MapMessageV3 : pb::IMessage<MapMessageV3>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<MapMessageV3> _parser = new pb::MessageParser<MapMessageV3>(() => new MapMessageV3());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<MapMessageV3> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MapMessageV3() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MapMessageV3(MapMessageV3 other) : this() {
+      stringToInt32_ = other.stringToInt32_.Clone();
+      int32ToString_ = other.int32ToString_.Clone();
+      stringToEnum_ = other.stringToEnum_.Clone();
+      stringToMessage_ = other.stringToMessage_.Clone();
+      boolToString_ = other.boolToString_.Clone();
+      int64ToBytes_ = other.int64ToBytes_.Clone();
+      uint32ToFloat_ = other.uint32ToFloat_.Clone();
+      fixed64ToDouble_ = other.fixed64ToDouble_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public MapMessageV3 Clone() {
+      return new MapMessageV3(this);
+    }
+
+    /// <summary>Field number for the "string_to_int32" field.</summary>
+    public const int StringToInt32FieldNumber = 1;
+    private static readonly pbc::MapField<string, int>.Codec _map_stringToInt32_codec
+        = new pbc::MapField<string, int>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForInt32(16, 0), 10);
+    private readonly pbc::MapField<string, int> stringToInt32_ = new pbc::MapField<string, int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, int> StringToInt32 {
+      get { return stringToInt32_; }
+    }
+
+    /// <summary>Field number for the "int32_to_string" field.</summary>
+    public const int Int32ToStringFieldNumber = 2;
+    private static readonly pbc::MapField<int, string>.Codec _map_int32ToString_codec
+        = new pbc::MapField<int, string>.Codec(pb::FieldCodec.ForInt32(8, 0), pb::FieldCodec.ForString(18, ""), 18);
+    private readonly pbc::MapField<int, string> int32ToString_ = new pbc::MapField<int, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<int, string> Int32ToString {
+      get { return int32ToString_; }
+    }
+
+    /// <summary>Field number for the "string_to_enum" field.</summary>
+    public const int StringToEnumFieldNumber = 3;
+    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>.Codec _map_stringToEnum_codec
+        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForEnum(16, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x, global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown), 26);
+    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3> stringToEnum_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3> StringToEnum {
+      get { return stringToEnum_; }
+    }
+
+    /// <summary>Field number for the "string_to_message" field.</summary>
+    public const int StringToMessageFieldNumber = 4;
+    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>.Codec _map_stringToMessage_codec
+        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser), 34);
+    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3> stringToMessage_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3> StringToMessage {
+      get { return stringToMessage_; }
+    }
+
+    /// <summary>Field number for the "bool_to_string" field.</summary>
+    public const int BoolToStringFieldNumber = 5;
+    private static readonly pbc::MapField<bool, string>.Codec _map_boolToString_codec
+        = new pbc::MapField<bool, string>.Codec(pb::FieldCodec.ForBool(8, false), pb::FieldCodec.ForString(18, ""), 42);
+    private readonly pbc::MapField<bool, string> boolToString_ = new pbc::MapField<bool, string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<bool, string> BoolToString {
+      get { return boolToString_; }
+    }
+
+    /// <summary>Field number for the "int64_to_bytes" field.</summary>
+    public const int Int64ToBytesFieldNumber = 6;
+    private static readonly pbc::MapField<long, pb::ByteString>.Codec _map_int64ToBytes_codec
+        = new pbc::MapField<long, pb::ByteString>.Codec(pb::FieldCodec.ForInt64(8, 0L), pb::FieldCodec.ForBytes(18, pb::ByteString.Empty), 50);
+    private readonly pbc::MapField<long, pb::ByteString> int64ToBytes_ = new pbc::MapField<long, pb::ByteString>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<long, pb::ByteString> Int64ToBytes {
+      get { return int64ToBytes_; }
+    }
+
+    /// <summary>Field number for the "uint32_to_float" field.</summary>
+    public const int Uint32ToFloatFieldNumber = 7;
+    private static readonly pbc::MapField<uint, float>.Codec _map_uint32ToFloat_codec
+        = new pbc::MapField<uint, float>.Codec(pb::FieldCodec.ForUInt32(8, 0), pb::FieldCodec.ForFloat(21, 0F), 58);
+    private readonly pbc::MapField<uint, float> uint32ToFloat_ = new pbc::MapField<uint, float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<uint, float> Uint32ToFloat {
+      get { return uint32ToFloat_; }
+    }
+
+    /// <summary>Field number for the "fixed64_to_double" field.</summary>
+    public const int Fixed64ToDoubleFieldNumber = 8;
+    private static readonly pbc::MapField<ulong, double>.Codec _map_fixed64ToDouble_codec
+        = new pbc::MapField<ulong, double>.Codec(pb::FieldCodec.ForFixed64(9, 0UL), pb::FieldCodec.ForDouble(17, 0D), 66);
+    private readonly pbc::MapField<ulong, double> fixed64ToDouble_ = new pbc::MapField<ulong, double>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::MapField<ulong, double> Fixed64ToDouble {
+      get { return fixed64ToDouble_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as MapMessageV3);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(MapMessageV3 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!StringToInt32.Equals(other.StringToInt32)) return false;
+      if (!Int32ToString.Equals(other.Int32ToString)) return false;
+      if (!StringToEnum.Equals(other.StringToEnum)) return false;
+      if (!StringToMessage.Equals(other.StringToMessage)) return false;
+      if (!BoolToString.Equals(other.BoolToString)) return false;
+      if (!Int64ToBytes.Equals(other.Int64ToBytes)) return false;
+      if (!Uint32ToFloat.Equals(other.Uint32ToFloat)) return false;
+      if (!Fixed64ToDouble.Equals(other.Fixed64ToDouble)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= StringToInt32.GetHashCode();
+      hash ^= Int32ToString.GetHashCode();
+      hash ^= StringToEnum.GetHashCode();
+      hash ^= StringToMessage.GetHashCode();
+      hash ^= BoolToString.GetHashCode();
+      hash ^= Int64ToBytes.GetHashCode();
+      hash ^= Uint32ToFloat.GetHashCode();
+      hash ^= Fixed64ToDouble.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      stringToInt32_.WriteTo(output, _map_stringToInt32_codec);
+      int32ToString_.WriteTo(output, _map_int32ToString_codec);
+      stringToEnum_.WriteTo(output, _map_stringToEnum_codec);
+      stringToMessage_.WriteTo(output, _map_stringToMessage_codec);
+      boolToString_.WriteTo(output, _map_boolToString_codec);
+      int64ToBytes_.WriteTo(output, _map_int64ToBytes_codec);
+      uint32ToFloat_.WriteTo(output, _map_uint32ToFloat_codec);
+      fixed64ToDouble_.WriteTo(output, _map_fixed64ToDouble_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      stringToInt32_.WriteTo(ref output, _map_stringToInt32_codec);
+      int32ToString_.WriteTo(ref output, _map_int32ToString_codec);
+      stringToEnum_.WriteTo(ref output, _map_stringToEnum_codec);
+      stringToMessage_.WriteTo(ref output, _map_stringToMessage_codec);
+      boolToString_.WriteTo(ref output, _map_boolToString_codec);
+      int64ToBytes_.WriteTo(ref output, _map_int64ToBytes_codec);
+      uint32ToFloat_.WriteTo(ref output, _map_uint32ToFloat_codec);
+      fixed64ToDouble_.WriteTo(ref output, _map_fixed64ToDouble_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += stringToInt32_.CalculateSize(_map_stringToInt32_codec);
+      size += int32ToString_.CalculateSize(_map_int32ToString_codec);
+      size += stringToEnum_.CalculateSize(_map_stringToEnum_codec);
+      size += stringToMessage_.CalculateSize(_map_stringToMessage_codec);
+      size += boolToString_.CalculateSize(_map_boolToString_codec);
+      size += int64ToBytes_.CalculateSize(_map_int64ToBytes_codec);
+      size += uint32ToFloat_.CalculateSize(_map_uint32ToFloat_codec);
+      size += fixed64ToDouble_.CalculateSize(_map_fixed64ToDouble_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(MapMessageV3 other) {
+      if (other == null) {
+        return;
+      }
+      stringToInt32_.MergeFrom(other.stringToInt32_);
+      int32ToString_.MergeFrom(other.int32ToString_);
+      stringToEnum_.MergeFrom(other.stringToEnum_);
+      stringToMessage_.MergeFrom(other.stringToMessage_);
+      boolToString_.MergeFrom(other.boolToString_);
+      int64ToBytes_.MergeFrom(other.int64ToBytes_);
+      uint32ToFloat_.MergeFrom(other.uint32ToFloat_);
+      fixed64ToDouble_.MergeFrom(other.fixed64ToDouble_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            stringToInt32_.AddEntriesFrom(input, _map_stringToInt32_codec);
+            break;
+          }
+          case 18: {
+            int32ToString_.AddEntriesFrom(input, _map_int32ToString_codec);
+            break;
+          }
+          case 26: {
+            stringToEnum_.AddEntriesFrom(input, _map_stringToEnum_codec);
+            break;
+          }
+          case 34: {
+            stringToMessage_.AddEntriesFrom(input, _map_stringToMessage_codec);
+            break;
+          }
+          case 42: {
+            boolToString_.AddEntriesFrom(input, _map_boolToString_codec);
+            break;
+          }
+          case 50: {
+            int64ToBytes_.AddEntriesFrom(input, _map_int64ToBytes_codec);
+            break;
+          }
+          case 58: {
+            uint32ToFloat_.AddEntriesFrom(input, _map_uint32ToFloat_codec);
+            break;
+          }
+          case 66: {
+            fixed64ToDouble_.AddEntriesFrom(input, _map_fixed64ToDouble_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            stringToInt32_.AddEntriesFrom(ref input, _map_stringToInt32_codec);
+            break;
+          }
+          case 18: {
+            int32ToString_.AddEntriesFrom(ref input, _map_int32ToString_codec);
+            break;
+          }
+          case 26: {
+            stringToEnum_.AddEntriesFrom(ref input, _map_stringToEnum_codec);
+            break;
+          }
+          case 34: {
+            stringToMessage_.AddEntriesFrom(ref input, _map_stringToMessage_codec);
+            break;
+          }
+          case 42: {
+            boolToString_.AddEntriesFrom(ref input, _map_boolToString_codec);
+            break;
+          }
+          case 50: {
+            int64ToBytes_.AddEntriesFrom(ref input, _map_int64ToBytes_codec);
+            break;
+          }
+          case 58: {
+            uint32ToFloat_.AddEntriesFrom(ref input, _map_uint32ToFloat_codec);
+            break;
+          }
+          case 66: {
+            fixed64ToDouble_.AddEntriesFrom(ref input, _map_fixed64ToDouble_codec);
             break;
           }
         }
