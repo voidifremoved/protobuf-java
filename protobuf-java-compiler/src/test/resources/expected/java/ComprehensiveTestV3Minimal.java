@@ -386,6 +386,57 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * @return The enum numeric value on the wire of repeatedEnum at the given index.
      */
     int getRepeatedEnumValue(int index);
+
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    boolean hasOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    java.lang.String getOptionalString();
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    com.google.protobuf.ByteString
+        getOptionalStringBytes();
+
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    boolean hasOptionalInt32();
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    int getOptionalInt32();
+
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    boolean hasOptionalBool();
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    boolean getOptionalBool();
   }
   /**
    * <pre>
@@ -420,6 +471,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       repeatedString_ =
           com.google.protobuf.LazyStringArrayList.emptyList();
       repeatedEnum_ = emptyIntList();
+      optionalString_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -435,6 +487,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
               com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder.class);
     }
 
+    private int bitField0_;
     public static final int INT32_FIELD_FIELD_NUMBER = 1;
     private int int32Field_ = 0;
     /**
@@ -804,6 +857,103 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     }
     private int repeatedEnumMemoizedSerializedSize;
 
+    public static final int OPTIONAL_STRING_FIELD_NUMBER = 22;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object optionalString_ = "";
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return Whether the optionalString field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalString() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The optionalString.
+     */
+    @java.lang.Override
+    public java.lang.String getOptionalString() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        optionalString_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Proto3 optional fields (explicit presence)
+     * </pre>
+     *
+     * <code>optional string optional_string = 22;</code>
+     * @return The bytes for optionalString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getOptionalStringBytes() {
+      java.lang.Object ref = optionalString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        optionalString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int OPTIONAL_INT32_FIELD_NUMBER = 23;
+    private int optionalInt32_ = 0;
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return Whether the optionalInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalInt32() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional int32 optional_int32 = 23;</code>
+     * @return The optionalInt32.
+     */
+    @java.lang.Override
+    public int getOptionalInt32() {
+      return optionalInt32_;
+    }
+
+    public static final int OPTIONAL_BOOL_FIELD_NUMBER = 24;
+    private boolean optionalBool_ = false;
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return Whether the optionalBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOptionalBool() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional bool optional_bool = 24;</code>
+     * @return The optionalBool.
+     */
+    @java.lang.Override
+    public boolean getOptionalBool() {
+      return optionalBool_;
+    }
+
     public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -954,6 +1104,9 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         repeatedString_ =
             com.google.protobuf.LazyStringArrayList.emptyList();
         repeatedEnum_ = emptyIntList();
+        optionalString_ = "";
+        optionalInt32_ = 0;
+        optionalBool_ = false;
         return this;
       }
 
@@ -1047,6 +1200,20 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
           repeatedEnum_.makeImmutable();
           result.repeatedEnum_ = repeatedEnum_;
         }
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00080000) != 0)) {
+          result.optionalString_ = optionalString_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00100000) != 0)) {
+          result.optionalInt32_ = optionalInt32_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00200000) != 0)) {
+          result.optionalBool_ = optionalBool_;
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bitField0_ |= to_bitField0_;
       }
 
       private int bitField0_;
@@ -2037,6 +2204,189 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private java.lang.Object optionalString_ = "";
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return Whether the optionalString field is set.
+       */
+      public boolean hasOptionalString() {
+        return ((bitField0_ & 0x00080000) != 0);
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The optionalString.
+       */
+      public java.lang.String getOptionalString() {
+        java.lang.Object ref = optionalString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          optionalString_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return The bytes for optionalString.
+       */
+      public com.google.protobuf.ByteString
+          getOptionalStringBytes() {
+        java.lang.Object ref = optionalString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          optionalString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        optionalString_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalString() {
+        optionalString_ = getDefaultInstance().getOptionalString();
+        bitField0_ = (bitField0_ & ~0x00080000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Proto3 optional fields (explicit presence)
+       * </pre>
+       *
+       * <code>optional string optional_string = 22;</code>
+       * @param value The bytes for optionalString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        optionalString_ = value;
+        bitField0_ |= 0x00080000;
+        onChanged();
+        return this;
+      }
+
+      private int optionalInt32_ ;
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return Whether the optionalInt32 field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalInt32() {
+        return ((bitField0_ & 0x00100000) != 0);
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return The optionalInt32.
+       */
+      @java.lang.Override
+      public int getOptionalInt32() {
+        return optionalInt32_;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @param value The optionalInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalInt32(int value) {
+
+        optionalInt32_ = value;
+        bitField0_ |= 0x00100000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 optional_int32 = 23;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalInt32() {
+        bitField0_ = (bitField0_ & ~0x00100000);
+        optionalInt32_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private boolean optionalBool_ ;
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return Whether the optionalBool field is set.
+       */
+      @java.lang.Override
+      public boolean hasOptionalBool() {
+        return ((bitField0_ & 0x00200000) != 0);
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return The optionalBool.
+       */
+      @java.lang.Override
+      public boolean getOptionalBool() {
+        return optionalBool_;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @param value The optionalBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOptionalBool(boolean value) {
+
+        optionalBool_ = value;
+        bitField0_ |= 0x00200000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bool optional_bool = 24;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOptionalBool() {
+        bitField0_ = (bitField0_ & ~0x00200000);
+        optionalBool_ = false;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
     }
 
@@ -2103,7 +2453,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal\"\213\004\n\017AllField" +
+      "omprehensiveTest.V3Minimmal\"\233\005\n\017AllField" +
       "TypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fi" +
       "eld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint6" +
       "4_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014s" +
@@ -2116,12 +2466,15 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       "ComprehensiveTest.V3Minimmal.TestEnumV3\022" +
       "\026\n\016repeated_int32\030\022 \003(\005\022\027\n\017repeated_stri" +
       "ng\030\023 \003(\t\022?\n\rrepeated_enum\030\024 \003(\0162(.Compre" +
-      "hensiveTest.V3Minimmal.TestEnumV3*O\n\nTes" +
-      "tEnumV3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020" +
-      "\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'co" +
-      "m.rubberjam.protobuf.compiler.test.v3B\032C" +
-      "omprehensiveTestV3MinimalH\002\200\001\000\210\001\000b\006proto" +
-      "3"
+      "hensiveTest.V3Minimmal.TestEnumV3\022\034\n\017opt" +
+      "ional_string\030\026 \001(\tH\000\210\001\001\022\033\n\016optional_int3" +
+      "2\030\027 \001(\005H\001\210\001\001\022\032\n\roptional_bool\030\030 \001(\010H\002\210\001\001" +
+      "B\022\n\020_optional_stringB\021\n\017_optional_int32B" +
+      "\020\n\016_optional_bool*O\n\nTestEnumV3\022\020\n\014TEST_" +
+      "UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND" +
+      "\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.prot" +
+      "obuf.compiler.test.v3B\032ComprehensiveTest" +
+      "V3MinimalH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2132,7 +2485,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

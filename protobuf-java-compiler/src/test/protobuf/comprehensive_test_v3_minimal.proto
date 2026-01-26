@@ -51,7 +51,10 @@ message AllFieldTypesV3 {
   repeated string repeated_string = 19;
   repeated TestEnumV3 repeated_enum = 20;
   
-
+  // Proto3 optional fields (explicit presence)
+  optional string optional_string = 22;
+  optional int32 optional_int32 = 23;
+  optional bool optional_bool = 24;
   
 
 }

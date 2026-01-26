@@ -25,7 +25,7 @@ namespace ComprehensiveTest.V3Minimmal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCKLBAoPQWxsRmllbGRUeXBlc1YzEhMK",
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCKbBQoPQWxsRmllbGRUeXBlc1YzEhMK",
             "C2ludDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVp",
             "bnQzMl9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2lu",
             "dDMyX2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhl",
@@ -37,14 +37,18 @@ namespace ComprehensiveTest.V3Minimmal {
             "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjMSFgoOcmVwZWF0ZWRfaW50",
             "MzIYEiADKAUSFwoPcmVwZWF0ZWRfc3RyaW5nGBMgAygJEj8KDXJlcGVhdGVk",
             "X2VudW0YFCADKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLlRl",
-            "c3RFbnVtVjMqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VOS05PV04QABIOCgpU",
-            "RVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpURVNUX1RISVJEEANC",
-            "TQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYzQhpD",
-            "b21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEAYgZwcm90bzM="));
+            "c3RFbnVtVjMSHAoPb3B0aW9uYWxfc3RyaW5nGBYgASgJSACIAQESGwoOb3B0",
+            "aW9uYWxfaW50MzIYFyABKAVIAYgBARIaCg1vcHRpb25hbF9ib29sGBggASgI",
+            "SAKIAQFCEgoQX29wdGlvbmFsX3N0cmluZ0IRCg9fb3B0aW9uYWxfaW50MzJC",
+            "EAoOX29wdGlvbmFsX2Jvb2wqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VOS05P",
+            "V04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpURVNU",
+            "X1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50",
+            "ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEAYgZw",
+            "cm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null)
           }));
     }
     #endregion
@@ -78,6 +82,7 @@ namespace ComprehensiveTest.V3Minimmal {
   {
     private static readonly pb::MessageParser<AllFieldTypesV3> _parser = new pb::MessageParser<AllFieldTypesV3>(() => new AllFieldTypesV3());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<AllFieldTypesV3> Parser { get { return _parser; } }
@@ -105,6 +110,7 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public AllFieldTypesV3(AllFieldTypesV3 other) : this() {
+      _hasBits0 = other._hasBits0;
       int32Field_ = other.int32Field_;
       int64Field_ = other.int64Field_;
       uint32Field_ = other.uint32Field_;
@@ -124,6 +130,9 @@ namespace ComprehensiveTest.V3Minimmal {
       repeatedInt32_ = other.repeatedInt32_.Clone();
       repeatedString_ = other.repeatedString_.Clone();
       repeatedEnum_ = other.repeatedEnum_.Clone();
+      optionalString_ = other.optionalString_;
+      optionalInt32_ = other.optionalInt32_;
+      optionalBool_ = other.optionalBool_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -373,6 +382,89 @@ namespace ComprehensiveTest.V3Minimmal {
       get { return repeatedEnum_; }
     }
 
+    /// <summary>Field number for the "optional_string" field.</summary>
+    public const int OptionalStringFieldNumber = 22;
+    private readonly static string OptionalStringDefaultValue = "";
+
+    private string optionalString_;
+    /// <summary>
+    /// Proto3 optional fields (explicit presence)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OptionalString {
+      get { return optionalString_ ?? OptionalStringDefaultValue; }
+      set {
+        optionalString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "optional_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOptionalString {
+      get { return optionalString_ != null; }
+    }
+    /// <summary>Clears the value of the "optional_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOptionalString() {
+      optionalString_ = null;
+    }
+
+    /// <summary>Field number for the "optional_int32" field.</summary>
+    public const int OptionalInt32FieldNumber = 23;
+    private readonly static int OptionalInt32DefaultValue = 0;
+
+    private int optionalInt32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int OptionalInt32 {
+      get { if ((_hasBits0 & 1) != 0) { return optionalInt32_; } else { return OptionalInt32DefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        optionalInt32_ = value;
+      }
+    }
+    /// <summary>Gets whether the "optional_int32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOptionalInt32 {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "optional_int32" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOptionalInt32() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "optional_bool" field.</summary>
+    public const int OptionalBoolFieldNumber = 24;
+    private readonly static bool OptionalBoolDefaultValue = false;
+
+    private bool optionalBool_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool OptionalBool {
+      get { if ((_hasBits0 & 2) != 0) { return optionalBool_; } else { return OptionalBoolDefaultValue; } }
+      set {
+        _hasBits0 |= 2;
+        optionalBool_ = value;
+      }
+    }
+    /// <summary>Gets whether the "optional_bool" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOptionalBool {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "optional_bool" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOptionalBool() {
+      _hasBits0 &= ~2;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -407,6 +499,9 @@ namespace ComprehensiveTest.V3Minimmal {
       if(!repeatedInt32_.Equals(other.repeatedInt32_)) return false;
       if(!repeatedString_.Equals(other.repeatedString_)) return false;
       if(!repeatedEnum_.Equals(other.repeatedEnum_)) return false;
+      if (OptionalString != other.OptionalString) return false;
+      if (OptionalInt32 != other.OptionalInt32) return false;
+      if (OptionalBool != other.OptionalBool) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -433,6 +528,9 @@ namespace ComprehensiveTest.V3Minimmal {
       hash ^= repeatedInt32_.GetHashCode();
       hash ^= repeatedString_.GetHashCode();
       hash ^= repeatedEnum_.GetHashCode();
+      if (HasOptionalString) hash ^= OptionalString.GetHashCode();
+      if (HasOptionalInt32) hash ^= OptionalInt32.GetHashCode();
+      if (HasOptionalBool) hash ^= OptionalBool.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -518,6 +616,18 @@ namespace ComprehensiveTest.V3Minimmal {
       repeatedInt32_.WriteTo(output, _repeated_repeatedInt32_codec);
       repeatedString_.WriteTo(output, _repeated_repeatedString_codec);
       repeatedEnum_.WriteTo(output, _repeated_repeatedEnum_codec);
+      if (HasOptionalString) {
+        output.WriteRawTag(178, 1);
+        output.WriteString(OptionalString);
+      }
+      if (HasOptionalInt32) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(OptionalInt32);
+      }
+      if (HasOptionalBool) {
+        output.WriteRawTag(192, 1);
+        output.WriteBool(OptionalBool);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -595,6 +705,18 @@ namespace ComprehensiveTest.V3Minimmal {
       repeatedInt32_.WriteTo(ref output, _repeated_repeatedInt32_codec);
       repeatedString_.WriteTo(ref output, _repeated_repeatedString_codec);
       repeatedEnum_.WriteTo(ref output, _repeated_repeatedEnum_codec);
+      if (HasOptionalString) {
+        output.WriteRawTag(178, 1);
+        output.WriteString(OptionalString);
+      }
+      if (HasOptionalInt32) {
+        output.WriteRawTag(184, 1);
+        output.WriteInt32(OptionalInt32);
+      }
+      if (HasOptionalBool) {
+        output.WriteRawTag(192, 1);
+        output.WriteBool(OptionalBool);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -656,6 +778,15 @@ namespace ComprehensiveTest.V3Minimmal {
       size += repeatedInt32_.CalculateSize(_repeated_repeatedInt32_codec);
       size += repeatedString_.CalculateSize(_repeated_repeatedString_codec);
       size += repeatedEnum_.CalculateSize(_repeated_repeatedEnum_codec);
+      if (HasOptionalString) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(OptionalString);
+      }
+      if (HasOptionalInt32) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(OptionalInt32);
+      }
+      if (HasOptionalBool) {
+        size += 2 + 1;
+      }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -719,6 +850,15 @@ namespace ComprehensiveTest.V3Minimmal {
       repeatedInt32_.Add(other.repeatedInt32_);
       repeatedString_.Add(other.repeatedString_);
       repeatedEnum_.Add(other.repeatedEnum_);
+      if (other.HasOptionalString) {
+        OptionalString = other.OptionalString;
+      }
+      if (other.HasOptionalInt32) {
+        OptionalInt32 = other.OptionalInt32;
+      }
+      if (other.HasOptionalBool) {
+        OptionalBool = other.OptionalBool;
+      }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -816,6 +956,18 @@ namespace ComprehensiveTest.V3Minimmal {
             repeatedEnum_.AddEntriesFrom(input, _repeated_repeatedEnum_codec);
             break;
           }
+          case 178: {
+            OptionalString = input.ReadString();
+            break;
+          }
+          case 184: {
+            OptionalInt32 = input.ReadInt32();
+            break;
+          }
+          case 192: {
+            OptionalBool = input.ReadBool();
+            break;
+          }
         }
       }
     #endif
@@ -911,6 +1063,18 @@ namespace ComprehensiveTest.V3Minimmal {
           case 162:
           case 160: {
             repeatedEnum_.AddEntriesFrom(ref input, _repeated_repeatedEnum_codec);
+            break;
+          }
+          case 178: {
+            OptionalString = input.ReadString();
+            break;
+          }
+          case 184: {
+            OptionalInt32 = input.ReadInt32();
+            break;
+          }
+          case 192: {
+            OptionalBool = input.ReadBool();
             break;
           }
         }
