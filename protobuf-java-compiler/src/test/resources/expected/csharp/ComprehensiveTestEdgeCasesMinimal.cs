@@ -34,13 +34,22 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
             "GBggASgJSAASFgoMb25lb2YxX2ludDMyGBkgASgFSAASSwoEbWFwMRgaIAMo",
             "CzI9LkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlc01pbmltYWwuRWRnZUNh",
             "c2VNaW5pbWFsLk1hcDFFbnRyeRorCglNYXAxRW50cnkSCwoDa2V5GAEgASgJ",
-            "Eg0KBXZhbHVlGAIgASgFOgI4AUIICgZvbmVvZjFCUAopY29tLnJ1YmJlcmph",
-            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0LmVkZ2VCIUNvbXByZWhlbnNpdmVU",
-            "ZXN0RWRnZUNhc2VzTWluaW1hbEgB"));
+            "Eg0KBXZhbHVlGAIgASgFOgI4AUIICgZvbmVvZjEi0QIKEk1hbnlSZXBlYXRl",
+            "ZEZpZWxkcxIRCglyZXBlYXRlZDEYASADKAUSEQoJcmVwZWF0ZWQyGAIgAygF",
+            "EhEKCXJlcGVhdGVkMxgDIAMoBRIRCglyZXBlYXRlZDQYBCADKAUSEQoJcmVw",
+            "ZWF0ZWQ1GAUgAygFEhEKCXJlcGVhdGVkNhgGIAMoBRIRCglyZXBlYXRlZDcY",
+            "ByADKAUSEQoJcmVwZWF0ZWQ4GAggAygFEhEKCXJlcGVhdGVkORgJIAMoBRIS",
+            "CgpyZXBlYXRlZDEwGAogAygFEhgKEHJlcGVhdGVkX3N0cmluZzEYCyADKAkS",
+            "GAoQcmVwZWF0ZWRfc3RyaW5nMhgMIAMoCRIYChByZXBlYXRlZF9zdHJpbmcz",
+            "GA0gAygJEhYKDnJlcGVhdGVkX2Jvb2wxGA4gAygIEhYKDnJlcGVhdGVkX2Jv",
+            "b2wyGA8gAygIQlAKKWNvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIu",
+            "dGVzdC5lZGdlQiFDb21wcmVoZW5zaXZlVGVzdEVkZ2VDYXNlc01pbmltYWxI",
+            "AQ=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", "Oneof1String", "Oneof1Int32", "Map1" }, new[]{ "Oneof1" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, })
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", "Oneof1String", "Oneof1Int32", "Map1" }, new[]{ "Oneof1" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields), global::ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields.Parser, new[]{ "Repeated1", "Repeated2", "Repeated3", "Repeated4", "Repeated5", "Repeated6", "Repeated7", "Repeated8", "Repeated9", "Repeated10", "RepeatedString1", "RepeatedString2", "RepeatedString3", "RepeatedBool1", "RepeatedBool2" }, null, null, null, null)
           }));
     }
     #endregion
@@ -677,6 +686,584 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           }
           case 210: {
             map1_.AddEntriesFrom(ref input, _map_map1_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with many repeated fields
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ManyRepeatedFields : pb::IMessage<ManyRepeatedFields>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ManyRepeatedFields> _parser = new pb::MessageParser<ManyRepeatedFields>(() => new ManyRepeatedFields());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ManyRepeatedFields> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.EdgeCasesMinimal.ComprehensiveTestEdgeCasesMinimalReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ManyRepeatedFields() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ManyRepeatedFields(ManyRepeatedFields other) : this() {
+      repeated1_ = other.repeated1_.Clone();
+      repeated2_ = other.repeated2_.Clone();
+      repeated3_ = other.repeated3_.Clone();
+      repeated4_ = other.repeated4_.Clone();
+      repeated5_ = other.repeated5_.Clone();
+      repeated6_ = other.repeated6_.Clone();
+      repeated7_ = other.repeated7_.Clone();
+      repeated8_ = other.repeated8_.Clone();
+      repeated9_ = other.repeated9_.Clone();
+      repeated10_ = other.repeated10_.Clone();
+      repeatedString1_ = other.repeatedString1_.Clone();
+      repeatedString2_ = other.repeatedString2_.Clone();
+      repeatedString3_ = other.repeatedString3_.Clone();
+      repeatedBool1_ = other.repeatedBool1_.Clone();
+      repeatedBool2_ = other.repeatedBool2_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ManyRepeatedFields Clone() {
+      return new ManyRepeatedFields(this);
+    }
+
+    /// <summary>Field number for the "repeated1" field.</summary>
+    public const int Repeated1FieldNumber = 1;
+    private static readonly pb::FieldCodec<int> _repeated_repeated1_codec
+        = pb::FieldCodec.ForInt32(8);
+    private readonly pbc::RepeatedField<int> repeated1_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated1 {
+      get { return repeated1_; }
+    }
+
+    /// <summary>Field number for the "repeated2" field.</summary>
+    public const int Repeated2FieldNumber = 2;
+    private static readonly pb::FieldCodec<int> _repeated_repeated2_codec
+        = pb::FieldCodec.ForInt32(16);
+    private readonly pbc::RepeatedField<int> repeated2_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated2 {
+      get { return repeated2_; }
+    }
+
+    /// <summary>Field number for the "repeated3" field.</summary>
+    public const int Repeated3FieldNumber = 3;
+    private static readonly pb::FieldCodec<int> _repeated_repeated3_codec
+        = pb::FieldCodec.ForInt32(24);
+    private readonly pbc::RepeatedField<int> repeated3_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated3 {
+      get { return repeated3_; }
+    }
+
+    /// <summary>Field number for the "repeated4" field.</summary>
+    public const int Repeated4FieldNumber = 4;
+    private static readonly pb::FieldCodec<int> _repeated_repeated4_codec
+        = pb::FieldCodec.ForInt32(32);
+    private readonly pbc::RepeatedField<int> repeated4_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated4 {
+      get { return repeated4_; }
+    }
+
+    /// <summary>Field number for the "repeated5" field.</summary>
+    public const int Repeated5FieldNumber = 5;
+    private static readonly pb::FieldCodec<int> _repeated_repeated5_codec
+        = pb::FieldCodec.ForInt32(40);
+    private readonly pbc::RepeatedField<int> repeated5_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated5 {
+      get { return repeated5_; }
+    }
+
+    /// <summary>Field number for the "repeated6" field.</summary>
+    public const int Repeated6FieldNumber = 6;
+    private static readonly pb::FieldCodec<int> _repeated_repeated6_codec
+        = pb::FieldCodec.ForInt32(48);
+    private readonly pbc::RepeatedField<int> repeated6_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated6 {
+      get { return repeated6_; }
+    }
+
+    /// <summary>Field number for the "repeated7" field.</summary>
+    public const int Repeated7FieldNumber = 7;
+    private static readonly pb::FieldCodec<int> _repeated_repeated7_codec
+        = pb::FieldCodec.ForInt32(56);
+    private readonly pbc::RepeatedField<int> repeated7_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated7 {
+      get { return repeated7_; }
+    }
+
+    /// <summary>Field number for the "repeated8" field.</summary>
+    public const int Repeated8FieldNumber = 8;
+    private static readonly pb::FieldCodec<int> _repeated_repeated8_codec
+        = pb::FieldCodec.ForInt32(64);
+    private readonly pbc::RepeatedField<int> repeated8_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated8 {
+      get { return repeated8_; }
+    }
+
+    /// <summary>Field number for the "repeated9" field.</summary>
+    public const int Repeated9FieldNumber = 9;
+    private static readonly pb::FieldCodec<int> _repeated_repeated9_codec
+        = pb::FieldCodec.ForInt32(72);
+    private readonly pbc::RepeatedField<int> repeated9_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated9 {
+      get { return repeated9_; }
+    }
+
+    /// <summary>Field number for the "repeated10" field.</summary>
+    public const int Repeated10FieldNumber = 10;
+    private static readonly pb::FieldCodec<int> _repeated_repeated10_codec
+        = pb::FieldCodec.ForInt32(80);
+    private readonly pbc::RepeatedField<int> repeated10_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> Repeated10 {
+      get { return repeated10_; }
+    }
+
+    /// <summary>Field number for the "repeated_string1" field.</summary>
+    public const int RepeatedString1FieldNumber = 11;
+    private static readonly pb::FieldCodec<string> _repeated_repeatedString1_codec
+        = pb::FieldCodec.ForString(90);
+    private readonly pbc::RepeatedField<string> repeatedString1_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RepeatedString1 {
+      get { return repeatedString1_; }
+    }
+
+    /// <summary>Field number for the "repeated_string2" field.</summary>
+    public const int RepeatedString2FieldNumber = 12;
+    private static readonly pb::FieldCodec<string> _repeated_repeatedString2_codec
+        = pb::FieldCodec.ForString(98);
+    private readonly pbc::RepeatedField<string> repeatedString2_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RepeatedString2 {
+      get { return repeatedString2_; }
+    }
+
+    /// <summary>Field number for the "repeated_string3" field.</summary>
+    public const int RepeatedString3FieldNumber = 13;
+    private static readonly pb::FieldCodec<string> _repeated_repeatedString3_codec
+        = pb::FieldCodec.ForString(106);
+    private readonly pbc::RepeatedField<string> repeatedString3_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RepeatedString3 {
+      get { return repeatedString3_; }
+    }
+
+    /// <summary>Field number for the "repeated_bool1" field.</summary>
+    public const int RepeatedBool1FieldNumber = 14;
+    private static readonly pb::FieldCodec<bool> _repeated_repeatedBool1_codec
+        = pb::FieldCodec.ForBool(112);
+    private readonly pbc::RepeatedField<bool> repeatedBool1_ = new pbc::RepeatedField<bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<bool> RepeatedBool1 {
+      get { return repeatedBool1_; }
+    }
+
+    /// <summary>Field number for the "repeated_bool2" field.</summary>
+    public const int RepeatedBool2FieldNumber = 15;
+    private static readonly pb::FieldCodec<bool> _repeated_repeatedBool2_codec
+        = pb::FieldCodec.ForBool(120);
+    private readonly pbc::RepeatedField<bool> repeatedBool2_ = new pbc::RepeatedField<bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<bool> RepeatedBool2 {
+      get { return repeatedBool2_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ManyRepeatedFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ManyRepeatedFields other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!repeated1_.Equals(other.repeated1_)) return false;
+      if(!repeated2_.Equals(other.repeated2_)) return false;
+      if(!repeated3_.Equals(other.repeated3_)) return false;
+      if(!repeated4_.Equals(other.repeated4_)) return false;
+      if(!repeated5_.Equals(other.repeated5_)) return false;
+      if(!repeated6_.Equals(other.repeated6_)) return false;
+      if(!repeated7_.Equals(other.repeated7_)) return false;
+      if(!repeated8_.Equals(other.repeated8_)) return false;
+      if(!repeated9_.Equals(other.repeated9_)) return false;
+      if(!repeated10_.Equals(other.repeated10_)) return false;
+      if(!repeatedString1_.Equals(other.repeatedString1_)) return false;
+      if(!repeatedString2_.Equals(other.repeatedString2_)) return false;
+      if(!repeatedString3_.Equals(other.repeatedString3_)) return false;
+      if(!repeatedBool1_.Equals(other.repeatedBool1_)) return false;
+      if(!repeatedBool2_.Equals(other.repeatedBool2_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= repeated1_.GetHashCode();
+      hash ^= repeated2_.GetHashCode();
+      hash ^= repeated3_.GetHashCode();
+      hash ^= repeated4_.GetHashCode();
+      hash ^= repeated5_.GetHashCode();
+      hash ^= repeated6_.GetHashCode();
+      hash ^= repeated7_.GetHashCode();
+      hash ^= repeated8_.GetHashCode();
+      hash ^= repeated9_.GetHashCode();
+      hash ^= repeated10_.GetHashCode();
+      hash ^= repeatedString1_.GetHashCode();
+      hash ^= repeatedString2_.GetHashCode();
+      hash ^= repeatedString3_.GetHashCode();
+      hash ^= repeatedBool1_.GetHashCode();
+      hash ^= repeatedBool2_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      repeated1_.WriteTo(output, _repeated_repeated1_codec);
+      repeated2_.WriteTo(output, _repeated_repeated2_codec);
+      repeated3_.WriteTo(output, _repeated_repeated3_codec);
+      repeated4_.WriteTo(output, _repeated_repeated4_codec);
+      repeated5_.WriteTo(output, _repeated_repeated5_codec);
+      repeated6_.WriteTo(output, _repeated_repeated6_codec);
+      repeated7_.WriteTo(output, _repeated_repeated7_codec);
+      repeated8_.WriteTo(output, _repeated_repeated8_codec);
+      repeated9_.WriteTo(output, _repeated_repeated9_codec);
+      repeated10_.WriteTo(output, _repeated_repeated10_codec);
+      repeatedString1_.WriteTo(output, _repeated_repeatedString1_codec);
+      repeatedString2_.WriteTo(output, _repeated_repeatedString2_codec);
+      repeatedString3_.WriteTo(output, _repeated_repeatedString3_codec);
+      repeatedBool1_.WriteTo(output, _repeated_repeatedBool1_codec);
+      repeatedBool2_.WriteTo(output, _repeated_repeatedBool2_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      repeated1_.WriteTo(ref output, _repeated_repeated1_codec);
+      repeated2_.WriteTo(ref output, _repeated_repeated2_codec);
+      repeated3_.WriteTo(ref output, _repeated_repeated3_codec);
+      repeated4_.WriteTo(ref output, _repeated_repeated4_codec);
+      repeated5_.WriteTo(ref output, _repeated_repeated5_codec);
+      repeated6_.WriteTo(ref output, _repeated_repeated6_codec);
+      repeated7_.WriteTo(ref output, _repeated_repeated7_codec);
+      repeated8_.WriteTo(ref output, _repeated_repeated8_codec);
+      repeated9_.WriteTo(ref output, _repeated_repeated9_codec);
+      repeated10_.WriteTo(ref output, _repeated_repeated10_codec);
+      repeatedString1_.WriteTo(ref output, _repeated_repeatedString1_codec);
+      repeatedString2_.WriteTo(ref output, _repeated_repeatedString2_codec);
+      repeatedString3_.WriteTo(ref output, _repeated_repeatedString3_codec);
+      repeatedBool1_.WriteTo(ref output, _repeated_repeatedBool1_codec);
+      repeatedBool2_.WriteTo(ref output, _repeated_repeatedBool2_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += repeated1_.CalculateSize(_repeated_repeated1_codec);
+      size += repeated2_.CalculateSize(_repeated_repeated2_codec);
+      size += repeated3_.CalculateSize(_repeated_repeated3_codec);
+      size += repeated4_.CalculateSize(_repeated_repeated4_codec);
+      size += repeated5_.CalculateSize(_repeated_repeated5_codec);
+      size += repeated6_.CalculateSize(_repeated_repeated6_codec);
+      size += repeated7_.CalculateSize(_repeated_repeated7_codec);
+      size += repeated8_.CalculateSize(_repeated_repeated8_codec);
+      size += repeated9_.CalculateSize(_repeated_repeated9_codec);
+      size += repeated10_.CalculateSize(_repeated_repeated10_codec);
+      size += repeatedString1_.CalculateSize(_repeated_repeatedString1_codec);
+      size += repeatedString2_.CalculateSize(_repeated_repeatedString2_codec);
+      size += repeatedString3_.CalculateSize(_repeated_repeatedString3_codec);
+      size += repeatedBool1_.CalculateSize(_repeated_repeatedBool1_codec);
+      size += repeatedBool2_.CalculateSize(_repeated_repeatedBool2_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ManyRepeatedFields other) {
+      if (other == null) {
+        return;
+      }
+      repeated1_.Add(other.repeated1_);
+      repeated2_.Add(other.repeated2_);
+      repeated3_.Add(other.repeated3_);
+      repeated4_.Add(other.repeated4_);
+      repeated5_.Add(other.repeated5_);
+      repeated6_.Add(other.repeated6_);
+      repeated7_.Add(other.repeated7_);
+      repeated8_.Add(other.repeated8_);
+      repeated9_.Add(other.repeated9_);
+      repeated10_.Add(other.repeated10_);
+      repeatedString1_.Add(other.repeatedString1_);
+      repeatedString2_.Add(other.repeatedString2_);
+      repeatedString3_.Add(other.repeatedString3_);
+      repeatedBool1_.Add(other.repeatedBool1_);
+      repeatedBool2_.Add(other.repeatedBool2_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 8: {
+            repeated1_.AddEntriesFrom(input, _repeated_repeated1_codec);
+            break;
+          }
+          case 18:
+          case 16: {
+            repeated2_.AddEntriesFrom(input, _repeated_repeated2_codec);
+            break;
+          }
+          case 26:
+          case 24: {
+            repeated3_.AddEntriesFrom(input, _repeated_repeated3_codec);
+            break;
+          }
+          case 34:
+          case 32: {
+            repeated4_.AddEntriesFrom(input, _repeated_repeated4_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            repeated5_.AddEntriesFrom(input, _repeated_repeated5_codec);
+            break;
+          }
+          case 50:
+          case 48: {
+            repeated6_.AddEntriesFrom(input, _repeated_repeated6_codec);
+            break;
+          }
+          case 58:
+          case 56: {
+            repeated7_.AddEntriesFrom(input, _repeated_repeated7_codec);
+            break;
+          }
+          case 66:
+          case 64: {
+            repeated8_.AddEntriesFrom(input, _repeated_repeated8_codec);
+            break;
+          }
+          case 74:
+          case 72: {
+            repeated9_.AddEntriesFrom(input, _repeated_repeated9_codec);
+            break;
+          }
+          case 82:
+          case 80: {
+            repeated10_.AddEntriesFrom(input, _repeated_repeated10_codec);
+            break;
+          }
+          case 90: {
+            repeatedString1_.AddEntriesFrom(input, _repeated_repeatedString1_codec);
+            break;
+          }
+          case 98: {
+            repeatedString2_.AddEntriesFrom(input, _repeated_repeatedString2_codec);
+            break;
+          }
+          case 106: {
+            repeatedString3_.AddEntriesFrom(input, _repeated_repeatedString3_codec);
+            break;
+          }
+          case 114:
+          case 112: {
+            repeatedBool1_.AddEntriesFrom(input, _repeated_repeatedBool1_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            repeatedBool2_.AddEntriesFrom(input, _repeated_repeatedBool2_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10:
+          case 8: {
+            repeated1_.AddEntriesFrom(ref input, _repeated_repeated1_codec);
+            break;
+          }
+          case 18:
+          case 16: {
+            repeated2_.AddEntriesFrom(ref input, _repeated_repeated2_codec);
+            break;
+          }
+          case 26:
+          case 24: {
+            repeated3_.AddEntriesFrom(ref input, _repeated_repeated3_codec);
+            break;
+          }
+          case 34:
+          case 32: {
+            repeated4_.AddEntriesFrom(ref input, _repeated_repeated4_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            repeated5_.AddEntriesFrom(ref input, _repeated_repeated5_codec);
+            break;
+          }
+          case 50:
+          case 48: {
+            repeated6_.AddEntriesFrom(ref input, _repeated_repeated6_codec);
+            break;
+          }
+          case 58:
+          case 56: {
+            repeated7_.AddEntriesFrom(ref input, _repeated_repeated7_codec);
+            break;
+          }
+          case 66:
+          case 64: {
+            repeated8_.AddEntriesFrom(ref input, _repeated_repeated8_codec);
+            break;
+          }
+          case 74:
+          case 72: {
+            repeated9_.AddEntriesFrom(ref input, _repeated_repeated9_codec);
+            break;
+          }
+          case 82:
+          case 80: {
+            repeated10_.AddEntriesFrom(ref input, _repeated_repeated10_codec);
+            break;
+          }
+          case 90: {
+            repeatedString1_.AddEntriesFrom(ref input, _repeated_repeatedString1_codec);
+            break;
+          }
+          case 98: {
+            repeatedString2_.AddEntriesFrom(ref input, _repeated_repeatedString2_codec);
+            break;
+          }
+          case 106: {
+            repeatedString3_.AddEntriesFrom(ref input, _repeated_repeatedString3_codec);
+            break;
+          }
+          case 114:
+          case 112: {
+            repeatedBool1_.AddEntriesFrom(ref input, _repeated_repeatedBool1_codec);
+            break;
+          }
+          case 122:
+          case 120: {
+            repeatedBool2_.AddEntriesFrom(ref input, _repeated_repeatedBool2_codec);
             break;
           }
         }

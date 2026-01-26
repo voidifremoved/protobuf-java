@@ -29,3 +29,23 @@ message EdgeCaseMinimal {
   map<string, int32> map1 = 26;
 
 }
+
+// Message with many repeated fields
+message ManyRepeatedFields {
+  repeated int32 repeated1 = 1;
+  repeated int32 repeated2 = 2;
+  repeated int32 repeated3 = 3;
+  repeated int32 repeated4 = 4;
+  repeated int32 repeated5 = 5;
+  repeated int32 repeated6 = 6;
+  repeated int32 repeated7 = 7;
+  repeated int32 repeated8 = 8;
+  repeated int32 repeated9 = 9;
+  repeated int32 repeated10 = 10;
+  repeated string repeated_string1 = 11;
+  repeated string repeated_string2 = 12;
+  repeated string repeated_string3 = 13;
+  repeated bool repeated_bool1 = 14;
+  repeated bool repeated_bool2 = 15;
+}
+

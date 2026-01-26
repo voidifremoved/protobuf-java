@@ -2130,6 +2130,3195 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
 
   }
 
+  public interface ManyRepeatedFieldsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @return A list containing the repeated1.
+     */
+    java.util.List<java.lang.Integer> getRepeated1List();
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @return The count of repeated1.
+     */
+    int getRepeated1Count();
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @param index The index of the element to return.
+     * @return The repeated1 at the given index.
+     */
+    int getRepeated1(int index);
+
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @return A list containing the repeated2.
+     */
+    java.util.List<java.lang.Integer> getRepeated2List();
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @return The count of repeated2.
+     */
+    int getRepeated2Count();
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @param index The index of the element to return.
+     * @return The repeated2 at the given index.
+     */
+    int getRepeated2(int index);
+
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @return A list containing the repeated3.
+     */
+    java.util.List<java.lang.Integer> getRepeated3List();
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @return The count of repeated3.
+     */
+    int getRepeated3Count();
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @param index The index of the element to return.
+     * @return The repeated3 at the given index.
+     */
+    int getRepeated3(int index);
+
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @return A list containing the repeated4.
+     */
+    java.util.List<java.lang.Integer> getRepeated4List();
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @return The count of repeated4.
+     */
+    int getRepeated4Count();
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @param index The index of the element to return.
+     * @return The repeated4 at the given index.
+     */
+    int getRepeated4(int index);
+
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @return A list containing the repeated5.
+     */
+    java.util.List<java.lang.Integer> getRepeated5List();
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @return The count of repeated5.
+     */
+    int getRepeated5Count();
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @param index The index of the element to return.
+     * @return The repeated5 at the given index.
+     */
+    int getRepeated5(int index);
+
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @return A list containing the repeated6.
+     */
+    java.util.List<java.lang.Integer> getRepeated6List();
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @return The count of repeated6.
+     */
+    int getRepeated6Count();
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @param index The index of the element to return.
+     * @return The repeated6 at the given index.
+     */
+    int getRepeated6(int index);
+
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @return A list containing the repeated7.
+     */
+    java.util.List<java.lang.Integer> getRepeated7List();
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @return The count of repeated7.
+     */
+    int getRepeated7Count();
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @param index The index of the element to return.
+     * @return The repeated7 at the given index.
+     */
+    int getRepeated7(int index);
+
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @return A list containing the repeated8.
+     */
+    java.util.List<java.lang.Integer> getRepeated8List();
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @return The count of repeated8.
+     */
+    int getRepeated8Count();
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @param index The index of the element to return.
+     * @return The repeated8 at the given index.
+     */
+    int getRepeated8(int index);
+
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @return A list containing the repeated9.
+     */
+    java.util.List<java.lang.Integer> getRepeated9List();
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @return The count of repeated9.
+     */
+    int getRepeated9Count();
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @param index The index of the element to return.
+     * @return The repeated9 at the given index.
+     */
+    int getRepeated9(int index);
+
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @return A list containing the repeated10.
+     */
+    java.util.List<java.lang.Integer> getRepeated10List();
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @return The count of repeated10.
+     */
+    int getRepeated10Count();
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @param index The index of the element to return.
+     * @return The repeated10 at the given index.
+     */
+    int getRepeated10(int index);
+
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @return A list containing the repeatedString1.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedString1List();
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @return The count of repeatedString1.
+     */
+    int getRepeatedString1Count();
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString1 at the given index.
+     */
+    java.lang.String getRepeatedString1(int index);
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString1 at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedString1Bytes(int index);
+
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @return A list containing the repeatedString2.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedString2List();
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @return The count of repeatedString2.
+     */
+    int getRepeatedString2Count();
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString2 at the given index.
+     */
+    java.lang.String getRepeatedString2(int index);
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString2 at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedString2Bytes(int index);
+
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @return A list containing the repeatedString3.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedString3List();
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @return The count of repeatedString3.
+     */
+    int getRepeatedString3Count();
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString3 at the given index.
+     */
+    java.lang.String getRepeatedString3(int index);
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString3 at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedString3Bytes(int index);
+
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @return A list containing the repeatedBool1.
+     */
+    java.util.List<java.lang.Boolean> getRepeatedBool1List();
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @return The count of repeatedBool1.
+     */
+    int getRepeatedBool1Count();
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedBool1 at the given index.
+     */
+    boolean getRepeatedBool1(int index);
+
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @return A list containing the repeatedBool2.
+     */
+    java.util.List<java.lang.Boolean> getRepeatedBool2List();
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @return The count of repeatedBool2.
+     */
+    int getRepeatedBool2Count();
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedBool2 at the given index.
+     */
+    boolean getRepeatedBool2(int index);
+  }
+  /**
+   * <pre>
+   * Message with many repeated fields
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields}
+   */
+  public static final class ManyRepeatedFields extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields)
+      ManyRepeatedFieldsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "ManyRepeatedFields");
+    }
+    // Use ManyRepeatedFields.newBuilder() to construct.
+    private ManyRepeatedFields(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private ManyRepeatedFields() {
+      repeated1_ = emptyIntList();
+      repeated2_ = emptyIntList();
+      repeated3_ = emptyIntList();
+      repeated4_ = emptyIntList();
+      repeated5_ = emptyIntList();
+      repeated6_ = emptyIntList();
+      repeated7_ = emptyIntList();
+      repeated8_ = emptyIntList();
+      repeated9_ = emptyIntList();
+      repeated10_ = emptyIntList();
+      repeatedString1_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedString2_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedString3_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedBool1_ = emptyBooleanList();
+      repeatedBool2_ = emptyBooleanList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.Builder.class);
+    }
+
+    public static final int REPEATED1_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated1_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @return A list containing the repeated1.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated1List() {
+      return repeated1_;
+    }
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @return The count of repeated1.
+     */
+    public int getRepeated1Count() {
+      return repeated1_.size();
+    }
+    /**
+     * <code>repeated int32 repeated1 = 1;</code>
+     * @param index The index of the element to return.
+     * @return The repeated1 at the given index.
+     */
+    public int getRepeated1(int index) {
+      return repeated1_.getInt(index);
+    }
+
+    public static final int REPEATED2_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated2_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @return A list containing the repeated2.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated2List() {
+      return repeated2_;
+    }
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @return The count of repeated2.
+     */
+    public int getRepeated2Count() {
+      return repeated2_.size();
+    }
+    /**
+     * <code>repeated int32 repeated2 = 2;</code>
+     * @param index The index of the element to return.
+     * @return The repeated2 at the given index.
+     */
+    public int getRepeated2(int index) {
+      return repeated2_.getInt(index);
+    }
+
+    public static final int REPEATED3_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated3_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @return A list containing the repeated3.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated3List() {
+      return repeated3_;
+    }
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @return The count of repeated3.
+     */
+    public int getRepeated3Count() {
+      return repeated3_.size();
+    }
+    /**
+     * <code>repeated int32 repeated3 = 3;</code>
+     * @param index The index of the element to return.
+     * @return The repeated3 at the given index.
+     */
+    public int getRepeated3(int index) {
+      return repeated3_.getInt(index);
+    }
+
+    public static final int REPEATED4_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated4_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @return A list containing the repeated4.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated4List() {
+      return repeated4_;
+    }
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @return The count of repeated4.
+     */
+    public int getRepeated4Count() {
+      return repeated4_.size();
+    }
+    /**
+     * <code>repeated int32 repeated4 = 4;</code>
+     * @param index The index of the element to return.
+     * @return The repeated4 at the given index.
+     */
+    public int getRepeated4(int index) {
+      return repeated4_.getInt(index);
+    }
+
+    public static final int REPEATED5_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated5_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @return A list containing the repeated5.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated5List() {
+      return repeated5_;
+    }
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @return The count of repeated5.
+     */
+    public int getRepeated5Count() {
+      return repeated5_.size();
+    }
+    /**
+     * <code>repeated int32 repeated5 = 5;</code>
+     * @param index The index of the element to return.
+     * @return The repeated5 at the given index.
+     */
+    public int getRepeated5(int index) {
+      return repeated5_.getInt(index);
+    }
+
+    public static final int REPEATED6_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated6_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @return A list containing the repeated6.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated6List() {
+      return repeated6_;
+    }
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @return The count of repeated6.
+     */
+    public int getRepeated6Count() {
+      return repeated6_.size();
+    }
+    /**
+     * <code>repeated int32 repeated6 = 6;</code>
+     * @param index The index of the element to return.
+     * @return The repeated6 at the given index.
+     */
+    public int getRepeated6(int index) {
+      return repeated6_.getInt(index);
+    }
+
+    public static final int REPEATED7_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated7_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @return A list containing the repeated7.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated7List() {
+      return repeated7_;
+    }
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @return The count of repeated7.
+     */
+    public int getRepeated7Count() {
+      return repeated7_.size();
+    }
+    /**
+     * <code>repeated int32 repeated7 = 7;</code>
+     * @param index The index of the element to return.
+     * @return The repeated7 at the given index.
+     */
+    public int getRepeated7(int index) {
+      return repeated7_.getInt(index);
+    }
+
+    public static final int REPEATED8_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated8_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @return A list containing the repeated8.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated8List() {
+      return repeated8_;
+    }
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @return The count of repeated8.
+     */
+    public int getRepeated8Count() {
+      return repeated8_.size();
+    }
+    /**
+     * <code>repeated int32 repeated8 = 8;</code>
+     * @param index The index of the element to return.
+     * @return The repeated8 at the given index.
+     */
+    public int getRepeated8(int index) {
+      return repeated8_.getInt(index);
+    }
+
+    public static final int REPEATED9_FIELD_NUMBER = 9;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated9_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @return A list containing the repeated9.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated9List() {
+      return repeated9_;
+    }
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @return The count of repeated9.
+     */
+    public int getRepeated9Count() {
+      return repeated9_.size();
+    }
+    /**
+     * <code>repeated int32 repeated9 = 9;</code>
+     * @param index The index of the element to return.
+     * @return The repeated9 at the given index.
+     */
+    public int getRepeated9(int index) {
+      return repeated9_.getInt(index);
+    }
+
+    public static final int REPEATED10_FIELD_NUMBER = 10;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeated10_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @return A list containing the repeated10.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeated10List() {
+      return repeated10_;
+    }
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @return The count of repeated10.
+     */
+    public int getRepeated10Count() {
+      return repeated10_.size();
+    }
+    /**
+     * <code>repeated int32 repeated10 = 10;</code>
+     * @param index The index of the element to return.
+     * @return The repeated10 at the given index.
+     */
+    public int getRepeated10(int index) {
+      return repeated10_.getInt(index);
+    }
+
+    public static final int REPEATED_STRING1_FIELD_NUMBER = 11;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString1_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @return A list containing the repeatedString1.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedString1List() {
+      return repeatedString1_;
+    }
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @return The count of repeatedString1.
+     */
+    public int getRepeatedString1Count() {
+      return repeatedString1_.size();
+    }
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString1 at the given index.
+     */
+    public java.lang.String getRepeatedString1(int index) {
+      return repeatedString1_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string1 = 11;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString1 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedString1Bytes(int index) {
+      return repeatedString1_.getByteString(index);
+    }
+
+    public static final int REPEATED_STRING2_FIELD_NUMBER = 12;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString2_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @return A list containing the repeatedString2.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedString2List() {
+      return repeatedString2_;
+    }
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @return The count of repeatedString2.
+     */
+    public int getRepeatedString2Count() {
+      return repeatedString2_.size();
+    }
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString2 at the given index.
+     */
+    public java.lang.String getRepeatedString2(int index) {
+      return repeatedString2_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string2 = 12;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString2 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedString2Bytes(int index) {
+      return repeatedString2_.getByteString(index);
+    }
+
+    public static final int REPEATED_STRING3_FIELD_NUMBER = 13;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString3_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @return A list containing the repeatedString3.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedString3List() {
+      return repeatedString3_;
+    }
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @return The count of repeatedString3.
+     */
+    public int getRepeatedString3Count() {
+      return repeatedString3_.size();
+    }
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString3 at the given index.
+     */
+    public java.lang.String getRepeatedString3(int index) {
+      return repeatedString3_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string3 = 13;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString3 at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedString3Bytes(int index) {
+      return repeatedString3_.getByteString(index);
+    }
+
+    public static final int REPEATED_BOOL1_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.BooleanList repeatedBool1_ =
+        emptyBooleanList();
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @return A list containing the repeatedBool1.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Boolean>
+        getRepeatedBool1List() {
+      return repeatedBool1_;
+    }
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @return The count of repeatedBool1.
+     */
+    public int getRepeatedBool1Count() {
+      return repeatedBool1_.size();
+    }
+    /**
+     * <code>repeated bool repeated_bool1 = 14;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedBool1 at the given index.
+     */
+    public boolean getRepeatedBool1(int index) {
+      return repeatedBool1_.getBoolean(index);
+    }
+
+    public static final int REPEATED_BOOL2_FIELD_NUMBER = 15;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.BooleanList repeatedBool2_ =
+        emptyBooleanList();
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @return A list containing the repeatedBool2.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Boolean>
+        getRepeatedBool2List() {
+      return repeatedBool2_;
+    }
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @return The count of repeatedBool2.
+     */
+    public int getRepeatedBool2Count() {
+      return repeatedBool2_.size();
+    }
+    /**
+     * <code>repeated bool repeated_bool2 = 15;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedBool2 at the given index.
+     */
+    public boolean getRepeatedBool2(int index) {
+      return repeatedBool2_.getBoolean(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      for (int i = 0; i < repeated1_.size(); i++) {
+        output.writeInt32(1, repeated1_.getInt(i));
+      }
+      for (int i = 0; i < repeated2_.size(); i++) {
+        output.writeInt32(2, repeated2_.getInt(i));
+      }
+      for (int i = 0; i < repeated3_.size(); i++) {
+        output.writeInt32(3, repeated3_.getInt(i));
+      }
+      for (int i = 0; i < repeated4_.size(); i++) {
+        output.writeInt32(4, repeated4_.getInt(i));
+      }
+      for (int i = 0; i < repeated5_.size(); i++) {
+        output.writeInt32(5, repeated5_.getInt(i));
+      }
+      for (int i = 0; i < repeated6_.size(); i++) {
+        output.writeInt32(6, repeated6_.getInt(i));
+      }
+      for (int i = 0; i < repeated7_.size(); i++) {
+        output.writeInt32(7, repeated7_.getInt(i));
+      }
+      for (int i = 0; i < repeated8_.size(); i++) {
+        output.writeInt32(8, repeated8_.getInt(i));
+      }
+      for (int i = 0; i < repeated9_.size(); i++) {
+        output.writeInt32(9, repeated9_.getInt(i));
+      }
+      for (int i = 0; i < repeated10_.size(); i++) {
+        output.writeInt32(10, repeated10_.getInt(i));
+      }
+      for (int i = 0; i < repeatedString1_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 11, repeatedString1_.getRaw(i));
+      }
+      for (int i = 0; i < repeatedString2_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 12, repeatedString2_.getRaw(i));
+      }
+      for (int i = 0; i < repeatedString3_.size(); i++) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 13, repeatedString3_.getRaw(i));
+      }
+      for (int i = 0; i < repeatedBool1_.size(); i++) {
+        output.writeBool(14, repeatedBool1_.getBoolean(i));
+      }
+      for (int i = 0; i < repeatedBool2_.size(); i++) {
+        output.writeBool(15, repeatedBool2_.getBoolean(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated1_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated1_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated1List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated2_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated2_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated2List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated3_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated3_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated3List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated4_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated4_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated4List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated5_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated5_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated5List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated6_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated6_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated6List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated7_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated7_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated7List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated8_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated8_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated8List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated9_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated9_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated9List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeated10_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(repeated10_.getInt(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeated10List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeatedString1_.size(); i++) {
+          dataSize += computeStringSizeNoTag(repeatedString1_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeatedString1List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeatedString2_.size(); i++) {
+          dataSize += computeStringSizeNoTag(repeatedString2_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeatedString2List().size();
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < repeatedString3_.size(); i++) {
+          dataSize += computeStringSizeNoTag(repeatedString3_.getRaw(i));
+        }
+        size += dataSize;
+        size += 1 * getRepeatedString3List().size();
+      }
+      {
+        int dataSize = 0;
+        dataSize = 1 * getRepeatedBool1List().size();
+        size += dataSize;
+        size += 1 * getRepeatedBool1List().size();
+      }
+      {
+        int dataSize = 0;
+        dataSize = 1 * getRepeatedBool2List().size();
+        size += dataSize;
+        size += 1 * getRepeatedBool2List().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields)) {
+        return super.equals(obj);
+      }
+      com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields other = (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields) obj;
+
+      if (!getRepeated1List()
+          .equals(other.getRepeated1List())) return false;
+      if (!getRepeated2List()
+          .equals(other.getRepeated2List())) return false;
+      if (!getRepeated3List()
+          .equals(other.getRepeated3List())) return false;
+      if (!getRepeated4List()
+          .equals(other.getRepeated4List())) return false;
+      if (!getRepeated5List()
+          .equals(other.getRepeated5List())) return false;
+      if (!getRepeated6List()
+          .equals(other.getRepeated6List())) return false;
+      if (!getRepeated7List()
+          .equals(other.getRepeated7List())) return false;
+      if (!getRepeated8List()
+          .equals(other.getRepeated8List())) return false;
+      if (!getRepeated9List()
+          .equals(other.getRepeated9List())) return false;
+      if (!getRepeated10List()
+          .equals(other.getRepeated10List())) return false;
+      if (!getRepeatedString1List()
+          .equals(other.getRepeatedString1List())) return false;
+      if (!getRepeatedString2List()
+          .equals(other.getRepeatedString2List())) return false;
+      if (!getRepeatedString3List()
+          .equals(other.getRepeatedString3List())) return false;
+      if (!getRepeatedBool1List()
+          .equals(other.getRepeatedBool1List())) return false;
+      if (!getRepeatedBool2List()
+          .equals(other.getRepeatedBool2List())) return false;
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (getRepeated1Count() > 0) {
+        hash = (37 * hash) + REPEATED1_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated1List().hashCode();
+      }
+      if (getRepeated2Count() > 0) {
+        hash = (37 * hash) + REPEATED2_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated2List().hashCode();
+      }
+      if (getRepeated3Count() > 0) {
+        hash = (37 * hash) + REPEATED3_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated3List().hashCode();
+      }
+      if (getRepeated4Count() > 0) {
+        hash = (37 * hash) + REPEATED4_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated4List().hashCode();
+      }
+      if (getRepeated5Count() > 0) {
+        hash = (37 * hash) + REPEATED5_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated5List().hashCode();
+      }
+      if (getRepeated6Count() > 0) {
+        hash = (37 * hash) + REPEATED6_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated6List().hashCode();
+      }
+      if (getRepeated7Count() > 0) {
+        hash = (37 * hash) + REPEATED7_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated7List().hashCode();
+      }
+      if (getRepeated8Count() > 0) {
+        hash = (37 * hash) + REPEATED8_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated8List().hashCode();
+      }
+      if (getRepeated9Count() > 0) {
+        hash = (37 * hash) + REPEATED9_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated9List().hashCode();
+      }
+      if (getRepeated10Count() > 0) {
+        hash = (37 * hash) + REPEATED10_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeated10List().hashCode();
+      }
+      if (getRepeatedString1Count() > 0) {
+        hash = (37 * hash) + REPEATED_STRING1_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedString1List().hashCode();
+      }
+      if (getRepeatedString2Count() > 0) {
+        hash = (37 * hash) + REPEATED_STRING2_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedString2List().hashCode();
+      }
+      if (getRepeatedString3Count() > 0) {
+        hash = (37 * hash) + REPEATED_STRING3_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedString3List().hashCode();
+      }
+      if (getRepeatedBool1Count() > 0) {
+        hash = (37 * hash) + REPEATED_BOOL1_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedBool1List().hashCode();
+      }
+      if (getRepeatedBool2Count() > 0) {
+        hash = (37 * hash) + REPEATED_BOOL2_FIELD_NUMBER;
+        hash = (53 * hash) + getRepeatedBool2List().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with many repeated fields
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields)
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFieldsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        repeated1_ = emptyIntList();
+        repeated2_ = emptyIntList();
+        repeated3_ = emptyIntList();
+        repeated4_ = emptyIntList();
+        repeated5_ = emptyIntList();
+        repeated6_ = emptyIntList();
+        repeated7_ = emptyIntList();
+        repeated8_ = emptyIntList();
+        repeated9_ = emptyIntList();
+        repeated10_ = emptyIntList();
+        repeatedString1_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedString2_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedString3_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedBool1_ = emptyBooleanList();
+        repeatedBool2_ = emptyBooleanList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields build() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields buildPartial() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields result = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          repeated1_.makeImmutable();
+          result.repeated1_ = repeated1_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          repeated2_.makeImmutable();
+          result.repeated2_ = repeated2_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          repeated3_.makeImmutable();
+          result.repeated3_ = repeated3_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          repeated4_.makeImmutable();
+          result.repeated4_ = repeated4_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          repeated5_.makeImmutable();
+          result.repeated5_ = repeated5_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          repeated6_.makeImmutable();
+          result.repeated6_ = repeated6_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          repeated7_.makeImmutable();
+          result.repeated7_ = repeated7_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          repeated8_.makeImmutable();
+          result.repeated8_ = repeated8_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          repeated9_.makeImmutable();
+          result.repeated9_ = repeated9_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          repeated10_.makeImmutable();
+          result.repeated10_ = repeated10_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          repeatedString1_.makeImmutable();
+          result.repeatedString1_ = repeatedString1_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          repeatedString2_.makeImmutable();
+          result.repeatedString2_ = repeatedString2_;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          repeatedString3_.makeImmutable();
+          result.repeatedString3_ = repeatedString3_;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          repeatedBool1_.makeImmutable();
+          result.repeatedBool1_ = repeatedBool1_;
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          repeatedBool2_.makeImmutable();
+          result.repeatedBool2_ = repeatedBool2_;
+        }
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields) {
+          return mergeFrom((com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields other) {
+        if (other == com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields.getDefaultInstance()) return this;
+        if (!other.repeated1_.isEmpty()) {
+          if (repeated1_.isEmpty()) {
+            repeated1_ = other.repeated1_;
+            repeated1_.makeImmutable();
+            bitField0_ |= 0x00000001;
+          } else {
+            ensureRepeated1IsMutable();
+            repeated1_.addAll(other.repeated1_);
+          }
+          onChanged();
+        }
+        if (!other.repeated2_.isEmpty()) {
+          if (repeated2_.isEmpty()) {
+            repeated2_ = other.repeated2_;
+            repeated2_.makeImmutable();
+            bitField0_ |= 0x00000002;
+          } else {
+            ensureRepeated2IsMutable();
+            repeated2_.addAll(other.repeated2_);
+          }
+          onChanged();
+        }
+        if (!other.repeated3_.isEmpty()) {
+          if (repeated3_.isEmpty()) {
+            repeated3_ = other.repeated3_;
+            repeated3_.makeImmutable();
+            bitField0_ |= 0x00000004;
+          } else {
+            ensureRepeated3IsMutable();
+            repeated3_.addAll(other.repeated3_);
+          }
+          onChanged();
+        }
+        if (!other.repeated4_.isEmpty()) {
+          if (repeated4_.isEmpty()) {
+            repeated4_ = other.repeated4_;
+            repeated4_.makeImmutable();
+            bitField0_ |= 0x00000008;
+          } else {
+            ensureRepeated4IsMutable();
+            repeated4_.addAll(other.repeated4_);
+          }
+          onChanged();
+        }
+        if (!other.repeated5_.isEmpty()) {
+          if (repeated5_.isEmpty()) {
+            repeated5_ = other.repeated5_;
+            repeated5_.makeImmutable();
+            bitField0_ |= 0x00000010;
+          } else {
+            ensureRepeated5IsMutable();
+            repeated5_.addAll(other.repeated5_);
+          }
+          onChanged();
+        }
+        if (!other.repeated6_.isEmpty()) {
+          if (repeated6_.isEmpty()) {
+            repeated6_ = other.repeated6_;
+            repeated6_.makeImmutable();
+            bitField0_ |= 0x00000020;
+          } else {
+            ensureRepeated6IsMutable();
+            repeated6_.addAll(other.repeated6_);
+          }
+          onChanged();
+        }
+        if (!other.repeated7_.isEmpty()) {
+          if (repeated7_.isEmpty()) {
+            repeated7_ = other.repeated7_;
+            repeated7_.makeImmutable();
+            bitField0_ |= 0x00000040;
+          } else {
+            ensureRepeated7IsMutable();
+            repeated7_.addAll(other.repeated7_);
+          }
+          onChanged();
+        }
+        if (!other.repeated8_.isEmpty()) {
+          if (repeated8_.isEmpty()) {
+            repeated8_ = other.repeated8_;
+            repeated8_.makeImmutable();
+            bitField0_ |= 0x00000080;
+          } else {
+            ensureRepeated8IsMutable();
+            repeated8_.addAll(other.repeated8_);
+          }
+          onChanged();
+        }
+        if (!other.repeated9_.isEmpty()) {
+          if (repeated9_.isEmpty()) {
+            repeated9_ = other.repeated9_;
+            repeated9_.makeImmutable();
+            bitField0_ |= 0x00000100;
+          } else {
+            ensureRepeated9IsMutable();
+            repeated9_.addAll(other.repeated9_);
+          }
+          onChanged();
+        }
+        if (!other.repeated10_.isEmpty()) {
+          if (repeated10_.isEmpty()) {
+            repeated10_ = other.repeated10_;
+            repeated10_.makeImmutable();
+            bitField0_ |= 0x00000200;
+          } else {
+            ensureRepeated10IsMutable();
+            repeated10_.addAll(other.repeated10_);
+          }
+          onChanged();
+        }
+        if (!other.repeatedString1_.isEmpty()) {
+          if (repeatedString1_.isEmpty()) {
+            repeatedString1_ = other.repeatedString1_;
+            bitField0_ |= 0x00000400;
+          } else {
+            ensureRepeatedString1IsMutable();
+            repeatedString1_.addAll(other.repeatedString1_);
+          }
+          onChanged();
+        }
+        if (!other.repeatedString2_.isEmpty()) {
+          if (repeatedString2_.isEmpty()) {
+            repeatedString2_ = other.repeatedString2_;
+            bitField0_ |= 0x00000800;
+          } else {
+            ensureRepeatedString2IsMutable();
+            repeatedString2_.addAll(other.repeatedString2_);
+          }
+          onChanged();
+        }
+        if (!other.repeatedString3_.isEmpty()) {
+          if (repeatedString3_.isEmpty()) {
+            repeatedString3_ = other.repeatedString3_;
+            bitField0_ |= 0x00001000;
+          } else {
+            ensureRepeatedString3IsMutable();
+            repeatedString3_.addAll(other.repeatedString3_);
+          }
+          onChanged();
+        }
+        if (!other.repeatedBool1_.isEmpty()) {
+          if (repeatedBool1_.isEmpty()) {
+            repeatedBool1_ = other.repeatedBool1_;
+            repeatedBool1_.makeImmutable();
+            bitField0_ |= 0x00002000;
+          } else {
+            ensureRepeatedBool1IsMutable();
+            repeatedBool1_.addAll(other.repeatedBool1_);
+          }
+          onChanged();
+        }
+        if (!other.repeatedBool2_.isEmpty()) {
+          if (repeatedBool2_.isEmpty()) {
+            repeatedBool2_ = other.repeatedBool2_;
+            repeatedBool2_.makeImmutable();
+            bitField0_ |= 0x00004000;
+          } else {
+            ensureRepeatedBool2IsMutable();
+            repeatedBool2_.addAll(other.repeatedBool2_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 8: {
+                int v = input.readInt32();
+                ensureRepeated1IsMutable();
+                repeated1_.addInt(v);
+                break;
+              } // case 8
+              case 10: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated1IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated1_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 10
+              case 16: {
+                int v = input.readInt32();
+                ensureRepeated2IsMutable();
+                repeated2_.addInt(v);
+                break;
+              } // case 16
+              case 18: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated2IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated2_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 18
+              case 24: {
+                int v = input.readInt32();
+                ensureRepeated3IsMutable();
+                repeated3_.addInt(v);
+                break;
+              } // case 24
+              case 26: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated3IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated3_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 26
+              case 32: {
+                int v = input.readInt32();
+                ensureRepeated4IsMutable();
+                repeated4_.addInt(v);
+                break;
+              } // case 32
+              case 34: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated4IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated4_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 34
+              case 40: {
+                int v = input.readInt32();
+                ensureRepeated5IsMutable();
+                repeated5_.addInt(v);
+                break;
+              } // case 40
+              case 42: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated5IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated5_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 42
+              case 48: {
+                int v = input.readInt32();
+                ensureRepeated6IsMutable();
+                repeated6_.addInt(v);
+                break;
+              } // case 48
+              case 50: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated6IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated6_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 50
+              case 56: {
+                int v = input.readInt32();
+                ensureRepeated7IsMutable();
+                repeated7_.addInt(v);
+                break;
+              } // case 56
+              case 58: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated7IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated7_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 58
+              case 64: {
+                int v = input.readInt32();
+                ensureRepeated8IsMutable();
+                repeated8_.addInt(v);
+                break;
+              } // case 64
+              case 66: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated8IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated8_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 66
+              case 72: {
+                int v = input.readInt32();
+                ensureRepeated9IsMutable();
+                repeated9_.addInt(v);
+                break;
+              } // case 72
+              case 74: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated9IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated9_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 74
+              case 80: {
+                int v = input.readInt32();
+                ensureRepeated10IsMutable();
+                repeated10_.addInt(v);
+                break;
+              } // case 80
+              case 82: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                ensureRepeated10IsMutable();
+                while (input.getBytesUntilLimit() > 0) {
+                  repeated10_.addInt(input.readInt32());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 82
+              case 90: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                ensureRepeatedString1IsMutable();
+                repeatedString1_.add(bs);
+                break;
+              } // case 90
+              case 98: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                ensureRepeatedString2IsMutable();
+                repeatedString2_.add(bs);
+                break;
+              } // case 98
+              case 106: {
+                com.google.protobuf.ByteString bs = input.readBytes();
+                ensureRepeatedString3IsMutable();
+                repeatedString3_.add(bs);
+                break;
+              } // case 106
+              case 112: {
+                boolean v = input.readBool();
+                ensureRepeatedBool1IsMutable();
+                repeatedBool1_.addBoolean(v);
+                break;
+              } // case 112
+              case 114: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                int alloc = length > 4096 ? 4096 : length;
+                ensureRepeatedBool1IsMutable(alloc / 1);
+                while (input.getBytesUntilLimit() > 0) {
+                  repeatedBool1_.addBoolean(input.readBool());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 114
+              case 120: {
+                boolean v = input.readBool();
+                ensureRepeatedBool2IsMutable();
+                repeatedBool2_.addBoolean(v);
+                break;
+              } // case 120
+              case 122: {
+                int length = input.readRawVarint32();
+                int limit = input.pushLimit(length);
+                int alloc = length > 4096 ? 4096 : length;
+                ensureRepeatedBool2IsMutable(alloc / 1);
+                while (input.getBytesUntilLimit() > 0) {
+                  repeatedBool2_.addBoolean(input.readBool());
+                }
+                input.popLimit(limit);
+                break;
+              } // case 122
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.IntList repeated1_ = emptyIntList();
+      private void ensureRepeated1IsMutable() {
+        if (!repeated1_.isModifiable()) {
+          repeated1_ = makeMutableCopy(repeated1_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @return A list containing the repeated1.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated1List() {
+        repeated1_.makeImmutable();
+        return repeated1_;
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @return The count of repeated1.
+       */
+      public int getRepeated1Count() {
+        return repeated1_.size();
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @param index The index of the element to return.
+       * @return The repeated1 at the given index.
+       */
+      public int getRepeated1(int index) {
+        return repeated1_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated1 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated1(
+          int index, int value) {
+
+        ensureRepeated1IsMutable();
+        repeated1_.setInt(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @param value The repeated1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated1(int value) {
+
+        ensureRepeated1IsMutable();
+        repeated1_.addInt(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @param values The repeated1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated1(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated1IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated1_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated1 = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated1() {
+        repeated1_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated2_ = emptyIntList();
+      private void ensureRepeated2IsMutable() {
+        if (!repeated2_.isModifiable()) {
+          repeated2_ = makeMutableCopy(repeated2_);
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @return A list containing the repeated2.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated2List() {
+        repeated2_.makeImmutable();
+        return repeated2_;
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @return The count of repeated2.
+       */
+      public int getRepeated2Count() {
+        return repeated2_.size();
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @param index The index of the element to return.
+       * @return The repeated2 at the given index.
+       */
+      public int getRepeated2(int index) {
+        return repeated2_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated2 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated2(
+          int index, int value) {
+
+        ensureRepeated2IsMutable();
+        repeated2_.setInt(index, value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @param value The repeated2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated2(int value) {
+
+        ensureRepeated2IsMutable();
+        repeated2_.addInt(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @param values The repeated2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated2(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated2IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated2_);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated2 = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated2() {
+        repeated2_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated3_ = emptyIntList();
+      private void ensureRepeated3IsMutable() {
+        if (!repeated3_.isModifiable()) {
+          repeated3_ = makeMutableCopy(repeated3_);
+        }
+        bitField0_ |= 0x00000004;
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @return A list containing the repeated3.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated3List() {
+        repeated3_.makeImmutable();
+        return repeated3_;
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @return The count of repeated3.
+       */
+      public int getRepeated3Count() {
+        return repeated3_.size();
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @param index The index of the element to return.
+       * @return The repeated3 at the given index.
+       */
+      public int getRepeated3(int index) {
+        return repeated3_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated3 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated3(
+          int index, int value) {
+
+        ensureRepeated3IsMutable();
+        repeated3_.setInt(index, value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @param value The repeated3 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated3(int value) {
+
+        ensureRepeated3IsMutable();
+        repeated3_.addInt(value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @param values The repeated3 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated3(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated3IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated3_);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated3 = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated3() {
+        repeated3_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated4_ = emptyIntList();
+      private void ensureRepeated4IsMutable() {
+        if (!repeated4_.isModifiable()) {
+          repeated4_ = makeMutableCopy(repeated4_);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @return A list containing the repeated4.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated4List() {
+        repeated4_.makeImmutable();
+        return repeated4_;
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @return The count of repeated4.
+       */
+      public int getRepeated4Count() {
+        return repeated4_.size();
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @param index The index of the element to return.
+       * @return The repeated4 at the given index.
+       */
+      public int getRepeated4(int index) {
+        return repeated4_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated4 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated4(
+          int index, int value) {
+
+        ensureRepeated4IsMutable();
+        repeated4_.setInt(index, value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @param value The repeated4 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated4(int value) {
+
+        ensureRepeated4IsMutable();
+        repeated4_.addInt(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @param values The repeated4 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated4(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated4IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated4_);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated4 = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated4() {
+        repeated4_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated5_ = emptyIntList();
+      private void ensureRepeated5IsMutable() {
+        if (!repeated5_.isModifiable()) {
+          repeated5_ = makeMutableCopy(repeated5_);
+        }
+        bitField0_ |= 0x00000010;
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @return A list containing the repeated5.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated5List() {
+        repeated5_.makeImmutable();
+        return repeated5_;
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @return The count of repeated5.
+       */
+      public int getRepeated5Count() {
+        return repeated5_.size();
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @param index The index of the element to return.
+       * @return The repeated5 at the given index.
+       */
+      public int getRepeated5(int index) {
+        return repeated5_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated5 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated5(
+          int index, int value) {
+
+        ensureRepeated5IsMutable();
+        repeated5_.setInt(index, value);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @param value The repeated5 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated5(int value) {
+
+        ensureRepeated5IsMutable();
+        repeated5_.addInt(value);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @param values The repeated5 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated5(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated5IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated5_);
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated5 = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated5() {
+        repeated5_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated6_ = emptyIntList();
+      private void ensureRepeated6IsMutable() {
+        if (!repeated6_.isModifiable()) {
+          repeated6_ = makeMutableCopy(repeated6_);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @return A list containing the repeated6.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated6List() {
+        repeated6_.makeImmutable();
+        return repeated6_;
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @return The count of repeated6.
+       */
+      public int getRepeated6Count() {
+        return repeated6_.size();
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @param index The index of the element to return.
+       * @return The repeated6 at the given index.
+       */
+      public int getRepeated6(int index) {
+        return repeated6_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated6 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated6(
+          int index, int value) {
+
+        ensureRepeated6IsMutable();
+        repeated6_.setInt(index, value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @param value The repeated6 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated6(int value) {
+
+        ensureRepeated6IsMutable();
+        repeated6_.addInt(value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @param values The repeated6 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated6(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated6IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated6_);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated6 = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated6() {
+        repeated6_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated7_ = emptyIntList();
+      private void ensureRepeated7IsMutable() {
+        if (!repeated7_.isModifiable()) {
+          repeated7_ = makeMutableCopy(repeated7_);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @return A list containing the repeated7.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated7List() {
+        repeated7_.makeImmutable();
+        return repeated7_;
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @return The count of repeated7.
+       */
+      public int getRepeated7Count() {
+        return repeated7_.size();
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @param index The index of the element to return.
+       * @return The repeated7 at the given index.
+       */
+      public int getRepeated7(int index) {
+        return repeated7_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated7 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated7(
+          int index, int value) {
+
+        ensureRepeated7IsMutable();
+        repeated7_.setInt(index, value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @param value The repeated7 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated7(int value) {
+
+        ensureRepeated7IsMutable();
+        repeated7_.addInt(value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @param values The repeated7 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated7(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated7IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated7_);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated7 = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated7() {
+        repeated7_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated8_ = emptyIntList();
+      private void ensureRepeated8IsMutable() {
+        if (!repeated8_.isModifiable()) {
+          repeated8_ = makeMutableCopy(repeated8_);
+        }
+        bitField0_ |= 0x00000080;
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @return A list containing the repeated8.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated8List() {
+        repeated8_.makeImmutable();
+        return repeated8_;
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @return The count of repeated8.
+       */
+      public int getRepeated8Count() {
+        return repeated8_.size();
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @param index The index of the element to return.
+       * @return The repeated8 at the given index.
+       */
+      public int getRepeated8(int index) {
+        return repeated8_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated8 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated8(
+          int index, int value) {
+
+        ensureRepeated8IsMutable();
+        repeated8_.setInt(index, value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @param value The repeated8 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated8(int value) {
+
+        ensureRepeated8IsMutable();
+        repeated8_.addInt(value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @param values The repeated8 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated8(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated8IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated8_);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated8 = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated8() {
+        repeated8_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated9_ = emptyIntList();
+      private void ensureRepeated9IsMutable() {
+        if (!repeated9_.isModifiable()) {
+          repeated9_ = makeMutableCopy(repeated9_);
+        }
+        bitField0_ |= 0x00000100;
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @return A list containing the repeated9.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated9List() {
+        repeated9_.makeImmutable();
+        return repeated9_;
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @return The count of repeated9.
+       */
+      public int getRepeated9Count() {
+        return repeated9_.size();
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @param index The index of the element to return.
+       * @return The repeated9 at the given index.
+       */
+      public int getRepeated9(int index) {
+        return repeated9_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated9 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated9(
+          int index, int value) {
+
+        ensureRepeated9IsMutable();
+        repeated9_.setInt(index, value);
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @param value The repeated9 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated9(int value) {
+
+        ensureRepeated9IsMutable();
+        repeated9_.addInt(value);
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @param values The repeated9 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated9(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated9IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated9_);
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated9 = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated9() {
+        repeated9_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000100);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeated10_ = emptyIntList();
+      private void ensureRepeated10IsMutable() {
+        if (!repeated10_.isModifiable()) {
+          repeated10_ = makeMutableCopy(repeated10_);
+        }
+        bitField0_ |= 0x00000200;
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @return A list containing the repeated10.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeated10List() {
+        repeated10_.makeImmutable();
+        return repeated10_;
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @return The count of repeated10.
+       */
+      public int getRepeated10Count() {
+        return repeated10_.size();
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @param index The index of the element to return.
+       * @return The repeated10 at the given index.
+       */
+      public int getRepeated10(int index) {
+        return repeated10_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @param index The index to set the value at.
+       * @param value The repeated10 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeated10(
+          int index, int value) {
+
+        ensureRepeated10IsMutable();
+        repeated10_.setInt(index, value);
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @param value The repeated10 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeated10(int value) {
+
+        ensureRepeated10IsMutable();
+        repeated10_.addInt(value);
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @param values The repeated10 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeated10(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeated10IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeated10_);
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 repeated10 = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeated10() {
+        repeated10_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString1_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedString1IsMutable() {
+        if (!repeatedString1_.isModifiable()) {
+          repeatedString1_ = new com.google.protobuf.LazyStringArrayList(repeatedString1_);
+        }
+        bitField0_ |= 0x00000400;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @return A list containing the repeatedString1.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedString1List() {
+        repeatedString1_.makeImmutable();
+        return repeatedString1_;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @return The count of repeatedString1.
+       */
+      public int getRepeatedString1Count() {
+        return repeatedString1_.size();
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString1 at the given index.
+       */
+      public java.lang.String getRepeatedString1(int index) {
+        return repeatedString1_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString1 at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedString1Bytes(int index) {
+        return repeatedString1_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString1 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString1(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString1IsMutable();
+        repeatedString1_.set(index, value);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param value The repeatedString1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString1(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString1IsMutable();
+        repeatedString1_.add(value);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param values The repeatedString1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString1(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedString1IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString1_);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString1() {
+        repeatedString1_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000400);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string1 = 11;</code>
+       * @param value The bytes of the repeatedString1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString1Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString1IsMutable();
+        repeatedString1_.add(value);
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString2_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedString2IsMutable() {
+        if (!repeatedString2_.isModifiable()) {
+          repeatedString2_ = new com.google.protobuf.LazyStringArrayList(repeatedString2_);
+        }
+        bitField0_ |= 0x00000800;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @return A list containing the repeatedString2.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedString2List() {
+        repeatedString2_.makeImmutable();
+        return repeatedString2_;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @return The count of repeatedString2.
+       */
+      public int getRepeatedString2Count() {
+        return repeatedString2_.size();
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString2 at the given index.
+       */
+      public java.lang.String getRepeatedString2(int index) {
+        return repeatedString2_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString2 at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedString2Bytes(int index) {
+        return repeatedString2_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString2 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString2(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString2IsMutable();
+        repeatedString2_.set(index, value);
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param value The repeatedString2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString2(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString2IsMutable();
+        repeatedString2_.add(value);
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param values The repeatedString2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString2(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedString2IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString2_);
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString2() {
+        repeatedString2_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000800);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string2 = 12;</code>
+       * @param value The bytes of the repeatedString2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString2Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString2IsMutable();
+        repeatedString2_.add(value);
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString3_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedString3IsMutable() {
+        if (!repeatedString3_.isModifiable()) {
+          repeatedString3_ = new com.google.protobuf.LazyStringArrayList(repeatedString3_);
+        }
+        bitField0_ |= 0x00001000;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @return A list containing the repeatedString3.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedString3List() {
+        repeatedString3_.makeImmutable();
+        return repeatedString3_;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @return The count of repeatedString3.
+       */
+      public int getRepeatedString3Count() {
+        return repeatedString3_.size();
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString3 at the given index.
+       */
+      public java.lang.String getRepeatedString3(int index) {
+        return repeatedString3_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString3 at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedString3Bytes(int index) {
+        return repeatedString3_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString3 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString3(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString3IsMutable();
+        repeatedString3_.set(index, value);
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param value The repeatedString3 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString3(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString3IsMutable();
+        repeatedString3_.add(value);
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param values The repeatedString3 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString3(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedString3IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString3_);
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString3() {
+        repeatedString3_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00001000);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string3 = 13;</code>
+       * @param value The bytes of the repeatedString3 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString3Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedString3IsMutable();
+        repeatedString3_.add(value);
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList repeatedBool1_ = emptyBooleanList();
+      private void ensureRepeatedBool1IsMutable() {
+        if (!repeatedBool1_.isModifiable()) {
+          repeatedBool1_ = makeMutableCopy(repeatedBool1_);
+        }
+        bitField0_ |= 0x00002000;
+      }
+      private void ensureRepeatedBool1IsMutable(int capacity) {
+        if (!repeatedBool1_.isModifiable()) {
+          repeatedBool1_ = makeMutableCopy(repeatedBool1_, capacity);
+        }
+        bitField0_ |= 0x00002000;
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @return A list containing the repeatedBool1.
+       */
+      public java.util.List<java.lang.Boolean>
+          getRepeatedBool1List() {
+        repeatedBool1_.makeImmutable();
+        return repeatedBool1_;
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @return The count of repeatedBool1.
+       */
+      public int getRepeatedBool1Count() {
+        return repeatedBool1_.size();
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedBool1 at the given index.
+       */
+      public boolean getRepeatedBool1(int index) {
+        return repeatedBool1_.getBoolean(index);
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedBool1 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedBool1(
+          int index, boolean value) {
+
+        ensureRepeatedBool1IsMutable();
+        repeatedBool1_.setBoolean(index, value);
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @param value The repeatedBool1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedBool1(boolean value) {
+
+        ensureRepeatedBool1IsMutable();
+        repeatedBool1_.addBoolean(value);
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @param values The repeatedBool1 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedBool1(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensureRepeatedBool1IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedBool1_);
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool1 = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedBool1() {
+        repeatedBool1_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList repeatedBool2_ = emptyBooleanList();
+      private void ensureRepeatedBool2IsMutable() {
+        if (!repeatedBool2_.isModifiable()) {
+          repeatedBool2_ = makeMutableCopy(repeatedBool2_);
+        }
+        bitField0_ |= 0x00004000;
+      }
+      private void ensureRepeatedBool2IsMutable(int capacity) {
+        if (!repeatedBool2_.isModifiable()) {
+          repeatedBool2_ = makeMutableCopy(repeatedBool2_, capacity);
+        }
+        bitField0_ |= 0x00004000;
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @return A list containing the repeatedBool2.
+       */
+      public java.util.List<java.lang.Boolean>
+          getRepeatedBool2List() {
+        repeatedBool2_.makeImmutable();
+        return repeatedBool2_;
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @return The count of repeatedBool2.
+       */
+      public int getRepeatedBool2Count() {
+        return repeatedBool2_.size();
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedBool2 at the given index.
+       */
+      public boolean getRepeatedBool2(int index) {
+        return repeatedBool2_.getBoolean(index);
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedBool2 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedBool2(
+          int index, boolean value) {
+
+        ensureRepeatedBool2IsMutable();
+        repeatedBool2_.setBoolean(index, value);
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @param value The repeatedBool2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedBool2(boolean value) {
+
+        ensureRepeatedBool2IsMutable();
+        repeatedBool2_.addBoolean(value);
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @param values The repeatedBool2 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedBool2(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensureRepeatedBool2IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedBool2_);
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool repeated_bool2 = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedBool2() {
+        repeatedBool2_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00004000);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields)
+    private static final com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<ManyRepeatedFields>
+        PARSER = new com.google.protobuf.AbstractParser<ManyRepeatedFields>() {
+      @java.lang.Override
+      public ManyRepeatedFields parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<ManyRepeatedFields> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<ManyRepeatedFields> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.ManyRepeatedFields getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor;
   private static final 
@@ -2140,6 +5329,11 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2160,10 +5354,18 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       "\tH\000\022\026\n\014oneof1_int32\030\031 \001(\005H\000\022K\n\004map1\030\032 \003(" +
       "\0132=.ComprehensiveTest.EdgeCasesMinimal.E" +
       "dgeCaseMinimal.Map1Entry\032+\n\tMap1Entry\022\013\n" +
-      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001B\010\n\006oneof1B" +
-      "P\n)com.rubberjam.protobuf.compiler.test." +
-      "edgeB!ComprehensiveTestEdgeCasesMinimalH" +
-      "\001"
+      "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001B\010\n\006oneof1\"" +
+      "\321\002\n\022ManyRepeatedFields\022\021\n\trepeated1\030\001 \003(" +
+      "\005\022\021\n\trepeated2\030\002 \003(\005\022\021\n\trepeated3\030\003 \003(\005\022" +
+      "\021\n\trepeated4\030\004 \003(\005\022\021\n\trepeated5\030\005 \003(\005\022\021\n" +
+      "\trepeated6\030\006 \003(\005\022\021\n\trepeated7\030\007 \003(\005\022\021\n\tr" +
+      "epeated8\030\010 \003(\005\022\021\n\trepeated9\030\t \003(\005\022\022\n\nrep" +
+      "eated10\030\n \003(\005\022\030\n\020repeated_string1\030\013 \003(\t\022" +
+      "\030\n\020repeated_string2\030\014 \003(\t\022\030\n\020repeated_st" +
+      "ring3\030\r \003(\t\022\026\n\016repeated_bool1\030\016 \003(\010\022\026\n\016r" +
+      "epeated_bool2\030\017 \003(\010BP\n)com.rubberjam.pro" +
+      "tobuf.compiler.test.edgeB!ComprehensiveT" +
+      "estEdgeCasesMinimalH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2181,6 +5383,12 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_Map1Entry_descriptor,
         new java.lang.String[] { "Key", "Value", });
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor =
+      getDescriptor().getMessageType(1);
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor,
+        new java.lang.String[] { "Repeated1", "Repeated2", "Repeated3", "Repeated4", "Repeated5", "Repeated6", "Repeated7", "Repeated8", "Repeated9", "Repeated10", "RepeatedString1", "RepeatedString2", "RepeatedString3", "RepeatedBool1", "RepeatedBool2", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
