@@ -42,5 +42,7 @@ message AllFieldTypes {
   optional bytes bytes_field = 15;
   
   
+  optional TestEnum enum_with_default = 27 [default = SECOND];
+  
 }
 

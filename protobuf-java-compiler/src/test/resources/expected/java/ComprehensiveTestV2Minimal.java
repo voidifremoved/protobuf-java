@@ -363,6 +363,17 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
      * @return The bytesField.
      */
     com.google.protobuf.ByteString getBytesField();
+
+    /**
+     * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+     * @return Whether the enumWithDefault field is set.
+     */
+    boolean hasEnumWithDefault();
+    /**
+     * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+     * @return The enumWithDefault.
+     */
+    com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum getEnumWithDefault();
   }
   /**
    * <pre>
@@ -392,6 +403,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
     private AllFieldTypes() {
       stringField_ = "";
       bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      enumWithDefault_ = 2;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -747,6 +759,24 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       return bytesField_;
     }
 
+    public static final int ENUM_WITH_DEFAULT_FIELD_NUMBER = 27;
+    private int enumWithDefault_ = 2;
+    /**
+     * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+     * @return Whether the enumWithDefault field is set.
+     */
+    @java.lang.Override public boolean hasEnumWithDefault() {
+      return ((bitField0_ & 0x00008000) != 0);
+    }
+    /**
+     * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+     * @return The enumWithDefault.
+     */
+    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum getEnumWithDefault() {
+      com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum result = com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.forNumber(enumWithDefault_);
+      return result == null ? com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.SECOND : result;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -805,6 +835,9 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       }
       if (((bitField0_ & 0x00004000) != 0)) {
         output.writeBytes(15, bytesField_);
+      }
+      if (((bitField0_ & 0x00008000) != 0)) {
+        output.writeEnum(27, enumWithDefault_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -873,6 +906,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (((bitField0_ & 0x00004000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(15, bytesField_);
+      }
+      if (((bitField0_ & 0x00008000) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeEnumSize(27, enumWithDefault_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -966,6 +1003,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         if (!getBytesField()
             .equals(other.getBytesField())) return false;
       }
+      if (hasEnumWithDefault() != other.hasEnumWithDefault()) return false;
+      if (hasEnumWithDefault()) {
+        if (enumWithDefault_ != other.enumWithDefault_) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1044,6 +1085,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (hasBytesField()) {
         hash = (37 * hash) + BYTES_FIELD_FIELD_NUMBER;
         hash = (53 * hash) + getBytesField().hashCode();
+      }
+      if (hasEnumWithDefault()) {
+        hash = (37 * hash) + ENUM_WITH_DEFAULT_FIELD_NUMBER;
+        hash = (53 * hash) + enumWithDefault_;
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1195,6 +1240,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         boolField_ = false;
         stringField_ = "";
         bytesField_ = com.google.protobuf.ByteString.EMPTY;
+        enumWithDefault_ = 2;
         return this;
       }
 
@@ -1289,6 +1335,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
           result.bytesField_ = bytesField_;
           to_bitField0_ |= 0x00004000;
         }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.enumWithDefault_ = enumWithDefault_;
+          to_bitField0_ |= 0x00008000;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -1350,6 +1400,9 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         }
         if (other.hasBytesField()) {
           setBytesField(other.getBytesField());
+        }
+        if (other.hasEnumWithDefault()) {
+          setEnumWithDefault(other.getEnumWithDefault());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1452,6 +1505,18 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
                 bitField0_ |= 0x00004000;
                 break;
               } // case 122
+              case 216: {
+                int tmpRaw = input.readEnum();
+                com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum tmpValue =
+                    com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.forNumber(tmpRaw);
+                if (tmpValue == null) {
+                  mergeUnknownVarintField(27, tmpRaw);
+                } else {
+                  enumWithDefault_ = tmpRaw;
+                  bitField0_ |= 0x00008000;
+                }
+                break;
+              } // case 216
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2157,6 +2222,46 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private int enumWithDefault_ = 2;
+      /**
+       * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+       * @return Whether the enumWithDefault field is set.
+       */
+      @java.lang.Override public boolean hasEnumWithDefault() {
+        return ((bitField0_ & 0x00008000) != 0);
+      }
+      /**
+       * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+       * @return The enumWithDefault.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum getEnumWithDefault() {
+        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum result = com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.forNumber(enumWithDefault_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum.SECOND : result;
+      }
+      /**
+       * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+       * @param value The enumWithDefault to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumWithDefault(com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestEnum value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x00008000;
+        enumWithDefault_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional .ComprehensiveTest.V2Minimal.TestEnum enum_with_default = 27 [default = SECOND];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnumWithDefault() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        enumWithDefault_ = 2;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V2Minimal.AllFieldTypes)
     }
 
@@ -2223,7 +2328,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v2_minimal.proto\022\033C" +
-      "omprehensiveTest.V2Minimal\"\331\002\n\rAllFieldT" +
+      "omprehensiveTest.V2Minimal\"\243\003\n\rAllFieldT" +
       "ypes\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_field" +
       "\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint64_f" +
       "ield\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014sint" +
@@ -2232,11 +2337,13 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       " \001(\017\022\026\n\016sfixed64_field\030\n \001(\020\022\023\n\013float_fi" +
       "eld\030\013 \001(\002\022\024\n\014double_field\030\014 \001(\001\022\022\n\nbool_" +
       "field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013byt" +
-      "es_field\030\017 \001(\014*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022" +
-      "\t\n\005FIRST\020\001\022\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALI" +
-      "AS_THIRD\020\003\032\002\010\001\032\002\020\001BM\n\'com.rubberjam.prot" +
-      "obuf.compiler.test.v2B\032ComprehensiveTest" +
-      "V2MinimalH\001\200\001\001\210\001\001"
+      "es_field\030\017 \001(\014\022H\n\021enum_with_default\030\033 \001(" +
+      "\0162%.ComprehensiveTest.V2Minimal.TestEnum" +
+      ":\006SECOND*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIR" +
+      "ST\020\001\022\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THI" +
+      "RD\020\003\032\002\010\001\032\002\020\001BM\n\'com.rubberjam.protobuf.c" +
+      "ompiler.test.v2B\032ComprehensiveTestV2Mini" +
+      "malH\001\200\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2247,7 +2354,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

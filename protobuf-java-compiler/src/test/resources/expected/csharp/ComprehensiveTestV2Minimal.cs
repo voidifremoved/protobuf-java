@@ -25,7 +25,7 @@ namespace ComprehensiveTest.V2Minimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjJfbWluaW1hbC5wcm90bxIbQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsItkCCg1BbGxGaWVsZFR5cGVzEhMKC2lu",
+            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsIqMDCg1BbGxGaWVsZFR5cGVzEhMKC2lu",
             "dDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVpbnQz",
             "Ml9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2ludDMy",
             "X2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhlZDMy",
@@ -33,14 +33,16 @@ namespace ComprehensiveTest.V2Minimal {
             "MzJfZmllbGQYCSABKA8SFgoOc2ZpeGVkNjRfZmllbGQYCiABKBASEwoLZmxv",
             "YXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJvb2xf",
             "ZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVzX2Zp",
-            "ZWxkGA8gASgMKlIKCFRlc3RFbnVtEgsKB1VOS05PV04QABIJCgVGSVJTVBAB",
-            "EgoKBlNFQ09ORBACEgkKBVRISVJEEAMSEwoLQUxJQVNfVEhJUkQQAxoCCAEa",
-            "AhABQk0KJ2NvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC52",
-            "MkIaQ29tcHJlaGVuc2l2ZVRlc3RWMk1pbmltYWxIAYABAYgBAQ=="));
+            "ZWxkGA8gASgMEkgKEWVudW1fd2l0aF9kZWZhdWx0GBsgASgOMiUuQ29tcHJl",
+            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsLlRlc3RFbnVtOgZTRUNPTkQqUgoIVGVz",
+            "dEVudW0SCwoHVU5LTk9XThAAEgkKBUZJUlNUEAESCgoGU0VDT05EEAISCQoF",
+            "VEhJUkQQAxITCgtBTElBU19USElSRBADGgIIARoCEAFCTQonY29tLnJ1YmJl",
+            "cmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYyQhpDb21wcmVoZW5zaXZl",
+            "VGVzdFYyTWluaW1hbEgBgAEBiAEB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V2Minimal.TestEnum), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Minimal.AllFieldTypes), global::ComprehensiveTest.V2Minimal.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Minimal.AllFieldTypes), global::ComprehensiveTest.V2Minimal.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault" }, null, null, null, null)
           }));
     }
     #endregion
@@ -117,6 +119,7 @@ namespace ComprehensiveTest.V2Minimal {
       boolField_ = other.boolField_;
       stringField_ = other.stringField_;
       bytesField_ = other.bytesField_;
+      enumWithDefault_ = other.enumWithDefault_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -538,6 +541,33 @@ namespace ComprehensiveTest.V2Minimal {
       bytesField_ = null;
     }
 
+    /// <summary>Field number for the "enum_with_default" field.</summary>
+    public const int EnumWithDefaultFieldNumber = 27;
+    private readonly static global::ComprehensiveTest.V2Minimal.TestEnum EnumWithDefaultDefaultValue = global::ComprehensiveTest.V2Minimal.TestEnum.Second;
+
+    private global::ComprehensiveTest.V2Minimal.TestEnum enumWithDefault_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ComprehensiveTest.V2Minimal.TestEnum EnumWithDefault {
+      get { if ((_hasBits0 & 8192) != 0) { return enumWithDefault_; } else { return EnumWithDefaultDefaultValue; } }
+      set {
+        _hasBits0 |= 8192;
+        enumWithDefault_ = value;
+      }
+    }
+    /// <summary>Gets whether the "enum_with_default" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasEnumWithDefault {
+      get { return (_hasBits0 & 8192) != 0; }
+    }
+    /// <summary>Clears the value of the "enum_with_default" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearEnumWithDefault() {
+      _hasBits0 &= ~8192;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -568,6 +598,7 @@ namespace ComprehensiveTest.V2Minimal {
       if (BoolField != other.BoolField) return false;
       if (StringField != other.StringField) return false;
       if (BytesField != other.BytesField) return false;
+      if (EnumWithDefault != other.EnumWithDefault) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -590,6 +621,7 @@ namespace ComprehensiveTest.V2Minimal {
       if (HasBoolField) hash ^= BoolField.GetHashCode();
       if (HasStringField) hash ^= StringField.GetHashCode();
       if (HasBytesField) hash ^= BytesField.GetHashCode();
+      if (HasEnumWithDefault) hash ^= EnumWithDefault.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -668,6 +700,10 @@ namespace ComprehensiveTest.V2Minimal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
+      if (HasEnumWithDefault) {
+        output.WriteRawTag(216, 1);
+        output.WriteEnum((int) EnumWithDefault);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -738,6 +774,10 @@ namespace ComprehensiveTest.V2Minimal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
+      if (HasEnumWithDefault) {
+        output.WriteRawTag(216, 1);
+        output.WriteEnum((int) EnumWithDefault);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -792,6 +832,9 @@ namespace ComprehensiveTest.V2Minimal {
       }
       if (HasBytesField) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesField);
+      }
+      if (HasEnumWithDefault) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumWithDefault);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -849,6 +892,9 @@ namespace ComprehensiveTest.V2Minimal {
       }
       if (other.HasBytesField) {
         BytesField = other.BytesField;
+      }
+      if (other.HasEnumWithDefault) {
+        EnumWithDefault = other.EnumWithDefault;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -929,6 +975,10 @@ namespace ComprehensiveTest.V2Minimal {
             BytesField = input.ReadBytes();
             break;
           }
+          case 216: {
+            EnumWithDefault = (global::ComprehensiveTest.V2Minimal.TestEnum) input.ReadEnum();
+            break;
+          }
         }
       }
     #endif
@@ -1006,6 +1056,10 @@ namespace ComprehensiveTest.V2Minimal {
           }
           case 122: {
             BytesField = input.ReadBytes();
+            break;
+          }
+          case 216: {
+            EnumWithDefault = (global::ComprehensiveTest.V2Minimal.TestEnum) input.ReadEnum();
             break;
           }
         }
