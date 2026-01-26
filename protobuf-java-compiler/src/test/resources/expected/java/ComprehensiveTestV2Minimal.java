@@ -396,6 +396,41 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
      * @return The floatWithDefault.
      */
     float getFloatWithDefault();
+
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return Whether the deprecatedField field is set.
+     */
+    @java.lang.Deprecated boolean hasDeprecatedField();
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return The deprecatedField.
+     */
+    @java.lang.Deprecated java.lang.String getDeprecatedField();
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return The bytes for deprecatedField.
+     */
+    @java.lang.Deprecated com.google.protobuf.ByteString
+        getDeprecatedFieldBytes();
   }
   /**
    * <pre>
@@ -428,6 +463,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       enumWithDefault_ = 2;
       doubleWithDefault_ = 3.14159D;
       floatWithDefault_ = 2.71828F;
+      deprecatedField_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -839,6 +875,73 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       return floatWithDefault_;
     }
 
+    public static final int DEPRECATED_FIELD_FIELD_NUMBER = 30;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object deprecatedField_ = "";
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return Whether the deprecatedField field is set.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public boolean hasDeprecatedField() {
+      return ((bitField0_ & 0x00040000) != 0);
+    }
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return The deprecatedField.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public java.lang.String getDeprecatedField() {
+      java.lang.Object ref = deprecatedField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          deprecatedField_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * Deprecated field
+     * </pre>
+     *
+     * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+     * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+     *     See comprehensive_test_v2_minimal.proto;l=50
+     * @return The bytes for deprecatedField.
+     */
+    @java.lang.Override
+    @java.lang.Deprecated public com.google.protobuf.ByteString
+        getDeprecatedFieldBytes() {
+      java.lang.Object ref = deprecatedField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        deprecatedField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -906,6 +1009,9 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       }
       if (((bitField0_ & 0x00020000) != 0)) {
         output.writeFloat(29, floatWithDefault_);
+      }
+      if (((bitField0_ & 0x00040000) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 30, deprecatedField_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -986,6 +1092,9 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       if (((bitField0_ & 0x00020000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(29, floatWithDefault_);
+      }
+      if (((bitField0_ & 0x00040000) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(30, deprecatedField_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -1095,6 +1204,11 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
             != java.lang.Float.floatToIntBits(
                 other.getFloatWithDefault())) return false;
       }
+      if (hasDeprecatedField() != other.hasDeprecatedField()) return false;
+      if (hasDeprecatedField()) {
+        if (!getDeprecatedField()
+            .equals(other.getDeprecatedField())) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -1187,6 +1301,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         hash = (37 * hash) + FLOAT_WITH_DEFAULT_FIELD_NUMBER;
         hash = (53 * hash) + java.lang.Float.floatToIntBits(
             getFloatWithDefault());
+      }
+      if (hasDeprecatedField()) {
+        hash = (37 * hash) + DEPRECATED_FIELD_FIELD_NUMBER;
+        hash = (53 * hash) + getDeprecatedField().hashCode();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -1341,6 +1459,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         enumWithDefault_ = 2;
         doubleWithDefault_ = 3.14159D;
         floatWithDefault_ = 2.71828F;
+        deprecatedField_ = "";
         return this;
       }
 
@@ -1447,6 +1566,10 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
           result.floatWithDefault_ = floatWithDefault_;
           to_bitField0_ |= 0x00020000;
         }
+        if (((from_bitField0_ & 0x00040000) != 0)) {
+          result.deprecatedField_ = deprecatedField_;
+          to_bitField0_ |= 0x00040000;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -1517,6 +1640,11 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         }
         if (other.hasFloatWithDefault()) {
           setFloatWithDefault(other.getFloatWithDefault());
+        }
+        if (other.hasDeprecatedField()) {
+          deprecatedField_ = other.deprecatedField_;
+          bitField0_ |= 0x00040000;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -1641,6 +1769,11 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
                 bitField0_ |= 0x00020000;
                 break;
               } // case 237
+              case 242: {
+                deprecatedField_ = input.readBytes();
+                bitField0_ |= 0x00040000;
+                break;
+              } // case 242
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -2466,6 +2599,122 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private java.lang.Object deprecatedField_ = "";
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @return Whether the deprecatedField field is set.
+       */
+      @java.lang.Deprecated public boolean hasDeprecatedField() {
+        return ((bitField0_ & 0x00040000) != 0);
+      }
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @return The deprecatedField.
+       */
+      @java.lang.Deprecated public java.lang.String getDeprecatedField() {
+        java.lang.Object ref = deprecatedField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            deprecatedField_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @return The bytes for deprecatedField.
+       */
+      @java.lang.Deprecated public com.google.protobuf.ByteString
+          getDeprecatedFieldBytes() {
+        java.lang.Object ref = deprecatedField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          deprecatedField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @param value The deprecatedField to set.
+       * @return This builder for chaining.
+       */
+      @java.lang.Deprecated public Builder setDeprecatedField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        deprecatedField_ = value;
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @return This builder for chaining.
+       */
+      @java.lang.Deprecated public Builder clearDeprecatedField() {
+        deprecatedField_ = getDefaultInstance().getDeprecatedField();
+        bitField0_ = (bitField0_ & ~0x00040000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Deprecated field
+       * </pre>
+       *
+       * <code>optional string deprecated_field = 30 [deprecated = true];</code>
+       * @deprecated ComprehensiveTest.V2Minimal.AllFieldTypes.deprecated_field is deprecated.
+       *     See comprehensive_test_v2_minimal.proto;l=50
+       * @param value The bytes for deprecatedField to set.
+       * @return This builder for chaining.
+       */
+      @java.lang.Deprecated public Builder setDeprecatedFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        deprecatedField_ = value;
+        bitField0_ |= 0x00040000;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V2Minimal.AllFieldTypes)
     }
 
@@ -2532,7 +2781,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v2_minimal.proto\022\033C" +
-      "omprehensiveTest.V2Minimal\"\356\003\n\rAllFieldT" +
+      "omprehensiveTest.V2Minimal\"\214\004\n\rAllFieldT" +
       "ypes\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_field" +
       "\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint64_f" +
       "ield\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014sint" +
@@ -2545,11 +2794,11 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       "\0162%.ComprehensiveTest.V2Minimal.TestEnum" +
       ":\006SECOND\022$\n\023double_with_default\030\034 \001(\001:\0073" +
       ".14159\022#\n\022float_with_default\030\035 \001(\002:\0072.71" +
-      "828*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIRST\020\001\022" +
-      "\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THIRD\020\003\032" +
-      "\002\010\001\032\002\020\001BM\n\'com.rubberjam.protobuf.compil" +
-      "er.test.v2B\032ComprehensiveTestV2MinimalH\001" +
-      "\200\001\001\210\001\001"
+      "828\022\034\n\020deprecated_field\030\036 \001(\tB\002\030\001*R\n\010Tes" +
+      "tEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIRST\020\001\022\n\n\006SECOND\020" +
+      "\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THIRD\020\003\032\002\010\001\032\002\020\001BM\n" +
+      "\'com.rubberjam.protobuf.compiler.test.v2" +
+      "B\032ComprehensiveTestV2MinimalH\001\200\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2560,7 +2809,7 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
