@@ -496,7 +496,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			printer.println("          set" + variables.get("capitalized_name") + "(other.get"
+			printer.println("            set" + variables.get("capitalized_name") + "(other.get"
 					+ variables.get("capitalized_name") + "());");
 		}
 		else
@@ -640,14 +640,15 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateOneofEqualsCode(PrintWriter printer)
 	{
-		printer.println("          if (" + variables.get("name") + "_ != other." + variables.get("name") + "_) return false;");
+		printer.println("          if (!get" + variables.get("capitalized_name") + "()");
+		printer.println("              .equals(other.get" + variables.get("capitalized_name") + "())) return false;");
 	}
 
 	@Override
 	public void generateOneofHashCode(PrintWriter printer)
 	{
 		printer.println("          hash = (37 * hash) + " + variables.get("constant_name") + ";");
-		printer.println("          hash = (53 * hash) + " + variables.get("name") + "_;");
+		printer.println("          hash = (53 * hash) + get" + variables.get("capitalized_name") + "().getNumber();");
 	}
 
 	@Override
