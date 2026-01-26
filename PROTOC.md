@@ -381,6 +381,10 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   They are only generated if `SupportUnknownEnumValue(descriptor)` returns true (typically for Proto3 open enums).
     *   This ensures that Proto2 (closed enums) does not expose raw integer accessors for repeated enums, maintaining parity with `protoc`.
 
+*   **ReservedRange vs EnumReservedRange**:
+    *   `DescriptorProto.ReservedRange` uses an **exclusive** `end` field (e.g. `reserved 2` means start=2, end=3).
+    *   `EnumDescriptorProto.EnumReservedRange` uses an **inclusive** `end` field (e.g. `reserved 2` means start=2, end=2).
+    *   The `Parser` must adjust the `end` value for message reserved ranges accordingly (increment by 1), while leaving enum reserved ranges as is (inclusive).
 *   **Float/Double Default Value Formatting**:
     *   For implicit default values of floating point fields (value 0), `protoc` generates explicit literals `0F` and `0D` respectively.
     *   Standard `String.format("%.9g", 0.0f)` (used by the parser's text format logic) produces `0.00000000`.

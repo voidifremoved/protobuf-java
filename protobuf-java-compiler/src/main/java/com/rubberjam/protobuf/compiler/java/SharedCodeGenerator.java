@@ -127,6 +127,12 @@ public class SharedCodeGenerator
 			fixMessage(fileBuilder.getMessageTypeBuilder(i), file.getMessageTypes().get(i));
 		}
 
+		// Fix services
+		for (int i = 0; i < file.getServices().size(); i++)
+		{
+			fixService(fileBuilder.getServiceBuilder(i), file.getServices().get(i));
+		}
+
 		// Clean options
 		if (fileBuilder.hasOptions())
 		{
@@ -169,6 +175,36 @@ public class SharedCodeGenerator
 		if (fieldDescriptor.isExtension())
 		{
 			fieldBuilder.setExtendee("." + fieldDescriptor.getContainingType().getFullName());
+		}
+	}
+
+	private void fixService(ServiceDescriptorProto.Builder serviceBuilder, ServiceDescriptor serviceDescriptor)
+	{
+		for (int i = 0; i < serviceDescriptor.getMethods().size(); i++)
+		{
+			fixMethod(serviceBuilder.getMethodBuilder(i), serviceDescriptor.getMethods().get(i));
+		}
+	}
+
+	private void fixMethod(MethodDescriptorProto.Builder methodBuilder, MethodDescriptor methodDescriptor)
+	{
+		methodBuilder.setInputType("." + methodDescriptor.getInputType().getFullName());
+		methodBuilder.setOutputType("." + methodDescriptor.getOutputType().getFullName());
+
+		// Check for uninterpreted deprecated option and convert to standard field
+		java.util.List<UninterpretedOption> uninterpretedOptions = methodDescriptor.getOptions().getUninterpretedOptionList();
+		for (UninterpretedOption option : uninterpretedOptions)
+		{
+			if (option.getNameCount() == 1 &&
+				option.getName(0).getNamePart().equals("deprecated") &&
+				option.getIdentifierValue().equals("true"))
+			{
+				methodBuilder.getOptionsBuilder().setDeprecated(true);
+				// Clear all uninterpreted options since we found the one we want
+				// (Assuming only one or we want to clean up)
+				methodBuilder.getOptionsBuilder().clearUninterpretedOption();
+				break;
+			}
 		}
 	}
 }
