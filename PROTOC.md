@@ -336,3 +336,14 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   **Serialization**: For repeated fields of fixed-size types (`FIXED32`, `SFIXED32`, `FLOAT`, `FIXED64`, `SFIXED64`, `DOUBLE`, `BOOL`), `getSerializedSize` uses an optimized calculation `size = fixedSize * list.size()` instead of iterating over the list. It also uses the public getter `get...List()` for this check.
     *   **Builder Capacity Method**: `ensure...IsMutable(int capacity)` is generated for **ALL** repeated fields of fixed-size types or boolean, regardless of whether they are explicitly declared as packed. This is required because `protoc` generates parsing code that uses this method for the packed wire format (tag 114) even for fields declared unpacked.
     *   **Packed Parsing Optimization**: When parsing packed data for these fields, the generated code uses `ensure...IsMutable(alloc / size)` to pre-allocate the list, where `alloc` is calculated from the byte length (capped at 4096).
+
+*   **Oneof vs Regular Field Parity**:
+    *   **Builder Setters**: Oneof fields invoke \`onChanged()\` inside the \`if\` block (before else). Regular fields invoke \`onChanged()\` at the very end of the method (outside if/else).
+    *   **Builder Clear**: Regular fields call \`onChanged()\` at the end of the method.
+    *   **Builder Merge**: Regular fields call \`onChanged()\` inside the final \`if (field != null)\` block (logic for setting presence bit), but do NOT call it unconditionally in the initial \`if (builder == null)\` block.
+    *   **Get Builder**: Regular fields explicitly set the presence bit (\`bitField0_ |= ...\`) and call \`onChanged()\` inside \`get...Builder()\` before returning the builder. Oneof fields rely on \`internalGet...FieldBuilder\` for side effects.
+    *   **Internal Get Field Builder**: For Regular fields, \`internalGet...FieldBuilder\` should NOT set the presence bit (leaving it to \`get...Builder\`). For Oneof fields, it sets the case variable and calls \`onChanged()\`.
+
+*   **Indentation Quirks**:
+    *   **Oneof Getters**: Inside the Message class, oneof field getters use 9 spaces of indentation for the return statement within the \`if\` block (e.g., \`         return ...\`), differing from the standard 8 spaces.
+    *   **Oneof Merging**: Inside \`Builder.mergeFrom\`, the \`merge...\` call within the switch case uses 12 spaces of indentation.

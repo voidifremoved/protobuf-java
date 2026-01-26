@@ -8,6 +8,7 @@ import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
 import com.rubberjam.protobuf.compiler.java.Helpers;
+import com.rubberjam.protobuf.compiler.java.StringUtils;
 
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -68,7 +69,17 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		variables.put("on_changed", "onChanged();");
 		variables.put("get_parser", "parser()");
 
-		if (InternalHelpers.hasHasbit(descriptor))
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			String oneofName = StringUtils.underscoresToCamelCase(descriptor.getContainingOneof().getName(), false);
+			variables.put("oneof_name", oneofName);
+			variables.put("oneof_case_variable", oneofName + "Case_");
+			variables.put("oneof_field_variable", oneofName + "_");
+			variables.put("set_has_field_bit_to_local", "");
+			variables.put("is_field_present_message", oneofName + "Case_ == " + descriptor.getNumber());
+		}
+		else if (InternalHelpers.hasHasbit(descriptor) || isSynthetic)
 		{
 			variables.put("set_has_field_bit_to_local", Helpers.generateSetBitToLocal(messageBitIndex));
 			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
@@ -155,8 +166,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateMembers(PrintWriter printer)
 	{
-		printer.println("    private " + variables.get("type") + " " + variables.get("name") + "_;");
-		FieldCommon.printExtraFieldInfo(variables, printer);
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
+		{
+			printer.println("    private " + variables.get("type") + " " + variables.get("name") + "_;");
+			FieldCommon.printExtraFieldInfo(variables, printer);
+		}
 
 		Helpers.writeDocComment(
 				printer,
@@ -189,8 +204,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
-		printer.println("      return " + variables.get("name") + "_ == null ? " + variables.get("type")
-				+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("         return (" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ";");
+			printer.println("      }");
+			printer.println("      return " + variables.get("type") + ".getDefaultInstance();");
+		}
+		else
+		{
+			printer.println("      return " + variables.get("name") + "_ == null ? " + variables.get("type")
+					+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		}
 		printer.println("    }");
 
 		Helpers.writeDocComment(
@@ -204,15 +229,26 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
 				+ variables.get("capitalized_name") + "OrBuilder() {");
-		printer.println("      return " + variables.get("name") + "_ == null ? " + variables.get("type")
-				+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("         return (" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ";");
+			printer.println("      }");
+			printer.println("      return " + variables.get("type") + ".getDefaultInstance();");
+		}
+		else
+		{
+			printer.println("      return " + variables.get("name") + "_ == null ? " + variables.get("type")
+					+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		}
 		printer.println("    }");
 	}
 
 	@Override
 	public void generateBuilderMembers(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() == null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("      private " + variables.get("type") + " " + variables.get("name") + "_;");
 		}
@@ -231,9 +267,21 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
+		// Message oneof fields in builder class SHOULD have @Override
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public boolean has"
 				+ variables.get("capitalized_name") + "() {");
-		printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        return " + variables.get("is_field_present_message") + ";");
+		}
+		else
+		{
+			printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
+		}
 		printer.println("      }");
 
 		Helpers.writeDocComment(
@@ -247,13 +295,38 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
+		// Message oneof fields in builder class SHOULD have @Override
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
 		printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
-		printer.println("          return " + variables.get("name") + "_ == null ? " + variables.get("type")
-				+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("            return (" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ";");
+			printer.println("          }");
+			printer.println("          return " + variables.get("type") + ".getDefaultInstance();");
+		}
+		else
+		{
+			printer.println("          return " + variables.get("name") + "_ == null ? " + variables.get("type")
+					+ ".getDefaultInstance() : " + variables.get("name") + "_;");
+		}
 		printer.println("        } else {");
-		printer.println("          return " + variables.get("name") + "Builder_.getMessage();");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("            return " + variables.get("name") + "Builder_.getMessage();");
+			printer.println("          }");
+			printer.println("          return " + variables.get("type") + ".getDefaultInstance();");
+		}
+		else
+		{
+			printer.println("          return " + variables.get("name") + "Builder_.getMessage();");
+		}
 		printer.println("        }");
 		printer.println("      }");
 
@@ -271,12 +344,33 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("          if (value == null) {");
 		printer.println("            throw new NullPointerException();");
 		printer.println("          }");
-		printer.println("          " + variables.get("name") + "_ = value;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("oneof_field_variable") + " = value;");
+		}
+		else
+		{
+			printer.println("          " + variables.get("name") + "_ = value;");
+		}
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("on_changed"));
+		}
 		printer.println("        } else {");
 		printer.println("          " + variables.get("name") + "Builder_.setMessage(value);");
 		printer.println("        }");
-		printer.println("        " + variables.get("set_has_field_bit_builder"));
-		printer.println("        " + variables.get("on_changed"));
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+		}
+		else
+		{
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
+		}
+		if (descriptor.getContainingOneof() == null || isSynthetic)
+		{
+			printer.println("        " + variables.get("on_changed"));
+		}
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -292,12 +386,33 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				+ variables.get("capitalized_name") + "(");
 		printer.println("          " + variables.get("type") + ".Builder builderForValue) {");
 		printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
-		printer.println("          " + variables.get("name") + "_ = builderForValue.build();");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("oneof_field_variable") + " = builderForValue.build();");
+		}
+		else
+		{
+			printer.println("          " + variables.get("name") + "_ = builderForValue.build();");
+		}
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("on_changed"));
+		}
 		printer.println("        } else {");
 		printer.println("          " + variables.get("name") + "Builder_.setMessage(builderForValue.build());");
 		printer.println("        }");
-		printer.println("        " + variables.get("set_has_field_bit_builder"));
-		printer.println("        " + variables.get("on_changed"));
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+		}
+		else
+		{
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
+		}
+		if (descriptor.getContainingOneof() == null || isSynthetic)
+		{
+			printer.println("        " + variables.get("on_changed"));
+		}
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -312,21 +427,53 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      " + variables.get("deprecation") + "public Builder merge"
 				+ variables.get("capitalized_name") + "(" + variables.get("type") + " value) {");
 		printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
-		printer.println("          if (" + variables.get("get_has_field_bit_builder") + " &&");
-		printer.println("            " + variables.get("name") + "_ != null &&");
-		printer.println("            " + variables.get("name") + "_ != " + variables.get("type")
-				+ ".getDefaultInstance()) {");
-		printer.println("            get" + variables.get("capitalized_name") + "Builder().mergeFrom(value);");
-		printer.println("          } else {");
-		printer.println("            " + variables.get("name") + "_ = value;");
-		printer.println("          }");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          if (" + variables.get("oneof_case_variable") + " == " + variables.get("number") + " &&");
+			printer.println("              " + variables.get("oneof_field_variable") + " != " + variables.get("type") + ".getDefaultInstance()) {");
+			printer.println("            " + variables.get("oneof_field_variable") + " = " + variables.get("type") + ".newBuilder((" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ")");
+			printer.println("                .mergeFrom(value).buildPartial();");
+			printer.println("          } else {");
+			printer.println("            " + variables.get("oneof_field_variable") + " = value;");
+			printer.println("          }");
+			printer.println("          " + variables.get("on_changed"));
+		}
+		else
+		{
+			printer.println("          if (" + variables.get("get_has_field_bit_builder") + " &&");
+			printer.println("            " + variables.get("name") + "_ != null &&");
+			printer.println("            " + variables.get("name") + "_ != " + variables.get("type")
+					+ ".getDefaultInstance()) {");
+			printer.println("            get" + variables.get("capitalized_name") + "Builder().mergeFrom(value);");
+			printer.println("          } else {");
+			printer.println("            " + variables.get("name") + "_ = value;");
+			printer.println("          }");
+		}
 		printer.println("        } else {");
-		printer.println("          " + variables.get("name") + "Builder_.mergeFrom(value);");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          if (" + variables.get("oneof_case_variable") + " == " + descriptor.getNumber() + ") {");
+			printer.println("            " + variables.get("name") + "Builder_.mergeFrom(value);");
+				printer.println("          } else {");
+				printer.println("            " + variables.get("name") + "Builder_.setMessage(value);");
+			printer.println("          }");
+		}
+		else
+		{
+			printer.println("          " + variables.get("name") + "Builder_.mergeFrom(value);");
+		}
 		printer.println("        }");
-		printer.println("        if (" + variables.get("name") + "_ != null) {");
-		printer.println("          " + variables.get("set_has_field_bit_builder"));
-		printer.println("          " + variables.get("on_changed"));
-		printer.println("        }");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+		}
+		else
+		{
+			printer.println("        if (" + variables.get("name") + "_ != null) {");
+			printer.println("          " + variables.get("set_has_field_bit_builder"));
+			printer.println("          " + variables.get("on_changed"));
+			printer.println("        }");
+		}
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -340,13 +487,32 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder clear"
 				+ variables.get("capitalized_name") + "() {");
-		printer.println("        " + variables.get("clear_has_field_bit_builder"));
-		printer.println("        " + variables.get("name") + "_ = null;");
-		printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
-		printer.println("          " + variables.get("name") + "Builder_.dispose();");
-		printer.println("          " + variables.get("name") + "Builder_ = null;");
-		printer.println("        }");
-		printer.println("        " + variables.get("on_changed"));
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
+			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("            " + variables.get("oneof_case_variable") + " = 0;");
+			printer.println("            " + variables.get("oneof_field_variable") + " = null;");
+			printer.println("            " + variables.get("on_changed"));
+			printer.println("          }");
+			printer.println("        } else {");
+			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("            " + variables.get("oneof_case_variable") + " = 0;");
+			printer.println("            " + variables.get("oneof_field_variable") + " = null;");
+			printer.println("          }");
+			printer.println("          " + variables.get("name") + "Builder_.clear();");
+			printer.println("        }");
+		}
+		else
+		{
+			printer.println("        " + variables.get("clear_has_field_bit_builder"));
+			printer.println("        " + variables.get("name") + "_ = null;");
+			printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
+			printer.println("          " + variables.get("name") + "Builder_.dispose();");
+			printer.println("          " + variables.get("name") + "Builder_ = null;");
+			printer.println("        }");
+			printer.println("        " + variables.get("on_changed"));
+		}
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -360,8 +526,11 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + ".Builder get"
 				+ variables.get("capitalized_name") + "Builder() {");
-		printer.println("        " + variables.get("set_has_field_bit_builder"));
-		printer.println("        " + variables.get("on_changed"));
+		if (descriptor.getContainingOneof() == null || isSynthetic)
+		{
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
+			printer.println("        " + variables.get("on_changed"));
+		}
 		printer.println("        return internalGet" + variables.get("capitalized_name")
 				+ "FieldBuilder().getBuilder();");
 		printer.println("      }");
@@ -374,13 +543,37 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 						descriptor,
 						context,
 						false));
+		// Message oneof fields in builder class SHOULD have @Override
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("      @java.lang.Override");
+		}
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + "OrBuilder get"
 				+ variables.get("capitalized_name") + "OrBuilder() {");
-		printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
-		printer.println("          return " + variables.get("name") + "Builder_.getMessageOrBuilder();");
-		printer.println("        } else {");
-		printer.println("          return " + variables.get("name") + "_ == null ?");
-		printer.println("              " + variables.get("type") + ".getDefaultInstance() : " + variables.get("name") + "_;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        if ((" + variables.get("oneof_case_variable") + " == " + variables.get("number") + ") && (" + variables.get("name") + "Builder_ != null)) {");
+			printer.println("          return " + variables.get("name") + "Builder_.getMessageOrBuilder();");
+			printer.println("        } else {");
+		}
+		else
+		{
+			printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
+			printer.println("          return " + variables.get("name") + "Builder_.getMessageOrBuilder();");
+			printer.println("        } else {");
+		}
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+			printer.println("            return (" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ";");
+			printer.println("          }");
+			printer.println("          return " + variables.get("type") + ".getDefaultInstance();");
+		}
+		else
+		{
+			printer.println("          return " + variables.get("name") + "_ == null ?");
+			printer.println("              " + variables.get("type") + ".getDefaultInstance() : " + variables.get("name") + "_;");
+		}
 		printer.println("        }");
 		printer.println("      }");
 
@@ -397,14 +590,41 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 				+ variables.get("type") + "OrBuilder> ");
 		printer.println("          internalGet" + variables.get("capitalized_name") + "FieldBuilder() {");
 		printer.println("        if (" + variables.get("name") + "Builder_ == null) {");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			String line1 = "          if (!(" + variables.get("oneof_case_variable") + " == " + variables.get("number") + ")) {";
+			printer.println(line1);
+			String line2 = "            " + variables.get("oneof_field_variable") + " = " + variables.get("type") + ".getDefaultInstance();";
+			printer.println(line2);
+			printer.println("          }");
+		}
 		printer.println("          " + variables.get("name") + "Builder_ = new com.google.protobuf.SingleFieldBuilder<");
 		printer.println("              " + variables.get("type") + ", " + variables.get("type") + ".Builder, "
 				+ variables.get("type") + "OrBuilder>(");
-		printer.println("                  get" + variables.get("capitalized_name") + "(),");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("                  (" + variables.get("type") + ") " + variables.get("oneof_field_variable") + ",");
+		}
+		else
+		{
+			printer.println("                  get" + variables.get("capitalized_name") + "(),");
+		}
 		printer.println("                  getParentForChildren(),");
 		printer.println("                  isClean());");
-		printer.println("          " + variables.get("name") + "_ = null;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("oneof_field_variable") + " = null;");
+		}
+		else
+		{
+			printer.println("          " + variables.get("name") + "_ = null;");
+		}
 		printer.println("        }");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+			printer.println("        " + variables.get("on_changed"));
+		}
 		printer.println("        return " + variables.get("name") + "Builder_;");
 		printer.println("      }");
 	}
@@ -418,42 +638,71 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() == null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("        " + variables.get("name") + "_ = null;");
 		}
 		printer.println("        if (" + variables.get("name") + "Builder_ != null) {");
-		printer.println("          " + variables.get("name") + "Builder_.dispose();");
-		printer.println("          " + variables.get("name") + "Builder_ = null;");
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("          " + variables.get("name") + "Builder_.clear();");
+		}
+		else
+		{
+			printer.println("          " + variables.get("name") + "Builder_.dispose();");
+			printer.println("          " + variables.get("name") + "Builder_ = null;");
+		}
 		printer.println("        }");
 	}
 
 	@Override
 	public void generateMergingCode(PrintWriter printer)
 	{
-		printer.println("        if (other.has" + variables.get("capitalized_name") + "()) {");
-		printer.println("          merge" + variables.get("capitalized_name") + "(other.get"
-				+ variables.get("capitalized_name") + "());");
-		printer.println("        }");
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("            merge" + variables.get("capitalized_name") + "(other.get"
+					+ variables.get("capitalized_name") + "());");
+		}
+		else
+		{
+			printer.println("        if (other.has" + variables.get("capitalized_name") + "()) {");
+			printer.println("          merge" + variables.get("capitalized_name") + "(other.get"
+					+ variables.get("capitalized_name") + "());");
+			printer.println("        }");
+		}
 	}
 
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
-		printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "Builder_ == null");
-		printer.println("              ? " + variables.get("name") + "_");
-		printer.println("              : " + variables.get("name") + "Builder_.build();");
-		if (getNumBitsForMessage() > 0)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			printer.println("          " + variables.get("set_has_field_bit_to_local") + ";");
+			printer.println("        if (" + variables.get("is_field_present_message") + " &&");
+			printer.println("            " + variables.get("name") + "Builder_ != null) {");
+			printer.println("          result." + variables.get("oneof_field_variable") + " = " + variables.get("name") + "Builder_.build();");
+			printer.println("        }");
 		}
-		printer.println("        }");
+		else
+		{
+			printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "Builder_ == null");
+			printer.println("              ? " + variables.get("name") + "_");
+			printer.println("              : " + variables.get("name") + "Builder_.build();");
+			if (getNumBitsForMessage() > 0)
+			{
+				printer.println("          " + variables.get("set_has_field_bit_to_local") + ";");
+			}
+			printer.println("        }");
+		}
 	}
 
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		if (descriptor.getType() == FieldDescriptor.Type.GROUP)
 		{
 			printer.println("                input.readGroup(" + variables.get("number") + ",");
@@ -466,16 +715,29 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("                    internalGet" + variables.get("capitalized_name") + "FieldBuilder().getBuilder(),");
 			printer.println("                    extensionRegistry);");
 		}
-		printer.println("                " + variables.get("set_has_field_bit_builder"));
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			printer.println("                " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+		}
+		else
+		{
+			printer.println("                " + variables.get("set_has_field_bit_builder"));
+		}
 	}
 
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		String valueVar = "get" + variables.get("capitalized_name") + "()";
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			valueVar = "(" + variables.get("type") + ") " + variables.get("oneof_field_variable");
+		}
 		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", get"
-				+ variables.get("capitalized_name") + "());");
+		printer.println("          .compute" + variables.get("group_or_message") + "Size(" + variables.get("number") + ", "
+				+ valueVar + ");");
 		printer.println("      }");
 	}
 
@@ -483,14 +745,25 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	public void generateWriteToCode(PrintWriter printer)
 	{
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
-		printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", get"
-				+ variables.get("capitalized_name") + "());");
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		String valueVar = "get" + variables.get("capitalized_name") + "()";
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			valueVar = "(" + variables.get("type") + ") " + variables.get("oneof_field_variable");
+		}
+		printer.println("        output.write" + variables.get("group_or_message") + "(" + variables.get("number") + ", "
+				+ valueVar + ");");
 		printer.println("      }");
 	}
 
 	@Override
 	public void generateFieldBuilderInitializationCode(PrintWriter printer)
 	{
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
+		{
+			return;
+		}
 		printer.println("          internalGet" + variables.get("capitalized_name") + "FieldBuilder();");
 	}
 

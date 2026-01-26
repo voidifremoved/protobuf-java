@@ -294,6 +294,10 @@ public class MessageBuilderGenerator
 						&& !gen.getDescriptor().isMapField()))
 				{
 					boolean isSynthetic = gen.getDescriptor().toProto().hasProto3Optional() && gen.getDescriptor().toProto().getProto3Optional();
+					if (gen.getDescriptor().getContainingOneof() != null && !isSynthetic)
+					{
+						continue;
+					}
 					boolean fieldNeedsBitField = !gen.getDescriptor().isMapField() && !gen.getDescriptor().isRepeated() && (gen.getDescriptor().getContainingOneof() == null || isSynthetic);
 					if (gen.getDescriptor().hasPresence() && fieldNeedsBitField && !toBitFieldDeclared) {
 						printer.println("        int to_" + getBitFieldName(i) + " = 0;");
@@ -321,6 +325,13 @@ public class MessageBuilderGenerator
 					String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
 					printer.println("        result." + oneofName + "Case_ = " + oneofName + "Case_;");
 					printer.println("        result." + oneofName + "_ = this." + oneofName + "_;");
+					for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+					{
+						if (field.getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE)
+						{
+							fieldGenerators.get(field).generateBuildingCode(printer);
+						}
+					}
 				}
 			}
 			printer.println("      }");

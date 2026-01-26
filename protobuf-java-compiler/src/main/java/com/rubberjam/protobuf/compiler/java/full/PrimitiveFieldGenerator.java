@@ -506,7 +506,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		String valueVar = variables.get("name") + "_";
 		if (descriptor.getContainingOneof() != null)
 		{
-			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			if (variables.get("type").equals(variables.get("boxed_type")))
+			{
+				valueVar = "(" + variables.get("type") + ") " + variables.get("oneof_field_variable");
+			}
+			else
+			{
+				valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			}
 			printer.println("        size += com.google.protobuf.CodedOutputStream");
 			printer.println("          .compute" + variables.get("capitalized_type") + "Size(");
 			printer.println("              " + variables.get("number") + ", " + valueVar + ");");
@@ -523,11 +530,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateWriteToCode(PrintWriter printer)
 	{
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
 		String valueVar = variables.get("name") + "_";
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			if (variables.get("type").equals(variables.get("boxed_type")))
+			{
+				valueVar = "(" + variables.get("type") + ") " + variables.get("oneof_field_variable");
+			}
+			else
+			{
+				valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			}
 			printer.println("        output.write" + variables.get("capitalized_type") + "(");
 			printer.println("            " + variables.get("number") + ", " + valueVar + ");");
 		}
@@ -726,7 +741,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		String valueVar = variables.get("name") + "_";
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			if (variables.get("type").equals(variables.get("boxed_type")))
+			{
+				valueVar = "(" + variables.get("type") + ") " + variables.get("oneof_field_variable");
+			}
+			else
+			{
+				valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
+			}
 			printer.println("        size += com.google.protobuf.CodedOutputStream");
 			printer.println("          .compute" + variables.get("capitalized_type") + "Size(");
 			printer.println("              " + variables.get("number") + ", " + valueVar + ");");
