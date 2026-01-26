@@ -193,6 +193,27 @@ public final class DocComment
 	private static void findLocationAndWriteComment(
 			PrintWriter out, FileDescriptor file, List<Integer> path, Context context, boolean kdoc, String indentPrefix)
 	{
+		SourceCodeInfo.Location location = getLocation(file, path, context);
+		if (location != null)
+		{
+			writeDocCommentBodyForLocation(out, location, context.getOptions(), kdoc, indentPrefix);
+		}
+	}
+
+	private static void writeDeprecatedJavadoc(
+			PrintWriter out, FieldDescriptor field, Context context)
+	{
+		out.print(" * @deprecated " + field.getFullName() + " is deprecated.\n");
+		SourceCodeInfo.Location location = getLocation(field.getFile(), getPath(field), context);
+		if (location != null && location.getSpanCount() > 0)
+		{
+			out.print(" *     See " + field.getFile().getName() + ";l=" + location.getSpan(0) + "\n");
+		}
+	}
+
+	private static SourceCodeInfo.Location getLocation(
+			FileDescriptor file, List<Integer> path, Context context)
+	{
 		SourceCodeInfo sourceCodeInfo = (context.getSourceProto() != null)
 				? context.getSourceProto().getSourceCodeInfo()
 				: file.toProto().getSourceCodeInfo();
@@ -200,10 +221,10 @@ public final class DocComment
 		{
 			if (location.getPathList().equals(path))
 			{
-				writeDocCommentBodyForLocation(out, location, context.getOptions(), kdoc, indentPrefix);
-				return;
+				return location;
 			}
 		}
+		return null;
 	}
 
 	private static List<Integer> getPath(Descriptor descriptor)
@@ -372,6 +393,10 @@ public final class DocComment
 				if (field.toProto().getOptions().hasPacked())
 				{
 					fieldOptions.add("packed = " + field.toProto().getOptions().getPacked());
+				}
+				if (field.toProto().getOptions().getDeprecated())
+				{
+					fieldOptions.add("deprecated = true");
 				}
 
 				if (!fieldOptions.isEmpty())
@@ -598,7 +623,7 @@ public final class DocComment
 		writeDebugString(out, field, context, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
-			out.print(" * @deprecated\n");
+			writeDeprecatedJavadoc(out, field, context);
 		}
 		switch (type)
 		{
@@ -685,7 +710,7 @@ public final class DocComment
 		writeDebugString(out, field, context, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
-			out.print(" * @deprecated\n");
+			writeDeprecatedJavadoc(out, field, context);
 		}
 		switch (type)
 		{

@@ -391,6 +391,10 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
         *   If the input is simple decimal, it returns the raw input string to preserve precision and avoid noise (e.g. preventing `2.71828` -> `2.71828008`).
     *   `DocComment.java` and `Helpers.java` were updated to use the `FieldDescriptorProto.getDefaultValue()` string directly (instead of formatting the parsed double) to ensure the generated code and Javadoc match `protoc` output exactly.
 
+*   **Deprecated Field Javadoc**:
+    *   The generated debug string for deprecated fields must include the `[deprecated = true]` option (e.g., `optional string deprecated_field = 30 [deprecated = true];`).
+    *   An `@deprecated` tag must be generated with a specific message format: `<FieldFullName> is deprecated.\n *     See <FileName>;l=<LineNumber>`.
+    *   The line number in the `See ...` link uses 0-based indexing (e.g., `l=50` for a field on line 51), matching `SourceCodeInfo.Location.span[0]`.
 *   **Reserved Range End**:
     *   `DescriptorProto.ReservedRange` (used for message reserved ranges) treats the `end` field as **exclusive** (start to end-1). The parser must increment the user-provided end value by 1.
     *   For `reserved 2`, proto file has `start=2`, `end=2`. `ReservedRange` must have `start=2`, `end=3`.
