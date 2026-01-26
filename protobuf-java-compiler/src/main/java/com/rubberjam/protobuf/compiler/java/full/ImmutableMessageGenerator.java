@@ -78,8 +78,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		// Add Oneof field names for oneofs
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
+			if (!context.isSyntheticOneof(oneof))
 			{
 				printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
 			}
@@ -238,8 +237,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
 		{
 			// Maps, repeated fields, and oneof fields don't need bitField0_ in the message class
-			boolean isSynthetic = field.getContainingOneof() != null && field.toProto().hasProto3Optional() && field.toProto().getProto3Optional();
-			if (field.isMapField() || field.isRepeated() || (field.getContainingOneof() != null && !isSynthetic))
+			if (field.isMapField() || field.isRepeated() || context.isRealOneof(field))
 			{
 				continue;
 			}
@@ -257,8 +255,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
+			if (!context.isSyntheticOneof(oneof))
 			{
 				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), false);
 				printer.println("    private int " + camelCaseName + "Case_ = 0;");
@@ -329,7 +326,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		}
 		printer.println();
 
-		if (descriptor.getFile().getOptions().getOptimizeFor() != com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.CODE_SIZE)
+		if (context.hasGeneratedMethods(descriptor))
 		{
 			// isInitialized()
 			printer.println("    private byte memoizedIsInitialized = -1;");
@@ -415,17 +412,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			printer.println();
 			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 			{
-				boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
-				boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
-				if (!isRealOneof)
+				if (!context.isRealOneof(fieldGenerator.getDescriptor()))
 				{
 					fieldGenerator.generateEqualsCode(printer);
 				}
 			}
 			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 			{
-				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-				if (!isSynthetic)
+				if (!context.isSyntheticOneof(oneof))
 				{
 					String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
 					printer.println("      if (!get" + camelCaseName + "Case().equals(other.get" + camelCaseName + "Case())) return false;");
@@ -461,17 +455,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			printer.println("      hash = (19 * hash) + getDescriptor().hashCode();");
 			for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 			{
-				boolean isSyntheticOneof = fieldGenerator.getDescriptor().toProto().hasProto3Optional() && fieldGenerator.getDescriptor().toProto().getProto3Optional();
-				boolean isRealOneof = fieldGenerator.getDescriptor().getContainingOneof() != null && !isSyntheticOneof;
-				if (!isRealOneof)
+				if (!context.isRealOneof(fieldGenerator.getDescriptor()))
 				{
 					fieldGenerator.generateHashCode(printer);
 				}
 			}
 			for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 			{
-				boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-				if (!isSynthetic)
+				if (!context.isSyntheticOneof(oneof))
 				{
 					printer.println("      switch (" + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_) {");
 					for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
@@ -692,8 +683,7 @@ public class ImmutableMessageGenerator extends MessageGenerator
 
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
+			if (!context.isSyntheticOneof(oneof))
 			{
 				printer.println();
 				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);

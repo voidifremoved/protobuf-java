@@ -80,6 +80,22 @@ public final class Context
 				|| descriptor.getFile().getOptions().getOptimizeFor() != FileOptions.OptimizeMode.CODE_SIZE;
 	}
 
+	public boolean isSyntheticOneof(OneofDescriptor oneof)
+	{
+		return oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
+	}
+
+	public boolean isSyntheticOneofField(FieldDescriptor field)
+	{
+		return field.getContainingOneof() != null && field.toProto().hasProto3Optional()
+				&& field.toProto().getProto3Optional();
+	}
+
+	public boolean isRealOneof(FieldDescriptor field)
+	{
+		return field.getContainingOneof() != null && !isSyntheticOneofField(field);
+	}
+
 	private void initializeFieldGeneratorInfo(FileDescriptor file)
 	{
 		for (Descriptor messageType : file.getMessageTypes())
