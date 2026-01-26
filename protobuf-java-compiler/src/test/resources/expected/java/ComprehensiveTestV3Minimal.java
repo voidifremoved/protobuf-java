@@ -284,6 +284,108 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * @return The bytesField.
      */
     com.google.protobuf.ByteString getBytesField();
+
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    int getEnumFieldValue();
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField();
+
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    java.util.List<java.lang.Integer> getRepeatedInt32List();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    int getRepeatedInt32Count();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    int getRepeatedInt32(int index);
+
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    java.util.List<java.lang.String>
+        getRepeatedStringList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    int getRepeatedStringCount();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    java.lang.String getRepeatedString(int index);
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    int getRepeatedEnumCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    int getRepeatedEnumValue(int index);
   }
   /**
    * <pre>
@@ -313,6 +415,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     private AllFieldTypesV3() {
       stringField_ = "";
       bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      enumField_ = 0;
+      repeatedInt32_ = emptyIntList();
+      repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      repeatedEnum_ = emptyIntList();
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -533,6 +640,170 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return bytesField_;
     }
 
+    public static final int ENUM_FIELD_FIELD_NUMBER = 16;
+    private int enumField_ = 0;
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enum numeric value on the wire for enumField.
+     */
+    @java.lang.Override public int getEnumFieldValue() {
+      return enumField_;
+    }
+    /**
+     * <pre>
+     * Enum and message types
+     * </pre>
+     *
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * @return The enumField.
+     */
+    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField() {
+      com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(enumField_);
+      return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+    }
+
+    public static final int REPEATED_INT32_FIELD_NUMBER = 18;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedInt32_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return A list containing the repeatedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getRepeatedInt32List() {
+      return repeatedInt32_;
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @return The count of repeatedInt32.
+     */
+    public int getRepeatedInt32Count() {
+      return repeatedInt32_.size();
+    }
+    /**
+     * <pre>
+     * Repeated fields
+     * </pre>
+     *
+     * <code>repeated int32 repeated_int32 = 18;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedInt32 at the given index.
+     */
+    public int getRepeatedInt32(int index) {
+      return repeatedInt32_.getInt(index);
+    }
+    private int repeatedInt32MemoizedSerializedSize = -1;
+
+    public static final int REPEATED_STRING_FIELD_NUMBER = 19;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.LazyStringArrayList repeatedString_ =
+        com.google.protobuf.LazyStringArrayList.emptyList();
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return A list containing the repeatedString.
+     */
+    public com.google.protobuf.ProtocolStringList
+        getRepeatedStringList() {
+      return repeatedString_;
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @return The count of repeatedString.
+     */
+    public int getRepeatedStringCount() {
+      return repeatedString_.size();
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedString at the given index.
+     */
+    public java.lang.String getRepeatedString(int index) {
+      return repeatedString_.get(index);
+    }
+    /**
+     * <code>repeated string repeated_string = 19;</code>
+     * @param index The index of the value to return.
+     * @return The bytes of the repeatedString at the given index.
+     */
+    public com.google.protobuf.ByteString
+        getRepeatedStringBytes(int index) {
+      return repeatedString_.getByteString(index);
+    }
+
+    public static final int REPEATED_ENUM_FIELD_NUMBER = 20;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList repeatedEnum_ =
+        emptyIntList();
+    private static final     com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> repeatedEnum_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>() {
+              public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 convert(int from) {
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(from);
+                return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return The count of repeatedEnum.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumCount() {
+      return repeatedEnum_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the element to return.
+     * @return The repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index) {
+      return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @return A list containing the enum numeric values on the wire for repeatedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+    getRepeatedEnumValueList() {
+      return repeatedEnum_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of repeatedEnum at the given index.
+     */
+    @java.lang.Override
+    public int getRepeatedEnumValue(int index) {
+      return repeatedEnum_.getInt(index);
+    }
+    private int repeatedEnumMemoizedSerializedSize;
+
     public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
         java.nio.ByteBuffer data)
         throws com.google.protobuf.InvalidProtocolBufferException {
@@ -678,6 +949,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         boolField_ = false;
         stringField_ = "";
         bytesField_ = com.google.protobuf.ByteString.EMPTY;
+        enumField_ = 0;
+        repeatedInt32_ = emptyIntList();
+        repeatedString_ =
+            com.google.protobuf.LazyStringArrayList.emptyList();
+        repeatedEnum_ = emptyIntList();
         return this;
       }
 
@@ -755,6 +1031,21 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         }
         if (((from_bitField0_ & 0x00004000) != 0)) {
           result.bytesField_ = bytesField_;
+        }
+        if (((from_bitField0_ & 0x00008000) != 0)) {
+          result.enumField_ = enumField_;
+        }
+        if (((from_bitField0_ & 0x00010000) != 0)) {
+          repeatedInt32_.makeImmutable();
+          result.repeatedInt32_ = repeatedInt32_;
+        }
+        if (((from_bitField0_ & 0x00020000) != 0)) {
+          repeatedString_.makeImmutable();
+          result.repeatedString_ = repeatedString_;
+        }
+        if (((from_bitField0_ & 0x00040000) != 0)) {
+          repeatedEnum_.makeImmutable();
+          result.repeatedEnum_ = repeatedEnum_;
         }
       }
 
@@ -1316,6 +1607,436 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private int enumField_ = 0;
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return The enum numeric value on the wire for enumField.
+       */
+      @java.lang.Override public int getEnumFieldValue() {
+        return enumField_;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @param value The enum numeric value on the wire for enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumFieldValue(int value) {
+        enumField_ = value;
+        bitField0_ |= 0x00008000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return The enumField.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(enumField_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @param value The enumField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEnumField(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        bitField0_ |= 0x00008000;
+        enumField_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Enum and message types
+       * </pre>
+       *
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEnumField() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        enumField_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedInt32_ = emptyIntList();
+      private void ensureRepeatedInt32IsMutable() {
+        if (!repeatedInt32_.isModifiable()) {
+          repeatedInt32_ = makeMutableCopy(repeatedInt32_);
+        }
+        bitField0_ |= 0x00010000;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return A list containing the repeatedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getRepeatedInt32List() {
+        repeatedInt32_.makeImmutable();
+        return repeatedInt32_;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return The count of repeatedInt32.
+       */
+      public int getRepeatedInt32Count() {
+        return repeatedInt32_.size();
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedInt32 at the given index.
+       */
+      public int getRepeatedInt32(int index) {
+        return repeatedInt32_.getInt(index);
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedInt32(
+          int index, int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.setInt(index, value);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param value The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedInt32(int value) {
+
+        ensureRepeatedInt32IsMutable();
+        repeatedInt32_.addInt(value);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @param values The repeatedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureRepeatedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedInt32_);
+        bitField0_ |= 0x00010000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Repeated fields
+       * </pre>
+       *
+       * <code>repeated int32 repeated_int32 = 18;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedInt32() {
+        repeatedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00010000);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.LazyStringArrayList repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+      private void ensureRepeatedStringIsMutable() {
+        if (!repeatedString_.isModifiable()) {
+          repeatedString_ = new com.google.protobuf.LazyStringArrayList(repeatedString_);
+        }
+        bitField0_ |= 0x00020000;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return A list containing the repeatedString.
+       */
+      public com.google.protobuf.ProtocolStringList
+          getRepeatedStringList() {
+        repeatedString_.makeImmutable();
+        return repeatedString_;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return The count of repeatedString.
+       */
+      public int getRepeatedStringCount() {
+        return repeatedString_.size();
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedString at the given index.
+       */
+      public java.lang.String getRepeatedString(int index) {
+        return repeatedString_.get(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index of the value to return.
+       * @return The bytes of the repeatedString at the given index.
+       */
+      public com.google.protobuf.ByteString
+          getRepeatedStringBytes(int index) {
+        return repeatedString_.getByteString(index);
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedString(
+          int index, java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.set(index, value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param values The repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedString(
+          java.lang.Iterable<java.lang.String> values) {
+        ensureRepeatedStringIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, repeatedString_);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedString() {
+        repeatedString_ =
+          com.google.protobuf.LazyStringArrayList.emptyList();
+        bitField0_ = (bitField0_ & ~0x00020000);;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated string repeated_string = 19;</code>
+       * @param value The bytes of the repeatedString to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        ensureRepeatedStringIsMutable();
+        repeatedString_.add(value);
+        bitField0_ |= 0x00020000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList repeatedEnum_ = emptyIntList();
+      private void ensureRepeatedEnumIsMutable() {
+        if (!repeatedEnum_.isModifiable()) {
+          repeatedEnum_ = makeMutableCopy(repeatedEnum_);
+        }
+        bitField0_ |= 0x00040000;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the repeatedEnum.
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return The count of repeatedEnum.
+       */
+      public int getRepeatedEnumCount() {
+        return repeatedEnum_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the element to return.
+       * @return The repeatedEnum at the given index.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index) {
+        return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnum(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnum(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> values) {
+        ensureRepeatedEnumIsMutable();
+        for (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value : values) {
+          repeatedEnum_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRepeatedEnum() {
+        repeatedEnum_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00040000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @return A list containing the enum numeric values on the wire for repeatedEnum.
+       */
+      public java.util.List<java.lang.Integer>
+      getRepeatedEnumValueList() {
+        repeatedEnum_.makeImmutable();
+        return repeatedEnum_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of repeatedEnum at the given index.
+       */
+      public int getRepeatedEnumValue(int index) {
+        return repeatedEnum_.getInt(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param index The index to set the value at.
+       * @param value The enum numeric value on the wire for repeatedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRepeatedEnumValue(
+          int index, int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param value The enum numeric value on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addRepeatedEnumValue(int value) {
+        ensureRepeatedEnumIsMutable();
+        repeatedEnum_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * @param values The enum numeric values on the wire for repeatedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllRepeatedEnumValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensureRepeatedEnumIsMutable();
+        for (int value : values) {
+          repeatedEnum_.addInt(value);
+        }
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
     }
 
@@ -1382,7 +2103,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal\"\333\002\n\017AllField" +
+      "omprehensiveTest.V3Minimmal\"\213\004\n\017AllField" +
       "TypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fi" +
       "eld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint6" +
       "4_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014s" +
@@ -1391,11 +2112,16 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       "d\030\t \001(\017\022\026\n\016sfixed64_field\030\n \001(\020\022\023\n\013float" +
       "_field\030\013 \001(\002\022\024\n\014double_field\030\014 \001(\001\022\022\n\nbo" +
       "ol_field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013" +
-      "bytes_field\030\017 \001(\014*O\n\nTestEnumV3\022\020\n\014TEST_" +
-      "UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND" +
-      "\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.prot" +
-      "obuf.compiler.test.v3B\032ComprehensiveTest" +
-      "V3MinimalH\002\200\001\000\210\001\000b\006proto3"
+      "bytes_field\030\017 \001(\014\022<\n\nenum_field\030\020 \001(\0162(." +
+      "ComprehensiveTest.V3Minimmal.TestEnumV3\022" +
+      "\026\n\016repeated_int32\030\022 \003(\005\022\027\n\017repeated_stri" +
+      "ng\030\023 \003(\t\022?\n\rrepeated_enum\030\024 \003(\0162(.Compre" +
+      "hensiveTest.V3Minimmal.TestEnumV3*O\n\nTes" +
+      "tEnumV3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020" +
+      "\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'co" +
+      "m.rubberjam.protobuf.compiler.test.v3B\032C" +
+      "omprehensiveTestV3MinimalH\002\200\001\000\210\001\000b\006proto" +
+      "3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1406,7 +2132,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

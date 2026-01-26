@@ -42,7 +42,17 @@ message AllFieldTypesV3 {
   string string_field = 14;
   bytes bytes_field = 15;
   
+  // Enum and message types
+  TestEnumV3 enum_field = 16;
 
+  
+  // Repeated fields
+  repeated int32 repeated_int32 = 18;
+  repeated string repeated_string = 19;
+  repeated TestEnumV3 repeated_enum = 20;
+  
+
+  
 
 }
 

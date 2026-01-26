@@ -25,7 +25,7 @@ namespace ComprehensiveTest.V3Minimmal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCLbAgoPQWxsRmllbGRUeXBlc1YzEhMK",
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCKLBAoPQWxsRmllbGRUeXBlc1YzEhMK",
             "C2ludDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVp",
             "bnQzMl9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2lu",
             "dDMyX2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhl",
@@ -33,14 +33,18 @@ namespace ComprehensiveTest.V3Minimmal {
             "eGVkMzJfZmllbGQYCSABKA8SFgoOc2ZpeGVkNjRfZmllbGQYCiABKBASEwoL",
             "ZmxvYXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJv",
             "b2xfZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVz",
-            "X2ZpZWxkGA8gASgMKk8KClRlc3RFbnVtVjMSEAoMVEVTVF9VTktOT1dOEAAS",
-            "DgoKVEVTVF9GSVJTVBABEg8KC1RFU1RfU0VDT05EEAISDgoKVEVTVF9USElS",
-            "RBADQk0KJ2NvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC52",
-            "M0IaQ29tcHJlaGVuc2l2ZVRlc3RWM01pbmltYWxIAoABAIgBAGIGcHJvdG8z"));
+            "X2ZpZWxkGA8gASgMEjwKCmVudW1fZmllbGQYECABKA4yKC5Db21wcmVoZW5z",
+            "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjMSFgoOcmVwZWF0ZWRfaW50",
+            "MzIYEiADKAUSFwoPcmVwZWF0ZWRfc3RyaW5nGBMgAygJEj8KDXJlcGVhdGVk",
+            "X2VudW0YFCADKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLlRl",
+            "c3RFbnVtVjMqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VOS05PV04QABIOCgpU",
+            "RVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpURVNUX1RISVJEEANC",
+            "TQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYzQhpD",
+            "b21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum" }, null, null, null, null)
           }));
     }
     #endregion
@@ -116,6 +120,10 @@ namespace ComprehensiveTest.V3Minimmal {
       boolField_ = other.boolField_;
       stringField_ = other.stringField_;
       bytesField_ = other.bytesField_;
+      enumField_ = other.enumField_;
+      repeatedInt32_ = other.repeatedInt32_.Clone();
+      repeatedString_ = other.repeatedString_.Clone();
+      repeatedEnum_ = other.repeatedEnum_.Clone();
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -314,6 +322,57 @@ namespace ComprehensiveTest.V3Minimmal {
       }
     }
 
+    /// <summary>Field number for the "enum_field" field.</summary>
+    public const int EnumFieldFieldNumber = 16;
+    private global::ComprehensiveTest.V3Minimmal.TestEnumV3 enumField_ = global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown;
+    /// <summary>
+    /// Enum and message types
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ComprehensiveTest.V3Minimmal.TestEnumV3 EnumField {
+      get { return enumField_; }
+      set {
+        enumField_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "repeated_int32" field.</summary>
+    public const int RepeatedInt32FieldNumber = 18;
+    private static readonly pb::FieldCodec<int> _repeated_repeatedInt32_codec
+        = pb::FieldCodec.ForInt32(146);
+    private readonly pbc::RepeatedField<int> repeatedInt32_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// Repeated fields
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> RepeatedInt32 {
+      get { return repeatedInt32_; }
+    }
+
+    /// <summary>Field number for the "repeated_string" field.</summary>
+    public const int RepeatedStringFieldNumber = 19;
+    private static readonly pb::FieldCodec<string> _repeated_repeatedString_codec
+        = pb::FieldCodec.ForString(154);
+    private readonly pbc::RepeatedField<string> repeatedString_ = new pbc::RepeatedField<string>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<string> RepeatedString {
+      get { return repeatedString_; }
+    }
+
+    /// <summary>Field number for the "repeated_enum" field.</summary>
+    public const int RepeatedEnumFieldNumber = 20;
+    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimmal.TestEnumV3> _repeated_repeatedEnum_codec
+        = pb::FieldCodec.ForEnum(162, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x);
+    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> repeatedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> RepeatedEnum {
+      get { return repeatedEnum_; }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -344,6 +403,10 @@ namespace ComprehensiveTest.V3Minimmal {
       if (BoolField != other.BoolField) return false;
       if (StringField != other.StringField) return false;
       if (BytesField != other.BytesField) return false;
+      if (EnumField != other.EnumField) return false;
+      if(!repeatedInt32_.Equals(other.repeatedInt32_)) return false;
+      if(!repeatedString_.Equals(other.repeatedString_)) return false;
+      if(!repeatedEnum_.Equals(other.repeatedEnum_)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -366,6 +429,10 @@ namespace ComprehensiveTest.V3Minimmal {
       if (BoolField != false) hash ^= BoolField.GetHashCode();
       if (StringField.Length != 0) hash ^= StringField.GetHashCode();
       if (BytesField.Length != 0) hash ^= BytesField.GetHashCode();
+      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) hash ^= EnumField.GetHashCode();
+      hash ^= repeatedInt32_.GetHashCode();
+      hash ^= repeatedString_.GetHashCode();
+      hash ^= repeatedEnum_.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -444,6 +511,13 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
+      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) EnumField);
+      }
+      repeatedInt32_.WriteTo(output, _repeated_repeatedInt32_codec);
+      repeatedString_.WriteTo(output, _repeated_repeatedString_codec);
+      repeatedEnum_.WriteTo(output, _repeated_repeatedEnum_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -514,6 +588,13 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
+      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+        output.WriteRawTag(128, 1);
+        output.WriteEnum((int) EnumField);
+      }
+      repeatedInt32_.WriteTo(ref output, _repeated_repeatedInt32_codec);
+      repeatedString_.WriteTo(ref output, _repeated_repeatedString_codec);
+      repeatedEnum_.WriteTo(ref output, _repeated_repeatedEnum_codec);
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -569,6 +650,12 @@ namespace ComprehensiveTest.V3Minimmal {
       if (BytesField.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesField);
       }
+      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumField);
+      }
+      size += repeatedInt32_.CalculateSize(_repeated_repeatedInt32_codec);
+      size += repeatedString_.CalculateSize(_repeated_repeatedString_codec);
+      size += repeatedEnum_.CalculateSize(_repeated_repeatedEnum_codec);
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
       }
@@ -626,6 +713,12 @@ namespace ComprehensiveTest.V3Minimmal {
       if (other.BytesField.Length != 0) {
         BytesField = other.BytesField;
       }
+      if (other.EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+        EnumField = other.EnumField;
+      }
+      repeatedInt32_.Add(other.repeatedInt32_);
+      repeatedString_.Add(other.repeatedString_);
+      repeatedEnum_.Add(other.repeatedEnum_);
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
 
@@ -705,6 +798,24 @@ namespace ComprehensiveTest.V3Minimmal {
             BytesField = input.ReadBytes();
             break;
           }
+          case 128: {
+            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
+            break;
+          }
+          case 146:
+          case 144: {
+            repeatedInt32_.AddEntriesFrom(input, _repeated_repeatedInt32_codec);
+            break;
+          }
+          case 154: {
+            repeatedString_.AddEntriesFrom(input, _repeated_repeatedString_codec);
+            break;
+          }
+          case 162:
+          case 160: {
+            repeatedEnum_.AddEntriesFrom(input, _repeated_repeatedEnum_codec);
+            break;
+          }
         }
       }
     #endif
@@ -782,6 +893,24 @@ namespace ComprehensiveTest.V3Minimmal {
           }
           case 122: {
             BytesField = input.ReadBytes();
+            break;
+          }
+          case 128: {
+            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
+            break;
+          }
+          case 146:
+          case 144: {
+            repeatedInt32_.AddEntriesFrom(ref input, _repeated_repeatedInt32_codec);
+            break;
+          }
+          case 154: {
+            repeatedString_.AddEntriesFrom(ref input, _repeated_repeatedString_codec);
+            break;
+          }
+          case 162:
+          case 160: {
+            repeatedEnum_.AddEntriesFrom(ref input, _repeated_repeatedEnum_codec);
             break;
           }
         }
