@@ -89,7 +89,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		variables.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
 		variables.put("on_changed", "onChanged();");
 
-		if (descriptor.getContainingOneof() != null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			String oneofName = StringUtils.underscoresToCamelCase(descriptor.getContainingOneof().getName(), false);
 			variables.put("oneof_name", oneofName);
@@ -99,7 +100,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			variables.put("is_field_present_message", oneofName + "Case_ == " + descriptor.getNumber());
 			variables.put("is_other_field_present_message", "other.has" + variables.get("capitalized_name") + "()");
 		}
-		else if (InternalHelpers.hasHasbit(descriptor))
+		else if (InternalHelpers.hasHasbit(descriptor) || isSynthetic)
 		{
 			variables.put("set_has_field_bit_to_local", Helpers.generateSetBitToLocal(messageBitIndex) + ";");
 			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
@@ -176,7 +177,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public int getNumBitsForMessage()
 	{
-		return com.google.protobuf.InternalHelpers.hasHasbit(descriptor) ? 1 : 0;
+		return (com.google.protobuf.InternalHelpers.hasHasbit(descriptor) || (descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional())) ? 1 : 0;
 	}
 
 	@Override
@@ -221,7 +222,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateMembers(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() == null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("    private " + variables.get("field_type") + " " + variables.get("name") + "_ = "
 					+ variables.get("default") + ";");
@@ -264,7 +266,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("      if (" + variables.get("is_field_present_message") + ") {");
 			printer.println("        return (" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ";");
@@ -282,7 +284,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	public void generateBuilderMembers(PrintWriter printer)
 	{
 		JavaType javaType = StringUtils.getJavaType(descriptor);
-		if (descriptor.getContainingOneof() == null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("      private " + variables.get("field_type") + " " + variables.get("name") + "_ "
 					+ variables.get("default_init") + ";");
@@ -300,14 +303,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			if (descriptor.getContainingOneof() == null)
+			if (descriptor.getContainingOneof() == null || isSynthetic)
 			{
 				printer.println("      @java.lang.Override");
 			}
 			printer.println("      " + variables.get("deprecation") + "public boolean has"
 					+ variables.get("capitalized_name") + "() {");
 			// For oneof fields, use oneofCase_ check; for regular fields, use bitField0_ check
-			String hasCheck = descriptor.getContainingOneof() != null 
+			String hasCheck = (descriptor.getContainingOneof() != null && !isSynthetic)
 					? variables.get("is_field_present_message")
 					: variables.get("get_has_field_bit_builder");
 			printer.println("        return " + hasCheck + ";");
@@ -325,13 +328,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						false,
 						false,
 						false));
-		if (descriptor.getContainingOneof() == null)
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("      @java.lang.Override");
 		}
 		printer.println("      " + variables.get("deprecation") + "public " + variables.get("type") + " get"
 				+ variables.get("capitalized_name") + "() {");
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("        if (" + variables.get("is_field_present_message") + ") {");
 			printer.println("          return (" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ";");
@@ -365,7 +368,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println();
 		}
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
 			printer.println("        " + variables.get("oneof_field_variable") + " = value;");
@@ -392,7 +395,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      " + variables.get("deprecation") + "public Builder clear"
 				+ variables.get("capitalized_name") + "() {");
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("        if (" + variables.get("is_field_present_message") + ") {");
 			printer.println("          " + variables.get("oneof_case_variable") + " = 0;");
@@ -436,7 +439,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderClearCode(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() == null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() == null || isSynthetic)
 		{
 			printer.println("        " + variables.get("name") + "_ = " + variables.get("default") + ";");
 		}
@@ -445,7 +449,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateMergingCode(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() != null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("            set" + variables.get("capitalized_name") + "(other.get"
 					+ variables.get("capitalized_name") + "());");
@@ -462,7 +467,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() != null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			return;
 		}
@@ -478,7 +484,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-		if (descriptor.getContainingOneof() != null)
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("                " + variables.get("oneof_field_variable") + " = input.read"
 					+ variables.get("capitalized_type") + "();");
@@ -714,18 +721,21 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializationCode(PrintWriter printer)
 	{
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		printer.println("      if (" + variables.get("is_field_present_message") + ") {");
 		String valueVar = variables.get("name") + "_";
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			valueVar = "(" + variables.get("type") + ")((" + variables.get("boxed_type") + ") " + variables.get("oneof_field_variable") + ")";
-			printer.println("        output.write" + variables.get("capitalized_type") + "(");
-			printer.println("            " + variables.get("number") + ", " + valueVar + ");");
+			printer.println("        size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("capitalized_type") + "Size(");
+			printer.println("              " + variables.get("number") + ", " + valueVar + ");");
 		}
 		else
 		{
-			printer.println("        output.write" + variables.get("capitalized_type") + "(" + variables.get("number")
-					+ ", " + valueVar + ");");
+			printer.println("        size += com.google.protobuf.CodedOutputStream");
+			printer.println("          .compute" + variables.get("capitalized_type") + "Size("
+					+ variables.get("number") + ", " + valueVar + ");");
 		}
 		printer.println("      }");
 	}
