@@ -668,7 +668,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 		if (variables.containsKey("value_null_check")) {
 			printer.println("        " + variables.get("value_null_check"));
-		} else if (variables.containsKey("null_check")) {
+		} else {
 			printer.println();
 		}
 		if (useBuildMethod) {
