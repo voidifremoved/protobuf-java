@@ -264,63 +264,19 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println("    private int " + camelCaseName + "Case_ = 0;");
 				printer.println("    @SuppressWarnings(\"serial\")");
 				printer.println("    private java.lang.Object " + camelCaseName + "_;");
-			}
-		}
 
-		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
-		{
-			boolean isSynthetic = oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-			if (!isSynthetic)
-			{
-				String camelCaseName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
-				printer.println("    public enum " + camelCaseName + "Case");
+				String enumName = StringUtils.underscoresToCamelCase(oneof.getName(), true);
+				printer.println("    public enum " + enumName + "Case");
 				printer.println("        implements com.google.protobuf.Internal.EnumLite,");
 				printer.println("            com.google.protobuf.AbstractMessage.InternalOneOfEnum {");
 				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
 				{
 					printer.println("      " + field.getName().toUpperCase() + "(" + field.getNumber() + "),");
 				}
-				String oneofNameUpper = oneof.getName().toUpperCase();
-				// Special case for parity with protoc: oneof names starting with numbers or keywords might be handled differently,
-				// but based on test failure NESTEDONEOF vs NESTED_ONEOF, it seems protoc simply uppercases without underscores if it matches specific patterns or just general behavior?
-				// Actually, test failure was: Expected: NESTEDONEOF_NOT_SET, Actual: NESTED_ONEOF_NOT_SET
-				// The proto oneof name is likely "nested_oneof".
-				// protoc java generator seems to convert "nested_oneof" to "NESTEDONEOF" for the NOT_SET enum value?
-				// No, that's unusual. Standard protobuf usually preserves underscores in UPPER_CASE.
-				// Unless "nested_oneof" was "nestedOneof" in proto?
 
-				// Let's check the proto definition if possible. But based on `underscoresToCamelCase` usage, the input `oneof.getName()` is the name from .proto.
-				// If name is "nested_oneof", toUpperCase() gives "NESTED_ONEOF".
-				// If name is "nestedOneof", toUpperCase() gives "NESTEDONEOF".
-
-				// Wait, if proto has "oneof nested_oneof", then `oneof.getName()` returns "nested_oneof".
-				// `underscoresToCamelCase("nested_oneof", true)` -> "NestedOneof".
-				// `underscoresToCamelCase("nested_oneof", false)` -> "nestedOneof".
-
-				// If the test expects "NESTEDONEOF_NOT_SET", then the oneof name in proto might be "nestedOneof" (camelCase).
-				// Or the transformation logic removes underscores.
-
-				// Let's look at `comprehensive_test_nested.proto`.
-				// I don't have easy access to verify the content right now without `read_file`.
-				// But assuming standard behavior:
-				// If proto has `oneof nestedOneof`, then `getName()` is `nestedOneof`. `toUpperCase()` is `NESTEDONEOF`.
-				// If proto has `oneof nested_oneof`, then `getName()` is `nested_oneof`. `toUpperCase()` is `NESTED_ONEOF`.
-
-				// The actual error was:
-				// Expected: NESTEDONEOF_NOT_SET
-				// Actual:   NESTED_ONEOF_NOT_SET
-
-				// This implies my code generated `NESTED_ONEOF_NOT_SET`.
-				// So `oneof.getName()` was `nested_oneof` (or similar with underscore).
-				// And expected is `NESTEDONEOF`.
-
-				// This implies `oneof.getName()` should have underscores removed before uppercasing?
-				// Or maybe I should use the CamelCase name and uppercase that?
-				// CamelCase: NestedOneof -> NESTEDONEOF (if simple uppercase).
-
-				printer.println("      " + camelCaseName.toUpperCase() + "_NOT_SET(0);");
+				printer.println("      " + enumName.toUpperCase() + "_NOT_SET(0);");
 				printer.println("      private final int value;");
-				printer.println("      private " + camelCaseName + "Case(int value) {");
+				printer.println("      private " + enumName + "Case(int value) {");
 				printer.println("        this.value = value;");
 				printer.println("      }");
 				printer.println("      /**");
@@ -329,17 +285,17 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println("       * @deprecated Use {@link #forNumber(int)} instead.");
 				printer.println("       */");
 				printer.println("      @java.lang.Deprecated");
-				printer.println("      public static " + camelCaseName + "Case valueOf(int value) {");
+				printer.println("      public static " + enumName + "Case valueOf(int value) {");
 				printer.println("        return forNumber(value);");
 				printer.println("      }");
 				printer.println();
-				printer.println("      public static " + camelCaseName + "Case forNumber(int value) {");
+				printer.println("      public static " + enumName + "Case forNumber(int value) {");
 				printer.println("        switch (value) {");
 				for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
 				{
 					printer.println("          case " + field.getNumber() + ": return " + field.getName().toUpperCase() + ";");
 				}
-				printer.println("          case 0: return " + camelCaseName.toUpperCase() + "_NOT_SET;");
+				printer.println("          case 0: return " + enumName.toUpperCase() + "_NOT_SET;");
 				printer.println("          default: return null;");
 				printer.println("        }");
 				printer.println("      }");
@@ -348,10 +304,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println("      }");
 				printer.println("    };");
 				printer.println();
-				printer.println("    public " + camelCaseName + "Case");
-				printer.println("    get" + camelCaseName + "Case() {");
-				printer.println("      return " + camelCaseName + "Case.forNumber(");
-				printer.println("          " + StringUtils.underscoresToCamelCase(oneof.getName(), false) + "Case_);");
+				printer.println("    public " + enumName + "Case");
+				printer.println("    get" + enumName + "Case() {");
+				printer.println("      return " + enumName + "Case.forNumber(");
+				printer.println("          " + camelCaseName + "Case_);");
 				printer.println("    }");
 				printer.println();
 			}
