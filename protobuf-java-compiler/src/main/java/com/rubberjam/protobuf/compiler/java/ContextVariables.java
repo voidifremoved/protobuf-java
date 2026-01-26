@@ -75,6 +75,8 @@ public class ContextVariables {
     private String valueOrBuilderType;
     private String valueType;
     private String valueWireType;
+    private String wireTypeParameters;
+    private String wireValueType;
     private String writeString;
 
     public String getFieldName() { return fieldName; }
@@ -298,6 +300,12 @@ public class ContextVariables {
 
     public String getValueWireType() { return valueWireType; }
     public void setValueWireType(String valueWireType) { this.valueWireType = valueWireType; }
+
+    public String getWireTypeParameters() { return wireTypeParameters; }
+    public void setWireTypeParameters(String wireTypeParameters) { this.wireTypeParameters = wireTypeParameters; }
+
+    public String getWireValueType() { return wireValueType; }
+    public void setWireValueType(String wireValueType) { this.wireValueType = wireValueType; }
 
     public String getWriteString() { return writeString; }
     public void setWriteString(String writeString) { this.writeString = writeString; }

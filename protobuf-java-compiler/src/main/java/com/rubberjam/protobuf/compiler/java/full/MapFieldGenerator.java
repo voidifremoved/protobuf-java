@@ -108,6 +108,17 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 
 		variables.setTypeParameters( variables.getBoxedKeyType() + ", " + variables.getBoxedValueType());
 
+		if (StringUtils.getJavaType(value) == JavaType.ENUM)
+		{
+			variables.setWireValueType( "java.lang.Integer");
+			variables.setWireTypeParameters( variables.getBoxedKeyType() + ", java.lang.Integer");
+		}
+		else
+		{
+			variables.setWireValueType( variables.getBoxedValueType());
+			variables.setWireTypeParameters( variables.getTypeParameters());
+		}
+
 		FieldDescriptor keyField = descriptor.getMessageType().findFieldByName("key");
 		FieldDescriptor valueField = descriptor.getMessageType().findFieldByName("value");
 
@@ -121,7 +132,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		{
 			variables.setNullCheck( "if (key == null) { throw new NullPointerException(\"map key\"); }");
 		}
-		if (Helpers.isReferenceType(StringUtils.getJavaType(valueField)))
+		if (Helpers.isReferenceType(StringUtils.getJavaType(valueField)) && StringUtils.getJavaType(valueField) != JavaType.ENUM)
 		{
 			variables.setValueNullCheck( "if (value == null) { throw new NullPointerException(\"map value\"); }");
 		}
@@ -231,7 +242,10 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		if (Boolean.parseBoolean(variables.getIsValueNullable())) {
 			printer.println("        /* nullable */");
 			if (printer instanceof IndentPrinter) {
-				((IndentPrinter) printer).printNoIndent(variables.getValueType() + " defaultValue);\n");
+				FieldDescriptor valueField = descriptor.getMessageType().findFieldByName("value");
+				boolean isEnum = valueField.getJavaType() == FieldDescriptor.JavaType.ENUM;
+				String separator = isEnum ? "         " : " ";
+				((IndentPrinter) printer).printNoIndent(variables.getValueType() + separator + "defaultValue);\n");
 			} else {
 				printer.println(variables.getValueType() + "         defaultValue);");
 			}
@@ -248,6 +262,46 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("    " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrThrow(");
 		printer.println("        " + variables.getKeyType() + " key);");
+
+		if (StringUtils.getJavaType(descriptor.getMessageType().findFieldByName("value")) == JavaType.ENUM) {
+			printer.println("    /**");
+			printer.println("     * Use {@link #get" + variables.getCapitalizedName() + "ValueMap()} instead.");
+			printer.println("     */");
+			printer.println("    @java.lang.Deprecated");
+			printer.println("    java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "Value();");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "ValueMap();");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    int get" + variables.getCapitalizedName() + "ValueOrDefault(");
+			printer.println("        " + variables.getKeyType() + " key,");
+			printer.println("        int defaultValue);");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    int get" + variables.getCapitalizedName() + "ValueOrThrow(");
+			printer.println("        " + variables.getKeyType() + " key);");
+		}
 	}
 
 	@Override
@@ -255,19 +309,23 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	{
 		printer.println("    private static final class " + variables.getCapitalizedName() + "DefaultEntryHolder {");
 		printer.println("      static final com.google.protobuf.MapEntry<");
-		printer.println("          " + variables.getTypeParameters() + "> defaultEntry =");
+		printer.println("          " + variables.getWireTypeParameters() + "> defaultEntry =");
 		printer.println("              com.google.protobuf.MapEntry");
-		printer.println("              .<" + variables.getTypeParameters() + ">newDefaultInstance(");
+		printer.println("              .<" + variables.getWireTypeParameters() + ">newDefaultInstance(");
 		printer.println("                  " + variables.getDescriptorCall() + ", ");
 		printer.println("                  " + variables.getKeyWireType() + ",");
 		printer.println("                  " + variables.getKeyDefaultValue() + ",");
 		printer.println("                  " + variables.getValueWireType() + ",");
-		printer.println("                  " + variables.getValueDefaultValue() + ");");
+		if (StringUtils.getJavaType(descriptor.getMessageType().findFieldByName("value")) == JavaType.ENUM) {
+			printer.println("                  " + variables.getValueDefaultValue() + ".getNumber());");
+		} else {
+			printer.println("                  " + variables.getValueDefaultValue() + ");");
+		}
 		printer.println("    }");
 		printer.println("    @SuppressWarnings(\"serial\")");
 		printer.println("    private com.google.protobuf.MapField<");
-		printer.println("        " + variables.getTypeParameters() + "> " + variables.getName() + "_;");
-		printer.println("    private com.google.protobuf.MapField<" + variables.getTypeParameters() + ">");
+		printer.println("        " + variables.getWireTypeParameters() + "> " + variables.getName() + "_;");
+		printer.println("    private com.google.protobuf.MapField<" + variables.getWireTypeParameters() + ">");
 		printer.println("    internalGet" + variables.getCapitalizedName() + "() {");
 		printer.println("      if (" + variables.getName() + "_ == null) {");
 		printer.println("        return com.google.protobuf.MapField.emptyMapField(");
@@ -275,6 +333,25 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      }");
 		printer.println("      return " + variables.getName() + "_;");
 		printer.println("    }");
+
+		boolean isEnum = StringUtils.getJavaType(descriptor.getMessageType().findFieldByName("value")) == JavaType.ENUM;
+
+		if (isEnum) {
+			String valueType = variables.getValueType();
+			printer.println("    private static final");
+			printer.println("    com.google.protobuf.Internal.MapAdapter.Converter<");
+			printer.println("        java.lang.Integer, " + valueType + "> " + variables.getName() + "ValueConverter =");
+			printer.println("            com.google.protobuf.Internal.MapAdapter.newEnumConverter(");
+			printer.println("                " + valueType + ".internalGetValueMap(),");
+			printer.println("                " + valueType + ".UNRECOGNIZED);");
+			printer.println("    private static final java.util.Map<" + variables.getTypeParameters() + ">");
+			printer.println("    internalGetAdapted" + variables.getCapitalizedName() + "Map(");
+			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map) {");
+			printer.println("      return new com.google.protobuf.Internal.MapAdapter<");
+			printer.println("          " + variables.getTypeParameters() + ", java.lang.Integer>(");
+			printer.println("              map, " + variables.getName() + "ValueConverter);");
+			printer.println("    }");
+		}
 
 		printer.println("    public int get" + variables.getCapitalizedName() + "Count() {");
 		printer.println("      return internalGet" + variables.getCapitalizedName() + "().getMap().size();");
@@ -304,8 +381,13 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("     */");
 		printer.println("    @java.lang.Override");
 		printer.println("    @java.lang.Deprecated");
-		printer.println("    public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
-				+ "() {");
+		if (isEnum) {
+			printer.println("    public java.util.Map<" + variables.getTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "() {");
+		} else {
+			printer.println("    public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
+					+ "() {");
+		}
 		printer.println("      return get" + variables.getCapitalizedName() + "Map();");
 		printer.println("    }");
 
@@ -318,10 +400,20 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						context,
 						false));
 		printer.println("    @java.lang.Override");
-		printer.println("    public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
-				+ "Map() {");
-		printer.println("      return internalGet" + variables.getCapitalizedName() + "().getMap();");
-		printer.println("    }");
+		if (isEnum) {
+			printer.println("    public java.util.Map<" + variables.getTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "Map() {");
+		} else {
+			printer.println("    public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
+					+ "Map() {");
+		}
+		if (isEnum) {
+			printer.println("      return internalGetAdapted" + variables.getCapitalizedName() + "Map(");
+			printer.println("          internalGet" + variables.getCapitalizedName() + "().getMap());}");
+		} else {
+			printer.println("      return internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("    }");
+		}
 
 		Helpers.writeDocComment(
 				printer,
@@ -358,9 +450,15 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		} else {
 			printer.println();
 		}
-		printer.println("      java.util.Map<" + variables.getTypeParameters() + "> map =");
+		printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
 		printer.println("          internalGet" + variables.getCapitalizedName() + "().getMap();");
-		printer.println("      return map.containsKey(key) ? map.get(key) : defaultValue;");
+		if (isEnum) {
+			printer.println("      return map.containsKey(key)");
+			printer.println("             ? " + variables.getName() + "ValueConverter.doForward(map.get(key))");
+			printer.println("             : defaultValue;");
+		} else {
+			printer.println("      return map.containsKey(key) ? map.get(key) : defaultValue;");
+		}
 		printer.println("    }");
 
 		Helpers.writeDocComment(
@@ -379,19 +477,92 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		} else {
 			printer.println();
 		}
-		printer.println("      java.util.Map<" + variables.getTypeParameters() + "> map =");
+		printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
 		printer.println("          internalGet" + variables.getCapitalizedName() + "().getMap();");
 		printer.println("      if (!map.containsKey(key)) {");
 		printer.println("        throw new java.lang.IllegalArgumentException();");
 		printer.println("      }");
-		printer.println("      return map.get(key);");
+		if (isEnum) {
+			printer.println("      return " + variables.getName() + "ValueConverter.doForward(map.get(key));");
+		} else {
+			printer.println("      return map.get(key);");
+		}
 		printer.println("    }");
+
+		if (isEnum) {
+			printer.println("    /**");
+			printer.println("     * Use {@link #getStringToEnumValueMap()} instead.");
+			printer.println("     */");
+			printer.println("    @java.lang.Override");
+			printer.println("    @java.lang.Deprecated");
+			printer.println("    public java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "Value() {");
+			printer.println("      return get" + variables.getCapitalizedName() + "ValueMap();");
+			printer.println("    }");
+
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    @java.lang.Override");
+			printer.println("    public java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("    get" + variables.getCapitalizedName() + "ValueMap() {");
+			printer.println("      return internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("    }");
+
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    @java.lang.Override");
+			printer.println("    public int get" + variables.getCapitalizedName() + "ValueOrDefault(");
+			printer.println("        " + variables.getKeyType() + " key,");
+			printer.println("        int defaultValue) {");
+			if (variables.getNullCheck() != null) {
+				printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
+			}
+			printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
+			printer.println("          internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("      return map.containsKey(key) ? map.get(key) : defaultValue;");
+			printer.println("    }");
+
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("    @java.lang.Override");
+			printer.println("    public int get" + variables.getCapitalizedName() + "ValueOrThrow(");
+			printer.println("        " + variables.getKeyType() + " key) {");
+			if (variables.getNullCheck() != null) {
+				printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
+			}
+			printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
+			printer.println("          internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("      if (!map.containsKey(key)) {");
+			printer.println("        throw new java.lang.IllegalArgumentException();");
+			printer.println("      }");
+			printer.println("      return map.get(key);");
+			printer.println("    }");
+		}
 	}
 
 	@Override
 	public void generateBuilderMembers(PrintWriter printer)
 	{
 		boolean useBuildMethod = Boolean.parseBoolean(variables.getUseBuildMethod());
+		boolean isEnum = StringUtils.getJavaType(descriptor.getMessageType().findFieldByName("value")) == JavaType.ENUM;
 
 		if (useBuildMethod) {
 			String converterClass = variables.getCapitalizedName() + "Converter";
@@ -439,9 +610,9 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      }");
 		} else {
 			printer.println("      private com.google.protobuf.MapField<");
-			printer.println("          " + variables.getTypeParameters() + "> " + variables.getName() + "_;");
+			printer.println("          " + variables.getWireTypeParameters() + "> " + variables.getName() + "_;");
 
-			printer.println("      private com.google.protobuf.MapField<" + variables.getTypeParameters() + ">");
+			printer.println("      private com.google.protobuf.MapField<" + variables.getWireTypeParameters() + ">");
 			printer.println("          internalGet" + variables.getCapitalizedName() + "() {");
 			printer.println("        if (" + variables.getName() + "_ == null) {");
 			printer.println("          return com.google.protobuf.MapField.emptyMapField(");
@@ -450,7 +621,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        return " + variables.getName() + "_;");
 			printer.println("      }");
 
-			printer.println("      private com.google.protobuf.MapField<" + variables.getTypeParameters() + ">");
+			printer.println("      private com.google.protobuf.MapField<" + variables.getWireTypeParameters() + ">");
 			printer.println("          internalGetMutable" + variables.getCapitalizedName() + "() {");
 			printer.println("        if (" + variables.getName() + "_ == null) {");
 			printer.println("          " + variables.getName() + "_ = com.google.protobuf.MapField.newMapField(");
@@ -501,8 +672,13 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("       */");
 		printer.println("      @java.lang.Override");
 		printer.println("      @java.lang.Deprecated");
-		printer.println("      public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
-				+ "() {");
+		if (isEnum) {
+			printer.println("      public java.util.Map<" + variables.getTypeParameters() + ">");
+			printer.println("      get" + variables.getCapitalizedName() + "() {");
+		} else {
+			printer.println("      public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
+					+ "() {");
+		}
 		printer.println("        return get" + variables.getCapitalizedName() + "Map();");
 		printer.println("      }");
 
@@ -515,14 +691,25 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						context,
 						false));
 		printer.println("      @java.lang.Override");
-		printer.println("      public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
-				+ "Map() {");
+		if (isEnum) {
+			printer.println("      public java.util.Map<" + variables.getTypeParameters() + ">");
+			printer.println("      get" + variables.getCapitalizedName() + "Map() {");
+		} else {
+			printer.println("      public java.util.Map<" + variables.getTypeParameters() + "> get" + variables.getCapitalizedName()
+					+ "Map() {");
+		}
 		if (useBuildMethod) {
 			printer.println("        return internalGet" + variables.getCapitalizedName() + "().getImmutableMap();");
+			printer.println("      }");
 		} else {
-			printer.println("        return internalGet" + variables.getCapitalizedName() + "().getMap();");
+			if (isEnum) {
+				printer.println("        return internalGetAdapted" + variables.getCapitalizedName() + "Map(");
+				printer.println("            internalGet" + variables.getCapitalizedName() + "().getMap());}");
+			} else {
+				printer.println("        return internalGet" + variables.getCapitalizedName() + "().getMap();");
+				printer.println("      }");
+			}
 		}
-		printer.println("      }");
 
 		Helpers.writeDocComment(
 				printer,
@@ -563,9 +750,15 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        java.util.Map<" + variables.getBoxedKeyType() + ", " + variables.getValueOrBuilderType() + "> map = internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap();");
 			printer.println("        return map.containsKey(key) ? " + variables.getName() + "Converter.build(map.get(key)) : defaultValue;");
 		} else {
-			printer.println("        java.util.Map<" + variables.getTypeParameters() + "> map =");
+			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
 			printer.println("            internalGet" + variables.getCapitalizedName() + "().getMap();");
-			printer.println("        return map.containsKey(key) ? map.get(key) : defaultValue;");
+			if (isEnum) {
+				printer.println("        return map.containsKey(key)");
+				printer.println("               ? " + variables.getName() + "ValueConverter.doForward(map.get(key))");
+				printer.println("               : defaultValue;");
+			} else {
+				printer.println("        return map.containsKey(key) ? map.get(key) : defaultValue;");
+			}
 		}
 		printer.println("      }");
 
@@ -592,14 +785,86 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        }");
 			printer.println("        return " + variables.getName() + "Converter.build(map.get(key));");
 		} else {
-			printer.println("        java.util.Map<" + variables.getTypeParameters() + "> map =");
+			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
+			printer.println("            internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("        if (!map.containsKey(key)) {");
+			printer.println("          throw new java.lang.IllegalArgumentException();");
+			printer.println("        }");
+			if (isEnum) {
+				printer.println("        return " + variables.getName() + "ValueConverter.doForward(map.get(key));");
+			} else {
+				printer.println("        return map.get(key);");
+			}
+		}
+		printer.println("      }");
+
+		if (isEnum) {
+			printer.println("      /**");
+			printer.println("       * Use {@link #get" + variables.getCapitalizedName() + "ValueMap()} instead.");
+			printer.println("       */");
+			printer.println("      @java.lang.Override");
+			printer.println("      @java.lang.Deprecated");
+			printer.println("      public java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("      get" + variables.getCapitalizedName() + "Value() {");
+			printer.println("        return get" + variables.getCapitalizedName() + "ValueMap();");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("      @java.lang.Override");
+			printer.println("      public java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("      get" + variables.getCapitalizedName() + "ValueMap() {");
+			printer.println("        return internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("      @java.lang.Override");
+			printer.println("      public int get" + variables.getCapitalizedName() + "ValueOrDefault(");
+			printer.println("          " + variables.getKeyType() + " key,");
+			printer.println("          int defaultValue) {");
+			if (variables.getNullCheck() != null) {
+				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
+			}
+			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
+			printer.println("            internalGet" + variables.getCapitalizedName() + "().getMap();");
+			printer.println("        return map.containsKey(key) ? map.get(key) : defaultValue;");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("      @java.lang.Override");
+			printer.println("      public int get" + variables.getCapitalizedName() + "ValueOrThrow(");
+			printer.println("          " + variables.getKeyType() + " key) {");
+			if (variables.getNullCheck() != null) {
+				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
+			}
+			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
 			printer.println("            internalGet" + variables.getCapitalizedName() + "().getMap();");
 			printer.println("        if (!map.containsKey(key)) {");
 			printer.println("          throw new java.lang.IllegalArgumentException();");
 			printer.println("        }");
 			printer.println("        return map.get(key);");
+			printer.println("      }");
 		}
-		printer.println("      }");
 
 		printer.println("      public Builder clear" + variables.getCapitalizedName() + "() {");
 		printer.println("        " + variables.getClearHasFieldBitBuilder());
@@ -647,7 +912,12 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		if (useBuildMethod) {
 			printer.println("        return internalGetMutable" + variables.getCapitalizedName() + "().ensureMessageMap();");
 		} else {
-			printer.println("        return internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap();");
+			if (isEnum) {
+				printer.println("        return internalGetAdapted" + variables.getCapitalizedName() + "Map(");
+				printer.println("             internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap());");
+			} else {
+				printer.println("        return internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap();");
+			}
 		}
 		printer.println("      }");
 
@@ -676,8 +946,13 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap()");
 			printer.println("            .put(key, value);");
 		} else {
-			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
-			printer.println("            .put(key, value);");
+			if (isEnum) {
+				printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
+				printer.println("            .put(key, " + variables.getName() + "ValueConverter.doBackward(value));");
+			} else {
+				printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
+				printer.println("            .put(key, value);");
+			}
 		}
 		printer.println("        " + variables.getSetHasFieldBitBuilder());
 		printer.println("        return this;");
@@ -716,8 +991,14 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap()");
 			printer.println("            .putAll(values);");
 		} else {
-			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
-			printer.println("            .putAll(values);");
+			if (isEnum) {
+				printer.println("        internalGetAdapted" + variables.getCapitalizedName() + "Map(");
+				printer.println("            internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap())");
+				printer.println("                .putAll(values);");
+			} else {
+				printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
+				printer.println("            .putAll(values);");
+			}
 		}
 		printer.println("        " + variables.getSetHasFieldBitBuilder());
 		printer.println("        return this;");
@@ -745,6 +1026,55 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          builderMap.put(key, entry);");
 			printer.println("        }");
 			printer.println("        return (" + variables.getValueBuilderType() + ") entry;");
+			printer.println("      }");
+		}
+
+		if (isEnum) {
+			printer.println("      /**");
+			printer.println("       * Use alternate mutation accessors instead.");
+			printer.println("       */");
+			printer.println("      @java.lang.Deprecated");
+			printer.println("      public java.util.Map<" + variables.getWireTypeParameters() + ">");
+			printer.println("      getMutable" + variables.getCapitalizedName() + "Value() {");
+			printer.println("        " + variables.getSetHasFieldBitBuilder());
+			printer.println("        return internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap();");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("      public Builder put" + variables.getCapitalizedName() + "Value(");
+			printer.println("          " + variables.getKeyType() + " key,");
+			printer.println("          int value) {");
+			if (variables.getNullCheck() != null) {
+				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
+			}
+			printer.println();
+			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
+			printer.println("            .put(key, value);");
+			printer.println("        " + variables.getSetHasFieldBitBuilder());
+			printer.println("        return this;");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldDocComment(
+							commentWriter,
+							descriptor,
+							context,
+							false));
+			printer.println("      public Builder putAll" + variables.getCapitalizedName() + "Value(");
+			printer.println("          java.util.Map<" + variables.getWireTypeParameters() + "> values) {");
+			printer.println("        internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap()");
+			printer.println("            .putAll(values);");
+			printer.println("        " + variables.getSetHasFieldBitBuilder());
+			printer.println("        return this;");
 			printer.println("      }");
 		}
 	}
