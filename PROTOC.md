@@ -315,3 +315,14 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 
 *   **Repeated String Fields**:
     *   `RepeatedStringFieldGenerator` must enforce strict UTF-8 checking (`checkByteStringIsUtf8`) in `add...Bytes` methods when the syntax is "proto3".
+
+*   **Field Options in Javadoc**:
+    *   `DocComment.writeDebugString` must explicitly handle `packed` options (and `default`). It should format options as `[default = ..., packed = true]` to match C++ `DebugString` behavior.
+
+*   **Tokenizer Sticky Trailing Comments**:
+    *   The sticky trailing comment logic (attaching comments on the next line to the previous token) must be disabled for block closers `}` in addition to block openers `{`. This ensures that comments following a message block (e.g. `message Foo {} // Comment`) are treated as leading comments for the *next* element if they appear on a new line, rather than trailing comments of `}`.
+
+*   **Builder Capacity Method for Packed Fields**:
+    *   `RepeatedPrimitiveFieldGenerator` generates `ensure...IsMutable(int capacity)` helper method in the Builder.
+    *   This method is ONLY generated if the field is **explicitly packed** (`[packed = true]`) AND the type is a **fixed-size type** or **boolean** (`BOOL`, `FIXED32`, `SFIXED32`, `FLOAT`, `FIXED64`, `SFIXED64`, `DOUBLE`).
+    *   It is NOT generated for varint types (`INT32`, `INT64`, `UINT32`, `UINT64`, `SINT32`, `SINT64`) or implicit packed fields, or unpacked fields.

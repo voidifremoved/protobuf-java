@@ -128,9 +128,9 @@ public class Tokenizer
 
 				if (currentChar == '\n')
 				{
-					// For block openers like '{', we don't want to attach comments on the next line
-					// as trailing comments. They should be leading comments for the first item in the block.
-					if (previousToken.text != null && previousToken.text.equals("{"))
+					// For block openers like '{' or closers like '}', we don't want to attach comments on the next line
+					// as trailing comments. They should be leading comments for the next item.
+					if (previousToken.text != null && (previousToken.text.equals("{") || previousToken.text.equals("}")))
 					{
 						break;
 					}

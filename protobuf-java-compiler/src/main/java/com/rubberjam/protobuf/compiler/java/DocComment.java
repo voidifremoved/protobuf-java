@@ -364,10 +364,20 @@ public final class DocComment
 				sb.append(" = ");
 				sb.append(field.getNumber());
 
+				java.util.List<String> fieldOptions = new java.util.ArrayList<>();
 				if (field.hasDefaultValue())
 				{
-					sb.append(" [default = ");
-					sb.append(getDefaultValueString(field));
+					fieldOptions.add("default = " + getDefaultValueString(field));
+				}
+				if (field.toProto().getOptions().hasPacked())
+				{
+					fieldOptions.add("packed = " + field.toProto().getOptions().getPacked());
+				}
+
+				if (!fieldOptions.isEmpty())
+				{
+					sb.append(" [");
+					sb.append(String.join(", ", fieldOptions));
 					sb.append("]");
 				}
 

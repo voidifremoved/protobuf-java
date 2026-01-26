@@ -971,6 +971,20 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.get("set_has_field_bit_builder"));
 			printer.println("      }");
 
+			FieldDescriptor.Type type = descriptor.getType();
+			boolean isFixedSizeOrBool = type == FieldDescriptor.Type.BOOL ||
+					type == FieldDescriptor.Type.FIXED32 || type == FieldDescriptor.Type.SFIXED32 || type == FieldDescriptor.Type.FLOAT ||
+					type == FieldDescriptor.Type.FIXED64 || type == FieldDescriptor.Type.SFIXED64 || type == FieldDescriptor.Type.DOUBLE;
+			if (descriptor.isPacked() && descriptor.toProto().getOptions().hasPacked() && isFixedSizeOrBool)
+			{
+				printer.println("      private void ensure" + variables.get("capitalized_name") + "IsMutable(int capacity) {");
+				printer.println("        if (!" + variables.get("name") + "_.isModifiable()) {");
+				printer.println("          " + variables.get("name") + "_ = makeMutableCopy(" + variables.get("name") + "_, capacity);");
+				printer.println("        }");
+				printer.println("        " + variables.get("set_has_field_bit_builder"));
+				printer.println("      }");
+			}
+
 			Helpers.writeDocComment(
 					printer,
 					"      ",
