@@ -233,7 +233,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			if (printer instanceof IndentPrinter) {
 				((IndentPrinter) printer).printNoIndent(variables.getValueType() + " defaultValue);\n");
 			} else {
-				printer.println(variables.getValueType() + " defaultValue);");
+				printer.println(variables.getValueType() + "         defaultValue);");
 			}
 		} else {
 			printer.println("        " + variables.getValueType() + " defaultValue);");
