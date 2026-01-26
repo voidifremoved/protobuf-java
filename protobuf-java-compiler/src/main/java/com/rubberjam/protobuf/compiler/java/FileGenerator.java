@@ -187,6 +187,10 @@ public class FileGenerator
 		}
 
 		printer.println("    descriptor.resolveAllFeaturesImmutable();");
+		for (FileDescriptor dependency : file.getDependencies())
+		{
+			printer.println("    " + nameResolver.getImmutableClassName(dependency) + ".getDescriptor();");
+		}
 		printer.println("  }");
 		printer.println();
 		printer.println("  // @@protoc_insertion_point(outer_class_scope)");
