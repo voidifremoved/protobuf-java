@@ -192,6 +192,98 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * @return The int64Field.
      */
     long getInt64Field();
+
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    int getUint32Field();
+
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    long getUint64Field();
+
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    int getSint32Field();
+
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    long getSint64Field();
+
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    int getFixed32Field();
+
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    long getFixed64Field();
+
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    int getSfixed32Field();
+
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    long getSfixed64Field();
+
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    float getFloatField();
+
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    double getDoubleField();
+
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    boolean getBoolField();
+
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    java.lang.String getStringField();
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    com.google.protobuf.ByteString
+        getStringFieldBytes();
+
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    com.google.protobuf.ByteString getBytesField();
   }
   /**
    * <pre>
@@ -219,6 +311,8 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       super(builder);
     }
     private AllFieldTypesV3() {
+      stringField_ = "";
+      bytesField_ = com.google.protobuf.ByteString.EMPTY;
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -258,6 +352,185 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     @java.lang.Override
     public long getInt64Field() {
       return int64Field_;
+    }
+
+    public static final int UINT32_FIELD_FIELD_NUMBER = 3;
+    private int uint32Field_ = 0;
+    /**
+     * <code>uint32 uint32_field = 3;</code>
+     * @return The uint32Field.
+     */
+    @java.lang.Override
+    public int getUint32Field() {
+      return uint32Field_;
+    }
+
+    public static final int UINT64_FIELD_FIELD_NUMBER = 4;
+    private long uint64Field_ = 0L;
+    /**
+     * <code>uint64 uint64_field = 4;</code>
+     * @return The uint64Field.
+     */
+    @java.lang.Override
+    public long getUint64Field() {
+      return uint64Field_;
+    }
+
+    public static final int SINT32_FIELD_FIELD_NUMBER = 5;
+    private int sint32Field_ = 0;
+    /**
+     * <code>sint32 sint32_field = 5;</code>
+     * @return The sint32Field.
+     */
+    @java.lang.Override
+    public int getSint32Field() {
+      return sint32Field_;
+    }
+
+    public static final int SINT64_FIELD_FIELD_NUMBER = 6;
+    private long sint64Field_ = 0L;
+    /**
+     * <code>sint64 sint64_field = 6;</code>
+     * @return The sint64Field.
+     */
+    @java.lang.Override
+    public long getSint64Field() {
+      return sint64Field_;
+    }
+
+    public static final int FIXED32_FIELD_FIELD_NUMBER = 7;
+    private int fixed32Field_ = 0;
+    /**
+     * <code>fixed32 fixed32_field = 7;</code>
+     * @return The fixed32Field.
+     */
+    @java.lang.Override
+    public int getFixed32Field() {
+      return fixed32Field_;
+    }
+
+    public static final int FIXED64_FIELD_FIELD_NUMBER = 8;
+    private long fixed64Field_ = 0L;
+    /**
+     * <code>fixed64 fixed64_field = 8;</code>
+     * @return The fixed64Field.
+     */
+    @java.lang.Override
+    public long getFixed64Field() {
+      return fixed64Field_;
+    }
+
+    public static final int SFIXED32_FIELD_FIELD_NUMBER = 9;
+    private int sfixed32Field_ = 0;
+    /**
+     * <code>sfixed32 sfixed32_field = 9;</code>
+     * @return The sfixed32Field.
+     */
+    @java.lang.Override
+    public int getSfixed32Field() {
+      return sfixed32Field_;
+    }
+
+    public static final int SFIXED64_FIELD_FIELD_NUMBER = 10;
+    private long sfixed64Field_ = 0L;
+    /**
+     * <code>sfixed64 sfixed64_field = 10;</code>
+     * @return The sfixed64Field.
+     */
+    @java.lang.Override
+    public long getSfixed64Field() {
+      return sfixed64Field_;
+    }
+
+    public static final int FLOAT_FIELD_FIELD_NUMBER = 11;
+    private float floatField_ = 0F;
+    /**
+     * <pre>
+     * Floating point types
+     * </pre>
+     *
+     * <code>float float_field = 11;</code>
+     * @return The floatField.
+     */
+    @java.lang.Override
+    public float getFloatField() {
+      return floatField_;
+    }
+
+    public static final int DOUBLE_FIELD_FIELD_NUMBER = 12;
+    private double doubleField_ = 0D;
+    /**
+     * <code>double double_field = 12;</code>
+     * @return The doubleField.
+     */
+    @java.lang.Override
+    public double getDoubleField() {
+      return doubleField_;
+    }
+
+    public static final int BOOL_FIELD_FIELD_NUMBER = 13;
+    private boolean boolField_ = false;
+    /**
+     * <pre>
+     * Other primitive types
+     * </pre>
+     *
+     * <code>bool bool_field = 13;</code>
+     * @return The boolField.
+     */
+    @java.lang.Override
+    public boolean getBoolField() {
+      return boolField_;
+    }
+
+    public static final int STRING_FIELD_FIELD_NUMBER = 14;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object stringField_ = "";
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The stringField.
+     */
+    @java.lang.Override
+    public java.lang.String getStringField() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        stringField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string string_field = 14;</code>
+     * @return The bytes for stringField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getStringFieldBytes() {
+      java.lang.Object ref = stringField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        stringField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTES_FIELD_FIELD_NUMBER = 15;
+    private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+    /**
+     * <code>bytes bytes_field = 15;</code>
+     * @return The bytesField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getBytesField() {
+      return bytesField_;
     }
 
     public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 parseFrom(
@@ -392,6 +665,19 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         bitField0_ = 0;
         int32Field_ = 0;
         int64Field_ = 0L;
+        uint32Field_ = 0;
+        uint64Field_ = 0L;
+        sint32Field_ = 0;
+        sint64Field_ = 0L;
+        fixed32Field_ = 0;
+        fixed64Field_ = 0L;
+        sfixed32Field_ = 0;
+        sfixed64Field_ = 0L;
+        floatField_ = 0F;
+        doubleField_ = 0D;
+        boolField_ = false;
+        stringField_ = "";
+        bytesField_ = com.google.protobuf.ByteString.EMPTY;
         return this;
       }
 
@@ -430,6 +716,45 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         }
         if (((from_bitField0_ & 0x00000002) != 0)) {
           result.int64Field_ = int64Field_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.uint32Field_ = uint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.uint64Field_ = uint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.sint32Field_ = sint32Field_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.sint64Field_ = sint64Field_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.fixed32Field_ = fixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          result.fixed64Field_ = fixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000100) != 0)) {
+          result.sfixed32Field_ = sfixed32Field_;
+        }
+        if (((from_bitField0_ & 0x00000200) != 0)) {
+          result.sfixed64Field_ = sfixed64Field_;
+        }
+        if (((from_bitField0_ & 0x00000400) != 0)) {
+          result.floatField_ = floatField_;
+        }
+        if (((from_bitField0_ & 0x00000800) != 0)) {
+          result.doubleField_ = doubleField_;
+        }
+        if (((from_bitField0_ & 0x00001000) != 0)) {
+          result.boolField_ = boolField_;
+        }
+        if (((from_bitField0_ & 0x00002000) != 0)) {
+          result.stringField_ = stringField_;
+        }
+        if (((from_bitField0_ & 0x00004000) != 0)) {
+          result.bytesField_ = bytesField_;
         }
       }
 
@@ -511,6 +836,486 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
+      private int uint32Field_ ;
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return The uint32Field.
+       */
+      @java.lang.Override
+      public int getUint32Field() {
+        return uint32Field_;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @param value The uint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint32Field(int value) {
+
+        uint32Field_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint32 uint32_field = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        uint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long uint64Field_ ;
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return The uint64Field.
+       */
+      @java.lang.Override
+      public long getUint64Field() {
+        return uint64Field_;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @param value The uint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUint64Field(long value) {
+
+        uint64Field_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>uint64 uint64_field = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        uint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sint32Field_ ;
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return The sint32Field.
+       */
+      @java.lang.Override
+      public int getSint32Field() {
+        return sint32Field_;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @param value The sint32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint32Field(int value) {
+
+        sint32Field_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint32 sint32_field = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint32Field() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        sint32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sint64Field_ ;
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return The sint64Field.
+       */
+      @java.lang.Override
+      public long getSint64Field() {
+        return sint64Field_;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @param value The sint64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSint64Field(long value) {
+
+        sint64Field_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sint64 sint64_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSint64Field() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        sint64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int fixed32Field_ ;
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return The fixed32Field.
+       */
+      @java.lang.Override
+      public int getFixed32Field() {
+        return fixed32Field_;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @param value The fixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed32Field(int value) {
+
+        fixed32Field_ = value;
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed32 fixed32_field = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        fixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long fixed64Field_ ;
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return The fixed64Field.
+       */
+      @java.lang.Override
+      public long getFixed64Field() {
+        return fixed64Field_;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @param value The fixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFixed64Field(long value) {
+
+        fixed64Field_ = value;
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>fixed64 fixed64_field = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        fixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private int sfixed32Field_ ;
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return The sfixed32Field.
+       */
+      @java.lang.Override
+      public int getSfixed32Field() {
+        return sfixed32Field_;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @param value The sfixed32Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed32Field(int value) {
+
+        sfixed32Field_ = value;
+        bitField0_ |= 0x00000100;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed32 sfixed32_field = 9;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed32Field() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        sfixed32Field_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private long sfixed64Field_ ;
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return The sfixed64Field.
+       */
+      @java.lang.Override
+      public long getSfixed64Field() {
+        return sfixed64Field_;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @param value The sfixed64Field to set.
+       * @return This builder for chaining.
+       */
+      public Builder setSfixed64Field(long value) {
+
+        sfixed64Field_ = value;
+        bitField0_ |= 0x00000200;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>sfixed64 sfixed64_field = 10;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearSfixed64Field() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        sfixed64Field_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private float floatField_ ;
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return The floatField.
+       */
+      @java.lang.Override
+      public float getFloatField() {
+        return floatField_;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @param value The floatField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setFloatField(float value) {
+
+        floatField_ = value;
+        bitField0_ |= 0x00000400;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Floating point types
+       * </pre>
+       *
+       * <code>float float_field = 11;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearFloatField() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        floatField_ = 0F;
+        onChanged();
+        return this;
+      }
+
+      private double doubleField_ ;
+      /**
+       * <code>double double_field = 12;</code>
+       * @return The doubleField.
+       */
+      @java.lang.Override
+      public double getDoubleField() {
+        return doubleField_;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @param value The doubleField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setDoubleField(double value) {
+
+        doubleField_ = value;
+        bitField0_ |= 0x00000800;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double double_field = 12;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearDoubleField() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        doubleField_ = 0D;
+        onChanged();
+        return this;
+      }
+
+      private boolean boolField_ ;
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return The boolField.
+       */
+      @java.lang.Override
+      public boolean getBoolField() {
+        return boolField_;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @param value The boolField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBoolField(boolean value) {
+
+        boolField_ = value;
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Other primitive types
+       * </pre>
+       *
+       * <code>bool bool_field = 13;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBoolField() {
+        bitField0_ = (bitField0_ & ~0x00001000);
+        boolField_ = false;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object stringField_ = "";
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The stringField.
+       */
+      public java.lang.String getStringField() {
+        java.lang.Object ref = stringField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          stringField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return The bytes for stringField.
+       */
+      public com.google.protobuf.ByteString
+          getStringFieldBytes() {
+        java.lang.Object ref = stringField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          stringField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearStringField() {
+        stringField_ = getDefaultInstance().getStringField();
+        bitField0_ = (bitField0_ & ~0x00002000);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string string_field = 14;</code>
+       * @param value The bytes for stringField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setStringFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        stringField_ = value;
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString bytesField_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return The bytesField.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getBytesField() {
+        return bytesField_;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @param value The bytesField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBytesField(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        bytesField_ = value;
+        bitField0_ |= 0x00004000;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes bytes_field = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBytesField() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        bytesField_ = getDefaultInstance().getBytesField();
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
     }
 
@@ -577,13 +1382,20 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   static {
     java.lang.String[] descriptorData = {
       "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal\";\n\017AllFieldT" +
-      "ypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fie" +
-      "ld\030\002 \001(\003*O\n\nTestEnumV3\022\020\n\014TEST_UNKNOWN\020\000" +
-      "\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nTES" +
-      "T_THIRD\020\003BM\n\'com.rubberjam.protobuf.comp" +
-      "iler.test.v3B\032ComprehensiveTestV3Minimal" +
-      "H\002\200\001\000\210\001\000b\006proto3"
+      "omprehensiveTest.V3Minimmal\"\333\002\n\017AllField" +
+      "TypesV3\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fi" +
+      "eld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint6" +
+      "4_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014s" +
+      "int64_field\030\006 \001(\022\022\025\n\rfixed32_field\030\007 \001(\007" +
+      "\022\025\n\rfixed64_field\030\010 \001(\006\022\026\n\016sfixed32_fiel" +
+      "d\030\t \001(\017\022\026\n\016sfixed64_field\030\n \001(\020\022\023\n\013float" +
+      "_field\030\013 \001(\002\022\024\n\014double_field\030\014 \001(\001\022\022\n\nbo" +
+      "ol_field\030\r \001(\010\022\024\n\014string_field\030\016 \001(\t\022\023\n\013" +
+      "bytes_field\030\017 \001(\014*O\n\nTestEnumV3\022\020\n\014TEST_" +
+      "UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND" +
+      "\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.prot" +
+      "obuf.compiler.test.v3B\032ComprehensiveTest" +
+      "V3MinimalH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -594,7 +1406,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

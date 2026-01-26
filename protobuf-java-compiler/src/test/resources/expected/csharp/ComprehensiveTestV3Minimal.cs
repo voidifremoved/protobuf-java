@@ -25,16 +25,22 @@ namespace ComprehensiveTest.V3Minimmal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCI7Cg9BbGxGaWVsZFR5cGVzVjMSEwoL",
-            "aW50MzJfZmllbGQYASABKAUSEwoLaW50NjRfZmllbGQYAiABKAMqTwoKVGVz",
-            "dEVudW1WMxIQCgxURVNUX1VOS05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoL",
-            "VEVTVF9TRUNPTkQQAhIOCgpURVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmph",
-            "bS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVz",
-            "dFYzTWluaW1hbEgCgAEAiAEAYgZwcm90bzM="));
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbCLbAgoPQWxsRmllbGRUeXBlc1YzEhMK",
+            "C2ludDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVp",
+            "bnQzMl9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2lu",
+            "dDMyX2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhl",
+            "ZDMyX2ZpZWxkGAcgASgHEhUKDWZpeGVkNjRfZmllbGQYCCABKAYSFgoOc2Zp",
+            "eGVkMzJfZmllbGQYCSABKA8SFgoOc2ZpeGVkNjRfZmllbGQYCiABKBASEwoL",
+            "ZmxvYXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJv",
+            "b2xfZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVz",
+            "X2ZpZWxkGA8gASgMKk8KClRlc3RFbnVtVjMSEAoMVEVTVF9VTktOT1dOEAAS",
+            "DgoKVEVTVF9GSVJTVBABEg8KC1RFU1RfU0VDT05EEAISDgoKVEVTVF9USElS",
+            "RBADQk0KJ2NvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC52",
+            "M0IaQ29tcHJlaGVuc2l2ZVRlc3RWM01pbmltYWxIAoABAIgBAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField" }, null, null, null, null)
           }));
     }
     #endregion
@@ -97,6 +103,19 @@ namespace ComprehensiveTest.V3Minimmal {
     public AllFieldTypesV3(AllFieldTypesV3 other) : this() {
       int32Field_ = other.int32Field_;
       int64Field_ = other.int64Field_;
+      uint32Field_ = other.uint32Field_;
+      uint64Field_ = other.uint64Field_;
+      sint32Field_ = other.sint32Field_;
+      sint64Field_ = other.sint64Field_;
+      fixed32Field_ = other.fixed32Field_;
+      fixed64Field_ = other.fixed64Field_;
+      sfixed32Field_ = other.sfixed32Field_;
+      sfixed64Field_ = other.sfixed64Field_;
+      floatField_ = other.floatField_;
+      doubleField_ = other.doubleField_;
+      boolField_ = other.boolField_;
+      stringField_ = other.stringField_;
+      bytesField_ = other.bytesField_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -133,6 +152,168 @@ namespace ComprehensiveTest.V3Minimmal {
       }
     }
 
+    /// <summary>Field number for the "uint32_field" field.</summary>
+    public const int Uint32FieldFieldNumber = 3;
+    private uint uint32Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Uint32Field {
+      get { return uint32Field_; }
+      set {
+        uint32Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "uint64_field" field.</summary>
+    public const int Uint64FieldFieldNumber = 4;
+    private ulong uint64Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Uint64Field {
+      get { return uint64Field_; }
+      set {
+        uint64Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sint32_field" field.</summary>
+    public const int Sint32FieldFieldNumber = 5;
+    private int sint32Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Sint32Field {
+      get { return sint32Field_; }
+      set {
+        sint32Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sint64_field" field.</summary>
+    public const int Sint64FieldFieldNumber = 6;
+    private long sint64Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Sint64Field {
+      get { return sint64Field_; }
+      set {
+        sint64Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fixed32_field" field.</summary>
+    public const int Fixed32FieldFieldNumber = 7;
+    private uint fixed32Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint Fixed32Field {
+      get { return fixed32Field_; }
+      set {
+        fixed32Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "fixed64_field" field.</summary>
+    public const int Fixed64FieldFieldNumber = 8;
+    private ulong fixed64Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong Fixed64Field {
+      get { return fixed64Field_; }
+      set {
+        fixed64Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sfixed32_field" field.</summary>
+    public const int Sfixed32FieldFieldNumber = 9;
+    private int sfixed32Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Sfixed32Field {
+      get { return sfixed32Field_; }
+      set {
+        sfixed32Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "sfixed64_field" field.</summary>
+    public const int Sfixed64FieldFieldNumber = 10;
+    private long sfixed64Field_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long Sfixed64Field {
+      get { return sfixed64Field_; }
+      set {
+        sfixed64Field_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "float_field" field.</summary>
+    public const int FloatFieldFieldNumber = 11;
+    private float floatField_;
+    /// <summary>
+    /// Floating point types
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FloatField {
+      get { return floatField_; }
+      set {
+        floatField_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "double_field" field.</summary>
+    public const int DoubleFieldFieldNumber = 12;
+    private double doubleField_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DoubleField {
+      get { return doubleField_; }
+      set {
+        doubleField_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "bool_field" field.</summary>
+    public const int BoolFieldFieldNumber = 13;
+    private bool boolField_;
+    /// <summary>
+    /// Other primitive types
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool BoolField {
+      get { return boolField_; }
+      set {
+        boolField_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "string_field" field.</summary>
+    public const int StringFieldFieldNumber = 14;
+    private string stringField_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string StringField {
+      get { return stringField_; }
+      set {
+        stringField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "bytes_field" field.</summary>
+    public const int BytesFieldFieldNumber = 15;
+    private pb::ByteString bytesField_ = pb::ByteString.Empty;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString BytesField {
+      get { return bytesField_; }
+      set {
+        bytesField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -150,6 +331,19 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (Int32Field != other.Int32Field) return false;
       if (Int64Field != other.Int64Field) return false;
+      if (Uint32Field != other.Uint32Field) return false;
+      if (Uint64Field != other.Uint64Field) return false;
+      if (Sint32Field != other.Sint32Field) return false;
+      if (Sint64Field != other.Sint64Field) return false;
+      if (Fixed32Field != other.Fixed32Field) return false;
+      if (Fixed64Field != other.Fixed64Field) return false;
+      if (Sfixed32Field != other.Sfixed32Field) return false;
+      if (Sfixed64Field != other.Sfixed64Field) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatField, other.FloatField)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DoubleField, other.DoubleField)) return false;
+      if (BoolField != other.BoolField) return false;
+      if (StringField != other.StringField) return false;
+      if (BytesField != other.BytesField) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -159,6 +353,19 @@ namespace ComprehensiveTest.V3Minimmal {
       int hash = 1;
       if (Int32Field != 0) hash ^= Int32Field.GetHashCode();
       if (Int64Field != 0L) hash ^= Int64Field.GetHashCode();
+      if (Uint32Field != 0) hash ^= Uint32Field.GetHashCode();
+      if (Uint64Field != 0UL) hash ^= Uint64Field.GetHashCode();
+      if (Sint32Field != 0) hash ^= Sint32Field.GetHashCode();
+      if (Sint64Field != 0L) hash ^= Sint64Field.GetHashCode();
+      if (Fixed32Field != 0) hash ^= Fixed32Field.GetHashCode();
+      if (Fixed64Field != 0UL) hash ^= Fixed64Field.GetHashCode();
+      if (Sfixed32Field != 0) hash ^= Sfixed32Field.GetHashCode();
+      if (Sfixed64Field != 0L) hash ^= Sfixed64Field.GetHashCode();
+      if (FloatField != 0F) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatField);
+      if (DoubleField != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DoubleField);
+      if (BoolField != false) hash ^= BoolField.GetHashCode();
+      if (StringField.Length != 0) hash ^= StringField.GetHashCode();
+      if (BytesField.Length != 0) hash ^= BytesField.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -185,6 +392,58 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(16);
         output.WriteInt64(Int64Field);
       }
+      if (Uint32Field != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Uint32Field);
+      }
+      if (Uint64Field != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(Uint64Field);
+      }
+      if (Sint32Field != 0) {
+        output.WriteRawTag(40);
+        output.WriteSInt32(Sint32Field);
+      }
+      if (Sint64Field != 0L) {
+        output.WriteRawTag(48);
+        output.WriteSInt64(Sint64Field);
+      }
+      if (Fixed32Field != 0) {
+        output.WriteRawTag(61);
+        output.WriteFixed32(Fixed32Field);
+      }
+      if (Fixed64Field != 0UL) {
+        output.WriteRawTag(65);
+        output.WriteFixed64(Fixed64Field);
+      }
+      if (Sfixed32Field != 0) {
+        output.WriteRawTag(77);
+        output.WriteSFixed32(Sfixed32Field);
+      }
+      if (Sfixed64Field != 0L) {
+        output.WriteRawTag(81);
+        output.WriteSFixed64(Sfixed64Field);
+      }
+      if (FloatField != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(FloatField);
+      }
+      if (DoubleField != 0D) {
+        output.WriteRawTag(97);
+        output.WriteDouble(DoubleField);
+      }
+      if (BoolField != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(BoolField);
+      }
+      if (StringField.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(StringField);
+      }
+      if (BytesField.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteBytes(BytesField);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -203,6 +462,58 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(16);
         output.WriteInt64(Int64Field);
       }
+      if (Uint32Field != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Uint32Field);
+      }
+      if (Uint64Field != 0UL) {
+        output.WriteRawTag(32);
+        output.WriteUInt64(Uint64Field);
+      }
+      if (Sint32Field != 0) {
+        output.WriteRawTag(40);
+        output.WriteSInt32(Sint32Field);
+      }
+      if (Sint64Field != 0L) {
+        output.WriteRawTag(48);
+        output.WriteSInt64(Sint64Field);
+      }
+      if (Fixed32Field != 0) {
+        output.WriteRawTag(61);
+        output.WriteFixed32(Fixed32Field);
+      }
+      if (Fixed64Field != 0UL) {
+        output.WriteRawTag(65);
+        output.WriteFixed64(Fixed64Field);
+      }
+      if (Sfixed32Field != 0) {
+        output.WriteRawTag(77);
+        output.WriteSFixed32(Sfixed32Field);
+      }
+      if (Sfixed64Field != 0L) {
+        output.WriteRawTag(81);
+        output.WriteSFixed64(Sfixed64Field);
+      }
+      if (FloatField != 0F) {
+        output.WriteRawTag(93);
+        output.WriteFloat(FloatField);
+      }
+      if (DoubleField != 0D) {
+        output.WriteRawTag(97);
+        output.WriteDouble(DoubleField);
+      }
+      if (BoolField != false) {
+        output.WriteRawTag(104);
+        output.WriteBool(BoolField);
+      }
+      if (StringField.Length != 0) {
+        output.WriteRawTag(114);
+        output.WriteString(StringField);
+      }
+      if (BytesField.Length != 0) {
+        output.WriteRawTag(122);
+        output.WriteBytes(BytesField);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -218,6 +529,45 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (Int64Field != 0L) {
         size += 1 + pb::CodedOutputStream.ComputeInt64Size(Int64Field);
+      }
+      if (Uint32Field != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Uint32Field);
+      }
+      if (Uint64Field != 0UL) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(Uint64Field);
+      }
+      if (Sint32Field != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt32Size(Sint32Field);
+      }
+      if (Sint64Field != 0L) {
+        size += 1 + pb::CodedOutputStream.ComputeSInt64Size(Sint64Field);
+      }
+      if (Fixed32Field != 0) {
+        size += 1 + 4;
+      }
+      if (Fixed64Field != 0UL) {
+        size += 1 + 8;
+      }
+      if (Sfixed32Field != 0) {
+        size += 1 + 4;
+      }
+      if (Sfixed64Field != 0L) {
+        size += 1 + 8;
+      }
+      if (FloatField != 0F) {
+        size += 1 + 4;
+      }
+      if (DoubleField != 0D) {
+        size += 1 + 8;
+      }
+      if (BoolField != false) {
+        size += 1 + 1;
+      }
+      if (StringField.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(StringField);
+      }
+      if (BytesField.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesField);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -236,6 +586,45 @@ namespace ComprehensiveTest.V3Minimmal {
       }
       if (other.Int64Field != 0L) {
         Int64Field = other.Int64Field;
+      }
+      if (other.Uint32Field != 0) {
+        Uint32Field = other.Uint32Field;
+      }
+      if (other.Uint64Field != 0UL) {
+        Uint64Field = other.Uint64Field;
+      }
+      if (other.Sint32Field != 0) {
+        Sint32Field = other.Sint32Field;
+      }
+      if (other.Sint64Field != 0L) {
+        Sint64Field = other.Sint64Field;
+      }
+      if (other.Fixed32Field != 0) {
+        Fixed32Field = other.Fixed32Field;
+      }
+      if (other.Fixed64Field != 0UL) {
+        Fixed64Field = other.Fixed64Field;
+      }
+      if (other.Sfixed32Field != 0) {
+        Sfixed32Field = other.Sfixed32Field;
+      }
+      if (other.Sfixed64Field != 0L) {
+        Sfixed64Field = other.Sfixed64Field;
+      }
+      if (other.FloatField != 0F) {
+        FloatField = other.FloatField;
+      }
+      if (other.DoubleField != 0D) {
+        DoubleField = other.DoubleField;
+      }
+      if (other.BoolField != false) {
+        BoolField = other.BoolField;
+      }
+      if (other.StringField.Length != 0) {
+        StringField = other.StringField;
+      }
+      if (other.BytesField.Length != 0) {
+        BytesField = other.BytesField;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,6 +653,58 @@ namespace ComprehensiveTest.V3Minimmal {
             Int64Field = input.ReadInt64();
             break;
           }
+          case 24: {
+            Uint32Field = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Uint64Field = input.ReadUInt64();
+            break;
+          }
+          case 40: {
+            Sint32Field = input.ReadSInt32();
+            break;
+          }
+          case 48: {
+            Sint64Field = input.ReadSInt64();
+            break;
+          }
+          case 61: {
+            Fixed32Field = input.ReadFixed32();
+            break;
+          }
+          case 65: {
+            Fixed64Field = input.ReadFixed64();
+            break;
+          }
+          case 77: {
+            Sfixed32Field = input.ReadSFixed32();
+            break;
+          }
+          case 81: {
+            Sfixed64Field = input.ReadSFixed64();
+            break;
+          }
+          case 93: {
+            FloatField = input.ReadFloat();
+            break;
+          }
+          case 97: {
+            DoubleField = input.ReadDouble();
+            break;
+          }
+          case 104: {
+            BoolField = input.ReadBool();
+            break;
+          }
+          case 114: {
+            StringField = input.ReadString();
+            break;
+          }
+          case 122: {
+            BytesField = input.ReadBytes();
+            break;
+          }
         }
       }
     #endif
@@ -289,6 +730,58 @@ namespace ComprehensiveTest.V3Minimmal {
           }
           case 16: {
             Int64Field = input.ReadInt64();
+            break;
+          }
+          case 24: {
+            Uint32Field = input.ReadUInt32();
+            break;
+          }
+          case 32: {
+            Uint64Field = input.ReadUInt64();
+            break;
+          }
+          case 40: {
+            Sint32Field = input.ReadSInt32();
+            break;
+          }
+          case 48: {
+            Sint64Field = input.ReadSInt64();
+            break;
+          }
+          case 61: {
+            Fixed32Field = input.ReadFixed32();
+            break;
+          }
+          case 65: {
+            Fixed64Field = input.ReadFixed64();
+            break;
+          }
+          case 77: {
+            Sfixed32Field = input.ReadSFixed32();
+            break;
+          }
+          case 81: {
+            Sfixed64Field = input.ReadSFixed64();
+            break;
+          }
+          case 93: {
+            FloatField = input.ReadFloat();
+            break;
+          }
+          case 97: {
+            DoubleField = input.ReadDouble();
+            break;
+          }
+          case 104: {
+            BoolField = input.ReadBool();
+            break;
+          }
+          case 114: {
+            StringField = input.ReadString();
+            break;
+          }
+          case 122: {
+            BytesField = input.ReadBytes();
             break;
           }
         }
