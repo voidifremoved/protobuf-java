@@ -942,6 +942,11 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("      return " + variables.get("repeated_get") + "(index);");
 			printer.println("    }");
+
+			if (descriptor.isPacked())
+			{
+				printer.println("    private int " + variables.get("name") + "MemoizedSerializedSize = -1;");
+			}
 		}
 
 		@Override
@@ -1150,17 +1155,43 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 					+ variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
 			printer.println("        }");
 			printer.println("        size += dataSize;");
-			printer.println("        size += " + Helpers.getTagSize(descriptor) + " * get" + variables.get("capitalized_name") + "List().size();");
+			if (descriptor.isPacked())
+			{
+				printer.println("        if (!get" + variables.get("capitalized_name") + "List().isEmpty()) {");
+				printer.println("          size += " + Helpers.getTagSize(descriptor) + ";");
+				printer.println("          size += com.google.protobuf.CodedOutputStream");
+				printer.println("              .computeInt32SizeNoTag(dataSize);");
+				printer.println("        }");
+				printer.println("        " + variables.get("name") + "MemoizedSerializedSize = dataSize;");
+			}
+			else
+			{
+				printer.println("        size += " + Helpers.getTagSize(descriptor) + " * get" + variables.get("capitalized_name") + "List().size();");
+			}
 			printer.println("      }");
 		}
 
 		@Override
 		public void generateWriteToCode(PrintWriter printer)
 		{
-			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("        output.write" + variables.get("capitalized_type") + "("
-					+ variables.get("number") + ", " + variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
-			printer.println("      }");
+			if (descriptor.isPacked())
+			{
+				printer.println("      if (get" + variables.get("capitalized_name") + "List().size() > 0) {");
+				printer.println("        output.writeUInt32NoTag(" + Helpers.getTag(descriptor) + ");");
+				printer.println("        output.writeUInt32NoTag(" + variables.get("name") + "MemoizedSerializedSize);");
+				printer.println("      }");
+				printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+				printer.println("        output.write" + variables.get("capitalized_type") + "NoTag("
+						+ variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
+				printer.println("      }");
+			}
+			else
+			{
+				printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+				printer.println("        output.write" + variables.get("capitalized_type") + "("
+						+ variables.get("number") + ", " + variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
+				printer.println("      }");
+			}
 		}
 
 		@Override

@@ -71,20 +71,19 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 				+ ((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getName());
 		variables.put("default_number", String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber()));
 
+		variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
+		variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 		if (descriptor.hasPresence())
 		{
 			variables.put("is_field_present_message", Helpers.generateGetBit(messageBitIndex));
 			variables.put("is_other_field_present_message", "other.has" + variables.get("capitalized_name") + "()");
 			variables.put("set_has_field_bit_to_local", Helpers.generateSetBitToLocal(messageBitIndex) + ";");
-			variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
-			variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
 		}
 		else
 		{
 			variables.put("is_field_present_message", variables.get("name") + "_ != " + variables.get("default_number"));
 			variables.put("is_other_field_present_message", "other.get" + variables.get("capitalized_name") + "Value() != " + variables.get("default_number"));
-			variables.put("set_has_field_bit_builder", "");
-			variables.put("clear_has_field_bit_builder", "");
+			variables.put("set_has_field_bit_to_local", "");
 		}
 		variables.put("get_has_field_bit_builder", Helpers.generateGetBit(builderBitIndex));
 		variables.put("get_has_field_bit_from_local", Helpers.generateGetBitFromLocal(builderBitIndex));
@@ -266,7 +265,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("      public int get" + variables.get("capitalized_name") + "Value() {");
+			printer.println("      @java.lang.Override public int get" + variables.get("capitalized_name") + "Value() {");
 			printer.println("        return " + variables.get("name") + "_;");
 			printer.println("      }");
 
@@ -276,13 +275,15 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 					commentWriter -> DocComment.writeFieldAccessorDocComment(
 							commentWriter,
 							descriptor,
-							FieldAccessorType.SETTER,
+							FieldAccessorType.VALUE_SETTER,
 							context,
 							true,
 							false,
 							false));
 			printer.println("      public Builder set" + variables.get("capitalized_name") + "Value(int value) {");
 			printer.println("        " + variables.get("name") + "_ = value;");
+			printer.println("        " + variables.get("set_has_field_bit_builder"));
+			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
 		}
@@ -370,20 +371,13 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuildingCode(PrintWriter printer)
 	{
-		if (descriptor.hasPresence())
+		printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
+		printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
+		if (getNumBitsForMessage() > 0)
 		{
-			printer.println("        if (" + variables.get("get_has_field_bit_from_local") + ") {");
-			printer.println("          result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
-			if (getNumBitsForMessage() > 0)
-			{
-				printer.println("          " + variables.get("set_has_field_bit_to_local"));
-			}
-			printer.println("        }");
+			printer.println("          " + variables.get("set_has_field_bit_to_local"));
 		}
-		else
-		{
-			printer.println("        result." + variables.get("name") + "_ = " + variables.get("name") + "_;");
-		}
+		printer.println("        }");
 	}
 
 	@Override
@@ -626,6 +620,32 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false));
 			printer.println("    " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index);");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println(
+					"    java.util.List<java.lang.Integer>");
+			printer.println("    get" + variables.get("capitalized_name") + "ValueList();");
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("    int get" + variables.get("capitalized_name") + "Value(int index);");
 		}
 
 		@Override
@@ -695,6 +715,44 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    public " + variables.get("type") + " get" + variables.get("capitalized_name") + "(int index) {");
 			printer.println("      return " + variables.get("name") + "_converter_.convert(" + variables.get("name") + "_.getInt(index));");
 			printer.println("    }");
+
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("    @java.lang.Override");
+			printer.println("    public java.util.List<java.lang.Integer>");
+			printer.println("    get" + variables.get("capitalized_name") + "ValueList() {");
+			printer.println("      return " + variables.get("name") + "_;");
+			printer.println("    }");
+
+			Helpers.writeDocComment(
+					printer,
+					"    ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("    @java.lang.Override");
+			printer.println("    public int get" + variables.get("capitalized_name") + "Value(int index) {");
+			printer.println("      return " + variables.get("name") + "_.getInt(index);");
+			printer.println("    }");
+
+			if (descriptor.isPacked())
+			{
+				printer.println("    private int " + variables.get("name") + "MemoizedSerializedSize;");
+			}
 		}
 
 		@Override
@@ -837,6 +895,96 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.get("on_changed"));
 			printer.println("        return this;");
 			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("      public java.util.List<java.lang.Integer>");
+			printer.println("      get" + variables.get("capitalized_name") + "ValueList() {");
+			printer.println("        " + variables.get("name") + "_.makeImmutable();");
+			printer.println("        return " + variables.get("name") + "_;");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+							context,
+							false,
+							false,
+							false));
+			printer.println("      public int get" + variables.get("capitalized_name") + "Value(int index) {");
+			printer.println("        return " + variables.get("name") + "_.getInt(index);");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_INDEXED_VALUE_SETTER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder set" + variables.get("capitalized_name") + "Value(");
+			printer.println("          int index, int value) {");
+			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
+			printer.println("        " + variables.get("repeated_set") + "(index, value);");
+			printer.println("        " + variables.get("on_changed"));
+			printer.println("        return this;");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_VALUE_ADDER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder add" + variables.get("capitalized_name") + "Value(int value) {");
+			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
+			printer.println("        " + variables.get("repeated_add") + "(value);");
+			printer.println("        " + variables.get("on_changed"));
+			printer.println("        return this;");
+			printer.println("      }");
+
+			Helpers.writeDocComment(
+					printer,
+					"      ",
+					commentWriter -> DocComment.writeFieldAccessorDocComment(
+							commentWriter,
+							descriptor,
+							FieldAccessorType.LIST_VALUE_MULTI_ADDER,
+							context,
+							true,
+							false,
+							false));
+			printer.println("      public Builder addAll" + variables.get("capitalized_name") + "Value(");
+			printer.println("          java.lang.Iterable<java.lang.Integer> values) {");
+			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
+			printer.println("        for (int value : values) {");
+			printer.println("          " + variables.get("repeated_add") + "(value);");
+			printer.println("        }");
+			printer.println("        " + variables.get("on_changed"));
+			printer.println("        return this;");
+			printer.println("      }");
 		}
 
 		@Override
@@ -935,16 +1083,41 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("            .computeEnumSizeNoTag(" + variables.get("name") + "_.getInt(i));");
 			printer.println("        }");
 			printer.println("        size += dataSize;");
-			printer.println("        size += " + Helpers.getTagSize(descriptor) + " * " + variables.get("name") + "_.size();");
+			if (descriptor.isPacked())
+			{
+				printer.println("        if (!" + variables.get("name") + "_.isEmpty()) {");
+				printer.println("          size += " + Helpers.getTagSize(descriptor) + ";");
+				printer.println("          size += com.google.protobuf.CodedOutputStream");
+				printer.println("            .computeUInt32SizeNoTag(dataSize);");
+				printer.println("        }");
+				printer.println("        " + variables.get("name") + "MemoizedSerializedSize = dataSize;");
+			}
+			else
+			{
+				printer.println("        size += " + Helpers.getTagSize(descriptor) + " * " + variables.get("name") + "_.size();");
+			}
 			printer.println("      }");
 		}
 
 		@Override
 		public void generateWriteToCode(PrintWriter printer)
 		{
-			printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("        output.writeEnum(" + variables.get("number") + ", " + variables.get("name") + "_.getInt(i));");
-			printer.println("      }");
+			if (descriptor.isPacked())
+			{
+				printer.println("      if (" + variables.get("name") + "_.size() > 0) {");
+				printer.println("        output.writeUInt32NoTag(" + Helpers.getTag(descriptor) + ");");
+				printer.println("        output.writeUInt32NoTag(" + variables.get("name") + "MemoizedSerializedSize);");
+				printer.println("      }");
+				printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+				printer.println("        output.writeEnumNoTag(" + variables.get("name") + "_.getInt(i));");
+				printer.println("      }");
+			}
+			else
+			{
+				printer.println("      for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+				printer.println("        output.writeEnum(" + variables.get("number") + ", " + variables.get("name") + "_.getInt(i));");
+				printer.println("      }");
+			}
 		}
 
 		@Override

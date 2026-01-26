@@ -1123,6 +1123,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public Builder add" + variables.get("capitalized_name") + "Bytes(");
 			printer.println("          com.google.protobuf.ByteString value) {");
 			printer.println("        if (value == null) { throw new NullPointerException(); }");
+			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+			{
+				printer.println("        checkByteStringIsUtf8(value);");
+			}
 			printer.println("        ensure" + variables.get("capitalized_name") + "IsMutable();");
 			printer.println("        " + variables.get("name") + "_.add(value);");
 			printer.println("        " + variables.get("set_has_field_bit_builder"));
