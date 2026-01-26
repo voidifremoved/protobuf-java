@@ -390,3 +390,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
         *   If the input string contains `e` or `E` (scientific notation), it formats using `%.9g`/`%.17g` (stripping trailing zeros) to match `protoc` canonicalization.
         *   If the input is simple decimal, it returns the raw input string to preserve precision and avoid noise (e.g. preventing `2.71828` -> `2.71828008`).
     *   `DocComment.java` and `Helpers.java` were updated to use the `FieldDescriptorProto.getDefaultValue()` string directly (instead of formatting the parsed double) to ensure the generated code and Javadoc match `protoc` output exactly.
+
+*   **Deprecated Field Javadoc**:
+    *   The generated debug string for deprecated fields must include the `[deprecated = true]` option (e.g., `optional string deprecated_field = 30 [deprecated = true];`).
+    *   An `@deprecated` tag must be generated with a specific message format: `<FieldFullName> is deprecated.\n *     See <FileName>;l=<LineNumber>`.
+    *   The line number in the `See ...` link uses 0-based indexing (e.g., `l=50` for a field on line 51), matching `SourceCodeInfo.Location.span[0]`.
