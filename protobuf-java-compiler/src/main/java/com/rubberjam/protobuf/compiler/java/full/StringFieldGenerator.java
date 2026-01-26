@@ -244,9 +244,18 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.ByteString bs = ");
 			printer.println("            (com.google.protobuf.ByteString) ref;");
 			printer.println("        java.lang.String s = bs.toStringUtf8();");
-			printer.println("        if (bs.isValidUtf8() && (" + variables.get("is_field_present_message") + ")) {");
-			printer.println("          " + variables.get("oneof_field_variable") + " = s;");
-			printer.println("        }");
+			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+			{
+				printer.println("        if (" + variables.get("is_field_present_message") + ") {");
+				printer.println("          " + variables.get("oneof_field_variable") + " = s;");
+				printer.println("        }");
+			}
+			else
+			{
+				printer.println("        if (bs.isValidUtf8() && (" + variables.get("is_field_present_message") + ")) {");
+				printer.println("          " + variables.get("oneof_field_variable") + " = s;");
+				printer.println("        }");
+			}
 			printer.println("        return s;");
 			printer.println("      }");
 		}
@@ -259,9 +268,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.ByteString bs = ");
 			printer.println("            (com.google.protobuf.ByteString) ref;");
 			printer.println("        java.lang.String s = bs.toStringUtf8();");
-			printer.println("        if (bs.isValidUtf8()) {");
-			printer.println("          " + variables.get("name") + "_ = s;");
-			printer.println("        }");
+			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+			{
+				printer.println("        " + variables.get("name") + "_ = s;");
+			}
+			else
+			{
+				printer.println("        if (bs.isValidUtf8()) {");
+				printer.println("          " + variables.get("name") + "_ = s;");
+				printer.println("        }");
+			}
 			printer.println("        return s;");
 			printer.println("      }");
 		}
@@ -388,17 +404,33 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		printer.println("          java.lang.String s = bs.toStringUtf8();");
 		if (descriptor.getContainingOneof() != null)
 		{
-			printer.println("          if (" + variables.get("is_field_present_message") + ") {");
-			printer.println("            if (bs.isValidUtf8()) {");
-			printer.println("              " + variables.get("oneof_field_variable") + " = s;");
-			printer.println("            }");
-			printer.println("          }");
+			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+			{
+				printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+				printer.println("            " + variables.get("oneof_field_variable") + " = s;");
+				printer.println("          }");
+			}
+			else
+			{
+				printer.println("          if (" + variables.get("is_field_present_message") + ") {");
+				printer.println("            if (bs.isValidUtf8()) {");
+				printer.println("              " + variables.get("oneof_field_variable") + " = s;");
+				printer.println("            }");
+				printer.println("          }");
+			}
 		}
 		else
 		{
-			printer.println("          if (bs.isValidUtf8()) {");
-			printer.println("            " + variables.get("name") + "_ = s;");
-			printer.println("          }");
+			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+			{
+				printer.println("          " + variables.get("name") + "_ = s;");
+			}
+			else
+			{
+				printer.println("          if (bs.isValidUtf8()) {");
+				printer.println("            " + variables.get("name") + "_ = s;");
+				printer.println("          }");
+			}
 		}
 		printer.println("          return s;");
 		printer.println("        } else {");
@@ -530,6 +562,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 				+ variables.get("capitalized_name") + "Bytes(");
 		printer.println("          com.google.protobuf.ByteString value) {");
 		printer.println("        " + variables.get("null_check"));
+		if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
+		{
+			printer.println("        checkByteStringIsUtf8(value);");
+		}
 		if (descriptor.getContainingOneof() != null)
 		{
 			printer.println("        " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
