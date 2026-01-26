@@ -803,32 +803,35 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false));
 			printer.println("    " + variables.getType() + " get" + variables.getCapitalizedName() + "(int index);");
-			Helpers.writeDocComment(
-					printer,
-					"    ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println(
-					"    java.util.List<java.lang.Integer>");
-			printer.println("    get" + variables.getCapitalizedName() + "ValueList();");
-			Helpers.writeDocComment(
-					printer,
-					"    ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println("    int get" + variables.getCapitalizedName() + "Value(int index);");
+			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			{
+				Helpers.writeDocComment(
+						printer,
+						"    ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println(
+						"    java.util.List<java.lang.Integer>");
+				printer.println("    get" + variables.getCapitalizedName() + "ValueList();");
+				Helpers.writeDocComment(
+						printer,
+						"    ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println("    int get" + variables.getCapitalizedName() + "Value(int index);");
+			}
 		}
 
 		@Override
@@ -899,38 +902,41 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      return " + variables.getName() + "_converter_.convert(" + variables.getName() + "_.getInt(index));");
 			printer.println("    }");
 
-			Helpers.writeDocComment(
-					printer,
-					"    ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println("    @java.lang.Override");
-			printer.println("    public java.util.List<java.lang.Integer>");
-			printer.println("    get" + variables.getCapitalizedName() + "ValueList() {");
-			printer.println("      return " + variables.getName() + "_;");
-			printer.println("    }");
+			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			{
+				Helpers.writeDocComment(
+						printer,
+						"    ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println("    @java.lang.Override");
+				printer.println("    public java.util.List<java.lang.Integer>");
+				printer.println("    get" + variables.getCapitalizedName() + "ValueList() {");
+				printer.println("      return " + variables.getName() + "_;");
+				printer.println("    }");
 
-			Helpers.writeDocComment(
-					printer,
-					"    ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println("    @java.lang.Override");
-			printer.println("    public int get" + variables.getCapitalizedName() + "Value(int index) {");
-			printer.println("      return " + variables.getName() + "_.getInt(index);");
-			printer.println("    }");
+				Helpers.writeDocComment(
+						printer,
+						"    ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println("    @java.lang.Override");
+				printer.println("    public int get" + variables.getCapitalizedName() + "Value(int index) {");
+				printer.println("      return " + variables.getName() + "_.getInt(index);");
+				printer.println("    }");
+			}
 
 			if (descriptor.isPacked())
 			{
@@ -1079,95 +1085,98 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        return this;");
 			printer.println("      }");
 
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println("      public java.util.List<java.lang.Integer>");
-			printer.println("      get" + variables.getCapitalizedName() + "ValueList() {");
-			printer.println("        " + variables.getName() + "_.makeImmutable();");
-			printer.println("        return " + variables.getName() + "_;");
-			printer.println("      }");
+			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			{
+				Helpers.writeDocComment(
+						printer,
+						"      ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println("      public java.util.List<java.lang.Integer>");
+				printer.println("      get" + variables.getCapitalizedName() + "ValueList() {");
+				printer.println("        " + variables.getName() + "_.makeImmutable();");
+				printer.println("        return " + variables.getName() + "_;");
+				printer.println("      }");
 
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
-							context,
-							false,
-							false,
-							false));
-			printer.println("      public int get" + variables.getCapitalizedName() + "Value(int index) {");
-			printer.println("        return " + variables.getName() + "_.getInt(index);");
-			printer.println("      }");
+				Helpers.writeDocComment(
+						printer,
+						"      ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_INDEXED_VALUE_GETTER,
+								context,
+								false,
+								false,
+								false));
+				printer.println("      public int get" + variables.getCapitalizedName() + "Value(int index) {");
+				printer.println("        return " + variables.getName() + "_.getInt(index);");
+				printer.println("      }");
 
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_INDEXED_VALUE_SETTER,
-							context,
-							true,
-							false,
-							false));
-			printer.println("      public Builder set" + variables.getCapitalizedName() + "Value(");
-			printer.println("          int index, int value) {");
-			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
-			printer.println("        " + variables.getRepeatedSet() + "(index, value);");
-			printer.println("        " + variables.getOnChanged());
-			printer.println("        return this;");
-			printer.println("      }");
+				Helpers.writeDocComment(
+						printer,
+						"      ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_INDEXED_VALUE_SETTER,
+								context,
+								true,
+								false,
+								false));
+				printer.println("      public Builder set" + variables.getCapitalizedName() + "Value(");
+				printer.println("          int index, int value) {");
+				printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
+				printer.println("        " + variables.getRepeatedSet() + "(index, value);");
+				printer.println("        " + variables.getOnChanged());
+				printer.println("        return this;");
+				printer.println("      }");
 
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_VALUE_ADDER,
-							context,
-							true,
-							false,
-							false));
-			printer.println("      public Builder add" + variables.getCapitalizedName() + "Value(int value) {");
-			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
-			printer.println("        " + variables.getRepeatedAdd() + "(value);");
-			printer.println("        " + variables.getOnChanged());
-			printer.println("        return this;");
-			printer.println("      }");
+				Helpers.writeDocComment(
+						printer,
+						"      ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_VALUE_ADDER,
+								context,
+								true,
+								false,
+								false));
+				printer.println("      public Builder add" + variables.getCapitalizedName() + "Value(int value) {");
+				printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
+				printer.println("        " + variables.getRepeatedAdd() + "(value);");
+				printer.println("        " + variables.getOnChanged());
+				printer.println("        return this;");
+				printer.println("      }");
 
-			Helpers.writeDocComment(
-					printer,
-					"      ",
-					commentWriter -> DocComment.writeFieldAccessorDocComment(
-							commentWriter,
-							descriptor,
-							FieldAccessorType.LIST_VALUE_MULTI_ADDER,
-							context,
-							true,
-							false,
-							false));
-			printer.println("      public Builder addAll" + variables.getCapitalizedName() + "Value(");
-			printer.println("          java.lang.Iterable<java.lang.Integer> values) {");
-			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
-			printer.println("        for (int value : values) {");
-			printer.println("          " + variables.getRepeatedAdd() + "(value);");
-			printer.println("        }");
-			printer.println("        " + variables.getOnChanged());
-			printer.println("        return this;");
-			printer.println("      }");
+				Helpers.writeDocComment(
+						printer,
+						"      ",
+						commentWriter -> DocComment.writeFieldAccessorDocComment(
+								commentWriter,
+								descriptor,
+								FieldAccessorType.LIST_VALUE_MULTI_ADDER,
+								context,
+								true,
+								false,
+								false));
+				printer.println("      public Builder addAll" + variables.getCapitalizedName() + "Value(");
+				printer.println("          java.lang.Iterable<java.lang.Integer> values) {");
+				printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
+				printer.println("        for (int value : values) {");
+				printer.println("          " + variables.getRepeatedAdd() + "(value);");
+				printer.println("        }");
+				printer.println("        " + variables.getOnChanged());
+				printer.println("        return this;");
+				printer.println("      }");
+			}
 		}
 
 		@Override
