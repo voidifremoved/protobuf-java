@@ -23,39 +23,37 @@ public final class FieldCommon
 	public static void setCommonFieldVariables(
 			FieldDescriptor descriptor,
 			FieldGeneratorInfo info,
-			Map<String, String> variables)
+			ContextVariables variables)
 	{
-		variables.put("field_name", descriptor.getName());
-		variables.put("name", info.name);
-		variables.put("classname", descriptor.getContainingType().getName());
-		variables.put("capitalized_name", info.capitalizedName);
-		variables.put("disambiguated_reason", info.disambiguatedReason);
-		variables.put("constant_name", StringUtils.fieldConstantName(descriptor));
-		variables.put("number", Integer.toString(descriptor.getNumber()));
-		variables.put("kt_dsl_builder", "_builder");
-		variables.put("{", "");
-		variables.put("}", "");
-		variables.put("kt_name", getKotlinName(info.name));
+		variables.setFieldName(descriptor.getName());
+		variables.setName(info.name);
+		variables.setClassname(descriptor.getContainingType().getName());
+		variables.setCapitalizedName(info.capitalizedName);
+		variables.setDisambiguatedReason(info.disambiguatedReason);
+		variables.setConstantName(StringUtils.fieldConstantName(descriptor));
+		variables.setNumber(Integer.toString(descriptor.getNumber()));
+		variables.setKtDslBuilder("_builder");
+		variables.setKtName(getKotlinName(info.name));
 		String ktPropertyName = getKotlinPropertyName(info.capitalizedName);
-		variables.put("kt_property_name", ktPropertyName);
-		variables.put("kt_safe_name", getKotlinSafeName(ktPropertyName));
-		variables.put("kt_capitalized_name", getKotlinName(info.capitalizedName));
-		variables.put("jvm_synthetic", jvmSynthetic(info.options.jvmDsl));
+		variables.setKtPropertyName(ktPropertyName);
+		variables.setKtSafeName(getKotlinSafeName(ktPropertyName));
+		variables.setKtCapitalizedName(getKotlinName(info.capitalizedName));
+		variables.setJvmSynthetic(jvmSynthetic(info.options.jvmDsl));
 		if (!descriptor.isRepeated())
 		{
-			variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()));
+			variables.setAnnotationFieldType(StringUtils.getFieldTypeName(descriptor.getType()));
 		}
 		else if (descriptor.isMapField())
 		{
-			variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "MAP");
+			variables.setAnnotationFieldType(StringUtils.getFieldTypeName(descriptor.getType()) + "MAP");
 		}
 		else
 		{
-			variables.put("annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST");
+			variables.setAnnotationFieldType(StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST");
 			if (descriptor.isPacked())
 			{
-				variables.put(
-						"annotation_field_type", StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST_PACKED");
+				variables.setAnnotationFieldType(
+						StringUtils.getFieldTypeName(descriptor.getType()) + "_LIST_PACKED");
 			}
 		}
 	}
@@ -63,25 +61,25 @@ public final class FieldCommon
 	public static void setCommonOneofVariables(
 			FieldDescriptor descriptor,
 			OneofGeneratorInfo info,
-			Map<String, String> variables)
+			ContextVariables variables)
 	{
-		variables.put("oneof_name", info.name);
-		variables.put("oneof_capitalized_name", info.capitalizedName);
-		variables.put("oneof_index", Integer.toString(descriptor.getContainingOneof().getIndex()));
-		variables.put("oneof_stored_type", getOneofStoredType(descriptor));
-		variables.put("set_oneof_case_message", info.name + "Case_ = " + descriptor.getNumber());
-		variables.put("clear_oneof_case_message", info.name + "Case_ = 0");
-		variables.put("has_oneof_case_message", info.name + "Case_ == " + descriptor.getNumber());
+		variables.setOneofName(info.name);
+		variables.setOneofCapitalizedName(info.capitalizedName);
+		variables.setOneofIndex(Integer.toString(descriptor.getContainingOneof().getIndex()));
+		variables.setOneofStoredType(getOneofStoredType(descriptor));
+		variables.setSetOneofCaseMessage(info.name + "Case_ = " + descriptor.getNumber());
+		variables.setClearOneofCaseMessage(info.name + "Case_ = 0");
+		variables.setHasOneofCaseMessage(info.name + "Case_ == " + descriptor.getNumber());
 	}
 
 	public static void printExtraFieldInfo(
-			Map<String, String> variables, PrintWriter out)
+			ContextVariables variables, PrintWriter out)
 	{
-		String reason = variables.get("disambiguated_reason");
+		String reason = variables.getDisambiguatedReason();
 		if (reason != null && !reason.isEmpty())
 		{
 			out.format(
-					"// An alternative name is used for field \"%s\" because:\n", variables.get("field_name"));
+					"// An alternative name is used for field \"%s\" because:\n", variables.getFieldName());
 			out.format("//     %s\n", reason);
 		}
 	}
