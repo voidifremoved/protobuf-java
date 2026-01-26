@@ -308,13 +308,17 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false,
 							false));
-			printer.println("      @java.lang.Override public boolean has" + variables.get("capitalized_name") + "() {");
+			
+
 			if (descriptor.getContainingOneof() != null && !isSynthetic)
 			{
+				printer.println("      @java.lang.Override");
+				printer.println("      public boolean has" + variables.get("capitalized_name") + "() {");
 				printer.println("        return " + variables.get("is_field_present_message") + ";");
 			}
 			else
 			{
+				printer.println("      public boolean has" + variables.get("capitalized_name") + "() {");
 				printer.println("        return " + variables.get("get_has_field_bit_builder") + ";");
 			}
 			printer.println("      }");
@@ -534,14 +538,14 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			}
 			else
 			{
-				printer.println("                int tmpRaw = input.readEnum();");
-				printer.println("                " + variables.get("type") + " tmpValue =");
-				printer.println("                    " + variables.get("type") + ".forNumber(tmpRaw);");
-				printer.println("                if (tmpValue == null) {");
-				printer.println("                  mergeUnknownVarintField(" + fieldNumber + ", tmpRaw);");
+				printer.println("                int rawValue = input.readEnum();");
+				printer.println("                " + variables.get("type") + " value =");
+				printer.println("                    " + variables.get("type") + ".forNumber(rawValue);");
+				printer.println("                if (value == null) {");
+				printer.println("                  mergeUnknownVarintField(" + fieldNumber + ", rawValue);");
 				printer.println("                } else {");
-				printer.println("                  " + variables.get("oneof_field_variable") + " = tmpRaw;");
 				printer.println("                  " + variables.get("oneof_case_variable") + " = " + variables.get("number") + ";");
+				printer.println("                  " + variables.get("oneof_field_variable") + " = rawValue;");
 				printer.println("                }");
 			}
 		}
@@ -578,7 +582,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			valueVar = "(java.lang.Integer) " + variables.get("oneof_field_variable");
 		}
 		printer.println("        size += com.google.protobuf.CodedOutputStream");
-		printer.println("          .computeEnumSize(" + variables.get("number") + ", " + valueVar + ");");
+		printer.println("          .computeEnumSize(" + variables.get("number") + ", (" + valueVar + "));");
 		printer.println("      }");
 	}
 
@@ -592,7 +596,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		{
 			valueVar = "(java.lang.Integer) " + variables.get("oneof_field_variable");
 		}
-		printer.println("        output.writeEnum(" + variables.get("number") + ", " + valueVar + ");");
+		printer.println("        output.writeEnum(" + variables.get("number") + ", (" + valueVar + "));");
 		printer.println("      }");
 	}
 
