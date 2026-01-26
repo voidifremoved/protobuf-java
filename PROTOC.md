@@ -336,3 +336,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   **Serialization**: For repeated fields of fixed-size types (`FIXED32`, `SFIXED32`, `FLOAT`, `FIXED64`, `SFIXED64`, `DOUBLE`, `BOOL`), `getSerializedSize` uses an optimized calculation `size = fixedSize * list.size()` instead of iterating over the list. It also uses the public getter `get...List()` for this check.
     *   **Builder Capacity Method**: `ensure...IsMutable(int capacity)` is generated for **ALL** repeated fields of fixed-size types or boolean, regardless of whether they are explicitly declared as packed. This is required because `protoc` generates parsing code that uses this method for the packed wire format (tag 114) even for fields declared unpacked.
     *   **Packed Parsing Optimization**: When parsing packed data for these fields, the generated code uses `ensure...IsMutable(alloc / size)` to pre-allocate the list, where `alloc` is calculated from the byte length (capped at 4096).
+
+*   **Enum Field Default Value**:
+    *   When generating code for Enum fields, the `default_number` variable must be calculated using the number of the actual default value from the descriptor (`descriptor.getDefaultValue().getNumber()`).
+    *   Previously, it was incorrectly using the number of the *first value* in the enum type definition (`descriptor.getEnumType().getValues().get(0).getNumber()`).
+    *   This ensures that fields with explicit default values (e.g., `default = SECOND_VALUE`) are initialized correctly in the generated code, matching `protoc` behavior.
