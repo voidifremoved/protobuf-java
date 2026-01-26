@@ -2438,11 +2438,1537 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
   }
 
+  public interface PackedMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return A list containing the packedInt32.
+     */
+    java.util.List<java.lang.Integer> getPackedInt32List();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return The count of packedInt32.
+     */
+    int getPackedInt32Count();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt32 at the given index.
+     */
+    int getPackedInt32(int index);
+
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return A list containing the packedInt64.
+     */
+    java.util.List<java.lang.Long> getPackedInt64List();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return The count of packedInt64.
+     */
+    int getPackedInt64Count();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt64 at the given index.
+     */
+    long getPackedInt64(int index);
+
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return A list containing the packedUint32.
+     */
+    java.util.List<java.lang.Integer> getPackedUint32List();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return The count of packedUint32.
+     */
+    int getPackedUint32Count();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedUint32 at the given index.
+     */
+    int getPackedUint32(int index);
+
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return A list containing the packedBool.
+     */
+    java.util.List<java.lang.Boolean> getPackedBoolList();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return The count of packedBool.
+     */
+    int getPackedBoolCount();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedBool at the given index.
+     */
+    boolean getPackedBool(int index);
+
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the packedEnum.
+     */
+    java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getPackedEnumList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return The count of packedEnum.
+     */
+    int getPackedEnumCount();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedEnum at the given index.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getPackedEnum(int index);
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the enum numeric values on the wire for packedEnum.
+     */
+    java.util.List<java.lang.Integer>
+    getPackedEnumValueList();
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of packedEnum at the given index.
+     */
+    int getPackedEnumValue(int index);
+
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return A list containing the packedFixed32.
+     */
+    java.util.List<java.lang.Integer> getPackedFixed32List();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return The count of packedFixed32.
+     */
+    int getPackedFixed32Count();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFixed32 at the given index.
+     */
+    int getPackedFixed32(int index);
+
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return A list containing the packedFloat.
+     */
+    java.util.List<java.lang.Float> getPackedFloatList();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return The count of packedFloat.
+     */
+    int getPackedFloatCount();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFloat at the given index.
+     */
+    float getPackedFloat(int index);
+
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return A list containing the unpackedInt32.
+     */
+    java.util.List<java.lang.Integer> getUnpackedInt32List();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return The count of unpackedInt32.
+     */
+    int getUnpackedInt32Count();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @param index The index of the element to return.
+     * @return The unpackedInt32 at the given index.
+     */
+    int getUnpackedInt32(int index);
+  }
+  /**
+   * <pre>
+   * Message with packed repeated fields (proto3 default)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3Minimmal.PackedMessageV3}
+   */
+  public static final class PackedMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+      PackedMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "PackedMessageV3");
+    }
+    // Use PackedMessageV3.newBuilder() to construct.
+    private PackedMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private PackedMessageV3() {
+      packedInt32_ = emptyIntList();
+      packedInt64_ = emptyLongList();
+      packedUint32_ = emptyIntList();
+      packedBool_ = emptyBooleanList();
+      packedEnum_ = emptyIntList();
+      packedFixed32_ = emptyIntList();
+      packedFloat_ = emptyFloatList();
+      unpackedInt32_ = emptyIntList();
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.Builder.class);
+    }
+
+    public static final int PACKED_INT32_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedInt32_ =
+        emptyIntList();
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return A list containing the packedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedInt32List() {
+      return packedInt32_;
+    }
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @return The count of packedInt32.
+     */
+    public int getPackedInt32Count() {
+      return packedInt32_.size();
+    }
+    /**
+     * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt32 at the given index.
+     */
+    public int getPackedInt32(int index) {
+      return packedInt32_.getInt(index);
+    }
+    private int packedInt32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_INT64_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.LongList packedInt64_ =
+        emptyLongList();
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return A list containing the packedInt64.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Long>
+        getPackedInt64List() {
+      return packedInt64_;
+    }
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @return The count of packedInt64.
+     */
+    public int getPackedInt64Count() {
+      return packedInt64_.size();
+    }
+    /**
+     * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedInt64 at the given index.
+     */
+    public long getPackedInt64(int index) {
+      return packedInt64_.getLong(index);
+    }
+    private int packedInt64MemoizedSerializedSize = -1;
+
+    public static final int PACKED_UINT32_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedUint32_ =
+        emptyIntList();
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return A list containing the packedUint32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedUint32List() {
+      return packedUint32_;
+    }
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @return The count of packedUint32.
+     */
+    public int getPackedUint32Count() {
+      return packedUint32_.size();
+    }
+    /**
+     * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedUint32 at the given index.
+     */
+    public int getPackedUint32(int index) {
+      return packedUint32_.getInt(index);
+    }
+    private int packedUint32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_BOOL_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.BooleanList packedBool_ =
+        emptyBooleanList();
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return A list containing the packedBool.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Boolean>
+        getPackedBoolList() {
+      return packedBool_;
+    }
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @return The count of packedBool.
+     */
+    public int getPackedBoolCount() {
+      return packedBool_.size();
+    }
+    /**
+     * <code>repeated bool packed_bool = 4 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedBool at the given index.
+     */
+    public boolean getPackedBool(int index) {
+      return packedBool_.getBoolean(index);
+    }
+    private int packedBoolMemoizedSerializedSize = -1;
+
+    public static final int PACKED_ENUM_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedEnum_ =
+        emptyIntList();
+    private static final     com.google.protobuf.Internal.IntListAdapter.IntConverter<
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> packedEnum_converter_ =
+            new com.google.protobuf.Internal.IntListAdapter.IntConverter<
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>() {
+              public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 convert(int from) {
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(from);
+                return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+              }
+            };
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the packedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getPackedEnumList() {
+      return new com.google.protobuf.Internal.IntListAdapter<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(packedEnum_, packedEnum_converter_);
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return The count of packedEnum.
+     */
+    @java.lang.Override
+    public int getPackedEnumCount() {
+      return packedEnum_.size();
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedEnum at the given index.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getPackedEnum(int index) {
+      return packedEnum_converter_.convert(packedEnum_.getInt(index));
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @return A list containing the enum numeric values on the wire for packedEnum.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+    getPackedEnumValueList() {
+      return packedEnum_;
+    }
+    /**
+     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * @param index The index of the value to return.
+     * @return The enum numeric value on the wire of packedEnum at the given index.
+     */
+    @java.lang.Override
+    public int getPackedEnumValue(int index) {
+      return packedEnum_.getInt(index);
+    }
+    private int packedEnumMemoizedSerializedSize;
+
+    public static final int PACKED_FIXED32_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList packedFixed32_ =
+        emptyIntList();
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return A list containing the packedFixed32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getPackedFixed32List() {
+      return packedFixed32_;
+    }
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @return The count of packedFixed32.
+     */
+    public int getPackedFixed32Count() {
+      return packedFixed32_.size();
+    }
+    /**
+     * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFixed32 at the given index.
+     */
+    public int getPackedFixed32(int index) {
+      return packedFixed32_.getInt(index);
+    }
+    private int packedFixed32MemoizedSerializedSize = -1;
+
+    public static final int PACKED_FLOAT_FIELD_NUMBER = 7;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.FloatList packedFloat_ =
+        emptyFloatList();
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return A list containing the packedFloat.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Float>
+        getPackedFloatList() {
+      return packedFloat_;
+    }
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @return The count of packedFloat.
+     */
+    public int getPackedFloatCount() {
+      return packedFloat_.size();
+    }
+    /**
+     * <code>repeated float packed_float = 7 [packed = true];</code>
+     * @param index The index of the element to return.
+     * @return The packedFloat at the given index.
+     */
+    public float getPackedFloat(int index) {
+      return packedFloat_.getFloat(index);
+    }
+    private int packedFloatMemoizedSerializedSize = -1;
+
+    public static final int UNPACKED_INT32_FIELD_NUMBER = 8;
+    @SuppressWarnings("serial")
+    private com.google.protobuf.Internal.IntList unpackedInt32_ =
+        emptyIntList();
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return A list containing the unpackedInt32.
+     */
+    @java.lang.Override
+    public java.util.List<java.lang.Integer>
+        getUnpackedInt32List() {
+      return unpackedInt32_;
+    }
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @return The count of unpackedInt32.
+     */
+    public int getUnpackedInt32Count() {
+      return unpackedInt32_.size();
+    }
+    /**
+     * <pre>
+     * Unpacked (explicit)
+     * </pre>
+     *
+     * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+     * @param index The index of the element to return.
+     * @return The unpackedInt32 at the given index.
+     */
+    public int getUnpackedInt32(int index) {
+      return unpackedInt32_.getInt(index);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with packed repeated fields (proto3 default)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3Minimmal.PackedMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        packedInt32_ = emptyIntList();
+        packedInt64_ = emptyLongList();
+        packedUint32_ = emptyIntList();
+        packedBool_ = emptyBooleanList();
+        packedEnum_ = emptyIntList();
+        packedFixed32_ = emptyIntList();
+        packedFloat_ = emptyFloatList();
+        unpackedInt32_ = emptyIntList();
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          packedInt32_.makeImmutable();
+          result.packedInt32_ = packedInt32_;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          packedInt64_.makeImmutable();
+          result.packedInt64_ = packedInt64_;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          packedUint32_.makeImmutable();
+          result.packedUint32_ = packedUint32_;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          packedBool_.makeImmutable();
+          result.packedBool_ = packedBool_;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          packedEnum_.makeImmutable();
+          result.packedEnum_ = packedEnum_;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          packedFixed32_.makeImmutable();
+          result.packedFixed32_ = packedFixed32_;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          packedFloat_.makeImmutable();
+          result.packedFloat_ = packedFloat_;
+        }
+        if (((from_bitField0_ & 0x00000080) != 0)) {
+          unpackedInt32_.makeImmutable();
+          result.unpackedInt32_ = unpackedInt32_;
+        }
+      }
+
+      private int bitField0_;
+
+      private com.google.protobuf.Internal.IntList packedInt32_ = emptyIntList();
+      private void ensurePackedInt32IsMutable() {
+        if (!packedInt32_.isModifiable()) {
+          packedInt32_ = makeMutableCopy(packedInt32_);
+        }
+        bitField0_ |= 0x00000001;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return A list containing the packedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedInt32List() {
+        packedInt32_.makeImmutable();
+        return packedInt32_;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return The count of packedInt32.
+       */
+      public int getPackedInt32Count() {
+        return packedInt32_.size();
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedInt32 at the given index.
+       */
+      public int getPackedInt32(int index) {
+        return packedInt32_.getInt(index);
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedInt32(
+          int index, int value) {
+
+        ensurePackedInt32IsMutable();
+        packedInt32_.setInt(index, value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param value The packedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedInt32(int value) {
+
+        ensurePackedInt32IsMutable();
+        packedInt32_.addInt(value);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @param values The packedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedInt32_);
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int32 packed_int32 = 1 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedInt32() {
+        packedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.LongList packedInt64_ = emptyLongList();
+      private void ensurePackedInt64IsMutable() {
+        if (!packedInt64_.isModifiable()) {
+          packedInt64_ = makeMutableCopy(packedInt64_);
+        }
+        bitField0_ |= 0x00000002;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return A list containing the packedInt64.
+       */
+      public java.util.List<java.lang.Long>
+          getPackedInt64List() {
+        packedInt64_.makeImmutable();
+        return packedInt64_;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return The count of packedInt64.
+       */
+      public int getPackedInt64Count() {
+        return packedInt64_.size();
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedInt64 at the given index.
+       */
+      public long getPackedInt64(int index) {
+        return packedInt64_.getLong(index);
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedInt64 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedInt64(
+          int index, long value) {
+
+        ensurePackedInt64IsMutable();
+        packedInt64_.setLong(index, value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param value The packedInt64 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedInt64(long value) {
+
+        ensurePackedInt64IsMutable();
+        packedInt64_.addLong(value);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @param values The packedInt64 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedInt64(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensurePackedInt64IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedInt64_);
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated int64 packed_int64 = 2 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedInt64() {
+        packedInt64_ = emptyLongList();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedUint32_ = emptyIntList();
+      private void ensurePackedUint32IsMutable() {
+        if (!packedUint32_.isModifiable()) {
+          packedUint32_ = makeMutableCopy(packedUint32_);
+        }
+        bitField0_ |= 0x00000004;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return A list containing the packedUint32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedUint32List() {
+        packedUint32_.makeImmutable();
+        return packedUint32_;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return The count of packedUint32.
+       */
+      public int getPackedUint32Count() {
+        return packedUint32_.size();
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedUint32 at the given index.
+       */
+      public int getPackedUint32(int index) {
+        return packedUint32_.getInt(index);
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedUint32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedUint32(
+          int index, int value) {
+
+        ensurePackedUint32IsMutable();
+        packedUint32_.setInt(index, value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param value The packedUint32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedUint32(int value) {
+
+        ensurePackedUint32IsMutable();
+        packedUint32_.addInt(value);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @param values The packedUint32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedUint32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedUint32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedUint32_);
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 packed_uint32 = 3 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedUint32() {
+        packedUint32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.BooleanList packedBool_ = emptyBooleanList();
+      private void ensurePackedBoolIsMutable() {
+        if (!packedBool_.isModifiable()) {
+          packedBool_ = makeMutableCopy(packedBool_);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      private void ensurePackedBoolIsMutable(int capacity) {
+        if (!packedBool_.isModifiable()) {
+          packedBool_ = makeMutableCopy(packedBool_, capacity);
+        }
+        bitField0_ |= 0x00000008;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return A list containing the packedBool.
+       */
+      public java.util.List<java.lang.Boolean>
+          getPackedBoolList() {
+        packedBool_.makeImmutable();
+        return packedBool_;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return The count of packedBool.
+       */
+      public int getPackedBoolCount() {
+        return packedBool_.size();
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedBool at the given index.
+       */
+      public boolean getPackedBool(int index) {
+        return packedBool_.getBoolean(index);
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedBool(
+          int index, boolean value) {
+
+        ensurePackedBoolIsMutable();
+        packedBool_.setBoolean(index, value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param value The packedBool to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedBool(boolean value) {
+
+        ensurePackedBoolIsMutable();
+        packedBool_.addBoolean(value);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @param values The packedBool to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedBool(
+          java.lang.Iterable<? extends java.lang.Boolean> values) {
+        ensurePackedBoolIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedBool_);
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated bool packed_bool = 4 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedBool() {
+        packedBool_ = emptyBooleanList();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedEnum_ = emptyIntList();
+      private void ensurePackedEnumIsMutable() {
+        if (!packedEnum_.isModifiable()) {
+          packedEnum_ = makeMutableCopy(packedEnum_);
+        }
+        bitField0_ |= 0x00000010;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return A list containing the packedEnum.
+       */
+      public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getPackedEnumList() {
+        return new com.google.protobuf.Internal.IntListAdapter<
+            com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(packedEnum_, packedEnum_converter_);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return The count of packedEnum.
+       */
+      public int getPackedEnumCount() {
+        return packedEnum_.size();
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedEnum at the given index.
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getPackedEnum(int index) {
+        return packedEnum_converter_.convert(packedEnum_.getInt(index));
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedEnum(
+          int index, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePackedEnumIsMutable();
+        packedEnum_.setInt(index, value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param value The packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        ensurePackedEnumIsMutable();
+        packedEnum_.addInt(value.getNumber());
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param values The packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedEnum(
+          java.lang.Iterable<? extends com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> values) {
+        ensurePackedEnumIsMutable();
+        for (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value : values) {
+          packedEnum_.addInt(value.getNumber());
+        }
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedEnum() {
+        packedEnum_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @return A list containing the enum numeric values on the wire for packedEnum.
+       */
+      public java.util.List<java.lang.Integer>
+      getPackedEnumValueList() {
+        packedEnum_.makeImmutable();
+        return packedEnum_;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index of the value to return.
+       * @return The enum numeric value on the wire of packedEnum at the given index.
+       */
+      public int getPackedEnumValue(int index) {
+        return packedEnum_.getInt(index);
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The enum numeric value on the wire for packedEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedEnumValue(
+          int index, int value) {
+        ensurePackedEnumIsMutable();
+        packedEnum_.setInt(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param value The enum numeric value on the wire for packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedEnumValue(int value) {
+        ensurePackedEnumIsMutable();
+        packedEnum_.addInt(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * @param values The enum numeric values on the wire for packedEnum to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedEnumValue(
+          java.lang.Iterable<java.lang.Integer> values) {
+        ensurePackedEnumIsMutable();
+        for (int value : values) {
+          packedEnum_.addInt(value);
+        }
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList packedFixed32_ = emptyIntList();
+      private void ensurePackedFixed32IsMutable() {
+        if (!packedFixed32_.isModifiable()) {
+          packedFixed32_ = makeMutableCopy(packedFixed32_);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      private void ensurePackedFixed32IsMutable(int capacity) {
+        if (!packedFixed32_.isModifiable()) {
+          packedFixed32_ = makeMutableCopy(packedFixed32_, capacity);
+        }
+        bitField0_ |= 0x00000020;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return A list containing the packedFixed32.
+       */
+      public java.util.List<java.lang.Integer>
+          getPackedFixed32List() {
+        packedFixed32_.makeImmutable();
+        return packedFixed32_;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return The count of packedFixed32.
+       */
+      public int getPackedFixed32Count() {
+        return packedFixed32_.size();
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedFixed32 at the given index.
+       */
+      public int getPackedFixed32(int index) {
+        return packedFixed32_.getInt(index);
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedFixed32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedFixed32(
+          int index, int value) {
+
+        ensurePackedFixed32IsMutable();
+        packedFixed32_.setInt(index, value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param value The packedFixed32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedFixed32(int value) {
+
+        ensurePackedFixed32IsMutable();
+        packedFixed32_.addInt(value);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @param values The packedFixed32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedFixed32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensurePackedFixed32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedFixed32_);
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated fixed32 packed_fixed32 = 6 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedFixed32() {
+        packedFixed32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.FloatList packedFloat_ = emptyFloatList();
+      private void ensurePackedFloatIsMutable() {
+        if (!packedFloat_.isModifiable()) {
+          packedFloat_ = makeMutableCopy(packedFloat_);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      private void ensurePackedFloatIsMutable(int capacity) {
+        if (!packedFloat_.isModifiable()) {
+          packedFloat_ = makeMutableCopy(packedFloat_, capacity);
+        }
+        bitField0_ |= 0x00000040;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return A list containing the packedFloat.
+       */
+      public java.util.List<java.lang.Float>
+          getPackedFloatList() {
+        packedFloat_.makeImmutable();
+        return packedFloat_;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return The count of packedFloat.
+       */
+      public int getPackedFloatCount() {
+        return packedFloat_.size();
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param index The index of the element to return.
+       * @return The packedFloat at the given index.
+       */
+      public float getPackedFloat(int index) {
+        return packedFloat_.getFloat(index);
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param index The index to set the value at.
+       * @param value The packedFloat to set.
+       * @return This builder for chaining.
+       */
+      public Builder setPackedFloat(
+          int index, float value) {
+
+        ensurePackedFloatIsMutable();
+        packedFloat_.setFloat(index, value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param value The packedFloat to add.
+       * @return This builder for chaining.
+       */
+      public Builder addPackedFloat(float value) {
+
+        ensurePackedFloatIsMutable();
+        packedFloat_.addFloat(value);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @param values The packedFloat to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllPackedFloat(
+          java.lang.Iterable<? extends java.lang.Float> values) {
+        ensurePackedFloatIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, packedFloat_);
+        bitField0_ |= 0x00000040;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated float packed_float = 7 [packed = true];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearPackedFloat() {
+        packedFloat_ = emptyFloatList();
+        bitField0_ = (bitField0_ & ~0x00000040);
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.Internal.IntList unpackedInt32_ = emptyIntList();
+      private void ensureUnpackedInt32IsMutable() {
+        if (!unpackedInt32_.isModifiable()) {
+          unpackedInt32_ = makeMutableCopy(unpackedInt32_);
+        }
+        bitField0_ |= 0x00000080;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return A list containing the unpackedInt32.
+       */
+      public java.util.List<java.lang.Integer>
+          getUnpackedInt32List() {
+        unpackedInt32_.makeImmutable();
+        return unpackedInt32_;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return The count of unpackedInt32.
+       */
+      public int getUnpackedInt32Count() {
+        return unpackedInt32_.size();
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param index The index of the element to return.
+       * @return The unpackedInt32 at the given index.
+       */
+      public int getUnpackedInt32(int index) {
+        return unpackedInt32_.getInt(index);
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param index The index to set the value at.
+       * @param value The unpackedInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnpackedInt32(
+          int index, int value) {
+
+        ensureUnpackedInt32IsMutable();
+        unpackedInt32_.setInt(index, value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param value The unpackedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addUnpackedInt32(int value) {
+
+        ensureUnpackedInt32IsMutable();
+        unpackedInt32_.addInt(value);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @param values The unpackedInt32 to add.
+       * @return This builder for chaining.
+       */
+      public Builder addAllUnpackedInt32(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureUnpackedInt32IsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, unpackedInt32_);
+        bitField0_ |= 0x00000080;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Unpacked (explicit)
+       * </pre>
+       *
+       * <code>repeated int32 unpacked_int32 = 8 [packed = false];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUnpackedInt32() {
+        unpackedInt32_ = emptyIntList();
+        bitField0_ = (bitField0_ & ~0x00000080);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<PackedMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<PackedMessageV3>() {
+      @java.lang.Override
+      public PackedMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<PackedMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<PackedMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2470,11 +3996,18 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       "ional_string\030\026 \001(\tH\000\210\001\001\022\033\n\016optional_int3" +
       "2\030\027 \001(\005H\001\210\001\001\022\032\n\roptional_bool\030\030 \001(\010H\002\210\001\001" +
       "B\022\n\020_optional_stringB\021\n\017_optional_int32B" +
-      "\020\n\016_optional_bool*O\n\nTestEnumV3\022\020\n\014TEST_" +
-      "UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND" +
-      "\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.prot" +
-      "obuf.compiler.test.v3B\032ComprehensiveTest" +
-      "V3MinimalH\002\200\001\000\210\001\000b\006proto3"
+      "\020\n\016_optional_bool\"\216\002\n\017PackedMessageV3\022\030\n" +
+      "\014packed_int32\030\001 \003(\005B\002\020\001\022\030\n\014packed_int64\030" +
+      "\002 \003(\003B\002\020\001\022\031\n\rpacked_uint32\030\003 \003(\rB\002\020\001\022\027\n\013" +
+      "packed_bool\030\004 \003(\010B\002\020\001\022A\n\013packed_enum\030\005 \003" +
+      "(\0162(.ComprehensiveTest.V3Minimmal.TestEn" +
+      "umV3B\002\020\001\022\032\n\016packed_fixed32\030\006 \003(\007B\002\020\001\022\030\n\014" +
+      "packed_float\030\007 \003(\002B\002\020\001\022\032\n\016unpacked_int32" +
+      "\030\010 \003(\005B\002\020\000*O\n\nTestEnumV3\022\020\n\014TEST_UNKNOWN" +
+      "\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nT" +
+      "EST_THIRD\020\003BM\n\'com.rubberjam.protobuf.co" +
+      "mpiler.test.v3B\032ComprehensiveTestV3Minim" +
+      "alH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -2486,6 +4019,12 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
         new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool", });
+    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor =
+      getDescriptor().getMessageType(1);
+    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor,
+        new java.lang.String[] { "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

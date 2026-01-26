@@ -40,15 +40,22 @@ namespace ComprehensiveTest.V3Minimmal {
             "c3RFbnVtVjMSHAoPb3B0aW9uYWxfc3RyaW5nGBYgASgJSACIAQESGwoOb3B0",
             "aW9uYWxfaW50MzIYFyABKAVIAYgBARIaCg1vcHRpb25hbF9ib29sGBggASgI",
             "SAKIAQFCEgoQX29wdGlvbmFsX3N0cmluZ0IRCg9fb3B0aW9uYWxfaW50MzJC",
-            "EAoOX29wdGlvbmFsX2Jvb2wqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VOS05P",
-            "V04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpURVNU",
-            "X1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50",
-            "ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEAYgZw",
-            "cm90bzM="));
+            "EAoOX29wdGlvbmFsX2Jvb2wijgIKD1BhY2tlZE1lc3NhZ2VWMxIYCgxwYWNr",
+            "ZWRfaW50MzIYASADKAVCAhABEhgKDHBhY2tlZF9pbnQ2NBgCIAMoA0ICEAES",
+            "GQoNcGFja2VkX3VpbnQzMhgDIAMoDUICEAESFwoLcGFja2VkX2Jvb2wYBCAD",
+            "KAhCAhABEkEKC3BhY2tlZF9lbnVtGAUgAygOMiguQ29tcHJlaGVuc2l2ZVRl",
+            "c3QuVjNNaW5pbW1hbC5UZXN0RW51bVYzQgIQARIaCg5wYWNrZWRfZml4ZWQz",
+            "MhgGIAMoB0ICEAESGAoMcGFja2VkX2Zsb2F0GAcgAygCQgIQARIaCg51bnBh",
+            "Y2tlZF9pbnQzMhgIIAMoBUICEAAqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VO",
+            "S05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpU",
+            "RVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxl",
+            "ci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEA",
+            "YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.PackedMessageV3), global::ComprehensiveTest.V3Minimmal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1075,6 +1082,397 @@ namespace ComprehensiveTest.V3Minimmal {
           }
           case 192: {
             OptionalBool = input.ReadBool();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with packed repeated fields (proto3 default)
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PackedMessageV3 : pb::IMessage<PackedMessageV3>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PackedMessageV3> _parser = new pb::MessageParser<PackedMessageV3>(() => new PackedMessageV3());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PackedMessageV3> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PackedMessageV3() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PackedMessageV3(PackedMessageV3 other) : this() {
+      packedInt32_ = other.packedInt32_.Clone();
+      packedInt64_ = other.packedInt64_.Clone();
+      packedUint32_ = other.packedUint32_.Clone();
+      packedBool_ = other.packedBool_.Clone();
+      packedEnum_ = other.packedEnum_.Clone();
+      packedFixed32_ = other.packedFixed32_.Clone();
+      packedFloat_ = other.packedFloat_.Clone();
+      unpackedInt32_ = other.unpackedInt32_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PackedMessageV3 Clone() {
+      return new PackedMessageV3(this);
+    }
+
+    /// <summary>Field number for the "packed_int32" field.</summary>
+    public const int PackedInt32FieldNumber = 1;
+    private static readonly pb::FieldCodec<int> _repeated_packedInt32_codec
+        = pb::FieldCodec.ForInt32(10);
+    private readonly pbc::RepeatedField<int> packedInt32_ = new pbc::RepeatedField<int>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> PackedInt32 {
+      get { return packedInt32_; }
+    }
+
+    /// <summary>Field number for the "packed_int64" field.</summary>
+    public const int PackedInt64FieldNumber = 2;
+    private static readonly pb::FieldCodec<long> _repeated_packedInt64_codec
+        = pb::FieldCodec.ForInt64(18);
+    private readonly pbc::RepeatedField<long> packedInt64_ = new pbc::RepeatedField<long>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<long> PackedInt64 {
+      get { return packedInt64_; }
+    }
+
+    /// <summary>Field number for the "packed_uint32" field.</summary>
+    public const int PackedUint32FieldNumber = 3;
+    private static readonly pb::FieldCodec<uint> _repeated_packedUint32_codec
+        = pb::FieldCodec.ForUInt32(26);
+    private readonly pbc::RepeatedField<uint> packedUint32_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> PackedUint32 {
+      get { return packedUint32_; }
+    }
+
+    /// <summary>Field number for the "packed_bool" field.</summary>
+    public const int PackedBoolFieldNumber = 4;
+    private static readonly pb::FieldCodec<bool> _repeated_packedBool_codec
+        = pb::FieldCodec.ForBool(34);
+    private readonly pbc::RepeatedField<bool> packedBool_ = new pbc::RepeatedField<bool>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<bool> PackedBool {
+      get { return packedBool_; }
+    }
+
+    /// <summary>Field number for the "packed_enum" field.</summary>
+    public const int PackedEnumFieldNumber = 5;
+    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimmal.TestEnumV3> _repeated_packedEnum_codec
+        = pb::FieldCodec.ForEnum(42, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x);
+    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> packedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> PackedEnum {
+      get { return packedEnum_; }
+    }
+
+    /// <summary>Field number for the "packed_fixed32" field.</summary>
+    public const int PackedFixed32FieldNumber = 6;
+    private static readonly pb::FieldCodec<uint> _repeated_packedFixed32_codec
+        = pb::FieldCodec.ForFixed32(50);
+    private readonly pbc::RepeatedField<uint> packedFixed32_ = new pbc::RepeatedField<uint>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<uint> PackedFixed32 {
+      get { return packedFixed32_; }
+    }
+
+    /// <summary>Field number for the "packed_float" field.</summary>
+    public const int PackedFloatFieldNumber = 7;
+    private static readonly pb::FieldCodec<float> _repeated_packedFloat_codec
+        = pb::FieldCodec.ForFloat(58);
+    private readonly pbc::RepeatedField<float> packedFloat_ = new pbc::RepeatedField<float>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<float> PackedFloat {
+      get { return packedFloat_; }
+    }
+
+    /// <summary>Field number for the "unpacked_int32" field.</summary>
+    public const int UnpackedInt32FieldNumber = 8;
+    private static readonly pb::FieldCodec<int> _repeated_unpackedInt32_codec
+        = pb::FieldCodec.ForInt32(64);
+    private readonly pbc::RepeatedField<int> unpackedInt32_ = new pbc::RepeatedField<int>();
+    /// <summary>
+    /// Unpacked (explicit)
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<int> UnpackedInt32 {
+      get { return unpackedInt32_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PackedMessageV3);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PackedMessageV3 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!packedInt32_.Equals(other.packedInt32_)) return false;
+      if(!packedInt64_.Equals(other.packedInt64_)) return false;
+      if(!packedUint32_.Equals(other.packedUint32_)) return false;
+      if(!packedBool_.Equals(other.packedBool_)) return false;
+      if(!packedEnum_.Equals(other.packedEnum_)) return false;
+      if(!packedFixed32_.Equals(other.packedFixed32_)) return false;
+      if(!packedFloat_.Equals(other.packedFloat_)) return false;
+      if(!unpackedInt32_.Equals(other.unpackedInt32_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= packedInt32_.GetHashCode();
+      hash ^= packedInt64_.GetHashCode();
+      hash ^= packedUint32_.GetHashCode();
+      hash ^= packedBool_.GetHashCode();
+      hash ^= packedEnum_.GetHashCode();
+      hash ^= packedFixed32_.GetHashCode();
+      hash ^= packedFloat_.GetHashCode();
+      hash ^= unpackedInt32_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      packedInt32_.WriteTo(output, _repeated_packedInt32_codec);
+      packedInt64_.WriteTo(output, _repeated_packedInt64_codec);
+      packedUint32_.WriteTo(output, _repeated_packedUint32_codec);
+      packedBool_.WriteTo(output, _repeated_packedBool_codec);
+      packedEnum_.WriteTo(output, _repeated_packedEnum_codec);
+      packedFixed32_.WriteTo(output, _repeated_packedFixed32_codec);
+      packedFloat_.WriteTo(output, _repeated_packedFloat_codec);
+      unpackedInt32_.WriteTo(output, _repeated_unpackedInt32_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      packedInt32_.WriteTo(ref output, _repeated_packedInt32_codec);
+      packedInt64_.WriteTo(ref output, _repeated_packedInt64_codec);
+      packedUint32_.WriteTo(ref output, _repeated_packedUint32_codec);
+      packedBool_.WriteTo(ref output, _repeated_packedBool_codec);
+      packedEnum_.WriteTo(ref output, _repeated_packedEnum_codec);
+      packedFixed32_.WriteTo(ref output, _repeated_packedFixed32_codec);
+      packedFloat_.WriteTo(ref output, _repeated_packedFloat_codec);
+      unpackedInt32_.WriteTo(ref output, _repeated_unpackedInt32_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += packedInt32_.CalculateSize(_repeated_packedInt32_codec);
+      size += packedInt64_.CalculateSize(_repeated_packedInt64_codec);
+      size += packedUint32_.CalculateSize(_repeated_packedUint32_codec);
+      size += packedBool_.CalculateSize(_repeated_packedBool_codec);
+      size += packedEnum_.CalculateSize(_repeated_packedEnum_codec);
+      size += packedFixed32_.CalculateSize(_repeated_packedFixed32_codec);
+      size += packedFloat_.CalculateSize(_repeated_packedFloat_codec);
+      size += unpackedInt32_.CalculateSize(_repeated_unpackedInt32_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PackedMessageV3 other) {
+      if (other == null) {
+        return;
+      }
+      packedInt32_.Add(other.packedInt32_);
+      packedInt64_.Add(other.packedInt64_);
+      packedUint32_.Add(other.packedUint32_);
+      packedBool_.Add(other.packedBool_);
+      packedEnum_.Add(other.packedEnum_);
+      packedFixed32_.Add(other.packedFixed32_);
+      packedFloat_.Add(other.packedFloat_);
+      unpackedInt32_.Add(other.unpackedInt32_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10:
+          case 8: {
+            packedInt32_.AddEntriesFrom(input, _repeated_packedInt32_codec);
+            break;
+          }
+          case 18:
+          case 16: {
+            packedInt64_.AddEntriesFrom(input, _repeated_packedInt64_codec);
+            break;
+          }
+          case 26:
+          case 24: {
+            packedUint32_.AddEntriesFrom(input, _repeated_packedUint32_codec);
+            break;
+          }
+          case 34:
+          case 32: {
+            packedBool_.AddEntriesFrom(input, _repeated_packedBool_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            packedEnum_.AddEntriesFrom(input, _repeated_packedEnum_codec);
+            break;
+          }
+          case 50:
+          case 53: {
+            packedFixed32_.AddEntriesFrom(input, _repeated_packedFixed32_codec);
+            break;
+          }
+          case 58:
+          case 61: {
+            packedFloat_.AddEntriesFrom(input, _repeated_packedFloat_codec);
+            break;
+          }
+          case 66:
+          case 64: {
+            unpackedInt32_.AddEntriesFrom(input, _repeated_unpackedInt32_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10:
+          case 8: {
+            packedInt32_.AddEntriesFrom(ref input, _repeated_packedInt32_codec);
+            break;
+          }
+          case 18:
+          case 16: {
+            packedInt64_.AddEntriesFrom(ref input, _repeated_packedInt64_codec);
+            break;
+          }
+          case 26:
+          case 24: {
+            packedUint32_.AddEntriesFrom(ref input, _repeated_packedUint32_codec);
+            break;
+          }
+          case 34:
+          case 32: {
+            packedBool_.AddEntriesFrom(ref input, _repeated_packedBool_codec);
+            break;
+          }
+          case 42:
+          case 40: {
+            packedEnum_.AddEntriesFrom(ref input, _repeated_packedEnum_codec);
+            break;
+          }
+          case 50:
+          case 53: {
+            packedFixed32_.AddEntriesFrom(ref input, _repeated_packedFixed32_codec);
+            break;
+          }
+          case 58:
+          case 61: {
+            packedFloat_.AddEntriesFrom(ref input, _repeated_packedFloat_codec);
+            break;
+          }
+          case 66:
+          case 64: {
+            unpackedInt32_.AddEntriesFrom(ref input, _repeated_unpackedInt32_codec);
             break;
           }
         }

@@ -58,6 +58,18 @@ message AllFieldTypesV3 {
   
 
 }
-
+// Message with packed repeated fields (proto3 default)
+message PackedMessageV3 {
+  repeated int32 packed_int32 = 1 [packed = true];
+  repeated int64 packed_int64 = 2 [packed = true];
+  repeated uint32 packed_uint32 = 3 [packed = true];
+  repeated bool packed_bool = 4 [packed = true];
+  repeated TestEnumV3 packed_enum = 5 [packed = true];
+  repeated fixed32 packed_fixed32 = 6 [packed = true];
+  repeated float packed_float = 7 [packed = true];
+  
+  // Unpacked (explicit)
+  repeated int32 unpacked_int32 = 8 [packed = false];
+}
 
 
