@@ -1143,7 +1143,7 @@ public class Parser
 					if (tryConsume("max"))
 					{
 						// Set to max value - use a sentinel that will be adjusted later
-						rangeBuilder.setEnd(536870911); // kMaxRangeSentinel - 1
+						rangeBuilder.setEnd(536870912); // kMaxRangeSentinel
 					}
 					else
 					{
@@ -1153,13 +1153,13 @@ public class Parser
 							return false;
 						}
 						int end = consumeInteger("Expected integer.");
-						rangeBuilder.setEnd(end);
+						rangeBuilder.setEnd(end + 1);
 					}
 				}
 				else
 				{
 					// Single number - range is just that number
-					rangeBuilder.setEnd(start);
+					rangeBuilder.setEnd(start + 1);
 				}
 				
 				messageBuilder.addReservedRange(rangeBuilder);

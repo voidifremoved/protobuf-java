@@ -375,3 +375,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   The generation of `Value` accessors (e.g., `get...ValueList()`, `get...Value(int index)`) for repeated enum fields in the Interface, Message, and Builder is conditional.
     *   They are only generated if `SupportUnknownEnumValue(descriptor)` returns true (typically for Proto3 open enums).
     *   This ensures that Proto2 (closed enums) does not expose raw integer accessors for repeated enums, maintaining parity with `protoc`.
+
+*   **ReservedRange vs EnumReservedRange**:
+    *   `DescriptorProto.ReservedRange` uses an **exclusive** `end` field (e.g. `reserved 2` means start=2, end=3).
+    *   `EnumDescriptorProto.EnumReservedRange` uses an **inclusive** `end` field (e.g. `reserved 2` means start=2, end=2).
+    *   The `Parser` must adjust the `end` value for message reserved ranges accordingly (increment by 1), while leaving enum reserved ranges as is (inclusive).
