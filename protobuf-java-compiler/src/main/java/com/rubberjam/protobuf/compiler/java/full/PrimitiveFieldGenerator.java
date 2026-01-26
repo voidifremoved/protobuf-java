@@ -975,7 +975,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			boolean isFixedSizeOrBool = type == FieldDescriptor.Type.BOOL ||
 					type == FieldDescriptor.Type.FIXED32 || type == FieldDescriptor.Type.SFIXED32 || type == FieldDescriptor.Type.FLOAT ||
 					type == FieldDescriptor.Type.FIXED64 || type == FieldDescriptor.Type.SFIXED64 || type == FieldDescriptor.Type.DOUBLE;
-			if (descriptor.isPacked() && descriptor.toProto().getOptions().hasPacked() && isFixedSizeOrBool)
+			if (isFixedSizeOrBool)
 			{
 				printer.println("      private void ensure" + variables.get("capitalized_name") + "IsMutable(int capacity) {");
 				printer.println("        if (!" + variables.get("name") + "_.isModifiable()) {");
@@ -1161,7 +1161,38 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("                int length = input.readRawVarint32();");
 			printer.println("                int limit = input.pushLimit(length);");
-			printer.println("                ensure" + variables.get("capitalized_name") + "IsMutable();");
+			FieldDescriptor.Type type = descriptor.getType();
+			boolean isFixedSizeOrBool = type == FieldDescriptor.Type.BOOL ||
+					type == FieldDescriptor.Type.FIXED32 || type == FieldDescriptor.Type.SFIXED32 || type == FieldDescriptor.Type.FLOAT ||
+					type == FieldDescriptor.Type.FIXED64 || type == FieldDescriptor.Type.SFIXED64 || type == FieldDescriptor.Type.DOUBLE;
+			if (isFixedSizeOrBool)
+			{
+				int size = 0;
+				switch (type)
+				{
+				case FIXED32:
+				case SFIXED32:
+				case FLOAT:
+					size = 4;
+					break;
+				case FIXED64:
+				case SFIXED64:
+				case DOUBLE:
+					size = 8;
+					break;
+				case BOOL:
+					size = 1;
+					break;
+				default:
+					throw new IllegalStateException("Should not reach here");
+				}
+				printer.println("                int alloc = length > 4096 ? 4096 : length;");
+				printer.println("                ensure" + variables.get("capitalized_name") + "IsMutable(alloc / " + size + ");");
+			}
+			else
+			{
+				printer.println("                ensure" + variables.get("capitalized_name") + "IsMutable();");
+			}
 			printer.println("                while (input.getBytesUntilLimit() > 0) {");
 			printer.println("                  " + variables.get("repeated_add") + "(input.read" + variables.get("capitalized_type") + "());");
 			printer.println("                }");
@@ -1173,11 +1204,42 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("      {");
 			printer.println("        int dataSize = 0;");
-			printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
-			printer.println("          dataSize += com.google.protobuf.CodedOutputStream");
-			printer.println("            .compute" + variables.get("capitalized_type") + "SizeNoTag("
-					+ variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
-			printer.println("        }");
+			FieldDescriptor.Type type = descriptor.getType();
+			boolean isFixedSize = type == FieldDescriptor.Type.FIXED32 || type == FieldDescriptor.Type.SFIXED32
+					|| type == FieldDescriptor.Type.FLOAT || type == FieldDescriptor.Type.FIXED64
+					|| type == FieldDescriptor.Type.SFIXED64 || type == FieldDescriptor.Type.DOUBLE
+					|| type == FieldDescriptor.Type.BOOL;
+			if (isFixedSize)
+			{
+				int size = 0;
+				switch (type)
+				{
+				case FIXED32:
+				case SFIXED32:
+				case FLOAT:
+					size = 4;
+					break;
+				case FIXED64:
+				case SFIXED64:
+				case DOUBLE:
+					size = 8;
+					break;
+				case BOOL:
+					size = 1;
+					break;
+				default:
+					throw new IllegalStateException("Should not reach here");
+				}
+				printer.println("        dataSize = " + size + " * get" + variables.get("capitalized_name") + "List().size();");
+			}
+			else
+			{
+				printer.println("        for (int i = 0; i < " + variables.get("name") + "_.size(); i++) {");
+				printer.println("          dataSize += com.google.protobuf.CodedOutputStream");
+				printer.println("            .compute" + variables.get("capitalized_type") + "SizeNoTag("
+						+ variables.get("name") + "_.get" + variables.get("capitalized_java_type") + "(i));");
+				printer.println("        }");
+			}
 			printer.println("        size += dataSize;");
 			if (descriptor.isPacked())
 			{
