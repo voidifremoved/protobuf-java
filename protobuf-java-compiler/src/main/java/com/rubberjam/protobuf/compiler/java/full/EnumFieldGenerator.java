@@ -69,7 +69,8 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		variables.put("type", context.getNameResolver().getImmutableClassName(descriptor.getEnumType()));
 		variables.put("default", variables.get("type") + "."
 				+ ((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getName());
-		variables.put("default_number", String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber()));
+		variables.put("default_number", String.valueOf(
+				((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getNumber()));
 
 		variables.put("set_has_field_bit_builder", Helpers.generateSetBit(builderBitIndex) + ";");
 		variables.put("clear_has_field_bit_builder", Helpers.generateClearBit(builderBitIndex) + ";");
