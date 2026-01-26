@@ -287,3 +287,12 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 *   **BitField Generation**:
     *   The generation of `bitField0_` (and `to_bitField0_` in builders) must strictly check `field.hasPresence()`.
     *   For Proto3 implicit fields (no label, not optional), `hasPresence()` is false, and thus no bitfield should be generated in the Message or Builder logic. This corrects a bug where `bitField0_` was generated incorrectly for Proto3 messages.
+
+*   **Float/Double Default Value Formatting**:
+    *   For implicit default values of floating point fields (value 0), `protoc` generates explicit literals `0F` and `0D` respectively.
+    *   Standard `String.format("%.9g", 0.0f)` (used by the parser's text format logic) produces `0.00000000`.
+    *   `Helpers.defaultValue` was updated to explicitly handle positive zero (`0.0f` and `0.0d`) to return `0F` and `0D`, bypassing the locale-sensitive formatting logic.
+
+*   **String Field Accessors in Proto3**:
+    *   **Getter (Message)**: The generated getter for string fields in Proto3 message classes (which lazily decodes `ByteString`) does **not** check `isValidUtf8()` before caching the string. It assigns unconditionally (`stringField_ = s`). This differs from Proto2 which checks validity to preserve original invalid bytes if needed.
+    *   **Setter (Builder)**: The generated builder setter `setStringFieldBytes` (or generally `set...Bytes`) in Proto3 **does** enforce `checkByteStringIsUtf8(value)`. This validation logic must be explicitly generated when the syntax is "proto3".

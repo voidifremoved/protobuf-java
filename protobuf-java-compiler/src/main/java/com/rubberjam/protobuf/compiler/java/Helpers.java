@@ -189,6 +189,10 @@ public final class Helpers
 			{
 				return "Double.NaN";
 			}
+			if (Double.doubleToRawLongBits(value) == 0L)
+			{
+				return "0D";
+			}
 			String s = String.format(java.util.Locale.US, "%.17g", value);
 			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
 			{
@@ -206,6 +210,10 @@ public final class Helpers
 			if (Float.isNaN(value))
 			{
 				return "Float.NaN";
+			}
+			if (Float.floatToRawIntBits(value) == 0)
+			{
+				return "0F";
 			}
 			String s = String.format(java.util.Locale.US, "%.9g", value);
 			if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
