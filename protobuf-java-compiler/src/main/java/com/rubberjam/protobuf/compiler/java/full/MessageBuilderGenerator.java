@@ -321,6 +321,18 @@ public class MessageBuilderGenerator
 					String oneofName = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(oneof.getName(), false);
 					printer.println("        result." + oneofName + "Case_ = " + oneofName + "Case_;");
 					printer.println("        result." + oneofName + "_ = this." + oneofName + "_;");
+					for (com.google.protobuf.Descriptors.FieldDescriptor field : oneof.getFields())
+					{
+						if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.MESSAGE
+								|| field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.GROUP)
+						{
+							String name = com.rubberjam.protobuf.compiler.java.StringUtils.underscoresToCamelCase(field.getName(), false);
+							printer.println("        if (" + oneofName + "Case_ == " + field.getNumber() + " &&");
+							printer.println("            " + name + "Builder_ != null) {");
+							printer.println("          result." + oneofName + "_ = " + name + "Builder_.build();");
+							printer.println("        }");
+						}
+					}
 				}
 			}
 			printer.println("      }");
