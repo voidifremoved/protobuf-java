@@ -71,7 +71,7 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 		if (descriptor.getExtensionScope() == null)
 		{
 			printer.println("    " + StringUtils.underscoresToCamelCase(descriptor.getName(), false)
-					+ ".internalInit(descriptor.getExtensions().get(" + descriptor.getIndex() + "));");
+					+ ".internalInit(descriptor.getExtension(" + descriptor.getIndex() + "));");
 			bytecodeEstimate += 21;
 		}
 		return bytecodeEstimate;
@@ -80,9 +80,8 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 	@Override
 	public int generateRegistrationCode(PrintWriter printer)
 	{
-		// Match C++ format: method signature at 2 spaces, continuation at 6 spaces (4 more), body at 6 spaces
 		printer.println(
-				"      registry.add(" + scope + "." + StringUtils.underscoresToCamelCase(descriptor.getName(), false) + ");");
+				"    registry.add(" + scope + "." + StringUtils.underscoresToCamelCase(descriptor.getName(), false) + ");");
 		return 7;
 	}
 

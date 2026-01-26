@@ -25,7 +25,7 @@ namespace ComprehensiveTest.V2Minimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjJfbWluaW1hbC5wcm90bxIbQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsIqMDCg1BbGxGaWVsZFR5cGVzEhMKC2lu",
+            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsIowECg1BbGxGaWVsZFR5cGVzEhMKC2lu",
             "dDMyX2ZpZWxkGAEgASgFEhMKC2ludDY0X2ZpZWxkGAIgASgDEhQKDHVpbnQz",
             "Ml9maWVsZBgDIAEoDRIUCgx1aW50NjRfZmllbGQYBCABKAQSFAoMc2ludDMy",
             "X2ZpZWxkGAUgASgREhQKDHNpbnQ2NF9maWVsZBgGIAEoEhIVCg1maXhlZDMy",
@@ -34,15 +34,17 @@ namespace ComprehensiveTest.V2Minimal {
             "YXRfZmllbGQYCyABKAISFAoMZG91YmxlX2ZpZWxkGAwgASgBEhIKCmJvb2xf",
             "ZmllbGQYDSABKAgSFAoMc3RyaW5nX2ZpZWxkGA4gASgJEhMKC2J5dGVzX2Zp",
             "ZWxkGA8gASgMEkgKEWVudW1fd2l0aF9kZWZhdWx0GBsgASgOMiUuQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsLlRlc3RFbnVtOgZTRUNPTkQqUgoIVGVz",
-            "dEVudW0SCwoHVU5LTk9XThAAEgkKBUZJUlNUEAESCgoGU0VDT05EEAISCQoF",
-            "VEhJUkQQAxITCgtBTElBU19USElSRBADGgIIARoCEAFCTQonY29tLnJ1YmJl",
-            "cmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYyQhpDb21wcmVoZW5zaXZl",
-            "VGVzdFYyTWluaW1hbEgBgAEBiAEB"));
+            "aGVuc2l2ZVRlc3QuVjJNaW5pbWFsLlRlc3RFbnVtOgZTRUNPTkQSJAoTZG91",
+            "YmxlX3dpdGhfZGVmYXVsdBgcIAEoAToHMy4xNDE1ORIjChJmbG9hdF93aXRo",
+            "X2RlZmF1bHQYHSABKAI6BzIuNzE4MjgSHAoQZGVwcmVjYXRlZF9maWVsZBge",
+            "IAEoCUICGAEqUgoIVGVzdEVudW0SCwoHVU5LTk9XThAAEgkKBUZJUlNUEAES",
+            "CgoGU0VDT05EEAISCQoFVEhJUkQQAxITCgtBTElBU19USElSRBADGgIIARoC",
+            "EAFCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYy",
+            "QhpDb21wcmVoZW5zaXZlVGVzdFYyTWluaW1hbEgBgAEBiAEB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V2Minimal.TestEnum), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Minimal.AllFieldTypes), global::ComprehensiveTest.V2Minimal.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Minimal.AllFieldTypes), global::ComprehensiveTest.V2Minimal.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField" }, null, null, null, null)
           }));
     }
     #endregion
@@ -120,6 +122,9 @@ namespace ComprehensiveTest.V2Minimal {
       stringField_ = other.stringField_;
       bytesField_ = other.bytesField_;
       enumWithDefault_ = other.enumWithDefault_;
+      doubleWithDefault_ = other.doubleWithDefault_;
+      floatWithDefault_ = other.floatWithDefault_;
+      deprecatedField_ = other.deprecatedField_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -568,6 +573,92 @@ namespace ComprehensiveTest.V2Minimal {
       _hasBits0 &= ~8192;
     }
 
+    /// <summary>Field number for the "double_with_default" field.</summary>
+    public const int DoubleWithDefaultFieldNumber = 28;
+    private readonly static double DoubleWithDefaultDefaultValue = 3.14159D;
+
+    private double doubleWithDefault_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double DoubleWithDefault {
+      get { if ((_hasBits0 & 16384) != 0) { return doubleWithDefault_; } else { return DoubleWithDefaultDefaultValue; } }
+      set {
+        _hasBits0 |= 16384;
+        doubleWithDefault_ = value;
+      }
+    }
+    /// <summary>Gets whether the "double_with_default" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasDoubleWithDefault {
+      get { return (_hasBits0 & 16384) != 0; }
+    }
+    /// <summary>Clears the value of the "double_with_default" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearDoubleWithDefault() {
+      _hasBits0 &= ~16384;
+    }
+
+    /// <summary>Field number for the "float_with_default" field.</summary>
+    public const int FloatWithDefaultFieldNumber = 29;
+    private readonly static float FloatWithDefaultDefaultValue = 2.71828F;
+
+    private float floatWithDefault_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float FloatWithDefault {
+      get { if ((_hasBits0 & 32768) != 0) { return floatWithDefault_; } else { return FloatWithDefaultDefaultValue; } }
+      set {
+        _hasBits0 |= 32768;
+        floatWithDefault_ = value;
+      }
+    }
+    /// <summary>Gets whether the "float_with_default" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasFloatWithDefault {
+      get { return (_hasBits0 & 32768) != 0; }
+    }
+    /// <summary>Clears the value of the "float_with_default" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearFloatWithDefault() {
+      _hasBits0 &= ~32768;
+    }
+
+    /// <summary>Field number for the "deprecated_field" field.</summary>
+    public const int DeprecatedFieldFieldNumber = 30;
+    private readonly static string DeprecatedFieldDefaultValue = "";
+
+    private string deprecatedField_;
+    /// <summary>
+    /// Deprecated field
+    /// </summary>
+    [global::System.ObsoleteAttribute]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string DeprecatedField {
+      get { return deprecatedField_ ?? DeprecatedFieldDefaultValue; }
+      set {
+        deprecatedField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "deprecated_field" field is set</summary>
+    [global::System.ObsoleteAttribute]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasDeprecatedField {
+      get { return deprecatedField_ != null; }
+    }
+    /// <summary>Clears the value of the "deprecated_field" field</summary>
+    [global::System.ObsoleteAttribute]
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearDeprecatedField() {
+      deprecatedField_ = null;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -599,6 +690,9 @@ namespace ComprehensiveTest.V2Minimal {
       if (StringField != other.StringField) return false;
       if (BytesField != other.BytesField) return false;
       if (EnumWithDefault != other.EnumWithDefault) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DoubleWithDefault, other.DoubleWithDefault)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatWithDefault, other.FloatWithDefault)) return false;
+      if (DeprecatedField != other.DeprecatedField) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -622,6 +716,9 @@ namespace ComprehensiveTest.V2Minimal {
       if (HasStringField) hash ^= StringField.GetHashCode();
       if (HasBytesField) hash ^= BytesField.GetHashCode();
       if (HasEnumWithDefault) hash ^= EnumWithDefault.GetHashCode();
+      if (HasDoubleWithDefault) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DoubleWithDefault);
+      if (HasFloatWithDefault) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatWithDefault);
+      if (HasDeprecatedField) hash ^= DeprecatedField.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -704,6 +801,18 @@ namespace ComprehensiveTest.V2Minimal {
         output.WriteRawTag(216, 1);
         output.WriteEnum((int) EnumWithDefault);
       }
+      if (HasDoubleWithDefault) {
+        output.WriteRawTag(225, 1);
+        output.WriteDouble(DoubleWithDefault);
+      }
+      if (HasFloatWithDefault) {
+        output.WriteRawTag(237, 1);
+        output.WriteFloat(FloatWithDefault);
+      }
+      if (HasDeprecatedField) {
+        output.WriteRawTag(242, 1);
+        output.WriteString(DeprecatedField);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
       }
@@ -778,6 +887,18 @@ namespace ComprehensiveTest.V2Minimal {
         output.WriteRawTag(216, 1);
         output.WriteEnum((int) EnumWithDefault);
       }
+      if (HasDoubleWithDefault) {
+        output.WriteRawTag(225, 1);
+        output.WriteDouble(DoubleWithDefault);
+      }
+      if (HasFloatWithDefault) {
+        output.WriteRawTag(237, 1);
+        output.WriteFloat(FloatWithDefault);
+      }
+      if (HasDeprecatedField) {
+        output.WriteRawTag(242, 1);
+        output.WriteString(DeprecatedField);
+      }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
       }
@@ -835,6 +956,15 @@ namespace ComprehensiveTest.V2Minimal {
       }
       if (HasEnumWithDefault) {
         size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumWithDefault);
+      }
+      if (HasDoubleWithDefault) {
+        size += 2 + 8;
+      }
+      if (HasFloatWithDefault) {
+        size += 2 + 4;
+      }
+      if (HasDeprecatedField) {
+        size += 2 + pb::CodedOutputStream.ComputeStringSize(DeprecatedField);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -895,6 +1025,15 @@ namespace ComprehensiveTest.V2Minimal {
       }
       if (other.HasEnumWithDefault) {
         EnumWithDefault = other.EnumWithDefault;
+      }
+      if (other.HasDoubleWithDefault) {
+        DoubleWithDefault = other.DoubleWithDefault;
+      }
+      if (other.HasFloatWithDefault) {
+        FloatWithDefault = other.FloatWithDefault;
+      }
+      if (other.HasDeprecatedField) {
+        DeprecatedField = other.DeprecatedField;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -979,6 +1118,18 @@ namespace ComprehensiveTest.V2Minimal {
             EnumWithDefault = (global::ComprehensiveTest.V2Minimal.TestEnum) input.ReadEnum();
             break;
           }
+          case 225: {
+            DoubleWithDefault = input.ReadDouble();
+            break;
+          }
+          case 237: {
+            FloatWithDefault = input.ReadFloat();
+            break;
+          }
+          case 242: {
+            DeprecatedField = input.ReadString();
+            break;
+          }
         }
       }
     #endif
@@ -1060,6 +1211,18 @@ namespace ComprehensiveTest.V2Minimal {
           }
           case 216: {
             EnumWithDefault = (global::ComprehensiveTest.V2Minimal.TestEnum) input.ReadEnum();
+            break;
+          }
+          case 225: {
+            DoubleWithDefault = input.ReadDouble();
+            break;
+          }
+          case 237: {
+            FloatWithDefault = input.ReadFloat();
+            break;
+          }
+          case 242: {
+            DeprecatedField = input.ReadString();
             break;
           }
         }

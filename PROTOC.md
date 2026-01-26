@@ -292,6 +292,11 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   For implicit default values of floating point fields (value 0), `protoc` generates explicit literals `0F` and `0D` respectively.
     *   Standard `String.format("%.9g", 0.0f)` (used by the parser's text format logic) produces `0.00000000`.
     *   `Helpers.defaultValue` was updated to explicitly handle positive zero (`0.0f` and `0.0d`) to return `0F` and `0D`, bypassing the locale-sensitive formatting logic.
+    *   For explicit default values, `protoc` preserves the exact string from the `.proto` file in many cases (e.g. `2.71828`), but canonicalizes others (e.g. normalizing scientific notation `3.4028235e+38` to `3.40282347e+38`).
+    *   `Parser.java` was updated to mimic C++ behavior:
+        *   If the input string contains `e` or `E` (scientific notation), it formats using `%.9g`/`%.17g` (stripping trailing zeros) to match `protoc` canonicalization.
+        *   If the input is simple decimal, it returns the raw input string to preserve precision and avoid noise (e.g. preventing `2.71828` -> `2.71828008`).
+    *   `DocComment.java` and `Helpers.java` were updated to use the `FieldDescriptorProto.getDefaultValue()` string directly (instead of formatting the parsed double) to ensure the generated code and Javadoc match `protoc` output exactly.
 
 *   **String Field Accessors in Proto3**:
     *   **Getter (Message)**: The generated getter for string fields in Proto3 message classes (which lazily decodes `ByteString`) does **not** check `isValidUtf8()` before caching the string. It assigns unconditionally (`stringField_ = s`). This differs from Proto2 which checks validity to preserve original invalid bytes if needed.
@@ -380,3 +385,12 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   `DescriptorProto.ReservedRange` uses an **exclusive** `end` field (e.g. `reserved 2` means start=2, end=3).
     *   `EnumDescriptorProto.EnumReservedRange` uses an **inclusive** `end` field (e.g. `reserved 2` means start=2, end=2).
     *   The `Parser` must adjust the `end` value for message reserved ranges accordingly (increment by 1), while leaving enum reserved ranges as is (inclusive).
+*   **Float/Double Default Value Formatting**:
+    *   For implicit default values of floating point fields (value 0), `protoc` generates explicit literals `0F` and `0D` respectively.
+    *   Standard `String.format("%.9g", 0.0f)` (used by the parser's text format logic) produces `0.00000000`.
+    *   `Helpers.defaultValue` was updated to explicitly handle positive zero (`0.0f` and `0.0d`) to return `0F` and `0D`, bypassing the locale-sensitive formatting logic.
+    *   For explicit default values, `protoc` preserves the exact string from the `.proto` file in many cases (e.g. `2.71828`), but canonicalizes others (e.g. normalizing scientific notation `3.4028235e+38` to `3.40282347e+38`).
+    *   `Parser.java` was updated to mimic C++ behavior:
+        *   If the input string contains `e` or `E` (scientific notation), it formats using `%.9g`/`%.17g` (stripping trailing zeros) to match `protoc` canonicalization.
+        *   If the input is simple decimal, it returns the raw input string to preserve precision and avoid noise (e.g. preventing `2.71828` -> `2.71828008`).
+    *   `DocComment.java` and `Helpers.java` were updated to use the `FieldDescriptorProto.getDefaultValue()` string directly (instead of formatting the parsed double) to ensure the generated code and Javadoc match `protoc` output exactly.

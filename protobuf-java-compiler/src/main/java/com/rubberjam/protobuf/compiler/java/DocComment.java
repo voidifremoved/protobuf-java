@@ -287,10 +287,10 @@ public final class DocComment
 	}
 
 	private static void writeDebugString(
-			PrintWriter out, FieldDescriptor field, Options options, boolean kdoc)
+			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc)
 	{
 		String fieldComment;
-		if (options.stripNonfunctionalCodegen)
+		if (context.getOptions().stripNonfunctionalCodegen)
 		{
 			fieldComment = field.getName();
 		}
@@ -367,7 +367,7 @@ public final class DocComment
 				java.util.List<String> fieldOptions = new java.util.ArrayList<>();
 				if (field.hasDefaultValue())
 				{
-					fieldOptions.add("default = " + getDefaultValueString(field));
+					fieldOptions.add("default = " + getDefaultValueString(field, context));
 				}
 				if (field.toProto().getOptions().hasPacked())
 				{
@@ -435,12 +435,22 @@ public final class DocComment
 		}
 	}
 
-	protected static Object getDefaultValueString(FieldDescriptor field)
+	protected static Object getDefaultValueString(FieldDescriptor field, Context context)
 	{
 		Object defaultValue = field.getDefaultValue();
 		if (defaultValue instanceof String)
 		{
 			return "\"" + defaultValue + "\"";
+		}
+		if (field.getType() == FieldDescriptor.Type.FLOAT || field.getType() == FieldDescriptor.Type.DOUBLE)
+		{
+			// Use the string representation from the proto definition to preserve formatting
+			// and avoid precision issues with float/double conversion.
+			FieldDescriptorProto proto = getFieldDescriptorProto(field, context);
+			if (proto != null && proto.hasDefaultValue())
+			{
+				return proto.getDefaultValue();
+			}
 		}
 		if (defaultValue instanceof Float)
 		{
@@ -451,6 +461,53 @@ public final class DocComment
 			return formatDouble((Double) defaultValue);
 		}
 		return defaultValue;
+	}
+
+	private static FieldDescriptorProto getFieldDescriptorProto(FieldDescriptor field, Context context)
+	{
+		FileDescriptorProto fileProto = context.getSourceProto();
+		if (fileProto == null)
+		{
+			return field.toProto();
+		}
+
+		if (!field.getFile().getName().equals(fileProto.getName()))
+		{
+			// Field is imported, cannot get original source proto.
+			return field.toProto();
+		}
+
+		Descriptor message = field.getContainingType();
+		DescriptorProto messageProto = null;
+
+		java.util.Deque<Integer> indices = new java.util.ArrayDeque<>();
+		Descriptor current = message;
+		while (current != null)
+		{
+			indices.push(current.getIndex());
+			current = current.getContainingType();
+		}
+
+		if (indices.isEmpty())
+		{
+			// Should not happen for a field in a message
+			return field.toProto();
+		}
+
+		// Root message
+		int rootIndex = indices.pop();
+		if (rootIndex >= fileProto.getMessageTypeCount()) return field.toProto();
+		messageProto = fileProto.getMessageType(rootIndex);
+
+		while (!indices.isEmpty())
+		{
+			int index = indices.pop();
+			if (index >= messageProto.getNestedTypeCount()) return field.toProto();
+			messageProto = messageProto.getNestedType(index);
+		}
+
+		if (field.getIndex() >= messageProto.getFieldCount()) return field.toProto();
+		return messageProto.getField(field.getIndex());
 	}
 
 	private static String formatFloat(float f)
@@ -516,7 +573,7 @@ public final class DocComment
 	{
 		out.print("/**\n");
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc);
-		writeDebugString(out, field, context.getOptions(), kdoc);
+		writeDebugString(out, field, context, kdoc);
 		out.print(" */\n");
 	}
 
@@ -538,7 +595,7 @@ public final class DocComment
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
-		writeDebugString(out, field, context.getOptions(), kdoc);
+		writeDebugString(out, field, context, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			out.print(" * @deprecated\n");
@@ -625,7 +682,7 @@ public final class DocComment
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
-		writeDebugString(out, field, context.getOptions(), kdoc);
+		writeDebugString(out, field, context, kdoc);
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			out.print(" * @deprecated\n");
