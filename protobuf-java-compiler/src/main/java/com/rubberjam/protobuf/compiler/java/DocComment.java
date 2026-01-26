@@ -547,6 +547,9 @@ public final class DocComment
 		case SETTER:
 			out.print(" * @param value The " + camelcaseName + " to set.\n");
 			break;
+		case VALUE_SETTER:
+			out.print(" * @param value The enum numeric value on the wire for " + camelcaseName + " to set.\n");
+			break;
 		case CLEARER:
 			break;
 		case LIST_COUNT:
@@ -568,6 +571,23 @@ public final class DocComment
 			break;
 		case LIST_MULTI_ADDER:
 			out.print(" * @param values The " + camelcaseName + " to add.\n");
+			break;
+		case LIST_VALUE_GETTER:
+			out.print(" * @return A list containing the enum numeric values on the wire for " + camelcaseName + ".\n");
+			break;
+		case LIST_INDEXED_VALUE_GETTER:
+			out.print(" * @param index The index of the value to return.\n");
+			out.print(" * @return The enum numeric value on the wire of " + camelcaseName + " at the given index.\n");
+			break;
+		case LIST_INDEXED_VALUE_SETTER:
+			out.print(" * @param index The index to set the value at.\n");
+			out.print(" * @param value The enum numeric value on the wire for " + camelcaseName + " to set.\n");
+			break;
+		case LIST_VALUE_ADDER:
+			out.print(" * @param value The enum numeric value on the wire for " + camelcaseName + " to add.\n");
+			break;
+		case LIST_VALUE_MULTI_ADDER:
+			out.print(" * @param values The enum numeric values on the wire for " + camelcaseName + " to add.\n");
 			break;
 		}
 		if (builder)

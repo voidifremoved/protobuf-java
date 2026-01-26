@@ -296,3 +296,22 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 *   **String Field Accessors in Proto3**:
     *   **Getter (Message)**: The generated getter for string fields in Proto3 message classes (which lazily decodes `ByteString`) does **not** check `isValidUtf8()` before caching the string. It assigns unconditionally (`stringField_ = s`). This differs from Proto2 which checks validity to preserve original invalid bytes if needed.
     *   **Setter (Builder)**: The generated builder setter `setStringFieldBytes` (or generally `set...Bytes`) in Proto3 **does** enforce `checkByteStringIsUtf8(value)`. This validation logic must be explicitly generated when the syntax is "proto3".
+
+*   **Repeated Enum Fields**:
+    *   Requires generation of `Value` accessors (`get...ValueList`, `get...Value(index)`, `set...Value`, `add...Value`, `addAll...Value`) to support unknown enum values in Proto3. This involves adding methods to Interface, Message, and Builder.
+    *   New `FieldAccessorType` values (`LIST_VALUE_GETTER`, `LIST_INDEXED_VALUE_GETTER`, `VALUE_SETTER`, etc.) were introduced to support specific Javadoc for these accessors. `VALUE_SETTER` is needed for `set...Value` methods to correctly describe the `value` parameter as "enum numeric value".
+    *   In the Builder, `Value` accessors must appear **after** the standard `set/add/addAll/clear` methods to match `protoc` ordering.
+
+*   **Packed Repeated Fields**:
+    *   `RepeatedPrimitiveFieldGenerator` and `RepeatedEnumFieldGenerator` must generate a `MemoizedSerializedSize` member variable.
+    *   **Primitives**: Initialized to `-1` (`private int nameMemoizedSerializedSize = -1;`).
+    *   **Enums**: Initialized to default 0 (`private int nameMemoizedSerializedSize;`). This inconsistency matches `protoc` output.
+    *   Serialization logic must implement packed serialization (checking `isPacked()`, writing wire type 2, length, and then values without individual tags).
+
+*   **Builder Bit Handling**:
+    *   Generators (e.g., `EnumFieldGenerator`) must set the builder bit instruction (`variables.put("set_has_field_bit_builder", ...);`) **unconditionally**, even if the field does not have presence in the message (Proto3 implicit). This ensures `buildPartial` or other logic can rely on dirty bits.
+    *   Similarly, `clear` logic must clear the bit unconditionally.
+    *   `set_has_field_bit_to_local` (used in `generateBuildingCode`) must be initialized (e.g. to empty string) even when `!descriptor.hasPresence()` to avoid generating incorrect code if `getNumBitsForMessage()` is > 0 due to other fields.
+
+*   **Repeated String Fields**:
+    *   `RepeatedStringFieldGenerator` must enforce strict UTF-8 checking (`checkByteStringIsUtf8`) in `add...Bytes` methods when the syntax is "proto3".
