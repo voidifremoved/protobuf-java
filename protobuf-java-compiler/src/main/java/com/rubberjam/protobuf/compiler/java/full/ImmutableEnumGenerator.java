@@ -140,10 +140,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 			printer.println(valueIndent + "public static final " + classname + " " + alias.value.getName() + " = "
 					+ alias.canonicalValue.getName() + ";");
 		}
-		if (!aliases.isEmpty())
-		{
-			printer.println();
-		}
 
 		// Value constants
 		for (EnumValueDescriptor value : descriptor.getValues())
@@ -245,8 +241,25 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println(valueIndent + "}");
 		printer.println();
 
-		printer.println(valueIndent + "private static final " + classname + "[] VALUES = values();");
-		printer.println();
+		if (aliases.isEmpty())
+		{
+			printer.println(valueIndent + "private static final " + classname + "[] VALUES = values();");
+			printer.println();
+		}
+		else
+		{
+			printer.println(valueIndent + "private static final " + classname + "[] VALUES = getStaticValuesArray();");
+			printer.println(valueIndent + "private static " + classname + "[] getStaticValuesArray() {");
+			printer.println(valueIndent + "  return new " + classname + "[] {");
+			printer.print(valueIndent + "  ");
+			for (EnumValueDescriptor value : descriptor.getValues())
+			{
+				printer.print(value.getName() + ", ");
+			}
+			printer.println();
+			printer.println(valueIndent + "  };");
+			printer.println(valueIndent + "}");
+		}
 
 		printer.println(valueIndent + "public static " + classname + " valueOf(");
 		printer.println(valueIndent + "    com.google.protobuf.Descriptors.EnumValueDescriptor desc) {");

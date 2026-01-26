@@ -322,6 +322,16 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 *   **Tokenizer Sticky Trailing Comments**:
     *   The sticky trailing comment logic (attaching comments on the next line to the previous token) must be disabled for block closers `}` in addition to block openers `{`. This ensures that comments following a message block (e.g. `message Foo {} // Comment`) are treated as leading comments for the *next* element if they appear on a new line, rather than trailing comments of `}`.
 
+*   **Builder Capacity Method for Packed Fields**:
+    *   `RepeatedPrimitiveFieldGenerator` generates `ensure...IsMutable(int capacity)` helper method in the Builder.
+    *   This method is ONLY generated if the field is **explicitly packed** (`[packed = true]`) AND the type is a **fixed-size type** or **boolean** (`BOOL`, `FIXED32`, `SFIXED32`, `FLOAT`, `FIXED64`, `SFIXED64`, `DOUBLE`).
+    *   It is NOT generated for varint types (`INT32`, `INT64`, `UINT32`, `UINT64`, `SINT32`, `SINT64`) or implicit packed fields, or unpacked fields.
+
+*   **Enum Aliases**:
+    *   `Enum.values()` in Java excludes aliases (since they are just static fields pointing to constants).
+    *   For Enums with aliases, `protoc` generates a helper method `getStaticValuesArray()` that manually constructs an array containing ALL values (including aliases) in definition order (matching `EnumDescriptor.getValues()`).
+    *   The `VALUES` static field is initialized with this helper if aliases exist, otherwise with `values()`.
+    *   A blank line is generated after `VALUES` definition ONLY if aliases are NOT present (i.e. using `values()`). If aliases are present, no blank line is generated after the `VALUES` field definition (because the helper method definition follows immediately?).
 *   **Repeated Fixed-Size/Boolean Fields**:
     *   **Serialization**: For repeated fields of fixed-size types (`FIXED32`, `SFIXED32`, `FLOAT`, `FIXED64`, `SFIXED64`, `DOUBLE`, `BOOL`), `getSerializedSize` uses an optimized calculation `size = fixedSize * list.size()` instead of iterating over the list. It also uses the public getter `get...List()` for this check.
     *   **Builder Capacity Method**: `ensure...IsMutable(int capacity)` is generated for **ALL** repeated fields of fixed-size types or boolean, regardless of whether they are explicitly declared as packed. This is required because `protoc` generates parsing code that uses this method for the packed wire format (tag 114) even for fields declared unpacked.
