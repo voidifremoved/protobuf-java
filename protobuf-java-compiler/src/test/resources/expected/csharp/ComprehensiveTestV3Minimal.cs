@@ -46,16 +46,24 @@ namespace ComprehensiveTest.V3Minimmal {
             "KAhCAhABEkEKC3BhY2tlZF9lbnVtGAUgAygOMiguQ29tcHJlaGVuc2l2ZVRl",
             "c3QuVjNNaW5pbW1hbC5UZXN0RW51bVYzQgIQARIaCg5wYWNrZWRfZml4ZWQz",
             "MhgGIAMoB0ICEAESGAoMcGFja2VkX2Zsb2F0GAcgAygCQgIQARIaCg51bnBh",
-            "Y2tlZF9pbnQzMhgIIAMoBUICEAAqTwoKVGVzdEVudW1WMxIQCgxURVNUX1VO",
-            "S05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNPTkQQAhIOCgpU",
-            "RVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxl",
-            "ci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1hbEgCgAEAiAEA",
-            "YgZwcm90bzM="));
+            "Y2tlZF9pbnQzMhgIIAMoBUICEAAiwQIKDk9uZW9mTWVzc2FnZVYzEhYKDG9u",
+            "ZW9mX3N0cmluZxgBIAEoCUgAEhUKC29uZW9mX2ludDMyGAIgASgFSAASPgoK",
+            "b25lb2ZfZW51bRgDIAEoDjIoLkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1t",
+            "YWwuVGVzdEVudW1WM0gAEkYKDW9uZW9mX21lc3NhZ2UYBCABKAsyLS5Db21w",
+            "cmVoZW5zaXZlVGVzdC5WM01pbmltbWFsLkFsbEZpZWxkVHlwZXNWM0gAEhUK",
+            "C29uZW9mX2J5dGVzGAUgASgMSAASFQoNcmVndWxhcl9maWVsZBgGIAEoCRIU",
+            "CgpvbmVvZl9ib29sGAcgASgISAESFgoMb25lb2ZfZG91YmxlGAggASgBSAFC",
+            "DAoKdGVzdF9vbmVvZkIOCgxzZWNvbmRfb25lb2YqTwoKVGVzdEVudW1WMxIQ",
+            "CgxURVNUX1VOS05PV04QABIOCgpURVNUX0ZJUlNUEAESDwoLVEVTVF9TRUNP",
+            "TkQQAhIOCgpURVNUX1RISVJEEANCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1",
+            "Zi5jb21waWxlci50ZXN0LnYzQhpDb21wcmVoZW5zaXZlVGVzdFYzTWluaW1h",
+            "bEgCgAEAiAEAYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.PackedMessageV3), global::ComprehensiveTest.V3Minimmal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.PackedMessageV3), global::ComprehensiveTest.V3Minimmal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.OneofMessageV3), global::ComprehensiveTest.V3Minimmal.OneofMessageV3.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble" }, new[]{ "TestOneof", "SecondOneof" }, null, null, null)
           }));
     }
     #endregion
@@ -1473,6 +1481,640 @@ namespace ComprehensiveTest.V3Minimmal {
           case 66:
           case 64: {
             unpackedInt32_.AddEntriesFrom(ref input, _repeated_unpackedInt32_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with oneof (proto3)
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class OneofMessageV3 : pb::IMessage<OneofMessageV3>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<OneofMessageV3> _parser = new pb::MessageParser<OneofMessageV3>(() => new OneofMessageV3());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<OneofMessageV3> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OneofMessageV3() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OneofMessageV3(OneofMessageV3 other) : this() {
+      regularField_ = other.regularField_;
+      switch (other.TestOneofCase) {
+        case TestOneofOneofCase.OneofString:
+          OneofString = other.OneofString;
+          break;
+        case TestOneofOneofCase.OneofInt32:
+          OneofInt32 = other.OneofInt32;
+          break;
+        case TestOneofOneofCase.OneofEnum:
+          OneofEnum = other.OneofEnum;
+          break;
+        case TestOneofOneofCase.OneofMessage:
+          OneofMessage = other.OneofMessage.Clone();
+          break;
+        case TestOneofOneofCase.OneofBytes:
+          OneofBytes = other.OneofBytes;
+          break;
+      }
+
+      switch (other.SecondOneofCase) {
+        case SecondOneofOneofCase.OneofBool:
+          OneofBool = other.OneofBool;
+          break;
+        case SecondOneofOneofCase.OneofDouble:
+          OneofDouble = other.OneofDouble;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OneofMessageV3 Clone() {
+      return new OneofMessageV3(this);
+    }
+
+    /// <summary>Field number for the "oneof_string" field.</summary>
+    public const int OneofStringFieldNumber = 1;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string OneofString {
+      get { return HasOneofString ? (string) testOneof_ : ""; }
+      set {
+        testOneof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        testOneofCase_ = TestOneofOneofCase.OneofString;
+      }
+    }
+    /// <summary>Gets whether the "oneof_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofString {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofString; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_string" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofString() {
+      if (HasOneofString) {
+        ClearTestOneof();
+      }
+    }
+
+    /// <summary>Field number for the "oneof_int32" field.</summary>
+    public const int OneofInt32FieldNumber = 2;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int OneofInt32 {
+      get { return HasOneofInt32 ? (int) testOneof_ : 0; }
+      set {
+        testOneof_ = value;
+        testOneofCase_ = TestOneofOneofCase.OneofInt32;
+      }
+    }
+    /// <summary>Gets whether the "oneof_int32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofInt32 {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofInt32; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_int32" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofInt32() {
+      if (HasOneofInt32) {
+        ClearTestOneof();
+      }
+    }
+
+    /// <summary>Field number for the "oneof_enum" field.</summary>
+    public const int OneofEnumFieldNumber = 3;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ComprehensiveTest.V3Minimmal.TestEnumV3 OneofEnum {
+      get { return HasOneofEnum ? (global::ComprehensiveTest.V3Minimmal.TestEnumV3) testOneof_ : global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown; }
+      set {
+        testOneof_ = value;
+        testOneofCase_ = TestOneofOneofCase.OneofEnum;
+      }
+    }
+    /// <summary>Gets whether the "oneof_enum" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofEnum {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofEnum; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_enum" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofEnum() {
+      if (HasOneofEnum) {
+        ClearTestOneof();
+      }
+    }
+
+    /// <summary>Field number for the "oneof_message" field.</summary>
+    public const int OneofMessageFieldNumber = 4;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 OneofMessage {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofMessage ? (global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3) testOneof_ : null; }
+      set {
+        testOneof_ = value;
+        testOneofCase_ = value == null ? TestOneofOneofCase.None : TestOneofOneofCase.OneofMessage;
+      }
+    }
+
+    /// <summary>Field number for the "oneof_bytes" field.</summary>
+    public const int OneofBytesFieldNumber = 5;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pb::ByteString OneofBytes {
+      get { return HasOneofBytes ? (pb::ByteString) testOneof_ : pb::ByteString.Empty; }
+      set {
+        testOneof_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        testOneofCase_ = TestOneofOneofCase.OneofBytes;
+      }
+    }
+    /// <summary>Gets whether the "oneof_bytes" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofBytes {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofBytes; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_bytes" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofBytes() {
+      if (HasOneofBytes) {
+        ClearTestOneof();
+      }
+    }
+
+    /// <summary>Field number for the "regular_field" field.</summary>
+    public const int RegularFieldFieldNumber = 6;
+    private string regularField_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string RegularField {
+      get { return regularField_; }
+      set {
+        regularField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "oneof_bool" field.</summary>
+    public const int OneofBoolFieldNumber = 7;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool OneofBool {
+      get { return HasOneofBool ? (bool) secondOneof_ : false; }
+      set {
+        secondOneof_ = value;
+        secondOneofCase_ = SecondOneofOneofCase.OneofBool;
+      }
+    }
+    /// <summary>Gets whether the "oneof_bool" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofBool {
+      get { return secondOneofCase_ == SecondOneofOneofCase.OneofBool; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_bool" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofBool() {
+      if (HasOneofBool) {
+        ClearSecondOneof();
+      }
+    }
+
+    /// <summary>Field number for the "oneof_double" field.</summary>
+    public const int OneofDoubleFieldNumber = 8;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double OneofDouble {
+      get { return HasOneofDouble ? (double) secondOneof_ : 0D; }
+      set {
+        secondOneof_ = value;
+        secondOneofCase_ = SecondOneofOneofCase.OneofDouble;
+      }
+    }
+    /// <summary>Gets whether the "oneof_double" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasOneofDouble {
+      get { return secondOneofCase_ == SecondOneofOneofCase.OneofDouble; }
+    }
+    /// <summary> Clears the value of the oneof if it's currently set to "oneof_double" </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearOneofDouble() {
+      if (HasOneofDouble) {
+        ClearSecondOneof();
+      }
+    }
+
+    private object testOneof_;
+    /// <summary>Enum of possible cases for the "test_oneof" oneof.</summary>
+    public enum TestOneofOneofCase {
+      None = 0,
+      OneofString = 1,
+      OneofInt32 = 2,
+      OneofEnum = 3,
+      OneofMessage = 4,
+      OneofBytes = 5,
+    }
+    private TestOneofOneofCase testOneofCase_ = TestOneofOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public TestOneofOneofCase TestOneofCase {
+      get { return testOneofCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearTestOneof() {
+      testOneofCase_ = TestOneofOneofCase.None;
+      testOneof_ = null;
+    }
+
+    private object secondOneof_;
+    /// <summary>Enum of possible cases for the "second_oneof" oneof.</summary>
+    public enum SecondOneofOneofCase {
+      None = 0,
+      OneofBool = 7,
+      OneofDouble = 8,
+    }
+    private SecondOneofOneofCase secondOneofCase_ = SecondOneofOneofCase.None;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SecondOneofOneofCase SecondOneofCase {
+      get { return secondOneofCase_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearSecondOneof() {
+      secondOneofCase_ = SecondOneofOneofCase.None;
+      secondOneof_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as OneofMessageV3);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(OneofMessageV3 other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (OneofString != other.OneofString) return false;
+      if (OneofInt32 != other.OneofInt32) return false;
+      if (OneofEnum != other.OneofEnum) return false;
+      if (!object.Equals(OneofMessage, other.OneofMessage)) return false;
+      if (OneofBytes != other.OneofBytes) return false;
+      if (RegularField != other.RegularField) return false;
+      if (OneofBool != other.OneofBool) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(OneofDouble, other.OneofDouble)) return false;
+      if (TestOneofCase != other.TestOneofCase) return false;
+      if (SecondOneofCase != other.SecondOneofCase) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasOneofString) hash ^= OneofString.GetHashCode();
+      if (HasOneofInt32) hash ^= OneofInt32.GetHashCode();
+      if (HasOneofEnum) hash ^= OneofEnum.GetHashCode();
+      if (testOneofCase_ == TestOneofOneofCase.OneofMessage) hash ^= OneofMessage.GetHashCode();
+      if (HasOneofBytes) hash ^= OneofBytes.GetHashCode();
+      if (RegularField.Length != 0) hash ^= RegularField.GetHashCode();
+      if (HasOneofBool) hash ^= OneofBool.GetHashCode();
+      if (HasOneofDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(OneofDouble);
+      hash ^= (int) testOneofCase_;
+      hash ^= (int) secondOneofCase_;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasOneofString) {
+        output.WriteRawTag(10);
+        output.WriteString(OneofString);
+      }
+      if (HasOneofInt32) {
+        output.WriteRawTag(16);
+        output.WriteInt32(OneofInt32);
+      }
+      if (HasOneofEnum) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) OneofEnum);
+      }
+      if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
+        output.WriteRawTag(34);
+        output.WriteMessage(OneofMessage);
+      }
+      if (HasOneofBytes) {
+        output.WriteRawTag(42);
+        output.WriteBytes(OneofBytes);
+      }
+      if (RegularField.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RegularField);
+      }
+      if (HasOneofBool) {
+        output.WriteRawTag(56);
+        output.WriteBool(OneofBool);
+      }
+      if (HasOneofDouble) {
+        output.WriteRawTag(65);
+        output.WriteDouble(OneofDouble);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasOneofString) {
+        output.WriteRawTag(10);
+        output.WriteString(OneofString);
+      }
+      if (HasOneofInt32) {
+        output.WriteRawTag(16);
+        output.WriteInt32(OneofInt32);
+      }
+      if (HasOneofEnum) {
+        output.WriteRawTag(24);
+        output.WriteEnum((int) OneofEnum);
+      }
+      if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
+        output.WriteRawTag(34);
+        output.WriteMessage(OneofMessage);
+      }
+      if (HasOneofBytes) {
+        output.WriteRawTag(42);
+        output.WriteBytes(OneofBytes);
+      }
+      if (RegularField.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(RegularField);
+      }
+      if (HasOneofBool) {
+        output.WriteRawTag(56);
+        output.WriteBool(OneofBool);
+      }
+      if (HasOneofDouble) {
+        output.WriteRawTag(65);
+        output.WriteDouble(OneofDouble);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasOneofString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(OneofString);
+      }
+      if (HasOneofInt32) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(OneofInt32);
+      }
+      if (HasOneofEnum) {
+        size += 1 + pb::CodedOutputStream.ComputeEnumSize((int) OneofEnum);
+      }
+      if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(OneofMessage);
+      }
+      if (HasOneofBytes) {
+        size += 1 + pb::CodedOutputStream.ComputeBytesSize(OneofBytes);
+      }
+      if (RegularField.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(RegularField);
+      }
+      if (HasOneofBool) {
+        size += 1 + 1;
+      }
+      if (HasOneofDouble) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(OneofMessageV3 other) {
+      if (other == null) {
+        return;
+      }
+      if (other.RegularField.Length != 0) {
+        RegularField = other.RegularField;
+      }
+      switch (other.TestOneofCase) {
+        case TestOneofOneofCase.OneofString:
+          OneofString = other.OneofString;
+          break;
+        case TestOneofOneofCase.OneofInt32:
+          OneofInt32 = other.OneofInt32;
+          break;
+        case TestOneofOneofCase.OneofEnum:
+          OneofEnum = other.OneofEnum;
+          break;
+        case TestOneofOneofCase.OneofMessage:
+          if (OneofMessage == null) {
+            OneofMessage = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+          }
+          OneofMessage.MergeFrom(other.OneofMessage);
+          break;
+        case TestOneofOneofCase.OneofBytes:
+          OneofBytes = other.OneofBytes;
+          break;
+      }
+
+      switch (other.SecondOneofCase) {
+        case SecondOneofOneofCase.OneofBool:
+          OneofBool = other.OneofBool;
+          break;
+        case SecondOneofOneofCase.OneofDouble:
+          OneofDouble = other.OneofDouble;
+          break;
+      }
+
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            OneofString = input.ReadString();
+            break;
+          }
+          case 16: {
+            OneofInt32 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            testOneof_ = input.ReadEnum();
+            testOneofCase_ = TestOneofOneofCase.OneofEnum;
+            break;
+          }
+          case 34: {
+            global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+            if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
+              subBuilder.MergeFrom(OneofMessage);
+            }
+            input.ReadMessage(subBuilder);
+            OneofMessage = subBuilder;
+            break;
+          }
+          case 42: {
+            OneofBytes = input.ReadBytes();
+            break;
+          }
+          case 50: {
+            RegularField = input.ReadString();
+            break;
+          }
+          case 56: {
+            OneofBool = input.ReadBool();
+            break;
+          }
+          case 65: {
+            OneofDouble = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            OneofString = input.ReadString();
+            break;
+          }
+          case 16: {
+            OneofInt32 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            testOneof_ = input.ReadEnum();
+            testOneofCase_ = TestOneofOneofCase.OneofEnum;
+            break;
+          }
+          case 34: {
+            global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+            if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
+              subBuilder.MergeFrom(OneofMessage);
+            }
+            input.ReadMessage(subBuilder);
+            OneofMessage = subBuilder;
+            break;
+          }
+          case 42: {
+            OneofBytes = input.ReadBytes();
+            break;
+          }
+          case 50: {
+            RegularField = input.ReadString();
+            break;
+          }
+          case 56: {
+            OneofBool = input.ReadBool();
+            break;
+          }
+          case 65: {
+            OneofDouble = input.ReadDouble();
             break;
           }
         }

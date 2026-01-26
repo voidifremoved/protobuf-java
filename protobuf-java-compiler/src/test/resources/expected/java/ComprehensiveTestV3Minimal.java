@@ -3959,6 +3959,1301 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
   }
 
+  public interface OneofMessageV3OrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return Whether the oneofString field is set.
+     */
+    boolean hasOneofString();
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The oneofString.
+     */
+    java.lang.String getOneofString();
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The bytes for oneofString.
+     */
+    com.google.protobuf.ByteString
+        getOneofStringBytes();
+
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    boolean hasOneofInt32();
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return The oneofInt32.
+     */
+    int getOneofInt32();
+
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    boolean hasOneofEnum();
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return The enum numeric value on the wire for oneofEnum.
+     */
+    int getOneofEnumValue();
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return The oneofEnum.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getOneofEnum();
+
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    boolean hasOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return The oneofMessage.
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getOneofMessage();
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     */
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder();
+
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    boolean hasOneofBytes();
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return The oneofBytes.
+     */
+    com.google.protobuf.ByteString getOneofBytes();
+
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The regularField.
+     */
+    java.lang.String getRegularField();
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The bytes for regularField.
+     */
+    com.google.protobuf.ByteString
+        getRegularFieldBytes();
+
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    boolean hasOneofBool();
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return The oneofBool.
+     */
+    boolean getOneofBool();
+
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    boolean hasOneofDouble();
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return The oneofDouble.
+     */
+    double getOneofDouble();
+
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.TestOneofCase getTestOneofCase();
+
+    com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.SecondOneofCase getSecondOneofCase();
+  }
+  /**
+   * <pre>
+   * Message with oneof (proto3)
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.V3Minimmal.OneofMessageV3}
+   */
+  public static final class OneofMessageV3 extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+      OneofMessageV3OrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "OneofMessageV3");
+    }
+    // Use OneofMessageV3.newBuilder() to construct.
+    private OneofMessageV3(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private OneofMessageV3() {
+      regularField_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.Builder.class);
+    }
+
+    private int testOneofCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object testOneof_;
+    public enum TestOneofCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF_STRING(1),
+      ONEOF_INT32(2),
+      ONEOF_ENUM(3),
+      ONEOF_MESSAGE(4),
+      ONEOF_BYTES(5),
+      TESTONEOF_NOT_SET(0);
+      private final int value;
+      private TestOneofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static TestOneofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static TestOneofCase forNumber(int value) {
+        switch (value) {
+          case 1: return ONEOF_STRING;
+          case 2: return ONEOF_INT32;
+          case 3: return ONEOF_ENUM;
+          case 4: return ONEOF_MESSAGE;
+          case 5: return ONEOF_BYTES;
+          case 0: return TESTONEOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public TestOneofCase
+    getTestOneofCase() {
+      return TestOneofCase.forNumber(
+          testOneofCase_);
+    }
+
+    private int secondOneofCase_ = 0;
+    @SuppressWarnings("serial")
+    private java.lang.Object secondOneof_;
+    public enum SecondOneofCase
+        implements com.google.protobuf.Internal.EnumLite,
+            com.google.protobuf.AbstractMessage.InternalOneOfEnum {
+      ONEOF_BOOL(7),
+      ONEOF_DOUBLE(8),
+      SECONDONEOF_NOT_SET(0);
+      private final int value;
+      private SecondOneofCase(int value) {
+        this.value = value;
+      }
+      /**
+       * @param value The number of the enum to look for.
+       * @return The enum associated with the given number.
+       * @deprecated Use {@link #forNumber(int)} instead.
+       */
+      @java.lang.Deprecated
+      public static SecondOneofCase valueOf(int value) {
+        return forNumber(value);
+      }
+
+      public static SecondOneofCase forNumber(int value) {
+        switch (value) {
+          case 7: return ONEOF_BOOL;
+          case 8: return ONEOF_DOUBLE;
+          case 0: return SECONDONEOF_NOT_SET;
+          default: return null;
+        }
+      }
+      public int getNumber() {
+        return this.value;
+      }
+    };
+
+    public SecondOneofCase
+    getSecondOneofCase() {
+      return SecondOneofCase.forNumber(
+          secondOneofCase_);
+    }
+
+    public static final int ONEOF_STRING_FIELD_NUMBER = 1;
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return Whether the oneofString field is set.
+     */
+    public boolean hasOneofString() {
+      return testOneofCase_ == 1;
+    }
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The oneofString.
+     */
+    public java.lang.String getOneofString() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 1) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (testOneofCase_ == 1) {
+          testOneof_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>string oneof_string = 1;</code>
+     * @return The bytes for oneofString.
+     */
+    public com.google.protobuf.ByteString
+        getOneofStringBytes() {
+      java.lang.Object ref = "";
+      if (testOneofCase_ == 1) {
+        ref = testOneof_;
+      }
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        if (testOneofCase_ == 1) {
+          testOneof_ = b;
+        }
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF_INT32_FIELD_NUMBER = 2;
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return Whether the oneofInt32 field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofInt32() {
+      return testOneofCase_ == 2;
+    }
+    /**
+     * <code>int32 oneof_int32 = 2;</code>
+     * @return The oneofInt32.
+     */
+    @java.lang.Override
+    public int getOneofInt32() {
+      if (testOneofCase_ == 2) {
+        return (java.lang.Integer) testOneof_;
+      }
+      return 0;
+    }
+
+    public static final int ONEOF_ENUM_FIELD_NUMBER = 3;
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return Whether the oneofEnum field is set.
+     */
+    public boolean hasOneofEnum() {
+      return testOneofCase_ == 3;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return The enum numeric value on the wire for oneofEnum.
+     */
+    public int getOneofEnumValue() {
+      if (testOneofCase_ == 3) {
+        return (java.lang.Integer) testOneof_;
+      }
+      return 0;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * @return The oneofEnum.
+     */
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getOneofEnum() {
+      if (testOneofCase_ == 3) {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(
+            (java.lang.Integer) testOneof_);
+        return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.TEST_UNKNOWN;
+    }
+
+    public static final int ONEOF_MESSAGE_FIELD_NUMBER = 4;
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return Whether the oneofMessage field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofMessage() {
+      return testOneofCase_ == 4;
+    }
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * @return The oneofMessage.
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getOneofMessage() {
+      if (testOneofCase_ == 4) {
+         return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+    }
+    /**
+     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     */
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
+      if (testOneofCase_ == 4) {
+         return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_;
+      }
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+    }
+
+    public static final int ONEOF_BYTES_FIELD_NUMBER = 5;
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return Whether the oneofBytes field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBytes() {
+      return testOneofCase_ == 5;
+    }
+    /**
+     * <code>bytes oneof_bytes = 5;</code>
+     * @return The oneofBytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getOneofBytes() {
+      if (testOneofCase_ == 5) {
+        return (com.google.protobuf.ByteString) testOneof_;
+      }
+      return com.google.protobuf.ByteString.EMPTY;
+    }
+
+    public static final int REGULAR_FIELD_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object regularField_ = "";
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The regularField.
+     */
+    @java.lang.Override
+    public java.lang.String getRegularField() {
+      java.lang.Object ref = regularField_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        regularField_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string regular_field = 6;</code>
+     * @return The bytes for regularField.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getRegularFieldBytes() {
+      java.lang.Object ref = regularField_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        regularField_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int ONEOF_BOOL_FIELD_NUMBER = 7;
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return Whether the oneofBool field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofBool() {
+      return secondOneofCase_ == 7;
+    }
+    /**
+     * <code>bool oneof_bool = 7;</code>
+     * @return The oneofBool.
+     */
+    @java.lang.Override
+    public boolean getOneofBool() {
+      if (secondOneofCase_ == 7) {
+        return (java.lang.Boolean) secondOneof_;
+      }
+      return false;
+    }
+
+    public static final int ONEOF_DOUBLE_FIELD_NUMBER = 8;
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return Whether the oneofDouble field is set.
+     */
+    @java.lang.Override
+    public boolean hasOneofDouble() {
+      return secondOneofCase_ == 8;
+    }
+    /**
+     * <code>double oneof_double = 8;</code>
+     * @return The oneofDouble.
+     */
+    @java.lang.Override
+    public double getOneofDouble() {
+      if (secondOneofCase_ == 8) {
+        return (java.lang.Double) secondOneof_;
+      }
+      return 0D;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with oneof (proto3)
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.V3Minimmal.OneofMessageV3}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3OrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        if (oneofMessageBuilder_ != null) {
+          oneofMessageBuilder_.clear();
+        }
+        regularField_ = "";
+        testOneofCase_ = 0;
+        testOneof_ = null;
+        secondOneofCase_ = 0;
+        secondOneof_ = null;
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 build() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 buildPartial() {
+        com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 result = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        buildPartialOneofs(result);
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 result) {
+        int from_bitField0_ = bitField0_;
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.regularField_ = regularField_;
+        }
+      }
+
+      private void buildPartialOneofs(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 result) {
+        result.testOneofCase_ = testOneofCase_;
+        result.testOneof_ = this.testOneof_;
+        if (testOneofCase_ == 4 &&
+            oneofMessageBuilder_ != null) {
+          result.testOneof_ = oneofMessageBuilder_.build();
+        }
+        result.secondOneofCase_ = secondOneofCase_;
+        result.secondOneof_ = this.secondOneof_;
+      }
+
+      private int testOneofCase_ = 0;
+      private java.lang.Object testOneof_;
+      public TestOneofCase
+          getTestOneofCase() {
+        return TestOneofCase.forNumber(
+            testOneofCase_);
+      }
+
+      public Builder clearTestOneof() {
+        testOneofCase_ = 0;
+        testOneof_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int secondOneofCase_ = 0;
+      private java.lang.Object secondOneof_;
+      public SecondOneofCase
+          getSecondOneofCase() {
+        return SecondOneofCase.forNumber(
+            secondOneofCase_);
+      }
+
+      public Builder clearSecondOneof() {
+        secondOneofCase_ = 0;
+        secondOneof_ = null;
+        onChanged();
+        return this;
+      }
+
+      private int bitField0_;
+
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return Whether the oneofString field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofString() {
+        return testOneofCase_ == 1;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return The oneofString.
+       */
+      @java.lang.Override
+      public java.lang.String getOneofString() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 1) {
+          ref = testOneof_;
+        }
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (testOneofCase_ == 1) {
+            testOneof_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return The bytes for oneofString.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString
+          getOneofStringBytes() {
+        java.lang.Object ref = "";
+        if (testOneofCase_ == 1) {
+          ref = testOneof_;
+        }
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          if (testOneofCase_ == 1) {
+            testOneof_ = b;
+          }
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @param value The oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 1;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofString() {
+        if (testOneofCase_ == 1) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+      /**
+       * <code>string oneof_string = 1;</code>
+       * @param value The bytes for oneofString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        testOneofCase_ = 1;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return Whether the oneofInt32 field is set.
+       */
+      public boolean hasOneofInt32() {
+        return testOneofCase_ == 2;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return The oneofInt32.
+       */
+      public int getOneofInt32() {
+        if (testOneofCase_ == 2) {
+          return (java.lang.Integer) testOneof_;
+        }
+        return 0;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @param value The oneofInt32 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofInt32(int value) {
+
+        testOneofCase_ = 2;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 oneof_int32 = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofInt32() {
+        if (testOneofCase_ == 2) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @return Whether the oneofEnum field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofEnum() {
+        return testOneofCase_ == 3;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @return The enum numeric value on the wire for oneofEnum.
+       */
+      @java.lang.Override
+      public int getOneofEnumValue() {
+        if (testOneofCase_ == 3) {
+          return ((java.lang.Integer) testOneof_).intValue();
+        }
+        return 0;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @param value The enum numeric value on the wire for oneofEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofEnumValue(int value) {
+        testOneofCase_ = 3;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @return The oneofEnum.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getOneofEnum() {
+        if (testOneofCase_ == 3) {
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 result = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.forNumber(
+              (java.lang.Integer) testOneof_);
+          return result == null ? com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.UNRECOGNIZED : result;
+        }
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.TEST_UNKNOWN;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @param value The oneofEnum to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofEnum(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 3;
+        testOneof_ = value.getNumber();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofEnum() {
+        if (testOneofCase_ == 3) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> oneofMessageBuilder_;
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * @return Whether the oneofMessage field is set.
+       */
+      @java.lang.Override
+      public boolean hasOneofMessage() {
+        return testOneofCase_ == 4;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * @return The oneofMessage.
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4) {
+            return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_;
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+        } else {
+          if (testOneofCase_ == 4) {
+            return oneofMessageBuilder_.getMessage();
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder setOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 value) {
+        if (oneofMessageBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          testOneof_ = value;
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(value);
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder setOneofMessage(
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder builderForValue) {
+        if (oneofMessageBuilder_ == null) {
+          testOneof_ = builderForValue.build();
+          onChanged();
+        } else {
+          oneofMessageBuilder_.setMessage(builderForValue.build());
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder mergeOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 value) {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4 &&
+              testOneof_ != com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance()) {
+            testOneof_ = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.newBuilder((com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            testOneof_ = value;
+          }
+          onChanged();
+        } else {
+          if (testOneofCase_ == 4) {
+            oneofMessageBuilder_.mergeFrom(value);
+          } else {
+            oneofMessageBuilder_.setMessage(value);
+          }
+        }
+        testOneofCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public Builder clearOneofMessage() {
+        if (oneofMessageBuilder_ == null) {
+          if (testOneofCase_ == 4) {
+            testOneofCase_ = 0;
+            testOneof_ = null;
+            onChanged();
+          }
+        } else {
+          if (testOneofCase_ == 4) {
+            testOneofCase_ = 0;
+            testOneof_ = null;
+          }
+          oneofMessageBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder getOneofMessageBuilder() {
+        return internalGetOneofMessageFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
+        if ((testOneofCase_ == 4) && (oneofMessageBuilder_ != null)) {
+          return oneofMessageBuilder_.getMessageOrBuilder();
+        } else {
+          if (testOneofCase_ == 4) {
+            return (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_;
+          }
+          return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> 
+          internalGetOneofMessageFieldBuilder() {
+        if (oneofMessageBuilder_ == null) {
+          if (!(testOneofCase_ == 4)) {
+            testOneof_ = com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
+          }
+          oneofMessageBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder>(
+                  (com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3) testOneof_,
+                  getParentForChildren(),
+                  isClean());
+          testOneof_ = null;
+        }
+        testOneofCase_ = 4;
+        onChanged();
+        return oneofMessageBuilder_;
+      }
+
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return Whether the oneofBytes field is set.
+       */
+      public boolean hasOneofBytes() {
+        return testOneofCase_ == 5;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return The oneofBytes.
+       */
+      public com.google.protobuf.ByteString getOneofBytes() {
+        if (testOneofCase_ == 5) {
+          return (com.google.protobuf.ByteString) testOneof_;
+        }
+        return com.google.protobuf.ByteString.EMPTY;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @param value The oneofBytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBytes(com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        testOneofCase_ = 5;
+        testOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes oneof_bytes = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBytes() {
+        if (testOneofCase_ == 5) {
+          testOneofCase_ = 0;
+          testOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      private java.lang.Object regularField_ = "";
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return The regularField.
+       */
+      public java.lang.String getRegularField() {
+        java.lang.Object ref = regularField_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          regularField_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return The bytes for regularField.
+       */
+      public com.google.protobuf.ByteString
+          getRegularFieldBytes() {
+        java.lang.Object ref = regularField_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          regularField_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @param value The regularField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegularField(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        regularField_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearRegularField() {
+        regularField_ = getDefaultInstance().getRegularField();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string regular_field = 6;</code>
+       * @param value The bytes for regularField to set.
+       * @return This builder for chaining.
+       */
+      public Builder setRegularFieldBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        checkByteStringIsUtf8(value);
+        regularField_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return Whether the oneofBool field is set.
+       */
+      public boolean hasOneofBool() {
+        return secondOneofCase_ == 7;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return The oneofBool.
+       */
+      public boolean getOneofBool() {
+        if (secondOneofCase_ == 7) {
+          return (java.lang.Boolean) secondOneof_;
+        }
+        return false;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @param value The oneofBool to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofBool(boolean value) {
+
+        secondOneofCase_ = 7;
+        secondOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bool oneof_bool = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofBool() {
+        if (secondOneofCase_ == 7) {
+          secondOneofCase_ = 0;
+          secondOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return Whether the oneofDouble field is set.
+       */
+      public boolean hasOneofDouble() {
+        return secondOneofCase_ == 8;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return The oneofDouble.
+       */
+      public double getOneofDouble() {
+        if (secondOneofCase_ == 8) {
+          return (java.lang.Double) secondOneof_;
+        }
+        return 0D;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @param value The oneofDouble to set.
+       * @return This builder for chaining.
+       */
+      public Builder setOneofDouble(double value) {
+
+        secondOneofCase_ = 8;
+        secondOneof_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>double oneof_double = 8;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearOneofDouble() {
+        if (secondOneofCase_ == 8) {
+          secondOneofCase_ = 0;
+          secondOneof_ = null;
+          onChanged();
+        }
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+    private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<OneofMessageV3>
+        PARSER = new com.google.protobuf.AbstractParser<OneofMessageV3>() {
+      @java.lang.Override
+      public OneofMessageV3 parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<OneofMessageV3> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<OneofMessageV3> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
   private static final 
@@ -3969,6 +5264,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4003,11 +5303,19 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       "(\0162(.ComprehensiveTest.V3Minimmal.TestEn" +
       "umV3B\002\020\001\022\032\n\016packed_fixed32\030\006 \003(\007B\002\020\001\022\030\n\014" +
       "packed_float\030\007 \003(\002B\002\020\001\022\032\n\016unpacked_int32" +
-      "\030\010 \003(\005B\002\020\000*O\n\nTestEnumV3\022\020\n\014TEST_UNKNOWN" +
-      "\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nT" +
-      "EST_THIRD\020\003BM\n\'com.rubberjam.protobuf.co" +
-      "mpiler.test.v3B\032ComprehensiveTestV3Minim" +
-      "alH\002\200\001\000\210\001\000b\006proto3"
+      "\030\010 \003(\005B\002\020\000\"\301\002\n\016OneofMessageV3\022\026\n\014oneof_s" +
+      "tring\030\001 \001(\tH\000\022\025\n\013oneof_int32\030\002 \001(\005H\000\022>\n\n" +
+      "oneof_enum\030\003 \001(\0162(.ComprehensiveTest.V3M" +
+      "inimmal.TestEnumV3H\000\022F\n\roneof_message\030\004 " +
+      "\001(\0132-.ComprehensiveTest.V3Minimmal.AllFi" +
+      "eldTypesV3H\000\022\025\n\013oneof_bytes\030\005 \001(\014H\000\022\025\n\rr" +
+      "egular_field\030\006 \001(\t\022\024\n\noneof_bool\030\007 \001(\010H\001" +
+      "\022\026\n\014oneof_double\030\010 \001(\001H\001B\014\n\ntest_oneofB\016" +
+      "\n\014second_oneof*O\n\nTestEnumV3\022\020\n\014TEST_UNK" +
+      "NOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022" +
+      "\016\n\nTEST_THIRD\020\003BM\n\'com.rubberjam.protobu" +
+      "f.compiler.test.v3B\032ComprehensiveTestV3M" +
+      "inimalH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -4025,6 +5333,12 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor,
         new java.lang.String[] { "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32", });
+    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor =
+      getDescriptor().getMessageType(2);
+    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor,
+        new java.lang.String[] { "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble", "TestOneof", "SecondOneof", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
