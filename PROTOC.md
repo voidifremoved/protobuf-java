@@ -390,3 +390,17 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
         *   If the input string contains `e` or `E` (scientific notation), it formats using `%.9g`/`%.17g` (stripping trailing zeros) to match `protoc` canonicalization.
         *   If the input is simple decimal, it returns the raw input string to preserve precision and avoid noise (e.g. preventing `2.71828` -> `2.71828008`).
     *   `DocComment.java` and `Helpers.java` were updated to use the `FieldDescriptorProto.getDefaultValue()` string directly (instead of formatting the parsed double) to ensure the generated code and Javadoc match `protoc` output exactly.
+
+*   **Reserved Range End**:
+    *   `DescriptorProto.ReservedRange` (used for message reserved ranges) treats the `end` field as **exclusive** (start to end-1). The parser must increment the user-provided end value by 1.
+    *   For `reserved 2`, proto file has `start=2`, `end=2`. `ReservedRange` must have `start=2`, `end=3`.
+    *   For `reserved max`, `ReservedRange` must set `end` to `536870912` (MAX_FIELD_NUMBER + 1).
+    *   Note: `EnumDescriptorProto.EnumReservedRange` uses an **inclusive** `end` field, so it does NOT require this increment.
+
+*   **Service Method Types Normalization**:
+    *   The `FileDescriptorProto` embedded in the generated code must have fully qualified names for `input_type` and `output_type` in `MethodDescriptorProto` (prefixed with `.`).
+    *   `SharedCodeGenerator.normalizeDescriptor` was updated to iterate over services and methods to enforce this full qualification, ensuring parity with `protoc` output.
+
+*   **Standard Method Options**:
+    *   `Parser.java` must explicitly handle standard method options (like `deprecated`) and set them in the dedicated fields of `MethodOptions` (e.g., `setDeprecated(true)`).
+    *   Treating them as generic `UninterpretedOption` results in a different (and larger) serialized descriptor, causing parity mismatches with `protoc` which uses the compact standard fields.
