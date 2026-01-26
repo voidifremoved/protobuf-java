@@ -669,7 +669,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 		if (variables.getValueNullCheck() != null) {
 			printer.println("        " + variables.getValueNullCheck());
-		} else if (variables.getNullCheck() != null) {
+		} else {
 			printer.println();
 		}
 		if (useBuildMethod) {
