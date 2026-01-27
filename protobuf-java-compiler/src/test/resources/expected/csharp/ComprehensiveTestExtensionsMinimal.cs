@@ -27,13 +27,18 @@ namespace ComprehensiveTest.ExtensionsMinimal {
             "Citjb21wcmVoZW5zaXZlX3Rlc3RfZXh0ZW5zaW9uc19taW5pbWFsLnByb3Rv",
             "EiNDb21wcmVoZW5zaXZlVGVzdC5FeHRlbnNpb25zTWluaW1hbCJMCgtCYXNl",
             "TWVzc2FnZRISCgpiYXNlX2ZpZWxkGAEgASgJEhIKCmJhc2VfaW50MzIYAiAB",
-            "KAUqBQhkEMgBKgYI9AMQ2AQqBgjoBxDQD0JaCi9jb20ucnViYmVyamFtLnBy",
-            "b3RvYnVmLmNvbXBpbGVyLnRlc3QuZXh0ZW5zaW9uc0IiQ29tcHJlaGVuc2l2",
-            "ZVRlc3RFeHRlbnNpb25zTWluaW1hbEgBiAEA"));
+            "KAUqBQhkEMgBKgYI9AMQ2AQqBgjoBxDQDyKaAQoMT3V0ZXJNZXNzYWdlGi4K",
+            "D0lubmVyRXh0ZW5kYWJsZRITCgtpbm5lcl9maWVsZBgBIAEoCSoGCKwCEJAD",
+            "MloKDmlubmVyX2V4dGVuZGVkEkEuQ29tcHJlaGVuc2l2ZVRlc3QuRXh0ZW5z",
+            "aW9uc01pbmltYWwuT3V0ZXJNZXNzYWdlLklubmVyRXh0ZW5kYWJsZRisAiAB",
+            "KAlCWgovY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LmV4",
+            "dGVuc2lvbnNCIkNvbXByZWhlbnNpdmVUZXN0RXh0ZW5zaW9uc01pbmltYWxI",
+            "AYgBAA=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.ExtensionsMinimal.BaseMessage), global::ComprehensiveTest.ExtensionsMinimal.BaseMessage.Parser, new[]{ "BaseField", "BaseInt32" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.ExtensionsMinimal.BaseMessage), global::ComprehensiveTest.ExtensionsMinimal.BaseMessage.Parser, new[]{ "BaseField", "BaseInt32" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.ExtensionsMinimal.OuterMessage), global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Parser, null, null, null, new pb::Extension[] { global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Extensions.InnerExtended }, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Types.InnerExtendable), global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Types.InnerExtendable.Parser, new[]{ "InnerField" }, null, null, null, null)})
           }));
     }
     #endregion
@@ -351,6 +356,445 @@ namespace ComprehensiveTest.ExtensionsMinimal {
     public void ClearExtension<TValue>(pb::RepeatedExtension<BaseMessage, TValue> extension) {
       pb::ExtensionSet.Clear(ref _extensions, extension);
     }
+
+  }
+
+  /// <summary>
+  /// Nested extendable message
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class OuterMessage : pb::IMessage<OuterMessage>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<OuterMessage> _parser = new pb::MessageParser<OuterMessage>(() => new OuterMessage());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<OuterMessage> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.ExtensionsMinimal.ComprehensiveTestExtensionsMinimalReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterMessage() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterMessage(OuterMessage other) : this() {
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public OuterMessage Clone() {
+      return new OuterMessage(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as OuterMessage);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(OuterMessage other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(OuterMessage other) {
+      if (other == null) {
+        return;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+        }
+      }
+    }
+    #endif
+
+    #region Nested types
+    /// <summary>Container for nested types declared in the OuterMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Types {
+      [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+      public sealed partial class InnerExtendable : pb::IExtendableMessage<InnerExtendable>
+      #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          , pb::IBufferMessage
+      #endif
+      {
+        private static readonly pb::MessageParser<InnerExtendable> _parser = new pb::MessageParser<InnerExtendable>(() => new InnerExtendable());
+        private pb::UnknownFieldSet _unknownFields;
+        private pb::ExtensionSet<InnerExtendable> _extensions;
+        private pb::ExtensionSet<InnerExtendable> _Extensions { get { return _extensions; } }
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pb::MessageParser<InnerExtendable> Parser { get { return _parser; } }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public static pbr::MessageDescriptor Descriptor {
+          get { return global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Descriptor.NestedTypes[0]; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        pbr::MessageDescriptor pb::IMessage.Descriptor {
+          get { return Descriptor; }
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public InnerExtendable() {
+          OnConstruction();
+        }
+
+        partial void OnConstruction();
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public InnerExtendable(InnerExtendable other) : this() {
+          innerField_ = other.innerField_;
+          _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+          _extensions = pb::ExtensionSet.Clone(other._extensions);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public InnerExtendable Clone() {
+          return new InnerExtendable(this);
+        }
+
+        /// <summary>Field number for the "inner_field" field.</summary>
+        public const int InnerFieldFieldNumber = 1;
+        private readonly static string InnerFieldDefaultValue = "";
+
+        private string innerField_;
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public string InnerField {
+          get { return innerField_ ?? InnerFieldDefaultValue; }
+          set {
+            innerField_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+          }
+        }
+        /// <summary>Gets whether the "inner_field" field is set</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool HasInnerField {
+          get { return innerField_ != null; }
+        }
+        /// <summary>Clears the value of the "inner_field" field</summary>
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void ClearInnerField() {
+          innerField_ = null;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override bool Equals(object other) {
+          return Equals(other as InnerExtendable);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public bool Equals(InnerExtendable other) {
+          if (ReferenceEquals(other, null)) {
+            return false;
+          }
+          if (ReferenceEquals(other, this)) {
+            return true;
+          }
+          if (InnerField != other.InnerField) return false;
+          if (!Equals(_extensions, other._extensions)) {
+            return false;
+          }
+          return Equals(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override int GetHashCode() {
+          int hash = 1;
+          if (HasInnerField) hash ^= InnerField.GetHashCode();
+          if (_extensions != null) {
+            hash ^= _extensions.GetHashCode();
+          }
+          if (_unknownFields != null) {
+            hash ^= _unknownFields.GetHashCode();
+          }
+          return hash;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public override string ToString() {
+          return pb::JsonFormatter.ToDiagnosticString(this);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void WriteTo(pb::CodedOutputStream output) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          output.WriteRawMessage(this);
+        #else
+          if (HasInnerField) {
+            output.WriteRawTag(10);
+            output.WriteString(InnerField);
+          }
+          if (_extensions != null) {
+            _extensions.WriteTo(output);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(output);
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+          if (HasInnerField) {
+            output.WriteRawTag(10);
+            output.WriteString(InnerField);
+          }
+          if (_extensions != null) {
+            _extensions.WriteTo(ref output);
+          }
+          if (_unknownFields != null) {
+            _unknownFields.WriteTo(ref output);
+          }
+        }
+        #endif
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public int CalculateSize() {
+          int size = 0;
+          if (HasInnerField) {
+            size += 1 + pb::CodedOutputStream.ComputeStringSize(InnerField);
+          }
+          if (_extensions != null) {
+            size += _extensions.CalculateSize();
+          }
+          if (_unknownFields != null) {
+            size += _unknownFields.CalculateSize();
+          }
+          return size;
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(InnerExtendable other) {
+          if (other == null) {
+            return;
+          }
+          if (other.HasInnerField) {
+            InnerField = other.InnerField;
+          }
+          pb::ExtensionSet.MergeFrom(ref _extensions, other._extensions);
+          _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+        }
+
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        public void MergeFrom(pb::CodedInputStream input) {
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+          input.ReadRawMessage(this);
+        #else
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                if (!pb::ExtensionSet.TryMergeFieldFrom(ref _extensions, input)) {
+                  _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+                }
+                break;
+              case 10: {
+                InnerField = input.ReadString();
+                break;
+              }
+            }
+          }
+        #endif
+        }
+
+        #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+        [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+        void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+          uint tag;
+          while ((tag = input.ReadTag()) != 0) {
+          if ((tag & 7) == 4) {
+            // Abort on any end group tag.
+            return;
+          }
+          switch(tag) {
+              default:
+                if (!pb::ExtensionSet.TryMergeFieldFrom(ref _extensions, ref input)) {
+                  _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+                }
+                break;
+              case 10: {
+                InnerField = input.ReadString();
+                break;
+              }
+            }
+          }
+        }
+        #endif
+
+        public TValue GetExtension<TValue>(pb::Extension<InnerExtendable, TValue> extension) {
+          return pb::ExtensionSet.Get(ref _extensions, extension);
+        }
+        public pbc::RepeatedField<TValue> GetExtension<TValue>(pb::RepeatedExtension<InnerExtendable, TValue> extension) {
+          return pb::ExtensionSet.Get(ref _extensions, extension);
+        }
+        public pbc::RepeatedField<TValue> GetOrInitializeExtension<TValue>(pb::RepeatedExtension<InnerExtendable, TValue> extension) {
+          return pb::ExtensionSet.GetOrInitialize(ref _extensions, extension);
+        }
+        public void SetExtension<TValue>(pb::Extension<InnerExtendable, TValue> extension, TValue value) {
+          pb::ExtensionSet.Set(ref _extensions, extension, value);
+        }
+        public bool HasExtension<TValue>(pb::Extension<InnerExtendable, TValue> extension) {
+          return pb::ExtensionSet.Has(ref _extensions, extension);
+        }
+        public void ClearExtension<TValue>(pb::Extension<InnerExtendable, TValue> extension) {
+          pb::ExtensionSet.Clear(ref _extensions, extension);
+        }
+        public void ClearExtension<TValue>(pb::RepeatedExtension<InnerExtendable, TValue> extension) {
+          pb::ExtensionSet.Clear(ref _extensions, extension);
+        }
+
+      }
+
+    }
+    #endregion
+
+    #region Extensions
+    /// <summary>Container for extensions for other messages declared in the OuterMessage message type.</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static partial class Extensions {
+      public static readonly pb::Extension<global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Types.InnerExtendable, string> InnerExtended =
+        new pb::Extension<global::ComprehensiveTest.ExtensionsMinimal.OuterMessage.Types.InnerExtendable, string>(300, pb::FieldCodec.ForString(2402, ""));
+    }
+    #endregion
 
   }
 

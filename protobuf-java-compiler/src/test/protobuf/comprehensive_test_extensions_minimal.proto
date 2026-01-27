@@ -17,4 +17,16 @@ message BaseMessage {
   optional int32 base_int32 = 2;
 }
 
+// Nested extendable message
+message OuterMessage {
+  message InnerExtendable {
+    extensions 300 to 399;
+    
+    optional string inner_field = 1;
+  }
+  
+  extend InnerExtendable {
+    optional string inner_extended = 300;
+  }
+}
 
