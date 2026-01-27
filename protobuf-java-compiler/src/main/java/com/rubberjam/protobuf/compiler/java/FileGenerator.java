@@ -23,6 +23,7 @@ public class FileGenerator
 	private final List<MessageGenerator> messageGenerators = new ArrayList<>();
 	private final List<ExtensionGenerator> extensionGenerators = new ArrayList<>();
 	private final List<EnumGenerator> enumGenerators = new ArrayList<>();
+	private final List<ServiceGenerator> serviceGenerators = new ArrayList<>();
 
 	public FileGenerator(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options, boolean immutableApi)
 	{
@@ -57,6 +58,13 @@ public class FileGenerator
 		for (com.google.protobuf.Descriptors.EnumDescriptor enumType : file.getEnumTypes())
 		{
 			enumGenerators.add(generatorFactory.newEnumGenerator(enumType));
+		}
+		if (file.getOptions().getJavaGenericServices())
+		{
+			for (com.google.protobuf.Descriptors.ServiceDescriptor service : file.getServices())
+			{
+				serviceGenerators.add(generatorFactory.newServiceGenerator(service));
+			}
 		}
 	}
 
@@ -149,6 +157,12 @@ public class FileGenerator
 				messageGenerators.get(i).generate(printer);
 				
 			}
+		}
+
+		// Generate services
+		for (ServiceGenerator generator : serviceGenerators)
+		{
+			generator.generate(printer);
 		}
 		
 		// Generate extensions (must be in outer class)
