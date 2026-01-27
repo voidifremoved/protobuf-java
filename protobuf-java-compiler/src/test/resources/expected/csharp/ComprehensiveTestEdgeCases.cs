@@ -31,7 +31,7 @@ namespace ComprehensiveTest.EdgeCases {
             "CWZpZWxkMjA0OBiAECABKAUinAEKDlNwZWNpYWxTdHJpbmdzEhYKDGVtcHR5",
             "X3N0cmluZxgBIAEoCToAEhYKDnVuaWNvZGVfc3RyaW5nGAIgASgJEhYKDm5l",
             "d2xpbmVfc3RyaW5nGAMgASgJEhIKCnRhYl9zdHJpbmcYBCABKAkSFAoMcXVv",
-            "dGVfc3RyaW5nGAUgASgJEhgKEGJhY2tzbGFzaF9zdHJpbmcYBiABKAkipgQK",
+            "dGVfc3RyaW5nGAUgASgJEhgKEGJhY2tzbGFzaF9zdHJpbmcYBiABKAki+wMK",
             "D0V4dHJlbWVEZWZhdWx0cxIdCgltYXhfaW50MzIYASABKAU6CjIxNDc0ODM2",
             "NDcSHgoJbWluX2ludDMyGAIgASgFOgstMjE0NzQ4MzY0OBImCgltYXhfaW50",
             "NjQYAyABKAM6EzkyMjMzNzIwMzY4NTQ3NzU4MDcSJwoJbWluX2ludDY0GAQg",
@@ -39,84 +39,83 @@ namespace ComprehensiveTest.EdgeCases {
             "Ogo0Mjk0OTY3Mjk1EigKCm1heF91aW50NjQYBiABKAQ6FDE4NDQ2NzQ0MDcz",
             "NzA5NTUxNjE1EiEKCW1heF9mbG9hdBgHIAEoAjoOMy40MDI4MjM0N2UrMzgS",
             "IQoJbWluX2Zsb2F0GAggASgCOg4xLjQwMTI5ODQ2ZS00NRIrCgptYXhfZG91",
-            "YmxlGAkgASgBOhcxLjc5NzY5MzEzNDg2MjMxNTdlKzMwOBIpCgptaW5fZG91",
-            "YmxlGAogASgBOhU0Ljk0MDY1NjQ1ODQxMjQ3ZS0zMjQSFgoJaW5mX2Zsb2F0",
-            "GAsgASgCOgNpbmYSGwoNbmVnX2luZl9mbG9hdBgMIAEoAjoELWluZhIWCglu",
-            "YW5fZmxvYXQYDSABKAI6A25hbhIXCgppbmZfZG91YmxlGA4gASgBOgNpbmYS",
-            "HAoObmVnX2luZl9kb3VibGUYDyABKAE6BC1pbmYSFwoKbmFuX2RvdWJsZRgQ",
-            "IAEoAToDbmFuItECChJNYW55UmVwZWF0ZWRGaWVsZHMSEQoJcmVwZWF0ZWQx",
-            "GAEgAygFEhEKCXJlcGVhdGVkMhgCIAMoBRIRCglyZXBlYXRlZDMYAyADKAUS",
-            "EQoJcmVwZWF0ZWQ0GAQgAygFEhEKCXJlcGVhdGVkNRgFIAMoBRIRCglyZXBl",
-            "YXRlZDYYBiADKAUSEQoJcmVwZWF0ZWQ3GAcgAygFEhEKCXJlcGVhdGVkOBgI",
-            "IAMoBRIRCglyZXBlYXRlZDkYCSADKAUSEgoKcmVwZWF0ZWQxMBgKIAMoBRIY",
-            "ChByZXBlYXRlZF9zdHJpbmcxGAsgAygJEhgKEHJlcGVhdGVkX3N0cmluZzIY",
-            "DCADKAkSGAoQcmVwZWF0ZWRfc3RyaW5nMxgNIAMoCRIWCg5yZXBlYXRlZF9i",
-            "b29sMRgOIAMoCBIWCg5yZXBlYXRlZF9ib29sMhgPIAMoCCKzAgoKTWFueU9u",
-            "ZW9mcxIXCg1vbmVvZjFfc3RyaW5nGAEgASgJSAASFgoMb25lb2YxX2ludDMy",
-            "GAIgASgFSAASFwoNb25lb2YyX3N0cmluZxgDIAEoCUgBEhYKDG9uZW9mMl9p",
-            "bnQzMhgEIAEoBUgBEhcKDW9uZW9mM19zdHJpbmcYBSABKAlIAhIWCgxvbmVv",
-            "ZjNfaW50MzIYBiABKAVIAhIXCg1vbmVvZjRfc3RyaW5nGAcgASgJSAMSFgoM",
-            "b25lb2Y0X2ludDMyGAggASgFSAMSFwoNb25lb2Y1X3N0cmluZxgJIAEoCUgE",
-            "EhYKDG9uZW9mNV9pbnQzMhgKIAEoBUgEQggKBm9uZW9mMUIICgZvbmVvZjJC",
-            "CAoGb25lb2YzQggKBm9uZW9mNEIICgZvbmVvZjUinwkKCE1hbnlNYXBzEj0K",
-            "BG1hcDEYASADKAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFu",
-            "eU1hcHMuTWFwMUVudHJ5Ej0KBG1hcDIYAiADKAsyLy5Db21wcmVoZW5zaXZl",
-            "VGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFwMkVudHJ5Ej0KBG1hcDMYAyAD",
-            "KAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFw",
-            "M0VudHJ5Ej0KBG1hcDQYBCADKAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdl",
-            "Q2FzZXMuTWFueU1hcHMuTWFwNEVudHJ5Ej0KBG1hcDUYBSADKAsyLy5Db21w",
-            "cmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFwNUVudHJ5Ej0K",
-            "BG1hcDYYBiADKAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFu",
-            "eU1hcHMuTWFwNkVudHJ5Ej0KBG1hcDcYByADKAsyLy5Db21wcmVoZW5zaXZl",
-            "VGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFwN0VudHJ5Ej0KBG1hcDgYCCAD",
-            "KAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFw",
-            "OEVudHJ5Ej0KBG1hcDkYCSADKAsyLy5Db21wcmVoZW5zaXZlVGVzdC5FZGdl",
-            "Q2FzZXMuTWFueU1hcHMuTWFwOUVudHJ5Ej8KBW1hcDEwGAogAygLMjAuQ29t",
-            "cHJlaGVuc2l2ZVRlc3QuRWRnZUNhc2VzLk1hbnlNYXBzLk1hcDEwRW50cnka",
-            "KwoJTWFwMUVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEa",
-            "KwoJTWFwMkVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEa",
-            "KwoJTWFwM0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEa",
-            "KwoJTWFwNEVudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEoCToCOAEa",
-            "KwoJTWFwNUVudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEoCToCOAEa",
-            "KwoJTWFwNkVudHJ5EgsKA2tleRgBIAEoCBINCgV2YWx1ZRgCIAEoCToCOAEa",
-            "KwoJTWFwN0VudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoCDoCOAEa",
-            "KwoJTWFwOEVudHJ5EgsKA2tleRgBIAEoAxINCgV2YWx1ZRgCIAEoDDoCOAEa",
-            "XAoJTWFwOUVudHJ5EgsKA2tleRgBIAEoCRI+CgV2YWx1ZRgCIAEoCzIvLkNv",
-            "bXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5NYW55UmVwZWF0ZWRGaWVsZHM6",
-            "AjgBGlUKCk1hcDEwRW50cnkSCwoDa2V5GAEgASgFEjYKBXZhbHVlGAIgASgL",
-            "MicuQ29tcHJlaGVuc2l2ZVRlc3QuRWRnZUNhc2VzLk1hbnlPbmVvZnM6AjgB",
-            "IooBCg5SZXNlcnZlZFJhbmdlcxIOCgZmaWVsZDQYBCABKAkSDwoHZmllbGQy",
-            "MRgVIAEoCRIQCghmaWVsZDEwMRhlIAEoCUoECAEQAkoECAIQA0oECAMQBEoE",
-            "CAoQFUoECDIQZUoGCMgBEK0CUglyZXNlcnZlZDFSCXJlc2VydmVkMlIJcmVz",
-            "ZXJ2ZWQzIogECg1PbmVvZkFsbFR5cGVzEhUKC29uZW9mX2ludDMyGAEgASgF",
-            "SAASFQoLb25lb2ZfaW50NjQYAiABKANIABIWCgxvbmVvZl91aW50MzIYAyAB",
-            "KA1IABIWCgxvbmVvZl91aW50NjQYBCABKARIABIWCgxvbmVvZl9zaW50MzIY",
-            "BSABKBFIABIWCgxvbmVvZl9zaW50NjQYBiABKBJIABIXCg1vbmVvZl9maXhl",
-            "ZDMyGAcgASgHSAASFwoNb25lb2ZfZml4ZWQ2NBgIIAEoBkgAEhgKDm9uZW9m",
-            "X3NmaXhlZDMyGAkgASgPSAASGAoOb25lb2Zfc2ZpeGVkNjQYCiABKBBIABIV",
-            "CgtvbmVvZl9mbG9hdBgLIAEoAkgAEhYKDG9uZW9mX2RvdWJsZRgMIAEoAUgA",
-            "EhQKCm9uZW9mX2Jvb2wYDSABKAhIABIWCgxvbmVvZl9zdHJpbmcYDiABKAlI",
-            "ABIVCgtvbmVvZl9ieXRlcxgPIAEoDEgAEjsKCm9uZW9mX2VudW0YECABKA4y",
-            "JS5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuVGVzdEVudW1IABJFCg1v",
-            "bmVvZl9tZXNzYWdlGBEgASgLMiwuQ29tcHJlaGVuc2l2ZVRlc3QuRWRnZUNh",
-            "c2VzLkFsbFR5cGVzTWVzc2FnZUgAQgsKCWFsbF90eXBlcyIgCg9BbGxUeXBl",
-            "c01lc3NhZ2USDQoFZmllbGQYASABKAUiDgoMRW1wdHlNZXNzYWdlIiQKDE9u",
-            "bHlSZXNlcnZlZEoECAEQZVIGZmllbGQxUgZmaWVsZDIiHAoLU2luZ2xlRmll",
-            "bGQSDQoFZmllbGQYASABKAkiHwoOU2luZ2xlUmVwZWF0ZWQSDQoFZmllbGQY",
-            "ASADKAkiewoJU2luZ2xlTWFwEkAKBWZpZWxkGAEgAygLMjEuQ29tcHJlaGVu",
-            "c2l2ZVRlc3QuRWRnZUNhc2VzLlNpbmdsZU1hcC5GaWVsZEVudHJ5GiwKCkZp",
-            "ZWxkRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4ASJFCgtT",
-            "aW5nbGVPbmVvZhIWCgxzdHJpbmdfdmFsdWUYASABKAlIABIVCgtpbnQzMl92",
-            "YWx1ZRgCIAEoBUgAQgcKBWZpZWxkKiwKCFRlc3RFbnVtEhAKDFRFU1RfVU5L",
-            "Tk9XThAAEg4KClRFU1RfRklSU1QQAUJJCiljb20ucnViYmVyamFtLnByb3Rv",
-            "YnVmLmNvbXBpbGVyLnRlc3QuZWRnZUIaQ29tcHJlaGVuc2l2ZVRlc3RFZGdl",
-            "Q2FzZXNIAQ=="));
+            "YmxlGAkgASgBOhcxLjc5NzY5MzEzNDg2MjMxNTdlKzMwOBIWCglpbmZfZmxv",
+            "YXQYCyABKAI6A2luZhIbCg1uZWdfaW5mX2Zsb2F0GAwgASgCOgQtaW5mEhYK",
+            "CW5hbl9mbG9hdBgNIAEoAjoDbmFuEhcKCmluZl9kb3VibGUYDiABKAE6A2lu",
+            "ZhIcCg5uZWdfaW5mX2RvdWJsZRgPIAEoAToELWluZhIXCgpuYW5fZG91Ymxl",
+            "GBAgASgBOgNuYW4i0QIKEk1hbnlSZXBlYXRlZEZpZWxkcxIRCglyZXBlYXRl",
+            "ZDEYASADKAUSEQoJcmVwZWF0ZWQyGAIgAygFEhEKCXJlcGVhdGVkMxgDIAMo",
+            "BRIRCglyZXBlYXRlZDQYBCADKAUSEQoJcmVwZWF0ZWQ1GAUgAygFEhEKCXJl",
+            "cGVhdGVkNhgGIAMoBRIRCglyZXBlYXRlZDcYByADKAUSEQoJcmVwZWF0ZWQ4",
+            "GAggAygFEhEKCXJlcGVhdGVkORgJIAMoBRISCgpyZXBlYXRlZDEwGAogAygF",
+            "EhgKEHJlcGVhdGVkX3N0cmluZzEYCyADKAkSGAoQcmVwZWF0ZWRfc3RyaW5n",
+            "MhgMIAMoCRIYChByZXBlYXRlZF9zdHJpbmczGA0gAygJEhYKDnJlcGVhdGVk",
+            "X2Jvb2wxGA4gAygIEhYKDnJlcGVhdGVkX2Jvb2wyGA8gAygIIrMCCgpNYW55",
+            "T25lb2ZzEhcKDW9uZW9mMV9zdHJpbmcYASABKAlIABIWCgxvbmVvZjFfaW50",
+            "MzIYAiABKAVIABIXCg1vbmVvZjJfc3RyaW5nGAMgASgJSAESFgoMb25lb2Yy",
+            "X2ludDMyGAQgASgFSAESFwoNb25lb2YzX3N0cmluZxgFIAEoCUgCEhYKDG9u",
+            "ZW9mM19pbnQzMhgGIAEoBUgCEhcKDW9uZW9mNF9zdHJpbmcYByABKAlIAxIW",
+            "CgxvbmVvZjRfaW50MzIYCCABKAVIAxIXCg1vbmVvZjVfc3RyaW5nGAkgASgJ",
+            "SAQSFgoMb25lb2Y1X2ludDMyGAogASgFSARCCAoGb25lb2YxQggKBm9uZW9m",
+            "MkIICgZvbmVvZjNCCAoGb25lb2Y0QggKBm9uZW9mNSKfCQoITWFueU1hcHMS",
+            "PQoEbWFwMRgBIAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5N",
+            "YW55TWFwcy5NYXAxRW50cnkSPQoEbWFwMhgCIAMoCzIvLkNvbXByZWhlbnNp",
+            "dmVUZXN0LkVkZ2VDYXNlcy5NYW55TWFwcy5NYXAyRW50cnkSPQoEbWFwMxgD",
+            "IAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5NYW55TWFwcy5N",
+            "YXAzRW50cnkSPQoEbWFwNBgEIAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVk",
+            "Z2VDYXNlcy5NYW55TWFwcy5NYXA0RW50cnkSPQoEbWFwNRgFIAMoCzIvLkNv",
+            "bXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5NYW55TWFwcy5NYXA1RW50cnkS",
+            "PQoEbWFwNhgGIAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5N",
+            "YW55TWFwcy5NYXA2RW50cnkSPQoEbWFwNxgHIAMoCzIvLkNvbXByZWhlbnNp",
+            "dmVUZXN0LkVkZ2VDYXNlcy5NYW55TWFwcy5NYXA3RW50cnkSPQoEbWFwOBgI",
+            "IAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5NYW55TWFwcy5N",
+            "YXA4RW50cnkSPQoEbWFwORgJIAMoCzIvLkNvbXByZWhlbnNpdmVUZXN0LkVk",
+            "Z2VDYXNlcy5NYW55TWFwcy5NYXA5RW50cnkSPwoFbWFwMTAYCiADKAsyMC5D",
+            "b21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFueU1hcHMuTWFwMTBFbnRy",
+            "eRorCglNYXAxRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4",
+            "ARorCglNYXAyRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4",
+            "ARorCglNYXAzRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4",
+            "ARorCglNYXA0RW50cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgJOgI4",
+            "ARorCglNYXA1RW50cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgJOgI4",
+            "ARorCglNYXA2RW50cnkSCwoDa2V5GAEgASgIEg0KBXZhbHVlGAIgASgJOgI4",
+            "ARorCglNYXA3RW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgIOgI4",
+            "ARorCglNYXA4RW50cnkSCwoDa2V5GAEgASgDEg0KBXZhbHVlGAIgASgMOgI4",
+            "ARpcCglNYXA5RW50cnkSCwoDa2V5GAEgASgJEj4KBXZhbHVlGAIgASgLMi8u",
+            "Q29tcHJlaGVuc2l2ZVRlc3QuRWRnZUNhc2VzLk1hbnlSZXBlYXRlZEZpZWxk",
+            "czoCOAEaVQoKTWFwMTBFbnRyeRILCgNrZXkYASABKAUSNgoFdmFsdWUYAiAB",
+            "KAsyJy5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXMuTWFueU9uZW9mczoC",
+            "OAEiigEKDlJlc2VydmVkUmFuZ2VzEg4KBmZpZWxkNBgEIAEoCRIPCgdmaWVs",
+            "ZDIxGBUgASgJEhAKCGZpZWxkMTAxGGUgASgJSgQIARACSgQIAhADSgQIAxAE",
+            "SgQIChAVSgQIMhBlSgYIyAEQrQJSCXJlc2VydmVkMVIJcmVzZXJ2ZWQyUgly",
+            "ZXNlcnZlZDMiiAQKDU9uZW9mQWxsVHlwZXMSFQoLb25lb2ZfaW50MzIYASAB",
+            "KAVIABIVCgtvbmVvZl9pbnQ2NBgCIAEoA0gAEhYKDG9uZW9mX3VpbnQzMhgD",
+            "IAEoDUgAEhYKDG9uZW9mX3VpbnQ2NBgEIAEoBEgAEhYKDG9uZW9mX3NpbnQz",
+            "MhgFIAEoEUgAEhYKDG9uZW9mX3NpbnQ2NBgGIAEoEkgAEhcKDW9uZW9mX2Zp",
+            "eGVkMzIYByABKAdIABIXCg1vbmVvZl9maXhlZDY0GAggASgGSAASGAoOb25l",
+            "b2Zfc2ZpeGVkMzIYCSABKA9IABIYCg5vbmVvZl9zZml4ZWQ2NBgKIAEoEEgA",
+            "EhUKC29uZW9mX2Zsb2F0GAsgASgCSAASFgoMb25lb2ZfZG91YmxlGAwgASgB",
+            "SAASFAoKb25lb2ZfYm9vbBgNIAEoCEgAEhYKDG9uZW9mX3N0cmluZxgOIAEo",
+            "CUgAEhUKC29uZW9mX2J5dGVzGA8gASgMSAASOwoKb25lb2ZfZW51bRgQIAEo",
+            "DjIlLkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlcy5UZXN0RW51bUgAEkUK",
+            "DW9uZW9mX21lc3NhZ2UYESABKAsyLC5Db21wcmVoZW5zaXZlVGVzdC5FZGdl",
+            "Q2FzZXMuQWxsVHlwZXNNZXNzYWdlSABCCwoJYWxsX3R5cGVzIiAKD0FsbFR5",
+            "cGVzTWVzc2FnZRINCgVmaWVsZBgBIAEoBSIOCgxFbXB0eU1lc3NhZ2UiJAoM",
+            "T25seVJlc2VydmVkSgQIARBlUgZmaWVsZDFSBmZpZWxkMiIcCgtTaW5nbGVG",
+            "aWVsZBINCgVmaWVsZBgBIAEoCSIfCg5TaW5nbGVSZXBlYXRlZBINCgVmaWVs",
+            "ZBgBIAMoCSJ7CglTaW5nbGVNYXASQAoFZmllbGQYASADKAsyMS5Db21wcmVo",
+            "ZW5zaXZlVGVzdC5FZGdlQ2FzZXMuU2luZ2xlTWFwLkZpZWxkRW50cnkaLAoK",
+            "RmllbGRFbnRyeRILCgNrZXkYASABKAkSDQoFdmFsdWUYAiABKAU6AjgBIkUK",
+            "C1NpbmdsZU9uZW9mEhYKDHN0cmluZ192YWx1ZRgBIAEoCUgAEhUKC2ludDMy",
+            "X3ZhbHVlGAIgASgFSABCBwoFZmllbGQqLAoIVGVzdEVudW0SEAoMVEVTVF9V",
+            "TktOT1dOEAASDgoKVEVTVF9GSVJTVBABQkkKKWNvbS5ydWJiZXJqYW0ucHJv",
+            "dG9idWYuY29tcGlsZXIudGVzdC5lZGdlQhpDb21wcmVoZW5zaXZlVGVzdEVk",
+            "Z2VDYXNlc0gB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.EdgeCases.TestEnum), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.EdgeCaseFields), global::ComprehensiveTest.EdgeCases.EdgeCaseFields.Parser, new[]{ "Field1", "Field19000", "Field15", "Field16", "Field2047", "Field2048" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.SpecialStrings), global::ComprehensiveTest.EdgeCases.SpecialStrings.Parser, new[]{ "EmptyString", "UnicodeString", "NewlineString", "TabString", "QuoteString", "BackslashString" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.ExtremeDefaults), global::ComprehensiveTest.EdgeCases.ExtremeDefaults.Parser, new[]{ "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "MinDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.ExtremeDefaults), global::ComprehensiveTest.EdgeCases.ExtremeDefaults.Parser, new[]{ "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.ManyRepeatedFields), global::ComprehensiveTest.EdgeCases.ManyRepeatedFields.Parser, new[]{ "Repeated1", "Repeated2", "Repeated3", "Repeated4", "Repeated5", "Repeated6", "Repeated7", "Repeated8", "Repeated9", "Repeated10", "RepeatedString1", "RepeatedString2", "RepeatedString3", "RepeatedBool1", "RepeatedBool2" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.ManyOneofs), global::ComprehensiveTest.EdgeCases.ManyOneofs.Parser, new[]{ "Oneof1String", "Oneof1Int32", "Oneof2String", "Oneof2Int32", "Oneof3String", "Oneof3Int32", "Oneof4String", "Oneof4Int32", "Oneof5String", "Oneof5Int32" }, new[]{ "Oneof1", "Oneof2", "Oneof3", "Oneof4", "Oneof5" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCases.ManyMaps), global::ComprehensiveTest.EdgeCases.ManyMaps.Parser, new[]{ "Map1", "Map2", "Map3", "Map4", "Map5", "Map6", "Map7", "Map8", "Map9", "Map10" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, null, null, null, null, null, null, }),
@@ -1144,7 +1143,6 @@ namespace ComprehensiveTest.EdgeCases {
       maxFloat_ = other.maxFloat_;
       minFloat_ = other.minFloat_;
       maxDouble_ = other.maxDouble_;
-      minDouble_ = other.minDouble_;
       infFloat_ = other.infFloat_;
       negInfFloat_ = other.negInfFloat_;
       nanFloat_ = other.nanFloat_;
@@ -1403,33 +1401,6 @@ namespace ComprehensiveTest.EdgeCases {
       _hasBits0 &= ~256;
     }
 
-    /// <summary>Field number for the "min_double" field.</summary>
-    public const int MinDoubleFieldNumber = 10;
-    private readonly static double MinDoubleDefaultValue = 4.94066e-324D;
-
-    private double minDouble_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double MinDouble {
-      get { if ((_hasBits0 & 512) != 0) { return minDouble_; } else { return MinDoubleDefaultValue; } }
-      set {
-        _hasBits0 |= 512;
-        minDouble_ = value;
-      }
-    }
-    /// <summary>Gets whether the "min_double" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasMinDouble {
-      get { return (_hasBits0 & 512) != 0; }
-    }
-    /// <summary>Clears the value of the "min_double" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearMinDouble() {
-      _hasBits0 &= ~512;
-    }
-
     /// <summary>Field number for the "inf_float" field.</summary>
     public const int InfFloatFieldNumber = 11;
     private readonly static float InfFloatDefaultValue = float.PositiveInfinity;
@@ -1438,9 +1409,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float InfFloat {
-      get { if ((_hasBits0 & 1024) != 0) { return infFloat_; } else { return InfFloatDefaultValue; } }
+      get { if ((_hasBits0 & 512) != 0) { return infFloat_; } else { return InfFloatDefaultValue; } }
       set {
-        _hasBits0 |= 1024;
+        _hasBits0 |= 512;
         infFloat_ = value;
       }
     }
@@ -1448,13 +1419,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasInfFloat {
-      get { return (_hasBits0 & 1024) != 0; }
+      get { return (_hasBits0 & 512) != 0; }
     }
     /// <summary>Clears the value of the "inf_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearInfFloat() {
-      _hasBits0 &= ~1024;
+      _hasBits0 &= ~512;
     }
 
     /// <summary>Field number for the "neg_inf_float" field.</summary>
@@ -1465,9 +1436,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float NegInfFloat {
-      get { if ((_hasBits0 & 2048) != 0) { return negInfFloat_; } else { return NegInfFloatDefaultValue; } }
+      get { if ((_hasBits0 & 1024) != 0) { return negInfFloat_; } else { return NegInfFloatDefaultValue; } }
       set {
-        _hasBits0 |= 2048;
+        _hasBits0 |= 1024;
         negInfFloat_ = value;
       }
     }
@@ -1475,13 +1446,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNegInfFloat {
-      get { return (_hasBits0 & 2048) != 0; }
+      get { return (_hasBits0 & 1024) != 0; }
     }
     /// <summary>Clears the value of the "neg_inf_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNegInfFloat() {
-      _hasBits0 &= ~2048;
+      _hasBits0 &= ~1024;
     }
 
     /// <summary>Field number for the "nan_float" field.</summary>
@@ -1492,9 +1463,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float NanFloat {
-      get { if ((_hasBits0 & 4096) != 0) { return nanFloat_; } else { return NanFloatDefaultValue; } }
+      get { if ((_hasBits0 & 2048) != 0) { return nanFloat_; } else { return NanFloatDefaultValue; } }
       set {
-        _hasBits0 |= 4096;
+        _hasBits0 |= 2048;
         nanFloat_ = value;
       }
     }
@@ -1502,13 +1473,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNanFloat {
-      get { return (_hasBits0 & 4096) != 0; }
+      get { return (_hasBits0 & 2048) != 0; }
     }
     /// <summary>Clears the value of the "nan_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNanFloat() {
-      _hasBits0 &= ~4096;
+      _hasBits0 &= ~2048;
     }
 
     /// <summary>Field number for the "inf_double" field.</summary>
@@ -1519,9 +1490,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double InfDouble {
-      get { if ((_hasBits0 & 8192) != 0) { return infDouble_; } else { return InfDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 4096) != 0) { return infDouble_; } else { return InfDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 8192;
+        _hasBits0 |= 4096;
         infDouble_ = value;
       }
     }
@@ -1529,13 +1500,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasInfDouble {
-      get { return (_hasBits0 & 8192) != 0; }
+      get { return (_hasBits0 & 4096) != 0; }
     }
     /// <summary>Clears the value of the "inf_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearInfDouble() {
-      _hasBits0 &= ~8192;
+      _hasBits0 &= ~4096;
     }
 
     /// <summary>Field number for the "neg_inf_double" field.</summary>
@@ -1546,9 +1517,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double NegInfDouble {
-      get { if ((_hasBits0 & 16384) != 0) { return negInfDouble_; } else { return NegInfDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 8192) != 0) { return negInfDouble_; } else { return NegInfDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 16384;
+        _hasBits0 |= 8192;
         negInfDouble_ = value;
       }
     }
@@ -1556,13 +1527,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNegInfDouble {
-      get { return (_hasBits0 & 16384) != 0; }
+      get { return (_hasBits0 & 8192) != 0; }
     }
     /// <summary>Clears the value of the "neg_inf_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNegInfDouble() {
-      _hasBits0 &= ~16384;
+      _hasBits0 &= ~8192;
     }
 
     /// <summary>Field number for the "nan_double" field.</summary>
@@ -1573,9 +1544,9 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double NanDouble {
-      get { if ((_hasBits0 & 32768) != 0) { return nanDouble_; } else { return NanDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 16384) != 0) { return nanDouble_; } else { return NanDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 32768;
+        _hasBits0 |= 16384;
         nanDouble_ = value;
       }
     }
@@ -1583,13 +1554,13 @@ namespace ComprehensiveTest.EdgeCases {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNanDouble {
-      get { return (_hasBits0 & 32768) != 0; }
+      get { return (_hasBits0 & 16384) != 0; }
     }
     /// <summary>Clears the value of the "nan_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNanDouble() {
-      _hasBits0 &= ~32768;
+      _hasBits0 &= ~16384;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1616,7 +1587,6 @@ namespace ComprehensiveTest.EdgeCases {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxFloat, other.MaxFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MinFloat, other.MinFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxDouble, other.MaxDouble)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MinDouble, other.MinDouble)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(InfFloat, other.InfFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NegInfFloat, other.NegInfFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NanFloat, other.NanFloat)) return false;
@@ -1639,7 +1609,6 @@ namespace ComprehensiveTest.EdgeCases {
       if (HasMaxFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxFloat);
       if (HasMinFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MinFloat);
       if (HasMaxDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxDouble);
-      if (HasMinDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MinDouble);
       if (HasInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(InfFloat);
       if (HasNegInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NegInfFloat);
       if (HasNanFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NanFloat);
@@ -1699,10 +1668,6 @@ namespace ComprehensiveTest.EdgeCases {
       if (HasMaxDouble) {
         output.WriteRawTag(73);
         output.WriteDouble(MaxDouble);
-      }
-      if (HasMinDouble) {
-        output.WriteRawTag(81);
-        output.WriteDouble(MinDouble);
       }
       if (HasInfFloat) {
         output.WriteRawTag(93);
@@ -1774,10 +1739,6 @@ namespace ComprehensiveTest.EdgeCases {
         output.WriteRawTag(73);
         output.WriteDouble(MaxDouble);
       }
-      if (HasMinDouble) {
-        output.WriteRawTag(81);
-        output.WriteDouble(MinDouble);
-      }
       if (HasInfFloat) {
         output.WriteRawTag(93);
         output.WriteFloat(InfFloat);
@@ -1839,9 +1800,6 @@ namespace ComprehensiveTest.EdgeCases {
       if (HasMaxDouble) {
         size += 1 + 8;
       }
-      if (HasMinDouble) {
-        size += 1 + 8;
-      }
       if (HasInfFloat) {
         size += 1 + 4;
       }
@@ -1898,9 +1856,6 @@ namespace ComprehensiveTest.EdgeCases {
       }
       if (other.HasMaxDouble) {
         MaxDouble = other.MaxDouble;
-      }
-      if (other.HasMinDouble) {
-        MinDouble = other.MinDouble;
       }
       if (other.HasInfFloat) {
         InfFloat = other.InfFloat;
@@ -1973,10 +1928,6 @@ namespace ComprehensiveTest.EdgeCases {
           }
           case 73: {
             MaxDouble = input.ReadDouble();
-            break;
-          }
-          case 81: {
-            MinDouble = input.ReadDouble();
             break;
           }
           case 93: {
@@ -2056,10 +2007,6 @@ namespace ComprehensiveTest.EdgeCases {
           }
           case 73: {
             MaxDouble = input.ReadDouble();
-            break;
-          }
-          case 81: {
-            MinDouble = input.ReadDouble();
             break;
           }
           case 93: {

@@ -25,6 +25,7 @@ import com.google.protobuf.Descriptors.MethodDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -492,14 +493,6 @@ public final class DocComment
 		{
 			return Long.toUnsignedString((Long)defaultValue);
 		}
-		if (defaultValue instanceof Float)
-		{
-			return formatFloat((Float) defaultValue);
-		}
-		if (defaultValue instanceof Double)
-		{
-			return formatDouble((Double) defaultValue);
-		}
 		return defaultValue;
 	}
 
@@ -548,42 +541,6 @@ public final class DocComment
 
 		if (field.getIndex() >= messageProto.getFieldCount()) return field.toProto();
 		return messageProto.getField(field.getIndex());
-	}
-
-	private static String formatFloat(float f)
-	{
-		if (Float.isNaN(f))
-		{
-			return "nan";
-		}
-		if (Float.isInfinite(f))
-		{
-			return f > 0 ? "inf" : "-inf";
-		}
-		String s = String.format(java.util.Locale.US, "%.9g", f);
-		if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
-		{
-			s = s.replace("e", "e+");
-		}
-		return s;
-	}
-
-	private static String formatDouble(double d)
-	{
-		if (Double.isNaN(d))
-		{
-			return "nan";
-		}
-		if (Double.isInfinite(d))
-		{
-			return d > 0 ? "inf" : "-inf";
-		}
-		String s = String.format(java.util.Locale.US, "%.17g", d);
-		if (s.contains("e") && !s.contains("e-") && !s.contains("e+"))
-		{
-			s = s.replace("e", "e+");
-		}
-		return s;
 	}
 
 	public static void writeMessageDocComment(

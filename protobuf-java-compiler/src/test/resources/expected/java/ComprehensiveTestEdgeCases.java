@@ -2873,17 +2873,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
     double getMaxDouble();
 
     /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return Whether the minDouble field is set.
-     */
-    boolean hasMinDouble();
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return The minDouble.
-     */
-    double getMinDouble();
-
-    /**
      * <code>optional float inf_float = 11 [default = inf];</code>
      * @return Whether the infFloat field is set.
      */
@@ -2984,7 +2973,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       maxFloat_ = 3.40282347e+38F;
       minFloat_ = 1.40129846e-45F;
       maxDouble_ = 1.7976931348623157e+308D;
-      minDouble_ = 4.94065645841247e-324D;
       infFloat_ = Float.POSITIVE_INFINITY;
       negInfFloat_ = Float.NEGATIVE_INFINITY;
       nanFloat_ = Float.NaN;
@@ -3178,25 +3166,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       return maxDouble_;
     }
 
-    public static final int MIN_DOUBLE_FIELD_NUMBER = 10;
-    private double minDouble_ = 4.94065645841247e-324D;
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return Whether the minDouble field is set.
-     */
-    @java.lang.Override
-    public boolean hasMinDouble() {
-      return ((bitField0_ & 0x00000200) != 0);
-    }
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return The minDouble.
-     */
-    @java.lang.Override
-    public double getMinDouble() {
-      return minDouble_;
-    }
-
     public static final int INF_FLOAT_FIELD_NUMBER = 11;
     private float infFloat_ = Float.POSITIVE_INFINITY;
     /**
@@ -3205,7 +3174,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasInfFloat() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <code>optional float inf_float = 11 [default = inf];</code>
@@ -3224,7 +3193,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasNegInfFloat() {
-      return ((bitField0_ & 0x00000800) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <code>optional float neg_inf_float = 12 [default = -inf];</code>
@@ -3243,7 +3212,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasNanFloat() {
-      return ((bitField0_ & 0x00001000) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <code>optional float nan_float = 13 [default = nan];</code>
@@ -3262,7 +3231,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasInfDouble() {
-      return ((bitField0_ & 0x00002000) != 0);
+      return ((bitField0_ & 0x00001000) != 0);
     }
     /**
      * <code>optional double inf_double = 14 [default = inf];</code>
@@ -3281,7 +3250,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasNegInfDouble() {
-      return ((bitField0_ & 0x00004000) != 0);
+      return ((bitField0_ & 0x00002000) != 0);
     }
     /**
      * <code>optional double neg_inf_double = 15 [default = -inf];</code>
@@ -3300,7 +3269,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
      */
     @java.lang.Override
     public boolean hasNanDouble() {
-      return ((bitField0_ & 0x00008000) != 0);
+      return ((bitField0_ & 0x00004000) != 0);
     }
     /**
      * <code>optional double nan_double = 16 [default = nan];</code>
@@ -3353,24 +3322,21 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         output.writeDouble(9, maxDouble_);
       }
       if (((bitField0_ & 0x00000200) != 0)) {
-        output.writeDouble(10, minDouble_);
-      }
-      if (((bitField0_ & 0x00000400) != 0)) {
         output.writeFloat(11, infFloat_);
       }
-      if (((bitField0_ & 0x00000800) != 0)) {
+      if (((bitField0_ & 0x00000400) != 0)) {
         output.writeFloat(12, negInfFloat_);
       }
-      if (((bitField0_ & 0x00001000) != 0)) {
+      if (((bitField0_ & 0x00000800) != 0)) {
         output.writeFloat(13, nanFloat_);
       }
-      if (((bitField0_ & 0x00002000) != 0)) {
+      if (((bitField0_ & 0x00001000) != 0)) {
         output.writeDouble(14, infDouble_);
       }
-      if (((bitField0_ & 0x00004000) != 0)) {
+      if (((bitField0_ & 0x00002000) != 0)) {
         output.writeDouble(15, negInfDouble_);
       }
-      if (((bitField0_ & 0x00008000) != 0)) {
+      if (((bitField0_ & 0x00004000) != 0)) {
         output.writeDouble(16, nanDouble_);
       }
       getUnknownFields().writeTo(output);
@@ -3420,29 +3386,25 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       }
       if (((bitField0_ & 0x00000200) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(10, minDouble_);
+          .computeFloatSize(11, infFloat_);
       }
       if (((bitField0_ & 0x00000400) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(11, infFloat_);
+          .computeFloatSize(12, negInfFloat_);
       }
       if (((bitField0_ & 0x00000800) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(12, negInfFloat_);
+          .computeFloatSize(13, nanFloat_);
       }
       if (((bitField0_ & 0x00001000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(13, nanFloat_);
+          .computeDoubleSize(14, infDouble_);
       }
       if (((bitField0_ & 0x00002000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(14, infDouble_);
-      }
-      if (((bitField0_ & 0x00004000) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(15, negInfDouble_);
       }
-      if (((bitField0_ & 0x00008000) != 0)) {
+      if (((bitField0_ & 0x00004000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(16, nanDouble_);
       }
@@ -3508,12 +3470,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         if (java.lang.Double.doubleToLongBits(getMaxDouble())
             != java.lang.Double.doubleToLongBits(
                 other.getMaxDouble())) return false;
-      }
-      if (hasMinDouble() != other.hasMinDouble()) return false;
-      if (hasMinDouble()) {
-        if (java.lang.Double.doubleToLongBits(getMinDouble())
-            != java.lang.Double.doubleToLongBits(
-                other.getMinDouble())) return false;
       }
       if (hasInfFloat() != other.hasInfFloat()) return false;
       if (hasInfFloat()) {
@@ -3603,11 +3559,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         hash = (37 * hash) + MAX_DOUBLE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             java.lang.Double.doubleToLongBits(getMaxDouble()));
-      }
-      if (hasMinDouble()) {
-        hash = (37 * hash) + MIN_DOUBLE_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getMinDouble()));
       }
       if (hasInfFloat()) {
         hash = (37 * hash) + INF_FLOAT_FIELD_NUMBER;
@@ -3783,7 +3734,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         maxFloat_ = 3.40282347e+38F;
         minFloat_ = 1.40129846e-45F;
         maxDouble_ = 1.7976931348623157e+308D;
-        minDouble_ = 4.94065645841247e-324D;
         infFloat_ = Float.POSITIVE_INFINITY;
         negInfFloat_ = Float.NEGATIVE_INFINITY;
         nanFloat_ = Float.NaN;
@@ -3861,32 +3811,28 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
           to_bitField0_ |= 0x00000100;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.minDouble_ = minDouble_;
+          result.infFloat_ = infFloat_;
           to_bitField0_ |= 0x00000200;
         }
         if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.infFloat_ = infFloat_;
+          result.negInfFloat_ = negInfFloat_;
           to_bitField0_ |= 0x00000400;
         }
         if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.negInfFloat_ = negInfFloat_;
+          result.nanFloat_ = nanFloat_;
           to_bitField0_ |= 0x00000800;
         }
         if (((from_bitField0_ & 0x00001000) != 0)) {
-          result.nanFloat_ = nanFloat_;
+          result.infDouble_ = infDouble_;
           to_bitField0_ |= 0x00001000;
         }
         if (((from_bitField0_ & 0x00002000) != 0)) {
-          result.infDouble_ = infDouble_;
+          result.negInfDouble_ = negInfDouble_;
           to_bitField0_ |= 0x00002000;
         }
         if (((from_bitField0_ & 0x00004000) != 0)) {
-          result.negInfDouble_ = negInfDouble_;
-          to_bitField0_ |= 0x00004000;
-        }
-        if (((from_bitField0_ & 0x00008000) != 0)) {
           result.nanDouble_ = nanDouble_;
-          to_bitField0_ |= 0x00008000;
+          to_bitField0_ |= 0x00004000;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -3929,9 +3875,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         }
         if (other.hasMaxDouble()) {
           setMaxDouble(other.getMaxDouble());
-        }
-        if (other.hasMinDouble()) {
-          setMinDouble(other.getMinDouble());
         }
         if (other.hasInfFloat()) {
           setInfFloat(other.getInfFloat());
@@ -4022,39 +3965,34 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
                 bitField0_ |= 0x00000100;
                 break;
               } // case 73
-              case 81: {
-                minDouble_ = input.readDouble();
-                bitField0_ |= 0x00000200;
-                break;
-              } // case 81
               case 93: {
                 infFloat_ = input.readFloat();
-                bitField0_ |= 0x00000400;
+                bitField0_ |= 0x00000200;
                 break;
               } // case 93
               case 101: {
                 negInfFloat_ = input.readFloat();
-                bitField0_ |= 0x00000800;
+                bitField0_ |= 0x00000400;
                 break;
               } // case 101
               case 109: {
                 nanFloat_ = input.readFloat();
-                bitField0_ |= 0x00001000;
+                bitField0_ |= 0x00000800;
                 break;
               } // case 109
               case 113: {
                 infDouble_ = input.readDouble();
-                bitField0_ |= 0x00002000;
+                bitField0_ |= 0x00001000;
                 break;
               } // case 113
               case 121: {
                 negInfDouble_ = input.readDouble();
-                bitField0_ |= 0x00004000;
+                bitField0_ |= 0x00002000;
                 break;
               } // case 121
               case 129: {
                 nanDouble_ = input.readDouble();
-                bitField0_ |= 0x00008000;
+                bitField0_ |= 0x00004000;
                 break;
               } // case 129
               default: {
@@ -4434,46 +4372,6 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
         return this;
       }
 
-      private double minDouble_ = 4.94065645841247e-324D;
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return Whether the minDouble field is set.
-       */
-      @java.lang.Override
-      public boolean hasMinDouble() {
-        return ((bitField0_ & 0x00000200) != 0);
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return The minDouble.
-       */
-      @java.lang.Override
-      public double getMinDouble() {
-        return minDouble_;
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @param value The minDouble to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMinDouble(double value) {
-
-        minDouble_ = value;
-        bitField0_ |= 0x00000200;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMinDouble() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        minDouble_ = 4.94065645841247e-324D;
-        onChanged();
-        return this;
-      }
-
       private float infFloat_ = Float.POSITIVE_INFINITY;
       /**
        * <code>optional float inf_float = 11 [default = inf];</code>
@@ -4481,7 +4379,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasInfFloat() {
-        return ((bitField0_ & 0x00000400) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <code>optional float inf_float = 11 [default = inf];</code>
@@ -4499,7 +4397,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setInfFloat(float value) {
 
         infFloat_ = value;
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -4508,7 +4406,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearInfFloat() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000200);
         infFloat_ = Float.POSITIVE_INFINITY;
         onChanged();
         return this;
@@ -4521,7 +4419,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasNegInfFloat() {
-        return ((bitField0_ & 0x00000800) != 0);
+        return ((bitField0_ & 0x00000400) != 0);
       }
       /**
        * <code>optional float neg_inf_float = 12 [default = -inf];</code>
@@ -4539,7 +4437,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setNegInfFloat(float value) {
 
         negInfFloat_ = value;
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -4548,7 +4446,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearNegInfFloat() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         negInfFloat_ = Float.NEGATIVE_INFINITY;
         onChanged();
         return this;
@@ -4561,7 +4459,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasNanFloat() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00000800) != 0);
       }
       /**
        * <code>optional float nan_float = 13 [default = nan];</code>
@@ -4579,7 +4477,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setNanFloat(float value) {
 
         nanFloat_ = value;
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -4588,7 +4486,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearNanFloat() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         nanFloat_ = Float.NaN;
         onChanged();
         return this;
@@ -4601,7 +4499,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasInfDouble() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00001000) != 0);
       }
       /**
        * <code>optional double inf_double = 14 [default = inf];</code>
@@ -4619,7 +4517,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setInfDouble(double value) {
 
         infDouble_ = value;
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -4628,7 +4526,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearInfDouble() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         infDouble_ = Double.POSITIVE_INFINITY;
         onChanged();
         return this;
@@ -4641,7 +4539,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasNegInfDouble() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00002000) != 0);
       }
       /**
        * <code>optional double neg_inf_double = 15 [default = -inf];</code>
@@ -4659,7 +4557,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setNegInfDouble(double value) {
 
         negInfDouble_ = value;
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
@@ -4668,7 +4566,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearNegInfDouble() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         negInfDouble_ = Double.NEGATIVE_INFINITY;
         onChanged();
         return this;
@@ -4681,7 +4579,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        */
       @java.lang.Override
       public boolean hasNanDouble() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00004000) != 0);
       }
       /**
        * <code>optional double nan_double = 16 [default = nan];</code>
@@ -4699,7 +4597,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
       public Builder setNanDouble(double value) {
 
         nanDouble_ = value;
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
@@ -4708,7 +4606,7 @@ public final class ComprehensiveTestEdgeCases extends com.google.protobuf.Genera
        * @return This builder for chaining.
        */
       public Builder clearNanDouble() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         nanDouble_ = Double.NaN;
         onChanged();
         return this;
@@ -20637,7 +20535,7 @@ com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCases.ManyOneofs 
       "\n\016SpecialStrings\022\026\n\014empty_string\030\001 \001(\t:\000" +
       "\022\026\n\016unicode_string\030\002 \001(\t\022\026\n\016newline_stri" +
       "ng\030\003 \001(\t\022\022\n\ntab_string\030\004 \001(\t\022\024\n\014quote_st" +
-      "ring\030\005 \001(\t\022\030\n\020backslash_string\030\006 \001(\t\"\246\004\n" +
+      "ring\030\005 \001(\t\022\030\n\020backslash_string\030\006 \001(\t\"\373\003\n" +
       "\017ExtremeDefaults\022\035\n\tmax_int32\030\001 \001(\005:\n214" +
       "7483647\022\036\n\tmin_int32\030\002 \001(\005:\013-2147483648\022" +
       "&\n\tmax_int64\030\003 \001(\003:\0239223372036854775807\022" +
@@ -20646,86 +20544,85 @@ com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCases.ManyOneofs 
       "uint64\030\006 \001(\004:\02418446744073709551615\022!\n\tma" +
       "x_float\030\007 \001(\002:\0163.40282347e+38\022!\n\tmin_flo" +
       "at\030\010 \001(\002:\0161.40129846e-45\022+\n\nmax_double\030\t" +
-      " \001(\001:\0271.7976931348623157e+308\022)\n\nmin_dou" +
-      "ble\030\n \001(\001:\0254.94065645841247e-324\022\026\n\tinf_" +
-      "float\030\013 \001(\002:\003inf\022\033\n\rneg_inf_float\030\014 \001(\002:" +
-      "\004-inf\022\026\n\tnan_float\030\r \001(\002:\003nan\022\027\n\ninf_dou" +
-      "ble\030\016 \001(\001:\003inf\022\034\n\016neg_inf_double\030\017 \001(\001:\004" +
-      "-inf\022\027\n\nnan_double\030\020 \001(\001:\003nan\"\321\002\n\022ManyRe" +
-      "peatedFields\022\021\n\trepeated1\030\001 \003(\005\022\021\n\trepea" +
-      "ted2\030\002 \003(\005\022\021\n\trepeated3\030\003 \003(\005\022\021\n\trepeate" +
-      "d4\030\004 \003(\005\022\021\n\trepeated5\030\005 \003(\005\022\021\n\trepeated6" +
-      "\030\006 \003(\005\022\021\n\trepeated7\030\007 \003(\005\022\021\n\trepeated8\030\010" +
-      " \003(\005\022\021\n\trepeated9\030\t \003(\005\022\022\n\nrepeated10\030\n " +
-      "\003(\005\022\030\n\020repeated_string1\030\013 \003(\t\022\030\n\020repeate" +
-      "d_string2\030\014 \003(\t\022\030\n\020repeated_string3\030\r \003(" +
-      "\t\022\026\n\016repeated_bool1\030\016 \003(\010\022\026\n\016repeated_bo" +
-      "ol2\030\017 \003(\010\"\263\002\n\nManyOneofs\022\027\n\roneof1_strin" +
-      "g\030\001 \001(\tH\000\022\026\n\014oneof1_int32\030\002 \001(\005H\000\022\027\n\rone" +
-      "of2_string\030\003 \001(\tH\001\022\026\n\014oneof2_int32\030\004 \001(\005" +
-      "H\001\022\027\n\roneof3_string\030\005 \001(\tH\002\022\026\n\014oneof3_in" +
-      "t32\030\006 \001(\005H\002\022\027\n\roneof4_string\030\007 \001(\tH\003\022\026\n\014" +
-      "oneof4_int32\030\010 \001(\005H\003\022\027\n\roneof5_string\030\t " +
-      "\001(\tH\004\022\026\n\014oneof5_int32\030\n \001(\005H\004B\010\n\006oneof1B" +
-      "\010\n\006oneof2B\010\n\006oneof3B\010\n\006oneof4B\010\n\006oneof5\"" +
-      "\237\t\n\010ManyMaps\022=\n\004map1\030\001 \003(\0132/.Comprehensi" +
-      "veTest.EdgeCases.ManyMaps.Map1Entry\022=\n\004m" +
-      "ap2\030\002 \003(\0132/.ComprehensiveTest.EdgeCases." +
-      "ManyMaps.Map2Entry\022=\n\004map3\030\003 \003(\0132/.Compr" +
-      "ehensiveTest.EdgeCases.ManyMaps.Map3Entr" +
-      "y\022=\n\004map4\030\004 \003(\0132/.ComprehensiveTest.Edge" +
-      "Cases.ManyMaps.Map4Entry\022=\n\004map5\030\005 \003(\0132/" +
-      ".ComprehensiveTest.EdgeCases.ManyMaps.Ma" +
-      "p5Entry\022=\n\004map6\030\006 \003(\0132/.ComprehensiveTes" +
-      "t.EdgeCases.ManyMaps.Map6Entry\022=\n\004map7\030\007" +
-      " \003(\0132/.ComprehensiveTest.EdgeCases.ManyM" +
-      "aps.Map7Entry\022=\n\004map8\030\010 \003(\0132/.Comprehens" +
-      "iveTest.EdgeCases.ManyMaps.Map8Entry\022=\n\004" +
-      "map9\030\t \003(\0132/.ComprehensiveTest.EdgeCases" +
-      ".ManyMaps.Map9Entry\022?\n\005map10\030\n \003(\01320.Com" +
-      "prehensiveTest.EdgeCases.ManyMaps.Map10E" +
-      "ntry\032+\n\tMap1Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030" +
-      "\002 \001(\005:\0028\001\032+\n\tMap2Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005v" +
-      "alue\030\002 \001(\005:\0028\001\032+\n\tMap3Entry\022\013\n\003key\030\001 \001(\t" +
-      "\022\r\n\005value\030\002 \001(\005:\0028\001\032+\n\tMap4Entry\022\013\n\003key\030" +
-      "\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMap5Entry\022\013\n" +
-      "\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMap6Ent" +
-      "ry\022\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMa" +
-      "p7Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\032" +
-      "+\n\tMap8Entry\022\013\n\003key\030\001 \001(\003\022\r\n\005value\030\002 \001(\014" +
-      ":\0028\001\032\\\n\tMap9Entry\022\013\n\003key\030\001 \001(\t\022>\n\005value\030" +
-      "\002 \001(\0132/.ComprehensiveTest.EdgeCases.Many" +
-      "RepeatedFields:\0028\001\032U\n\nMap10Entry\022\013\n\003key\030" +
-      "\001 \001(\005\0226\n\005value\030\002 \001(\0132\'.ComprehensiveTest" +
-      ".EdgeCases.ManyOneofs:\0028\001\"\212\001\n\016ReservedRa" +
-      "nges\022\016\n\006field4\030\004 \001(\t\022\017\n\007field21\030\025 \001(\t\022\020\n" +
-      "\010field101\030e \001(\tJ\004\010\001\020\002J\004\010\002\020\003J\004\010\003\020\004J\004\010\n\020\025J" +
-      "\004\0102\020eJ\006\010\310\001\020\255\002R\treserved1R\treserved2R\tres" +
-      "erved3\"\210\004\n\rOneofAllTypes\022\025\n\013oneof_int32\030" +
-      "\001 \001(\005H\000\022\025\n\013oneof_int64\030\002 \001(\003H\000\022\026\n\014oneof_" +
-      "uint32\030\003 \001(\rH\000\022\026\n\014oneof_uint64\030\004 \001(\004H\000\022\026" +
-      "\n\014oneof_sint32\030\005 \001(\021H\000\022\026\n\014oneof_sint64\030\006" +
-      " \001(\022H\000\022\027\n\roneof_fixed32\030\007 \001(\007H\000\022\027\n\roneof" +
-      "_fixed64\030\010 \001(\006H\000\022\030\n\016oneof_sfixed32\030\t \001(\017" +
-      "H\000\022\030\n\016oneof_sfixed64\030\n \001(\020H\000\022\025\n\013oneof_fl" +
-      "oat\030\013 \001(\002H\000\022\026\n\014oneof_double\030\014 \001(\001H\000\022\024\n\no" +
-      "neof_bool\030\r \001(\010H\000\022\026\n\014oneof_string\030\016 \001(\tH" +
-      "\000\022\025\n\013oneof_bytes\030\017 \001(\014H\000\022;\n\noneof_enum\030\020" +
-      " \001(\0162%.ComprehensiveTest.EdgeCases.TestE" +
-      "numH\000\022E\n\roneof_message\030\021 \001(\0132,.Comprehen" +
-      "siveTest.EdgeCases.AllTypesMessageH\000B\013\n\t" +
-      "all_types\" \n\017AllTypesMessage\022\r\n\005field\030\001 " +
-      "\001(\005\"\016\n\014EmptyMessage\"$\n\014OnlyReservedJ\004\010\001\020" +
-      "eR\006field1R\006field2\"\034\n\013SingleField\022\r\n\005fiel" +
-      "d\030\001 \001(\t\"\037\n\016SingleRepeated\022\r\n\005field\030\001 \003(\t" +
-      "\"{\n\tSingleMap\022@\n\005field\030\001 \003(\01321.Comprehen" +
-      "siveTest.EdgeCases.SingleMap.FieldEntry\032" +
-      ",\n\nFieldEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(" +
-      "\005:\0028\001\"E\n\013SingleOneof\022\026\n\014string_value\030\001 \001" +
-      "(\tH\000\022\025\n\013int32_value\030\002 \001(\005H\000B\007\n\005field*,\n\010" +
-      "TestEnum\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST" +
-      "\020\001BI\n)com.rubberjam.protobuf.compiler.te" +
-      "st.edgeB\032ComprehensiveTestEdgeCasesH\001"
+      " \001(\001:\0271.7976931348623157e+308\022\026\n\tinf_flo" +
+      "at\030\013 \001(\002:\003inf\022\033\n\rneg_inf_float\030\014 \001(\002:\004-i" +
+      "nf\022\026\n\tnan_float\030\r \001(\002:\003nan\022\027\n\ninf_double" +
+      "\030\016 \001(\001:\003inf\022\034\n\016neg_inf_double\030\017 \001(\001:\004-in" +
+      "f\022\027\n\nnan_double\030\020 \001(\001:\003nan\"\321\002\n\022ManyRepea" +
+      "tedFields\022\021\n\trepeated1\030\001 \003(\005\022\021\n\trepeated" +
+      "2\030\002 \003(\005\022\021\n\trepeated3\030\003 \003(\005\022\021\n\trepeated4\030" +
+      "\004 \003(\005\022\021\n\trepeated5\030\005 \003(\005\022\021\n\trepeated6\030\006 " +
+      "\003(\005\022\021\n\trepeated7\030\007 \003(\005\022\021\n\trepeated8\030\010 \003(" +
+      "\005\022\021\n\trepeated9\030\t \003(\005\022\022\n\nrepeated10\030\n \003(\005" +
+      "\022\030\n\020repeated_string1\030\013 \003(\t\022\030\n\020repeated_s" +
+      "tring2\030\014 \003(\t\022\030\n\020repeated_string3\030\r \003(\t\022\026" +
+      "\n\016repeated_bool1\030\016 \003(\010\022\026\n\016repeated_bool2" +
+      "\030\017 \003(\010\"\263\002\n\nManyOneofs\022\027\n\roneof1_string\030\001" +
+      " \001(\tH\000\022\026\n\014oneof1_int32\030\002 \001(\005H\000\022\027\n\roneof2" +
+      "_string\030\003 \001(\tH\001\022\026\n\014oneof2_int32\030\004 \001(\005H\001\022" +
+      "\027\n\roneof3_string\030\005 \001(\tH\002\022\026\n\014oneof3_int32" +
+      "\030\006 \001(\005H\002\022\027\n\roneof4_string\030\007 \001(\tH\003\022\026\n\014one" +
+      "of4_int32\030\010 \001(\005H\003\022\027\n\roneof5_string\030\t \001(\t" +
+      "H\004\022\026\n\014oneof5_int32\030\n \001(\005H\004B\010\n\006oneof1B\010\n\006" +
+      "oneof2B\010\n\006oneof3B\010\n\006oneof4B\010\n\006oneof5\"\237\t\n" +
+      "\010ManyMaps\022=\n\004map1\030\001 \003(\0132/.ComprehensiveT" +
+      "est.EdgeCases.ManyMaps.Map1Entry\022=\n\004map2" +
+      "\030\002 \003(\0132/.ComprehensiveTest.EdgeCases.Man" +
+      "yMaps.Map2Entry\022=\n\004map3\030\003 \003(\0132/.Comprehe" +
+      "nsiveTest.EdgeCases.ManyMaps.Map3Entry\022=" +
+      "\n\004map4\030\004 \003(\0132/.ComprehensiveTest.EdgeCas" +
+      "es.ManyMaps.Map4Entry\022=\n\004map5\030\005 \003(\0132/.Co" +
+      "mprehensiveTest.EdgeCases.ManyMaps.Map5E" +
+      "ntry\022=\n\004map6\030\006 \003(\0132/.ComprehensiveTest.E" +
+      "dgeCases.ManyMaps.Map6Entry\022=\n\004map7\030\007 \003(" +
+      "\0132/.ComprehensiveTest.EdgeCases.ManyMaps" +
+      ".Map7Entry\022=\n\004map8\030\010 \003(\0132/.Comprehensive" +
+      "Test.EdgeCases.ManyMaps.Map8Entry\022=\n\004map" +
+      "9\030\t \003(\0132/.ComprehensiveTest.EdgeCases.Ma" +
+      "nyMaps.Map9Entry\022?\n\005map10\030\n \003(\01320.Compre" +
+      "hensiveTest.EdgeCases.ManyMaps.Map10Entr" +
+      "y\032+\n\tMap1Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001" +
+      "(\005:\0028\001\032+\n\tMap2Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005valu" +
+      "e\030\002 \001(\005:\0028\001\032+\n\tMap3Entry\022\013\n\003key\030\001 \001(\t\022\r\n" +
+      "\005value\030\002 \001(\005:\0028\001\032+\n\tMap4Entry\022\013\n\003key\030\001 \001" +
+      "(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMap5Entry\022\013\n\003ke" +
+      "y\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMap6Entry\022" +
+      "\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028\001\032+\n\tMap7E" +
+      "ntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\010:\0028\001\032+\n\t" +
+      "Map8Entry\022\013\n\003key\030\001 \001(\003\022\r\n\005value\030\002 \001(\014:\0028" +
+      "\001\032\\\n\tMap9Entry\022\013\n\003key\030\001 \001(\t\022>\n\005value\030\002 \001" +
+      "(\0132/.ComprehensiveTest.EdgeCases.ManyRep" +
+      "eatedFields:\0028\001\032U\n\nMap10Entry\022\013\n\003key\030\001 \001" +
+      "(\005\0226\n\005value\030\002 \001(\0132\'.ComprehensiveTest.Ed" +
+      "geCases.ManyOneofs:\0028\001\"\212\001\n\016ReservedRange" +
+      "s\022\016\n\006field4\030\004 \001(\t\022\017\n\007field21\030\025 \001(\t\022\020\n\010fi" +
+      "eld101\030e \001(\tJ\004\010\001\020\002J\004\010\002\020\003J\004\010\003\020\004J\004\010\n\020\025J\004\0102" +
+      "\020eJ\006\010\310\001\020\255\002R\treserved1R\treserved2R\treserv" +
+      "ed3\"\210\004\n\rOneofAllTypes\022\025\n\013oneof_int32\030\001 \001" +
+      "(\005H\000\022\025\n\013oneof_int64\030\002 \001(\003H\000\022\026\n\014oneof_uin" +
+      "t32\030\003 \001(\rH\000\022\026\n\014oneof_uint64\030\004 \001(\004H\000\022\026\n\014o" +
+      "neof_sint32\030\005 \001(\021H\000\022\026\n\014oneof_sint64\030\006 \001(" +
+      "\022H\000\022\027\n\roneof_fixed32\030\007 \001(\007H\000\022\027\n\roneof_fi" +
+      "xed64\030\010 \001(\006H\000\022\030\n\016oneof_sfixed32\030\t \001(\017H\000\022" +
+      "\030\n\016oneof_sfixed64\030\n \001(\020H\000\022\025\n\013oneof_float" +
+      "\030\013 \001(\002H\000\022\026\n\014oneof_double\030\014 \001(\001H\000\022\024\n\noneo" +
+      "f_bool\030\r \001(\010H\000\022\026\n\014oneof_string\030\016 \001(\tH\000\022\025" +
+      "\n\013oneof_bytes\030\017 \001(\014H\000\022;\n\noneof_enum\030\020 \001(" +
+      "\0162%.ComprehensiveTest.EdgeCases.TestEnum" +
+      "H\000\022E\n\roneof_message\030\021 \001(\0132,.Comprehensiv" +
+      "eTest.EdgeCases.AllTypesMessageH\000B\013\n\tall" +
+      "_types\" \n\017AllTypesMessage\022\r\n\005field\030\001 \001(\005" +
+      "\"\016\n\014EmptyMessage\"$\n\014OnlyReservedJ\004\010\001\020eR\006" +
+      "field1R\006field2\"\034\n\013SingleField\022\r\n\005field\030\001" +
+      " \001(\t\"\037\n\016SingleRepeated\022\r\n\005field\030\001 \003(\t\"{\n" +
+      "\tSingleMap\022@\n\005field\030\001 \003(\01321.Comprehensiv" +
+      "eTest.EdgeCases.SingleMap.FieldEntry\032,\n\n" +
+      "FieldEntry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002" +
+      "8\001\"E\n\013SingleOneof\022\026\n\014string_value\030\001 \001(\tH" +
+      "\000\022\025\n\013int32_value\030\002 \001(\005H\000B\007\n\005field*,\n\010Tes" +
+      "tEnum\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001B" +
+      "I\n)com.rubberjam.protobuf.compiler.test." +
+      "edgeB\032ComprehensiveTestEdgeCasesH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -20748,7 +20645,7 @@ com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCases.ManyOneofs 
     internal_static_ComprehensiveTest_EdgeCases_ExtremeDefaults_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCases_ExtremeDefaults_descriptor,
-        new java.lang.String[] { "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "MinDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble", });
+        new java.lang.String[] { "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble", });
     internal_static_ComprehensiveTest_EdgeCases_ManyRepeatedFields_descriptor =
       getDescriptor().getMessageType(3);
     internal_static_ComprehensiveTest_EdgeCases_ManyRepeatedFields_fieldAccessorTable = new

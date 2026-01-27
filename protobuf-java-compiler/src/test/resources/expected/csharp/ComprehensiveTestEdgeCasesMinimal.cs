@@ -34,7 +34,7 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
             "GBggASgJSAASFgoMb25lb2YxX2ludDMyGBkgASgFSAASSwoEbWFwMRgaIAMo",
             "CzI9LkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlc01pbmltYWwuRWRnZUNh",
             "c2VNaW5pbWFsLk1hcDFFbnRyeRorCglNYXAxRW50cnkSCwoDa2V5GAEgASgJ",
-            "Eg0KBXZhbHVlGAIgASgFOgI4AUIICgZvbmVvZjEipgQKD0V4dHJlbWVEZWZh",
+            "Eg0KBXZhbHVlGAIgASgFOgI4AUIICgZvbmVvZjEi+wMKD0V4dHJlbWVEZWZh",
             "dWx0cxIdCgltYXhfaW50MzIYASABKAU6CjIxNDc0ODM2NDcSHgoJbWluX2lu",
             "dDMyGAIgASgFOgstMjE0NzQ4MzY0OBImCgltYXhfaW50NjQYAyABKAM6Ezky",
             "MjMzNzIwMzY4NTQ3NzU4MDcSJwoJbWluX2ludDY0GAQgASgDOhQtOTIyMzM3",
@@ -42,40 +42,39 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
             "EigKCm1heF91aW50NjQYBiABKAQ6FDE4NDQ2NzQ0MDczNzA5NTUxNjE1EiEK",
             "CW1heF9mbG9hdBgHIAEoAjoOMy40MDI4MjM0N2UrMzgSIQoJbWluX2Zsb2F0",
             "GAggASgCOg4xLjQwMTI5ODQ2ZS00NRIrCgptYXhfZG91YmxlGAkgASgBOhcx",
-            "Ljc5NzY5MzEzNDg2MjMxNTdlKzMwOBIpCgptaW5fZG91YmxlGAogASgBOhU0",
-            "Ljk0MDY1NjQ1ODQxMjQ3ZS0zMjQSFgoJaW5mX2Zsb2F0GAsgASgCOgNpbmYS",
-            "GwoNbmVnX2luZl9mbG9hdBgMIAEoAjoELWluZhIWCgluYW5fZmxvYXQYDSAB",
-            "KAI6A25hbhIXCgppbmZfZG91YmxlGA4gASgBOgNpbmYSHAoObmVnX2luZl9k",
-            "b3VibGUYDyABKAE6BC1pbmYSFwoKbmFuX2RvdWJsZRgQIAEoAToDbmFuItEC",
-            "ChJNYW55UmVwZWF0ZWRGaWVsZHMSEQoJcmVwZWF0ZWQxGAEgAygFEhEKCXJl",
-            "cGVhdGVkMhgCIAMoBRIRCglyZXBlYXRlZDMYAyADKAUSEQoJcmVwZWF0ZWQ0",
-            "GAQgAygFEhEKCXJlcGVhdGVkNRgFIAMoBRIRCglyZXBlYXRlZDYYBiADKAUS",
-            "EQoJcmVwZWF0ZWQ3GAcgAygFEhEKCXJlcGVhdGVkOBgIIAMoBRIRCglyZXBl",
-            "YXRlZDkYCSADKAUSEgoKcmVwZWF0ZWQxMBgKIAMoBRIYChByZXBlYXRlZF9z",
-            "dHJpbmcxGAsgAygJEhgKEHJlcGVhdGVkX3N0cmluZzIYDCADKAkSGAoQcmVw",
-            "ZWF0ZWRfc3RyaW5nMxgNIAMoCRIWCg5yZXBlYXRlZF9ib29sMRgOIAMoCBIW",
-            "Cg5yZXBlYXRlZF9ib29sMhgPIAMoCCKWBAoNT25lb2ZBbGxUeXBlcxIVCgtv",
-            "bmVvZl9pbnQzMhgBIAEoBUgAEhUKC29uZW9mX2ludDY0GAIgASgDSAASFgoM",
-            "b25lb2ZfdWludDMyGAMgASgNSAASFgoMb25lb2ZfdWludDY0GAQgASgESAAS",
-            "FgoMb25lb2Zfc2ludDMyGAUgASgRSAASFgoMb25lb2Zfc2ludDY0GAYgASgS",
-            "SAASFwoNb25lb2ZfZml4ZWQzMhgHIAEoB0gAEhcKDW9uZW9mX2ZpeGVkNjQY",
-            "CCABKAZIABIYCg5vbmVvZl9zZml4ZWQzMhgJIAEoD0gAEhgKDm9uZW9mX3Nm",
-            "aXhlZDY0GAogASgQSAASFQoLb25lb2ZfZmxvYXQYCyABKAJIABIWCgxvbmVv",
-            "Zl9kb3VibGUYDCABKAFIABIUCgpvbmVvZl9ib29sGA0gASgISAASFgoMb25l",
-            "b2Zfc3RyaW5nGA4gASgJSAASFQoLb25lb2ZfYnl0ZXMYDyABKAxIABJCCgpv",
-            "bmVvZl9lbnVtGBAgASgOMiwuQ29tcHJlaGVuc2l2ZVRlc3QuRWRnZUNhc2Vz",
-            "TWluaW1hbC5UZXN0RW51bUgAEkwKDW9uZW9mX21lc3NhZ2UYESABKAsyMy5D",
-            "b21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXNNaW5pbWFsLkFsbFR5cGVzTWVz",
-            "c2FnZUgAQgsKCWFsbF90eXBlcyIgCg9BbGxUeXBlc01lc3NhZ2USDQoFZmll",
-            "bGQYASABKAUqLAoIVGVzdEVudW0SEAoMVEVTVF9VTktOT1dOEAASDgoKVEVT",
-            "VF9GSVJTVBABQlAKKWNvbS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIu",
-            "dGVzdC5lZGdlQiFDb21wcmVoZW5zaXZlVGVzdEVkZ2VDYXNlc01pbmltYWxI",
-            "AQ=="));
+            "Ljc5NzY5MzEzNDg2MjMxNTdlKzMwOBIWCglpbmZfZmxvYXQYCyABKAI6A2lu",
+            "ZhIbCg1uZWdfaW5mX2Zsb2F0GAwgASgCOgQtaW5mEhYKCW5hbl9mbG9hdBgN",
+            "IAEoAjoDbmFuEhcKCmluZl9kb3VibGUYDiABKAE6A2luZhIcCg5uZWdfaW5m",
+            "X2RvdWJsZRgPIAEoAToELWluZhIXCgpuYW5fZG91YmxlGBAgASgBOgNuYW4i",
+            "0QIKEk1hbnlSZXBlYXRlZEZpZWxkcxIRCglyZXBlYXRlZDEYASADKAUSEQoJ",
+            "cmVwZWF0ZWQyGAIgAygFEhEKCXJlcGVhdGVkMxgDIAMoBRIRCglyZXBlYXRl",
+            "ZDQYBCADKAUSEQoJcmVwZWF0ZWQ1GAUgAygFEhEKCXJlcGVhdGVkNhgGIAMo",
+            "BRIRCglyZXBlYXRlZDcYByADKAUSEQoJcmVwZWF0ZWQ4GAggAygFEhEKCXJl",
+            "cGVhdGVkORgJIAMoBRISCgpyZXBlYXRlZDEwGAogAygFEhgKEHJlcGVhdGVk",
+            "X3N0cmluZzEYCyADKAkSGAoQcmVwZWF0ZWRfc3RyaW5nMhgMIAMoCRIYChBy",
+            "ZXBlYXRlZF9zdHJpbmczGA0gAygJEhYKDnJlcGVhdGVkX2Jvb2wxGA4gAygI",
+            "EhYKDnJlcGVhdGVkX2Jvb2wyGA8gAygIIpYECg1PbmVvZkFsbFR5cGVzEhUK",
+            "C29uZW9mX2ludDMyGAEgASgFSAASFQoLb25lb2ZfaW50NjQYAiABKANIABIW",
+            "CgxvbmVvZl91aW50MzIYAyABKA1IABIWCgxvbmVvZl91aW50NjQYBCABKARI",
+            "ABIWCgxvbmVvZl9zaW50MzIYBSABKBFIABIWCgxvbmVvZl9zaW50NjQYBiAB",
+            "KBJIABIXCg1vbmVvZl9maXhlZDMyGAcgASgHSAASFwoNb25lb2ZfZml4ZWQ2",
+            "NBgIIAEoBkgAEhgKDm9uZW9mX3NmaXhlZDMyGAkgASgPSAASGAoOb25lb2Zf",
+            "c2ZpeGVkNjQYCiABKBBIABIVCgtvbmVvZl9mbG9hdBgLIAEoAkgAEhYKDG9u",
+            "ZW9mX2RvdWJsZRgMIAEoAUgAEhQKCm9uZW9mX2Jvb2wYDSABKAhIABIWCgxv",
+            "bmVvZl9zdHJpbmcYDiABKAlIABIVCgtvbmVvZl9ieXRlcxgPIAEoDEgAEkIK",
+            "Cm9uZW9mX2VudW0YECABKA4yLC5Db21wcmVoZW5zaXZlVGVzdC5FZGdlQ2Fz",
+            "ZXNNaW5pbWFsLlRlc3RFbnVtSAASTAoNb25lb2ZfbWVzc2FnZRgRIAEoCzIz",
+            "LkNvbXByZWhlbnNpdmVUZXN0LkVkZ2VDYXNlc01pbmltYWwuQWxsVHlwZXNN",
+            "ZXNzYWdlSABCCwoJYWxsX3R5cGVzIiAKD0FsbFR5cGVzTWVzc2FnZRINCgVm",
+            "aWVsZBgBIAEoBSosCghUZXN0RW51bRIQCgxURVNUX1VOS05PV04QABIOCgpU",
+            "RVNUX0ZJUlNUEAFCUAopY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxl",
+            "ci50ZXN0LmVkZ2VCIUNvbXByZWhlbnNpdmVUZXN0RWRnZUNhc2VzTWluaW1h",
+            "bEgB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.EdgeCasesMinimal.TestEnum), }, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "MaxFloat", "MaxDouble", "InfFloat", "Repeated1", "RepeatedString1", "Oneof1String", "Oneof1Int32", "Map1" }, new[]{ "Oneof1" }, null, null, new pbr::GeneratedClrTypeInfo[] { null, }),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults), global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults.Parser, new[]{ "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "MinDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults), global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults.Parser, new[]{ "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields), global::ComprehensiveTest.EdgeCasesMinimal.ManyRepeatedFields.Parser, new[]{ "Repeated1", "Repeated2", "Repeated3", "Repeated4", "Repeated5", "Repeated6", "Repeated7", "Repeated8", "Repeated9", "Repeated10", "RepeatedString1", "RepeatedString2", "RepeatedString3", "RepeatedBool1", "RepeatedBool2" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes), global::ComprehensiveTest.EdgeCasesMinimal.OneofAllTypes.Parser, new[]{ "OneofInt32", "OneofInt64", "OneofUint32", "OneofUint64", "OneofSint32", "OneofSint64", "OneofFixed32", "OneofFixed64", "OneofSfixed32", "OneofSfixed64", "OneofFloat", "OneofDouble", "OneofBool", "OneofString", "OneofBytes", "OneofEnum", "OneofMessage" }, new[]{ "AllTypes" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage), global::ComprehensiveTest.EdgeCasesMinimal.AllTypesMessage.Parser, new[]{ "Field" }, null, null, null, null)
@@ -781,7 +780,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       maxFloat_ = other.maxFloat_;
       minFloat_ = other.minFloat_;
       maxDouble_ = other.maxDouble_;
-      minDouble_ = other.minDouble_;
       infFloat_ = other.infFloat_;
       negInfFloat_ = other.negInfFloat_;
       nanFloat_ = other.nanFloat_;
@@ -1040,33 +1038,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       _hasBits0 &= ~256;
     }
 
-    /// <summary>Field number for the "min_double" field.</summary>
-    public const int MinDoubleFieldNumber = 10;
-    private readonly static double MinDoubleDefaultValue = 4.94066e-324D;
-
-    private double minDouble_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public double MinDouble {
-      get { if ((_hasBits0 & 512) != 0) { return minDouble_; } else { return MinDoubleDefaultValue; } }
-      set {
-        _hasBits0 |= 512;
-        minDouble_ = value;
-      }
-    }
-    /// <summary>Gets whether the "min_double" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasMinDouble {
-      get { return (_hasBits0 & 512) != 0; }
-    }
-    /// <summary>Clears the value of the "min_double" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearMinDouble() {
-      _hasBits0 &= ~512;
-    }
-
     /// <summary>Field number for the "inf_float" field.</summary>
     public const int InfFloatFieldNumber = 11;
     private readonly static float InfFloatDefaultValue = float.PositiveInfinity;
@@ -1075,9 +1046,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float InfFloat {
-      get { if ((_hasBits0 & 1024) != 0) { return infFloat_; } else { return InfFloatDefaultValue; } }
+      get { if ((_hasBits0 & 512) != 0) { return infFloat_; } else { return InfFloatDefaultValue; } }
       set {
-        _hasBits0 |= 1024;
+        _hasBits0 |= 512;
         infFloat_ = value;
       }
     }
@@ -1085,13 +1056,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasInfFloat {
-      get { return (_hasBits0 & 1024) != 0; }
+      get { return (_hasBits0 & 512) != 0; }
     }
     /// <summary>Clears the value of the "inf_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearInfFloat() {
-      _hasBits0 &= ~1024;
+      _hasBits0 &= ~512;
     }
 
     /// <summary>Field number for the "neg_inf_float" field.</summary>
@@ -1102,9 +1073,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float NegInfFloat {
-      get { if ((_hasBits0 & 2048) != 0) { return negInfFloat_; } else { return NegInfFloatDefaultValue; } }
+      get { if ((_hasBits0 & 1024) != 0) { return negInfFloat_; } else { return NegInfFloatDefaultValue; } }
       set {
-        _hasBits0 |= 2048;
+        _hasBits0 |= 1024;
         negInfFloat_ = value;
       }
     }
@@ -1112,13 +1083,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNegInfFloat {
-      get { return (_hasBits0 & 2048) != 0; }
+      get { return (_hasBits0 & 1024) != 0; }
     }
     /// <summary>Clears the value of the "neg_inf_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNegInfFloat() {
-      _hasBits0 &= ~2048;
+      _hasBits0 &= ~1024;
     }
 
     /// <summary>Field number for the "nan_float" field.</summary>
@@ -1129,9 +1100,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float NanFloat {
-      get { if ((_hasBits0 & 4096) != 0) { return nanFloat_; } else { return NanFloatDefaultValue; } }
+      get { if ((_hasBits0 & 2048) != 0) { return nanFloat_; } else { return NanFloatDefaultValue; } }
       set {
-        _hasBits0 |= 4096;
+        _hasBits0 |= 2048;
         nanFloat_ = value;
       }
     }
@@ -1139,13 +1110,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNanFloat {
-      get { return (_hasBits0 & 4096) != 0; }
+      get { return (_hasBits0 & 2048) != 0; }
     }
     /// <summary>Clears the value of the "nan_float" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNanFloat() {
-      _hasBits0 &= ~4096;
+      _hasBits0 &= ~2048;
     }
 
     /// <summary>Field number for the "inf_double" field.</summary>
@@ -1156,9 +1127,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double InfDouble {
-      get { if ((_hasBits0 & 8192) != 0) { return infDouble_; } else { return InfDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 4096) != 0) { return infDouble_; } else { return InfDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 8192;
+        _hasBits0 |= 4096;
         infDouble_ = value;
       }
     }
@@ -1166,13 +1137,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasInfDouble {
-      get { return (_hasBits0 & 8192) != 0; }
+      get { return (_hasBits0 & 4096) != 0; }
     }
     /// <summary>Clears the value of the "inf_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearInfDouble() {
-      _hasBits0 &= ~8192;
+      _hasBits0 &= ~4096;
     }
 
     /// <summary>Field number for the "neg_inf_double" field.</summary>
@@ -1183,9 +1154,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double NegInfDouble {
-      get { if ((_hasBits0 & 16384) != 0) { return negInfDouble_; } else { return NegInfDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 8192) != 0) { return negInfDouble_; } else { return NegInfDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 16384;
+        _hasBits0 |= 8192;
         negInfDouble_ = value;
       }
     }
@@ -1193,13 +1164,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNegInfDouble {
-      get { return (_hasBits0 & 16384) != 0; }
+      get { return (_hasBits0 & 8192) != 0; }
     }
     /// <summary>Clears the value of the "neg_inf_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNegInfDouble() {
-      _hasBits0 &= ~16384;
+      _hasBits0 &= ~8192;
     }
 
     /// <summary>Field number for the "nan_double" field.</summary>
@@ -1210,9 +1181,9 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double NanDouble {
-      get { if ((_hasBits0 & 32768) != 0) { return nanDouble_; } else { return NanDoubleDefaultValue; } }
+      get { if ((_hasBits0 & 16384) != 0) { return nanDouble_; } else { return NanDoubleDefaultValue; } }
       set {
-        _hasBits0 |= 32768;
+        _hasBits0 |= 16384;
         nanDouble_ = value;
       }
     }
@@ -1220,13 +1191,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNanDouble {
-      get { return (_hasBits0 & 32768) != 0; }
+      get { return (_hasBits0 & 16384) != 0; }
     }
     /// <summary>Clears the value of the "nan_double" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNanDouble() {
-      _hasBits0 &= ~32768;
+      _hasBits0 &= ~16384;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1253,7 +1224,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxFloat, other.MaxFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MinFloat, other.MinFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxDouble, other.MaxDouble)) return false;
-      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MinDouble, other.MinDouble)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(InfFloat, other.InfFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NegInfFloat, other.NegInfFloat)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NanFloat, other.NanFloat)) return false;
@@ -1276,7 +1246,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasMaxFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxFloat);
       if (HasMinFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MinFloat);
       if (HasMaxDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxDouble);
-      if (HasMinDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MinDouble);
       if (HasInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(InfFloat);
       if (HasNegInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NegInfFloat);
       if (HasNanFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NanFloat);
@@ -1336,10 +1305,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasMaxDouble) {
         output.WriteRawTag(73);
         output.WriteDouble(MaxDouble);
-      }
-      if (HasMinDouble) {
-        output.WriteRawTag(81);
-        output.WriteDouble(MinDouble);
       }
       if (HasInfFloat) {
         output.WriteRawTag(93);
@@ -1411,10 +1376,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
         output.WriteRawTag(73);
         output.WriteDouble(MaxDouble);
       }
-      if (HasMinDouble) {
-        output.WriteRawTag(81);
-        output.WriteDouble(MinDouble);
-      }
       if (HasInfFloat) {
         output.WriteRawTag(93);
         output.WriteFloat(InfFloat);
@@ -1476,9 +1437,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasMaxDouble) {
         size += 1 + 8;
       }
-      if (HasMinDouble) {
-        size += 1 + 8;
-      }
       if (HasInfFloat) {
         size += 1 + 4;
       }
@@ -1535,9 +1493,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       if (other.HasMaxDouble) {
         MaxDouble = other.MaxDouble;
-      }
-      if (other.HasMinDouble) {
-        MinDouble = other.MinDouble;
       }
       if (other.HasInfFloat) {
         InfFloat = other.InfFloat;
@@ -1610,10 +1565,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           }
           case 73: {
             MaxDouble = input.ReadDouble();
-            break;
-          }
-          case 81: {
-            MinDouble = input.ReadDouble();
             break;
           }
           case 93: {
@@ -1693,10 +1644,6 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           }
           case 73: {
             MaxDouble = input.ReadDouble();
-            break;
-          }
-          case 81: {
-            MinDouble = input.ReadDouble();
             break;
           }
           case 93: {

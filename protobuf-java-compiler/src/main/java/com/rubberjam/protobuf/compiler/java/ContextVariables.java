@@ -52,7 +52,7 @@ public class ContextVariables {
     private String keyType;
     private String keyWireType;
     private String nameMakeImmutable;
-    private String nullCheck;
+    private boolean nullCheck;
     private String onChanged;
     private String oneofCaseVariable;
     private String oneofFieldVariable;
@@ -232,8 +232,8 @@ public class ContextVariables {
     public String getNameMakeImmutable() { return nameMakeImmutable; }
     public void setNameMakeImmutable(String nameMakeImmutable) { this.nameMakeImmutable = nameMakeImmutable; }
 
-    public String getNullCheck() { return nullCheck; }
-    public void setNullCheck(String nullCheck) { this.nullCheck = nullCheck; }
+    public boolean isNullCheck() { return nullCheck; }
+    public void setNullCheck(boolean nullCheck) { this.nullCheck = nullCheck; }
 
     public String getOnChanged() { return onChanged; }
     public void setOnChanged(String onChanged) { this.onChanged = onChanged; }

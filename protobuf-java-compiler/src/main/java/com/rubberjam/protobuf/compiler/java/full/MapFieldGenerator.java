@@ -130,7 +130,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 
 		if (Helpers.isReferenceType(StringUtils.getJavaType(keyField)))
 		{
-			variables.setNullCheck( "if (key == null) { throw new NullPointerException(\"map key\"); }");
+			variables.setNullCheck(true);
 		}
 		if (Helpers.isReferenceType(StringUtils.getJavaType(valueField)) && StringUtils.getJavaType(valueField) != JavaType.ENUM)
 		{
@@ -368,7 +368,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    public boolean contains" + variables.getCapitalizedName() + "(");
 		printer.println("        " + variables.getKeyType() + " key) {");
-		if (variables.getNullCheck() != null) { // Reference types need null check?
+		if (variables.isNullCheck()) { // Reference types need null check?
 			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -445,7 +445,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		} else {
 			printer.println("        " + variables.getValueType() + " defaultValue) {");
 		}
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -472,7 +472,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    @java.lang.Override");
 		printer.println("    public " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrThrow(");
 		printer.println("        " + variables.getKeyType() + " key) {");
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -526,7 +526,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    public int get" + variables.getCapitalizedName() + "ValueOrDefault(");
 			printer.println("        " + variables.getKeyType() + " key,");
 			printer.println("        int defaultValue) {");
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 			}
 			printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
@@ -545,7 +545,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    @java.lang.Override");
 			printer.println("    public int get" + variables.getCapitalizedName() + "ValueOrThrow(");
 			printer.println("        " + variables.getKeyType() + " key) {");
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.println("      if (key == null) { throw new NullPointerException(\"map key\"); }");
 			}
 			printer.println("      java.util.Map<" + variables.getWireTypeParameters() + "> map =");
@@ -655,7 +655,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      @java.lang.Override");
 		printer.println("      public boolean contains" + variables.getCapitalizedName() + "(");
 		printer.println("          " + variables.getKeyType() + " key) {");
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -741,7 +741,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		} else {
 			printer.println("          " + variables.getValueType() + " defaultValue) {");
 		}
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -773,7 +773,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      @java.lang.Override");
 		printer.println("      public " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrThrow(");
 		printer.println("          " + variables.getKeyType() + " key) {");
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -835,7 +835,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public int get" + variables.getCapitalizedName() + "ValueOrDefault(");
 			printer.println("          " + variables.getKeyType() + " key,");
 			printer.println("          int defaultValue) {");
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 			}
 			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
@@ -854,7 +854,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      @java.lang.Override");
 			printer.println("      public int get" + variables.getCapitalizedName() + "ValueOrThrow(");
 			printer.println("          " + variables.getKeyType() + " key) {");
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 			}
 			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map =");
@@ -887,7 +887,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      public Builder remove" + variables.getCapitalizedName() + "(");
 		printer.println("          " + variables.getKeyType() + " key) {");
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -932,7 +932,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      public Builder put" + variables.getCapitalizedName() + "(");
 		printer.println("          " + variables.getKeyType() + " key,");
 		printer.println("          " + variables.getValueType() + " value) {");
-		if (variables.getNullCheck() != null) {
+		if (variables.isNullCheck()) {
 			printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 		} else {
 			printer.println();
@@ -972,7 +972,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        for (java.util.Map.Entry<" + variables.getTypeParameters() + "> e : values.entrySet()) {");
 			printer.print("          if (");
 			boolean needOr = false;
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.print("e.getKey() == null");
 				needOr = true;
 			}
@@ -1051,7 +1051,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public Builder put" + variables.getCapitalizedName() + "Value(");
 			printer.println("          " + variables.getKeyType() + " key,");
 			printer.println("          int value) {");
-			if (variables.getNullCheck() != null) {
+			if (variables.isNullCheck()) {
 				printer.println("        if (key == null) { throw new NullPointerException(\"map key\"); }");
 			}
 			printer.println();

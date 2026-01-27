@@ -2339,17 +2339,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     double getMaxDouble();
 
     /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return Whether the minDouble field is set.
-     */
-    boolean hasMinDouble();
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return The minDouble.
-     */
-    double getMinDouble();
-
-    /**
      * <code>optional float inf_float = 11 [default = inf];</code>
      * @return Whether the infFloat field is set.
      */
@@ -2450,7 +2439,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       maxFloat_ = 3.40282347e+38F;
       minFloat_ = 1.40129846e-45F;
       maxDouble_ = 1.7976931348623157e+308D;
-      minDouble_ = 4.94065645841247e-324D;
       infFloat_ = Float.POSITIVE_INFINITY;
       negInfFloat_ = Float.NEGATIVE_INFINITY;
       nanFloat_ = Float.NaN;
@@ -2644,25 +2632,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       return maxDouble_;
     }
 
-    public static final int MIN_DOUBLE_FIELD_NUMBER = 10;
-    private double minDouble_ = 4.94065645841247e-324D;
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return Whether the minDouble field is set.
-     */
-    @java.lang.Override
-    public boolean hasMinDouble() {
-      return ((bitField0_ & 0x00000200) != 0);
-    }
-    /**
-     * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-     * @return The minDouble.
-     */
-    @java.lang.Override
-    public double getMinDouble() {
-      return minDouble_;
-    }
-
     public static final int INF_FLOAT_FIELD_NUMBER = 11;
     private float infFloat_ = Float.POSITIVE_INFINITY;
     /**
@@ -2671,7 +2640,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasInfFloat() {
-      return ((bitField0_ & 0x00000400) != 0);
+      return ((bitField0_ & 0x00000200) != 0);
     }
     /**
      * <code>optional float inf_float = 11 [default = inf];</code>
@@ -2690,7 +2659,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasNegInfFloat() {
-      return ((bitField0_ & 0x00000800) != 0);
+      return ((bitField0_ & 0x00000400) != 0);
     }
     /**
      * <code>optional float neg_inf_float = 12 [default = -inf];</code>
@@ -2709,7 +2678,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasNanFloat() {
-      return ((bitField0_ & 0x00001000) != 0);
+      return ((bitField0_ & 0x00000800) != 0);
     }
     /**
      * <code>optional float nan_float = 13 [default = nan];</code>
@@ -2728,7 +2697,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasInfDouble() {
-      return ((bitField0_ & 0x00002000) != 0);
+      return ((bitField0_ & 0x00001000) != 0);
     }
     /**
      * <code>optional double inf_double = 14 [default = inf];</code>
@@ -2747,7 +2716,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasNegInfDouble() {
-      return ((bitField0_ & 0x00004000) != 0);
+      return ((bitField0_ & 0x00002000) != 0);
     }
     /**
      * <code>optional double neg_inf_double = 15 [default = -inf];</code>
@@ -2766,7 +2735,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasNanDouble() {
-      return ((bitField0_ & 0x00008000) != 0);
+      return ((bitField0_ & 0x00004000) != 0);
     }
     /**
      * <code>optional double nan_double = 16 [default = nan];</code>
@@ -2819,24 +2788,21 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         output.writeDouble(9, maxDouble_);
       }
       if (((bitField0_ & 0x00000200) != 0)) {
-        output.writeDouble(10, minDouble_);
-      }
-      if (((bitField0_ & 0x00000400) != 0)) {
         output.writeFloat(11, infFloat_);
       }
-      if (((bitField0_ & 0x00000800) != 0)) {
+      if (((bitField0_ & 0x00000400) != 0)) {
         output.writeFloat(12, negInfFloat_);
       }
-      if (((bitField0_ & 0x00001000) != 0)) {
+      if (((bitField0_ & 0x00000800) != 0)) {
         output.writeFloat(13, nanFloat_);
       }
-      if (((bitField0_ & 0x00002000) != 0)) {
+      if (((bitField0_ & 0x00001000) != 0)) {
         output.writeDouble(14, infDouble_);
       }
-      if (((bitField0_ & 0x00004000) != 0)) {
+      if (((bitField0_ & 0x00002000) != 0)) {
         output.writeDouble(15, negInfDouble_);
       }
-      if (((bitField0_ & 0x00008000) != 0)) {
+      if (((bitField0_ & 0x00004000) != 0)) {
         output.writeDouble(16, nanDouble_);
       }
       getUnknownFields().writeTo(output);
@@ -2886,29 +2852,25 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       }
       if (((bitField0_ & 0x00000200) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(10, minDouble_);
+          .computeFloatSize(11, infFloat_);
       }
       if (((bitField0_ & 0x00000400) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(11, infFloat_);
+          .computeFloatSize(12, negInfFloat_);
       }
       if (((bitField0_ & 0x00000800) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(12, negInfFloat_);
+          .computeFloatSize(13, nanFloat_);
       }
       if (((bitField0_ & 0x00001000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeFloatSize(13, nanFloat_);
+          .computeDoubleSize(14, infDouble_);
       }
       if (((bitField0_ & 0x00002000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(14, infDouble_);
-      }
-      if (((bitField0_ & 0x00004000) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(15, negInfDouble_);
       }
-      if (((bitField0_ & 0x00008000) != 0)) {
+      if (((bitField0_ & 0x00004000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeDoubleSize(16, nanDouble_);
       }
@@ -2974,12 +2936,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         if (java.lang.Double.doubleToLongBits(getMaxDouble())
             != java.lang.Double.doubleToLongBits(
                 other.getMaxDouble())) return false;
-      }
-      if (hasMinDouble() != other.hasMinDouble()) return false;
-      if (hasMinDouble()) {
-        if (java.lang.Double.doubleToLongBits(getMinDouble())
-            != java.lang.Double.doubleToLongBits(
-                other.getMinDouble())) return false;
       }
       if (hasInfFloat() != other.hasInfFloat()) return false;
       if (hasInfFloat()) {
@@ -3069,11 +3025,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         hash = (37 * hash) + MAX_DOUBLE_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
             java.lang.Double.doubleToLongBits(getMaxDouble()));
-      }
-      if (hasMinDouble()) {
-        hash = (37 * hash) + MIN_DOUBLE_FIELD_NUMBER;
-        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-            java.lang.Double.doubleToLongBits(getMinDouble()));
       }
       if (hasInfFloat()) {
         hash = (37 * hash) + INF_FLOAT_FIELD_NUMBER;
@@ -3249,7 +3200,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         maxFloat_ = 3.40282347e+38F;
         minFloat_ = 1.40129846e-45F;
         maxDouble_ = 1.7976931348623157e+308D;
-        minDouble_ = 4.94065645841247e-324D;
         infFloat_ = Float.POSITIVE_INFINITY;
         negInfFloat_ = Float.NEGATIVE_INFINITY;
         nanFloat_ = Float.NaN;
@@ -3327,32 +3277,28 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           to_bitField0_ |= 0x00000100;
         }
         if (((from_bitField0_ & 0x00000200) != 0)) {
-          result.minDouble_ = minDouble_;
+          result.infFloat_ = infFloat_;
           to_bitField0_ |= 0x00000200;
         }
         if (((from_bitField0_ & 0x00000400) != 0)) {
-          result.infFloat_ = infFloat_;
+          result.negInfFloat_ = negInfFloat_;
           to_bitField0_ |= 0x00000400;
         }
         if (((from_bitField0_ & 0x00000800) != 0)) {
-          result.negInfFloat_ = negInfFloat_;
+          result.nanFloat_ = nanFloat_;
           to_bitField0_ |= 0x00000800;
         }
         if (((from_bitField0_ & 0x00001000) != 0)) {
-          result.nanFloat_ = nanFloat_;
+          result.infDouble_ = infDouble_;
           to_bitField0_ |= 0x00001000;
         }
         if (((from_bitField0_ & 0x00002000) != 0)) {
-          result.infDouble_ = infDouble_;
+          result.negInfDouble_ = negInfDouble_;
           to_bitField0_ |= 0x00002000;
         }
         if (((from_bitField0_ & 0x00004000) != 0)) {
-          result.negInfDouble_ = negInfDouble_;
-          to_bitField0_ |= 0x00004000;
-        }
-        if (((from_bitField0_ & 0x00008000) != 0)) {
           result.nanDouble_ = nanDouble_;
-          to_bitField0_ |= 0x00008000;
+          to_bitField0_ |= 0x00004000;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -3395,9 +3341,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         }
         if (other.hasMaxDouble()) {
           setMaxDouble(other.getMaxDouble());
-        }
-        if (other.hasMinDouble()) {
-          setMinDouble(other.getMinDouble());
         }
         if (other.hasInfFloat()) {
           setInfFloat(other.getInfFloat());
@@ -3488,39 +3431,34 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 bitField0_ |= 0x00000100;
                 break;
               } // case 73
-              case 81: {
-                minDouble_ = input.readDouble();
-                bitField0_ |= 0x00000200;
-                break;
-              } // case 81
               case 93: {
                 infFloat_ = input.readFloat();
-                bitField0_ |= 0x00000400;
+                bitField0_ |= 0x00000200;
                 break;
               } // case 93
               case 101: {
                 negInfFloat_ = input.readFloat();
-                bitField0_ |= 0x00000800;
+                bitField0_ |= 0x00000400;
                 break;
               } // case 101
               case 109: {
                 nanFloat_ = input.readFloat();
-                bitField0_ |= 0x00001000;
+                bitField0_ |= 0x00000800;
                 break;
               } // case 109
               case 113: {
                 infDouble_ = input.readDouble();
-                bitField0_ |= 0x00002000;
+                bitField0_ |= 0x00001000;
                 break;
               } // case 113
               case 121: {
                 negInfDouble_ = input.readDouble();
-                bitField0_ |= 0x00004000;
+                bitField0_ |= 0x00002000;
                 break;
               } // case 121
               case 129: {
                 nanDouble_ = input.readDouble();
-                bitField0_ |= 0x00008000;
+                bitField0_ |= 0x00004000;
                 break;
               } // case 129
               default: {
@@ -3900,46 +3838,6 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         return this;
       }
 
-      private double minDouble_ = 4.94065645841247e-324D;
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return Whether the minDouble field is set.
-       */
-      @java.lang.Override
-      public boolean hasMinDouble() {
-        return ((bitField0_ & 0x00000200) != 0);
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return The minDouble.
-       */
-      @java.lang.Override
-      public double getMinDouble() {
-        return minDouble_;
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @param value The minDouble to set.
-       * @return This builder for chaining.
-       */
-      public Builder setMinDouble(double value) {
-
-        minDouble_ = value;
-        bitField0_ |= 0x00000200;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional double min_double = 10 [default = 4.94065645841247e-324];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearMinDouble() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        minDouble_ = 4.94065645841247e-324D;
-        onChanged();
-        return this;
-      }
-
       private float infFloat_ = Float.POSITIVE_INFINITY;
       /**
        * <code>optional float inf_float = 11 [default = inf];</code>
@@ -3947,7 +3845,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasInfFloat() {
-        return ((bitField0_ & 0x00000400) != 0);
+        return ((bitField0_ & 0x00000200) != 0);
       }
       /**
        * <code>optional float inf_float = 11 [default = inf];</code>
@@ -3965,7 +3863,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setInfFloat(float value) {
 
         infFloat_ = value;
-        bitField0_ |= 0x00000400;
+        bitField0_ |= 0x00000200;
         onChanged();
         return this;
       }
@@ -3974,7 +3872,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearInfFloat() {
-        bitField0_ = (bitField0_ & ~0x00000400);
+        bitField0_ = (bitField0_ & ~0x00000200);
         infFloat_ = Float.POSITIVE_INFINITY;
         onChanged();
         return this;
@@ -3987,7 +3885,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasNegInfFloat() {
-        return ((bitField0_ & 0x00000800) != 0);
+        return ((bitField0_ & 0x00000400) != 0);
       }
       /**
        * <code>optional float neg_inf_float = 12 [default = -inf];</code>
@@ -4005,7 +3903,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setNegInfFloat(float value) {
 
         negInfFloat_ = value;
-        bitField0_ |= 0x00000800;
+        bitField0_ |= 0x00000400;
         onChanged();
         return this;
       }
@@ -4014,7 +3912,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearNegInfFloat() {
-        bitField0_ = (bitField0_ & ~0x00000800);
+        bitField0_ = (bitField0_ & ~0x00000400);
         negInfFloat_ = Float.NEGATIVE_INFINITY;
         onChanged();
         return this;
@@ -4027,7 +3925,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasNanFloat() {
-        return ((bitField0_ & 0x00001000) != 0);
+        return ((bitField0_ & 0x00000800) != 0);
       }
       /**
        * <code>optional float nan_float = 13 [default = nan];</code>
@@ -4045,7 +3943,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setNanFloat(float value) {
 
         nanFloat_ = value;
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00000800;
         onChanged();
         return this;
       }
@@ -4054,7 +3952,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearNanFloat() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00000800);
         nanFloat_ = Float.NaN;
         onChanged();
         return this;
@@ -4067,7 +3965,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasInfDouble() {
-        return ((bitField0_ & 0x00002000) != 0);
+        return ((bitField0_ & 0x00001000) != 0);
       }
       /**
        * <code>optional double inf_double = 14 [default = inf];</code>
@@ -4085,7 +3983,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setInfDouble(double value) {
 
         infDouble_ = value;
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00001000;
         onChanged();
         return this;
       }
@@ -4094,7 +3992,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearInfDouble() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00001000);
         infDouble_ = Double.POSITIVE_INFINITY;
         onChanged();
         return this;
@@ -4107,7 +4005,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasNegInfDouble() {
-        return ((bitField0_ & 0x00004000) != 0);
+        return ((bitField0_ & 0x00002000) != 0);
       }
       /**
        * <code>optional double neg_inf_double = 15 [default = -inf];</code>
@@ -4125,7 +4023,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setNegInfDouble(double value) {
 
         negInfDouble_ = value;
-        bitField0_ |= 0x00004000;
+        bitField0_ |= 0x00002000;
         onChanged();
         return this;
       }
@@ -4134,7 +4032,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearNegInfDouble() {
-        bitField0_ = (bitField0_ & ~0x00004000);
+        bitField0_ = (bitField0_ & ~0x00002000);
         negInfDouble_ = Double.NEGATIVE_INFINITY;
         onChanged();
         return this;
@@ -4147,7 +4045,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasNanDouble() {
-        return ((bitField0_ & 0x00008000) != 0);
+        return ((bitField0_ & 0x00004000) != 0);
       }
       /**
        * <code>optional double nan_double = 16 [default = nan];</code>
@@ -4165,7 +4063,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setNanDouble(double value) {
 
         nanDouble_ = value;
-        bitField0_ |= 0x00008000;
+        bitField0_ |= 0x00004000;
         onChanged();
         return this;
       }
@@ -4174,7 +4072,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearNanDouble() {
-        bitField0_ = (bitField0_ & ~0x00008000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         nanDouble_ = Double.NaN;
         onChanged();
         return this;
@@ -10345,7 +10243,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       "\0132=.ComprehensiveTest.EdgeCasesMinimal.E" +
       "dgeCaseMinimal.Map1Entry\032+\n\tMap1Entry\022\013\n" +
       "\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001B\010\n\006oneof1\"" +
-      "\246\004\n\017ExtremeDefaults\022\035\n\tmax_int32\030\001 \001(\005:\n" +
+      "\373\003\n\017ExtremeDefaults\022\035\n\tmax_int32\030\001 \001(\005:\n" +
       "2147483647\022\036\n\tmin_int32\030\002 \001(\005:\013-21474836" +
       "48\022&\n\tmax_int64\030\003 \001(\003:\02392233720368547758" +
       "07\022\'\n\tmin_int64\030\004 \001(\003:\024-9223372036854775" +
@@ -10353,38 +10251,37 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       "ax_uint64\030\006 \001(\004:\02418446744073709551615\022!\n" +
       "\tmax_float\030\007 \001(\002:\0163.40282347e+38\022!\n\tmin_" +
       "float\030\010 \001(\002:\0161.40129846e-45\022+\n\nmax_doubl" +
-      "e\030\t \001(\001:\0271.7976931348623157e+308\022)\n\nmin_" +
-      "double\030\n \001(\001:\0254.94065645841247e-324\022\026\n\ti" +
-      "nf_float\030\013 \001(\002:\003inf\022\033\n\rneg_inf_float\030\014 \001" +
-      "(\002:\004-inf\022\026\n\tnan_float\030\r \001(\002:\003nan\022\027\n\ninf_" +
-      "double\030\016 \001(\001:\003inf\022\034\n\016neg_inf_double\030\017 \001(" +
-      "\001:\004-inf\022\027\n\nnan_double\030\020 \001(\001:\003nan\"\321\002\n\022Man" +
-      "yRepeatedFields\022\021\n\trepeated1\030\001 \003(\005\022\021\n\tre" +
-      "peated2\030\002 \003(\005\022\021\n\trepeated3\030\003 \003(\005\022\021\n\trepe" +
-      "ated4\030\004 \003(\005\022\021\n\trepeated5\030\005 \003(\005\022\021\n\trepeat" +
-      "ed6\030\006 \003(\005\022\021\n\trepeated7\030\007 \003(\005\022\021\n\trepeated" +
-      "8\030\010 \003(\005\022\021\n\trepeated9\030\t \003(\005\022\022\n\nrepeated10" +
-      "\030\n \003(\005\022\030\n\020repeated_string1\030\013 \003(\t\022\030\n\020repe" +
-      "ated_string2\030\014 \003(\t\022\030\n\020repeated_string3\030\r" +
-      " \003(\t\022\026\n\016repeated_bool1\030\016 \003(\010\022\026\n\016repeated" +
-      "_bool2\030\017 \003(\010\"\226\004\n\rOneofAllTypes\022\025\n\013oneof_" +
-      "int32\030\001 \001(\005H\000\022\025\n\013oneof_int64\030\002 \001(\003H\000\022\026\n\014" +
-      "oneof_uint32\030\003 \001(\rH\000\022\026\n\014oneof_uint64\030\004 \001" +
-      "(\004H\000\022\026\n\014oneof_sint32\030\005 \001(\021H\000\022\026\n\014oneof_si" +
-      "nt64\030\006 \001(\022H\000\022\027\n\roneof_fixed32\030\007 \001(\007H\000\022\027\n" +
-      "\roneof_fixed64\030\010 \001(\006H\000\022\030\n\016oneof_sfixed32" +
-      "\030\t \001(\017H\000\022\030\n\016oneof_sfixed64\030\n \001(\020H\000\022\025\n\013on" +
-      "eof_float\030\013 \001(\002H\000\022\026\n\014oneof_double\030\014 \001(\001H" +
-      "\000\022\024\n\noneof_bool\030\r \001(\010H\000\022\026\n\014oneof_string\030" +
-      "\016 \001(\tH\000\022\025\n\013oneof_bytes\030\017 \001(\014H\000\022B\n\noneof_" +
-      "enum\030\020 \001(\0162,.ComprehensiveTest.EdgeCases" +
-      "Minimal.TestEnumH\000\022L\n\roneof_message\030\021 \001(" +
-      "\01323.ComprehensiveTest.EdgeCasesMinimal.A" +
-      "llTypesMessageH\000B\013\n\tall_types\" \n\017AllType" +
-      "sMessage\022\r\n\005field\030\001 \001(\005*,\n\010TestEnum\022\020\n\014T" +
-      "EST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001BP\n)com.rub" +
-      "berjam.protobuf.compiler.test.edgeB!Comp" +
-      "rehensiveTestEdgeCasesMinimalH\001"
+      "e\030\t \001(\001:\0271.7976931348623157e+308\022\026\n\tinf_" +
+      "float\030\013 \001(\002:\003inf\022\033\n\rneg_inf_float\030\014 \001(\002:" +
+      "\004-inf\022\026\n\tnan_float\030\r \001(\002:\003nan\022\027\n\ninf_dou" +
+      "ble\030\016 \001(\001:\003inf\022\034\n\016neg_inf_double\030\017 \001(\001:\004" +
+      "-inf\022\027\n\nnan_double\030\020 \001(\001:\003nan\"\321\002\n\022ManyRe" +
+      "peatedFields\022\021\n\trepeated1\030\001 \003(\005\022\021\n\trepea" +
+      "ted2\030\002 \003(\005\022\021\n\trepeated3\030\003 \003(\005\022\021\n\trepeate" +
+      "d4\030\004 \003(\005\022\021\n\trepeated5\030\005 \003(\005\022\021\n\trepeated6" +
+      "\030\006 \003(\005\022\021\n\trepeated7\030\007 \003(\005\022\021\n\trepeated8\030\010" +
+      " \003(\005\022\021\n\trepeated9\030\t \003(\005\022\022\n\nrepeated10\030\n " +
+      "\003(\005\022\030\n\020repeated_string1\030\013 \003(\t\022\030\n\020repeate" +
+      "d_string2\030\014 \003(\t\022\030\n\020repeated_string3\030\r \003(" +
+      "\t\022\026\n\016repeated_bool1\030\016 \003(\010\022\026\n\016repeated_bo" +
+      "ol2\030\017 \003(\010\"\226\004\n\rOneofAllTypes\022\025\n\013oneof_int" +
+      "32\030\001 \001(\005H\000\022\025\n\013oneof_int64\030\002 \001(\003H\000\022\026\n\014one" +
+      "of_uint32\030\003 \001(\rH\000\022\026\n\014oneof_uint64\030\004 \001(\004H" +
+      "\000\022\026\n\014oneof_sint32\030\005 \001(\021H\000\022\026\n\014oneof_sint6" +
+      "4\030\006 \001(\022H\000\022\027\n\roneof_fixed32\030\007 \001(\007H\000\022\027\n\ron" +
+      "eof_fixed64\030\010 \001(\006H\000\022\030\n\016oneof_sfixed32\030\t " +
+      "\001(\017H\000\022\030\n\016oneof_sfixed64\030\n \001(\020H\000\022\025\n\013oneof" +
+      "_float\030\013 \001(\002H\000\022\026\n\014oneof_double\030\014 \001(\001H\000\022\024" +
+      "\n\noneof_bool\030\r \001(\010H\000\022\026\n\014oneof_string\030\016 \001" +
+      "(\tH\000\022\025\n\013oneof_bytes\030\017 \001(\014H\000\022B\n\noneof_enu" +
+      "m\030\020 \001(\0162,.ComprehensiveTest.EdgeCasesMin" +
+      "imal.TestEnumH\000\022L\n\roneof_message\030\021 \001(\01323" +
+      ".ComprehensiveTest.EdgeCasesMinimal.AllT" +
+      "ypesMessageH\000B\013\n\tall_types\" \n\017AllTypesMe" +
+      "ssage\022\r\n\005field\030\001 \001(\005*,\n\010TestEnum\022\020\n\014TEST" +
+      "_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001BP\n)com.rubber" +
+      "jam.protobuf.compiler.test.edgeB!Compreh" +
+      "ensiveTestEdgeCasesMinimalH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -10407,7 +10304,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     internal_static_ComprehensiveTest_EdgeCasesMinimal_ExtremeDefaults_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_ExtremeDefaults_descriptor,
-        new java.lang.String[] { "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "MinDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble", });
+        new java.lang.String[] { "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble", });
     internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_descriptor =
       getDescriptor().getMessageType(2);
     internal_static_ComprehensiveTest_EdgeCasesMinimal_ManyRepeatedFields_fieldAccessorTable = new

@@ -81,12 +81,9 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 
 		if (Helpers.isReferenceType(javaType))
 		{
-			variables.setNullCheck( "if (value == null) { throw new NullPointerException(); }");
+			variables.setNullCheck(true);
 		}
-		else
-		{
-			variables.setNullCheck( "");
-		}
+
 		variables.setDeprecation( descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
 		variables.setOnChanged( "onChanged();");
 
@@ -361,9 +358,9 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 						false));
 		printer.println("      " + variables.getDeprecation() + "public Builder set"
 				+ variables.getCapitalizedName() + "(" + variables.getType() + " value) {");
-		if (!variables.getNullCheck().isEmpty())
+		if (variables.isNullCheck())
 		{
-			printer.println("        " + variables.getNullCheck());
+			printer.println("        if (value == null) { throw new NullPointerException(); }");
 		}
 		else
 		{

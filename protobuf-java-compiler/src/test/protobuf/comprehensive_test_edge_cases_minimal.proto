@@ -41,7 +41,7 @@ message ExtremeDefaults {
   optional float max_float = 7 [default = 3.4028235e+38];
   optional float min_float = 8 [default = 1.4e-45];
   optional double max_double = 9 [default = 1.7976931348623157e+308];
-  optional double min_double = 10 [default = 4.9e-324];
+ 
   optional float inf_float = 11 [default = inf];
   optional float neg_inf_float = 12 [default = -inf];
   optional float nan_float = 13 [default = nan];
