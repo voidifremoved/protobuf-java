@@ -420,3 +420,9 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   Services are generated only if the `java_generic_services` option is set to `true` in the `.proto` file (or `file.getOptions().getJavaGenericServices()` returns true).
     *   `FileGenerator` must explicitly check this option and populate a list of `ServiceGenerator` instances.
     *   Service code generation should occur after message generation and before extension generation in the outer class file to match `protoc` behavior.
+
+*   **IsInitialized Logic**:
+    *   The `isInitialized()` method (in both Message and Builder) must explicitly check if **required fields** are present (using `has...`).
+    *   It must also recursively check if **embedded messages** (singular, repeated, or map values) are initialized by calling their `isInitialized()` method.
+    *   A recursive helper `hasRequiredFields` (handling cycles via `alreadySeen` set) is needed to determine if an embedded message type needs this check.
+    *   This ensures that `isInitialized()` correctly reflects the status of the entire message tree, matching `protoc` behavior for Proto2 required fields.
