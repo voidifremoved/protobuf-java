@@ -408,3 +408,10 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 *   **Standard Method Options**:
     *   `Parser.java` must explicitly handle standard method options (like `deprecated`) and set them in the dedicated fields of `MethodOptions` (e.g., `setDeprecated(true)`).
     *   Treating them as generic `UninterpretedOption` results in a different (and larger) serialized descriptor, causing parity mismatches with `protoc` which uses the compact standard fields.
+
+*   **Extension Accessor Methods in Builder**:
+    *   Extension accessors (`setExtension`, `addExtension`, `clearExtension`) are generated **before** the `mergeFrom(Message other)` method in the Builder.
+    *   These methods are NOT separated by blank lines in the generated code, unlike most other method groups.
+    *   The `clearExtension` method uses a generic type parameter `<Type>` in its signature (e.g., `GeneratedExtension<..., Type> extension`), not wildcard `<?>`.
+    *   The `mergeFrom(ClassName other)` method includes a call to `this.mergeExtensionFields(other);` if the message is extendable, placed before `mergeUnknownFields`.
+    *   The `isInitialized()` method in the Builder checks `!extensionsAreInitialized()` if the message is extendable.
