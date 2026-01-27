@@ -139,12 +139,17 @@ public final class Context
 		}
 		return false;
 	}
+	
+	public boolean isProto2()
+	{
+		return "proto2".equals(sourceProto.getSyntax());
+	}
 
-	private static boolean isEnumFieldConflicting(
+	private boolean isEnumFieldConflicting(
 			FieldDescriptor field1, String name1, FieldDescriptor field2, String name2)
 	{
 		if (field1.getType() == FieldDescriptor.Type.ENUM
-				&& !field1.getFile().toProto().getSyntax().equals("proto2"))
+				&& !isProto2())
 		{
 			if (name2.equals(name1 + "Value"))
 			{
@@ -154,14 +159,14 @@ public final class Context
 		return false;
 	}
 
-	private static boolean isConflictingOneWay(
+	private boolean isConflictingOneWay(
 			FieldDescriptor field1, String name1, FieldDescriptor field2, String name2)
 	{
 		return isRepeatedFieldConflicting(field1, name1, field2, name2)
 				|| isEnumFieldConflicting(field1, name1, field2, name2);
 	}
 
-	private static boolean isConflicting(
+	private boolean isConflicting(
 			FieldDescriptor field1, String name1, FieldDescriptor field2, String name2)
 	{
 		return isConflictingOneWay(field1, name1, field2, name2)
