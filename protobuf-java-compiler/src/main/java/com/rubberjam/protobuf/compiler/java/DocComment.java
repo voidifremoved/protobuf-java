@@ -308,7 +308,7 @@ public final class DocComment
 	}
 
 	private static void writeDebugString(
-			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc)
+			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc, String indentPrefix)
 	{
 		String fieldComment;
 		if (context.getOptions().stripNonfunctionalCodegen)
@@ -321,7 +321,13 @@ public final class DocComment
 			// Match C++ DebugString() format
 			StringBuilder sb = new StringBuilder();
 			
-			if (field.isMapField())
+			if (field.isExtension())
+			{
+				sb.append("extend .");
+				sb.append(field.getContainingType().getFullName());
+				sb.append(" { ... }");
+			}
+			else if (field.isMapField())
 			{
 				Descriptor messageType = field.getMessageType();
 				FieldDescriptor key = messageType.findFieldByName("key");
@@ -378,7 +384,7 @@ public final class DocComment
 				}
 			}
 
-			if (field.getType() != FieldDescriptor.Type.GROUP)
+			if (!field.isExtension() && field.getType() != FieldDescriptor.Type.GROUP)
 			{
 				sb.append(" ");
 				sb.append(field.getName());
@@ -414,11 +420,11 @@ public final class DocComment
 		
 		if (kdoc)
 		{
-			out.print(" * `" + escapeKdoc(fieldComment) + "`\n");
+			out.print(indentPrefix + " * `" + escapeKdoc(fieldComment) + "`\n");
 		}
 		else
 		{
-			out.print(" * <code>" + escapeJavadoc(fieldComment) + "</code>\n");
+			out.print(indentPrefix + " * <code>" + escapeJavadoc(fieldComment) + "</code>\n");
 		}
 	}
 
@@ -596,10 +602,16 @@ public final class DocComment
 	public static void writeFieldDocComment(
 			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc);
-		writeDebugString(out, field, context, kdoc);
-		out.print(" */\n");
+		writeFieldDocComment(out, field, context, kdoc, "");
+	}
+
+	public static void writeFieldDocComment(
+			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, indentPrefix);
+		writeDebugString(out, field, context, kdoc, indentPrefix);
+		out.print(indentPrefix + " */\n");
 	}
 
 	public static void writeFieldAccessorDocComment(
@@ -620,7 +632,7 @@ public final class DocComment
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
-		writeDebugString(out, field, context, kdoc);
+		writeDebugString(out, field, context, kdoc, "");
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			writeDeprecatedJavadoc(out, field, context);
@@ -707,7 +719,7 @@ public final class DocComment
 		out.print("/**\n");
 		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
-		writeDebugString(out, field, context, kdoc);
+		writeDebugString(out, field, context, kdoc, "");
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
 		{
 			writeDeprecatedJavadoc(out, field, context);
