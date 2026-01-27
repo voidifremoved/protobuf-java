@@ -59,10 +59,6 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.print("        new java.lang.String[] {");
 		for (int i = 0; i < descriptor.getFields().size(); i++)
 		{
-			if (i > 0)
-			{
-				printer.print(",");
-			}
 			String fieldName;
 			if (descriptor.getFields().get(i).getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.GROUP)
 			{
@@ -73,17 +69,17 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			{
 				fieldName = StringUtils.capitalizedFieldName(descriptor.getFields().get(i));
 			}
-			printer.print(" \"" + fieldName + "\"");
+			printer.print(" \"" + fieldName + "\",");
 		}
 		// Add Oneof field names for oneofs
 		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
 		{
 			if (!context.isSyntheticOneof(oneof))
 			{
-				printer.print(", \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\"");
+				printer.print(" \"" + StringUtils.underscoresToCamelCase(oneof.getName(), true) + "\",");
 			}
 		}
-		printer.println(", });");
+		printer.println(" });");
 		
 
 		for (Descriptor nestedType : descriptor.getNestedTypes())
@@ -324,7 +320,20 @@ public class ImmutableMessageGenerator extends MessageGenerator
 				printer.println();
 			}
 		}
-		printer.println();
+
+		boolean hasRealOneofs = false;
+		for (com.google.protobuf.Descriptors.OneofDescriptor oneof : descriptor.getOneofs())
+		{
+			if (!context.isSyntheticOneof(oneof))
+			{
+				hasRealOneofs = true;
+				break;
+			}
+		}
+		if (!generators.isEmpty() || (!hasRealOneofs && needsBitField))
+		{
+			printer.println();
+		}
 
 		if (context.hasGeneratedMethods(descriptor))
 		{
@@ -650,6 +659,12 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		printer.println("      return DEFAULT_INSTANCE;");
 		printer.println("    }");
 		printer.println();
+
+		for (com.google.protobuf.Descriptors.FieldDescriptor extension : descriptor.getExtensions())
+		{
+			new ImmutableExtensionGenerator(extension, context).generate(printer);
+		}
+
 		printer.println("  }");
 		printer.println();
 	}
@@ -669,7 +684,10 @@ public class ImmutableMessageGenerator extends MessageGenerator
 		{
 			printer.println("      com.google.protobuf.MessageOrBuilder {");
 		}
-		printer.println();
+		if (!fieldGenerators.getFieldGenerators().isEmpty())
+		{
+			printer.println();
+		}
 		boolean first = true;
 		for (ImmutableFieldGenerator fieldGenerator : fieldGenerators.getFieldGenerators())
 		{

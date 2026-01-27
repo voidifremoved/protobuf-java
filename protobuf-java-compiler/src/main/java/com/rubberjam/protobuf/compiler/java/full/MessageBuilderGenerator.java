@@ -306,7 +306,10 @@ public class MessageBuilderGenerator
 			}
 			printer.println("      }");
 		}
-		printer.println();
+		if (totalBuilderPieces > 0)
+		{
+			printer.println();
+		}
 
 		if (hasOneofs)
 		{
