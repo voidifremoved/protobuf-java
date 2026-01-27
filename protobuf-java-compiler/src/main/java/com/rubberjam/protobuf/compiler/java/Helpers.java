@@ -115,6 +115,26 @@ public final class Helpers
 		}
 		return false;
 	}
+	
+	public static boolean isKeyReferenceType(JavaType type)
+	{
+		switch (type)
+		{
+		case INT:
+		case LONG:
+		case FLOAT:
+		case DOUBLE:
+		case BOOLEAN:
+			return false;
+		case STRING:
+		case BYTES:
+		case ENUM:
+		case MESSAGE:
+			return true;
+		}
+		return false;
+	}
+
 
 	public static String getCapitalizedType(FieldDescriptor field)
 	{
