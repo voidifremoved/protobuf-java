@@ -39,8 +39,18 @@ namespace ComprehensiveTest.V2Minimal {
             "X2RlZmF1bHQYHSABKAI6BzIuNzE4MjgSHAoQZGVwcmVjYXRlZF9maWVsZBge",
             "IAEoCUICGAEqUgoIVGVzdEVudW0SCwoHVU5LTk9XThAAEgkKBUZJUlNUEAES",
             "CgoGU0VDT05EEAISCQoFVEhJUkQQAxITCgtBTElBU19USElSRBADGgIIARoC",
-            "EAFCTQonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYy",
-            "QhpDb21wcmVoZW5zaXZlVGVzdFYyTWluaW1hbEgBgAEBiAEB"));
+            "EAEyvgMKC1Rlc3RTZXJ2aWNlEmMKCVNpbXBsZVJwYxIqLkNvbXByZWhlbnNp",
+            "dmVUZXN0LlYyTWluaW1hbC5BbGxGaWVsZFR5cGVzGiouQ29tcHJlaGVuc2l2",
+            "ZVRlc3QuVjJNaW5pbWFsLkFsbEZpZWxkVHlwZXMSagoMU3RyZWFtaW5nUnBj",
+            "EiouQ29tcHJlaGVuc2l2ZVRlc3QuVjJNaW5pbWFsLkFsbEZpZWxkVHlwZXMa",
+            "Ki5Db21wcmVoZW5zaXZlVGVzdC5WMk1pbmltYWwuQWxsRmllbGRUeXBlcygB",
+            "MAESbgoSQ2xpZW50U3RyZWFtaW5nUnBjEiouQ29tcHJlaGVuc2l2ZVRlc3Qu",
+            "VjJNaW5pbWFsLkFsbEZpZWxkVHlwZXMaKi5Db21wcmVoZW5zaXZlVGVzdC5W",
+            "Mk1pbmltYWwuQWxsRmllbGRUeXBlcygBEm4KElNlcnZlclN0cmVhbWluZ1Jw",
+            "YxIqLkNvbXByZWhlbnNpdmVUZXN0LlYyTWluaW1hbC5BbGxGaWVsZFR5cGVz",
+            "GiouQ29tcHJlaGVuc2l2ZVRlc3QuVjJNaW5pbWFsLkFsbEZpZWxkVHlwZXMw",
+            "AUJNCidjb20ucnViYmVyamFtLnByb3RvYnVmLmNvbXBpbGVyLnRlc3QudjJC",
+            "GkNvbXByZWhlbnNpdmVUZXN0VjJNaW5pbWFsSAGAAQGIAQE="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V2Minimal.TestEnum), }, null, new pbr::GeneratedClrTypeInfo[] {

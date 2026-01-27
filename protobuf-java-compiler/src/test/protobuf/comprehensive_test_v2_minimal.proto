@@ -52,3 +52,11 @@ message AllFieldTypes {
   
 }
 
+// Service definition
+service TestService {
+  rpc SimpleRpc(AllFieldTypes) returns (AllFieldTypes);
+  rpc StreamingRpc(stream AllFieldTypes) returns (stream AllFieldTypes);
+  rpc ClientStreamingRpc(stream AllFieldTypes) returns (AllFieldTypes);
+  rpc ServerStreamingRpc(AllFieldTypes) returns (stream AllFieldTypes);
+}
+

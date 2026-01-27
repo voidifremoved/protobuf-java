@@ -2766,6 +2766,455 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
 
   }
 
+  /**
+   * <pre>
+   * Service definition
+   * </pre>
+   *
+   * Protobuf service {@code ComprehensiveTest.V2Minimal.TestService}
+   */
+  public static abstract class TestService
+      implements com.google.protobuf.Service {
+    protected TestService() {}
+
+    public interface Interface {
+      /**
+       * <code>rpc SimpleRpc(.ComprehensiveTest.V2Minimal.AllFieldTypes) returns (.ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+       */
+      public abstract void simpleRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+      /**
+       * <code>rpc StreamingRpc(stream .ComprehensiveTest.V2Minimal.AllFieldTypes) returns (stream .ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+       */
+      public abstract void streamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+      /**
+       * <code>rpc ClientStreamingRpc(stream .ComprehensiveTest.V2Minimal.AllFieldTypes) returns (.ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+       */
+      public abstract void clientStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+      /**
+       * <code>rpc ServerStreamingRpc(.ComprehensiveTest.V2Minimal.AllFieldTypes) returns (stream .ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+       */
+      public abstract void serverStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+    }
+
+    public static com.google.protobuf.Service newReflectiveService(
+        final Interface impl) {
+      return new TestService() {
+        @java.lang.Override
+        public  void simpleRpc(
+            com.google.protobuf.RpcController controller,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+            com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+          impl.simpleRpc(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void streamingRpc(
+            com.google.protobuf.RpcController controller,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+            com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+          impl.streamingRpc(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void clientStreamingRpc(
+            com.google.protobuf.RpcController controller,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+            com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+          impl.clientStreamingRpc(controller, request, done);
+        }
+
+        @java.lang.Override
+        public  void serverStreamingRpc(
+            com.google.protobuf.RpcController controller,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+            com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+          impl.serverStreamingRpc(controller, request, done);
+        }
+
+      };
+    }
+
+    public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+      return new com.google.protobuf.BlockingService() {
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+            getDescriptorForType() {
+          return getDescriptor();
+        }
+
+        public final com.google.protobuf.Message callBlockingMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request)
+            throws com.google.protobuf.ServiceException {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.callBlockingMethod() given method descriptor for " +
+              "wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return impl.simpleRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request);
+            case 1:
+              return impl.streamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request);
+            case 2:
+              return impl.clientStreamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request);
+            case 3:
+              return impl.serverStreamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request);
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getRequestPrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 1:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 2:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 3:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+        public final com.google.protobuf.Message
+            getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+          if (method.getService() != getDescriptor()) {
+            throw new java.lang.IllegalArgumentException(
+              "Service.getResponsePrototype() given method " +
+              "descriptor for wrong service type.");
+          }
+          switch(method.getIndex()) {
+            case 0:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 1:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 2:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            case 3:
+              return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+            default:
+              throw new java.lang.AssertionError("Can't get here.");
+          }
+        }
+
+      };
+    }
+
+    /**
+     * <code>rpc SimpleRpc(.ComprehensiveTest.V2Minimal.AllFieldTypes) returns (.ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+     */
+    public abstract void simpleRpc(
+        com.google.protobuf.RpcController controller,
+        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+        com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+    /**
+     * <code>rpc StreamingRpc(stream .ComprehensiveTest.V2Minimal.AllFieldTypes) returns (stream .ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+     */
+    public abstract void streamingRpc(
+        com.google.protobuf.RpcController controller,
+        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+        com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+    /**
+     * <code>rpc ClientStreamingRpc(stream .ComprehensiveTest.V2Minimal.AllFieldTypes) returns (.ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+     */
+    public abstract void clientStreamingRpc(
+        com.google.protobuf.RpcController controller,
+        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+        com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+    /**
+     * <code>rpc ServerStreamingRpc(.ComprehensiveTest.V2Minimal.AllFieldTypes) returns (stream .ComprehensiveTest.V2Minimal.AllFieldTypes);</code>
+     */
+    public abstract void serverStreamingRpc(
+        com.google.protobuf.RpcController controller,
+        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+        com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done);
+
+    public static final
+        com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.getDescriptor().getService(0);
+    }
+    public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+
+    public final void callMethod(
+        com.google.protobuf.Descriptors.MethodDescriptor method,
+        com.google.protobuf.RpcController controller,
+        com.google.protobuf.Message request,
+        com.google.protobuf.RpcCallback<
+          com.google.protobuf.Message> done) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.callMethod() given method descriptor for wrong " +
+          "service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          this.simpleRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request,
+            com.google.protobuf.RpcUtil.<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes>specializeCallback(
+              done));
+          return;
+        case 1:
+          this.streamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request,
+            com.google.protobuf.RpcUtil.<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes>specializeCallback(
+              done));
+          return;
+        case 2:
+          this.clientStreamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request,
+            com.google.protobuf.RpcUtil.<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes>specializeCallback(
+              done));
+          return;
+        case 3:
+          this.serverStreamingRpc(controller, (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes)request,
+            com.google.protobuf.RpcUtil.<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes>specializeCallback(
+              done));
+          return;
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getRequestPrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getRequestPrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 1:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 2:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 3:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public final com.google.protobuf.Message
+        getResponsePrototype(
+        com.google.protobuf.Descriptors.MethodDescriptor method) {
+      if (method.getService() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "Service.getResponsePrototype() given method " +
+          "descriptor for wrong service type.");
+      }
+      switch(method.getIndex()) {
+        case 0:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 1:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 2:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        case 3:
+          return com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance();
+        default:
+          throw new java.lang.AssertionError("Can't get here.");
+      }
+    }
+
+    public static Stub newStub(
+        com.google.protobuf.RpcChannel channel) {
+      return new Stub(channel);
+    }
+
+    public static final class Stub extends com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.TestService implements Interface {
+      private Stub(com.google.protobuf.RpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.RpcChannel channel;
+
+      public com.google.protobuf.RpcChannel getChannel() {
+        return channel;
+      }
+
+      public  void simpleRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+        channel.callMethod(
+          getDescriptor().getMethod(0),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.class,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance()));
+      }
+
+      public  void streamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+        channel.callMethod(
+          getDescriptor().getMethod(1),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.class,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance()));
+      }
+
+      public  void clientStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+        channel.callMethod(
+          getDescriptor().getMethod(2),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.class,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance()));
+      }
+
+      public  void serverStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request,
+          com.google.protobuf.RpcCallback<com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes> done) {
+        channel.callMethod(
+          getDescriptor().getMethod(3),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance(),
+          com.google.protobuf.RpcUtil.generalizeCallback(
+            done,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.class,
+            com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance()));
+      }
+    }
+
+    public static BlockingInterface newBlockingStub(
+        com.google.protobuf.BlockingRpcChannel channel) {
+      return new BlockingStub(channel);
+    }
+
+    public interface BlockingInterface {
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes simpleRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes streamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes clientStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException;
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes serverStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException;
+    }
+
+    private static final class BlockingStub implements BlockingInterface {
+      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+        this.channel = channel;
+      }
+
+      private final com.google.protobuf.BlockingRpcChannel channel;
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes simpleRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException {
+        return (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes) channel.callBlockingMethod(
+          getDescriptor().getMethod(0),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance());
+      }
+
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes streamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException {
+        return (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes) channel.callBlockingMethod(
+          getDescriptor().getMethod(1),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance());
+      }
+
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes clientStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException {
+        return (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes) channel.callBlockingMethod(
+          getDescriptor().getMethod(2),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance());
+      }
+
+
+      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes serverStreamingRpc(
+          com.google.protobuf.RpcController controller,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes request)
+          throws com.google.protobuf.ServiceException {
+        return (com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes) channel.callBlockingMethod(
+          getDescriptor().getMethod(3),
+          controller,
+          request,
+          com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Minimal.AllFieldTypes.getDefaultInstance());
+      }
+
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V2Minimal.TestService)
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_V2Minimal_AllFieldTypes_descriptor;
   private static final 
@@ -2796,9 +3245,21 @@ public final class ComprehensiveTestV2Minimal extends com.google.protobuf.Genera
       ".14159\022#\n\022float_with_default\030\035 \001(\002:\0072.71" +
       "828\022\034\n\020deprecated_field\030\036 \001(\tB\002\030\001*R\n\010Tes" +
       "tEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIRST\020\001\022\n\n\006SECOND\020" +
-      "\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THIRD\020\003\032\002\010\001\032\002\020\001BM\n" +
-      "\'com.rubberjam.protobuf.compiler.test.v2" +
-      "B\032ComprehensiveTestV2MinimalH\001\200\001\001\210\001\001"
+      "\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THIRD\020\003\032\002\010\001\032\002\020\0012\276\003" +
+      "\n\013TestService\022c\n\tSimpleRpc\022*.Comprehensi" +
+      "veTest.V2Minimal.AllFieldTypes\032*.Compreh" +
+      "ensiveTest.V2Minimal.AllFieldTypes\022j\n\014St" +
+      "reamingRpc\022*.ComprehensiveTest.V2Minimal" +
+      ".AllFieldTypes\032*.ComprehensiveTest.V2Min" +
+      "imal.AllFieldTypes(\0010\001\022n\n\022ClientStreamin" +
+      "gRpc\022*.ComprehensiveTest.V2Minimal.AllFi" +
+      "eldTypes\032*.ComprehensiveTest.V2Minimal.A" +
+      "llFieldTypes(\001\022n\n\022ServerStreamingRpc\022*.C" +
+      "omprehensiveTest.V2Minimal.AllFieldTypes" +
+      "\032*.ComprehensiveTest.V2Minimal.AllFieldT" +
+      "ypes0\001BM\n\'com.rubberjam.protobuf.compile" +
+      "r.test.v2B\032ComprehensiveTestV2MinimalH\001\200" +
+      "\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
