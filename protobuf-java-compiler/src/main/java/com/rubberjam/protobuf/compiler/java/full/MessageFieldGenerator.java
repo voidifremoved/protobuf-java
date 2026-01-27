@@ -1540,17 +1540,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      }");
 		}
 
-		@Override
-		public void generateOneofEqualsCode(PrintWriter printer)
-		{
-			throw new UnsupportedOperationException("Not supported.");
-		}
 
-		@Override
-		public void generateOneofHashCode(PrintWriter printer)
-		{
-			throw new UnsupportedOperationException("Not supported.");
-		}
 
 		@Override
 		public void generateSerializationCode(PrintWriter printer)
