@@ -89,21 +89,15 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			variables.setBoxedValueType(messageType);
 			variables.setValueOrBuilderType(messageType + "OrBuilder");
 			variables.setValueBuilderType(messageType + ".Builder");
-			variables.setUseBuildMethod("true");
+			variables.setUseBuildMethod(true);
 		}
-		else
-		{
-			variables.setUseBuildMethod("false");
-		}
+
 
 		if (Helpers.isReferenceType(StringUtils.getJavaType(value)))
 		{
-			variables.setIsValueNullable("true");
+			variables.setIsValueNullable(true);
 		}
-		else
-		{
-			variables.setIsValueNullable("false");
-		}
+
 
 		if (StringUtils.getJavaType(value) == JavaType.ENUM)
 		{
@@ -241,7 +235,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						descriptor,
 						context,
 						false));
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("    /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -260,7 +254,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 		printer.println("        " + variables.getKeyType() + " key,");
 
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("        /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -473,7 +467,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						context,
 						false));
 		printer.println("    @java.lang.Override");
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("    public /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -491,7 +485,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("    public " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrDefault(");
 		}
 		printer.println("        " + variables.getKeyType() + " key,");
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("        /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -638,7 +632,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderMembers(PrintWriter printer)
 	{
-		boolean useBuildMethod = Boolean.parseBoolean(variables.getUseBuildMethod());
+		boolean useBuildMethod = variables.isUseBuildMethod();
 
 		if (useBuildMethod)
 		{
@@ -830,7 +824,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 						context,
 						false));
 		printer.println("      @java.lang.Override");
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("      public /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -848,7 +842,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrDefault(");
 		}
 		printer.println("          " + variables.getKeyType() + " key,");
-		if (Boolean.parseBoolean(variables.getIsValueNullable()))
+		if (variables.isValueNullable())
 		{
 			printer.println("          /* nullable */");
 			if (printer instanceof IndentPrinter)
@@ -1297,7 +1291,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	public void generateBuildingCode(PrintWriter printer)
 	{
 		printer.println("        if (" + variables.getGetHasFieldBitFromLocal() + ") {");
-		if (Boolean.parseBoolean(variables.getUseBuildMethod()))
+		if (variables.isUseBuildMethod())
 		{
 			printer.println("          result." + variables.getName() + "_ = internalGet" + variables.getCapitalizedName()
 					+ "().build(" + variables.getCapitalizedName() + "DefaultEntryHolder.defaultEntry);");
@@ -1326,7 +1320,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("                  mergeUnknownLengthDelimitedField(3, bytes);");
 			printer.println("                } else {");
 
-			if (Boolean.parseBoolean(variables.getUseBuildMethod()))
+			if (variables.isUseBuildMethod())
 			{
 				printer.println(
 						"                  internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap().put(");
@@ -1348,7 +1342,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("                " + variables.getName() + "__ = input.readMessage(");
 			printer.println("                    " + variables.getCapitalizedName()
 					+ "DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);");
-			if (Boolean.parseBoolean(variables.getUseBuildMethod()))
+			if (variables.isUseBuildMethod())
 			{
 				printer.println(
 						"                internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap().put(");

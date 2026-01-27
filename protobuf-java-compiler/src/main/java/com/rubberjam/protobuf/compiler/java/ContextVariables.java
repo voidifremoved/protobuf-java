@@ -47,7 +47,7 @@ public class ContextVariables {
     private String isStringEmpty;
     private String isFieldPresentMessage;
     private String isOtherFieldPresentMessage;
-    private String isValueNullable;
+    private boolean isValueNullable;
     private String keyDefaultValue;
     private String keyType;
     private String keyWireType;
@@ -68,7 +68,7 @@ public class ContextVariables {
     private String type;
     private String typeParameters;
     private String unknown;
-    private String useBuildMethod;
+    private boolean useBuildMethod;
     private String valueBuilderType;
     private String valueDefaultValue;
     private boolean valueNullCheck;
@@ -217,8 +217,8 @@ public class ContextVariables {
     public String getIsOtherFieldPresentMessage() { return isOtherFieldPresentMessage; }
     public void setIsOtherFieldPresentMessage(String isOtherFieldPresentMessage) { this.isOtherFieldPresentMessage = isOtherFieldPresentMessage; }
 
-    public String getIsValueNullable() { return isValueNullable; }
-    public void setIsValueNullable(String isValueNullable) { this.isValueNullable = isValueNullable; }
+    public boolean isValueNullable() { return isValueNullable; }
+    public void setIsValueNullable(boolean isValueNullable) { this.isValueNullable = isValueNullable; }
 
     public String getKeyDefaultValue() { return keyDefaultValue; }
     public void setKeyDefaultValue(String keyDefaultValue) { this.keyDefaultValue = keyDefaultValue; }
@@ -280,8 +280,8 @@ public class ContextVariables {
     public String getUnknown() { return unknown; }
     public void setUnknown(String unknown) { this.unknown = unknown; }
 
-    public String getUseBuildMethod() { return useBuildMethod; }
-    public void setUseBuildMethod(String useBuildMethod) { this.useBuildMethod = useBuildMethod; }
+    public boolean isUseBuildMethod() { return useBuildMethod; }
+    public void setUseBuildMethod(boolean useBuildMethod) { this.useBuildMethod = useBuildMethod; }
 
     public String getValueBuilderType() { return valueBuilderType; }
     public void setValueBuilderType(String valueBuilderType) { this.valueBuilderType = valueBuilderType; }
