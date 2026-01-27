@@ -19,6 +19,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.MethodDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
@@ -482,6 +483,14 @@ public final class DocComment
 			{
 				return proto.getDefaultValue();
 			}
+		}
+		if (field.getType() == Type.UINT32)
+		{
+			return Integer.toUnsignedString((Integer)defaultValue);
+		}
+		if (field.getType() == Type.UINT64)
+		{
+			return Long.toUnsignedString((Long)defaultValue);
 		}
 		if (defaultValue instanceof Float)
 		{
