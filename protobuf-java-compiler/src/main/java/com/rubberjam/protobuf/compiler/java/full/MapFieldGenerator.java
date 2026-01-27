@@ -1,18 +1,17 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
+import java.io.PrintWriter;
+
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.ContextVariables;
 import com.rubberjam.protobuf.compiler.java.DocComment;
-import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.IndentPrinter;
 import com.rubberjam.protobuf.compiler.java.JavaType;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
-
-import java.io.PrintWriter;
 
 public class MapFieldGenerator extends ImmutableFieldGenerator
 {
