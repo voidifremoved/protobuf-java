@@ -36,7 +36,9 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 	{
 		Map<String, String> vars = new HashMap<>();
 		initTemplateVars(descriptor, scope, true, vars, context);
-		printer.println("  public static final int " + vars.get("constant_name") + " = " + vars.get("number") + ";");
+		String indent = descriptor.getExtensionScope() == null ? "  " : "    ";
+		printer.println(indent + "public static final int " + vars.get("constant_name") + " = " + vars.get("number") + ";");
+		com.rubberjam.protobuf.compiler.java.DocComment.writeFieldDocComment(printer, descriptor, context, false, indent);
 
 		if (descriptor.getExtensionScope() == null)
 		{
@@ -52,15 +54,15 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 		else
 		{
 			// Nested
-			printer.println("  public static final");
-			printer.println("    com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-			printer.println("      " + vars.get("containing_type") + ",");
-			printer.println("      " + vars.get("type") + "> " + vars.get("name") + " = com.google.protobuf.GeneratedMessage");
-			printer.println("          .newMessageScopedGeneratedExtension(");
-			printer.println("        " + vars.get("scope") + ".getDefaultInstance(),");
-			printer.println("        " + vars.get("index") + ",");
-			printer.println("        " + vars.get("singular_type") + ".class,");
-			printer.println("        " + vars.get("prototype") + ");");
+			printer.println("    public static final");
+			printer.println("      com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+			printer.println("        " + vars.get("containing_type") + ",");
+			printer.println("        " + vars.get("type") + "> " + vars.get("name") + " = com.google.protobuf.GeneratedMessage");
+			printer.println("            .newMessageScopedGeneratedExtension(");
+			printer.println("          " + vars.get("scope") + ".getDefaultInstance(),");
+			printer.println("          " + vars.get("index") + ",");
+			printer.println("          " + vars.get("singular_type") + ".class,");
+			printer.println("          " + vars.get("prototype") + ");");
 		}
 	}
 
