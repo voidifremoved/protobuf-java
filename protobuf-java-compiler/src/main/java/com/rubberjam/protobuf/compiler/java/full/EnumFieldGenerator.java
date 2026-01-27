@@ -1,11 +1,11 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.ContextVariables;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
-import com.rubberjam.protobuf.compiler.java.Options;
+import com.rubberjam.protobuf.compiler.java.JavaCompilerOptions;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
@@ -20,12 +20,12 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	private final FieldDescriptor descriptor;
 	private final int messageBitIndex;
 	private final int builderBitIndex;
-	private final Context context;
+	private final JavaContext context;
 	private final ContextVariables variables;
 	private final int fieldNumber;
 
 	public EnumFieldGenerator(
-			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
+			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.messageBitIndex = messageBitIndex;
@@ -62,9 +62,9 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			FieldDescriptor descriptor,
 			int messageBitIndex,
 			int builderBitIndex,
-			FieldGeneratorInfo<Options> info,
+			FieldGeneratorInfo<JavaCompilerOptions> info,
 			ContextVariables variables,
-			Context context)
+			JavaContext context)
 	{
 		FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 
@@ -675,12 +675,12 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		private final FieldDescriptor descriptor;
 		private final int messageBitIndex;
 		private final int builderBitIndex;
-		private final Context context;
+		private final JavaContext context;
 		private final ContextVariables variables;
 		private final int fieldNumber;
 
 		public RepeatedEnumFieldGenerator(
-				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
+				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, JavaContext context)
 		{
 			this.descriptor = descriptor;
 			this.messageBitIndex = messageBitIndex;
@@ -713,9 +713,9 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 				FieldDescriptor descriptor,
 				int messageBitIndex,
 				int builderBitIndex,
-				FieldGeneratorInfo<Options> info,
+				FieldGeneratorInfo<JavaCompilerOptions> info,
 				ContextVariables variables,
-				Context context)
+				JavaContext context)
 		{
 			FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 			variables.setType( context.getNameResolver().getImmutableClassName(descriptor.getEnumType()));

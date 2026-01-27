@@ -9,10 +9,10 @@ public class SharedCodeGenerator
 {
 	private final FileDescriptor file;
 	private final FileDescriptorProto sourceProto;
-	private final Options options;
+	private final JavaCompilerOptions options;
 	private final ClassNameResolver nameResolver;
 
-	public SharedCodeGenerator(FileDescriptor file, FileDescriptorProto sourceProto, Options options)
+	public SharedCodeGenerator(FileDescriptor file, FileDescriptorProto sourceProto, JavaCompilerOptions options)
 	{
 		this.file = file;
 		this.sourceProto = sourceProto;

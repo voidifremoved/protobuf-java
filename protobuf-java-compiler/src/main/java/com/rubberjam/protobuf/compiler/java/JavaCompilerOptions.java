@@ -13,7 +13,7 @@ import java.util.Map;
 /**
  * Generator options.
  */
-public final class Options
+public final class JavaCompilerOptions
 {
 	public boolean generateImmutableCode = false;
 	public boolean generateMutableCode = false;
@@ -27,9 +27,9 @@ public final class Options
 	public boolean dslUseConcreteTypes = false;
 	public boolean bootstrap = false;
 
-	public static Options fromParameter(String parameter)
+	public static JavaCompilerOptions fromParameter(String parameter)
 	{
-		Options options = new Options();
+		JavaCompilerOptions options = new JavaCompilerOptions();
 		Map<String, String> parsedOptions = parseGeneratorParameter(parameter);
 
 		options.outputListFile = parsedOptions.get("output_list_file");

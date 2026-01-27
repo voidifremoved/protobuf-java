@@ -23,18 +23,18 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
  * A context object holds the information that is shared among all code
  * generators.
  */
-public final class Context extends AbstractContext<Options>
+public final class JavaContext extends AbstractContext<JavaCompilerOptions>
 {
 
 	private final ClassNameResolver nameResolver;
-	private final Options options;
+	private final JavaCompilerOptions options;
 
-	public Context(FileDescriptor file, Options options)
+	public JavaContext(FileDescriptor file, JavaCompilerOptions options)
 	{
 		this(file, null, options);
 	}
 
-	public Context(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options)
+	public JavaContext(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, JavaCompilerOptions options)
 	{
 		super(sourceProto);
 		this.nameResolver = new ClassNameResolver();
@@ -47,7 +47,7 @@ public final class Context extends AbstractContext<Options>
 		return nameResolver;
 	}
 
-	public Options getOptions()
+	public JavaCompilerOptions getOptions()
 	{
 		return options;
 	}
@@ -161,7 +161,7 @@ public final class Context extends AbstractContext<Options>
 		for (int i = 0; i < fields.size(); i++)
 		{
 			FieldDescriptor field = fields.get(i);
-			FieldGeneratorInfo<Options> info = new FieldGeneratorInfo<>();
+			FieldGeneratorInfo<JavaCompilerOptions> info = new FieldGeneratorInfo<>();
 			if (field.getType() == FieldDescriptor.Type.GROUP)
 			{
 				String groupName = field.getMessageType().getName();

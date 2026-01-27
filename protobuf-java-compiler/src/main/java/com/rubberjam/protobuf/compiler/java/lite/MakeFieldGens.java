@@ -2,7 +2,7 @@ package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorMap;
 import com.rubberjam.protobuf.compiler.java.JavaType;
 
@@ -13,7 +13,7 @@ public final class MakeFieldGens
 	}
 
 	public static FieldGeneratorMap<ImmutableFieldGenerator> makeImmutableFieldGenerators(
-			Descriptor descriptor, Context context)
+			Descriptor descriptor, JavaContext context)
 	{
 		FieldGeneratorMap<ImmutableFieldGenerator> result = new FieldGeneratorMap<>(descriptor);
 
@@ -24,7 +24,7 @@ public final class MakeFieldGens
 		return result;
 	}
 
-	private static ImmutableFieldGenerator createFieldGenerator(FieldDescriptor field, Context context)
+	private static ImmutableFieldGenerator createFieldGenerator(FieldDescriptor field, JavaContext context)
 	{
 		if (field.isRepeated())
 		{

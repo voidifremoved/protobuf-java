@@ -4,7 +4,7 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.EnumGenerator;
 import com.rubberjam.protobuf.compiler.java.ExtensionGenerator;
 import com.rubberjam.protobuf.compiler.java.MessageGenerator;
@@ -14,9 +14,9 @@ import java.io.PrintWriter;
 
 public class GeneratorFactory implements com.rubberjam.protobuf.compiler.java.GeneratorFactory
 {
-	private final Context context;
+	private final JavaContext context;
 
-	public GeneratorFactory(Context context)
+	public GeneratorFactory(JavaContext context)
 	{
 		this.context = context;
 	}

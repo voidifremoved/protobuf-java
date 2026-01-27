@@ -2,7 +2,7 @@ package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.EnumGenerator;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ImmutableEnumGenerator extends EnumGenerator
 {
 	private final EnumDescriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 	private final boolean immutableApi = true;
 
 	private final List<EnumValueDescriptor> canonicalValues = new ArrayList<>();
@@ -26,7 +26,7 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		EnumValueDescriptor canonicalValue;
 	}
 
-	public ImmutableEnumGenerator(EnumDescriptor descriptor, Context context)
+	public ImmutableEnumGenerator(EnumDescriptor descriptor, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;

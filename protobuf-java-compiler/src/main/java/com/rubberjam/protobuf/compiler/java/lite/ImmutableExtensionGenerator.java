@@ -1,14 +1,14 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.ExtensionGenerator;
 
 import java.io.PrintWriter;
 
 public class ImmutableExtensionGenerator extends ExtensionGenerator
 {
-	public ImmutableExtensionGenerator(FieldDescriptor descriptor, Context context)
+	public ImmutableExtensionGenerator(FieldDescriptor descriptor, JavaContext context)
 	{
 	}
 

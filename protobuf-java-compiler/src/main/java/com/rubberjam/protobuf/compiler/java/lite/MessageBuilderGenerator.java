@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.Descriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.FieldGeneratorMap;
 
 import java.io.PrintWriter;
@@ -9,12 +9,12 @@ import java.io.PrintWriter;
 public class MessageBuilderGenerator
 {
 	private final Descriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 	private final FieldGeneratorMap<ImmutableFieldGenerator> fieldGenerators;
 
 	public MessageBuilderGenerator(
 			Descriptor descriptor,
-			Context context,
+			JavaContext context,
 			FieldGeneratorMap<ImmutableFieldGenerator> fieldGenerators)
 	{
 		this.descriptor = descriptor;

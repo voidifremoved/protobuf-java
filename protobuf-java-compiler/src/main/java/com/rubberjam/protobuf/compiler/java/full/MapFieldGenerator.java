@@ -3,12 +3,12 @@ package com.rubberjam.protobuf.compiler.java.full;
 import java.io.PrintWriter;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.ContextVariables;
 import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
-import com.rubberjam.protobuf.compiler.java.Options;
+import com.rubberjam.protobuf.compiler.java.JavaCompilerOptions;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.IndentPrinter;
 import com.rubberjam.protobuf.compiler.java.JavaType;
@@ -19,7 +19,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	private final FieldDescriptor descriptor;
 	private final int messageBitIndex;
 	private final int builderBitIndex;
-	private final Context context;
+	private final JavaContext context;
 	private final int fieldNumber;
 	private final ContextVariables variables;
 	private final boolean isEnum;
@@ -28,7 +28,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	private final FieldDescriptor valueField;
 
 	public MapFieldGenerator(
-			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
+			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.messageBitIndex = messageBitIndex;
@@ -65,9 +65,9 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			FieldDescriptor descriptor,
 			int messageBitIndex,
 			int builderBitIndex,
-			FieldGeneratorInfo<Options> info,
+			FieldGeneratorInfo<JavaCompilerOptions> info,
 			ContextVariables variables,
-			Context context)
+			JavaContext context)
 	{
 		FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 		variables.setType(context.getNameResolver().getImmutableClassName(descriptor.getMessageType()));

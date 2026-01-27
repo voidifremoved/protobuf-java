@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.EnumDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.EnumGenerator;
 
 import java.io.PrintWriter;
@@ -9,9 +9,9 @@ import java.io.PrintWriter;
 public class ImmutableEnumGenerator extends EnumGenerator
 {
 	private final EnumDescriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 
-	public ImmutableEnumGenerator(EnumDescriptor descriptor, Context context)
+	public ImmutableEnumGenerator(EnumDescriptor descriptor, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;

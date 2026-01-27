@@ -129,13 +129,13 @@ public final class DocComment
 	}
 
 	private static void writeDocCommentBodyForLocation(
-			PrintWriter out, SourceCodeInfo.Location location, Options options, boolean kdoc)
+			PrintWriter out, SourceCodeInfo.Location location, JavaCompilerOptions options, boolean kdoc)
 	{
 		writeDocCommentBodyForLocation(out, location, options, kdoc, "");
 	}
 
 	private static void writeDocCommentBodyForLocation(
-			PrintWriter out, SourceCodeInfo.Location location, Options options, boolean kdoc, String indentPrefix)
+			PrintWriter out, SourceCodeInfo.Location location, JavaCompilerOptions options, boolean kdoc, String indentPrefix)
 	{
 		if (options.stripNonfunctionalCodegen)
 		{
@@ -185,13 +185,13 @@ public final class DocComment
 	}
 
 	private static void findLocationAndWriteComment(
-			PrintWriter out, FileDescriptor file, List<Integer> path, Context context, boolean kdoc)
+			PrintWriter out, FileDescriptor file, List<Integer> path, JavaContext context, boolean kdoc)
 	{
 		findLocationAndWriteComment(out, file, path, context, kdoc, "");
 	}
 
 	private static void findLocationAndWriteComment(
-			PrintWriter out, FileDescriptor file, List<Integer> path, Context context, boolean kdoc, String indentPrefix)
+			PrintWriter out, FileDescriptor file, List<Integer> path, JavaContext context, boolean kdoc, String indentPrefix)
 	{
 		SourceCodeInfo.Location location = getLocation(file, path, context);
 		if (location != null)
@@ -201,7 +201,7 @@ public final class DocComment
 	}
 
 	private static void writeDeprecatedJavadoc(
-			PrintWriter out, FieldDescriptor field, Context context)
+			PrintWriter out, FieldDescriptor field, JavaContext context)
 	{
 		out.print(" * @deprecated " + field.getFullName() + " is deprecated.\n");
 		SourceCodeInfo.Location location = getLocation(field.getFile(), getPath(field), context);
@@ -212,7 +212,7 @@ public final class DocComment
 	}
 
 	private static SourceCodeInfo.Location getLocation(
-			FileDescriptor file, List<Integer> path, Context context)
+			FileDescriptor file, List<Integer> path, JavaContext context)
 	{
 		SourceCodeInfo sourceCodeInfo = (context.getSourceProto() != null)
 				? context.getSourceProto().getSourceCodeInfo()
@@ -308,7 +308,7 @@ public final class DocComment
 	}
 
 	private static void writeDebugString(
-			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc, String indentPrefix)
+			PrintWriter out, FieldDescriptor field, JavaContext context, boolean kdoc, String indentPrefix)
 	{
 		String fieldComment;
 		if (context.getOptions().stripNonfunctionalCodegen)
@@ -504,7 +504,7 @@ public final class DocComment
 		}
 	}
 
-	protected static Object getDefaultValueString(FieldDescriptor field, Context context)
+	protected static Object getDefaultValueString(FieldDescriptor field, JavaContext context)
 	{
 		Object defaultValue = field.getDefaultValue();
 		if (defaultValue instanceof String)
@@ -533,7 +533,7 @@ public final class DocComment
 		return defaultValue;
 	}
 
-	private static FieldDescriptorProto getFieldDescriptorProto(FieldDescriptor field, Context context)
+	private static FieldDescriptorProto getFieldDescriptorProto(FieldDescriptor field, JavaContext context)
 	{
 		FileDescriptorProto fileProto = context.getSourceProto();
 		if (fileProto == null)
@@ -581,13 +581,13 @@ public final class DocComment
 	}
 
 	public static void writeMessageDocComment(
-			PrintWriter out, Descriptor message, Context context, boolean kdoc)
+			PrintWriter out, Descriptor message, JavaContext context, boolean kdoc)
 	{
 		writeMessageDocComment(out, message, context, kdoc, "");
 	}
 
 	public static void writeMessageDocComment(
-			PrintWriter out, Descriptor message, Context context, boolean kdoc, String indentPrefix)
+			PrintWriter out, Descriptor message, JavaContext context, boolean kdoc, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, message.getFile(), getPath(message), context, kdoc, indentPrefix);
@@ -603,13 +603,13 @@ public final class DocComment
 	}
 
 	public static void writeFieldDocComment(
-			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc)
+			PrintWriter out, FieldDescriptor field, JavaContext context, boolean kdoc)
 	{
 		writeFieldDocComment(out, field, context, kdoc, "");
 	}
 
 	public static void writeFieldDocComment(
-			PrintWriter out, FieldDescriptor field, Context context, boolean kdoc, String indentPrefix)
+			PrintWriter out, FieldDescriptor field, JavaContext context, boolean kdoc, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, indentPrefix);
@@ -621,7 +621,7 @@ public final class DocComment
 			PrintWriter out,
 			FieldDescriptor field,
 			FieldAccessorType type,
-			Context context,
+			JavaContext context,
 			boolean builder,
 			boolean kdoc,
 			boolean isPrivate)
@@ -709,7 +709,7 @@ public final class DocComment
 			PrintWriter out,
 			FieldDescriptor field,
 			FieldAccessorType type,
-			Context context,
+			JavaContext context,
 			boolean builder,
 			boolean kdoc,
 			boolean isPrivate)
@@ -765,13 +765,13 @@ public final class DocComment
 	}
 
 	public static void writeEnumDocComment(
-			PrintWriter out, EnumDescriptor enum_, Context context, boolean kdoc)
+			PrintWriter out, EnumDescriptor enum_, JavaContext context, boolean kdoc)
 	{
 		writeEnumDocComment(out, enum_, context, kdoc, "");
 	}
 
 	public static void writeEnumDocComment(
-			PrintWriter out, EnumDescriptor enum_, Context context, boolean kdoc, String indentPrefix)
+			PrintWriter out, EnumDescriptor enum_, JavaContext context, boolean kdoc, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, enum_.getFile(), getPath(enum_), context, kdoc, indentPrefix);
@@ -787,13 +787,13 @@ public final class DocComment
 	}
 
 	public static void writeEnumValueDocComment(
-			PrintWriter out, EnumValueDescriptor value, Context context)
+			PrintWriter out, EnumValueDescriptor value, JavaContext context)
 	{
 		writeEnumValueDocComment(out, value, context, "");
 	}
 
 	public static void writeEnumValueDocComment(
-			PrintWriter out, EnumValueDescriptor value, Context context, String indentPrefix)
+			PrintWriter out, EnumValueDescriptor value, JavaContext context, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, value.getFile(), getPath(value), context, false, indentPrefix);
@@ -812,13 +812,13 @@ public final class DocComment
 	}
 
 	public static void writeServiceDocComment(
-			PrintWriter out, ServiceDescriptor service, Context context)
+			PrintWriter out, ServiceDescriptor service, JavaContext context)
 	{
 		writeServiceDocComment(out, service, context, "");
 	}
 
 	public static void writeServiceDocComment(
-			PrintWriter out, ServiceDescriptor service, Context context, String indentPrefix)
+			PrintWriter out, ServiceDescriptor service, JavaContext context, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, service.getFile(), getPath(service), context, false, indentPrefix);
@@ -827,13 +827,13 @@ public final class DocComment
 	}
 
 	public static void writeMethodDocComment(
-			PrintWriter out, MethodDescriptor method, Context context)
+			PrintWriter out, MethodDescriptor method, JavaContext context)
 	{
 		writeMethodDocComment(out, method, context, "");
 	}
 
 	public static void writeMethodDocComment(
-			PrintWriter out, MethodDescriptor method, Context context, String indentPrefix)
+			PrintWriter out, MethodDescriptor method, JavaContext context, String indentPrefix)
 	{
 		out.print(indentPrefix + "/**\n");
 		findLocationAndWriteComment(out, method.getFile(), getPath(method), context, false, indentPrefix);

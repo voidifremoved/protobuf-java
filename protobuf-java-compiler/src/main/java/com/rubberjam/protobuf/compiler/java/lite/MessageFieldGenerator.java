@@ -1,17 +1,17 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 
 import java.io.PrintWriter;
 
 public class MessageFieldGenerator extends ImmutableFieldGenerator
 {
 	private final FieldDescriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 	private final int fieldNumber;
 
-	public MessageFieldGenerator(FieldDescriptor descriptor, Context context)
+	public MessageFieldGenerator(FieldDescriptor descriptor, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;

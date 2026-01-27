@@ -12,9 +12,9 @@ public class FileGenerator
 {
 	private final FileDescriptor file;
 	private final com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto;
-	private final Options options;
+	private final JavaCompilerOptions options;
 	private final boolean immutableApi;
-	private final Context context;
+	private final JavaContext context;
 	private final ClassNameResolver nameResolver;
 	private final GeneratorFactory generatorFactory;
 	private final String className;
@@ -25,13 +25,13 @@ public class FileGenerator
 	private final List<EnumGenerator> enumGenerators = new ArrayList<>();
 	private final List<ServiceGenerator> serviceGenerators = new ArrayList<>();
 
-	public FileGenerator(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options, boolean immutableApi)
+	public FileGenerator(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, JavaCompilerOptions options, boolean immutableApi)
 	{
 		this.file = file;
 		this.sourceProto = sourceProto;
 		this.options = options;
 		this.immutableApi = immutableApi;
-		this.context = new Context(file, sourceProto, options);
+		this.context = new JavaContext(file, sourceProto, options);
 		this.nameResolver = context.getNameResolver();
 		this.className = nameResolver.getFileClassName(file, immutableApi);
 		this.javaPackage = nameResolver.getFileJavaPackage(file);

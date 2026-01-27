@@ -1,14 +1,14 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.ServiceDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.ServiceGenerator;
 
 import java.io.PrintWriter;
 
 public class ImmutableServiceGenerator extends ServiceGenerator
 {
-	public ImmutableServiceGenerator(ServiceDescriptor descriptor, Context context)
+	public ImmutableServiceGenerator(ServiceDescriptor descriptor, JavaContext context)
 	{
 		super(descriptor);
 	}

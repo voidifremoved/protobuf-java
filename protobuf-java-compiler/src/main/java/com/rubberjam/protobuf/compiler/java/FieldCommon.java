@@ -25,7 +25,7 @@ public final class FieldCommon
 
 	public static void setCommonFieldVariables(
 			FieldDescriptor descriptor,
-			FieldGeneratorInfo<Options> info,
+			FieldGeneratorInfo<JavaCompilerOptions> info,
 			ContextVariables variables)
 	{
 		variables.setFieldName(descriptor.getName());

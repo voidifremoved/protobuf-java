@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.Descriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.MessageGenerator;
 
 import java.io.PrintWriter;
@@ -9,9 +9,9 @@ import java.io.PrintWriter;
 public class ImmutableMessageGenerator extends MessageGenerator
 {
 	private final Descriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 
-	public ImmutableMessageGenerator(Descriptor descriptor, Context context)
+	public ImmutableMessageGenerator(Descriptor descriptor, JavaContext context)
 	{
 		super(descriptor);
 		this.descriptor = descriptor;

@@ -2,7 +2,7 @@ package com.rubberjam.protobuf.compiler;
 
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.rubberjam.protobuf.compiler.java.FileGenerator;
-import com.rubberjam.protobuf.compiler.java.Options;
+import com.rubberjam.protobuf.compiler.java.JavaCompilerOptions;
 
 import java.io.OutputStream;
 import java.util.ArrayList;
@@ -20,7 +20,7 @@ public class JavaCodeGenerator extends CodeGenerator
 	public void generate(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, String parameter, GeneratorContext generatorContext)
 			throws GenerationException
 	{
-		Options fileOptions = Options.fromParameter(parameter);
+		JavaCompilerOptions fileOptions = JavaCompilerOptions.fromParameter(parameter);
 
 		if (fileOptions.enforceLite && fileOptions.generateMutableCode)
 		{

@@ -2,13 +2,13 @@ package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.InternalHelpers;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.ContextVariables;
 import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
 import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
-import com.rubberjam.protobuf.compiler.java.Options;
+import com.rubberjam.protobuf.compiler.java.JavaCompilerOptions;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
@@ -21,12 +21,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 	private final FieldDescriptor descriptor;
 	private final int messageBitIndex;
 	private final int builderBitIndex;
-	private final Context context;
+	private final JavaContext context;
 	private final int fieldNumber;
 	private final ContextVariables variables;
 
 	public StringFieldGenerator(
-			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
+			FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.messageBitIndex = messageBitIndex;
@@ -59,9 +59,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			FieldDescriptor descriptor,
 			int messageBitIndex,
 			int builderBitIndex,
-			FieldGeneratorInfo<Options> info,
+			FieldGeneratorInfo<JavaCompilerOptions> info,
 			ContextVariables variables,
-			Context context)
+			JavaContext context)
 	{
 		FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 		String defaultValue = Helpers.defaultValue(descriptor, context.getNameResolver(), context.getOptions(), true);
@@ -768,12 +768,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		private final FieldDescriptor descriptor;
 		private final int messageBitIndex;
 		private final int builderBitIndex;
-		private final Context context;
+		private final JavaContext context;
 		private final int fieldNumber;
 		private final ContextVariables variables;
 
 		public RepeatedStringFieldGenerator(
-				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context)
+				FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, JavaContext context)
 		{
 			this.descriptor = descriptor;
 			this.messageBitIndex = messageBitIndex;
@@ -806,9 +806,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 				FieldDescriptor descriptor,
 				int messageBitIndex,
 				int builderBitIndex,
-				FieldGeneratorInfo<Options> info,
+				FieldGeneratorInfo<JavaCompilerOptions> info,
 				ContextVariables variables,
-				Context context)
+				JavaContext context)
 		{
 			FieldCommon.setCommonFieldVariables(descriptor, info, variables);
 			variables.setEmptyList( "com.google.protobuf.LazyStringArrayList.emptyList()");

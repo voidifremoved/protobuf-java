@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 
 import java.io.PrintWriter;
@@ -9,10 +9,10 @@ import java.io.PrintWriter;
 public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 {
 	private final FieldDescriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 	private final int fieldNumber;
 
-	public PrimitiveFieldGenerator(FieldDescriptor descriptor, Context context)
+	public PrimitiveFieldGenerator(FieldDescriptor descriptor, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;

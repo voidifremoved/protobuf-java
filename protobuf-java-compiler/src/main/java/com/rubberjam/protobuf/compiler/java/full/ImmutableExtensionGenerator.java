@@ -1,7 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.rubberjam.protobuf.compiler.java.Context;
+import com.rubberjam.protobuf.compiler.java.JavaContext;
 import com.rubberjam.protobuf.compiler.java.ExtensionGenerator;
 import com.rubberjam.protobuf.compiler.java.JavaType;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
@@ -13,10 +13,10 @@ import java.util.Map;
 public class ImmutableExtensionGenerator extends ExtensionGenerator
 {
 	private final FieldDescriptor descriptor;
-	private final Context context;
+	private final JavaContext context;
 	private final String scope;
 
-	public ImmutableExtensionGenerator(FieldDescriptor descriptor, Context context)
+	public ImmutableExtensionGenerator(FieldDescriptor descriptor, JavaContext context)
 	{
 		this.descriptor = descriptor;
 		this.context = context;
@@ -88,7 +88,7 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator
 	}
 
 	private void initTemplateVars(FieldDescriptor descriptor, String scope, boolean immutable, Map<String, String> vars,
-			Context context)
+			JavaContext context)
 	{
 		vars.put("scope", scope);
 		vars.put("name", StringUtils.underscoresToCamelCase(descriptor.getName(), false));

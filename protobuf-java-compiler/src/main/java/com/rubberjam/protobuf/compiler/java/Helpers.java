@@ -166,7 +166,7 @@ public final class Helpers
 		throw new IllegalArgumentException("Unknown field type: " + field.getType());
 	}
 
-	public static String defaultValue(FieldDescriptor field, ClassNameResolver nameResolver, Options options, boolean immutable)
+	public static String defaultValue(FieldDescriptor field, ClassNameResolver nameResolver, JavaCompilerOptions options, boolean immutable)
 	{
 		switch (field.getType())
 		{
