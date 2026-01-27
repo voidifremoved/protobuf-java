@@ -415,3 +415,8 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   The `clearExtension` method uses a generic type parameter `<Type>` in its signature (e.g., `GeneratedExtension<..., Type> extension`), not wildcard `<?>`.
     *   The `mergeFrom(ClassName other)` method includes a call to `this.mergeExtensionFields(other);` if the message is extendable, placed before `mergeUnknownFields`.
     *   The `isInitialized()` method in the Builder checks `!extensionsAreInitialized()` if the message is extendable.
+
+*   **Service Generation**:
+    *   Services are generated only if the `java_generic_services` option is set to `true` in the `.proto` file (or `file.getOptions().getJavaGenericServices()` returns true).
+    *   `FileGenerator` must explicitly check this option and populate a list of `ServiceGenerator` instances.
+    *   Service code generation should occur after message generation and before extension generation in the outer class file to match `protoc` behavior.

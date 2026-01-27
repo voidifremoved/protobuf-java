@@ -814,18 +814,51 @@ public final class DocComment
 	public static void writeServiceDocComment(
 			PrintWriter out, ServiceDescriptor service, Context context)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, service.getFile(), getPath(service), context, false);
-		out.print(" * Protobuf service {@code " + escapeJavadoc(service.getFullName()) + "}\n");
-		out.print(" */\n");
+		writeServiceDocComment(out, service, context, "");
+	}
+
+	public static void writeServiceDocComment(
+			PrintWriter out, ServiceDescriptor service, Context context, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, service.getFile(), getPath(service), context, false, indentPrefix);
+		out.print(indentPrefix + " * Protobuf service {@code " + escapeJavadoc(service.getFullName()) + "}\n");
+		out.print(indentPrefix + " */\n");
 	}
 
 	public static void writeMethodDocComment(
 			PrintWriter out, MethodDescriptor method, Context context)
 	{
-		out.print("/**\n");
-		findLocationAndWriteComment(out, method.getFile(), getPath(method), context, false);
-		out.print(" * <code>" + escapeJavadoc(firstLineOf(method.toProto().toString())) + "</code>\n");
-		out.print(" */\n");
+		writeMethodDocComment(out, method, context, "");
+	}
+
+	public static void writeMethodDocComment(
+			PrintWriter out, MethodDescriptor method, Context context, String indentPrefix)
+	{
+		out.print(indentPrefix + "/**\n");
+		findLocationAndWriteComment(out, method.getFile(), getPath(method), context, false, indentPrefix);
+		out.print(indentPrefix + " * <code>" + escapeJavadoc(constructMethodSignature(method)) + "</code>\n");
+		out.print(indentPrefix + " */\n");
+	}
+
+	private static String constructMethodSignature(MethodDescriptor method)
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("rpc ");
+		sb.append(method.getName());
+		sb.append("(");
+		if (method.isClientStreaming())
+		{
+			sb.append("stream ");
+		}
+		sb.append(".").append(method.getInputType().getFullName());
+		sb.append(") returns (");
+		if (method.isServerStreaming())
+		{
+			sb.append("stream ");
+		}
+		sb.append(".").append(method.getOutputType().getFullName());
+		sb.append(");");
+		return sb.toString();
 	}
 }
