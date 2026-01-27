@@ -338,6 +338,33 @@ public class MessageBuilderGenerator
 
 		if (context.hasGeneratedMethods(descriptor))
 		{
+			if (descriptor.isExtendable())
+			{
+				printer.println("      public <Type> Builder setExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", Type> extension,");
+				printer.println("          Type value) {");
+				printer.println("        return super.setExtension(extension, value);");
+				printer.println("      }");
+				printer.println("      public <Type> Builder setExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+				printer.println("          int index, Type value) {");
+				printer.println("        return super.setExtension(extension, index, value);");
+				printer.println("      }");
+				printer.println("      public <Type> Builder addExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
+				printer.println("          Type value) {");
+				printer.println("        return super.addExtension(extension, value);");
+				printer.println("      }");
+				printer.println("      public <Type> Builder clearExtension(");
+				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
+				printer.println("              " + fullClassName + ", Type> extension) {");
+				printer.println("        return super.clearExtension(extension);");
+				printer.println("      }");
+			}
+
 			// mergeFrom(Message other)
 			printer.println("      @java.lang.Override");
 			printer.println("      public Builder mergeFrom(com.google.protobuf.Message other) {");
@@ -377,46 +404,23 @@ public class MessageBuilderGenerator
 				printer.println("          }");
 				printer.println("        }");
 			}
+			if (descriptor.isExtendable()) {
+				printer.println("        this.mergeExtensionFields(other);");
+			}
 			printer.println("        this.mergeUnknownFields(other.getUnknownFields());");
 			printer.println("        onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 			printer.println();
 
-			if (descriptor.isExtendable())
-			{
-				printer.println("      public <Type> Builder setExtension(");
-				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-				printer.println("              " + fullClassName + ", Type> extension,");
-				printer.println("          Type value) {");
-				printer.println("        return super.setExtension(extension, value);");
-				printer.println("      }");
-				printer.println();
-				printer.println("      public <Type> Builder setExtension(");
-				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
-				printer.println("          int index, Type value) {");
-				printer.println("        return super.setExtension(extension, index, value);");
-				printer.println("      }");
-				printer.println();
-				printer.println("      public <Type> Builder addExtension(");
-				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-				printer.println("              " + fullClassName + ", java.util.List<Type>> extension,");
-				printer.println("          Type value) {");
-				printer.println("        return super.addExtension(extension, value);");
-				printer.println("      }");
-				printer.println();
-				printer.println("      public <Type> Builder clearExtension(");
-				printer.println("          com.google.protobuf.GeneratedMessage.GeneratedExtension<");
-				printer.println("              " + fullClassName + ", ?> extension) {");
-				printer.println("        return super.clearExtension(extension);");
-				printer.println("      }");
-				printer.println();
-			}
-
 			// isInitialized()
 			printer.println("      @java.lang.Override");
 			printer.println("      public final boolean isInitialized() {");
+			if (descriptor.isExtendable()) {
+				printer.println("        if (!extensionsAreInitialized()) {");
+				printer.println("          return false;");
+				printer.println("        }");
+			}
 			printer.println("        return true;");
 			printer.println("      }");
 			printer.println();
