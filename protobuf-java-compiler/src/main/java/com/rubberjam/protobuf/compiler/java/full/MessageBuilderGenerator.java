@@ -419,6 +419,60 @@ public class MessageBuilderGenerator
 			// isInitialized()
 			printer.println("      @java.lang.Override");
 			printer.println("      public final boolean isInitialized() {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isRequired())
+				{
+					printer.println("        if (!has" + com.rubberjam.protobuf.compiler.java.StringUtils.capitalizedFieldName(field) + "()) {");
+					printer.println("          return false;");
+					printer.println("        }");
+				}
+			}
+
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.getJavaType() == com.google.protobuf.Descriptors.FieldDescriptor.JavaType.MESSAGE
+						&& com.rubberjam.protobuf.compiler.java.Helpers.hasRequiredFields(field.getMessageType()))
+				{
+					String name = com.rubberjam.protobuf.compiler.java.StringUtils.capitalizedFieldName(field);
+					if (field.isRequired())
+					{
+						printer.println("        if (!get" + name + "().isInitialized()) {");
+						printer.println("          return false;");
+						printer.println("        }");
+					}
+					else if (field.isRepeated())
+					{
+						if (field.isMapField())
+						{
+							com.google.protobuf.Descriptors.FieldDescriptor valueField = field.getMessageType().findFieldByName("value");
+							String valueType = context.getNameResolver().getImmutableClassName(valueField.getMessageType());
+							printer.println("        for (" + valueType + " item : get" + name + "Map().values()) {");
+							printer.println("          if (!item.isInitialized()) {");
+							printer.println("            return false;");
+							printer.println("          }");
+							printer.println("        }");
+						}
+						else
+						{
+							printer.println("        for (int i = 0; i < get" + name + "Count(); i++) {");
+							printer.println("          if (!get" + name + "(i).isInitialized()) {");
+							printer.println("            return false;");
+							printer.println("          }");
+							printer.println("        }");
+						}
+					}
+					else
+					{
+						printer.println("        if (has" + name + "()) {");
+						printer.println("          if (!get" + name + "().isInitialized()) {");
+						printer.println("            return false;");
+						printer.println("          }");
+						printer.println("        }");
+					}
+				}
+			}
+
 			if (descriptor.isExtendable()) {
 				printer.println("        if (!extensionsAreInitialized()) {");
 				printer.println("          return false;");

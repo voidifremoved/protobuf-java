@@ -8,11 +8,14 @@
 package com.rubberjam.protobuf.compiler.java;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.TextFormat;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.function.Consumer;
 
 /**
@@ -389,5 +392,36 @@ public final class Helpers
 				out.println(indent + line);
 			}
 		}
+	}
+
+	public static boolean hasRequiredFields(Descriptor descriptor) {
+		return hasRequiredFields(descriptor, new HashSet<>());
+	}
+
+	private static boolean hasRequiredFields(Descriptor descriptor, Set<Descriptor> alreadySeen) {
+		if (alreadySeen.contains(descriptor)) {
+			return false;
+		}
+		alreadySeen.add(descriptor);
+
+		// If the type has extensions, an extension with message type could contain
+		// required fields, so we have to be conservative and assume such an
+		// extension exists.
+		if (descriptor.isExtendable()) {
+			return true;
+		}
+
+		for (FieldDescriptor field : descriptor.getFields()) {
+			if (field.isRequired()) {
+				return true;
+			}
+			if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
+				if (hasRequiredFields(field.getMessageType(), alreadySeen)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
 	}
 }
