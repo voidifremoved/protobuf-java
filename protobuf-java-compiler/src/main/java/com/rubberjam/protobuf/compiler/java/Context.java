@@ -7,10 +7,11 @@
 
 package com.rubberjam.protobuf.compiler.java;
 
+import com.rubberjam.protobuf.compiler.AbstractContext;
+import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
+import com.rubberjam.protobuf.compiler.OneofGeneratorInfo;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import com.google.protobuf.DescriptorProtos.FileOptions;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -22,14 +23,11 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
  * A context object holds the information that is shared among all code
  * generators.
  */
-public final class Context
+public final class Context extends AbstractContext<Options>
 {
 
 	private final ClassNameResolver nameResolver;
 	private final Options options;
-	private final com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto;
-	private final Map<FieldDescriptor, FieldGeneratorInfo> fieldGeneratorInfoMap = new HashMap<>();
-	private final Map<OneofDescriptor, OneofGeneratorInfo> oneofGeneratorInfoMap = new HashMap<>();
 
 	public Context(FileDescriptor file, Options options)
 	{
@@ -38,15 +36,10 @@ public final class Context
 
 	public Context(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, Options options)
 	{
+		super(sourceProto);
 		this.nameResolver = new ClassNameResolver();
 		this.options = options;
-		this.sourceProto = sourceProto;
 		initializeFieldGeneratorInfo(file);
-	}
-
-	public com.google.protobuf.DescriptorProtos.FileDescriptorProto getSourceProto()
-	{
-		return sourceProto;
 	}
 
 	public ClassNameResolver getNameResolver()
@@ -59,16 +52,6 @@ public final class Context
 		return options;
 	}
 
-	public FieldGeneratorInfo getFieldGeneratorInfo(FieldDescriptor field)
-	{
-		return fieldGeneratorInfoMap.get(field);
-	}
-
-	public OneofGeneratorInfo getOneofGeneratorInfo(OneofDescriptor oneof)
-	{
-		return oneofGeneratorInfoMap.get(oneof);
-	}
-
 	public boolean enforceLite()
 	{
 		return options.enforceLite;
@@ -78,22 +61,6 @@ public final class Context
 	{
 		return options.enforceLite
 				|| descriptor.getFile().getOptions().getOptimizeFor() != FileOptions.OptimizeMode.CODE_SIZE;
-	}
-
-	public boolean isSyntheticOneof(OneofDescriptor oneof)
-	{
-		return oneof.getFieldCount() == 1 && oneof.getField(0).toProto().getProto3Optional();
-	}
-
-	public boolean isSyntheticOneofField(FieldDescriptor field)
-	{
-		return field.getContainingOneof() != null && field.toProto().hasProto3Optional()
-				&& field.toProto().getProto3Optional();
-	}
-
-	public boolean isRealOneof(FieldDescriptor field)
-	{
-		return field.getContainingOneof() != null && !isSyntheticOneofField(field);
 	}
 
 	private void initializeFieldGeneratorInfo(FileDescriptor file)
@@ -142,7 +109,7 @@ public final class Context
 	
 	public boolean isProto2()
 	{
-		return "proto2".equals(sourceProto.getSyntax());
+		return "proto2".equals(getSourceProto().getSyntax());
 	}
 
 	private boolean isEnumFieldConflicting(
@@ -194,7 +161,7 @@ public final class Context
 		for (int i = 0; i < fields.size(); i++)
 		{
 			FieldDescriptor field = fields.get(i);
-			FieldGeneratorInfo info = new FieldGeneratorInfo();
+			FieldGeneratorInfo<Options> info = new FieldGeneratorInfo<>();
 			if (field.getType() == FieldDescriptor.Type.GROUP)
 			{
 				String groupName = field.getMessageType().getName();

@@ -7,6 +7,9 @@
 
 package com.rubberjam.protobuf.compiler.java;
 
+import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
+import com.rubberjam.protobuf.compiler.ContextVariables;
+import com.rubberjam.protobuf.compiler.OneofGeneratorInfo;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import java.io.PrintWriter;
@@ -22,7 +25,7 @@ public final class FieldCommon
 
 	public static void setCommonFieldVariables(
 			FieldDescriptor descriptor,
-			FieldGeneratorInfo info,
+			FieldGeneratorInfo<Options> info,
 			ContextVariables variables)
 	{
 		variables.setFieldName(descriptor.getName());

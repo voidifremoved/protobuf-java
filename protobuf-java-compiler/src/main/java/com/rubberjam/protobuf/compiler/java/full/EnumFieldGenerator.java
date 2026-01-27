@@ -2,9 +2,10 @@ package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
-import com.rubberjam.protobuf.compiler.java.ContextVariables;
+import com.rubberjam.protobuf.compiler.ContextVariables;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
-import com.rubberjam.protobuf.compiler.java.FieldGeneratorInfo;
+import com.rubberjam.protobuf.compiler.FieldGeneratorInfo;
+import com.rubberjam.protobuf.compiler.java.Options;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
 import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.FieldAccessorType;
@@ -61,7 +62,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			FieldDescriptor descriptor,
 			int messageBitIndex,
 			int builderBitIndex,
-			FieldGeneratorInfo info,
+			FieldGeneratorInfo<Options> info,
 			ContextVariables variables,
 			Context context)
 	{
@@ -712,7 +713,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 				FieldDescriptor descriptor,
 				int messageBitIndex,
 				int builderBitIndex,
-				FieldGeneratorInfo info,
+				FieldGeneratorInfo<Options> info,
 				ContextVariables variables,
 				Context context)
 		{

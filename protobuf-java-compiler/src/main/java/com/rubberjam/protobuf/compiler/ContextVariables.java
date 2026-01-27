@@ -1,4 +1,4 @@
-package com.rubberjam.protobuf.compiler.java;
+package com.rubberjam.protobuf.compiler;
 
 public class ContextVariables {
     private String fieldName;

@@ -5,7 +5,7 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
-package com.rubberjam.protobuf.compiler.java;
+package com.rubberjam.protobuf.compiler;
 
 /**
  * A placeholder for the OneofGeneratorInfo class.
