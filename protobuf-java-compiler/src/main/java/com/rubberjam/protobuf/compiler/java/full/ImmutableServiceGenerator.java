@@ -1,14 +1,12 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
+import java.io.PrintWriter;
+
 import com.google.protobuf.Descriptors.MethodDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.ServiceGenerator;
 import com.rubberjam.protobuf.compiler.java.StringUtils;
-
-import java.io.PrintWriter;
-import java.util.HashMap;
-import java.util.Map;
 
 public class ImmutableServiceGenerator extends ServiceGenerator
 {

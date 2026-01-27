@@ -1,9 +1,9 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
+import java.io.PrintWriter;
+
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.compiler.java.Context;
-
-import java.io.PrintWriter;
 
 public class EnumFieldGenerator extends ImmutableFieldGenerator
 {

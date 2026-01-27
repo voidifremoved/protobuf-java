@@ -7,12 +7,15 @@
 
 package com.rubberjam.protobuf.compiler.java;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.protobuf.DescriptorProtos.DescriptorProto;
 import com.google.protobuf.DescriptorProtos.EnumDescriptorProto;
-import com.google.protobuf.DescriptorProtos.EnumValueDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.google.protobuf.DescriptorProtos.MethodDescriptorProto;
 import com.google.protobuf.DescriptorProtos.ServiceDescriptorProto;
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
 import com.google.protobuf.Descriptors.Descriptor;
@@ -23,11 +26,6 @@ import com.google.protobuf.Descriptors.FieldDescriptor.Type;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.MethodDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
-import java.io.PrintWriter;
-import java.io.StringWriter;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
 /** A utility class for generating documentation comments. */
 public final class DocComment
@@ -322,7 +320,7 @@ public final class DocComment
 			// Build field declaration format: "optional string field1 = 1;"
 			// Match C++ DebugString() format
 			StringBuilder sb = new StringBuilder();
-			
+
 			if (field.isExtension())
 			{
 				sb.append("extend .");
@@ -342,10 +340,12 @@ public final class DocComment
 			}
 			else
 			{
-				// Add label (optional/required/repeated) for proto2 or explicitly optional proto3 fields
+				// Add label (optional/required/repeated) for proto2 or
+				// explicitly optional proto3 fields
 				boolean isProto3 = !field.getFile().toProto().getSyntax().equals("proto2");
 				FieldDescriptorProto.Label label = field.toProto().getLabel();
-				// Oneof fields do not have labels (except synthetic oneofs for proto3 optional)
+				// Oneof fields do not have labels (except synthetic oneofs for
+				// proto3 optional)
 				boolean isSyntheticOneof = field.toProto().hasProto3Optional() && field.toProto().getProto3Optional();
 				boolean isRealOneof = field.getContainingOneof() != null && !isSyntheticOneof;
 
@@ -353,18 +353,18 @@ public final class DocComment
 				{
 					switch (label)
 					{
-						case LABEL_REQUIRED:
-							sb.append("required ");
-							break;
-						case LABEL_OPTIONAL:
-							if (!isProto3 || isSyntheticOneof)
-							{
-								sb.append("optional ");
-							}
-							break;
-						case LABEL_REPEATED:
-							sb.append("repeated ");
-							break;
+					case LABEL_REQUIRED:
+						sb.append("required ");
+						break;
+					case LABEL_OPTIONAL:
+						if (!isProto3 || isSyntheticOneof)
+						{
+							sb.append("optional ");
+						}
+						break;
+					case LABEL_REPEATED:
+						sb.append("repeated ");
+						break;
 					}
 				}
 				else if (field.isRepeated())
@@ -416,10 +416,10 @@ public final class DocComment
 
 				sb.append(";");
 			}
-			
+
 			fieldComment = sb.toString();
 		}
-		
+
 		if (kdoc)
 		{
 			out.print(indentPrefix + " * `" + escapeKdoc(fieldComment) + "`\n");
@@ -446,24 +446,60 @@ public final class DocComment
 			// Primitive type
 			switch (type)
 			{
-				case DOUBLE: sb.append("double"); break;
-				case FLOAT: sb.append("float"); break;
-				case INT64: sb.append("int64"); break;
-				case UINT64: sb.append("uint64"); break;
-				case INT32: sb.append("int32"); break;
-				case FIXED64: sb.append("fixed64"); break;
-				case FIXED32: sb.append("fixed32"); break;
-				case BOOL: sb.append("bool"); break;
-				case STRING: sb.append("string"); break;
-				case GROUP: sb.append("group"); break;
-				case MESSAGE: sb.append("message"); break;
-				case BYTES: sb.append("bytes"); break;
-				case UINT32: sb.append("uint32"); break;
-				case ENUM: sb.append("enum"); break;
-				case SFIXED32: sb.append("sfixed32"); break;
-				case SFIXED64: sb.append("sfixed64"); break;
-				case SINT32: sb.append("sint32"); break;
-				case SINT64: sb.append("sint64"); break;
+			case DOUBLE:
+				sb.append("double");
+				break;
+			case FLOAT:
+				sb.append("float");
+				break;
+			case INT64:
+				sb.append("int64");
+				break;
+			case UINT64:
+				sb.append("uint64");
+				break;
+			case INT32:
+				sb.append("int32");
+				break;
+			case FIXED64:
+				sb.append("fixed64");
+				break;
+			case FIXED32:
+				sb.append("fixed32");
+				break;
+			case BOOL:
+				sb.append("bool");
+				break;
+			case STRING:
+				sb.append("string");
+				break;
+			case GROUP:
+				sb.append("group");
+				break;
+			case MESSAGE:
+				sb.append("message");
+				break;
+			case BYTES:
+				sb.append("bytes");
+				break;
+			case UINT32:
+				sb.append("uint32");
+				break;
+			case ENUM:
+				sb.append("enum");
+				break;
+			case SFIXED32:
+				sb.append("sfixed32");
+				break;
+			case SFIXED64:
+				sb.append("sfixed64");
+				break;
+			case SINT32:
+				sb.append("sint32");
+				break;
+			case SINT64:
+				sb.append("sint64");
+				break;
 			}
 		}
 	}
@@ -477,7 +513,8 @@ public final class DocComment
 		}
 		if (field.getType() == FieldDescriptor.Type.FLOAT || field.getType() == FieldDescriptor.Type.DOUBLE)
 		{
-			// Use the string representation from the proto definition to preserve formatting
+			// Use the string representation from the proto definition to
+			// preserve formatting
 			// and avoid precision issues with float/double conversion.
 			FieldDescriptorProto proto = getFieldDescriptorProto(field, context);
 			if (proto != null && proto.hasDefaultValue())
@@ -487,11 +524,11 @@ public final class DocComment
 		}
 		if (field.getType() == Type.UINT32)
 		{
-			return Integer.toUnsignedString((Integer)defaultValue);
+			return Integer.toUnsignedString((Integer) defaultValue);
 		}
 		if (field.getType() == Type.UINT64)
 		{
-			return Long.toUnsignedString((Long)defaultValue);
+			return Long.toUnsignedString((Long) defaultValue);
 		}
 		return defaultValue;
 	}
@@ -596,7 +633,8 @@ public final class DocComment
 			camelcaseName = camelcaseName.toLowerCase();
 		}
 		out.print("/**\n");
-		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
+		// Use empty indent prefix since Helpers.writeDocComment already handles
+		// indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
 		writeDebugString(out, field, context, kdoc, "");
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())
@@ -683,7 +721,8 @@ public final class DocComment
 			camelcaseName = camelcaseName.toLowerCase();
 		}
 		out.print("/**\n");
-		// Use empty indent prefix since Helpers.writeDocComment already handles indentation
+		// Use empty indent prefix since Helpers.writeDocComment already handles
+		// indentation
 		findLocationAndWriteComment(out, field.getFile(), getPath(field), context, kdoc, "");
 		writeDebugString(out, field, context, kdoc, "");
 		if (!kdoc && !isPrivate && field.getOptions().getDeprecated())

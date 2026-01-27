@@ -71,7 +71,7 @@ public class ContextVariables {
     private String useBuildMethod;
     private String valueBuilderType;
     private String valueDefaultValue;
-    private String valueNullCheck;
+    private boolean valueNullCheck;
     private String valueOrBuilderType;
     private String valueType;
     private String valueWireType;
@@ -289,8 +289,8 @@ public class ContextVariables {
     public String getValueDefaultValue() { return valueDefaultValue; }
     public void setValueDefaultValue(String valueDefaultValue) { this.valueDefaultValue = valueDefaultValue; }
 
-    public String getValueNullCheck() { return valueNullCheck; }
-    public void setValueNullCheck(String valueNullCheck) { this.valueNullCheck = valueNullCheck; }
+    public boolean isValueNullCheck() { return valueNullCheck; }
+    public void setValueNullCheck(boolean valueNullCheck) { this.valueNullCheck = valueNullCheck; }
 
     public String getValueOrBuilderType() { return valueOrBuilderType; }
     public void setValueOrBuilderType(String valueOrBuilderType) { this.valueOrBuilderType = valueOrBuilderType; }

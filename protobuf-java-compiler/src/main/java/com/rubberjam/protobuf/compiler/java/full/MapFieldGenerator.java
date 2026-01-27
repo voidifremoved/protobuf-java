@@ -135,7 +135,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 
 		if (Helpers.isReferenceType(StringUtils.getJavaType(valueField)) && StringUtils.getJavaType(valueField) != JavaType.ENUM)
 		{
-			variables.setValueNullCheck( "if (value == null) { throw new NullPointerException(\"map value\"); }");
+			variables.setValueNullCheck(true);
 		}
 
 		String mapEntryProtoName = descriptor.getMessageType().getFullName();
@@ -938,8 +938,8 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		} else {
 			printer.println();
 		}
-		if (variables.getValueNullCheck() != null) {
-			printer.println("        " + variables.getValueNullCheck());
+		if (variables.isValueNullCheck()) {
+			printer.println("        if (value == null) { throw new NullPointerException(\"map value\"); }");
 		} else {
 			printer.println();
 		}
@@ -973,11 +973,11 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        for (java.util.Map.Entry<" + variables.getTypeParameters() + "> e : values.entrySet()) {");
 			printer.print("          if (");
 			boolean needOr = false;
-			if (variables.isNullCheck() || variables.getValueNullCheck() != null) {
+			if (variables.isNullCheck() || variables.isValueNullCheck()) {
 				printer.print("e.getKey() == null");
 				needOr = true;
 			}
-			if (variables.getValueNullCheck() != null) {
+			if (variables.isValueNullCheck()) {
 				if (needOr) {
 					printer.print(" || ");
 				}

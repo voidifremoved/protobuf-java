@@ -505,7 +505,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      " + variables.getDeprecation() + "public Builder set"
 				+ variables.getCapitalizedName() + "(");
 		printer.println("          " + variables.getBoxedType() + " value) {");
-		printer.println("        " + (variables.isNullCheck() ? "if (value == null) { throw new NullPointerException(); }" : ""));
+		printer.println("        if (value == null) { throw new NullPointerException(); }");
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("        " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
@@ -565,7 +565,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		printer.println("      " + variables.getDeprecation() + "public Builder set"
 				+ variables.getCapitalizedName() + "Bytes(");
 		printer.println("          com.google.protobuf.ByteString value) {");
-		printer.println("        " + (variables.isNullCheck() ? "if (value == null) { throw new NullPointerException(); }" : ""));
+		printer.println("        if (value == null) { throw new NullPointerException(); }");
 		if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
 		{
 			printer.println("        checkByteStringIsUtf8(value);");

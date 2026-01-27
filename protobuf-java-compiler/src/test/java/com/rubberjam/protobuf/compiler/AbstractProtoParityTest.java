@@ -10,7 +10,6 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Collections;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
@@ -30,9 +29,9 @@ public abstract class AbstractProtoParityTest
 
 		// Generate Java source using RuntimeJavaGenerator
 		GeneratedJavaFile generated = RuntimeJavaGenerator.generateJavaSource(
-			fileDescriptorProto,
-			Collections.emptyMap(), // No dependencies for these test files
-			"" // Empty parameter for default options
+				fileDescriptorProto,
+				Collections.emptyMap(), // No dependencies for these test files
+				"" // Empty parameter for default options
 		);
 
 		assertNotNull("Generated Java file should not be null", generated);
@@ -47,17 +46,19 @@ public abstract class AbstractProtoParityTest
 		String expectedTrimmed = expected.trim();
 
 		File expectedFile = new File("target/" + expectedJavaFileName + "_Expected.txt");
-		if (expectedFile.getParentFile() != null) {
+		if (expectedFile.getParentFile() != null)
+		{
 			expectedFile.getParentFile().mkdirs();
 		}
 		Files.writeString(expectedFile.toPath(), expectedTrimmed);
 
 		File actualFile = new File("target/" + expectedJavaFileName + "_Actual.txt");
-		if (actualFile.getParentFile() != null) {
+		if (actualFile.getParentFile() != null)
+		{
 			actualFile.getParentFile().mkdirs();
 		}
 		Files.writeString(actualFile.toPath(), actual);
-		
+
 		// Compare line by line for better error messages
 		String[] actualLines = actual.split("\n");
 		String[] expectedLines = expectedTrimmed.split("\n");
@@ -67,7 +68,7 @@ public abstract class AbstractProtoParityTest
 		{
 			String actualLine = i < actualLines.length ? actualLines[i] : null;
 			String expectedLine = i < expectedLines.length ? expectedLines[i] : null;
-			
+
 			if (actualLine == null)
 			{
 				assertEquals("Line " + (i + 1) + ": Expected line missing in generated code", expectedLine, actualLine);
@@ -132,12 +133,12 @@ public abstract class AbstractProtoParityTest
 		{
 			// Try as resource
 			try (InputStream stream = AbstractProtoParityTest.class.getClassLoader()
-				.getResourceAsStream("expected/java/" + fileName))
+					.getResourceAsStream("expected/java/" + fileName))
 			{
 				if (stream != null)
 				{
 					try (BufferedReader reader = new BufferedReader(
-						new InputStreamReader(stream, StandardCharsets.UTF_8)))
+							new InputStreamReader(stream, StandardCharsets.UTF_8)))
 					{
 						return reader.lines().collect(Collectors.joining("\n"));
 					}
@@ -152,7 +153,7 @@ public abstract class AbstractProtoParityTest
 	}
 
 	protected FileDescriptorProto parseProtoFile(String fileName, String content)
-		throws Exception
+			throws Exception
 	{
 		FileDescriptorProto.Builder fileBuilder = FileDescriptorProto.newBuilder();
 		fileBuilder.setName(fileName);
@@ -171,15 +172,13 @@ public abstract class AbstractProtoParityTest
 			}
 		};
 
-		com.rubberjam.protobuf.compiler.Tokenizer tokenizer = 
-			new com.rubberjam.protobuf.compiler.Tokenizer(
+		com.rubberjam.protobuf.compiler.Tokenizer tokenizer = new com.rubberjam.protobuf.compiler.Tokenizer(
 				new java.io.StringReader(content), errorCollector);
-		com.rubberjam.protobuf.compiler.Parser parser = 
-			new com.rubberjam.protobuf.compiler.Parser(
+		com.rubberjam.protobuf.compiler.Parser parser = new com.rubberjam.protobuf.compiler.Parser(
 				errorCollector, new com.rubberjam.protobuf.compiler.SourceLocationTable());
-		
+
 		boolean parseSuccess = parser.parse(tokenizer, fileBuilder);
-		
+
 		if (!parseSuccess || !errors.isEmpty())
 		{
 			String errorMessage = "Error parsing proto file " + fileName;
@@ -193,7 +192,7 @@ public abstract class AbstractProtoParityTest
 			}
 			throw new com.rubberjam.protobuf.compiler.CompilationException(errorMessage);
 		}
-		
+
 		return fileBuilder.build();
 	}
 }
