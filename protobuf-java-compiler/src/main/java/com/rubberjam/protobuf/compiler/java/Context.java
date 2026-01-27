@@ -7,16 +7,16 @@
 
 package com.rubberjam.protobuf.compiler.java;
 
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
-import com.google.protobuf.Descriptors.OneofDescriptor;
-import com.google.protobuf.Syntax;
-import com.google.protobuf.DescriptorProtos.FileOptions;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.google.protobuf.DescriptorProtos.FileOptions;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.Descriptors.OneofDescriptor;
 
 /**
  * A context object holds the information that is shared among all code
