@@ -105,7 +105,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 
 		variables.setUnknown(
 				// Logic for unknown enum value support (check syntax)
-				com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor)
+				Helpers.supportUnknownEnumValue(descriptor)
 						? variables.getType() + ".UNRECOGNIZED"
 						: variables.getDefaultValue());
 	}
@@ -666,7 +666,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 
 	private boolean supportUnknownEnumValue(FieldDescriptor descriptor)
 	{
-		return com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor);
+		return Helpers.supportUnknownEnumValue(descriptor);
 	}
 
 	public static class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator
@@ -734,7 +734,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			variables.setDefaultValue( variables.getType() + "."
 					+ descriptor.getEnumType().getValues().get(0).getName());
 			variables.setUnknown(
-					com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor)
+					Helpers.supportUnknownEnumValue(descriptor)
 							? variables.getType() + ".UNRECOGNIZED"
 							: variables.getDefaultValue());
 		}
@@ -803,7 +803,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 							false,
 							false));
 			printer.println("    " + variables.getType() + " get" + variables.getCapitalizedName() + "(int index);");
-			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			if (Helpers.supportUnknownEnumValue(descriptor))
 			{
 				Helpers.writeDocComment(
 						printer,
@@ -902,7 +902,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      return " + variables.getName() + "_converter_.convert(" + variables.getName() + "_.getInt(index));");
 			printer.println("    }");
 
-			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			if (Helpers.supportUnknownEnumValue(descriptor))
 			{
 				Helpers.writeDocComment(
 						printer,
@@ -1085,7 +1085,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        return this;");
 			printer.println("      }");
 
-			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			if (Helpers.supportUnknownEnumValue(descriptor))
 			{
 				Helpers.writeDocComment(
 						printer,
@@ -1219,7 +1219,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuilderParsingCode(PrintWriter printer)
 		{
-			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			if (Helpers.supportUnknownEnumValue(descriptor))
 			{
 				printer.println("                int tmpRaw = input.readEnum();");
 				printer.println("                ensure" + variables.getCapitalizedName() + "IsMutable();");
@@ -1247,7 +1247,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 			printer.println("                ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("                while (input.getBytesUntilLimit() > 0) {");
 			printer.println("                  int tmpRaw = input.readEnum();");
-			if (com.google.protobuf.InternalHelpers.supportUnknownEnumValue(descriptor))
+			if (Helpers.supportUnknownEnumValue(descriptor))
 			{
 				printer.println("                  " + variables.getRepeatedAdd() + "(tmpRaw);");
 			}
