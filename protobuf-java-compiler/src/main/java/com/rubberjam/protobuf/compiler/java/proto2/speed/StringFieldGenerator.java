@@ -75,7 +75,6 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		variables.setWriteString( "com.google.protobuf.GeneratedMessage.writeString");
 		variables.setComputeStringSize( "com.google.protobuf.GeneratedMessage.computeStringSize");
 		variables.setDeprecation( descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
-		variables.setOnChanged( "onChanged();");
 
 		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
@@ -485,7 +484,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.getName() + "_ = value;");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
 		}
-		printer.println("        " + variables.getOnChanged());
+		printer.println("        " + "onChanged();");
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -507,7 +506,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        if (" + variables.getIsFieldPresentMessage() + ") {");
 			printer.println("          " + variables.getOneofCaseVariable() + " = 0;");
 			printer.println("          " + variables.getOneofFieldVariable() + " = null;");
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        }");
 		}
 		else
@@ -515,7 +514,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.getName() + "_ = getDefaultInstance().get"
 					+ variables.getCapitalizedName() + "();");
 			printer.println("        " + variables.getClearHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return this;");
 		printer.println("      }");
@@ -545,7 +544,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.getName() + "_ = value;");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
 		}
-		printer.println("        " + variables.getOnChanged());
+		printer.println("        " + "onChanged();");
 		printer.println("        return this;");
 		printer.println("      }");
 	}
@@ -580,7 +579,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("            " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
 			printer.println("            " + variables.getOneofFieldVariable() + " = other." + variables.getOneofFieldVariable() + ";");
-			printer.println("            " + variables.getOnChanged());
+			printer.println("            " + "onChanged();");
 		}
 		else
 		{
@@ -589,7 +588,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 				printer.println("        if (other.has" + variables.getCapitalizedName() + "()) {");
 				printer.println("          " + variables.getName() + "_ = other." + variables.getName() + "_;");
 				printer.println("          " + variables.getSetHasFieldBitBuilder());
-				printer.println("          " + variables.getOnChanged());
+				printer.println("          " + "onChanged();");
 				printer.println("        }");
 			}
 			else
@@ -597,7 +596,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 				printer.println("        if (!other.get" + variables.getCapitalizedName() + "().isEmpty()) {");
 				printer.println("          " + variables.getName() + "_ = other." + variables.getName() + "_;");
 				printer.println("          " + variables.getSetHasFieldBitBuilder());
-				printer.println("          " + variables.getOnChanged());
+				printer.println("          " + "onChanged();");
 				printer.println("        }");
 			}
 		}
@@ -784,7 +783,6 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			variables.setGetHasFieldBitFromLocal( Helpers.generateGetBitFromLocal(builderBitIndex));
 			variables.setSetHasFieldBitBuilder( Helpers.generateSetBit(builderBitIndex) + ";");
 			variables.setClearHasFieldBitBuilder( Helpers.generateClearBit(builderBitIndex) + ";");
-			variables.setOnChanged( "onChanged();");
 		}
 
 		@Override
@@ -1026,7 +1024,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getName() + "_.set(index, value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 			Helpers.writeDocComment(
@@ -1046,7 +1044,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getName() + "_.add(value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 			Helpers.writeDocComment(
@@ -1066,7 +1064,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.AbstractMessageLite.Builder.addAll(");
 			printer.println("            values, " + variables.getName() + "_);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 			Helpers.writeDocComment(
@@ -1084,7 +1082,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.getName() + "_ =");
 			printer.println("          " + variables.getEmptyList() + ";");
 			printer.println("        " + variables.getClearHasFieldBitBuilder() + ";");
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 			Helpers.writeDocComment(
@@ -1104,7 +1102,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getName() + "_.add(value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 		}

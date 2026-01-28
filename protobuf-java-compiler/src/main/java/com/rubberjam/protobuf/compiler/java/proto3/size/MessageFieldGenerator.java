@@ -67,7 +67,6 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		variables.setGroupOrMessage(
 				descriptor.getType() == FieldDescriptor.Type.GROUP ? "Group" : "Message");
 		variables.setDeprecation( descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
-		variables.setOnChanged( "onChanged();");
 		variables.setGetParser( "parser()");
 
 		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
@@ -346,7 +345,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("            throw new NullPointerException();");
 			printer.println("          }");
 			printer.println("          " + variables.getOneofFieldVariable() + " = value;");
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        } else {");
 			printer.println("          " + variables.getName() + "Builder_.setMessage(value);");
 			printer.println("        }");
@@ -363,7 +362,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          " + variables.getName() + "Builder_.setMessage(value);");
 			printer.println("        }");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return this;");
 		printer.println("      }");
@@ -383,7 +382,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("        if (" + variables.getName() + "Builder_ == null) {");
 			printer.println("          " + variables.getOneofFieldVariable() + " = builderForValue.build();");
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        } else {");
 			printer.println("          " + variables.getName() + "Builder_.setMessage(builderForValue.build());");
 			printer.println("        }");
@@ -397,7 +396,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          " + variables.getName() + "Builder_.setMessage(builderForValue.build());");
 			printer.println("        }");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return this;");
 		printer.println("      }");
@@ -424,7 +423,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          } else {");
 			printer.println("            " + variables.getOneofFieldVariable() + " = value;");
 			printer.println("          }");
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        } else {");
 			printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
 			printer.println("            " + variables.getName() + "Builder_.mergeFrom(value);");
@@ -450,7 +449,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        }");
 			printer.println("        if (" + variables.getName() + "_ != null) {");
 			printer.println("          " + variables.getSetHasFieldBitBuilder());
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        }");
 		}
 		printer.println("        return this;");
@@ -472,7 +471,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
 			printer.println("            " + variables.getOneofCaseVariable() + " = 0;");
 			printer.println("            " + variables.getOneofFieldVariable() + " = null;");
-			printer.println("            " + variables.getOnChanged());
+			printer.println("            " + "onChanged();");
 			printer.println("          }");
 			printer.println("        } else {");
 			printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
@@ -490,7 +489,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 			printer.println("          " + variables.getName() + "Builder_.dispose();");
 			printer.println("          " + variables.getName() + "Builder_ = null;");
 			printer.println("        }");
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return this;");
 		printer.println("      }");
@@ -508,7 +507,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		if (!isRealOneof)
 		{
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return internalGet" + variables.getCapitalizedName()
 				+ "FieldBuilder().getBuilder();");
@@ -592,7 +591,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 		if (isRealOneof)
 		{
 			printer.println("        " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return " + variables.getName() + "Builder_;");
 		printer.println("      }");
