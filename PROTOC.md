@@ -426,3 +426,14 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
     *   It must also recursively check if **embedded messages** (singular, repeated, or map values) are initialized by calling their `isInitialized()` method.
     *   A recursive helper `hasRequiredFields` (handling cycles via `alreadySeen` set) is needed to determine if an embedded message type needs this check.
     *   This ensures that `isInitialized()` correctly reflects the status of the entire message tree, matching `protoc` behavior for Proto2 required fields.
+
+*   **Proto3 Enum Default Comparison**: In `writeTo`, implicit Proto3 enum fields are compared against the default enum value's number (e.g., `field_ != Default.getNumber()`), not the raw integer 0, to match expected output logic.
+*   **Proto3 String Parsing**: Repeated string fields and builder setters in Proto3 must use `input.readStringRequireUtf8()` instead of `readBytes()`.
+*   **Enum Oneof Parsing**: For oneof enum fields in the builder, if unknown values are supported (Proto3), the parsing logic uses an intermediate `int rawValue = input.readEnum()` before assigning it to the oneof field, matching `protoc` output structure.
+*   **Map Field Enum Values**: For Map fields where the value type is an Enum (and unknown values are supported), the generated code for serialization size and parsing treats the value as `java.lang.Integer` (using `MapEntry<Key, Integer>`) rather than the Enum type itself.
+*   **Packed Field Tag Generation**: When writing packed repeated fields, the tag is generated explicitly using `(number << 3) | WireFormat.WIRETYPE_LENGTH_DELIMITED`.
+*   **Packed Field Size Check**: The check for writing packed fields or their size (`if (list.size() > 0)`) uses the public getter method (`getList()`) rather than accessing the internal list directly, likely to ensure immutability/initialization checks are triggered or to match `protoc` style.
+*   **Packed Field Size Formatting**: The `getSerializedSize` block for packed fields has a specific formatting quirk where the closing brace `}` and the memoized size assignment are printed on separate lines but without a blank line between them, or specifically structured.
+*   **WriteTo Serialized Size Call**: If a message contains packed fields, the `writeTo` method starts with a call to `getSerializedSize()` to ensure cached sizes are computed before writing.
+*   **Oneof Enum Equality/HashCode**: For oneof enum fields, `equals` and `hashCode` methods use the integer value accessor (`get...Value()`) rather than the Enum object accessor, ensuring correct behavior for unknown enum values in Proto3.
+*   **HashCode Indentation**: The indentation for `hashCode` calculation lines differs based on field presence (6 spaces for implicit Proto3 fields vs 8 spaces inside `if (has...)` block).

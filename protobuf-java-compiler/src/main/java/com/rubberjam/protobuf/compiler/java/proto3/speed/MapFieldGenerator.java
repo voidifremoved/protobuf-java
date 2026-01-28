@@ -1301,7 +1301,12 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-		printer.println("                com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
+		String typeParams = variables.getTypeParameters();
+		if (StringUtils.getJavaType(valueField) == JavaType.ENUM && Helpers.supportUnknownEnumValue(valueField))
+		{
+			typeParams = variables.getBoxedKeyType() + ", java.lang.Integer";
+		}
+		printer.println("                com.google.protobuf.MapEntry<" + typeParams + ">");
 		printer.println("                " + variables.getName() + "__ = input.readMessage(");
 		printer.println("                    " + variables.getCapitalizedName()
 				+ "DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);");
@@ -1323,9 +1328,14 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-		printer.println("      for (java.util.Map.Entry<" + variables.getTypeParameters() + "> entry");
+		String typeParams = variables.getTypeParameters();
+		if (StringUtils.getJavaType(valueField) == JavaType.ENUM && Helpers.supportUnknownEnumValue(valueField))
+		{
+			typeParams = variables.getBoxedKeyType() + ", java.lang.Integer";
+		}
+		printer.println("      for (java.util.Map.Entry<" + typeParams + "> entry");
 		printer.println("           : internalGet" + variables.getCapitalizedName() + "().getMap().entrySet()) {");
-		printer.println("        com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
+		printer.println("        com.google.protobuf.MapEntry<" + typeParams + ">");
 		printer.println("        " + variables.getName() + "__ = " + variables.getCapitalizedName()
 				+ "DefaultEntryHolder.defaultEntry.newBuilderForType()");
 		printer.println("            .setKey(entry.getKey())");

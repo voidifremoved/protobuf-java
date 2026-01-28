@@ -500,9 +500,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
+		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		printer.println("      if (" + variables.getIsFieldPresentMessage() + ") {");
 		String valueVar = variables.getName() + "_";
-		if (descriptor.getContainingOneof() != null)
+		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			if (variables.getType().equals(variables.getBoxedType()))
 			{
@@ -631,31 +632,32 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		{
 			printer.println("      if (has" + variables.getCapitalizedName() + "()) {");
 		}
-		printer.println("        hash = (37 * hash) + " + variables.getConstantName() + ";");
+		String indent = descriptor.hasPresence() ? "        " : "      ";
+		printer.println(indent + "hash = (37 * hash) + " + variables.getConstantName() + ";");
 		switch (StringUtils.getJavaType(descriptor))
 		{
 		case INT:
-			printer.println("        hash = (53 * hash) + get" + variables.getCapitalizedName() + "();");
+			printer.println(indent + "hash = (53 * hash) + get" + variables.getCapitalizedName() + "();");
 			break;
 		case LONG:
-			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
-			printer.println("            get" + variables.getCapitalizedName() + "());");
+			printer.println(indent + "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println(indent + "    get" + variables.getCapitalizedName() + "());");
 			break;
 		case BOOLEAN:
-			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(");
-			printer.println("            get" + variables.getCapitalizedName() + "());");
+			printer.println(indent + "hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(");
+			printer.println(indent + "    get" + variables.getCapitalizedName() + "());");
 			break;
 		case FLOAT:
-			printer.println("        hash = (53 * hash) + java.lang.Float.floatToIntBits(");
-			printer.println("            get" + variables.getCapitalizedName() + "());");
+			printer.println(indent + "hash = (53 * hash) + java.lang.Float.floatToIntBits(");
+			printer.println(indent + "    get" + variables.getCapitalizedName() + "());");
 			break;
 		case DOUBLE:
-			printer.println("        hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
-			printer.println("            java.lang.Double.doubleToLongBits(get" + variables.getCapitalizedName() + "()));");
+			printer.println(indent + "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(");
+			printer.println(indent + "    java.lang.Double.doubleToLongBits(get" + variables.getCapitalizedName() + "()));");
 			break;
 		case STRING:
 		case BYTES:
-			printer.println("        hash = (53 * hash) + get" + variables.getCapitalizedName() + "().hashCode();");
+			printer.println(indent + "hash = (53 * hash) + get" + variables.getCapitalizedName() + "().hashCode();");
 			break;
 		default:
 			break;
@@ -1282,7 +1284,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			if (descriptor.isPacked())
 			{
 				printer.println("      if (get" + variables.getCapitalizedName() + "List().size() > 0) {");
-				printer.println("        output.writeUInt32NoTag(" + Helpers.getTag(descriptor) + ");");
+				printer.println("        output.writeUInt32NoTag("
+						+ ((descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED) + ");");
 				printer.println("        output.writeUInt32NoTag(" + variables.getName() + "MemoizedSerializedSize);");
 				printer.println("      }");
 				printer.println("      for (int i = 0; i < " + variables.getName() + "_.size(); i++) {");
