@@ -437,3 +437,45 @@ The C# generator is structurally flatter. It generates `sealed partial` classes 
 *   **WriteTo Serialized Size Call**: If a message contains packed fields, the `writeTo` method starts with a call to `getSerializedSize()` to ensure cached sizes are computed before writing.
 *   **Oneof Enum Equality/HashCode**: For oneof enum fields, `equals` and `hashCode` methods use the integer value accessor (`get...Value()`) rather than the Enum object accessor, ensuring correct behavior for unknown enum values in Proto3.
 *   **HashCode Indentation**: The indentation for `hashCode` calculation lines differs based on field presence (6 spaces for implicit Proto3 fields vs 8 spaces inside `if (has...)` block).
+
+## Differences
+
+### Presence
+*   **Proto2**: supports optional natively, the wrapper types were recommended but should be avoided in new applications.
+*   **Proto3**: originally did not support presence tracking for primitive fields. As of 2020, proto3 supports both optional fields which have has_foo() methods and "singular" fields, which do not. Be sure to use optional if your protocol requires knowledge of field presence.
+
+### Default values
+*   Proto3 does not permit custom default values. All fields in proto3 have consistent zero defaults.
+
+### Required fields
+*   Proto3 removes support for required fields.
+
+### Enums Defaults
+*   **Proto3**: enums require an entry with the value 0 to act as the default value.
+*   **Proto2**: enums use the first syntactic entry in the enum declaration as the default value where it is otherwise unspecified.
+
+### Enums Unrecognized
+In languages with closed enums (ex. Java):
+*   All proto3 enums generate an UNRECOGNIZED entry to accommodate unknown enum values. proto3 setters prohibit UNRECOGNIZED values, so a simple copy of an enum field from one proto to another will crash if the enum field value is UNRECOGNIZED.
+*   Proto2 enums never represent unknown enum values, but instead place them in the unknown field set. A proto2 enum can have confusing behavior (ex. repeated fields report incorrect counts and are reordered in reserialization when an unknown value is encountered).
+
+### Enums cross reference
+*   A proto2 message can reference a proto3 enum or message
+*   A proto3 message cannot reference a proto2 enum due to differences in semantics.
+
+### Extensions / Any
+*   Proto3 removes support for extensions; instead use Any fields to represent untyped fields. The extensions mechanism is wire compatible with a normal field declaration whereas Any is not, so a field cannot be changed to an Any as the schema evolves, while it could be changed to an extension in proto2.
+*   Any is significantly more verbose on the wire as it uses a string based type_url as a key while extensions use a varint encoded field number.
+
+**Parsed eagerly or lazily:**
+*   Extensions (other than MessageSet) are parsed eagerly (and sometimes selectively if you provide a custom ExtensionRegistry)
+*   Any is always parsed lazily. This delta in performance profile may be important for some applications (e.g. an Android app may prefer to parse messages off the UI thread).
+
+### String field validation
+Protocol Buffer string fields have always been documented to be UTF-8 encoded.
+*   Proto2 does not validate that inbound / outbound bytes are indeed UTF-8 encoded.
+*   Proto3 validates that all string fields are appropriately UTF-8 encoded during parsing and in byte-oriented setters.
+This validation means that parsing string fields in proto3 is more CPU intensive and parse failures are possible when passed an improperly structured string field. The flipside is that eager validation ensures that the problem can be identified quickly and resolved at the source.
+
+### String field parsing
+*   In Java, proto3 parses String fields as UTF-8 eagerly whereas proto2 parses them lazily.
