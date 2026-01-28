@@ -248,18 +248,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.ByteString bs = ");
 			printer.println("            (com.google.protobuf.ByteString) ref;");
 			printer.println("        java.lang.String s = bs.toStringUtf8();");
-			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-			{
-				printer.println("        if (" + variables.getIsFieldPresentMessage() + ") {");
-				printer.println("          " + variables.getOneofFieldVariable() + " = s;");
-				printer.println("        }");
-			}
-			else
-			{
-				printer.println("        if (bs.isValidUtf8() && (" + variables.getIsFieldPresentMessage() + ")) {");
-				printer.println("          " + variables.getOneofFieldVariable() + " = s;");
-				printer.println("        }");
-			}
+			printer.println("        if (" + variables.getIsFieldPresentMessage() + ") {");
+			printer.println("          " + variables.getOneofFieldVariable() + " = s;");
+			printer.println("        }");
 			printer.println("        return s;");
 			printer.println("      }");
 		}
@@ -272,16 +263,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.ByteString bs = ");
 			printer.println("            (com.google.protobuf.ByteString) ref;");
 			printer.println("        java.lang.String s = bs.toStringUtf8();");
-			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-			{
-				printer.println("        " + variables.getName() + "_ = s;");
-			}
-			else
-			{
-				printer.println("        if (bs.isValidUtf8()) {");
-				printer.println("          " + variables.getName() + "_ = s;");
-				printer.println("        }");
-			}
+			printer.println("        " + variables.getName() + "_ = s;");
 			printer.println("        return s;");
 			printer.println("      }");
 		}
@@ -409,33 +391,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		printer.println("          java.lang.String s = bs.toStringUtf8();");
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-			{
-				printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
-				printer.println("            " + variables.getOneofFieldVariable() + " = s;");
-				printer.println("          }");
-			}
-			else
-			{
-				printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
-				printer.println("            if (bs.isValidUtf8()) {");
-				printer.println("              " + variables.getOneofFieldVariable() + " = s;");
-				printer.println("            }");
-				printer.println("          }");
-			}
+			printer.println("          if (" + variables.getIsFieldPresentMessage() + ") {");
+			printer.println("            " + variables.getOneofFieldVariable() + " = s;");
+			printer.println("          }");
 		}
 		else
 		{
-			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-			{
-				printer.println("          " + variables.getName() + "_ = s;");
-			}
-			else
-			{
-				printer.println("          if (bs.isValidUtf8()) {");
-				printer.println("            " + variables.getName() + "_ = s;");
-				printer.println("          }");
-			}
+			printer.println("          " + variables.getName() + "_ = s;");
 		}
 		printer.println("          return s;");
 		printer.println("        } else {");
@@ -567,10 +529,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 				+ variables.getCapitalizedName() + "Bytes(");
 		printer.println("          com.google.protobuf.ByteString value) {");
 		printer.println("        if (value == null) { throw new NullPointerException(); }");
-		if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-		{
-			printer.println("        checkByteStringIsUtf8(value);");
-		}
+		printer.println("        checkByteStringIsUtf8(value);");
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
 			printer.println("        " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
@@ -1137,10 +1096,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public Builder add" + variables.getCapitalizedName() + "Bytes(");
 			printer.println("          com.google.protobuf.ByteString value) {");
 			printer.println("        if (value == null) { throw new NullPointerException(); }");
-			if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-			{
-				printer.println("        checkByteStringIsUtf8(value);");
-			}
+			printer.println("        checkByteStringIsUtf8(value);");
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getName() + "_.add(value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());

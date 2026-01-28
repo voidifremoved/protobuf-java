@@ -283,7 +283,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		printer.println("    " + variables.getValueType() + " get" + variables.getCapitalizedName() + "OrThrow(");
 		printer.println("        " + variables.getKeyType() + " key);");
 
-		if (isEnum && !context.isProto2())
+		if (isEnum)
 		{
 			printer.println("    /**");
 			printer.println("     * Use {@link #get" + variables.getCapitalizedName() + "ValueMap()} instead.");
@@ -367,15 +367,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        java.lang.Integer, " + valueType + "> " + variables.getName() + "ValueConverter =");
 			printer.println("            com.google.protobuf.Internal.MapAdapter.newEnumConverter(");
 			printer.println("                " + valueType + ".internalGetValueMap(),");
-			if (context.isProto2())
-			{
-				printer.println("                " + valueType + ".UNKNOWN);");
-			}
-			else
-			{
-				printer.println("                " + valueType + ".UNRECOGNIZED);");
-
-			}
+			printer.println("                " + valueType + ".UNRECOGNIZED);");
 			printer.println("    private static final java.util.Map<" + variables.getTypeParameters() + ">");
 			printer.println("    internalGetAdapted" + variables.getCapitalizedName() + "Map(");
 			printer.println("        java.util.Map<" + variables.getWireTypeParameters() + "> map) {");
@@ -558,7 +550,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 		printer.println("    }");
 
-		if (isEnum && !context.isProto2())
+		if (isEnum)
 		{
 			printer.println("    /**");
 			printer.println("     * Use {@link #getStringToEnumValueMap()} instead.");
@@ -937,7 +929,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 		}
 		printer.println("      }");
 
-		if (isEnum && !context.isProto2())
+		if (isEnum)
 		{
 			printer.println("      /**");
 			printer.println("       * Use {@link #get" + variables.getCapitalizedName() + "ValueMap()} instead.");
@@ -1309,79 +1301,31 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateBuilderParsingCode(PrintWriter printer)
 	{
-
-		if (isEnum && context.isProto2())
+		printer.println("                com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
+		printer.println("                " + variables.getName() + "__ = input.readMessage(");
+		printer.println("                    " + variables.getCapitalizedName()
+				+ "DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);");
+		if (variables.isUseBuildMethod())
 		{
-			printer.println("                com.google.protobuf.ByteString bytes = input.readBytes();");
-			printer.println("                com.google.protobuf.MapEntry<" + variables.getKeyType() + ", java.lang.Integer>");
-			printer.println("                " + variables.getName() + "__ = " + variables.getCapitalizedName()
-					+ "DefaultEntryHolder.defaultEntry.getParserForType().parseFrom(bytes);");
-			printer.println("                if (" + variables.getValueType() + ".forNumber(" + variables.getName()
-					+ "__.getValue()) == null) {");
-			printer.println("                  mergeUnknownLengthDelimitedField(3, bytes);");
-			printer.println("                } else {");
-
-			if (variables.isUseBuildMethod())
-			{
-				printer.println(
-						"                  internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap().put(");
-			}
-			else
-			{
-				printer.println(
-						"                  internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap().put(");
-			}
 			printer.println(
-					"                      " + variables.getName() + "__.getKey(), " + variables.getName() + "__.getValue());");
-			printer.println("                  " + variables.getSetHasFieldBitBuilder());
-
-			printer.println("                }");
+					"                internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap().put(");
 		}
 		else
 		{
-			printer.println("                com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
-			printer.println("                " + variables.getName() + "__ = input.readMessage(");
-			printer.println("                    " + variables.getCapitalizedName()
-					+ "DefaultEntryHolder.defaultEntry.getParserForType(), extensionRegistry);");
-			if (variables.isUseBuildMethod())
-			{
-				printer.println(
-						"                internalGetMutable" + variables.getCapitalizedName() + "().ensureBuilderMap().put(");
-			}
-			else
-			{
-				printer.println(
-						"                internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap().put(");
-			}
 			printer.println(
-					"                    " + variables.getName() + "__.getKey(), " + variables.getName() + "__.getValue());");
-			printer.println("                " + variables.getSetHasFieldBitBuilder());
+					"                internalGetMutable" + variables.getCapitalizedName() + "().getMutableMap().put(");
 		}
+		printer.println(
+				"                    " + variables.getName() + "__.getKey(), " + variables.getName() + "__.getValue());");
+		printer.println("                " + variables.getSetHasFieldBitBuilder());
 	}
 
 	@Override
 	public void generateSerializedSizeCode(PrintWriter printer)
 	{
-
-		if (isEnum && context.isProto2())
-		{
-			printer.println("      for (java.util.Map.Entry<" + variables.getKeyType() + ", java.lang.Integer> entry");
-
-		}
-		else
-		{
-			printer.println("      for (java.util.Map.Entry<" + variables.getTypeParameters() + "> entry");
-		}
+		printer.println("      for (java.util.Map.Entry<" + variables.getTypeParameters() + "> entry");
 		printer.println("           : internalGet" + variables.getCapitalizedName() + "().getMap().entrySet()) {");
-		if (isEnum && context.isProto2())
-		{
-			printer.println("        com.google.protobuf.MapEntry<" + variables.getKeyType() + ", java.lang.Integer>");
-		}
-		else
-		{
-
-			printer.println("        com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
-		}
+		printer.println("        com.google.protobuf.MapEntry<" + variables.getTypeParameters() + ">");
 		printer.println("        " + variables.getName() + "__ = " + variables.getCapitalizedName()
 				+ "DefaultEntryHolder.defaultEntry.newBuilderForType()");
 		printer.println("            .setKey(entry.getKey())");

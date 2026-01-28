@@ -14,7 +14,7 @@ public class JavaCodeGenerator extends CodeGenerator
 	public void generate(FileDescriptor file, String parameter, GeneratorContext generatorContext)
 			throws GenerationException
 	{
-		generate(file, null, parameter, generatorContext);
+		generate(file, file.toProto(), parameter, generatorContext);
 	}
 
 	public void generate(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, String parameter, GeneratorContext generatorContext)
