@@ -53,7 +53,6 @@ public class ContextVariables {
     private String keyWireType;
     private String nameMakeImmutable;
     private boolean nullCheck;
-    private String onChanged;
     private String oneofCaseVariable;
     private String oneofFieldVariable;
     private String repeatedAdd;
@@ -67,7 +66,6 @@ public class ContextVariables {
     private String tagSize;
     private String type;
     private String typeParameters;
-    private String unknown;
     private boolean useBuildMethod;
     private String valueBuilderType;
     private String valueDefaultValue;
@@ -235,9 +233,6 @@ public class ContextVariables {
     public boolean isNullCheck() { return nullCheck; }
     public void setNullCheck(boolean nullCheck) { this.nullCheck = nullCheck; }
 
-    public String getOnChanged() { return onChanged; }
-    public void setOnChanged(String onChanged) { this.onChanged = onChanged; }
-
     public String getOneofCaseVariable() { return oneofCaseVariable; }
     public void setOneofCaseVariable(String oneofCaseVariable) { this.oneofCaseVariable = oneofCaseVariable; }
 
@@ -276,9 +271,6 @@ public class ContextVariables {
 
     public String getTypeParameters() { return typeParameters; }
     public void setTypeParameters(String typeParameters) { this.typeParameters = typeParameters; }
-
-    public String getUnknown() { return unknown; }
-    public void setUnknown(String unknown) { this.unknown = unknown; }
 
     public boolean isUseBuildMethod() { return useBuildMethod; }
     public void setUseBuildMethod(boolean useBuildMethod) { this.useBuildMethod = useBuildMethod; }

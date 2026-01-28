@@ -86,7 +86,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 		}
 
 		variables.setDeprecation( descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
-		variables.setOnChanged( "onChanged();");
 
 		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
@@ -377,7 +376,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        " + variables.getName() + "_ = value;");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
 		}
-		printer.println("        " + variables.getOnChanged());
+		printer.println("        " + "onChanged();");
 		printer.println("        return this;");
 		printer.println("      }");
 
@@ -399,7 +398,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        if (" + variables.getIsFieldPresentMessage() + ") {");
 			printer.println("          " + variables.getOneofCaseVariable() + " = 0;");
 			printer.println("          " + variables.getOneofFieldVariable() + " = null;");
-			printer.println("          " + variables.getOnChanged());
+			printer.println("          " + "onChanged();");
 			printer.println("        }");
 		}
 		else
@@ -414,7 +413,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			{
 				printer.println("        " + variables.getName() + "_ = " + variables.getDefaultValue() + ";");
 			}
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 		}
 		printer.println("        return this;");
 		printer.println("      }");
@@ -851,7 +850,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			variables.setClearHasFieldBitBuilder( Helpers.generateClearBit(builderBitIndex) + ";");
 			variables.setCapitalizedType( Helpers.getCapitalizedType(descriptor));
 			variables.setCapitalizedJavaType( StringUtils.toProperCase(variables.getType()));
-			variables.setOnChanged( "onChanged();");
 		}
 
 		@Override
@@ -1068,7 +1066,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getRepeatedSet() + "(index, value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 
@@ -1088,7 +1086,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        ensure" + variables.getCapitalizedName() + "IsMutable();");
 			printer.println("        " + variables.getRepeatedAdd() + "(value);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 
@@ -1109,7 +1107,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("        com.google.protobuf.AbstractMessageLite.Builder.addAll(");
 			printer.println("            values, " + variables.getName() + "_);");
 			printer.println("        " + variables.getSetHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 
@@ -1127,7 +1125,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      public Builder clear" + variables.getCapitalizedName() + "() {");
 			printer.println("        " + variables.getName() + "_ = " + variables.getEmptyList() + ";");
 			printer.println("        " + variables.getClearHasFieldBitBuilder());
-			printer.println("        " + variables.getOnChanged());
+			printer.println("        " + "onChanged();");
 			printer.println("        return this;");
 			printer.println("      }");
 		}
