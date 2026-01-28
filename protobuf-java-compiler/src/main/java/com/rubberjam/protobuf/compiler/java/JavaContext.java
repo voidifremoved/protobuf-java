@@ -28,17 +28,19 @@ public final class JavaContext extends AbstractContext<JavaCompilerOptions>
 
 	private final ClassNameResolver nameResolver;
 	private final JavaCompilerOptions options;
+	private final boolean isProto2;
 
-	public JavaContext(FileDescriptor file, JavaCompilerOptions options)
+	public JavaContext(FileDescriptor file, JavaCompilerOptions options, boolean isProto2)
 	{
-		this(file, null, options);
+		this(file, null, options, isProto2);
 	}
 
-	public JavaContext(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, JavaCompilerOptions options)
+	public JavaContext(FileDescriptor file, com.google.protobuf.DescriptorProtos.FileDescriptorProto sourceProto, JavaCompilerOptions options, boolean isProto2)
 	{
 		super(sourceProto);
 		this.nameResolver = new ClassNameResolver();
 		this.options = options;
+		this.isProto2 = isProto2;
 		initializeFieldGeneratorInfo(file);
 	}
 
@@ -106,17 +108,12 @@ public final class JavaContext extends AbstractContext<JavaCompilerOptions>
 		}
 		return false;
 	}
-	
-	public boolean isProto2()
-	{
-		return "proto2".equals(getSourceProto().getSyntax());
-	}
 
 	private boolean isEnumFieldConflicting(
 			FieldDescriptor field1, String name1, FieldDescriptor field2, String name2)
 	{
 		if (field1.getType() == FieldDescriptor.Type.ENUM
-				&& !isProto2())
+				&& !isProto2)
 		{
 			if (name2.equals(name1 + "Value"))
 			{
