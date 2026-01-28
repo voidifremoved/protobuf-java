@@ -101,20 +101,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 
 		// Add UNRECOGNIZED for proto3/open enums (before semicolon)
 		// Match C++ behavior: UNRECOGNIZED comes before semicolon
-		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
-		{
-			// Generate JavaDoc for UNRECOGNIZED manually (no EnumValueDescriptor exists for it)
-			printer.print(valueIndent + "UNRECOGNIZED(");
-			if (ordinalIsIndex)
-			{
-				printer.print("-1");
-			}
-			else
-			{
-				printer.print("-1, -1");
-			}
-			printer.println("),");
-		}
 
 		// Semicolon on its own line (match C++ format)
 		printer.println(valueIndent + ";");
@@ -155,13 +141,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 
 		// Standard methods
 		printer.println(valueIndent + "public final int getNumber() {");
-		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
-		{
-			printer.println(valueIndent + "  if (this == UNRECOGNIZED) {");
-			printer.println(valueIndent + "    throw new java.lang.IllegalArgumentException(");
-			printer.println(valueIndent + "        \"Can't get the number of an unknown enum value.\");");
-			printer.println(valueIndent + "  }");
-		}
 		printer.println(valueIndent + "  return value;");
 		printer.println(valueIndent + "}");
 		printer.println();
@@ -210,13 +189,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println(valueIndent + "public final com.google.protobuf.Descriptors.EnumValueDescriptor");
 		printer.println(valueIndent + "    getValueDescriptor() {");
 		// Simplified logic for proto3 UNRECOGNIZED check
-		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
-		{
-			printer.println(valueIndent + "  if (this == UNRECOGNIZED) {");
-			printer.println(valueIndent + "    throw new java.lang.IllegalStateException(");
-			printer.println(valueIndent + "        \"Can't get the descriptor of an unrecognized enum value.\");");
-			printer.println(valueIndent + "  }");
-		}
 		printer.println(valueIndent + "  return getDescriptor().getValues().get(ordinal());");
 		printer.println(valueIndent + "}");
 
@@ -267,12 +239,6 @@ public class ImmutableEnumGenerator extends EnumGenerator
 		printer.println(valueIndent + "    throw new java.lang.IllegalArgumentException(");
 		printer.println(valueIndent + "      \"EnumValueDescriptor is not for this type.\");");
 		printer.println(valueIndent + "  }");
-		if (!descriptor.getFile().toProto().getSyntax().equals("proto2"))
-		{
-			printer.println(valueIndent + "  if (desc.getIndex() == -1) {");
-			printer.println(valueIndent + "    return UNRECOGNIZED;");
-			printer.println(valueIndent + "  }");
-		}
 		printer.println(valueIndent + "  return VALUES[desc.getIndex()];");
 		printer.println(valueIndent + "}");
 		printer.println();
