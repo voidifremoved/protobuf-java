@@ -635,8 +635,8 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateOneofEqualsCode(PrintWriter printer)
 	{
-		printer.println("          if (!get" + variables.getCapitalizedName() + "()");
-		printer.println("              .equals(other.get" + variables.getCapitalizedName() + "())) return false;");
+		printer.println("          if (!get" + variables.getCapitalizedName() + "Value()");
+		printer.println("              != other.get" + variables.getCapitalizedName() + "Value()) return false;");
 	}
 
 	@Override

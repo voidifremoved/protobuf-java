@@ -779,10 +779,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator
 	@Override
 	public void generateHashCode(PrintWriter printer)
 	{
-		printer.println("      if (has" + variables.getCapitalizedName() + "()) {");
-		printer.println("        hash = (37 * hash) + " + variables.getConstantName() + ";");
-		printer.println("        hash = (53 * hash) + get" + variables.getCapitalizedName() + "().hashCode();");
-		printer.println("      }");
+		if (descriptor.hasPresence())
+		{
+			printer.println("      if (has" + variables.getCapitalizedName() + "()) {");
+			printer.println("        hash = (37 * hash) + " + variables.getConstantName() + ";");
+			printer.println("        hash = (53 * hash) + get" + variables.getCapitalizedName() + "().hashCode();");
+			printer.println("      }");
+		}
+		else
+		{
+			printer.println("      hash = (37 * hash) + " + variables.getConstantName() + ";");
+			printer.println("      hash = (53 * hash) + get" + variables.getCapitalizedName() + "().hashCode();");
+		}
 	}
 
 	@Override
