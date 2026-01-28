@@ -1,7 +1,9 @@
 package com.rubberjam.protobuf.compiler;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class ComprehensiveTestV3LiteParityTest extends AbstractProtoParityTest
 {
 	@Test

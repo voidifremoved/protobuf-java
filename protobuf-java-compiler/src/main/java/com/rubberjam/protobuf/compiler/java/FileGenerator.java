@@ -36,15 +36,35 @@ public class FileGenerator
 		this.className = nameResolver.getFileClassName(file, immutableApi);
 		this.javaPackage = nameResolver.getFileJavaPackage(file);
 
-		// TODO: Choose factory based on lite/full
-		if (context.enforceLite() || file.getOptions()
-				.getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.LITE_RUNTIME)
-		{
-			this.generatorFactory = new com.rubberjam.protobuf.compiler.java.lite.GeneratorFactory(context);
+		// TODO: Choose factory based on lite/full and proto 2 / 3
+		if (sourceProto.hasSyntax() && "proto2".equalsIgnoreCase(sourceProto.getSyntax()))
+		{			
+			if (context.enforceLite() || file.getOptions()
+					.getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.LITE_RUNTIME)
+			{
+				this.generatorFactory = new com.rubberjam.protobuf.compiler.java.proto2.lite.GeneratorFactory(context);
+			}
+			else
+			{
+				this.generatorFactory = new com.rubberjam.protobuf.compiler.java.proto2.speed.GeneratorFactory(context);
+			}
 		}
 		else
 		{
-			this.generatorFactory = new com.rubberjam.protobuf.compiler.java.full.GeneratorFactory(context);
+			if (context.enforceLite() || file.getOptions()
+					.getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.LITE_RUNTIME)
+			{
+				this.generatorFactory = new com.rubberjam.protobuf.compiler.java.proto3.lite.GeneratorFactory(context);
+			}
+			else if (file.getOptions()
+					.getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.CODE_SIZE)
+			{
+				this.generatorFactory = new com.rubberjam.protobuf.compiler.java.proto3.size.GeneratorFactory(context);
+			}
+			else
+			{
+				this.generatorFactory = new com.rubberjam.protobuf.compiler.java.proto3.speed.GeneratorFactory(context);
+			}
 		}
 
 		for (com.google.protobuf.Descriptors.Descriptor messageType : file.getMessageTypes())
