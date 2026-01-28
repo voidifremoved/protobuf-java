@@ -31,13 +31,16 @@ public class FileGenerator
 		this.sourceProto = sourceProto;
 		this.options = options;
 		this.immutableApi = immutableApi;
-		this.context = new JavaContext(file, sourceProto, options);
+
+		boolean isProto2 = sourceProto.hasSyntax() && "proto2".equalsIgnoreCase(sourceProto.getSyntax());
+
+		this.context = new JavaContext(file, sourceProto, options, isProto2);
 		this.nameResolver = context.getNameResolver();
 		this.className = nameResolver.getFileClassName(file, immutableApi);
 		this.javaPackage = nameResolver.getFileJavaPackage(file);
 
 		// TODO: Choose factory based on lite/full and proto 2 / 3
-		if (sourceProto.hasSyntax() && "proto2".equalsIgnoreCase(sourceProto.getSyntax()))
+		if (isProto2)
 		{			
 			if (context.enforceLite() || file.getOptions()
 					.getOptimizeFor() == com.google.protobuf.DescriptorProtos.FileOptions.OptimizeMode.LITE_RUNTIME)
