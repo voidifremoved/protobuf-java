@@ -1208,7 +1208,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator
 			printer.println("      }");
 		}
 
-		if (isEnum && !context.isProto2())
+		if (isEnum)
 		{
 			printer.println("      /**");
 			printer.println("       * Use alternate mutation accessors instead.");
