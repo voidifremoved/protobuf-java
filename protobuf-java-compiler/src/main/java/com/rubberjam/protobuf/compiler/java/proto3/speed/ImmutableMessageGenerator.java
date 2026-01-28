@@ -421,6 +421,14 @@ public class ImmutableMessageGenerator extends MessageGenerator
 			printer.println("    @java.lang.Override");
 			printer.println("    public void writeTo(com.google.protobuf.CodedOutputStream output)");
 			printer.println("                        throws java.io.IOException {");
+			for (com.google.protobuf.Descriptors.FieldDescriptor field : descriptor.getFields())
+			{
+				if (field.isPacked())
+				{
+					printer.println("      getSerializedSize();");
+					break;
+				}
+			}
 			if (descriptor.isExtendable())
 			{
 				printer.println("      com.google.protobuf.GeneratedMessage");

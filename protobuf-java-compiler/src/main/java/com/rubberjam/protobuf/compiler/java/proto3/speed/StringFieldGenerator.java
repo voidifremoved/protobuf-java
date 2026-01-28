@@ -620,13 +620,29 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		boolean isSynthetic = descriptor.toProto().hasProto3Optional() && descriptor.toProto().getProto3Optional();
 		if (descriptor.getContainingOneof() != null && !isSynthetic)
 		{
-			printer.println("                com.google.protobuf.ByteString bs = input.readBytes();");
-			printer.println("                " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
-			printer.println("                " + variables.getOneofFieldVariable() + " = bs;");
+			if (descriptor.getFile().toProto().getSyntax().equals("proto3"))
+			{
+				printer.println("                java.lang.String s = input.readStringRequireUtf8();");
+				printer.println("                " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
+				printer.println("                " + variables.getOneofFieldVariable() + " = s;");
+			}
+			else
+			{
+				printer.println("                com.google.protobuf.ByteString bs = input.readBytes();");
+				printer.println("                " + variables.getOneofCaseVariable() + " = " + variables.getNumber() + ";");
+				printer.println("                " + variables.getOneofFieldVariable() + " = bs;");
+			}
 		}
 		else
 		{
-			printer.println("                " + variables.getName() + "_ = input.readBytes();");
+			if (descriptor.getFile().toProto().getSyntax().equals("proto3"))
+			{
+				printer.println("                " + variables.getName() + "_ = input.readStringRequireUtf8();");
+			}
+			else
+			{
+				printer.println("                " + variables.getName() + "_ = input.readBytes();");
+			}
 			printer.println("                " + variables.getSetHasFieldBitBuilder());
 		}
 	}
@@ -1144,9 +1160,18 @@ public class StringFieldGenerator extends ImmutableFieldGenerator
 		@Override
 		public void generateBuilderParsingCode(PrintWriter printer)
 		{
-			printer.println("                com.google.protobuf.ByteString bs = input.readBytes();");
-			printer.println("                ensure" + variables.getCapitalizedName() + "IsMutable();");
-			printer.println("                " + variables.getName() + "_.add(bs);");
+			if (descriptor.getFile().toProto().getSyntax().equals("proto3"))
+			{
+				printer.println("                java.lang.String s = input.readStringRequireUtf8();");
+				printer.println("                ensure" + variables.getCapitalizedName() + "IsMutable();");
+				printer.println("                " + variables.getName() + "_.add(s);");
+			}
+			else
+			{
+				printer.println("                com.google.protobuf.ByteString bs = input.readBytes();");
+				printer.println("                ensure" + variables.getCapitalizedName() + "IsMutable();");
+				printer.println("                " + variables.getName() + "_.add(bs);");
+			}
 		}
 
 		@Override
