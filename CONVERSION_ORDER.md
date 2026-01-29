@@ -22,10 +22,10 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 ## Phase 2: Parser and importer
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 6 | `parser.h`, `parser.cc` | Tokenizer, descriptor, descriptor.pb; .proto parser. |
-| 7 | `importer.h`, `importer.cc` | Parser, descriptor, descriptor_database; SourceTree, Importer, ErrorCollector. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 6 | `parser.h`, `parser.cc` | Tokenizer, descriptor, descriptor.pb; .proto parser. | **Done** |
+| 7 | `importer.h`, `importer.cc` | Parser, descriptor, descriptor_database; SourceTree, Importer, ErrorCollector. | **Done** |
 
 ---
 
