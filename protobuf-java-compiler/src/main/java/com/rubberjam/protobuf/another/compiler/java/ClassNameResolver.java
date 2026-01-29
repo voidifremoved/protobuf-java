@@ -147,14 +147,10 @@ public class ClassNameResolver
 	public String getKotlinFactoryName(Descriptor descriptor)
 	{
 		String name = toCamelCase(descriptor.getName(), true);
-		return isForbiddenKotlin(name) ? name + "_" : name;
+		return Helpers.isForbiddenKotlin(name) ? name + "_" : name;
 	}
 
-	private boolean isForbiddenKotlin(String name)
-	{
-		// Minimal set of forbidden names for Kotlin generation
-		return Set.of("companion", "data").contains(name.toLowerCase());
-	}
+
 
 	/**
 	 * Gets the fully qualified factory name for Kotlin. Corresponds to C++

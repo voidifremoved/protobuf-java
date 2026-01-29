@@ -1,0 +1,424 @@
+package com.rubberjam.protobuf.another.compiler.java;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.EnumDescriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.rubberjam.protobuf.io.Printer;
+
+/**
+ * Helper methods for generating Java code. Ported from helpers.cc/helpers.h.
+ */
+public class Helpers
+{
+
+	public static final String THICK_SEPARATOR = "// ===================================================================\n";
+	public static final String THIN_SEPARATOR = "// -------------------------------------------------------------------\n";
+
+	private Helpers()
+	{
+	}
+
+	public static void printGeneratedAnnotation(Printer printer, char delimiter, String annotationFile, Options options)
+	{
+		if (options.isAnnotateCode())
+		{
+			printer.emit("@javax.annotation.Generated(value=\"protoc\", comments=\"annotations:" +
+					annotationFile + "\")\n");
+		}
+		else
+		{
+			printer.emit("@com.google.protobuf.Generated\n");
+			if (annotationFile != null && !annotationFile.isEmpty())
+			{
+				printer.emit("@javax.annotation.Generated(value=\"protoc\", comments=\"annotations:" +
+						annotationFile + "\")\n");
+			}
+		}
+	}
+
+	// --- Naming & String Utilities ---
+
+	public static String toCamelCase(String input, boolean lowerFirst)
+	{
+		StringBuilder result = new StringBuilder();
+		boolean capNext = !lowerFirst;
+
+		for (int i = 0; i < input.length(); i++)
+		{
+			char c = input.charAt(i);
+			if (c == '_')
+			{
+				capNext = true;
+			}
+			else if (capNext)
+			{
+				result.append(Character.toUpperCase(c));
+				capNext = false;
+			}
+			else
+			{
+				result.append(c);
+			}
+		}
+		if (lowerFirst && result.length() > 0)
+		{
+			result.setCharAt(0, Character.toLowerCase(result.charAt(0)));
+		}
+		return result.toString();
+	}
+
+	public static String underscoresToCamelCase(String input, boolean capNextLetter)
+	{
+		StringBuilder result = new StringBuilder();
+		for (int i = 0; i < input.length(); i++)
+		{
+			char c = input.charAt(i);
+			if (c >= 'a' && c <= 'z')
+			{
+				if (capNextLetter)
+				{
+					result.append(Character.toUpperCase(c));
+				}
+				else
+				{
+					result.append(c);
+				}
+				capNextLetter = false;
+			}
+			else if (c >= 'A' && c <= 'Z')
+			{
+				if (i == 0 && !capNextLetter)
+				{
+					result.append(Character.toLowerCase(c));
+				}
+				else
+				{
+					result.append(c);
+				}
+				capNextLetter = false;
+			}
+			else if (c >= '0' && c <= '9')
+			{
+				result.append(c);
+				capNextLetter = true;
+			}
+			else
+			{
+				capNextLetter = true;
+			}
+		}
+		if (input.endsWith("#"))
+		{
+			result.append('_');
+		}
+		return result.toString();
+	}
+
+	public static String camelCaseFieldName(FieldDescriptor field)
+	{
+		String fieldName = underscoresToCamelCase(field.getName(), false);
+		if (fieldName.length() > 0 && Character.isDigit(fieldName.charAt(0)))
+		{
+			return "_" + fieldName;
+		}
+		return fieldName;
+	}
+
+	public static String getFieldConstantName(FieldDescriptor field)
+	{
+		return field.getName().toUpperCase() + "_FIELD_NUMBER";
+	}
+
+	// --- Kotlin Support ---
+
+	//
+	private static final Set<String> KOTLIN_FORBIDDEN_NAMES = new HashSet<>(Arrays.asList(
+			"as", "as?", "break", "class", "continue", "do",
+			"else", "false", "for", "fun", "if", "in",
+			"!in", "interface", "is", "!is", "null", "object",
+			"package", "return", "super", "this", "throw", "true",
+			"try", "typealias", "typeof", "val", "var", "when",
+			"while"));
+
+	public static boolean isForbiddenKotlin(String fieldName)
+	{
+		return KOTLIN_FORBIDDEN_NAMES.contains(fieldName);
+	}
+
+	// --- Type Mapping ---
+
+	public enum JavaType
+	{
+		INT,
+		LONG,
+		FLOAT,
+		DOUBLE,
+		BOOLEAN,
+		STRING,
+		BYTES,
+		ENUM,
+		MESSAGE
+	}
+
+	//
+	public static JavaType getJavaType(FieldDescriptor field)
+	{
+		switch (field.getType())
+		{
+		case INT32:
+		case UINT32:
+		case SINT32:
+		case FIXED32:
+		case SFIXED32:
+			return JavaType.INT;
+		case INT64:
+		case UINT64:
+		case SINT64:
+		case FIXED64:
+		case SFIXED64:
+			return JavaType.LONG;
+		case FLOAT:
+			return JavaType.FLOAT;
+		case DOUBLE:
+			return JavaType.DOUBLE;
+		case BOOL:
+			return JavaType.BOOLEAN;
+		case STRING:
+			return JavaType.STRING;
+		case BYTES:
+			return JavaType.BYTES;
+		case ENUM:
+			return JavaType.ENUM;
+		case GROUP:
+		case MESSAGE:
+			return JavaType.MESSAGE;
+		default:
+			throw new IllegalArgumentException("Unknown type: " + field.getType());
+		}
+	}
+
+	public static String getBoxedPrimitiveTypeName(JavaType type)
+	{
+		switch (type)
+		{
+		case INT:
+			return "java.lang.Integer";
+		case LONG:
+			return "java.lang.Long";
+		case FLOAT:
+			return "java.lang.Float";
+		case DOUBLE:
+			return "java.lang.Double";
+		case BOOLEAN:
+			return "java.lang.Boolean";
+		case STRING:
+			return "java.lang.String";
+		case BYTES:
+			return "com.google.protobuf.ByteString";
+		case ENUM:
+			return null;
+		case MESSAGE:
+			return null;
+		default:
+			throw new IllegalArgumentException("Unknown type");
+		}
+	}
+
+	//
+	public static String getFieldTypeName(FieldDescriptor.Type type)
+	{
+		switch (type)
+		{
+		case INT32:
+			return "INT32";
+		case UINT32:
+			return "UINT32";
+		case SINT32:
+			return "SINT32";
+		case FIXED32:
+			return "FIXED32";
+		case SFIXED32:
+			return "SFIXED32";
+		case INT64:
+			return "INT64";
+		case UINT64:
+			return "UINT64";
+		case SINT64:
+			return "SINT64";
+		case FIXED64:
+			return "FIXED64";
+		case SFIXED64:
+			return "SFIXED64";
+		case FLOAT:
+			return "FLOAT";
+		case DOUBLE:
+			return "DOUBLE";
+		case BOOL:
+			return "BOOL";
+		case STRING:
+			return "STRING";
+		case BYTES:
+			return "BYTES";
+		case ENUM:
+			return "ENUM";
+		case GROUP:
+			return "GROUP";
+		case MESSAGE:
+			return "MESSAGE";
+		default:
+			throw new IllegalArgumentException("Unknown type: " + type);
+		}
+	}
+
+	//
+	public static String getOneofStoredType(FieldDescriptor field)
+	{
+		JavaType javaType = getJavaType(field);
+		switch (javaType)
+		{
+		case ENUM:
+			return "java.lang.Integer";
+		case MESSAGE:
+			return new ClassNameResolver().getClassName(field.getMessageType(), true);
+		default:
+			return getBoxedPrimitiveTypeName(javaType);
+		}
+	}
+
+	// --- Logic Helpers ---
+
+	//
+	public static boolean isMapEntry(Descriptor descriptor)
+	{
+		return descriptor.getOptions().getMapEntry();
+	}
+
+	// --- Default Values ---
+
+	public static String defaultValue(FieldDescriptor field, boolean immutable, ClassNameResolver nameResolver, Options options)
+	{
+		switch (field.getType())
+		{
+		case INT32:
+			return String.valueOf(field.getDefaultValue());
+		case UINT32:
+			return String.valueOf(field.getDefaultValue());
+		case INT64:
+			return field.getDefaultValue() + "L";
+		case UINT64:
+			return field.getDefaultValue() + "L";
+		case DOUBLE:
+		{
+			Double value = (Double) field.getDefaultValue();
+			if (value.equals(Double.POSITIVE_INFINITY)) return "Double.POSITIVE_INFINITY";
+			if (value.equals(Double.NEGATIVE_INFINITY)) return "Double.NEGATIVE_INFINITY";
+			if (value.isNaN()) return "Double.NaN";
+			return value + "D";
+		}
+		case FLOAT:
+		{
+			Float value = (Float) field.getDefaultValue();
+			if (value.equals(Float.POSITIVE_INFINITY)) return "Float.POSITIVE_INFINITY";
+			if (value.equals(Float.NEGATIVE_INFINITY)) return "Float.NEGATIVE_INFINITY";
+			if (value.isNaN()) return "Float.NaN";
+			return value + "F";
+		}
+		case BOOL:
+			return ((Boolean) field.getDefaultValue()) ? "true" : "false";
+		case STRING:
+			String s = (String) field.getDefaultValue();
+			return "\"" + escapeJavaString(s) + "\"";
+		case BYTES:
+			return "com.google.protobuf.ByteString.EMPTY";
+		case ENUM:
+			EnumDescriptor enumType = field.getEnumType();
+			return nameResolver.getClassName(enumType, immutable) + "." +
+					((com.google.protobuf.Descriptors.EnumValueDescriptor) field.getDefaultValue()).getName();
+		case MESSAGE:
+			return nameResolver.getClassName(field.getMessageType(), immutable) + ".getDefaultInstance()";
+		default:
+			return "";
+		}
+	}
+
+	// --- Bitfield Logic ---
+
+	public static String getBitFieldName(int index)
+	{
+		return "bitField" + index + "_";
+	}
+
+	public static String getBitFieldNameForBit(int bitIndex)
+	{
+		return getBitFieldName(bitIndex / 32);
+	}
+
+	private static final String[] BIT_MASKS = {
+			"0x00000001", "0x00000002", "0x00000004", "0x00000008",
+			"0x00000010", "0x00000020", "0x00000040", "0x00000080",
+			"0x00000100", "0x00000200", "0x00000400", "0x00000800",
+			"0x00001000", "0x00002000", "0x00004000", "0x00008000",
+			"0x00010000", "0x00020000", "0x00040000", "0x00080000",
+			"0x00100000", "0x00200000", "0x00400000", "0x00800000",
+			"0x01000000", "0x02000000", "0x04000000", "0x08000000",
+			"0x10000000", "0x20000000", "0x40000000", "0x80000000"
+	};
+
+	private static String generateGetBitInternal(String prefix, int bitIndex)
+	{
+		String varName = prefix + getBitFieldNameForBit(bitIndex);
+		int maskIndex = bitIndex % 32;
+		return "((" + varName + " & " + BIT_MASKS[maskIndex] + ") != 0)";
+	}
+
+	private static String generateSetBitInternal(String prefix, int bitIndex)
+	{
+		String varName = prefix + getBitFieldNameForBit(bitIndex);
+		int maskIndex = bitIndex % 32;
+		return varName + " |= " + BIT_MASKS[maskIndex];
+	}
+
+	public static String generateGetBit(int bitIndex)
+	{
+		return generateGetBitInternal("", bitIndex);
+	}
+
+	public static String generateSetBit(int bitIndex)
+	{
+		return generateSetBitInternal("", bitIndex);
+	}
+
+	public static String generateClearBit(int bitIndex)
+	{
+		String varName = getBitFieldNameForBit(bitIndex);
+		int maskIndex = bitIndex % 32;
+		return varName + " = (" + varName + " & ~" + BIT_MASKS[maskIndex] + ")";
+	}
+
+	// --- Logic Helpers ---
+
+	public static boolean hasRequiredFields(Descriptor descriptor)
+	{
+		for (FieldDescriptor field : descriptor.getFields())
+		{
+			if (field.isRequired()) return true;
+			if (field.getType() == FieldDescriptor.Type.MESSAGE)
+			{
+				if (hasRequiredFields(field.getMessageType())) return true;
+			}
+		}
+		return false;
+	}
+
+	private static String escapeJavaString(String s)
+	{
+		return s.replace("\\", "\\\\")
+				.replace("\"", "\\\"")
+				.replace("\n", "\\n")
+				.replace("\r", "\\r");
+	}
+}
