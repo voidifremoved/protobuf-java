@@ -1,7 +1,10 @@
 package com.rubberjam.protobuf.another.compiler;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertNotNull;
+
+import java.util.ArrayList;
+
+import org.junit.Test;
 
 public class SCCTest {
     @Test
