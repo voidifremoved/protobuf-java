@@ -138,6 +138,7 @@ public class Printer
 
 	private int currentIndent = 0;
 	private int bytesWritten = 0;
+	private int lastNewlineBytes = 0;
 	private boolean atStartOfLine = true;
 	private boolean skipNextNewline = false;
 
@@ -234,14 +235,23 @@ public class Printer
 			int baseIndent = currentIndent;
 			Deque<AnnotationRecordEntry> annotRecords = new ArrayDeque<>();
 
+			// Raw strings start with a newline in the template. If we aren't
+			// currently at the start of a line, we need to emit that newline.
+			// However, if we only wrote indentation so far, we are effectively
+			// at the start of the line, so we don't need a newline.
+			boolean isIndentedOnly = (bytesWritten - lastNewlineBytes) == baseIndent;
+			if (fmt.isRawString && !atStartOfLine && !isIndentedOnly)
+			{
+				writeRaw("\n");
+			}
+
+			boolean previousLineWasPure = false;
 			for (int i = 0; i < fmt.lines.size(); i++)
 			{
 				Line line = fmt.lines.get(i);
-
+				boolean isPure = isPureMarkers(line);
 				// Emit newline for every line after the first.
-				// Exception: Do not emit newline if the line contains ONLY
-				// annotation markers.
-				if (i > 0 && !line.isPureMarker())
+				if (i > 0 && !previousLineWasPure)
 				{
 					if (!skipNextNewline)
 					{
@@ -251,6 +261,11 @@ public class Printer
 				}
 
 				currentIndent = baseIndent + line.indent;
+
+				if (atStartOfLine && !isPure && !line.chunks.isEmpty())
+				{
+					writeRaw(" ".repeat(currentIndent));
+				}
 
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
@@ -264,6 +279,7 @@ public class Printer
 						chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
 					}
 				}
+				previousLineWasPure = isPure;
 			}
 		}
 		catch (NoSuchElementException e)
@@ -365,19 +381,26 @@ public class Printer
 	{
 		PrinterValue sub = lookupVar(varName);
 		int start = bytesWritten;
+		boolean shouldConsume = false;
 		if (sub.callback != null)
 		{
-			sub.callback.getAsBoolean();
+			shouldConsume = sub.callback.getAsBoolean();
 		}
 		else
 		{
 			writeRaw(sub.text);
 		}
 
-		if (sub.consumeAfter != null && chunkIdx + 1 < line.chunks.size())
+		String consume = sub.consumeAfter;
+		if (consume == null && shouldConsume)
+		{
+			consume = ";";
+		}
+
+		if (consume != null && chunkIdx + 1 < line.chunks.size())
 		{
 			Chunk next = line.chunks.get(chunkIdx + 1);
-			if (!next.isVar && !next.text.isEmpty() && sub.consumeAfter.indexOf(next.text.charAt(0)) != -1)
+			if (!next.isVar && !next.text.isEmpty() && consume.indexOf(next.text.charAt(0)) != -1)
 			{
 				line.chunks.set(chunkIdx + 1, new Chunk(next.text.substring(1), false));
 			}
@@ -523,16 +546,42 @@ public class Printer
 	{
 		for (char c : data.toCharArray())
 		{
-			if (atStartOfLine && c != '\n')
+			buffer.append(c);
+			bytesWritten++;
+			if (c == '\n')
 			{
-				buffer.append(" ".repeat(currentIndent));
-				bytesWritten += currentIndent;
+				atStartOfLine = true;
+				lastNewlineBytes = bytesWritten;
+			}
+			else
+			{
 				atStartOfLine = false;
 			}
-			buffer.append(c);
-			bytesWritten++; // Count ALL characters including newlines
-			atStartOfLine = (c == '\n');
 		}
+	}
+
+	private boolean isPureMarkers(Line line)
+	{
+		boolean hasMarkers = false;
+		for (Chunk chunk : line.chunks)
+		{
+			if (chunk.isVar)
+			{
+				if (!chunk.text.startsWith("_start") && !chunk.text.startsWith("_end"))
+				{
+					return false;
+				}
+				hasMarkers = true;
+			}
+			else
+			{
+				if (!chunk.text.isBlank())
+				{
+					return false;
+				}
+			}
+		}
+		return hasMarkers;
 	}
 
 	private PrinterValue lookupVar(String var)
