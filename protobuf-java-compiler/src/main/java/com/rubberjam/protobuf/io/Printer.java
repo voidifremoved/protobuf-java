@@ -216,8 +216,64 @@ public class Printer
 
 	public AutoCloseable withIndent()
 	{
+		if (!atStartOfLine)
+		{
+			int lineLength = bytesWritten - lastNewlineBytes;
+			if (lineLength > 0 && lineLength == currentIndent)
+			{
+				boolean allSpaces = true;
+				for (int i = 0; i < lineLength; i++)
+				{
+					if (buffer.charAt(buffer.length() - 1 - i) != ' ')
+					{
+						allSpaces = false;
+						break;
+					}
+				}
+
+				if (allSpaces)
+				{
+					String extension = " ".repeat(options.spacesPerIndent);
+					buffer.append(extension);
+					bytesWritten += options.spacesPerIndent;
+				}
+			}
+		}
 		currentIndent += options.spacesPerIndent;
-		return () -> currentIndent -= options.spacesPerIndent;
+		return this::outdent;
+	}
+
+	private void outdent()
+	{
+		currentIndent -= options.spacesPerIndent;
+		if (!atStartOfLine)
+		{
+			int lineLength = bytesWritten - lastNewlineBytes;
+			if (lineLength > 0 && lineLength > currentIndent)
+			{
+				// Check if the line contains only spaces
+				boolean allSpaces = true;
+				for (int i = 0; i < lineLength; i++)
+				{
+					if (buffer.charAt(buffer.length() - 1 - i) != ' ')
+					{
+						allSpaces = false;
+						break;
+					}
+				}
+
+				if (allSpaces)
+				{
+					int toRemove = lineLength - currentIndent;
+					buffer.setLength(buffer.length() - toRemove);
+					bytesWritten -= toRemove;
+					if (currentIndent == 0)
+					{
+						atStartOfLine = true;
+					}
+				}
+			}
+		}
 	}
 
 	// --- Emission API ---
@@ -251,18 +307,21 @@ public class Printer
 				Line line = fmt.lines.get(i);
 				boolean isPure = isPureMarkers(line);
 				// Emit newline for every line after the first.
-				if (i > 0 && !previousLineWasPure)
+				if (i > 0)
 				{
-					if (!skipNextNewline)
+					if (!previousLineWasPure)
 					{
-						writeRaw("\n");
+						if (!skipNextNewline)
+						{
+							writeRaw("\n");
+						}
 					}
 					skipNextNewline = false;
 				}
 
 				currentIndent = baseIndent + line.indent;
 
-				if (atStartOfLine && !isPure && !line.chunks.isEmpty())
+				if (atStartOfLine && !isPure)
 				{
 					writeRaw(" ".repeat(currentIndent));
 				}
@@ -302,7 +361,7 @@ public class Printer
 		bytesWritten += data.length();
 		if (!data.isEmpty())
 		{
-			atStartOfLine = data.endsWith("\n");
+			atStartOfLine = false;
 		}
 	}
 
