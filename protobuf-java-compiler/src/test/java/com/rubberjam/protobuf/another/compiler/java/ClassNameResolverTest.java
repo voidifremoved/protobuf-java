@@ -168,7 +168,11 @@ public class ClassNameResolverTest {
     var fileProto = com.google.protobuf.DescriptorProtos.FileDescriptorProto.newBuilder()
         .setName("foo.proto")
         .setPackage("proto2_unittest")
-        .addEnumType(com.google.protobuf.DescriptorProtos.EnumDescriptorProto.newBuilder().setName("FooEnum"))
+        .addEnumType(com.google.protobuf.DescriptorProtos.EnumDescriptorProto.newBuilder()
+            .setName("FooEnum")
+            .addValue(com.google.protobuf.DescriptorProtos.EnumValueDescriptorProto.newBuilder()
+                .setName("FOO_ENUM_VALUE")
+                .setNumber(0)))
         .build();
 
     FileDescriptor file = FileDescriptor.buildFrom(fileProto, new FileDescriptor[]{});
