@@ -49,6 +49,20 @@ public class Printer
 	{
 		final List<Chunk> chunks = new ArrayList<>();
 		int indent;
+
+		boolean isPureMarker()
+		{
+			if (chunks.isEmpty()) return false;
+			for (Chunk c : chunks)
+			{
+				// A line is "pure marker" if it only contains _start or _end
+				// variables
+				// and no literal text or other variables.
+				if (!c.isVar) return false;
+				if (!c.text.startsWith("_start") && !c.text.startsWith("_end")) return false;
+			}
+			return true;
+		}
 	}
 
 	private static class Format
@@ -61,18 +75,20 @@ public class Printer
 	{
 		String text;
 		BooleanSupplier callback;
-		// Default MUST be null to prevent swallowing punctuation for standard
-		// variables
-		String consumeAfter = null;
+		String consumeAfter;
 
 		public PrinterValue(String text)
 		{
 			this.text = text;
+			this.consumeAfter = null; // Strings don't consume punctuation by
+										// default
 		}
 
 		public PrinterValue(BooleanSupplier callback)
 		{
 			this.callback = callback;
+			this.consumeAfter = ";,"; // Callbacks (blocks) usually consume
+										// punctuation
 		}
 	}
 
@@ -100,6 +116,19 @@ public class Printer
 		public AnnotationCollector annotationCollector = null;
 	}
 
+	// Helper class for annotation record tracking
+	private static class AnnotationRecordEntry
+	{
+		String varName;
+		int position;
+
+		AnnotationRecordEntry(String varName, int position)
+		{
+			this.varName = varName;
+			this.position = position;
+		}
+	}
+
 	// --- State Management ---
 	private final Options options;
 	private final StringBuilder buffer = new StringBuilder();
@@ -110,6 +139,7 @@ public class Printer
 	private int currentIndent = 0;
 	private int bytesWritten = 0;
 	private boolean atStartOfLine = true;
+	private boolean skipNextNewline = false;
 
 	public Printer(Options options)
 	{
@@ -133,8 +163,6 @@ public class Printer
 			}
 			else if (v instanceof PrinterValue)
 			{
-				// Prevent double-wrapping if the value is already a
-				// PrinterValue
 				varFrame.put(k, (PrinterValue) v);
 			}
 			else if (v instanceof BooleanSupplier)
@@ -158,7 +186,31 @@ public class Printer
 
 	public void pushVars(Map<String, Object> vars)
 	{
-		withVars(vars);
+		Map<String, PrinterValue> varFrame = new HashMap<>();
+		Map<String, AnnotationRecord> annotFrame = new HashMap<>();
+
+		vars.forEach((k, v) ->
+		{
+			if (v instanceof AnnotationRecord)
+			{
+				annotFrame.put(k, (AnnotationRecord) v);
+			}
+			else if (v instanceof PrinterValue)
+			{
+				varFrame.put(k, (PrinterValue) v);
+			}
+			else if (v instanceof BooleanSupplier)
+			{
+				varFrame.put(k, new PrinterValue((BooleanSupplier) v));
+			}
+			else
+			{
+				varFrame.put(k, new PrinterValue(String.valueOf(v)));
+			}
+		});
+
+		varStack.push(varFrame);
+		annotationStack.push(annotFrame);
 	}
 
 	public AutoCloseable withIndent()
@@ -180,16 +232,24 @@ public class Printer
 		{
 			Format fmt = tokenizeFormat(formatStr);
 			int baseIndent = currentIndent;
-			Map<String, Integer> activeStarts = new HashMap<>();
+			Deque<AnnotationRecordEntry> annotRecords = new ArrayDeque<>();
 
 			for (int i = 0; i < fmt.lines.size(); i++)
 			{
 				Line line = fmt.lines.get(i);
+
 				// Emit newline for every line after the first.
-				if (i > 0)
+				// Exception: Do not emit newline if the line contains ONLY
+				// annotation markers.
+				if (i > 0 && !line.isPureMarker())
 				{
-					writeRaw("\n");
+					if (!skipNextNewline)
+					{
+						writeRaw("\n");
+					}
+					skipNextNewline = false;
 				}
+
 				currentIndent = baseIndent + line.indent;
 
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
@@ -201,16 +261,9 @@ public class Printer
 					}
 					else
 					{
-						handleVariableWithAnnotations(chunk, activeStarts, line, chunkIdx);
+						chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
 					}
 				}
-			}
-
-			// Ensure multiline raw strings end with a newline if the template
-			// suggests it
-			if (fmt.isRawString && !atStartOfLine)
-			{
-				writeRaw("\n");
 			}
 		}
 		catch (NoSuchElementException e)
@@ -223,36 +276,89 @@ public class Printer
 		}
 	}
 
-	private void handleVariableWithAnnotations(Chunk chunk, Map<String, Integer> activeStarts, Line line, int chunkIdx)
+	/**
+	 * Emits text directly to output without indentation or variable
+	 * substitution. Corresponds to C++ PrintRaw.
+	 */
+	public void emitRaw(String data)
+	{
+		buffer.append(data);
+		bytesWritten += data.length();
+		if (!data.isEmpty())
+		{
+			atStartOfLine = data.endsWith("\n");
+		}
+	}
+
+	private int handleVariableWithAnnotations(Chunk chunk, Deque<AnnotationRecordEntry> annotRecords, Line line, int chunkIdx)
 	{
 		String varName = chunk.text;
 		if (varName.isEmpty())
 		{
 			writeRaw(String.valueOf(options.variableDelimiter));
-			return;
+			return chunkIdx;
 		}
 
 		if (varName.startsWith("_start$"))
 		{
-			activeStarts.put(varName.substring(7), bytesWritten);
+			String actualVar = varName.substring(7);
+			annotRecords.push(new AnnotationRecordEntry(actualVar, bytesWritten));
+
+			// Skip all whitespace immediately after a _start.
+			int nextIdx = chunkIdx + 1;
+			if (nextIdx < line.chunks.size())
+			{
+				Chunk nextChunk = line.chunks.get(nextIdx);
+				if (!nextChunk.isVar)
+				{
+					String text = nextChunk.text;
+					int spaces = 0;
+					while (spaces < text.length() && text.charAt(spaces) == ' ')
+					{
+						spaces++;
+					}
+					writeRaw(text.substring(spaces));
+					return nextIdx; // Skip to the chunk after next
+				}
+			}
 		}
 		else if (varName.startsWith("_end$"))
 		{
-			String actualVar = varName.substring(5);
-			Integer start = activeStarts.remove(actualVar);
-			if (start != null)
+			// If a line consisted *only* of an _end, this will likely result in
+			// a blank line if we do not zap the newline after it, so we do that
+			// here.
+			if (line.chunks.size() == 1)
 			{
-				AnnotationRecord record = lookupAnnotation(actualVar);
-				if (record != null && options.annotationCollector != null)
-				{
-					options.annotationCollector.addAnnotation(start, bytesWritten, record.filePath, record.path, record.semantic);
-				}
+				skipNextNewline = true;
+			}
+
+			String actualVar = varName.substring(5);
+
+			if (annotRecords.isEmpty())
+			{
+				throw new IllegalStateException("_end without matching _start: " + actualVar);
+			}
+
+			AnnotationRecordEntry recordEntry = annotRecords.pop();
+
+			if (!recordEntry.varName.equals(actualVar))
+			{
+				throw new IllegalStateException(
+						"_start and _end variables must match, but got " + recordEntry.varName + " and " + actualVar + ", respectively");
+			}
+
+			AnnotationRecord record = lookupAnnotation(actualVar);
+			if (record != null && options.annotationCollector != null)
+			{
+				options.annotationCollector.addAnnotation(recordEntry.position, bytesWritten, record.filePath, record.path, record.semantic);
 			}
 		}
 		else
 		{
 			processStandardVariable(varName, line, chunkIdx);
 		}
+
+		return chunkIdx;
 	}
 
 	private void processStandardVariable(String varName, Line line, int chunkIdx)
@@ -291,38 +397,71 @@ public class Printer
 		String processing = formatString;
 		int rawStringIndent = 0;
 
-		// Raw String Detection Logic: STRICT C++ BEHAVIOR
+		// Raw String Detection Logic:
 		// Only strip indentation if the string starts with an explicit newline.
-		// This avoids confusing " Indent" (standard) with "\n Indent" (raw).
 		if (options.stripRawStringIndentation && formatString.startsWith("\n") && formatString.length() > 1)
 		{
-			String[] lines = formatString.split("\n", -1);
-			boolean foundContent = false;
-			int potentialIndent = 0;
+			String original = formatString;
+			String firstPPDirective = null;
 
-			for (int i = 1; i < lines.length; i++)
+			// Skip past newlines and preprocessor directives to find real code
+			while (processing.startsWith("\n"))
 			{
-				String l = lines[i];
-				if (!l.trim().isEmpty() && !l.trim().startsWith(options.ignoredCommentStart))
+				processing = processing.substring(1);
+
+				// clang-format will think a # at the beginning of the line in a raw
+				// string is a preprocessor directive and put it at the start of the line,
+				// which throws off indent calculation. Skip past those to find code that
+				// is indented more realistically.
+				if (processing.startsWith("#"))
 				{
-					int indentCount = 0;
-					while (indentCount < l.length() && l.charAt(indentCount) == ' ')
+					// Remember the first preprocessor directive in case we need to reset
+					if (firstPPDirective == null)
 					{
-						indentCount++;
+						firstPPDirective = processing;
 					}
-					potentialIndent = indentCount;
-					foundContent = true;
-					break;
+
+					int nextNewline = processing.indexOf('\n');
+					if (nextNewline != -1)
+					{
+						processing = processing.substring(nextNewline);
+						continue;
+					}
+				}
+
+				rawStringIndent = 0;
+				format.isRawString = true;
+				while (processing.startsWith(" "))
+				{
+					rawStringIndent++;
+					processing = processing.substring(1);
 				}
 			}
 
-			// If content was found (even if indent is 0), we treat it as a raw
-			// string
-			// because it started with \n.
-			if (foundContent)
+			// Reset if we skipped through some #... lines, so that we don't drop them.
+			if (firstPPDirective != null)
 			{
-				rawStringIndent = potentialIndent;
-				format.isRawString = true;
+				processing = firstPPDirective;
+			}
+
+			// If we consume the entire string, this probably wasn't a raw string and
+			// was probably something like a couple of explicit newlines.
+			if (processing.isEmpty())
+			{
+				processing = original;
+				format.isRawString = false;
+				rawStringIndent = 0;
+			}
+
+			// If we're not at start of line and processing starts with #,
+			// this means we have a preprocessor directive and should not have eaten the newline
+			if (!atStartOfLine && processing.startsWith("#"))
+			{
+				processing = original;
+			}
+			else if (format.isRawString)
+			{
+				// We successfully detected a raw string, so skip the initial newline
 				processing = formatString.substring(1);
 			}
 		}
@@ -333,7 +472,6 @@ public class Printer
 			String lineText = lines[i];
 			int leading = 0;
 
-			// Strip indentation logic
 			boolean shouldStrip = (i > 0) || format.isRawString;
 
 			if (shouldStrip)
@@ -345,9 +483,6 @@ public class Printer
 				lineText = lineText.substring(leading);
 			}
 
-			// Ignored Comment Logic:
-			// If this is a Raw String and the stripped line starts with ignored
-			// comment, skip it.
 			if (format.isRawString && lineText.startsWith(options.ignoredCommentStart))
 			{
 				continue;
@@ -362,7 +497,6 @@ public class Printer
 
 			for (String p : parts)
 			{
-				// Glom logic for _start and _end markers
 				if (!line.chunks.isEmpty() && !isVar)
 				{
 					Chunk lastChunk = line.chunks.get(line.chunks.size() - 1);
@@ -370,7 +504,7 @@ public class Printer
 					{
 						String newText = lastChunk.text + options.variableDelimiter + p;
 						line.chunks.set(line.chunks.size() - 1, new Chunk(newText, true));
-						continue; // Keep isVar state as is (don't toggle)
+						continue;
 					}
 				}
 
@@ -396,13 +530,8 @@ public class Printer
 				atStartOfLine = false;
 			}
 			buffer.append(c);
-			if (c == '\n')
-				atStartOfLine = true;
-			else
-			{
-				atStartOfLine = false;
-				bytesWritten++;
-			}
+			bytesWritten++; // Count ALL characters including newlines
+			atStartOfLine = (c == '\n');
 		}
 	}
 
