@@ -5,11 +5,12 @@
 // license that can be found in the LICENSE file or at
 // https://developers.google.com/open-source/licenses/bsd
 
-package com.rubberjam.protobuf.compiler;
+package com.rubberjam.protobuf.io;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.util.List;
+
+import com.rubberjam.protobuf.another.compiler.ErrorCollector;
 
 /**
  * Tokenizer for .proto files.
@@ -42,11 +43,31 @@ public class Tokenizer
 		public String text;
 		public int line;
 		public int column;
+		public int endColumn;
 		public String leadingComments;
 		public String trailingComments;
 		public java.util.List<String> leadingDetachedComments;
 
 		
+		
+		public Token()
+		{
+			super();
+		}
+
+
+
+		public Token(TokenType type, String text, int line, int column, int endColumn)
+		{
+			super();
+			this.type = type;
+			this.text = text;
+			this.line = line;
+			this.column = column;
+			this.endColumn = endColumn;
+		}
+
+
 
 		@Override
 		public String toString()
@@ -88,7 +109,10 @@ public class Tokenizer
 		this.line = 0;
 		this.column = 0;
 		this.currentToken.type = TokenType.START;
-		nextChar();
+		if (input != null)
+		{
+			nextChar();
+		}
 	}
 
 	/**
