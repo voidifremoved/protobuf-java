@@ -31,12 +31,12 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 ## Phase 3: Code generator and shared infra
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 8 | `code_generator.h`, `code_generator.cc` | code_generator_lite, descriptor, plugin.pb, feature_resolver. |
-| 9 | `versions.h`, `versions.cc` | plugin.pb; runtime version handling. |
-| 10 | `zip_writer.h`, `zip_writer.cc` | io/coded_stream; zip output. |
-| 11 | `subprocess.h`, `subprocess.cc` | io (win32), message; plugin subprocess. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 8 | `code_generator.h`, `code_generator.cc` | code_generator_lite, descriptor, plugin.pb, feature_resolver. | **Done** |
+| 9 | `versions.h`, `versions.cc` | plugin.pb; runtime version handling. | **Done** |
+| 10 | `zip_writer.h`, `zip_writer.cc` | io/coded_stream; zip output. | **Done** |
+| 11 | `subprocess.h`, `subprocess.cc` | io (win32), message; plugin subprocess. | **Done** |
 
 ---
 
