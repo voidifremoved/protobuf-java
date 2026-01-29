@@ -108,7 +108,7 @@ public class PrinterTest
 		vars.put("abcdefg", "1234");
 
 		printer.emit(vars, "Hello $foo$!\nbar = $bar$\n");
-		printer.emit("RawBit\n");
+		printer.emitRaw("RawBit\n");
 		printer.emit(vars, "$abcdefg$\nA literal dollar sign:  $$");
 
 		vars.put("foo", "blah");
@@ -140,8 +140,8 @@ public class PrinterTest
 		try (AutoCloseable i2 = printer.withIndent())
 		{
 			printer.emit("  And this is still the same line.\nBut this is indented.\n");
-			printer.emit("RawBit has indent at start\n");
-			printer.emit("but not after a raw newline\n");
+			printer.emitRaw("RawBit has indent at start\n");
+			printer.emitRaw("but not after a raw newline\n");
 			printer.emit(vars, "Note that a newline in a variable will break indenting, as we see$newline$here.\n");
 
 			try (AutoCloseable i3 = printer.withIndent())
@@ -170,7 +170,6 @@ public class PrinterTest
 	@Test
 	public void testEmitWithSubs()
 	{
-		// Explicitly using \n prefix for raw string to match C++ behavior
 		printer.emit(
 				Map.of("class", "Foo", "f1", "x", "f2", "y", "f3", "z", "init", 42),
 				"\n" + """
@@ -189,7 +188,6 @@ public class PrinterTest
 	@Test
 	public void testEmitComments()
 	{
-		// Explicit \n for raw string
 		printer.emit("\n" + """
 				  // Yes.
 				  //~ No.
@@ -203,7 +201,7 @@ public class PrinterTest
 	public void testEmitConsumeAfter()
 	{
 		Printer.PrinterValue val = new Printer.PrinterValue("int x;");
-		val.consumeAfter = ";"; // Explicitly set
+		val.consumeAfter = ";";
 
 		printer.emit(
 				Map.of("class", "Foo", "var", val),
@@ -259,9 +257,9 @@ public class PrinterTest
 		assertEquals(
 				"#if NDEBUG\n" +
 						"#pragma foo\n" +
-						"      class Foo {\n" +
-						"        int x, y, z;\n" +
-						"      };\n" +
+						"class Foo {\n" +
+						"  int x, y, z;\n" +
+						"};\n" +
 						"#endif\n",
 				printer.toString());
 	}
@@ -271,8 +269,6 @@ public class PrinterTest
 	{
 		Printer.PrinterValue methods = new Printer.PrinterValue((BooleanSupplier) () ->
 		{
-			// Note: inner emits should also follow \n rule if indent stripping
-			// is needed
 			printer.emit("\n                 int $method$() { return 42; }");
 			return true;
 		});
@@ -444,7 +440,6 @@ public class PrinterTest
 	@Test
 	public void testRawStringIndentationStripping()
 	{
-		// Explicit \n for raw string behavior
 		printer.emit("\n" + """
 				  class Bar {
 				    void run() {}
