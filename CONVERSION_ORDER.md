@@ -10,13 +10,13 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 ## Phase 1: Compiler shared – leaf types
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 1 | `package_info.h` | Package/version constants only. |
-| 2 | `code_generator_lite.h`, `code_generator_lite.cc` | Descriptor, descriptor.pb; `ParseGeneratorParameter`. |
-| 3 | `retention.h`, `retention.cc` | Descriptor, descriptor.pb; strip source retention. |
-| 4 | `scc.h` | Header-only; descriptor (SCC for message deps). |
-| 5 | `plugin.h`, `plugin.cc` | CodeGenerator usage; plugin.pb (use existing Java plugin proto). |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 1 | `package_info.h` | Package/version constants only. | **Done** |
+| 2 | `code_generator_lite.h`, `code_generator_lite.cc` | Descriptor, descriptor.pb; `ParseGeneratorParameter`. | **Done** |
+| 3 | `retention.h`, `retention.cc` | Descriptor, descriptor.pb; strip source retention. | **Done** |
+| 4 | `scc.h` | Header-only; descriptor (SCC for message deps). | **Done** |
+| 5 | `plugin.h`, `plugin.cc` | CodeGenerator usage; plugin.pb (use existing Java plugin proto). | **Done** |
 
 ---
 
