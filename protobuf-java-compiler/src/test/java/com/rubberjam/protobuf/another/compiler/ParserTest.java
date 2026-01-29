@@ -1,8 +1,10 @@
 package com.rubberjam.protobuf.another.compiler;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,55 +20,38 @@ import com.rubberjam.protobuf.io.Tokenizer;
 public class ParserTest
 {
 
-	// Simple Mock Tokenizer
-	private static class MockTokenizer extends Tokenizer
-	{
-		private final List<Token> tokens = new ArrayList<>();
-		private int index = -1;
-
-		public MockTokenizer(String... rawTokens)
-		{
-			super(null, null); // Assuming constructor accepts null input stream
-			for (String t : rawTokens)
-			{
-				TokenType type = TokenType.IDENTIFIER;
-				if (t.matches("-?\\d+"))
-					type = TokenType.INTEGER;
-				else if (t.startsWith("\""))
-					type = TokenType.STRING;
-				else if (t.matches("[{};=.]")) type = TokenType.SYMBOL;
-
-				tokens.add(new Token(type, t, 0, 0, 0));
-			}
-			tokens.add(new Token(TokenType.END, "", 0, 0, 0));
-		}
+	private static class TestErrorCollector implements ErrorCollector {
+		private final List<String> errors = new ArrayList<>();
 
 		@Override
-		public boolean next()
-		{
-			index++;
-			return index < tokens.size();
+		public void recordError(int line, int column, String message) {
+			errors.add(line + ":" + column + ": " + message);
 		}
 
-		@Override
-		public Token current()
-		{
-			if (index < 0) return new Token(TokenType.START, "", 0, 0, 0);
-			if (index >= tokens.size()) return tokens.get(tokens.size() - 1);
-			return tokens.get(index);
+		public boolean hasErrors() {
+			return !errors.isEmpty();
 		}
+
+		public List<String> getErrors() {
+			return errors;
+		}
+	}
+
+	private Tokenizer createTokenizer(String input) {
+		return new Tokenizer(new StringReader(input), new TestErrorCollector());
 	}
 
 	@Test
 	public void testParseSimpleMessage()
 	{
-		MockTokenizer tokenizer = new MockTokenizer(
-				"syntax", "\"proto2\"", ";",
-				"package", "com.example", ";",
-				"message", "Foo", "{",
-				"optional", "int32", "bar", "=", "1", ";",
-				"}");
+		String proto =
+			"syntax = \"proto2\";\n" +
+			"package com.example;\n" +
+			"message Foo {\n" +
+			"  optional int32 bar = 1;\n" +
+			"}\n";
 
+		Tokenizer tokenizer = createTokenizer(proto);
 		Parser parser = new Parser();
 		FileDescriptorProto.Builder file = FileDescriptorProto.newBuilder();
 
@@ -91,13 +76,14 @@ public class ParserTest
 	@Test
 	public void testParseEnum()
 	{
-		MockTokenizer tokenizer = new MockTokenizer(
-				"syntax", "\"proto3\"", ";",
-				"enum", "Color", "{",
-				"RED", "=", "0", ";",
-				"BLUE", "=", "1", ";",
-				"}");
+		String proto =
+			"syntax = \"proto3\";\n" +
+			"enum Color {\n" +
+			"  RED = 0;\n" +
+			"  BLUE = 1;\n" +
+			"}\n";
 
+		Tokenizer tokenizer = createTokenizer(proto);
 		Parser parser = new Parser();
 		FileDescriptorProto.Builder file = FileDescriptorProto.newBuilder();
 
@@ -112,5 +98,116 @@ public class ParserTest
 		assertEquals(2, enumType.getValueCount());
 		assertEquals("RED", enumType.getValue(0).getName());
 		assertEquals(0, enumType.getValue(0).getNumber());
+		assertEquals("BLUE", enumType.getValue(1).getName());
+		assertEquals(1, enumType.getValue(1).getNumber());
+	}
+
+	@Test
+	public void testParseService()
+	{
+		String proto =
+			"syntax = \"proto3\";\n" +
+			"service MyService {\n" +
+			"  rpc MyMethod (Input) returns (Output);\n" +
+			"  rpc MyStreamingMethod (stream Input) returns (stream Output) {\n" +
+			"    option deprecated = true;\n" +
+			"  }\n" +
+			"}\n";
+
+		Tokenizer tokenizer = createTokenizer(proto);
+		Parser parser = new Parser();
+		FileDescriptorProto.Builder file = FileDescriptorProto.newBuilder();
+
+		boolean success = parser.parse(tokenizer, file);
+		assertTrue(success);
+		assertEquals(1, file.getServiceCount());
+		var service = file.getService(0);
+		assertEquals("MyService", service.getName());
+		assertEquals(2, service.getMethodCount());
+
+		var m1 = service.getMethod(0);
+		assertEquals("MyMethod", m1.getName());
+		assertEquals("Input", m1.getInputType());
+		assertEquals("Output", m1.getOutputType());
+		assertFalse(m1.getClientStreaming());
+		assertFalse(m1.getServerStreaming());
+
+		var m2 = service.getMethod(1);
+		assertEquals("MyStreamingMethod", m2.getName());
+		assertEquals("Input", m2.getInputType());
+		assertEquals("Output", m2.getOutputType());
+		assertTrue(m2.getClientStreaming());
+		assertTrue(m2.getServerStreaming());
+	}
+
+	@Test
+	public void testParseImports()
+	{
+		String proto =
+			"syntax = \"proto3\";\n" +
+			"import \"other.proto\";\n" +
+			"import public \"public.proto\";\n" +
+			"import weak \"weak.proto\";\n";
+
+		Tokenizer tokenizer = createTokenizer(proto);
+		Parser parser = new Parser();
+		FileDescriptorProto.Builder file = FileDescriptorProto.newBuilder();
+
+		boolean success = parser.parse(tokenizer, file);
+		assertTrue(success);
+		assertEquals(3, file.getDependencyCount());
+		assertEquals("other.proto", file.getDependency(0));
+		assertEquals("public.proto", file.getDependency(1));
+		assertEquals("weak.proto", file.getDependency(2));
+
+		assertEquals(1, file.getPublicDependencyCount());
+		assertEquals(1, file.getPublicDependency(0)); // index of public.proto
+
+		assertEquals(1, file.getWeakDependencyCount());
+		assertEquals(2, file.getWeakDependency(0)); // index of weak.proto
+	}
+
+	@Test
+	public void testParseExtensionsAndReserved()
+	{
+		String proto =
+			"syntax = \"proto2\";\n" +
+			"message Foo {\n" +
+			"  extensions 100 to 199;\n" +
+			"  extensions 500;\n" +
+			"  reserved 200 to 299;\n" +
+			"  reserved \"reserved_name\";\n" +
+			"}\n" +
+			"extend Foo {\n" +
+			"  optional int32 bar = 100;\n" +
+			"}\n";
+
+		Tokenizer tokenizer = createTokenizer(proto);
+		Parser parser = new Parser();
+		FileDescriptorProto.Builder file = FileDescriptorProto.newBuilder();
+
+		boolean success = parser.parse(tokenizer, file);
+		assertTrue(success);
+
+		assertEquals(1, file.getMessageTypeCount());
+		var msg = file.getMessageType(0);
+		assertEquals(2, msg.getExtensionRangeCount());
+		assertEquals(100, msg.getExtensionRange(0).getStart());
+		assertEquals(200, msg.getExtensionRange(0).getEnd()); // exclusive
+		assertEquals(500, msg.getExtensionRange(1).getStart());
+		assertEquals(501, msg.getExtensionRange(1).getEnd());
+
+		assertEquals(1, msg.getReservedRangeCount());
+		assertEquals(200, msg.getReservedRange(0).getStart());
+		assertEquals(300, msg.getReservedRange(0).getEnd());
+
+		assertEquals(1, msg.getReservedNameCount());
+		assertEquals("reserved_name", msg.getReservedName(0));
+
+		assertEquals(1, file.getExtensionCount());
+		var ext = file.getExtension(0);
+		assertEquals("Foo", ext.getExtendee());
+		assertEquals("bar", ext.getName());
+		assertEquals(100, ext.getNumber());
 	}
 }

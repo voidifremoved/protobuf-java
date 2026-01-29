@@ -230,6 +230,10 @@ public class Parser {
         return parseServiceDefinition(file.addServiceBuilder(), location);
     } else if (lookingAt("package")) {
       return parsePackage(file, rootLocation);
+    } else if (lookingAt("import")) {
+      return parseImport(file, rootLocation);
+    } else if (lookingAt("extend")) {
+        return parseFileExtend(file, rootLocation);
     } else if (lookingAt("option")) {
       // Simplified option parsing
       return parseOption(rootLocation); 
@@ -240,6 +244,45 @@ public class Parser {
       recordError("Unexpected token: " + input.current().text);
       return false;
     }
+  }
+
+  private boolean parseImport(FileDescriptorProto.Builder file, LocationRecorder root) {
+      LocationRecorder location = new LocationRecorder(root, FileDescriptorProto.DEPENDENCY_FIELD_NUMBER, file.getDependencyCount());
+      consume("import");
+
+      if (tryConsume("public")) {
+          int index = file.getDependencyCount();
+          file.addPublicDependency(index);
+      } else if (tryConsume("weak")) {
+          int index = file.getDependencyCount();
+          file.addWeakDependency(index);
+      }
+
+      StringBuilder importPath = new StringBuilder();
+      if (!consumeString(importPath)) return false;
+      file.addDependency(importPath.toString());
+
+      consumeEndOfDeclaration(";", location);
+      return true;
+  }
+
+  private boolean parseFileExtend(FileDescriptorProto.Builder file, LocationRecorder root) {
+      consume("extend");
+      StringBuilder extendee = new StringBuilder();
+      if (!parseType(extendee)) return false;
+
+      consume("{");
+      while (!lookingAt("}")) {
+          if (atEnd()) return false;
+          LocationRecorder location = new LocationRecorder(root, FileDescriptorProto.EXTENSION_FIELD_NUMBER, file.getExtensionCount());
+          FieldDescriptorProto.Builder extension = file.addExtensionBuilder();
+          extension.setExtendee(extendee.toString());
+          if (!parseMessageField(extension, location)) {
+              input.next();
+          }
+      }
+      consume("}");
+      return true;
   }
 
   private boolean parsePackage(FileDescriptorProto.Builder file, LocationRecorder root) {
@@ -284,12 +327,109 @@ public class Parser {
     } else if (lookingAt("enum")) {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.ENUM_TYPE_FIELD_NUMBER, message.getEnumTypeCount());
       return parseEnumDefinition(message.addEnumTypeBuilder(), location);
+    } else if (lookingAt("extensions")) {
+      return parseExtensions(message, messageLocation);
+    } else if (lookingAt("reserved")) {
+      return parseReserved(message, messageLocation);
+    } else if (lookingAt("extend")) {
+      return parseNestedExtend(message, messageLocation);
     } else if (lookingAt("option")) {
         return parseOption(messageLocation);
     } else {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
       return parseMessageField(message.addFieldBuilder(), location);
     }
+  }
+
+  private boolean parseExtensions(DescriptorProto.Builder message, LocationRecorder parent) {
+      consume("extensions");
+      do {
+          DescriptorProto.ExtensionRange.Builder range = message.addExtensionRangeBuilder();
+          int[] start = new int[1];
+          if (!consumeInteger(start)) return false;
+          range.setStart(start[0]);
+
+          if (tryConsume("to")) {
+              if (tryConsume("max")) {
+                  range.setEnd(536870912); // 2^29
+              } else {
+                  int[] end = new int[1];
+                  if (!consumeInteger(end)) return false;
+                  range.setEnd(end[0] + 1); // exclusive
+              }
+          } else {
+              range.setEnd(start[0] + 1);
+          }
+      } while (tryConsume(","));
+      consume(";");
+      return true;
+  }
+
+  private boolean parseReserved(DescriptorProto.Builder message, LocationRecorder parent) {
+      consume("reserved");
+      if (lookingAtType(Tokenizer.TokenType.STRING)) {
+          // Reserved names
+           do {
+              StringBuilder name = new StringBuilder();
+              consumeString(name);
+              message.addReservedName(name.toString());
+           } while (tryConsume(","));
+      } else {
+          // Reserved ranges
+          do {
+              DescriptorProto.ReservedRange.Builder range = message.addReservedRangeBuilder();
+              int[] start = new int[1];
+              if (!consumeInteger(start)) return false;
+              range.setStart(start[0]);
+
+              if (tryConsume("to")) {
+                  if (tryConsume("max")) {
+                      range.setEnd(536870912);
+                  } else {
+                      int[] end = new int[1];
+                      if (!consumeInteger(end)) return false;
+                      range.setEnd(end[0] + 1);
+                  }
+              } else {
+                  range.setEnd(start[0] + 1);
+              }
+          } while (tryConsume(","));
+      }
+      consume(";");
+      return true;
+  }
+
+  private boolean parseNestedExtend(DescriptorProto.Builder message, LocationRecorder root) {
+      consume("extend");
+      StringBuilder extendee = new StringBuilder();
+      if (!parseType(extendee)) return false;
+
+      consume("{");
+      while (!lookingAt("}")) {
+          if (atEnd()) return false;
+          LocationRecorder location = new LocationRecorder(root, DescriptorProto.EXTENSION_FIELD_NUMBER, message.getExtensionCount());
+          FieldDescriptorProto.Builder extension = message.addExtensionBuilder();
+          extension.setExtendee(extendee.toString());
+          if (!parseMessageField(extension, location)) {
+              input.next();
+          }
+      }
+      consume("}");
+      return true;
+  }
+
+  private boolean parseType(StringBuilder type) {
+      if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
+          type.append(input.current().text);
+          input.next();
+          while (tryConsume(".")) {
+              type.append(".");
+              StringBuilder part = new StringBuilder();
+              if(consumeIdentifier(part)) type.append(part);
+          }
+          return true;
+      }
+      return false;
   }
 
   private boolean parseMessageField(FieldDescriptorProto.Builder field, LocationRecorder fieldLocation) {
@@ -421,17 +561,22 @@ public class Parser {
       method.setName(name.toString());
       
       consume("(");
+      if (tryConsume("stream")) {
+          method.setClientStreaming(true);
+      }
       StringBuilder inputType = new StringBuilder();
-      // Simplify: just consume identifier
-      consumeIdentifier(inputType); 
+      parseType(inputType);
       method.setInputType(inputType.toString());
       consume(")");
       
       consume("returns");
       
       consume("(");
+      if (tryConsume("stream")) {
+          method.setServerStreaming(true);
+      }
       StringBuilder outputType = new StringBuilder();
-      consumeIdentifier(outputType);
+      parseType(outputType);
       method.setOutputType(outputType.toString());
       consume(")");
       
