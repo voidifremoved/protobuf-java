@@ -63,7 +63,7 @@ public class ClassNameResolver {
       basename = name.substring(lastSlash + 1);
     }
     
-    return underscoresToCamelCase(stripProto(basename), true);
+    return underscoresToCamelCase(stripProto(basename), true) + "Proto";
   }
 
   /**
@@ -91,17 +91,26 @@ public class ClassNameResolver {
    */
   public String getJavaImmutableClassName(Descriptor descriptor) {
     String nameWithoutPackage = stripPackageName(descriptor.getFullName(), descriptor.getFile());
-    return getJavaClassFullName(nameWithoutPackage, descriptor, true).replace('.', '$');
+    return toDollarName(getJavaClassFullName(nameWithoutPackage, descriptor, true), descriptor.getFile());
   }
 
   public String getJavaImmutableClassName(EnumDescriptor descriptor) {
     String nameWithoutPackage = stripPackageName(descriptor.getFullName(), descriptor.getFile());
-    return getJavaClassFullName(nameWithoutPackage, descriptor, true).replace('.', '$');
+    return toDollarName(getJavaClassFullName(nameWithoutPackage, descriptor, true), descriptor.getFile());
   }
 
   public String getJavaImmutableClassName(ServiceDescriptor descriptor) {
     String nameWithoutPackage = stripPackageName(descriptor.getFullName(), descriptor.getFile());
-    return getJavaClassFullName(nameWithoutPackage, descriptor, true).replace('.', '$');
+    return toDollarName(getJavaClassFullName(nameWithoutPackage, descriptor, true), descriptor.getFile());
+  }
+
+  private String toDollarName(String fullName, FileDescriptor file) {
+    String packagePrefix = getFileJavaPackage(file);
+    if (!packagePrefix.isEmpty() && fullName.startsWith(packagePrefix + ".")) {
+      String className = fullName.substring(packagePrefix.length() + 1);
+      return packagePrefix + "." + className.replace('.', '$');
+    }
+    return fullName.replace('.', '$');
   }
 
   /**
