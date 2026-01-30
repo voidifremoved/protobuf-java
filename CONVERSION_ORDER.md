@@ -1,8 +1,10 @@
 # C++ Protobuf Compiler → Java Conversion Order
 
+**Future Agents: Please mark items as **Done** in the Status column upon completion.**
+
 This list orders the C++ source files under `protobuf-java/src/google/protobuf/compiler/` (shared compiler, `compiler/java/`, `compiler/cpp/`, and `compiler/csharp/`) so that each converted Java type can depend on already-converted types. Dependencies on `google/protobuf/io/*`, `google/protobuf/descriptor*`, and `google/protobuf/*.pb.h` are assumed satisfied by existing Java protobuf runtime (e.g. `com.google.protobuf.*`) or by already translated classes (eg. `com.rubberjam.protobuf.io.Printer`).
 
-The target for this translation is the package com.rubberjam.protobuf.another. Under the compiler subpackage in this package, there are already some translated classes in (ClassNameResolver, DocComment, FieldCommon, Helpers, Names, Options) and tests for each of these in the test subdirectory. IO classes like Printer already exist in com.rubberjam.protobuf.io, and should be translated to there. These should serve as a model for how to proceed, ie translate a class into this target location and 
+The target for this translation is the package com.rubberjam.protobuf.another. Under the compiler subpackage in this package, there are already some translated classes in (ClassNameResolver, DocComment, FieldCommon, Helpers, Names, Options, Parser, Importer, CodeGenerator, CommandLineInterface, Context, GeneratorFactory) and tests for each of these in the test subdirectory. IO classes like Printer already exist in com.rubberjam.protobuf.io, and should be translated to there. These should serve as a model for how to proceed, ie translate a class into this target location and
 
 **Scope:** Shared compiler + Java + C++ + C# code generators. Other language dirs (kotlin/, objectivec/, python/, php/, rust/, ruby/) and test/harness files (`*_unittest.cc`, `*_test.cc`, `command_line_interface_tester`, `fake_plugin`, `mock_code_generator`, `test_plugin`) are listed at the end; convert after the main pipeline.
 
@@ -24,60 +26,60 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies | Status |
 |---|-------------|----------------------|--------|
-| 6 | `parser.h`, `parser.cc` | Tokenizer, descriptor, descriptor.pb; .proto parser. |
-| 7 | `importer.h`, `importer.cc` | Parser, descriptor, descriptor_database; SourceTree, Importer, ErrorCollector. |
+| 6 | `parser.h`, `parser.cc` | Tokenizer, descriptor, descriptor.pb; .proto parser. | **Done** |
+| 7 | `importer.h`, `importer.cc` | Parser, descriptor, descriptor_database; SourceTree, Importer, ErrorCollector. | **Done** |
 
 ---
 
 ## Phase 3: Code generator and shared infra
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 8 | `code_generator.h`, `code_generator.cc` | code_generator_lite, descriptor, plugin.pb, feature_resolver. |
-| 9 | `versions.h`, `versions.cc` | plugin.pb; runtime version handling. |
-| 10 | `zip_writer.h`, `zip_writer.cc` | io/coded_stream; zip output. |
-| 11 | `subprocess.h`, `subprocess.cc` | io (win32), message; plugin subprocess. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 8 | `code_generator.h`, `code_generator.cc` | code_generator_lite, descriptor, plugin.pb, feature_resolver. | **Done** |
+| 9 | `versions.h`, `versions.cc` | plugin.pb; runtime version handling. | **Done** |
+| 10 | `zip_writer.h`, `zip_writer.cc` | io/coded_stream; zip output. | **Done** |
+| 11 | `subprocess.h`, `subprocess.cc` | io (win32), message; plugin subprocess. | **Done** |
 
 ---
 
 ## Phase 4: Command-line and main
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 12 | `command_line_interface.h`, `command_line_interface.cc` | code_generator_lite, plugin.pb, importer, code_generator, plugin, retention, subprocess, versions, zip_writer, descriptor. |
-| 13 | `main.cc`, `main_no_generators.cc` | command_line_interface. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 12 | `command_line_interface.h`, `command_line_interface.cc` | code_generator_lite, plugin.pb, importer, code_generator, plugin, retention, subprocess, versions, zip_writer, descriptor. | **Done** |
+| 13 | `main.cc`, `main_no_generators.cc` | command_line_interface. | **Done** |
 
 ---
 
 ## Phase 5: Java – options and names
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 14 | `java/options.h` | Port / options only. |
-| 15 | `java/names.h`, `java/names.cc` | options; Java naming. |
-| 16 | `java/names_internal.h` | code_generator_lite, descriptor; internal name helpers. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 14 | `java/options.h` | Port / options only. | **Done** |
+| 15 | `java/names.h`, `java/names.cc` | options; Java naming. | **Done** |
+| 16 | `java/names_internal.h` | code_generator_lite, descriptor; internal name helpers. | **Done** |
 
 ---
 
 ## Phase 6: Java – field common, resolver, helpers, doc
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 17 | `java/field_common.h`, `java/field_common.cc` | options, descriptor; FieldGeneratorInfo, oneof vars. |
-| 18 | `java/name_resolver.h`, `java/name_resolver.cc` | options; ClassNameResolver. |
-| 19 | `java/generator_common.h` | name_resolver, descriptor, io/printer; FieldGenerator base. |
-| 20 | `java/helpers.h`, `java/helpers.cc` | names, options, descriptor, io/printer. |
-| 21 | `java/doc_comment.h`, `java/doc_comment.cc` | options, descriptor; doc comment extraction. |
-| 22 | `java/internal_helpers.h`, `java/internal_helpers.cc` | Helpers used by message/field generators. |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 17 | `java/field_common.h`, `java/field_common.cc` | options, descriptor; FieldGeneratorInfo, oneof vars. | **Done** |
+| 18 | `java/name_resolver.h`, `java/name_resolver.cc` | options; ClassNameResolver. | **Done** |
+| 19 | `java/generator_common.h` | name_resolver, descriptor, io/printer; FieldGenerator base. | **Done** |
+| 20 | `java/helpers.h`, `java/helpers.cc` | names, options, descriptor, io/printer. | **Done** |
+| 21 | `java/doc_comment.h`, `java/doc_comment.cc` | options, descriptor; doc comment extraction. | **Done** |
+| 22 | `java/internal_helpers.h`, `java/internal_helpers.cc` | Helpers used by message/field generators. | **Done** |
 
 ---
 
 ## Phase 7: Java – context and generator factory interface
 
-| # | C++ file(s) | Notes / dependencies |
-|---|-------------|----------------------|
-| 23 | `java/context.h`, `java/context.cc` | field_common, helpers, options; per-file generation context. |
-| 24 | `java/generator_factory.h` | Abstract factory for full vs lite (no .cc at this level). |
+| # | C++ file(s) | Notes / dependencies | Status |
+|---|-------------|----------------------|--------|
+| 23 | `java/context.h`, `java/context.cc` | field_common, helpers, options; per-file generation context. | **Done** |
+| 24 | `java/generator_factory.h` | Abstract factory for full vs lite (no .cc at this level). | **Done** |
 
 ---
 
