@@ -4,6 +4,7 @@ import java.util.Map;
 
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.GenericDescriptor;
 import com.rubberjam.protobuf.io.Printer; // Assuming Printer class availability
@@ -400,5 +401,10 @@ public final class DocComment
 			}
 		}
 		return result.toString();
+	}
+
+	public static void writeEnumValueDocComment(Printer printer, EnumValueDescriptor value, Context context)
+	{
+		// TODO implement this!
 	}
 }
