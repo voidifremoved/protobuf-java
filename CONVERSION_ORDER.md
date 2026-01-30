@@ -100,7 +100,7 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
-| 31 | `java/full/extension.h`, `extension.cc` | context, descriptor. |
+| 31 | `java/full/extension.h`, `extension.cc` | context, descriptor. | **Done** |
 | 32 | `java/full/message_builder.h`, `message_builder.cc` | context, field_generator, message. |
 | 33 | `java/full/message.h`, `message.cc` | generator_factory, field_generator, context. |
 | 34 | `java/full/service.h`, `service.cc` | context, descriptor. |
