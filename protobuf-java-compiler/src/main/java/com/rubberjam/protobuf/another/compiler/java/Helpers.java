@@ -59,7 +59,7 @@ public class Helpers
 	}
 
 	public static boolean isOwnFile(Descriptor descriptor, boolean immutable) {
-		return descriptor.getContainingType() == null;
+		return descriptor.getContainingType() == null && descriptor.getFile().getOptions().getJavaMultipleFiles();
 	}
 
 	public static boolean isOwnFile(com.google.protobuf.Descriptors.ServiceDescriptor descriptor, boolean immutable) {
