@@ -4,9 +4,11 @@ import java.util.Map;
 
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.GenericDescriptor;
+import com.google.protobuf.Descriptors.ServiceDescriptor;
 import com.rubberjam.protobuf.io.Printer; // Assuming Printer class availability
 
 public final class DocComment
@@ -295,6 +297,40 @@ public final class DocComment
 		{
 			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
 					" * Protobuf type {@code $fullname$}\n" + " */\n");
+		}
+	}
+
+	public static void writeMessageDocComment(
+			Printer printer, EnumDescriptor message, Options options, boolean kdoc)
+	{
+		printer.emit("/**\n");
+		writeDocCommentBody(printer, message, options, kdoc);
+		if (kdoc)
+		{
+			printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
+					" * Protobuf enum `$fullname$`\n" + " */\n");
+		}
+		else
+		{
+			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
+					" * Protobuf enum {@code $fullname$}\n" + " */\n");
+		}
+	}
+
+	public static void writeMessageDocComment(
+			Printer printer, ServiceDescriptor message, Options options, boolean kdoc)
+	{
+		printer.emit("/**\n");
+		writeDocCommentBody(printer, message, options, kdoc);
+		if (kdoc)
+		{
+			printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
+					" * Protobuf service `$fullname$`\n" + " */\n");
+		}
+		else
+		{
+			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
+					" * Protobuf service {@code $fullname$}\n" + " */\n");
 		}
 	}
 

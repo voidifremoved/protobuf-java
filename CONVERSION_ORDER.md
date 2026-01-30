@@ -101,11 +101,11 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
 | 31 | `java/full/extension.h`, `extension.cc` | context, descriptor. | **Done** |
-| 32 | `java/full/message_builder.h`, `message_builder.cc` | context, field_generator, message. |
-| 33 | `java/full/message.h`, `message.cc` | generator_factory, field_generator, context. |
-| 34 | `java/full/service.h`, `service.cc` | context, descriptor. |
-| 35 | `java/full/generator_factory.cc` | context; MakeImmutableGeneratorFactory. |
-| 36 | `java/full/make_field_gens.h`, `make_field_gens.cc` | All full field types; factory for field generators. |
+| 32 | `java/full/message_builder.h`, `message_builder.cc` | context, field_generator, message. | **Done** |
+| 33 | `java/full/message.h`, `message.cc` | generator_factory, field_generator, context. | **Done** |
+| 34 | `java/full/service.h`, `service.cc` | context, descriptor. | **Done** |
+| 35 | `java/full/generator_factory.cc` | context; MakeImmutableGeneratorFactory. | **Done** |
+| 36 | `java/full/make_field_gens.h`, `make_field_gens.cc` | All full field types; factory for field generators. | **Done** |
 
 ---
 

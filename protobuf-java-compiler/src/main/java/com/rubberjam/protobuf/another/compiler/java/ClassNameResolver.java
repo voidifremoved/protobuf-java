@@ -34,6 +34,26 @@ public class ClassNameResolver
 		return getFileImmutableClassName(file);
 	}
 
+	public String getImmutableClassName(Descriptor descriptor)
+	{
+		return getClassName(descriptor, true);
+	}
+
+	public String getImmutableClassName(EnumDescriptor descriptor)
+	{
+		return getClassName(descriptor, true);
+	}
+
+	public String getImmutableClassName(ServiceDescriptor descriptor)
+	{
+		return getClassName(descriptor, true);
+	}
+
+	public String getImmutableClassName(FileDescriptor descriptor)
+	{
+		return getClassName(descriptor, true);
+	}
+
 	/**
 	 * Gets the unqualified immutable outer class name of a file. Corresponds to
 	 * C++ GetFileImmutableClassName.
@@ -103,8 +123,13 @@ public class ClassNameResolver
 
 	public String getClassName(FileDescriptor descriptor, boolean immutable)
 	{
-		String nameWithoutPackage = stripPackageName(descriptor.getFullName(), descriptor.getFile());
-		return getJavaClassFullName(nameWithoutPackage, descriptor, immutable);
+		String className = getFileClassName(descriptor, immutable);
+		String packageName = getFileJavaPackage(descriptor);
+		if (!packageName.isEmpty())
+		{
+			return packageName + "." + className;
+		}
+		return className;
 	}
 
 	/**
@@ -258,9 +283,14 @@ public class ClassNameResolver
 			file = ((ServiceDescriptor) descriptor).getFile();
 			nestedInFile = isNestedInFileClass((ServiceDescriptor) descriptor);
 		}
+		else if (descriptor instanceof FileDescriptor)
+		{
+			file = (FileDescriptor) descriptor;
+			nestedInFile = false; // File class is never nested in itself
+		}
 		else
 		{
-			throw new IllegalArgumentException("Unknown descriptor type");
+			throw new IllegalArgumentException("Unknown descriptor type: " + descriptor.getClass().getName());
 		}
 
 		String result;

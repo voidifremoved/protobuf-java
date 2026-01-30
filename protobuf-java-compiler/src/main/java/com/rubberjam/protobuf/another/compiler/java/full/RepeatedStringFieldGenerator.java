@@ -15,6 +15,8 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public RepeatedStringFieldGenerator(
       FieldDescriptor descriptor, int messageBitIndex, int builderBitIndex, Context context) {
     super(descriptor, messageBitIndex, builderBitIndex, context);
+    variables.put("tag_size", String.valueOf(
+        com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
   }
 
   private boolean isString() {

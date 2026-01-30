@@ -216,6 +216,12 @@ public class Printer
 
 	public AutoCloseable withIndent()
 	{
+		indent();
+		return this::outdent;
+	}
+
+	public void indent()
+	{
 		if (!atStartOfLine)
 		{
 			int lineLength = bytesWritten - lastNewlineBytes;
@@ -240,10 +246,9 @@ public class Printer
 			}
 		}
 		currentIndent += options.spacesPerIndent;
-		return this::outdent;
 	}
 
-	private void outdent()
+	public void outdent()
 	{
 		currentIndent -= options.spacesPerIndent;
 		if (!atStartOfLine)
@@ -281,6 +286,16 @@ public class Printer
 	public void emit(String formatStr)
 	{
 		emit(Collections.emptyMap(), formatStr);
+	}
+
+	public void print(String formatStr)
+	{
+		emit(Collections.emptyMap(), formatStr);
+	}
+
+	public void print(Map<String, Object> vars, String formatStr)
+	{
+		emit(vars, formatStr);
 	}
 
 	public void emit(Map<String, Object> vars, String formatStr)

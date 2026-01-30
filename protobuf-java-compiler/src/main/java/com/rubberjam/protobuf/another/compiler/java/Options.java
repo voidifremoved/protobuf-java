@@ -158,4 +158,9 @@ public class Options
 		this.bootstrap = bootstrap;
 	}
 
+	public boolean isOpensourceRuntime()
+	{
+		return true;
+	}
+
 }
