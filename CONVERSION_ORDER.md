@@ -142,8 +142,8 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
-| 52 | `java/generator.h`, `generator.cc` | code_generator, file, helpers, name_resolver, options, shared_code_generator, descriptor; JavaGenerator. |
-| 53 | `java/plugin_main.cc` | generator, plugin; protoc-gen-java entry. |
+| 52 | `java/generator.h`, `generator.cc` | code_generator, file, helpers, name_resolver, options, shared_code_generator, descriptor; JavaGenerator. | **Done** |
+| 53 | `java/plugin_main.cc` | generator, plugin; protoc-gen-java entry. | **Done** |
 
 ---
 
