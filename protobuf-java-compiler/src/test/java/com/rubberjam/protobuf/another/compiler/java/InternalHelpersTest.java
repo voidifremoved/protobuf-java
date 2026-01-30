@@ -2,56 +2,90 @@ package com.rubberjam.protobuf.another.compiler.java;
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import com.google.protobuf.DescriptorProtos;
-import com.google.protobuf.DescriptorProtos.EnumDescriptorProto;
-import com.google.protobuf.DescriptorProtos.EnumValueDescriptorProto;
-import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
-import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.JavaFeaturesProto;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class InternalHelpersTest {
 
+  @BeforeClass
+  public static void init() {
+    try {
+      Class.forName("com.google.protobuf.DescriptorProtos");
+      Class.forName("com.google.protobuf.JavaFeaturesProto");
+    } catch (ClassNotFoundException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
   @Test
-  public void testSupportUnknownEnumValue() throws Exception {
-    FileDescriptorProto proto3 = FileDescriptorProto.newBuilder()
-        .setName("test3.proto")
-        .setSyntax("proto3")
-        .addEnumType(EnumDescriptorProto.newBuilder().setName("TestEnum").addValue(EnumValueDescriptorProto.newBuilder().setName("A").setNumber(0)))
-        .addMessageType(DescriptorProtos.DescriptorProto.newBuilder()
-            .setName("TestMessage")
-            .addField(DescriptorProtos.FieldDescriptorProto.newBuilder()
-                .setName("test_field")
-                .setNumber(1)
-                .setType(DescriptorProtos.FieldDescriptorProto.Type.TYPE_ENUM)
-                .setTypeName(".TestEnum")
-                .build())
-            .build())
-        .build();
-    FileDescriptor file3 = FileDescriptor.buildFrom(proto3, new FileDescriptor[0]);
-    FieldDescriptor field3 = file3.getMessageTypes().get(0).getFields().get(0);
+  public void testSupportUnknownEnumValue() {
+    FieldDescriptor field = mock(FieldDescriptor.class);
+    DescriptorProtos.FieldOptions options = mock(DescriptorProtos.FieldOptions.class);
+    DescriptorProtos.FeatureSet features = mock(DescriptorProtos.FeatureSet.class);
+    JavaFeaturesProto.JavaFeatures javaFeatures = mock(JavaFeaturesProto.JavaFeatures.class);
 
-    assertTrue(InternalHelpers.supportUnknownEnumValue(field3));
+    when(field.getOptions()).thenReturn(options);
+    when(options.getFeatures()).thenReturn(features);
+    when(features.getExtension(JavaFeaturesProto.java_)).thenReturn(javaFeatures);
 
-    FileDescriptorProto proto2 = FileDescriptorProto.newBuilder()
-        .setName("test2.proto")
-        .setSyntax("proto2")
-        .addEnumType(EnumDescriptorProto.newBuilder().setName("TestEnum").addValue(EnumValueDescriptorProto.newBuilder().setName("A").setNumber(0)))
-        .addMessageType(DescriptorProtos.DescriptorProto.newBuilder()
-            .setName("TestMessage")
-            .addField(DescriptorProtos.FieldDescriptorProto.newBuilder()
-                .setName("test_field")
-                .setNumber(1)
-                .setType(DescriptorProtos.FieldDescriptorProto.Type.TYPE_ENUM)
-                .setTypeName(".TestEnum")
-                .build())
-            .build())
-        .build();
-    FileDescriptor file2 = FileDescriptor.buildFrom(proto2, new FileDescriptor[0]);
-    FieldDescriptor field2 = file2.getMessageTypes().get(0).getFields().get(0);
+    // Case 1: LegacyClosedEnum = true (Proto2 behavior)
+    when(javaFeatures.getLegacyClosedEnum()).thenReturn(true);
+    assertFalse(InternalHelpers.supportUnknownEnumValue(field));
 
-    assertFalse(InternalHelpers.supportUnknownEnumValue(field2));
+    // Case 2: LegacyClosedEnum = false (Proto3 behavior)
+    when(javaFeatures.getLegacyClosedEnum()).thenReturn(false);
+    assertTrue(InternalHelpers.supportUnknownEnumValue(field));
+  }
+
+  @Test
+  public void testCheckUtf8() {
+    FieldDescriptor field = mock(FieldDescriptor.class);
+    DescriptorProtos.FieldOptions options = mock(DescriptorProtos.FieldOptions.class);
+    DescriptorProtos.FeatureSet features = mock(DescriptorProtos.FeatureSet.class);
+    JavaFeaturesProto.JavaFeatures javaFeatures = mock(JavaFeaturesProto.JavaFeatures.class);
+
+    when(field.getType()).thenReturn(FieldDescriptor.Type.STRING);
+    when(field.getOptions()).thenReturn(options);
+    when(options.getFeatures()).thenReturn(features);
+    when(features.getExtension(JavaFeaturesProto.java_)).thenReturn(javaFeatures);
+
+    // Case 1: Utf8Validation = VERIFY
+    when(javaFeatures.getUtf8Validation()).thenReturn(JavaFeaturesProto.JavaFeatures.Utf8Validation.VERIFY);
+    assertTrue(InternalHelpers.checkUtf8(field));
+
+    // Case 2: Utf8Validation = DEFAULT (assuming logic treats verify as explicit VERIFY)
+    when(javaFeatures.getUtf8Validation()).thenReturn(JavaFeaturesProto.JavaFeatures.Utf8Validation.DEFAULT);
+    assertFalse(InternalHelpers.checkUtf8(field));
+
+    // Case 3: Not STRING type
+    when(field.getType()).thenReturn(FieldDescriptor.Type.INT32);
+    assertFalse(InternalHelpers.checkUtf8(field));
+  }
+
+  @Test
+  public void testCheckLargeEnum() {
+    EnumDescriptor descriptor = mock(EnumDescriptor.class);
+    DescriptorProtos.EnumOptions options = mock(DescriptorProtos.EnumOptions.class);
+    DescriptorProtos.FeatureSet features = mock(DescriptorProtos.FeatureSet.class);
+    JavaFeaturesProto.JavaFeatures javaFeatures = mock(JavaFeaturesProto.JavaFeatures.class);
+
+    when(descriptor.getOptions()).thenReturn(options);
+    when(options.getFeatures()).thenReturn(features);
+    when(features.getExtension(JavaFeaturesProto.java_)).thenReturn(javaFeatures);
+
+    // Case 1: LargeEnum = true
+    when(javaFeatures.getLargeEnum()).thenReturn(true);
+    assertTrue(InternalHelpers.checkLargeEnum(descriptor));
+
+    // Case 2: LargeEnum = false
+    when(javaFeatures.getLargeEnum()).thenReturn(false);
+    assertFalse(InternalHelpers.checkLargeEnum(descriptor));
   }
 }
