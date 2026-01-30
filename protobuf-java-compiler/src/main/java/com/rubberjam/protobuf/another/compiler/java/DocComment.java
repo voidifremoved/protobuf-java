@@ -18,7 +18,7 @@ public final class DocComment
 	{
 	}
 
-	public enum FieldAccessorType
+	public enum AccessorType
 	{
 		HAZZER,
 		GETTER,
@@ -30,13 +30,11 @@ public final class DocComment
 		LIST_INDEXED_GETTER,
 		LIST_INDEXED_SETTER,
 		LIST_ADDER,
-		LIST_MULTI_ADDER
-	}
-
-	// A simple wrapper to match C++ Options struct behavior used in the source
-	public static class Options
-	{
-		public boolean stripNonfunctionalCodegen = false;
+		LIST_MULTI_ADDER,
+		// Map
+		MAP_ENTRY_ADDER,
+		MAP_MULTI_ADDER,
+		MAP_ENTRY_REMOVER
 	}
 
 	/**
@@ -153,7 +151,7 @@ public final class DocComment
 	private static void writeDocCommentBodyForLocation(
 			Printer printer, SourceCodeInfo.Location location, Options options, boolean kdoc)
 	{
-		if (options.stripNonfunctionalCodegen)
+		if (options.isStripNonfunctionalCodegen())
 		{
 			return;
 		}
@@ -358,7 +356,7 @@ public final class DocComment
 	public static void writeFieldAccessorDocComment(
 			Printer printer,
 			FieldDescriptor field,
-			FieldAccessorType type,
+			AccessorType type,
 			Options options,
 			boolean builder,
 			boolean kdoc,
@@ -407,12 +405,41 @@ public final class DocComment
 		case LIST_MULTI_ADDER:
 			printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
 			break;
+		case MAP_ENTRY_ADDER:
+			printer.emit(Map.of("name", name), " * @param key The key of the $name$ to add.\n");
+			printer.emit(Map.of("name", name), " * @param value The value of the $name$ to add.\n");
+			break;
+		case MAP_MULTI_ADDER:
+			printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
+			break;
+		case MAP_ENTRY_REMOVER:
+			printer.emit(Map.of("name", name), " * @param key The key of the $name$ to remove.\n");
+			break;
 		}
 		if (builder)
 		{
 			printer.emit(" * @return This builder for chaining.\n");
 		}
 		printer.emit(" */\n");
+	}
+
+	public static void writeFieldAccessorDocComment(
+			Printer printer,
+			FieldDescriptor field,
+			AccessorType type,
+			Options options,
+			boolean builder)
+	{
+		writeFieldAccessorDocComment(printer, field, type, options, builder, false, false);
+	}
+
+	public static void writeFieldAccessorDocComment(
+			Printer printer,
+			FieldDescriptor field,
+			AccessorType type,
+			Options options)
+	{
+		writeFieldAccessorDocComment(printer, field, type, options, false, false, false);
 	}
 
 	// Minimal implementation helper for CamelCase

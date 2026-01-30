@@ -6,6 +6,7 @@ import java.util.Set;
 
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
+import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.io.Printer;
 
@@ -241,6 +242,10 @@ public class Helpers
 
 	// --- Type Mapping ---
 
+	public static FieldDescriptor.Type getType(FieldDescriptor field) {
+		return field.getType();
+	}
+
 	public enum JavaType
 	{
 		INT,
@@ -288,6 +293,33 @@ public class Helpers
 			return JavaType.MESSAGE;
 		default:
 			throw new IllegalArgumentException("Unknown type: " + field.getType());
+		}
+	}
+
+	public static String getPrimitiveTypeName(JavaType type)
+	{
+		switch (type)
+		{
+		case INT:
+			return "int";
+		case LONG:
+			return "long";
+		case FLOAT:
+			return "float";
+		case DOUBLE:
+			return "double";
+		case BOOLEAN:
+			return "boolean";
+		case STRING:
+			return "java.lang.String";
+		case BYTES:
+			return "com.google.protobuf.ByteString";
+		case ENUM:
+			return null;
+		case MESSAGE:
+			return null;
+		default:
+			throw new IllegalArgumentException("Unknown type");
 		}
 	}
 
@@ -435,6 +467,36 @@ public class Helpers
 		}
 	}
 
+	public static boolean isDefaultValueJavaDefault(FieldDescriptor field)
+	{
+		switch (field.getJavaType())
+		{
+		case INT:
+			return ((Integer) field.getDefaultValue()) == 0;
+		case LONG:
+			return ((Long) field.getDefaultValue()) == 0L;
+		case FLOAT:
+			return ((Float) field.getDefaultValue()) == 0.0f;
+		case DOUBLE:
+			return ((Double) field.getDefaultValue()) == 0.0d;
+		case BOOLEAN:
+			return !((Boolean) field.getDefaultValue());
+		case ENUM:
+			return ((EnumValueDescriptor) field.getDefaultValue()).getNumber() == 0;
+		case STRING:
+		case MESSAGE:
+		case BYTE_STRING:
+			return false;
+		default:
+			return false;
+		}
+	}
+
+	public static boolean isByteStringWithCustomDefaultValue(FieldDescriptor field)
+	{
+		return field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING && !field.getDefaultValue().equals(com.google.protobuf.ByteString.EMPTY);
+	}
+
 	// --- Bitfield Logic ---
 
 	public static String getBitFieldName(int index)
@@ -510,5 +572,42 @@ public class Helpers
 				.replace("\"", "\\\"")
 				.replace("\n", "\\n")
 				.replace("\r", "\\r");
+	}
+
+	public static void writeIntToUtf16CharSequence(int value, java.util.List<Integer> destination) {
+		if (value < 0xD800) {
+			destination.add(value);
+		} else {
+			destination.add(0xD800 | ((value >> 13) & 0x1F));
+			destination.add(value & 0x1FFF);
+		}
+	}
+
+	public static String immutableDefaultValue(FieldDescriptor field, ClassNameResolver nameResolver, Options options) {
+		return defaultValue(field, true, nameResolver, options);
+	}
+
+	public static String getCapitalizedType(FieldDescriptor field, boolean immutable) {
+		switch (field.getType()) {
+			case INT32: return "Int32";
+			case UINT32: return "UInt32";
+			case SINT32: return "SInt32";
+			case FIXED32: return "Fixed32";
+			case SFIXED32: return "SFixed32";
+			case INT64: return "Int64";
+			case UINT64: return "UInt64";
+			case SINT64: return "SInt64";
+			case FIXED64: return "Fixed64";
+			case SFIXED64: return "SFixed64";
+			case FLOAT: return "Float";
+			case DOUBLE: return "Double";
+			case BOOL: return "Bool";
+			case STRING: return "String";
+			case BYTES: return "Bytes";
+			case ENUM: return "Enum";
+			case GROUP: return "Group";
+			case MESSAGE: return "Message";
+			default: return "";
+		}
 	}
 }
