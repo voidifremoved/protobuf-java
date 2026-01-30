@@ -29,6 +29,10 @@ public abstract class ImmutableFieldGenerator implements GeneratorCommon.FieldGe
         descriptor, context.getFieldGeneratorInfo(descriptor), variables);
   }
 
+  public int getMessageBitIndex() {
+    return messageBitIndex;
+  }
+
   public abstract int getNumBitsForMessage();
 
   public abstract int getNumBitsForBuilder();
@@ -58,4 +62,17 @@ public abstract class ImmutableFieldGenerator implements GeneratorCommon.FieldGe
   public abstract void generateEqualsCode(Printer printer);
 
   public abstract void generateHashCodeCode(Printer printer);
+
+  // Added missing abstract methods that were called
+  public void generateFieldBuilderInitializationCode(Printer printer) {
+    // Default implementation does nothing
+  }
+
+  public void generateBuilderParsingCode(Printer printer) {
+    generateParsingCode(printer); // Default to standard parsing code
+  }
+
+  public void generateBuilderParsingCodeFromPacked(Printer printer) {
+    generateParsingCodeFromPacked(printer); // Default to standard parsing code
+  }
 }

@@ -22,6 +22,19 @@ public class Helpers
 	{
 	}
 
+	public static void maybePrintGeneratedAnnotation(Context context, Printer printer, Descriptor descriptor, boolean immutable, String suffix) {
+		// suffix logic?
+		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+	}
+
+	public static void maybePrintGeneratedAnnotation(Context context, Printer printer, com.google.protobuf.Descriptors.ServiceDescriptor descriptor, boolean immutable, String suffix) {
+		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+	}
+
+	public static void maybePrintGeneratedAnnotation(Context context, Printer printer, EnumDescriptor descriptor, boolean immutable) {
+		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+	}
+
 	public static void printGeneratedAnnotation(Printer printer, char delimiter, String annotationFile, Options options)
 	{
 		if (options.isAnnotateCode())
@@ -38,6 +51,83 @@ public class Helpers
 						annotationFile + "\")\n");
 			}
 		}
+	}
+
+	public static String uniqueFileScopeIdentifier(Descriptor descriptor) {
+		return descriptor.getFullName().replace('.', '_');
+	}
+
+	public static boolean isOwnFile(Descriptor descriptor, boolean immutable) {
+		return descriptor.getContainingType() == null;
+	}
+
+	public static boolean isOwnFile(com.google.protobuf.Descriptors.ServiceDescriptor descriptor, boolean immutable) {
+		return descriptor.getFile().getOptions().getJavaMultipleFiles();
+	}
+
+	public static String getGeneratedCodeVersionSuffix() {
+		return "V3";
+	}
+
+	public static String getExtraBuilderInterfaces(Descriptor descriptor) {
+		return "";
+	}
+
+	public static String getExtraMessageOrBuilderInterfaces(Descriptor descriptor) {
+		return "";
+	}
+
+	public static String getExtraMessageInterfaces(Descriptor descriptor) {
+		return "";
+	}
+
+	public static boolean hasHasbit(FieldDescriptor field) {
+		return field.hasPresence();
+	}
+
+	public static boolean isAnyMessage(Descriptor descriptor) {
+		return descriptor.getFullName().equals("google.protobuf.Any");
+	}
+
+	public static boolean hasPackedFields(Descriptor descriptor) {
+		for (FieldDescriptor field : descriptor.getFields()) {
+			if (field.isPackable() && field.isPacked()) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static int getWireTypeForFieldType(FieldDescriptor.Type type) {
+		switch (type) {
+			case DOUBLE: return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
+			case FLOAT: return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
+			case INT64: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case UINT64: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case INT32: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case FIXED64: return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
+			case FIXED32: return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
+			case BOOL: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case STRING: return com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+			case GROUP: return com.google.protobuf.WireFormat.WIRETYPE_START_GROUP;
+			case MESSAGE: return com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+			case BYTES: return com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+			case UINT32: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case ENUM: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case SFIXED32: return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
+			case SFIXED64: return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
+			case SINT32: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			case SINT64: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+			default: throw new IllegalArgumentException("No such field type");
+		}
+	}
+
+	public static String fieldConstantName(FieldDescriptor field) {
+		return getFieldConstantName(field);
+	}
+
+	public static int makeTag(int fieldNumber, int wireType) {
+		return (fieldNumber << 3) | wireType;
 	}
 
 	// --- Naming & String Utilities ---

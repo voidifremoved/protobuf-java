@@ -59,8 +59,20 @@ public class Context {
   }
 
   public boolean hasGeneratedMethods(Descriptor descriptor) {
+    return hasGeneratedMethods(descriptor.getFile());
+  }
+
+  public boolean hasGeneratedMethods(FileDescriptor file) {
     return options.isEnforceLite() ||
-           descriptor.getFile().getOptions().getOptimizeFor() != FileOptions.OptimizeMode.CODE_SIZE;
+           file.getOptions().getOptimizeFor() != FileOptions.OptimizeMode.CODE_SIZE;
+  }
+
+  public boolean hasGeneratedMethods(com.google.protobuf.Descriptors.EnumDescriptor descriptor) {
+    return hasGeneratedMethods(descriptor.getFile());
+  }
+
+  public boolean hasGeneratedMethods(com.google.protobuf.Descriptors.ServiceDescriptor descriptor) {
+    return hasGeneratedMethods(descriptor.getFile());
   }
 
   private void initializeFieldGeneratorInfo(FileDescriptor file) {
