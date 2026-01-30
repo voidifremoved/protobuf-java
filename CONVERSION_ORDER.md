@@ -113,17 +113,17 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
-| 37 | `java/lite/field_generator.h` | generator_common, io/printer. |
-| 38 | `java/lite/primitive_field.h`, `primitive_field.cc` | |
-| 39 | `java/lite/enum_field.h`, `enum_field.cc` | |
-| 40 | `java/lite/string_field.h`, `string_field.cc` | |
-| 41 | `java/lite/message_field.h`, `message_field.cc` | |
-| 42 | `java/lite/map_field.h`, `map_field.cc` | |
-| 43 | `java/lite/extension.h`, `extension.cc` | |
-| 44 | `java/lite/message_builder.h`, `message_builder.cc` | |
-| 45 | `java/lite/message.h`, `message.cc` | |
-| 46 | `java/lite/generator_factory.cc` | |
-| 47 | `java/lite/make_field_gens.h`, `make_field_gens.cc` | |
+| 37 | `java/lite/field_generator.h` | generator_common, io/printer. | **Done** |
+| 38 | `java/lite/primitive_field.h`, `primitive_field.cc` | | **Done** |
+| 39 | `java/lite/enum_field.h`, `enum_field.cc` | | **Done** |
+| 40 | `java/lite/string_field.h`, `string_field.cc` | | **Done** |
+| 41 | `java/lite/message_field.h`, `message_field.cc` | | **Done** |
+| 42 | `java/lite/map_field.h`, `map_field.cc` | | **Done** |
+| 43 | `java/lite/extension.h`, `extension.cc` | | **Done** |
+| 44 | `java/lite/message_builder.h`, `message_builder.cc` | | **Done** |
+| 45 | `java/lite/message.h`, `message.cc` | | **Done** |
+| 46 | `java/lite/generator_factory.cc` | | **Done** |
+| 47 | `java/lite/make_field_gens.h`, `make_field_gens.cc` | | **Done** |
 
 ---
 

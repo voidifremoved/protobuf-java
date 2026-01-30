@@ -298,6 +298,10 @@ public class Printer
 		emit(vars, formatStr);
 	}
 
+	public void annotate(String startVar, String endVar, com.google.protobuf.Descriptors.FieldDescriptor descriptor) {
+		// Stub implementation for now to satisfy compilation.
+	}
+
 	public void emit(Map<String, Object> vars, String formatStr)
 	{
 		try (AutoCloseable scope = withVars(vars))

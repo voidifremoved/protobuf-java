@@ -186,7 +186,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       vars.put("ver", Helpers.getGeneratedCodeVersionSuffix());
       vars.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
 
-      DocComment.writeMessageDocComment(printer, descriptor, new DocComment.Options(), false);
+      DocComment.writeMessageDocComment(printer, descriptor, new com.rubberjam.protobuf.another.compiler.java.Options(), false);
       Helpers.maybePrintGeneratedAnnotation(context, printer, descriptor, true, null);
       if (!context.getOptions().isOpensourceRuntime()) {
           printer.print("@com.google.protobuf.Internal.ProtoNonnullApi\n");

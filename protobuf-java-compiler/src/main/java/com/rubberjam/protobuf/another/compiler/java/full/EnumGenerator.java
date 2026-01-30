@@ -8,6 +8,7 @@ import com.rubberjam.protobuf.another.compiler.java.Context;
 import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorFactory;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
+import com.rubberjam.protobuf.another.compiler.java.Options;
 import com.rubberjam.protobuf.io.Printer;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,7 +54,7 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
 
   @Override
   public void generate(Printer printer) {
-    DocComment.writeMessageDocComment(printer, descriptor, new DocComment.Options(), false);
+    DocComment.writeMessageDocComment(printer, descriptor, new Options(), false);
 
     if (!context.getOptions().isOpensourceRuntime()) {
       printer.print("@com.google.protobuf.Internal.ProtoNonnullApi\n");

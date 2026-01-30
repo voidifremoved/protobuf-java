@@ -719,7 +719,7 @@ public class MessageBuilderGenerator {
 
   private void writeMessageDocComment(Printer printer, Descriptor descriptor) {
       com.rubberjam.protobuf.another.compiler.java.DocComment.writeMessageDocComment(
-          printer, descriptor, new com.rubberjam.protobuf.another.compiler.java.DocComment.Options(), false);
+          printer, descriptor, new com.rubberjam.protobuf.another.compiler.java.Options(), false);
   }
 
   // Helpers

@@ -32,7 +32,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
     boolean isOwnFile = Helpers.isOwnFile(descriptor, true);
 
     // WriteServiceDocComment(printer, descriptor);
-    DocComment.writeMessageDocComment(printer, descriptor, new DocComment.Options(), false);
+    DocComment.writeMessageDocComment(printer, descriptor, new com.rubberjam.protobuf.another.compiler.java.Options(), false);
 
     Helpers.maybePrintGeneratedAnnotation(context, printer, descriptor, true, null);
 
@@ -143,7 +143,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   private void generateAbstractMethods(Printer printer) {
     for (MethodDescriptor method : descriptor.getMethods()) {
       // WriteMethodDocComment(printer, method);
-      DocComment.writeMessageDocComment(printer, method.getInputType(), new DocComment.Options(), false); // Method doc comment?
+      DocComment.writeMessageDocComment(printer, method.getInputType(), new com.rubberjam.protobuf.another.compiler.java.Options(), false); // Method doc comment?
       // Need writeMethodDocComment in DocComment. Use writeMessageDocComment as placeholder if needed or implement it.
       // But C++ uses WriteMethodDocComment.
       generateMethodSignature(printer, method, IsAbstract.IS_ABSTRACT);
