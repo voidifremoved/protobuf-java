@@ -5,6 +5,7 @@ import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
+import com.google.protobuf.JavaFeaturesProto;
 import com.rubberjam.protobuf.io.Printer;
 
 /**
@@ -19,30 +20,22 @@ public final class InternalHelpers
 
 	public static boolean supportUnknownEnumValue(FieldDescriptor field)
 	{
-		// TODO: Implement full Editions support using JavaFeatures
-		// For now, assume Proto3 supports unknown enum values (open), Proto2
-		// does not (closed).
-		return "proto3".equals(field.getFile().toProto().getSyntax());
+		return !field.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_).getLegacyClosedEnum();
 	}
 
 	public static boolean checkUtf8(FieldDescriptor descriptor)
 	{
-		// TODO: Implement full Editions support using JavaFeatures
 		if (descriptor.getType() != FieldDescriptor.Type.STRING)
 		{
 			return false;
 		}
-		if ("proto3".equals(descriptor.getFile().toProto().getSyntax()))
-		{
-			return true;
-		}
-		return descriptor.getFile().getOptions().getJavaStringCheckUtf8();
+		return descriptor.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_)
+				.getUtf8Validation() == JavaFeaturesProto.JavaFeatures.Utf8Validation.VERIFY;
 	}
 
 	public static boolean checkLargeEnum(EnumDescriptor descriptor)
 	{
-		// TODO: Implement full Editions support using JavaFeatures
-		return false;
+		return descriptor.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_).getLargeEnum();
 	}
 
 	public static void generateLarge(Printer printer, EnumDescriptor descriptor, boolean immutable, Context context,
