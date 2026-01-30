@@ -87,8 +87,8 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
-| 25 | `java/full/field_generator.h` | generator_common, io/printer; ImmutableFieldGenerator. |
-| 26 | `java/full/primitive_field.h`, `primitive_field.cc` | field_generator, context. |
+| 25 | `java/full/field_generator.h` | generator_common, io/printer; ImmutableFieldGenerator. | **Done** |
+| 26 | `java/full/primitive_field.h`, `primitive_field.cc` | field_generator, context. | **Done** |
 | 27 | `java/full/enum_field.h`, `enum_field.cc` | field_generator, context. |
 | 28 | `java/full/string_field.h`, `string_field.cc` | field_generator, context. |
 | 29 | `java/full/message_field.h`, `message_field.cc` | field_generator, context. |
