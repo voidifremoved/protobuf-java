@@ -131,10 +131,10 @@ The target for this translation is the package com.rubberjam.protobuf.another. U
 
 | # | C++ file(s) | Notes / dependencies |
 |---|-------------|----------------------|
-| 48 | `java/file.h`, `java/file.cc` | context, message (full/lite), generator_factory, extension, name_resolver; FileGenerator. |
-| 49 | `java/message_serialization.h`, `message_serialization.cc` | generator_common, helpers, descriptor, io/printer. |
-| 50 | `java/shared_code_generator.h`, `shared_code_generator.cc` | code_generator, helpers, name_resolver, names, options, retention, versions, descriptor, io/printer. |
-| 51 | `java/java_features.pb.h`, `java_features.pb.cc` | Generated from java_features.proto; use existing or generate. |
+| 48 | `java/file.h`, `java/file.cc` | context, message (full/lite), generator_factory, extension, name_resolver; FileGenerator. | **Done** |
+| 49 | `java/message_serialization.h`, `message_serialization.cc` | generator_common, helpers, descriptor, io/printer. | **Skipped (Integrated into ImmutableMessageGenerator)** |
+| 50 | `java/shared_code_generator.h`, `shared_code_generator.cc` | code_generator, helpers, name_resolver, names, options, retention, versions, descriptor, io/printer. | **Done** |
+| 51 | `java/java_features.pb.h`, `java_features.pb.cc` | Generated from java_features.proto; use existing or generate. | **Done (Used existing)** |
 
 ---
 
