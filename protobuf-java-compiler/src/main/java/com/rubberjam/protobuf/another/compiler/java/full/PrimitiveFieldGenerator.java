@@ -28,13 +28,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     variables.put("default", defaultValue);
     variables.put("default_init", defaultValue);
 
-    // Proto3 implicit defaults (0, false) vs Proto2 explicit defaults
-    if (!descriptor.hasPresence() && !descriptor.hasDefaultValue()) {
-       // Implicit default is 0 or false.
-       // Helpers.defaultValue might return "0" or "false" correctly for implicit defaults if checked.
-       // Assuming Helpers.defaultValue handles it.
-    }
-
     variables.put("tag", String.valueOf(
         (descriptor.getNumber() << 3) | getWireType(descriptor)));
     variables.put("tag_size", String.valueOf(
@@ -211,10 +204,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (descriptor.hasPresence()) {
       printer.emit(variables, "$name$_ = $default$;\n");
     } else {
-      // Proto3: if default is 0/false, no init needed in message constructor as JVM does it.
-      // But if we want to be explicit or if default is not 0 (e.g. proto2 with default),
-      // but here we are in "hasPresence=false" branch which usually means Proto3 implicit.
-      // Proto3 implicit defaults are 0.
       printer.emit(variables, "$name$_ = $default$;\n");
     }
   }
@@ -251,7 +240,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
     if (descriptor.hasPresence()) {
       printer.emit(variables,
-          "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+          "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
           "  result.$name$_ = $name$_;\n" +
           "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
           "}\n");
@@ -300,8 +289,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateEqualsCode(Printer printer) {
-    // Need to handle float/double comparisons correctly (Float.floatToIntBits, Double.doubleToLongBits)
-    // For now using simple equality for int/long/bool.
     Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
     if (javaType == Helpers.JavaType.FLOAT) {
         printer.emit(variables,
@@ -325,8 +312,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
     printer.emit(variables, "hash = (37 * hash) + $constant_name$;\n");
     if (javaType == Helpers.JavaType.INT || javaType == Helpers.JavaType.BOOLEAN) {
-        printer.emit(variables, "hash = (53 * hash) + get$capitalized_name$();\n"); // Boolean might need hashBoolean?
-        // Wait, boolean hash in protobuf is hashBoolean(val) -> val ? 1231 : 1237
         if (javaType == Helpers.JavaType.BOOLEAN) {
              printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(\n" +
                  "    get$capitalized_name$());\n");

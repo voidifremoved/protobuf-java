@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -49,11 +50,14 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
     if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions());
       printer.emit(variables,
           "com.google.protobuf.ByteString\n" +
           "    get$capitalized_name$Bytes();\n");
@@ -62,7 +66,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateMembers(Printer printer) {
-    printer.emit(variables, "private volatile java.lang.Object $name$_;\n");
+    printer.emit(variables, "@SuppressWarnings(\"serial\")\n");
+    printer.emit(variables, "private volatile java.lang.Object $name$_ = $default$;\n");
 
     if (descriptor.hasPresence()) {
       printer.emit(variables,
@@ -83,9 +88,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "    com.google.protobuf.ByteString bs =\n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
-          "    " + (InternalHelpers.checkUtf8(descriptor) ? "if (bs.isValidUtf8()) {\n  " : "") +
-          "$name$_ = s;\n" +
-          "    " + (InternalHelpers.checkUtf8(descriptor) ? "}\n" : "") +
+          "    if (bs.isValidUtf8()) {\n" +
+          "      $name$_ = s;\n" +
+          "    }\n" +
           "    return s;\n" +
           "  }\n" +
           "}\n" +
@@ -118,6 +123,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         "private java.lang.Object $name$_ = $default$;\n");
 
     if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
@@ -126,6 +132,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "public java.lang.String get$capitalized_name$() {\n" +
           "  java.lang.Object ref = $name$_;\n" +
@@ -133,14 +140,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "    com.google.protobuf.ByteString bs =\n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
-          "    " + (InternalHelpers.checkUtf8(descriptor) ? "if (bs.isValidUtf8()) {\n  " : "") +
-          "$name$_ = s;\n" +
-          "    " + (InternalHelpers.checkUtf8(descriptor) ? "}\n" : "") +
+          "    if (bs.isValidUtf8()) {\n" +
+          "      $name$_ = s;\n" +
+          "    }\n" +
           "    return s;\n" +
           "  } else {\n" +
           "    return (java.lang.String) ref;\n" +
           "  }\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions(), true);
+      printer.emit(variables,
           "public com.google.protobuf.ByteString\n" +
           "    get$capitalized_name$Bytes() {\n" +
           "  java.lang.Object ref = $name$_;\n" +
@@ -153,7 +162,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "  } else {\n" +
           "    return (com.google.protobuf.ByteString) ref;\n" +
           "  }\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      printer.emit(variables,
           "public Builder set$capitalized_name$(\n" +
           "    java.lang.String value) {\n" +
           "  $null_check$" +
@@ -161,13 +172,17 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "  $name$_ = value;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
           "  $name$_ = $default$;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      printer.emit(variables,
           "public Builder set$capitalized_name$Bytes(\n" +
           "    com.google.protobuf.ByteString value) {\n" +
           "  $null_check$" +
@@ -178,18 +193,23 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "  return this;\n" +
           "}\n");
     } else {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
           "  return (com.google.protobuf.ByteString) $name$_;\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      printer.emit(variables,
           "public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
           "  $null_check$" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  $name$_ = value;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
-          "}\n" +
+          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
           "  $name$_ = $default$;\n" +
@@ -206,9 +226,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuilderClearCode(Printer printer) {
-     printer.emit(variables,
-         "$name$_ = $default$;\n" +
-         (descriptor.hasPresence() ? Helpers.generateClearBit(builderBitIndex) + ";\n" : ""));
+     printer.emit(variables, "$name$_ = $default$;\n");
   }
 
   @Override
@@ -234,12 +252,14 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
     if (descriptor.hasPresence()) {
        printer.emit(variables,
-           "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+           "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+           "  result.$name$_ = $name$_;\n" +
            "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
            "}\n");
+    } else {
+       printer.emit(variables,
+           "result.$name$_ = $name$_;\n");
     }
-    printer.emit(variables,
-        "result.$name$_ = $name$_;\n");
   }
 
   @Override

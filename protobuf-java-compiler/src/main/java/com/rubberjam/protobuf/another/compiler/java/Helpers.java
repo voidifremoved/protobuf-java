@@ -67,7 +67,7 @@ public class Helpers
 	}
 
 	public static String getGeneratedCodeVersionSuffix() {
-		return "V3";
+		return ""; // Was "V3", now empty to match standard generated message
 	}
 
 	public static String getExtraBuilderInterfaces(Descriptor descriptor) {
@@ -125,10 +125,6 @@ public class Helpers
 
 	public static String fieldConstantName(FieldDescriptor field) {
 		return getFieldConstantName(field);
-	}
-
-	public static int makeTag(int fieldNumber, int wireType) {
-		return (fieldNumber << 3) | wireType;
 	}
 
 	// --- Naming & String Utilities ---
@@ -222,6 +218,14 @@ public class Helpers
 	public static String getFieldConstantName(FieldDescriptor field)
 	{
 		return field.getName().toUpperCase() + "_FIELD_NUMBER";
+	}
+
+    public static int getWireFormatForField(FieldDescriptor field) {
+        return makeTag(field.getNumber(), getWireTypeForFieldType(field.getType()));
+    }
+
+	public static int makeTag(int fieldNumber, int wireType) {
+		return (fieldNumber << 3) | wireType;
 	}
 
 	// --- Kotlin Support ---
@@ -537,6 +541,11 @@ public class Helpers
 	public static String generateGetBit(int bitIndex)
 	{
 		return generateGetBitInternal("", bitIndex);
+	}
+
+	public static String generateGetBit(String prefix, int bitIndex)
+	{
+		return generateGetBitInternal(prefix, bitIndex);
 	}
 
 	public static String generateSetBit(int bitIndex)

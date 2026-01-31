@@ -24,6 +24,7 @@ public final class DocComment
 		GETTER,
 		SETTER,
 		CLEARER,
+        BYTES_GETTER,
 		// Repeated
 		LIST_COUNT,
 		LIST_GETTER,
@@ -263,13 +264,7 @@ public final class DocComment
 	private static void writeDebugString(
 			Printer printer, FieldDescriptor field, Options options, boolean kdoc)
 	{
-		// Note: Java FieldDescriptor doesn't have a direct equivalent to C++
-		// DebugString()
-		// that returns the proto definition string easily. We use a placeholder
-		// logic.
-		String fieldComment = field.getName(); // Fallback
-		// If logic to reconstruct "optional string foo = 5;" exists, use it
-		// here.
+        String fieldComment = getFieldDefinition(field);
 
 		if (kdoc)
 		{
@@ -280,6 +275,97 @@ public final class DocComment
 			printer.emit(Map.of("def", escapeJavadoc(fieldComment)), " * <code>$def$</code>\n");
 		}
 	}
+
+    private static String getFieldDefinition(FieldDescriptor field) {
+        StringBuilder sb = new StringBuilder();
+
+        if (field.isRepeated()) {
+            sb.append("repeated ");
+        } else if (field.isRequired()) {
+            sb.append("required ");
+        } else {
+            // Check syntax via toProto() string
+            String syntax = field.getFile().toProto().getSyntax();
+            if (syntax.isEmpty() || "proto2".equals(syntax)) {
+                sb.append("optional ");
+            } else if (field.toProto().hasProto3Optional()) { // Use Proto3Optional if available? Or just check label?
+                 // But hasProto3Optional is usually true for explicit optional in proto3.
+                 // In proto2, optional is default, no proto3_optional bit.
+                 // Actually, use toProto().getLabel()
+                 if (field.toProto().getLabel() == com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Label.LABEL_OPTIONAL) {
+                     // Check if implicit proto3 optional?
+                     // In proto3, if not proto3_optional, it is implicit (no label printed).
+                     // If it is proto3_optional, it is "optional".
+                     if ("proto3".equals(syntax)) {
+                         if (field.toProto().getProto3Optional()) {
+                             sb.append("optional ");
+                         }
+                     } else {
+                         // Proto2
+                         sb.append("optional ");
+                     }
+                 }
+            } else {
+                 // Fallback if no hasProto3Optional method? It should exist in recent protobuf-java.
+                 // If not, we can assume proto2 optional if not repeated/required.
+                 if (syntax.isEmpty() || "proto2".equals(syntax)) {
+                     sb.append("optional ");
+                 }
+            }
+        }
+
+        if (field.getType() == FieldDescriptor.Type.MESSAGE) {
+             sb.append(field.getMessageType().getFullName());
+        } else if (field.getType() == FieldDescriptor.Type.ENUM) {
+             sb.append(field.getEnumType().getFullName());
+        } else {
+             sb.append(field.getType().name().toLowerCase());
+        }
+
+        sb.append(" ").append(field.getName()).append(" = ").append(field.getNumber());
+
+        if (shouldPrintDefault(field)) {
+             sb.append(" [default = ");
+             sb.append(formatDefaultValue(field));
+             sb.append("]");
+        }
+
+        sb.append(";");
+        return sb.toString();
+    }
+
+    private static boolean shouldPrintDefault(FieldDescriptor field) {
+        if (field.isRepeated()) return false;
+        if (field.getType() == FieldDescriptor.Type.MESSAGE) return false;
+        if (field.getType() == FieldDescriptor.Type.GROUP) return false;
+
+        String syntax = field.getFile().toProto().getSyntax();
+        if ("proto3".equals(syntax)) {
+            return false;
+        }
+
+        return field.hasDefaultValue();
+    }
+
+    private static String formatDefaultValue(FieldDescriptor field) {
+        Object val = field.getDefaultValue();
+        if (field.getType() == FieldDescriptor.Type.STRING) {
+            return "\"" + escapeString((String)val) + "\"";
+        } else if (field.getType() == FieldDescriptor.Type.BYTES) {
+            return "\"" + escapeString(((com.google.protobuf.ByteString)val).toStringUtf8()) + "\""; // Approx
+        } else if (field.getType() == FieldDescriptor.Type.ENUM) {
+            return ((EnumValueDescriptor)val).getName();
+        } else {
+            return val.toString();
+        }
+    }
+
+    private static String escapeString(String s) {
+        return s.replace("\\", "\\\\")
+				.replace("\"", "\\\"")
+				.replace("\n", "\\n")
+				.replace("\r", "\\r");
+    }
 
 	public static void writeMessageDocComment(
 			Printer printer, Descriptor message, Options options, boolean kdoc)
@@ -380,6 +466,9 @@ public final class DocComment
 		case GETTER:
 			printer.emit(Map.of("name", name), " * @return The $name$.\n");
 			break;
+        case BYTES_GETTER:
+            printer.emit(Map.of("name", name), " * @return The bytes for $name$.\n");
+            break;
 		case SETTER:
 			printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
 			break;

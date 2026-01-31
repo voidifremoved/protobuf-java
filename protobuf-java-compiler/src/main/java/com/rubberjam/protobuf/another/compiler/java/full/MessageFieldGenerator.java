@@ -225,7 +225,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuildingCode(Printer printer) {
      printer.emit(variables,
-         "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+         "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
          "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
          "}\n");
 
