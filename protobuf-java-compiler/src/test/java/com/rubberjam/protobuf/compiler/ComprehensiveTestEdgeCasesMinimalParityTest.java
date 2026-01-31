@@ -23,12 +23,12 @@ import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator.GeneratedJavaFile;
 
 @RunWith(Parameterized.class)
-public class MinimalProtoParityTest
+public class ComprehensiveTestEdgeCasesMinimalParityTest
 {
 	private final String protoFileName;
 	private final String expectedJavaFileName;
 
-	public MinimalProtoParityTest(String protoFileName, String expectedJavaFileName)
+	public ComprehensiveTestEdgeCasesMinimalParityTest(String protoFileName, String expectedJavaFileName)
 	{
 		this.protoFileName = protoFileName;
 		this.expectedJavaFileName = expectedJavaFileName;
@@ -158,7 +158,7 @@ public class MinimalProtoParityTest
 		if (!javaFile.exists())
 		{
 			// Try as resource
-			try (InputStream stream = MinimalProtoParityTest.class.getClassLoader()
+			try (InputStream stream = ComprehensiveTestEdgeCasesMinimalParityTest.class.getClassLoader()
 				.getResourceAsStream("expected/java/" + fileName))
 			{
 				if (stream != null)

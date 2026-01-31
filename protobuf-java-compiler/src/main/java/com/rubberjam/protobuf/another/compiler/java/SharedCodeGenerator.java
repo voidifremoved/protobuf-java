@@ -101,7 +101,7 @@ public class SharedCodeGenerator {
   }
 
   private static String escapeBytes(com.google.protobuf.ByteString input) {
-    StringBuilder builder = new StringBuilder(input.size() * 3);
+    StringBuilder builder = new StringBuilder(input.size() * 4);
     for (int i = 0; i < input.size(); i++) {
       byte b = input.byteAt(i);
       char c = (char) (b & 0xFF);
@@ -109,10 +109,13 @@ public class SharedCodeGenerator {
         builder.append("\\\\");
       } else if (c == '"') {
         builder.append("\\\"");
+      } else if (c == '$') {
+        // Escape $ so Printer does not treat it as variable delimiter.
+        builder.append("\\044");
       } else if (c >= 0x20 && c < 0x7F) {
         builder.append(c);
       } else {
-        builder.append(String.format("\\%03o", (int)c));
+        builder.append(String.format("\\%03o", (int) c & 0xFF));
       }
     }
     return builder.toString();
