@@ -230,8 +230,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
                 "  set$capitalized_name$(other.get$capitalized_name$());\n" +
                 "}\n");
         } else {
-            // Proto3 shouldn't be here if not supportUnknownEnumValue (which implies open enum)
-            // But if it is...
              printer.emit(variables,
                 "if (other.get$capitalized_name$() != $default$) {\n" +
                 "  set$capitalized_name$(other.get$capitalized_name$());\n" +
@@ -244,11 +242,13 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
      if (descriptor.hasPresence()) {
         printer.emit(variables,
-          "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+          "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+          "  result.$name$_ = $name$_;\n" +
           "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
           "}\n");
+     } else {
+         printer.emit(variables, "result.$name$_ = $name$_;\n");
      }
-     printer.emit(variables, "result.$name$_ = $name$_;\n");
   }
 
   @Override

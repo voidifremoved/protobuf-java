@@ -9,7 +9,7 @@ import com.google.protobuf.compiler.PluginProtos.Version;
 public final class Versions
 {
   public static final String PROTOBUF_CPP_VERSION_STRING = "6.34.0-dev";
-  public static final String PROTOBUF_JAVA_VERSION_STRING = "4.34.0-dev";
+  public static final String PROTOBUF_JAVA_VERSION_STRING = "4.33.4";
   public static final String PROTOBUF_PYTHON_VERSION_STRING = "6.34.0-dev";
   public static final String PROTOBUF_RUST_VERSION_STRING = "4.34.0-dev";
 
