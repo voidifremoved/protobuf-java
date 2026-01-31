@@ -54,6 +54,17 @@ public class MessageBuilderGenerator {
 
       printer.indent();
 
+      int totalBits = 0;
+      for (FieldDescriptor field : descriptor.getFields()) {
+          if (field.getContainingOneof() == null) {
+              totalBits += fieldGenerators.get(field).getNumBitsForBuilder();
+          }
+      }
+      int totalInts = (totalBits + 31) / 32;
+      for (int i = 0; i < totalInts; i++) {
+          printer.print("private int " + Helpers.getBitFieldName(i) + ";\n");
+      }
+
       generateDescriptorMethods(printer);
       generateCommonBuilderMethods(printer);
 
