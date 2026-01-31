@@ -1,5 +1,8 @@
 package com.rubberjam.protobuf.another.compiler.java;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
@@ -7,9 +10,11 @@ import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.EnumValueDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.GenericDescriptor;
+import com.google.protobuf.Descriptors.MethodDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
-import com.rubberjam.protobuf.io.Printer; // Assuming Printer class availability
+import com.rubberjam.protobuf.io.Printer;
 
 public final class DocComment
 {
@@ -175,9 +180,6 @@ public final class DocComment
 			}
 
 			String[] lines = comments.split("\n");
-			// Logic to mimic absl::StrSplit and removing empty back lines could
-			// be added here
-			// For simplicity, we process the split array directly.
 
 			if (kdoc)
 			{
@@ -190,7 +192,8 @@ public final class DocComment
 
 			for (String line : lines)
 			{
-				// Strip leading whitespace
+				// Strip leading whitespace from proto comments?
+                // The C++ implementation strips leading whitespace.
 				String trimmed = stripLeadingWhitespace(line);
 				if (!trimmed.isEmpty())
 				{
@@ -216,8 +219,11 @@ public final class DocComment
 
 	private static String stripLeadingWhitespace(String s)
 	{
+        // We only strip ' ' (space) not tabs or others, to match C++ behavior presumably,
+        // but java Character.isWhitespace matches more.
+        // Let's use simple logic.
 		int i = 0;
-		while (i < s.length() && Character.isWhitespace(s.charAt(i)))
+		while (i < s.length() && s.charAt(i) == ' ')
 		{
 			i++;
 		}
@@ -234,32 +240,91 @@ public final class DocComment
 		}
 	}
 
-	// Helper to retrieve SourceCodeInfo.Location from a descriptor.
-	// In Java, this involves looking up the path in the file's SourceCodeInfo.
 	private static SourceCodeInfo.Location getLocation(GenericDescriptor descriptor)
 	{
-		// In a real implementation, this would traverse
-		// descriptor.getFile().getSourceCodeInfo()
-		// matching descriptor.getPath(). For brevity, we assume this helper
-		// exists or
-		// returns null if precise location matching isn't implemented in the
-		// environment.
-		//
-		// NOTE: Standard Java Descriptors don't expose getSourceLocation()
-		// directly like C++.
+        List<Integer> path = getPath(descriptor);
+        if (path == null) return null;
+
+        FileDescriptor file = descriptor.getFile();
+        SourceCodeInfo sourceCodeInfo = file.toProto().getSourceCodeInfo();
+
+        for (SourceCodeInfo.Location loc : sourceCodeInfo.getLocationList()) {
+            if (loc.getPathList().equals(path)) {
+                return loc;
+            }
+        }
 		return null;
 	}
 
-	private static String firstLineOf(String value)
-	{
-		int pos = value.indexOf('\n');
-		String result = (pos != -1) ? value.substring(0, pos) : value;
-		if (result.endsWith("{"))
-		{
-			result += " ... }";
-		}
-		return result;
-	}
+    private static List<Integer> getPath(GenericDescriptor descriptor) {
+        List<Integer> path = new ArrayList<>();
+        getPathRecursive(descriptor, path);
+        return path;
+    }
+
+    private static void getPathRecursive(GenericDescriptor descriptor, List<Integer> path) {
+        if (descriptor instanceof FileDescriptor) {
+            return; // Base case
+        }
+
+        GenericDescriptor parent = null;
+        if (descriptor instanceof Descriptor) {
+             parent = ((Descriptor) descriptor).getContainingType();
+        } else if (descriptor instanceof FieldDescriptor) {
+             parent = ((FieldDescriptor) descriptor).getContainingType();
+        } else if (descriptor instanceof EnumDescriptor) {
+             parent = ((EnumDescriptor) descriptor).getContainingType();
+        } else if (descriptor instanceof EnumValueDescriptor) {
+             parent = ((EnumValueDescriptor) descriptor).getType();
+        } else if (descriptor instanceof ServiceDescriptor) {
+             // Top level usually
+             parent = null;
+        } else if (descriptor instanceof MethodDescriptor) {
+             parent = ((MethodDescriptor) descriptor).getService();
+        }
+
+        if (parent != null) {
+            getPathRecursive(parent, path);
+        }
+
+        // Append current descriptor's path component
+        if (descriptor instanceof Descriptor) {
+            if (parent == null) {
+                path.add(com.google.protobuf.DescriptorProtos.FileDescriptorProto.MESSAGE_TYPE_FIELD_NUMBER);
+            } else {
+                path.add(com.google.protobuf.DescriptorProtos.DescriptorProto.NESTED_TYPE_FIELD_NUMBER);
+            }
+            path.add(((Descriptor)descriptor).getIndex());
+        } else if (descriptor instanceof FieldDescriptor) {
+            FieldDescriptor fd = (FieldDescriptor) descriptor;
+            if (fd.isExtension()) {
+                 if (parent == null) {
+                      path.add(com.google.protobuf.DescriptorProtos.FileDescriptorProto.EXTENSION_FIELD_NUMBER);
+                 } else {
+                      path.add(com.google.protobuf.DescriptorProtos.DescriptorProto.EXTENSION_FIELD_NUMBER);
+                 }
+            } else {
+                 path.add(com.google.protobuf.DescriptorProtos.DescriptorProto.FIELD_FIELD_NUMBER);
+            }
+            path.add(fd.getIndex());
+        } else if (descriptor instanceof EnumDescriptor) {
+            if (parent == null) {
+                path.add(com.google.protobuf.DescriptorProtos.FileDescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+            } else {
+                path.add(com.google.protobuf.DescriptorProtos.DescriptorProto.ENUM_TYPE_FIELD_NUMBER);
+            }
+            path.add(((EnumDescriptor)descriptor).getIndex());
+        } else if (descriptor instanceof EnumValueDescriptor) {
+            path.add(com.google.protobuf.DescriptorProtos.EnumDescriptorProto.VALUE_FIELD_NUMBER);
+            path.add(((EnumValueDescriptor)descriptor).getIndex());
+        } else if (descriptor instanceof ServiceDescriptor) {
+            path.add(com.google.protobuf.DescriptorProtos.FileDescriptorProto.SERVICE_FIELD_NUMBER);
+            path.add(((ServiceDescriptor)descriptor).getIndex());
+        } else if (descriptor instanceof MethodDescriptor) {
+            path.add(com.google.protobuf.DescriptorProtos.ServiceDescriptorProto.METHOD_FIELD_NUMBER);
+            path.add(((MethodDescriptor)descriptor).getIndex());
+        }
+    }
 
 	private static void writeDebugString(
 			Printer printer, FieldDescriptor field, Options options, boolean kdoc)
@@ -288,26 +353,17 @@ public final class DocComment
             String syntax = field.getFile().toProto().getSyntax();
             if (syntax.isEmpty() || "proto2".equals(syntax)) {
                 sb.append("optional ");
-            } else if (field.toProto().hasProto3Optional()) { // Use Proto3Optional if available? Or just check label?
-                 // But hasProto3Optional is usually true for explicit optional in proto3.
-                 // In proto2, optional is default, no proto3_optional bit.
-                 // Actually, use toProto().getLabel()
+            } else if (field.toProto().hasProto3Optional()) {
                  if (field.toProto().getLabel() == com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Label.LABEL_OPTIONAL) {
-                     // Check if implicit proto3 optional?
-                     // In proto3, if not proto3_optional, it is implicit (no label printed).
-                     // If it is proto3_optional, it is "optional".
                      if ("proto3".equals(syntax)) {
                          if (field.toProto().getProto3Optional()) {
                              sb.append("optional ");
                          }
                      } else {
-                         // Proto2
                          sb.append("optional ");
                      }
                  }
             } else {
-                 // Fallback if no hasProto3Optional method? It should exist in recent protobuf-java.
-                 // If not, we can assume proto2 optional if not repeated/required.
                  if (syntax.isEmpty() || "proto2".equals(syntax)) {
                      sb.append("optional ");
                  }
@@ -352,7 +408,7 @@ public final class DocComment
         if (field.getType() == FieldDescriptor.Type.STRING) {
             return "\"" + escapeString((String)val) + "\"";
         } else if (field.getType() == FieldDescriptor.Type.BYTES) {
-            return "\"" + escapeString(((com.google.protobuf.ByteString)val).toStringUtf8()) + "\""; // Approx
+            return "\"" + escapeString(((com.google.protobuf.ByteString)val).toStringUtf8()) + "\"";
         } else if (field.getType() == FieldDescriptor.Type.ENUM) {
             return ((EnumValueDescriptor)val).getName();
         } else {
@@ -435,8 +491,6 @@ public final class DocComment
 			return;
 		}
 		printer.emit(Map.of("name", field.getFullName()), " * @deprecated $name$ is deprecated.\n");
-		// Line number info is hard to get in Java without full SourceInfo map.
-		// Skipping for equivalence.
 	}
 
 	public static void writeFieldAccessorDocComment(
@@ -557,6 +611,9 @@ public final class DocComment
 
 	public static void writeEnumValueDocComment(Printer printer, EnumValueDescriptor value, Context context)
 	{
-		// TODO implement this!
+        printer.emit("/**\n");
+		writeDocCommentBody(printer, value, context.getOptions(), false); // Assuming no KDoc support in enum values for now
+        printer.emit(Map.of("def", escapeJavadoc(value.getName())), " * <code>$def$ = " + value.getNumber() + ";</code>\n");
+		printer.emit(" */\n");
 	}
 }

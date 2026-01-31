@@ -231,6 +231,20 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       }
       printer.print("private static final long serialVersionUID = 0L;\n");
 
+      // Add static validation block inside the inner message class
+      // Note: This duplicates what is in generateStaticVariables for Java 1.7 compatibility/standard practice
+      // But based on the failure, it is expected right here.
+      printer.print(vars,
+          "static {\n" +
+          "  com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(\n" +
+          "    com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,\n" +
+          "    /* major= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getMajor() + ",\n" +
+          "    /* minor= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getMinor() + ",\n" +
+          "    /* patch= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getPatch() + ",\n" +
+          "    /* suffix= */ \"" + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getSuffix() + "\",\n" +
+          "    \"$classname$\");\n" +
+          "}\n");
+
       printer.indent();
       vars.put("buildertype", builderType);
       printer.print(vars,
@@ -418,15 +432,13 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
   }
 
   private void generateDescriptorMethods(Printer printer) {
-      if (!descriptor.getOptions().getNoStandardDescriptorAccessor()) {
-          printer.print(
-              "public static final com.google.protobuf.Descriptors.Descriptor\n" +
-              "    getDescriptor() {\n" +
-              "  return " + nameResolver.getImmutableClassName(descriptor.getFile()) +
-              ".internal_static_" + Helpers.uniqueFileScopeIdentifier(descriptor) + "_descriptor;\n" +
-              "}\n" +
-              "\n");
-      }
+      printer.print(
+          "public static final com.google.protobuf.Descriptors.Descriptor\n" +
+          "    getDescriptor() {\n" +
+          "  return " + nameResolver.getImmutableClassName(descriptor.getFile()) +
+          ".internal_static_" + Helpers.uniqueFileScopeIdentifier(descriptor) + "_descriptor;\n" +
+          "}\n" +
+          "\n");
 
       List<FieldDescriptor> mapFields = new ArrayList<>();
       for (FieldDescriptor field : descriptor.getFields()) {
