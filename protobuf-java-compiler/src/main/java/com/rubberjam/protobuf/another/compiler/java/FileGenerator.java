@@ -30,6 +30,16 @@ public class FileGenerator {
     this.factory = new ImmutableGeneratorFactory(context);
   }
 
+  /** Java package for the generated file (for output path). */
+  public String getJavaPackage() {
+    return nameResolver.getFileJavaPackage(file);
+  }
+
+  /** Outer class name for the generated file (for output path). */
+  public String getClassName() {
+    return nameResolver.getFileClassName(file, !context.enforceLite());
+  }
+
   public boolean validate(List<String> errors) {
     // Check for package name conflicts or invalid names if necessary.
     // Basic validation.

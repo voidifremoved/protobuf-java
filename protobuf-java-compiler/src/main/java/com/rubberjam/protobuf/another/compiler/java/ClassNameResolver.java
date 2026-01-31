@@ -322,7 +322,11 @@ public class ClassNameResolver
 		return fullName.substring(file.getPackage().length() + 1);
 	}
 
-	private String getFileJavaPackage(FileDescriptor file)
+	/**
+	 * Gets the Java package for the given file (java_package option or proto
+	 * package). Public for use by file-level generators.
+	 */
+	public String getFileJavaPackage(FileDescriptor file)
 	{
 		if (file.getOptions().hasJavaPackage())
 		{

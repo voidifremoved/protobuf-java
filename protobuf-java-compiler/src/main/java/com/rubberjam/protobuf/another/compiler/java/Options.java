@@ -1,5 +1,8 @@
 package com.rubberjam.protobuf.another.compiler.java;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Generator options. Equivalent to the C++ Options struct in options.h.
  */
@@ -161,6 +164,56 @@ public class Options
 	public boolean isOpensourceRuntime()
 	{
 		return true;
+	}
+
+	/**
+	 * Parses the generator parameter string (e.g. from --java_out=options:path)
+	 * and returns an Options instance.
+	 */
+	public static Options fromParameter(String parameter)
+	{
+		Options options = new Options();
+		Map<String, String> parsed = parseGeneratorParameter(parameter);
+
+		if (parsed.get("output_list_file") != null)
+		{
+			options.setOutputListFile(parsed.get("output_list_file"));
+		}
+		if (parsed.get("annotation_list_file") != null)
+		{
+			options.setAnnotationListFile(parsed.get("annotation_list_file"));
+		}
+
+		options.setGenerateImmutableCode(parsed.containsKey("immutable"));
+		options.setGenerateMutableCode(parsed.containsKey("mutable"));
+		options.setGenerateSharedCode(parsed.containsKey("shared"));
+		options.setEnforceLite(parsed.containsKey("lite"));
+		options.setAnnotateCode(parsed.containsKey("annotate_code"));
+		options.setStripNonfunctionalCodegen(parsed.containsKey("experimental_strip_nonfunctional_codegen"));
+		options.setBootstrap(parsed.containsKey("bootstrap"));
+
+		return options;
+	}
+
+	private static Map<String, String> parseGeneratorParameter(String parameter)
+	{
+		Map<String, String> options = new HashMap<>();
+		if (parameter != null && !parameter.isEmpty())
+		{
+			for (String part : parameter.split(","))
+			{
+				String[] keyValue = part.split("=");
+				if (keyValue.length == 1)
+				{
+					options.put(keyValue[0].trim(), "");
+				}
+				else if (keyValue.length >= 2)
+				{
+					options.put(keyValue[0].trim(), keyValue[1].trim());
+				}
+			}
+		}
+		return options;
 	}
 
 }

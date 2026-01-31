@@ -90,14 +90,14 @@ public final class RuntimeJavaGenerator
 		// Use Compiler's JavaCodeGenerator approach (same as Compiler.compile())
 		InMemoryGeneratorContext context = new InMemoryGeneratorContext();
 		
-		com.rubberjam.protobuf.compiler.JavaCodeGenerator codeGenerator = 
-				new com.rubberjam.protobuf.compiler.JavaCodeGenerator();
+		com.rubberjam.protobuf.another.compiler.JavaCodeGenerator codeGenerator = 
+				new com.rubberjam.protobuf.another.compiler.JavaCodeGenerator();
 		
 		try
 		{
-			codeGenerator.generate(fileDescriptor, rootProto, parameter, context);
+			codeGenerator.generate(fileDescriptor, parameter, context);
 		}
-		catch (com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException e)
+		catch (com.rubberjam.protobuf.another.compiler.CodeGenerator.GenerationException e)
 		{
 			throw new CompilationException("Error generating code", e);
 		}
@@ -260,7 +260,7 @@ public final class RuntimeJavaGenerator
 		}
 	}
 
-	private static class InMemoryGeneratorContext implements com.rubberjam.protobuf.compiler.GeneratorContext
+	private static class InMemoryGeneratorContext implements com.rubberjam.protobuf.another.compiler.GeneratorContext
 	{
 		private final Map<String, ByteArrayOutputStream> files = new HashMap<>();
 
