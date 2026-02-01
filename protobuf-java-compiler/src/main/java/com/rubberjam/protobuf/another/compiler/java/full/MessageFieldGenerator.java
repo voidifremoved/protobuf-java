@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -52,18 +53,21 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     printer.emit(variables,
         "private $type$ $name$_;\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
     printer.emit(variables,
         "@java.lang.Override\n" +
         "public boolean has$capitalized_name$() {\n" +
         "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables,
         "@java.lang.Override\n" +
         "public $type$ get$capitalized_name$() {\n" +
         "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables,
         "@java.lang.Override\n" +
         "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
@@ -210,8 +214,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
          "if ($name$Builder_ != null) {\n" +
          "  $name$Builder_.dispose();\n" +
          "  $name$Builder_ = null;\n" +
-         "}\n" +
-         Helpers.generateClearBit(builderBitIndex) + ";\n");
+         "}\n");
   }
 
   @Override

@@ -115,8 +115,9 @@ public class FileGenerator {
 
     new SharedCodeGenerator(file, options).generate(printer);
 
+    printer.print("  // @@protoc_insertion_point(outer_class_scope)\n");
     printer.outdent();
-    printer.print("}\n");
+    printer.print("}");
   }
 
   private void generateExtensionRegistrationCode(Printer printer) {

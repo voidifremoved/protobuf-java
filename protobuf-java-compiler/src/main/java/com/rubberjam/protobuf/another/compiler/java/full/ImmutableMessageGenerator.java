@@ -261,15 +261,6 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           "}\n" +
           "\n");
 
-      printer.print(vars,
-          "@java.lang.Override\n" +
-          "@SuppressWarnings({\"unused\"})\n" +
-          "protected java.lang.Object newInstance(\n" +
-          "    UnusedPrivateParameter unused) {\n" +
-          "  return new $classname$();\n" +
-          "}\n" +
-          "\n");
-
       generateDescriptorMethods(printer);
 
       for (EnumDescriptor enumDesc : descriptor.getEnumTypes()) {
@@ -287,6 +278,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       for (FieldDescriptor field : descriptor.getFields()) {
           totalBits += fieldGenerators.get(field).getNumBitsForMessage();
       }
+      System.err.println("DEBUG: totalBits=" + totalBits + " for " + descriptor.getName());
       int totalInts = (totalBits + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print("private int " + getBitFieldName(i) + ";\n");

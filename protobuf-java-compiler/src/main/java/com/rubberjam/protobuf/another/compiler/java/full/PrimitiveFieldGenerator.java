@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.io.Printer;
@@ -116,11 +117,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   public void generateMembers(Printer printer) {
     if (descriptor.hasPresence()) {
       printer.emit(variables, "private $type$ $name$_;\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
           "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
           "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
@@ -129,6 +132,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     } else {
       // Proto3 implicit
       printer.emit(variables, "private $type$ $name$_;\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
@@ -210,14 +214,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuilderClearCode(Printer printer) {
-      if (descriptor.hasPresence()) {
-        printer.emit(variables,
-            "$name$_ = $default$;\n" +
-            Helpers.generateClearBit(builderBitIndex) + ";\n");
-      } else {
-        printer.emit(variables,
-            "$name$_ = $default$;\n");
-      }
+      printer.emit(variables,
+          "$name$_ = $default$;\n");
   }
 
   @Override
