@@ -1,18 +1,23 @@
-# Parity Issues Investigation - ComprehensiveTestEdgeCasesMinimal
+# TODO: Remaining Parity Issues
 
-## Solved Issues
-- **Builder Structure:** Refactored `buildPartial` to use split `buildPartial0` methods instead of monolithic logic, matching C++ structure.
-- **Method Order & Existence:** Removed `clone()`, `setField()`, `clearField()`, etc. from Builder as they were not in the expected output (relying on base class). Moved `mergeFrom(Message)` to the correct position.
-- **Parsing Logic:** Updated `StringFieldGenerator` to assign directly to field variables during parsing instead of using intermediate variables (e.g., `emptyString_ = input.readBytes()` instead of `ByteString bs = ...; emptyString_ = bs;`).
-- **Javadocs:**
-    - Corrected Javadoc for Builder Hazzers and Getters to NOT include `@return This builder for chaining`.
-    - Fixed parameter description for `set...Bytes` methods (added "bytes for").
-- **Comments:** Added missing `// case <tag>`, `// switch (tag)`, `// while (!done)`, `// finally` comments in parsing loop.
-- **Initialization:** Updated `clear()` for String fields to use `getDefaultInstance().get...()` instead of string literals.
-- **Formatting:** Fixed newline placement between bitfields and fields in Builder.
+## ComprehensiveTestEdgeCasesMinimal
 
-## Remaining Issues
-- **End of File Mismatch:** `ComprehensiveTestEdgeCasesMinimalParityTest` fails at the very end of the file (Line ~704) with `expected:<[]> but was:<[}]>`.
-    - **Investigation:** This implies the actual output has an extra closing brace `}` or content where the expected output has ended.
-    - **Status:** The class structure seems correct (Outer class closes, Static block closes). Manual inspection of the expected file suggests it ends with the outer class closing brace. The persistent error even after attempting to remove the brace suggests a deeper mismatch in how the test runner perceives the end of the file or potential whitespace/newline issues that result in an "extra line" detection.
-    - **Action:** Further investigation into the exact whitespace/EOF handling of the test runner or the expected file's EOF marker is needed.
+1.  **Indentation Mismatch at End of File:**
+    -   The `// @@protoc_insertion_point(outer_class_scope)` and the closing brace `}` of the outer class seem to be indented deeper (6 spaces vs 2 spaces) in the generated output compared to the expected output.
+    -   Investigation into `SharedCodeGenerator` and `FileGenerator` indentation logic is needed. The `Printer` class might have a different default indentation width or accumulation logic than expected.
+
+2.  **`FileDescriptor.getMessageType(int)` vs `getMessageTypes().get(int)`:**
+    -   The expected output uses `getMessageType(int)`, which is not a standard method in `com.google.protobuf.Descriptors.FileDescriptor` (usually `getMessageTypes().get(int)`).
+    -   The generator was updated to emit `getMessageType(int)` to match parity, but this might cause compilation errors if the runtime environment does not support it. This needs verification against the specific Protobuf Java runtime version used in the project (4.33.4).
+
+3.  **SourceCodeInfo and Syntax in Embedded Descriptors:**
+    -   The C++ generator strips `SourceCodeInfo` and default `syntax="proto2"` from the embedded `FileDescriptorProto` bytes.
+    -   `SharedCodeGenerator.java` has been updated to replicate this behavior by manually clearing these fields before serialization.
+
+4.  **String Literal Formatting:**
+    -   The C++ generator uses `+` concatenation for split string literals in the descriptor array, while the initial Java port used `,`.
+    -   `SharedCodeGenerator.java` was updated to use `+`.
+
+5.  **Empty Line before Outer Class Scope Insertion Point:**
+    -   The expected output includes an empty line before `// @@protoc_insertion_point(outer_class_scope)`, which was missing in the Java port.
+    -   `FileGenerator.java` was updated to add this newline.

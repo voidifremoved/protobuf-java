@@ -65,17 +65,6 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
 
       generateFieldAccessorTable(printer, bytecodeEstimate);
 
-      printer.print(vars,
-          "static {\n" +
-          "  com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(\n" +
-          "    com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,\n" +
-          "    /* major= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getMajor() + ",\n" +
-          "    /* minor= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getMinor() + ",\n" +
-          "    /* patch= */ " + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getPatch() + ",\n" +
-          "    /* suffix= */ \"" + com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false).getSuffix() + "\",\n" +
-          "    \"$classname$\");\n" +
-          "}\n");
-
       for (Descriptor nested : descriptor.getNestedTypes()) {
           new ImmutableMessageGenerator(nested, context).generateStaticVariables(printer, bytecodeEstimate);
       }
@@ -95,12 +84,12 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       if (descriptor.getContainingType() == null) {
           printer.print(vars,
               "internal_static_$identifier$_descriptor =\n" +
-              "  getDescriptor().getMessageTypes().get($index$);\n");
+              "  getDescriptor().getMessageType($index$);\n");
           bytecodeEstimate += 30;
       } else {
           printer.print(vars,
               "internal_static_$identifier$_descriptor =\n" +
-              "  internal_static_$parent$_descriptor.getNestedTypes().get($index$);\n");
+              "  internal_static_$parent$_descriptor.getNestedType($index$);\n");
           bytecodeEstimate += 30;
       }
 
@@ -372,8 +361,8 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       generateParseFromMethods(printer);
       generateBuilder(printer);
 
+      printer.print("\n");
       printer.print(
-          "\n" +
           "// @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")\n");
 
       String className = nameResolver.getImmutableClassName(descriptor);
@@ -967,7 +956,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
   }
 
   private void generateParser(Printer printer) {
-      String className = nameResolver.getImmutableClassName(descriptor);
+      String className = descriptor.getName();
       printer.print(
           "private static final com.google.protobuf.Parser<" + className + ">\n" +
           "    PARSER = new com.google.protobuf.AbstractParser<" + className + ">() {\n" +

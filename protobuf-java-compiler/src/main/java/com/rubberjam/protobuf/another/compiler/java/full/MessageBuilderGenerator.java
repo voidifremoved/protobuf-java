@@ -85,6 +85,10 @@ public class MessageBuilderGenerator {
 
       generateBuilderExtensionMethods(printer);
 
+      printer.print("\n");
+      printer.print(
+          "// @@protoc_insertion_point(builder_scope:" + descriptor.getFullName() + ")\n");
+
       printer.outdent();
       printer.print("}\n");
   }

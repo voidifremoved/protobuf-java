@@ -37,7 +37,7 @@ public class SharedCodeGenerator {
     boolean isImmutable = !context.enforceLite();
     if (isImmutable) {
         printer.print(
-            "private static com.google.protobuf.Descriptors.FileDescriptor\n" +
+            "private static  com.google.protobuf.Descriptors.FileDescriptor\n" +
             "    descriptor;\n");
     } else {
         if (context.enforceLite()) {
@@ -59,7 +59,12 @@ public class SharedCodeGenerator {
         "java.lang.String[] descriptorData = {\n");
     printer.indent();
 
-    com.google.protobuf.ByteString bytes = file.toProto().toByteString();
+    com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder fileProtoBuilder = file.toProto().toBuilder();
+    fileProtoBuilder.clearSourceCodeInfo();
+    if ("proto2".equals(fileProtoBuilder.getSyntax())) {
+        fileProtoBuilder.clearSyntax();
+    }
+    com.google.protobuf.ByteString bytes = fileProtoBuilder.build().toByteString();
     List<String> pieces = new ArrayList<>();
     int chunkSize = 40;
     for (int i = 0; i < bytes.size(); i += chunkSize) {
@@ -67,8 +72,12 @@ public class SharedCodeGenerator {
         pieces.add(escapeBytes(bytes.substring(i, end)));
     }
 
-    for (String piece : pieces) {
-        printer.print("\"" + piece + "\",\n");
+    for (int i = 0; i < pieces.size(); i++) {
+        if (i < pieces.size() - 1) {
+            printer.print("\"" + pieces.get(i) + "\" +\n");
+        } else {
+            printer.print("\"" + pieces.get(i) + "\"\n");
+        }
     }
 
     printer.outdent();
@@ -88,6 +97,8 @@ public class SharedCodeGenerator {
         "    });\n");
 
     generateStaticVariables(printer);
+    printer.print(
+        "descriptor.resolveAllFeaturesImmutable();\n");
   }
 
   private void generateStaticVariables(Printer printer) {
@@ -109,6 +120,14 @@ public class SharedCodeGenerator {
         builder.append("\\\\");
       } else if (c == '"') {
         builder.append("\\\"");
+      } else if (c == '\'') {
+        builder.append("\\'");
+      } else if (c == '\n') {
+        builder.append("\\n");
+      } else if (c == '\r') {
+        builder.append("\\r");
+      } else if (c == '\t') {
+        builder.append("\\t");
       } else if (c == '$') {
         // Escape $ so Printer does not treat it as variable delimiter.
         builder.append("\\044");
