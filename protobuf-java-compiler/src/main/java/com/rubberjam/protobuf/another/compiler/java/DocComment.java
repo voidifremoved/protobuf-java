@@ -28,6 +28,7 @@ public final class DocComment
 		HAZZER,
 		GETTER,
 		SETTER,
+        BYTES_SETTER,
 		CLEARER,
         BYTES_GETTER,
 		// Repeated
@@ -192,8 +193,6 @@ public final class DocComment
 
 			for (String line : lines)
 			{
-				// Strip leading whitespace from proto comments?
-                // The C++ implementation strips leading whitespace.
 				String trimmed = stripLeadingWhitespace(line);
 				if (!trimmed.isEmpty())
 				{
@@ -526,6 +525,9 @@ public final class DocComment
 		case SETTER:
 			printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
 			break;
+        case BYTES_SETTER:
+            printer.emit(Map.of("name", name), " * @param value The bytes for $name$ to set.\n");
+            break;
 		case CLEARER:
 			break;
 		case LIST_COUNT:
@@ -561,7 +563,21 @@ public final class DocComment
 		}
 		if (builder)
 		{
-			printer.emit(" * @return This builder for chaining.\n");
+            switch (type) {
+                case SETTER:
+                case BYTES_SETTER:
+                case CLEARER:
+                case LIST_INDEXED_SETTER:
+                case LIST_ADDER:
+                case LIST_MULTI_ADDER:
+                case MAP_ENTRY_ADDER:
+                case MAP_MULTI_ADDER:
+                case MAP_ENTRY_REMOVER:
+			        printer.emit(" * @return This builder for chaining.\n");
+                    break;
+                default:
+                    break;
+            }
 		}
 		printer.emit(" */\n");
 	}

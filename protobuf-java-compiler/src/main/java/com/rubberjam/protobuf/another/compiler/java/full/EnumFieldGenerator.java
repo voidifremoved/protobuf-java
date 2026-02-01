@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -67,6 +68,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     }
 
     if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
@@ -76,6 +78,9 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
        // getEnumValue() returns int
+       // DocComment doesn't have VALUE_GETTER, reuse GETTER? Or maybe need new type.
+       // Standard protobuf uses GETTER doc for both usually, or specific.
+       // For now using GETTER for Enum and Value.
        printer.emit(variables,
            "@java.lang.Override\n" +
            "public int get$capitalized_name$Value() {\n" +
@@ -83,6 +88,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
            "}\n");
 
        // getEnum() converts int to Enum
+       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
        printer.emit(variables,
            "@java.lang.Override\n" +
            "public $type$ get$capitalized_name$() {\n" +
@@ -90,6 +96,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
            "  return result == null ? $type$.UNRECOGNIZED : result;\n" +
            "}\n");
     } else {
+       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
        printer.emit(variables,
            "@java.lang.Override\n" +
            "public $type$ get$capitalized_name$() {\n" +
@@ -203,9 +210,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
         printer.emit(variables, "$name$_ = $default_number$;\n");
      } else {
         printer.emit(variables, "$name$_ = $default$;\n");
-     }
-     if (descriptor.hasPresence()) {
-         printer.emit(variables, Helpers.generateClearBit(builderBitIndex) + ";\n");
      }
   }
 
