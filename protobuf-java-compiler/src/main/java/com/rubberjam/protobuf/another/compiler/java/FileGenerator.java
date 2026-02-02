@@ -121,19 +121,7 @@ public class FileGenerator {
     printer.print("\n");
     new SharedCodeGenerator(file, options).generate(printer);
     printer.print("\n");
-    // Workaround: Indentation drifts to Level 3 (6 spaces) at this point instead of Level 1 (2 spaces).
-    // Outdent twice to match expected output.
-    printer.outdent();
-    printer.outdent();
     printer.print("// @@protoc_insertion_point(outer_class_scope)\n");
-    // Note: We don't need further outdent for '}' because '}' is usually printed at Level 0
-    // but here we are at Level 1 relative to start?
-    // If we were at Level 3, and outdented twice, we are at Level 1.
-    // printer.print("}") puts it at Level 1.
-    // But '}' should be at Level 0?
-    // If FileGenerator started at Level 0.
-    // Indent -> Level 1.
-    // So '}' should be after outdent.
     printer.outdent();
     printer.print("}");
   }

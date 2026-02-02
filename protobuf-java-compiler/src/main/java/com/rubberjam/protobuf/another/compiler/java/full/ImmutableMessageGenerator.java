@@ -219,7 +219,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           builderType = "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + ".Builder<?>";
       }
       printer.print("private static final long serialVersionUID = 0L;\n");
-
+      printer.indent();
       // Add static validation block inside the inner message class
       // Note: This duplicates what is in generateStaticVariables for Java 1.7 compatibility/standard practice
       // But based on the failure, it is expected right here.
@@ -234,7 +234,6 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           "    \"$classname$\");\n" +
           "}\n");
 
-      printer.indent();
       vars.put("buildertype", builderType);
       printer.print(vars,
           "// Use $classname$.newBuilder() to construct.\n" +

@@ -340,7 +340,17 @@ public class Printer
 
 				currentIndent = baseIndent + line.indent;
 
-				if (atStartOfLine && !isPure)
+				boolean isBlank = true;
+				for (Chunk c : line.chunks)
+				{
+					if (!c.text.isEmpty() || c.isVar)
+					{
+						isBlank = false;
+						break;
+					}
+				}
+
+				if (atStartOfLine && !isPure && !isBlank)
 				{
 					writeRaw(" ".repeat(currentIndent));
 				}
@@ -359,6 +369,7 @@ public class Printer
 				}
 				previousLineWasPure = isPure;
 			}
+			currentIndent = baseIndent;
 		}
 		catch (NoSuchElementException e)
 		{
