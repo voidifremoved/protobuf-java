@@ -1,10 +1,6 @@
 package com.rubberjam.protobuf.another.compiler.java;
 
-import com.google.protobuf.Descriptors.Descriptor;
-import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
-import com.rubberjam.protobuf.another.compiler.java.full.ImmutableExtensionGenerator;
-import com.rubberjam.protobuf.another.compiler.java.full.ImmutableMessageGenerator;
 import com.rubberjam.protobuf.io.Printer;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,34 +23,7 @@ public class SharedCodeGenerator {
     this.nameResolver = context.getNameResolver();
   }
 
-  public void generate(Printer printer) {
-    printer.print(
-        "public static com.google.protobuf.Descriptors.FileDescriptor\n" +
-        "    getDescriptor() {\n" +
-        "  return descriptor;\n" +
-        "}\n");
-
-    boolean isImmutable = !context.enforceLite();
-    if (isImmutable) {
-        printer.print(
-            "private static  com.google.protobuf.Descriptors.FileDescriptor\n" +
-            "    descriptor;\n");
-    } else {
-        if (context.enforceLite()) {
-            return;
-        }
-    }
-
-    printer.print("static {\n");
-    printer.indent();
-
-    generateDescriptors(printer);
-
-    printer.outdent();
-    printer.print("}\n");
-  }
-
-  private void generateDescriptors(Printer printer) {
+  public void generateDescriptors(Printer printer) {
     printer.print(
         "java.lang.String[] descriptorData = {\n");
     printer.indent();
@@ -95,20 +64,6 @@ public class SharedCodeGenerator {
     printer.outdent();
     printer.print(
         "    });\n");
-
-    generateStaticVariables(printer);
-    printer.print(
-        "descriptor.resolveAllFeaturesImmutable();\n");
-  }
-
-  private void generateStaticVariables(Printer printer) {
-      for (Descriptor message : file.getMessageTypes()) {
-          new ImmutableMessageGenerator(message, context).generateStaticVariableInitializers(printer);
-      }
-
-      for (FieldDescriptor extension : file.getExtensions()) {
-          new ImmutableExtensionGenerator(extension, context).generateRegistrationCode(printer);
-      }
   }
 
   private static String escapeBytes(com.google.protobuf.ByteString input) {
