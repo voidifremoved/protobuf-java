@@ -227,11 +227,11 @@ public class MessageBuilderGenerator {
               name + "_ = null;\n");
       }
 
+      printer.outdent();
       printer.print(
           "  return this;\n" +
           "}\n" +
           "\n");
-      printer.outdent();
 
       printer.print(vars,
           "@java.lang.Override\n" +

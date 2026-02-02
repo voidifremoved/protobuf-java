@@ -32,7 +32,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
 
     variables.put("null_check",
-        "if (value == null) { throw new NullPointerException(); }\n");
+        "if (value == null) { throw new NullPointerException(); }");
   }
 
   @Override
@@ -85,7 +85,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "  if (ref instanceof java.lang.String) {\n" +
           "    return (java.lang.String) ref;\n" +
           "  } else {\n" +
-          "    com.google.protobuf.ByteString bs =\n" +
+        "    com.google.protobuf.ByteString bs = \n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
           "    if (bs.isValidUtf8()) {\n" +
@@ -101,7 +101,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "    get$capitalized_name$Bytes() {\n" +
           "  java.lang.Object ref = $name$_;\n" +
           "  if (ref instanceof java.lang.String) {\n" +
-          "    com.google.protobuf.ByteString b =\n" +
+        "    com.google.protobuf.ByteString b = \n" +
           "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
           "            (java.lang.String) ref);\n" +
           "    $name$_ = b;\n" +
@@ -139,7 +139,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "public java.lang.String get$capitalized_name$() {\n" +
           "  java.lang.Object ref = $name$_;\n" +
           "  if (!(ref instanceof java.lang.String)) {\n" +
-          "    com.google.protobuf.ByteString bs =\n" +
+        "    com.google.protobuf.ByteString bs =\n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
           "    if (bs.isValidUtf8()) {\n" +
@@ -156,7 +156,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "    get$capitalized_name$Bytes() {\n" +
           "  java.lang.Object ref = $name$_;\n" +
           "  if (ref instanceof String) {\n" +
-          "    com.google.protobuf.ByteString b =\n" +
+        "    com.google.protobuf.ByteString b = \n" +
           "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
           "            (java.lang.String) ref);\n" +
           "    $name$_ = b;\n" +
@@ -169,7 +169,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables,
           "public Builder set$capitalized_name$(\n" +
           "    java.lang.String value) {\n" +
-          "  $null_check$" +
+          "  $null_check$\n" +
           "  $name$_ = value;\n" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +
@@ -187,7 +187,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables,
           "public Builder set$capitalized_name$Bytes(\n" +
           "    com.google.protobuf.ByteString value) {\n" +
-          "  $null_check$" +
+          "  $null_check$\n" +
           "  " + (InternalHelpers.checkUtf8(descriptor) ? "com.google.protobuf.AbstractMessageLite.checkByteStringIsUtf8(value);\n" : "") +
           "  $name$_ = value;\n" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
