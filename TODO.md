@@ -1,23 +1,19 @@
-# TODO: Remaining Parity Issues
+# TODO
 
-## ComprehensiveTestEdgeCasesMinimal
+## Outstanding Issues
 
-1.  **Indentation Mismatch at End of File:**
-    -   The `// @@protoc_insertion_point(outer_class_scope)` and the closing brace `}` of the outer class seem to be indented deeper (6 spaces vs 2 spaces) in the generated output compared to the expected output.
-    -   Investigation into `SharedCodeGenerator` and `FileGenerator` indentation logic is needed. The `Printer` class might have a different default indentation width or accumulation logic than expected.
+### 1. FileGenerator / Extension Registry
+- **Current Implementation:** `FileGenerator.generateDescriptorInitializationCodeForImmutable` registers *all* top-level extensions defined in the file into the `ExtensionRegistry` used for `internalUpdateFileDescriptor`.
+- **Desired Implementation:** Match C++ `CollectExtensions` logic to only register extensions that are actually *used* in the file's options (FileOptions, MessageOptions, etc.). This requires parsing the descriptor options to find unknown fields that correspond to extensions.
 
-2.  **`FileDescriptor.getMessageType(int)` vs `getMessageTypes().get(int)`:**
-    -   The expected output uses `getMessageType(int)`, which is not a standard method in `com.google.protobuf.Descriptors.FileDescriptor` (usually `getMessageTypes().get(int)`).
-    -   The generator was updated to emit `getMessageType(int)` to match parity, but this might cause compilation errors if the runtime environment does not support it. This needs verification against the specific Protobuf Java runtime version used in the project (4.33.4).
+### 2. SharedCodeGenerator Refactoring
+- **Current State:** `SharedCodeGenerator` now only contains `generateDescriptors`.
+- **Cleanup:** verify if `SharedCodeGenerator` should be merged into `FileGenerator` or if it should be kept to mirror C++ structure (where it handles more in non-OSS builds).
 
-3.  **SourceCodeInfo and Syntax in Embedded Descriptors:**
-    -   The C++ generator strips `SourceCodeInfo` and default `syntax="proto2"` from the embedded `FileDescriptorProto` bytes.
-    -   `SharedCodeGenerator.java` has been updated to replicate this behavior by manually clearing these fields before serialization.
+### 3. Any Methods
+- **Current State:** `generateAnyMethods` in `ImmutableMessageGenerator` is a stub/partial implementation.
+- **Action:** Fully port `GenerateAnyMethods` from `message.cc` if `Any` proto support is required.
 
-4.  **String Literal Formatting:**
-    -   The C++ generator uses `+` concatenation for split string literals in the descriptor array, while the initial Java port used `,`.
-    -   `SharedCodeGenerator.java` was updated to use `+`.
-
-5.  **Empty Line before Outer Class Scope Insertion Point:**
-    -   The expected output includes an empty line before `// @@protoc_insertion_point(outer_class_scope)`, which was missing in the Java port.
-    -   `FileGenerator.java` was updated to add this newline.
+### 4. Lite Runtime
+- **Current State:** `FileGenerator` uses `ImmutableGeneratorFactory` hardcoded.
+- **Action:** Implement switching to `LiteGeneratorFactory` based on `options.enforceLite` or `file.getOptions().getOptimizeFor()`.

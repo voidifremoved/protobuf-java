@@ -140,6 +140,7 @@ public class Printer
 	private int bytesWritten = 0;
 	private int lastNewlineBytes = 0;
 	private boolean atStartOfLine = true;
+	private boolean pendingIndent = true;
 	private boolean skipNextNewline = false;
 
 	public Printer(Options options)
@@ -318,6 +319,7 @@ public class Printer
 			if (fmt.isRawString && !atStartOfLine && !isIndentedOnly)
 			{
 				writeRaw("\n");
+				pendingIndent = true;
 			}
 
 			boolean previousLineWasPure = false;
@@ -333,27 +335,13 @@ public class Printer
 						if (!skipNextNewline)
 						{
 							writeRaw("\n");
+							pendingIndent = true;
 						}
 					}
 					skipNextNewline = false;
 				}
 
 				currentIndent = baseIndent + line.indent;
-
-				boolean isBlank = true;
-				for (Chunk c : line.chunks)
-				{
-					if (!c.text.isEmpty() || c.isVar)
-					{
-						isBlank = false;
-						break;
-					}
-				}
-
-				if (atStartOfLine && !isPure && !isBlank)
-				{
-					writeRaw(" ".repeat(currentIndent));
-				}
 
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
@@ -387,12 +375,7 @@ public class Printer
 	 */
 	public void emitRaw(String data)
 	{
-		buffer.append(data);
-		bytesWritten += data.length();
-		if (!data.isEmpty())
-		{
-			atStartOfLine = false;
-		}
+		writeRaw(data);
 	}
 
 	private int handleVariableWithAnnotations(Chunk chunk, Deque<AnnotationRecordEntry> annotRecords, Line line, int chunkIdx)
@@ -407,7 +390,12 @@ public class Printer
 		if (varName.startsWith("_start$"))
 		{
 			String actualVar = varName.substring(7);
-			annotRecords.push(new AnnotationRecordEntry(actualVar, bytesWritten));
+			int effectiveStart = bytesWritten;
+			if (pendingIndent)
+			{
+				effectiveStart += currentIndent;
+			}
+			annotRecords.push(new AnnotationRecordEntry(actualVar, effectiveStart));
 
 			// Skip all whitespace immediately after a _start.
 			int nextIdx = chunkIdx + 1;
@@ -633,6 +621,22 @@ public class Printer
 
 	private void writeRaw(String data)
 	{
+		if (data.isEmpty())
+		{
+			return;
+		}
+
+		if (pendingIndent)
+		{
+			if (!data.startsWith("\n"))
+			{
+				String spaces = " ".repeat(currentIndent);
+				buffer.append(spaces);
+				bytesWritten += spaces.length();
+			}
+			pendingIndent = false;
+		}
+
 		for (char c : data.toCharArray())
 		{
 			buffer.append(c);

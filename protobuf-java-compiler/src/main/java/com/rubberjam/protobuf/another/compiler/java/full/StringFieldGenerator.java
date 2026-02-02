@@ -188,7 +188,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "public Builder set$capitalized_name$Bytes(\n" +
           "    com.google.protobuf.ByteString value) {\n" +
           "  $null_check$\n" +
-          "  " + (InternalHelpers.checkUtf8(descriptor) ? "com.google.protobuf.AbstractMessageLite.checkByteStringIsUtf8(value);\n" : "") +
+          (InternalHelpers.checkUtf8(descriptor) ? "  com.google.protobuf.AbstractMessageLite.checkByteStringIsUtf8(value);\n" : "") +
           "  $name$_ = value;\n" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +

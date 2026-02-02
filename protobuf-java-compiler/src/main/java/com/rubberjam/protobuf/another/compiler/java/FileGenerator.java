@@ -119,11 +119,49 @@ public class FileGenerator {
     }
 
     printer.print("\n");
-    new SharedCodeGenerator(file, options).generate(printer);
+    generateDescriptorInitializationCodeForImmutable(printer);
     printer.print("\n");
     printer.print("// @@protoc_insertion_point(outer_class_scope)\n");
     printer.outdent();
     printer.print("}");
+  }
+
+  private void generateDescriptorInitializationCodeForImmutable(Printer printer) {
+    printer.print(
+        "public static com.google.protobuf.Descriptors.FileDescriptor\n" +
+        "    getDescriptor() {\n" +
+        "  return descriptor;\n" +
+        "}\n" +
+        "private static  com.google.protobuf.Descriptors.FileDescriptor\n" +
+        "    descriptor;\n" +
+        "static {\n");
+    printer.indent();
+
+    new SharedCodeGenerator(file, options).generateDescriptors(printer);
+
+    for (Descriptor message : file.getMessageTypes()) {
+      factory.newMessageGenerator(message).generateStaticVariableInitializers(printer);
+    }
+    for (FieldDescriptor extension : file.getExtensions()) {
+      factory.newExtensionGenerator(extension).generateNonNestedInitializationCode(printer);
+    }
+
+    printer.print("descriptor.resolveAllFeaturesImmutable();\n");
+
+    if (file.getExtensions().size() > 0) {
+         printer.print(
+            "com.google.protobuf.ExtensionRegistry registry =\n" +
+            "    com.google.protobuf.ExtensionRegistry.newInstance();\n");
+         for (FieldDescriptor extension : file.getExtensions()) {
+             factory.newExtensionGenerator(extension).generateRegistrationCode(printer);
+         }
+         printer.print(
+            "com.google.protobuf.Descriptors.FileDescriptor\n" +
+            "    .internalUpdateFileDescriptor(descriptor, registry);\n");
+    }
+
+    printer.outdent();
+    printer.print("}\n");
   }
 
   private void generateExtensionRegistrationCode(Printer printer) {
