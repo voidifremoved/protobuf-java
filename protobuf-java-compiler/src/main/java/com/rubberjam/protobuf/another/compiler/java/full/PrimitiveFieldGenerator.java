@@ -40,11 +40,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       switch (descriptor.getType()) {
           case DOUBLE: return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
           case FLOAT: return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
-          case INT64:
-          case UINT64:
           case INT32:
-          case FIXED64:
+          case INT64:
           case UINT32:
+          case UINT64:
+          case FIXED32:
+          case FIXED64:
+          case SFIXED32:
+          case SFIXED64:
           case SINT32:
           case SINT64:
               // INT32/INT64 etc use VARINT
