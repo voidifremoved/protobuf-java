@@ -25,15 +25,21 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Citjb21wcmVoZW5zaXZlX3Rlc3RfZWRnZV9jYXNlc19taW5pbWFsLnByb3Rv",
-            "EiJDb21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXNNaW5pbWFsIkEKD0VkZ2VD",
-            "YXNlTWluaW1hbBIWCgxlbXB0eV9zdHJpbmcYESABKAk6ABIWCg51bmljb2Rl",
-            "X3N0cmluZxgSIAEoCUJQCiljb20ucnViYmVyamFtLnByb3RvYnVmLmNvbXBp",
-            "bGVyLnRlc3QuZWRnZUIhQ29tcHJlaGVuc2l2ZVRlc3RFZGdlQ2FzZXNNaW5p",
-            "bWFsSAE="));
+            "EiJDb21wcmVoZW5zaXZlVGVzdC5FZGdlQ2FzZXNNaW5pbWFsIosBCg9FZGdl",
+            "Q2FzZU1pbmltYWwSFgoMZW1wdHlfc3RyaW5nGBEgASgJOgASFgoOdW5pY29k",
+            "ZV9zdHJpbmcYEiABKAkSDwoHZmllbGQxNRgPIAEoBRIPCgdmaWVsZDE2GBAg",
+            "ASgFEhIKCWZpZWxkMjA0Nxj/DyABKAUSEgoJZmllbGQyMDQ4GIAQIAEoBSKc",
+            "AQoOU3BlY2lhbFN0cmluZ3MSFgoMZW1wdHlfc3RyaW5nGAEgASgJOgASFgoO",
+            "dW5pY29kZV9zdHJpbmcYAiABKAkSFgoObmV3bGluZV9zdHJpbmcYAyABKAkS",
+            "EgoKdGFiX3N0cmluZxgEIAEoCRIUCgxxdW90ZV9zdHJpbmcYBSABKAkSGAoQ",
+            "YmFja3NsYXNoX3N0cmluZxgGIAEoCUJQCiljb20ucnViYmVyamFtLnByb3Rv",
+            "YnVmLmNvbXBpbGVyLnRlc3QuZWRnZUIhQ29tcHJlaGVuc2l2ZVRlc3RFZGdl",
+            "Q2FzZXNNaW5pbWFsSAE="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "Field15", "Field16", "Field2047", "Field2048" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings), global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings.Parser, new[]{ "EmptyString", "UnicodeString", "NewlineString", "TabString", "QuoteString", "BackslashString" }, null, null, null, null)
           }));
     }
     #endregion
@@ -51,6 +57,7 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
   {
     private static readonly pb::MessageParser<EdgeCaseMinimal> _parser = new pb::MessageParser<EdgeCaseMinimal>(() => new EdgeCaseMinimal());
     private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pb::MessageParser<EdgeCaseMinimal> Parser { get { return _parser; } }
@@ -78,8 +85,13 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public EdgeCaseMinimal(EdgeCaseMinimal other) : this() {
+      _hasBits0 = other._hasBits0;
       emptyString_ = other.emptyString_;
       unicodeString_ = other.unicodeString_;
+      field15_ = other.field15_;
+      field16_ = other.field16_;
+      field2047_ = other.field2047_;
+      field2048_ = other.field2048_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -141,6 +153,117 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       unicodeString_ = null;
     }
 
+    /// <summary>Field number for the "field15" field.</summary>
+    public const int Field15FieldNumber = 15;
+    private readonly static int Field15DefaultValue = 0;
+
+    private int field15_;
+    /// <summary>
+    /// Field numbers at boundaries
+    /// </summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Field15 {
+      get { if ((_hasBits0 & 1) != 0) { return field15_; } else { return Field15DefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        field15_ = value;
+      }
+    }
+    /// <summary>Gets whether the "field15" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasField15 {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "field15" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearField15() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "field16" field.</summary>
+    public const int Field16FieldNumber = 16;
+    private readonly static int Field16DefaultValue = 0;
+
+    private int field16_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Field16 {
+      get { if ((_hasBits0 & 2) != 0) { return field16_; } else { return Field16DefaultValue; } }
+      set {
+        _hasBits0 |= 2;
+        field16_ = value;
+      }
+    }
+    /// <summary>Gets whether the "field16" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasField16 {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "field16" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearField16() {
+      _hasBits0 &= ~2;
+    }
+
+    /// <summary>Field number for the "field2047" field.</summary>
+    public const int Field2047FieldNumber = 2047;
+    private readonly static int Field2047DefaultValue = 0;
+
+    private int field2047_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Field2047 {
+      get { if ((_hasBits0 & 4) != 0) { return field2047_; } else { return Field2047DefaultValue; } }
+      set {
+        _hasBits0 |= 4;
+        field2047_ = value;
+      }
+    }
+    /// <summary>Gets whether the "field2047" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasField2047 {
+      get { return (_hasBits0 & 4) != 0; }
+    }
+    /// <summary>Clears the value of the "field2047" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearField2047() {
+      _hasBits0 &= ~4;
+    }
+
+    /// <summary>Field number for the "field2048" field.</summary>
+    public const int Field2048FieldNumber = 2048;
+    private readonly static int Field2048DefaultValue = 0;
+
+    private int field2048_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Field2048 {
+      get { if ((_hasBits0 & 8) != 0) { return field2048_; } else { return Field2048DefaultValue; } }
+      set {
+        _hasBits0 |= 8;
+        field2048_ = value;
+      }
+    }
+    /// <summary>Gets whether the "field2048" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasField2048 {
+      get { return (_hasBits0 & 8) != 0; }
+    }
+    /// <summary>Clears the value of the "field2048" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearField2048() {
+      _hasBits0 &= ~8;
+    }
+
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
@@ -158,6 +281,10 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       if (EmptyString != other.EmptyString) return false;
       if (UnicodeString != other.UnicodeString) return false;
+      if (Field15 != other.Field15) return false;
+      if (Field16 != other.Field16) return false;
+      if (Field2047 != other.Field2047) return false;
+      if (Field2048 != other.Field2048) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -167,6 +294,10 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       int hash = 1;
       if (HasEmptyString) hash ^= EmptyString.GetHashCode();
       if (HasUnicodeString) hash ^= UnicodeString.GetHashCode();
+      if (HasField15) hash ^= Field15.GetHashCode();
+      if (HasField16) hash ^= Field16.GetHashCode();
+      if (HasField2047) hash ^= Field2047.GetHashCode();
+      if (HasField2048) hash ^= Field2048.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -185,6 +316,14 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
+      if (HasField15) {
+        output.WriteRawTag(120);
+        output.WriteInt32(Field15);
+      }
+      if (HasField16) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(Field16);
+      }
       if (HasEmptyString) {
         output.WriteRawTag(138, 1);
         output.WriteString(EmptyString);
@@ -192,6 +331,14 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasUnicodeString) {
         output.WriteRawTag(146, 1);
         output.WriteString(UnicodeString);
+      }
+      if (HasField2047) {
+        output.WriteRawTag(248, 127);
+        output.WriteInt32(Field2047);
+      }
+      if (HasField2048) {
+        output.WriteRawTag(128, 128, 1);
+        output.WriteInt32(Field2048);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -203,6 +350,14 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasField15) {
+        output.WriteRawTag(120);
+        output.WriteInt32(Field15);
+      }
+      if (HasField16) {
+        output.WriteRawTag(128, 1);
+        output.WriteInt32(Field16);
+      }
       if (HasEmptyString) {
         output.WriteRawTag(138, 1);
         output.WriteString(EmptyString);
@@ -210,6 +365,14 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       if (HasUnicodeString) {
         output.WriteRawTag(146, 1);
         output.WriteString(UnicodeString);
+      }
+      if (HasField2047) {
+        output.WriteRawTag(248, 127);
+        output.WriteInt32(Field2047);
+      }
+      if (HasField2048) {
+        output.WriteRawTag(128, 128, 1);
+        output.WriteInt32(Field2048);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -226,6 +389,18 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       if (HasUnicodeString) {
         size += 2 + pb::CodedOutputStream.ComputeStringSize(UnicodeString);
+      }
+      if (HasField15) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Field15);
+      }
+      if (HasField16) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Field16);
+      }
+      if (HasField2047) {
+        size += 2 + pb::CodedOutputStream.ComputeInt32Size(Field2047);
+      }
+      if (HasField2048) {
+        size += 3 + pb::CodedOutputStream.ComputeInt32Size(Field2048);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -244,6 +419,18 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
       }
       if (other.HasUnicodeString) {
         UnicodeString = other.UnicodeString;
+      }
+      if (other.HasField15) {
+        Field15 = other.Field15;
+      }
+      if (other.HasField16) {
+        Field16 = other.Field16;
+      }
+      if (other.HasField2047) {
+        Field2047 = other.Field2047;
+      }
+      if (other.HasField2048) {
+        Field2048 = other.Field2048;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -264,12 +451,28 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
+          case 120: {
+            Field15 = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            Field16 = input.ReadInt32();
+            break;
+          }
           case 138: {
             EmptyString = input.ReadString();
             break;
           }
           case 146: {
             UnicodeString = input.ReadString();
+            break;
+          }
+          case 16376: {
+            Field2047 = input.ReadInt32();
+            break;
+          }
+          case 16384: {
+            Field2048 = input.ReadInt32();
             break;
           }
         }
@@ -291,12 +494,498 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           default:
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
+          case 120: {
+            Field15 = input.ReadInt32();
+            break;
+          }
+          case 128: {
+            Field16 = input.ReadInt32();
+            break;
+          }
           case 138: {
             EmptyString = input.ReadString();
             break;
           }
           case 146: {
             UnicodeString = input.ReadString();
+            break;
+          }
+          case 16376: {
+            Field2047 = input.ReadInt32();
+            break;
+          }
+          case 16384: {
+            Field2048 = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with special string values
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class SpecialStrings : pb::IMessage<SpecialStrings>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<SpecialStrings> _parser = new pb::MessageParser<SpecialStrings>(() => new SpecialStrings());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<SpecialStrings> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.EdgeCasesMinimal.ComprehensiveTestEdgeCasesMinimalReflection.Descriptor.MessageTypes[1]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SpecialStrings() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SpecialStrings(SpecialStrings other) : this() {
+      emptyString_ = other.emptyString_;
+      unicodeString_ = other.unicodeString_;
+      newlineString_ = other.newlineString_;
+      tabString_ = other.tabString_;
+      quoteString_ = other.quoteString_;
+      backslashString_ = other.backslashString_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public SpecialStrings Clone() {
+      return new SpecialStrings(this);
+    }
+
+    /// <summary>Field number for the "empty_string" field.</summary>
+    public const int EmptyStringFieldNumber = 1;
+    private readonly static string EmptyStringDefaultValue = "";
+
+    private string emptyString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string EmptyString {
+      get { return emptyString_ ?? EmptyStringDefaultValue; }
+      set {
+        emptyString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "empty_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasEmptyString {
+      get { return emptyString_ != null; }
+    }
+    /// <summary>Clears the value of the "empty_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearEmptyString() {
+      emptyString_ = null;
+    }
+
+    /// <summary>Field number for the "unicode_string" field.</summary>
+    public const int UnicodeStringFieldNumber = 2;
+    private readonly static string UnicodeStringDefaultValue = "";
+
+    private string unicodeString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string UnicodeString {
+      get { return unicodeString_ ?? UnicodeStringDefaultValue; }
+      set {
+        unicodeString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "unicode_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasUnicodeString {
+      get { return unicodeString_ != null; }
+    }
+    /// <summary>Clears the value of the "unicode_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearUnicodeString() {
+      unicodeString_ = null;
+    }
+
+    /// <summary>Field number for the "newline_string" field.</summary>
+    public const int NewlineStringFieldNumber = 3;
+    private readonly static string NewlineStringDefaultValue = "";
+
+    private string newlineString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string NewlineString {
+      get { return newlineString_ ?? NewlineStringDefaultValue; }
+      set {
+        newlineString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "newline_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNewlineString {
+      get { return newlineString_ != null; }
+    }
+    /// <summary>Clears the value of the "newline_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNewlineString() {
+      newlineString_ = null;
+    }
+
+    /// <summary>Field number for the "tab_string" field.</summary>
+    public const int TabStringFieldNumber = 4;
+    private readonly static string TabStringDefaultValue = "";
+
+    private string tabString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string TabString {
+      get { return tabString_ ?? TabStringDefaultValue; }
+      set {
+        tabString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "tab_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasTabString {
+      get { return tabString_ != null; }
+    }
+    /// <summary>Clears the value of the "tab_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearTabString() {
+      tabString_ = null;
+    }
+
+    /// <summary>Field number for the "quote_string" field.</summary>
+    public const int QuoteStringFieldNumber = 5;
+    private readonly static string QuoteStringDefaultValue = "";
+
+    private string quoteString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string QuoteString {
+      get { return quoteString_ ?? QuoteStringDefaultValue; }
+      set {
+        quoteString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "quote_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasQuoteString {
+      get { return quoteString_ != null; }
+    }
+    /// <summary>Clears the value of the "quote_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearQuoteString() {
+      quoteString_ = null;
+    }
+
+    /// <summary>Field number for the "backslash_string" field.</summary>
+    public const int BackslashStringFieldNumber = 6;
+    private readonly static string BackslashStringDefaultValue = "";
+
+    private string backslashString_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string BackslashString {
+      get { return backslashString_ ?? BackslashStringDefaultValue; }
+      set {
+        backslashString_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+    /// <summary>Gets whether the "backslash_string" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasBackslashString {
+      get { return backslashString_ != null; }
+    }
+    /// <summary>Clears the value of the "backslash_string" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearBackslashString() {
+      backslashString_ = null;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as SpecialStrings);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(SpecialStrings other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (EmptyString != other.EmptyString) return false;
+      if (UnicodeString != other.UnicodeString) return false;
+      if (NewlineString != other.NewlineString) return false;
+      if (TabString != other.TabString) return false;
+      if (QuoteString != other.QuoteString) return false;
+      if (BackslashString != other.BackslashString) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasEmptyString) hash ^= EmptyString.GetHashCode();
+      if (HasUnicodeString) hash ^= UnicodeString.GetHashCode();
+      if (HasNewlineString) hash ^= NewlineString.GetHashCode();
+      if (HasTabString) hash ^= TabString.GetHashCode();
+      if (HasQuoteString) hash ^= QuoteString.GetHashCode();
+      if (HasBackslashString) hash ^= BackslashString.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasEmptyString) {
+        output.WriteRawTag(10);
+        output.WriteString(EmptyString);
+      }
+      if (HasUnicodeString) {
+        output.WriteRawTag(18);
+        output.WriteString(UnicodeString);
+      }
+      if (HasNewlineString) {
+        output.WriteRawTag(26);
+        output.WriteString(NewlineString);
+      }
+      if (HasTabString) {
+        output.WriteRawTag(34);
+        output.WriteString(TabString);
+      }
+      if (HasQuoteString) {
+        output.WriteRawTag(42);
+        output.WriteString(QuoteString);
+      }
+      if (HasBackslashString) {
+        output.WriteRawTag(50);
+        output.WriteString(BackslashString);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasEmptyString) {
+        output.WriteRawTag(10);
+        output.WriteString(EmptyString);
+      }
+      if (HasUnicodeString) {
+        output.WriteRawTag(18);
+        output.WriteString(UnicodeString);
+      }
+      if (HasNewlineString) {
+        output.WriteRawTag(26);
+        output.WriteString(NewlineString);
+      }
+      if (HasTabString) {
+        output.WriteRawTag(34);
+        output.WriteString(TabString);
+      }
+      if (HasQuoteString) {
+        output.WriteRawTag(42);
+        output.WriteString(QuoteString);
+      }
+      if (HasBackslashString) {
+        output.WriteRawTag(50);
+        output.WriteString(BackslashString);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasEmptyString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(EmptyString);
+      }
+      if (HasUnicodeString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UnicodeString);
+      }
+      if (HasNewlineString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(NewlineString);
+      }
+      if (HasTabString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(TabString);
+      }
+      if (HasQuoteString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(QuoteString);
+      }
+      if (HasBackslashString) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(BackslashString);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(SpecialStrings other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasEmptyString) {
+        EmptyString = other.EmptyString;
+      }
+      if (other.HasUnicodeString) {
+        UnicodeString = other.UnicodeString;
+      }
+      if (other.HasNewlineString) {
+        NewlineString = other.NewlineString;
+      }
+      if (other.HasTabString) {
+        TabString = other.TabString;
+      }
+      if (other.HasQuoteString) {
+        QuoteString = other.QuoteString;
+      }
+      if (other.HasBackslashString) {
+        BackslashString = other.BackslashString;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            EmptyString = input.ReadString();
+            break;
+          }
+          case 18: {
+            UnicodeString = input.ReadString();
+            break;
+          }
+          case 26: {
+            NewlineString = input.ReadString();
+            break;
+          }
+          case 34: {
+            TabString = input.ReadString();
+            break;
+          }
+          case 42: {
+            QuoteString = input.ReadString();
+            break;
+          }
+          case 50: {
+            BackslashString = input.ReadString();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            EmptyString = input.ReadString();
+            break;
+          }
+          case 18: {
+            UnicodeString = input.ReadString();
+            break;
+          }
+          case 26: {
+            NewlineString = input.ReadString();
+            break;
+          }
+          case 34: {
+            TabString = input.ReadString();
+            break;
+          }
+          case 42: {
+            QuoteString = input.ReadString();
+            break;
+          }
+          case 50: {
+            BackslashString = input.ReadString();
             break;
           }
         }
