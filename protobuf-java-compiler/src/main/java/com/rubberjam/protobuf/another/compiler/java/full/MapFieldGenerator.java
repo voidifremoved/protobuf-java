@@ -54,6 +54,8 @@ public class MapFieldGenerator extends ImmutableFieldGenerator {
         (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED));
     variables.put("tag_size", String.valueOf(
         com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
+
+    variables.put("capitalized_type", Helpers.getFieldTypeName(descriptor.getType()));
   }
 
   @Override
@@ -310,7 +312,7 @@ public class MapFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateSerializationCode(Printer printer) {
     printer.emit(variables,
-        "com.google.protobuf.GeneratedMessageV3\n" +
+        "com.google.protobuf.GeneratedMessage\n" +
         "  .serialize$capitalized_type$MapTo(\n" +
         "    output,\n" +
         "    internalGet$capitalized_name$(),\n" +
