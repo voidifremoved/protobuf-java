@@ -97,12 +97,12 @@ public class FileGenerator {
     boolean multipleFiles = file.getOptions().getJavaMultipleFiles();
 
     if (!multipleFiles) {
+      for (EnumDescriptor enumType : file.getEnumTypes()) {
+        factory.newEnumGenerator(enumType).generate(printer);
+      }
       for (Descriptor message : file.getMessageTypes()) {
         factory.newMessageGenerator(message).generateInterface(printer);
         factory.newMessageGenerator(message).generate(printer);
-      }
-      for (EnumDescriptor enumType : file.getEnumTypes()) {
-        factory.newEnumGenerator(enumType).generate(printer);
       }
       for (ServiceDescriptor service : file.getServices()) {
         factory.newServiceGenerator(service).generate(printer);

@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.io.Printer;
 import java.util.Map;
@@ -26,11 +27,11 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
     variables.put("list_type", listType);
     variables.put("empty_list", getEmptyListCall(javaType));
 
-    variables.put("repeated_get", "get" + capitalizedType + "List");
-    variables.put("repeated_count", "get" + capitalizedType + "Count");
-    variables.put("repeated_get_index", "get" + capitalizedType);
-    variables.put("repeated_add", "add" + capitalizedType);
-    variables.put("repeated_set", "set" + capitalizedType);
+    variables.put("repeated_get", "get" + variables.get("capitalized_name") + "List");
+    variables.put("repeated_count", "get" + variables.get("capitalized_name") + "Count");
+    variables.put("repeated_get_index", "get" + variables.get("capitalized_name"));
+    variables.put("repeated_add", "add" + variables.get("capitalized_name"));
+    variables.put("repeated_set", "set" + variables.get("capitalized_name"));
 
     variables.put("tag_size", String.valueOf(
         com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
@@ -110,10 +111,14 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-    printer.emit(variables,
-        "java.util.List<$boxed_type$> $repeated_get$();\n" +
-        "int $repeated_count$();\n" +
-        "$type$ $repeated_get_index$(int index);\n");
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+    printer.emit(variables, "java.util.List<$boxed_type$> $repeated_get$();\n");
+
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+    printer.emit(variables, "int $repeated_count$();\n");
+
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+    printer.emit(variables, "$type$ $repeated_get_index$(int index);\n");
   }
 
   @Override

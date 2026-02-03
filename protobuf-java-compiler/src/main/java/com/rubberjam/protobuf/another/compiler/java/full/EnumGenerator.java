@@ -85,6 +85,8 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
       vars.put("index", value.getIndex());
       vars.put("number", value.getNumber());
 
+      DocComment.writeEnumValueDocComment(printer, value, context);
+
       if (value.getOptions().getDeprecated()) {
         printer.print("@java.lang.Deprecated\n");
       }
@@ -108,6 +110,20 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
         ";\n" +
         "\n");
 
+    com.google.protobuf.compiler.PluginProtos.Version version = com.rubberjam.protobuf.another.compiler.Versions.getProtobufJavaVersion(false);
+    printer.print("static {\n");
+    printer.indent();
+    printer.print(vars,
+        "com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(\n" +
+        "  com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,\n" +
+        "  /* major= */ " + version.getMajor() + ",\n" +
+        "  /* minor= */ " + version.getMinor() + ",\n" +
+        "  /* patch= */ " + version.getPatch() + ",\n" +
+        "  /* suffix= */ \"" + version.getSuffix() + "\",\n" +
+        "  \"$classname$\");\n");
+    printer.outdent();
+    printer.print("}\n");
+
     for (Alias alias : aliases) {
       vars.put("classname", descriptor.getName());
       vars.put("name", alias.value.getName());
@@ -120,13 +136,20 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
       vars.put("name", value.getName());
       vars.put("number", String.valueOf(value.getNumber()));
       vars.put("deprecation", value.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
+
+      printer.print("/**\n");
+      DocComment.writeDocCommentBody(printer, value, context.getOptions(), false);
+      printer.print(vars,
+          " * <code>$name$ = $number$;</code>\n" +
+          " */\n");
+
       printer.print(vars,
           "$deprecation$public static final int $name$_VALUE = $number$;\n");
     }
     printer.print("\n");
 
+    printer.print("\n");
     printer.print(
-        "\n" +
         "public final int getNumber() {\n");
 
     if ("proto3".equals(descriptor.getFile().toProto().getSyntax())) {
@@ -188,7 +211,9 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
         "    default: return null;\n" +
         "  }\n" +
         "}\n" +
-        "\n" +
+        "\n");
+
+    printer.print(vars,
         "public static com.google.protobuf.Internal.EnumLiteMap<$classname$>\n" +
         "    internalGetValueMap() {\n" +
         "  return internalValueMap;\n" +
@@ -230,7 +255,7 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
           "    getDescriptorForType() {\n" +
           "  return getDescriptor();\n" +
           "}\n" +
-          "public static final com.google.protobuf.Descriptors.EnumDescriptor\n" +
+          "public static com.google.protobuf.Descriptors.EnumDescriptor\n" +
           "    getDescriptor() {\n");
 
       if (descriptor.getContainingType() == null) {
@@ -247,7 +272,7 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
               "  return " + parent + "." + descriptorAccessor + ".getEnumTypes().get(" + descriptor.getIndex() + ");\n");
       }
 
-      printer.print(
+      printer.print(vars,
           "}\n" +
           "\n" +
           "private static final $classname$[] VALUES = ");
@@ -256,9 +281,9 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
           printer.print("values();\n");
       } else {
           printer.print("getStaticValuesArray();\n");
-          printer.print("private static $classname$[] getStaticValuesArray() {\n");
+          printer.print(vars, "private static $classname$[] getStaticValuesArray() {\n");
           printer.indent();
-          printer.print("return new $classname$[] {\n" +
+          printer.print(vars, "return new $classname$[] {\n" +
                         "  ");
           for (EnumValueDescriptor value : descriptor.getValues()) {
               printer.print(value.getName() + ", ");
@@ -266,11 +291,11 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
           printer.print("\n" +
                         "};\n");
           printer.outdent();
-          printer.print("}\n");
+          printer.print("}");
       }
 
+      printer.print("\n");
       printer.print(vars,
-          "\n" +
           "public static $classname$ valueOf(\n" +
           "    com.google.protobuf.Descriptors.EnumValueDescriptor desc) {\n" +
           "  if (desc.getType() != getDescriptor()) {\n" +

@@ -229,7 +229,7 @@ public final class DocComment
 		return s.substring(i);
 	}
 
-	private static void writeDocCommentBody(
+	public static void writeDocCommentBody(
 			Printer printer, GenericDescriptor descriptor, Options options, boolean kdoc)
 	{
 		SourceCodeInfo.Location location = getLocation(descriptor);
@@ -370,9 +370,9 @@ public final class DocComment
         }
 
         if (field.getType() == FieldDescriptor.Type.MESSAGE) {
-             sb.append(field.getMessageType().getFullName());
+             sb.append(".").append(field.getMessageType().getFullName());
         } else if (field.getType() == FieldDescriptor.Type.ENUM) {
-             sb.append(field.getEnumType().getFullName());
+             sb.append(".").append(field.getEnumType().getFullName());
         } else {
              sb.append(field.getType().name().toLowerCase());
         }
@@ -600,6 +600,175 @@ public final class DocComment
 	{
 		writeFieldAccessorDocComment(printer, field, type, options, false, false, false);
 	}
+
+    public static void writeFieldEnumValueAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options) {
+        writeFieldEnumValueAccessorDocComment(printer, field, type, options, false);
+    }
+
+    public static void writeFieldEnumValueAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options,
+            boolean builder)
+    {
+        writeFieldEnumValueAccessorDocComment(printer, field, type, options, builder, false);
+    }
+
+    public static void writeFieldEnumValueAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options,
+            boolean builder,
+            boolean isPrivate)
+    {
+        printer.emit("/**\n");
+        writeDocCommentBody(printer, field, options, false);
+        writeDebugString(printer, field, options, false);
+        if (!isPrivate) {
+            writeDeprecatedJavadoc(printer, field, options);
+        }
+
+        String name = underscoresToCamelCase(field.getName(), false);
+
+        switch (type)
+        {
+        case GETTER:
+            printer.emit(Map.of("name", name),
+                    " * @return The enum numeric value on the wire for $name$.\n");
+            break;
+        case SETTER:
+            printer.emit(Map.of("name", name),
+                    " * @param value The enum numeric value on the wire for $name$ to set.\n");
+            break;
+        case LIST_GETTER:
+            printer.emit(Map.of("name", name),
+                    " * @return A list containing the enum numeric values on the wire for $name$.\n");
+            break;
+        case LIST_INDEXED_GETTER:
+            printer.emit(" * @param index The index of the value to return.\n");
+            printer.emit(Map.of("name", name),
+                    " * @return The enum numeric value on the wire of $name$ at the given index.\n");
+            break;
+        case LIST_INDEXED_SETTER:
+            printer.emit(" * @param index The index to set the value at.\n");
+            printer.emit(Map.of("name", name),
+                    " * @param value The enum numeric value on the wire for $name$ to set.\n");
+            break;
+        case LIST_ADDER:
+            printer.emit(Map.of("name", name),
+                    " * @param value The enum numeric value on the wire for $name$ to add.\n");
+            break;
+        case LIST_MULTI_ADDER:
+            printer.emit(Map.of("name", name),
+                    " * @param values The enum numeric values on the wire for $name$ to add.\n");
+            break;
+        default:
+            break;
+        }
+
+        if (builder)
+        {
+            switch (type) {
+                case SETTER:
+                case LIST_INDEXED_SETTER:
+                case LIST_ADDER:
+                case LIST_MULTI_ADDER:
+                    printer.emit(" * @return This builder for chaining.\n");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        printer.emit(" */\n");
+    }
+
+    public static void writeFieldStringBytesAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options) {
+        writeFieldStringBytesAccessorDocComment(printer, field, type, options, false);
+    }
+
+    public static void writeFieldStringBytesAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options,
+            boolean builder)
+    {
+        writeFieldStringBytesAccessorDocComment(printer, field, type, options, builder, false);
+    }
+
+    public static void writeFieldStringBytesAccessorDocComment(
+            Printer printer,
+            FieldDescriptor field,
+            AccessorType type,
+            Options options,
+            boolean builder,
+            boolean isPrivate)
+    {
+        printer.emit("/**\n");
+        writeDocCommentBody(printer, field, options, false);
+        writeDebugString(printer, field, options, false);
+        if (!isPrivate) {
+            writeDeprecatedJavadoc(printer, field, options);
+        }
+
+        String name = underscoresToCamelCase(field.getName(), false);
+
+        switch (type)
+        {
+        case GETTER:
+            printer.emit(Map.of("name", name), " * @return The bytes for $name$.\n");
+            break;
+        case SETTER:
+            printer.emit(Map.of("name", name), " * @param value The bytes for $name$ to set.\n");
+            break;
+        case LIST_GETTER:
+            printer.emit(Map.of("name", name), " * @return A list containing the bytes for $name$.\n");
+            break;
+        case LIST_INDEXED_GETTER:
+            printer.emit(" * @param index The index of the value to return.\n");
+            printer.emit(Map.of("name", name), " * @return The bytes of the $name$ at the given index.\n");
+            break;
+        case LIST_INDEXED_SETTER:
+            printer.emit(" * @param index The index to set the value at.\n");
+            printer.emit(Map.of("name", name), " * @param value The bytes of the $name$ to set.\n");
+            break;
+        case LIST_ADDER:
+            printer.emit(Map.of("name", name), " * @param value The bytes of the $name$ to add.\n");
+            break;
+        case LIST_MULTI_ADDER:
+            printer.emit(Map.of("name", name), " * @param values The bytes of the $name$ to add.\n");
+            break;
+        default:
+            break;
+        }
+
+        if (builder)
+        {
+            switch (type) {
+                case SETTER:
+                case LIST_INDEXED_SETTER:
+                case LIST_ADDER:
+                case LIST_MULTI_ADDER:
+                    printer.emit(" * @return This builder for chaining.\n");
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        printer.emit(" */\n");
+    }
 
 	// Minimal implementation helper for CamelCase
 	private static String underscoresToCamelCase(String input, boolean capNextLetter)

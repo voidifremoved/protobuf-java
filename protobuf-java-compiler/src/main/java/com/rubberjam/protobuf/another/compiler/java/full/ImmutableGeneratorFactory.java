@@ -1,8 +1,10 @@
 package com.rubberjam.protobuf.another.compiler.java.full;
 
+import com.google.protobuf.DescriptorProtos.FileOptions;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.google.protobuf.Descriptors.FileDescriptor;
 import com.google.protobuf.Descriptors.ServiceDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorFactory;
@@ -22,12 +24,12 @@ public class ImmutableGeneratorFactory implements GeneratorFactory {
 
   @Override
   public MessageGenerator newMessageGenerator(Descriptor descriptor) {
-    if (context.hasGeneratedMethods(descriptor)) {
-      return new ImmutableMessageGenerator(descriptor, context);
-    } else {
+    if (isLite(descriptor.getFile())) {
       // TODO: Implement ImmutableMessageLiteGenerator (Phase 10)
       throw new UnsupportedOperationException("Lite generator not implemented yet.");
       // return new ImmutableMessageLiteGenerator(descriptor, context);
+    } else {
+      return new ImmutableMessageGenerator(descriptor, context);
     }
   }
 
@@ -40,17 +42,22 @@ public class ImmutableGeneratorFactory implements GeneratorFactory {
 
   @Override
   public ExtensionGenerator newExtensionGenerator(FieldDescriptor descriptor) {
-    if (context.hasGeneratedMethods(descriptor.getFile())) { // ExtensionGenerator checks file
-      return new ImmutableExtensionGenerator(descriptor, context);
-    } else {
+    if (isLite(descriptor.getFile())) {
       // TODO: Implement ImmutableExtensionLiteGenerator (Phase 10)
       throw new UnsupportedOperationException("Lite extension generator not implemented yet.");
       // return new ImmutableExtensionLiteGenerator(descriptor, context);
+    } else {
+      return new ImmutableExtensionGenerator(descriptor, context);
     }
   }
 
   @Override
   public ServiceGenerator newServiceGenerator(ServiceDescriptor descriptor) {
     return new ImmutableServiceGenerator(descriptor, context);
+  }
+
+  private boolean isLite(FileDescriptor file) {
+    return context.enforceLite() ||
+           file.getOptions().getOptimizeFor() == FileOptions.OptimizeMode.LITE_RUNTIME;
   }
 }

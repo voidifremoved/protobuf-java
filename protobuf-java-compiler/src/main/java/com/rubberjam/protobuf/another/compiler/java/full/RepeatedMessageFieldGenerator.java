@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -40,14 +41,22 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-     printer.emit(variables,
-         "java.util.List<$type$> \n" +
-         "    get$capitalized_name$List();\n" +
-         "$type$ get$capitalized_name$(int index);\n" +
-         "int get$capitalized_name$Count();\n" +
-         "java.util.List<? extends $type$OrBuilder> \n" +
-         "    get$capitalized_name$OrBuilderList();\n" +
-         "$type$OrBuilder get$capitalized_name$OrBuilder(\n" +
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+     printer.emit(variables, "java.util.List<$type$> \n" +
+         "    get$capitalized_name$List();\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+     printer.emit(variables, "$type$ get$capitalized_name$(int index);\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+     printer.emit(variables, "int get$capitalized_name$Count();\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+     printer.emit(variables, "java.util.List<? extends $type$OrBuilder> \n" +
+         "    get$capitalized_name$OrBuilderList();\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+     printer.emit(variables, "$type$OrBuilder get$capitalized_name$OrBuilder(\n" +
          "    int index);\n");
   }
 
