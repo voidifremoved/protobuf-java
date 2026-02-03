@@ -64,6 +64,16 @@ public class Parser {
       Token current = parser.input.current();
       location.addSpan(current.line);
       location.addSpan(current.column);
+
+      if (current.leadingComments != null) {
+        location.setLeadingComments(current.leadingComments);
+      }
+      if (current.trailingComments != null) {
+        location.setTrailingComments(current.trailingComments);
+      }
+      if (current.leadingDetachedComments != null) {
+        location.addAllLeadingDetachedComments(current.leadingDetachedComments);
+      }
     }
 
     void endAt(Token token) {
@@ -812,6 +822,11 @@ public class Parser {
 
       if (!parseOptionValue(uninterpreted)) return false;
 
+      // Try to interpret as standard option
+      if (interpretOption(optionsBuilder, uninterpreted.build())) {
+          return true;
+      }
+
       try {
           java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
           m.invoke(optionsBuilder, uninterpreted.build());
@@ -820,6 +835,83 @@ public class Parser {
           return false;
       }
       return true;
+  }
+
+  private boolean interpretOption(com.google.protobuf.GeneratedMessage.Builder<?> optionsBuilder, UninterpretedOption option) {
+      if (option.getNameCount() != 1) return false;
+      UninterpretedOption.NamePart part = option.getName(0);
+      if (part.getIsExtension()) return false;
+
+      String name = part.getNamePart();
+      com.google.protobuf.Descriptors.Descriptor descriptor = optionsBuilder.getDescriptorForType();
+      com.google.protobuf.Descriptors.FieldDescriptor field = descriptor.findFieldByName(name);
+
+      if (field == null) return false;
+
+      Object value = null;
+      switch (field.getJavaType()) {
+          case INT:
+               if (option.hasPositiveIntValue()) {
+                   value = (int) option.getPositiveIntValue();
+               } else if (option.hasNegativeIntValue()) {
+                   value = (int) option.getNegativeIntValue();
+               }
+               break;
+          case LONG:
+               if (option.hasPositiveIntValue()) {
+                   value = option.getPositiveIntValue();
+               } else if (option.hasNegativeIntValue()) {
+                   value = option.getNegativeIntValue();
+               }
+               break;
+          case BOOLEAN:
+               if (option.hasIdentifierValue()) {
+                   String val = option.getIdentifierValue();
+                   if ("true".equals(val)) value = true;
+                   else if ("false".equals(val)) value = false;
+               }
+               break;
+          case FLOAT:
+               if (option.hasDoubleValue()) {
+                   value = (float) option.getDoubleValue();
+               } else if (option.hasPositiveIntValue()) {
+                   value = (float) option.getPositiveIntValue();
+               } else if (option.hasNegativeIntValue()) {
+                   value = (float) option.getNegativeIntValue();
+               }
+               break;
+          case DOUBLE:
+               if (option.hasDoubleValue()) {
+                   value = option.getDoubleValue();
+               } else if (option.hasPositiveIntValue()) {
+                   value = (double) option.getPositiveIntValue();
+               } else if (option.hasNegativeIntValue()) {
+                   value = (double) option.getNegativeIntValue();
+               }
+               break;
+          case STRING:
+               if (option.hasStringValue()) {
+                   value = option.getStringValue().toStringUtf8();
+               }
+               break;
+          case ENUM:
+               if (option.hasIdentifierValue()) {
+                   value = field.getEnumType().findValueByName(option.getIdentifierValue());
+               }
+               break;
+           default:
+               break;
+      }
+
+      if (value != null) {
+          if (field.isRepeated()) {
+               optionsBuilder.addRepeatedField(field, value);
+          } else {
+               optionsBuilder.setField(field, value);
+          }
+          return true;
+      }
+      return false;
   }
 
   private boolean parseOptionName(UninterpretedOption.Builder uninterpreted) {
