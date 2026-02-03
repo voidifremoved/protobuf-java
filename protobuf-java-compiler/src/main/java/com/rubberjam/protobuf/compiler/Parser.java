@@ -1,6 +1,5 @@
 package com.rubberjam.protobuf.compiler;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import com.google.protobuf.DescriptorProtos.MethodDescriptorProto;
 import com.google.protobuf.DescriptorProtos.OneofDescriptorProto;
 import com.google.protobuf.DescriptorProtos.ServiceDescriptorProto;
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
+import com.google.protobuf.DescriptorProtos.UninterpretedOption;
 import com.rubberjam.protobuf.io.Tokenizer;
 import com.rubberjam.protobuf.io.Tokenizer.Token;
 
@@ -99,7 +99,6 @@ public class Parser {
       }
       if (file != null) file.setSyntax(syntaxIdentifier);
     } else {
-      System.err.println("No syntax specified. Defaulting to 'proto2'.");
       syntaxIdentifier = "proto2";
     }
 
@@ -160,7 +159,8 @@ public class Parser {
   private boolean consumeInteger(int[] output) {
     if (lookingAtType(Tokenizer.TokenType.INTEGER)) {
       try {
-        output[0] = Integer.decode(input.current().text);
+        long val = parseInteger(input.current().text);
+        output[0] = (int) val;
         input.next();
         return true;
       } catch (NumberFormatException e) {
@@ -170,6 +170,17 @@ public class Parser {
     }
     recordError("Expected integer.");
     return false;
+  }
+
+  private boolean consumeSignedInteger(int[] output) {
+      boolean negative = tryConsume("-");
+      if (consumeInteger(output)) {
+          if (negative) {
+              output[0] = -output[0];
+          }
+          return true;
+      }
+      return false;
   }
 
   private boolean consumeString(StringBuilder output) {
@@ -184,12 +195,30 @@ public class Parser {
     return false;
   }
   
-  // Consumes a semicolon or braces, handling comments
+  private boolean consumeNumber(StringBuilder output) {
+      boolean negative = tryConsume("-");
+      if (lookingAtType(Tokenizer.TokenType.INTEGER) || lookingAtType(Tokenizer.TokenType.FLOAT)) {
+          if (negative) output.append("-");
+          output.append(input.current().text);
+          input.next();
+          return true;
+      } else if (lookingAt("inf")) {
+          if (negative) output.append("-");
+          output.append("inf");
+          input.next();
+          return true;
+      } else if (lookingAt("nan")) {
+          if (negative) output.append("-");
+          output.append("nan");
+          input.next();
+          return true;
+      }
+      recordError("Expected number.");
+      return false;
+  }
+
   private boolean consumeEndOfDeclaration(String text, LocationRecorder location) {
     if (tryConsume(text)) {
-        // In a real impl, input.nextWithComments() would return comments.
-        // Here we assume standard next() and simple comment attachment would happen 
-        // via the Tokenizer's state if we implemented full comment extraction.
         return true;
     }
     recordError("Expected \"" + text + "\".");
@@ -209,7 +238,7 @@ public class Parser {
     StringBuilder syntax = new StringBuilder();
     if (!consumeString(syntax)) return false;
     
-    // Clean quotes if Tokenizer leaves them (simplified)
+    // Clean quotes if Tokenizer leaves them
     String cleanSyntax = syntax.toString().replace("\"", "").replace("'", "");
     
     if (!cleanSyntax.equals("proto2") && !cleanSyntax.equals("proto3")) {
@@ -238,14 +267,10 @@ public class Parser {
     } else if (lookingAt("extend")) {
         return parseFileExtend(file, rootLocation);
     } else if (lookingAt("message")) {
-        // Fallback or error if message is handled above?
-        // Ah, lookingAt checks current token. 'message' handled above.
-        // This is safe.
         input.next();
         return false;
     } else if (lookingAt("option")) {
-      // Simplified option parsing
-      return parseOption(rootLocation); 
+      return parseOption(file.getOptionsBuilder(), rootLocation);
     } else if (lookingAt(";")) {
         input.next();
         return true;
@@ -321,7 +346,6 @@ public class Parser {
         return false;
       }
       if (!parseMessageStatement(message, messageLocation)) {
-          // Recovery: skip token
           input.next();
       }
     }
@@ -345,11 +369,79 @@ public class Parser {
     } else if (lookingAt("oneof")) {
       return parseOneof(message, messageLocation);
     } else if (lookingAt("option")) {
-        return parseOption(messageLocation);
+        return parseOption(message.getOptionsBuilder(), messageLocation);
+    } else if (lookingAt("map")) {
+        LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
+        return parseMapField(message, location);
     } else {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
       return parseMessageField(message.addFieldBuilder(), location, message, null, -1);
     }
+  }
+
+  private boolean parseMapField(DescriptorProto.Builder message, LocationRecorder location) {
+      consume("map");
+      consume("<");
+      StringBuilder keyType = new StringBuilder();
+      if (!parseType(keyType)) return false;
+      consume(",");
+      StringBuilder valueType = new StringBuilder();
+      if (!parseType(valueType)) return false;
+      consume(">");
+
+      StringBuilder name = new StringBuilder();
+      consumeIdentifier(name);
+
+      consume("=");
+      int[] number = new int[1];
+      consumeInteger(number);
+
+      // Create synthetic entry message
+      String entryName = capitalized(name.toString()) + "Entry";
+      DescriptorProto.Builder entry = message.addNestedTypeBuilder();
+      entry.setName(entryName);
+      entry.getOptionsBuilder().setMapEntry(true);
+
+      FieldDescriptorProto.Builder keyField = entry.addFieldBuilder();
+      keyField.setName("key");
+      keyField.setNumber(1);
+      keyField.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
+      setFieldType(keyField, keyType.toString());
+
+      FieldDescriptorProto.Builder valueField = entry.addFieldBuilder();
+      valueField.setName("value");
+      valueField.setNumber(2);
+      valueField.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
+      setFieldType(valueField, valueType.toString());
+
+      // Add field to message
+      FieldDescriptorProto.Builder field = message.addFieldBuilder();
+      field.setName(name.toString());
+      field.setNumber(number[0]);
+      field.setLabel(FieldDescriptorProto.Label.LABEL_REPEATED);
+      field.setType(FieldDescriptorProto.Type.TYPE_MESSAGE);
+      field.setTypeName(entryName);
+
+      if (lookingAt("[")) {
+          parseFieldOptions(field);
+      }
+
+      consume(";");
+      return true;
+  }
+
+  private void setFieldType(FieldDescriptorProto.Builder field, String type) {
+      if (isPrimitiveType(type)) {
+          field.setType(FieldDescriptorProto.Type.valueOf("TYPE_" + type.toUpperCase()));
+      } else {
+          field.setTypeName(type);
+          field.setType(FieldDescriptorProto.Type.TYPE_MESSAGE);
+      }
+  }
+
+  private String capitalized(String s) {
+      if (s.isEmpty()) return s;
+      return Character.toUpperCase(s.charAt(0)) + s.substring(1);
   }
 
   private boolean parseOneof(DescriptorProto.Builder message, LocationRecorder messageLocation) {
@@ -364,7 +456,7 @@ public class Parser {
       consume("{");
       while (!lookingAt("}")) {
           if (lookingAt("option")) {
-              parseOption(messageLocation);
+              parseOption(oneof.getOptionsBuilder(), messageLocation);
           } else {
               LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
               FieldDescriptorProto.Builder field = message.addFieldBuilder();
@@ -469,7 +561,6 @@ public class Parser {
   }
 
   private boolean parseMessageField(FieldDescriptorProto.Builder field, LocationRecorder fieldLocation, DescriptorProto.Builder containingMessage, FileDescriptorProto.Builder containingFile, int oneofIndex) {
-    // Label (optional/required/repeated)
     if (tryConsume("optional")) {
       field.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
     } else if (tryConsume("required")) {
@@ -477,34 +568,25 @@ public class Parser {
     } else if (tryConsume("repeated")) {
       field.setLabel(FieldDescriptorProto.Label.LABEL_REPEATED);
     } else {
-      // In proto3, explicit label is optional
       if (syntaxIdentifier.equals("proto3") && oneofIndex == -1) {
           field.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
-      } else if (oneofIndex != -1) {
-          // Oneof fields are implicitly optional, but we don't set LABEL_OPTIONAL usually in proto2?
-          // Actually they are just fields.
       }
     }
 
-    // Check for "group"
     if (tryConsume("group")) {
-        // Group parsing
         StringBuilder name = new StringBuilder();
         consumeIdentifier(name);
         field.setType(FieldDescriptorProto.Type.TYPE_GROUP);
         field.setTypeName(name.toString());
-        field.setName(name.toString().toLowerCase()); // Converted to lowercase
+        field.setName(name.toString().toLowerCase());
 
         consume("=");
         int[] number = new int[1];
         consumeInteger(number);
         field.setNumber(number[0]);
 
-        // Options?
         if (lookingAt("[")) {
-            consume("[");
-            while (!lookingAt("]") && !atEnd()) input.next();
-            consume("]");
+            parseFieldOptions(field);
         }
 
         if (oneofIndex != -1) {
@@ -513,20 +595,14 @@ public class Parser {
 
         consume("{");
 
-        // Create nested type for group
         DescriptorProto.Builder nestedType;
         if (containingMessage != null) {
             nestedType = containingMessage.addNestedTypeBuilder();
+        } else if (containingFile != null) {
+            nestedType = containingFile.addMessageTypeBuilder();
         } else {
-            // Should be file level (for extensions) but DescriptorProto nested inside file?
-            // FileDescriptorProto does not have nested types directly, only top level messages.
-            // But extensions with groups... the group type is added to the file's message types?
-            if (containingFile != null) {
-                nestedType = containingFile.addMessageTypeBuilder();
-            } else {
-                recordError("Group not allowed here.");
-                return false;
-            }
+            recordError("Group not allowed here.");
+            return false;
         }
         nestedType.setName(name.toString());
 
@@ -535,7 +611,7 @@ public class Parser {
                  recordError("Unexpected end of file in group definition.");
                  return false;
              }
-             if (!parseMessageStatement(nestedType, fieldLocation)) { // Reuse message statement parser
+             if (!parseMessageStatement(nestedType, fieldLocation)) {
                  input.next();
              }
         }
@@ -543,8 +619,6 @@ public class Parser {
         return true;
     }
 
-    // Normal field
-    // Type
     StringBuilder type = new StringBuilder();
     if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
         type.append(input.current().text);
@@ -562,26 +636,18 @@ public class Parser {
         field.setTypeName(type.toString());
     }
 
-    // Name
     StringBuilder name = new StringBuilder();
     consumeIdentifier(name);
     field.setName(name.toString());
 
     consume("=");
 
-    // Number
     int[] number = new int[1];
     consumeInteger(number);
     field.setNumber(number[0]);
 
-    // Options [default = x]
     if (lookingAt("[")) {
-        consume("[");
-        // Simplified: consume until ]
-        while (!lookingAt("]") && !atEnd()) {
-            input.next();
-        }
-        consume("]");
+        parseFieldOptions(field);
     }
 
     if (oneofIndex != -1) {
@@ -590,6 +656,38 @@ public class Parser {
 
     consume(";");
     return true;
+  }
+
+  private boolean parseFieldOptions(FieldDescriptorProto.Builder field) {
+      consume("[");
+      do {
+          if (lookingAt("default")) {
+              consume("default");
+              consume("=");
+              if (lookingAtType(Tokenizer.TokenType.STRING)) {
+                  StringBuilder sb = new StringBuilder();
+                  consumeString(sb);
+                  field.setDefaultValue(escape(sb.toString()));
+              } else if (lookingAt("true") || lookingAt("false")) {
+                  field.setDefaultValue(input.current().text);
+                  input.next();
+              } else {
+                  StringBuilder sb = new StringBuilder();
+                  if (consumeNumber(sb)) {
+                      field.setDefaultValue(sb.toString());
+                  } else if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
+                      field.setDefaultValue(input.current().text);
+                      input.next();
+                  } else {
+                      recordError("Expected default value.");
+                  }
+              }
+          } else {
+              parseOptionEntry(field.getOptionsBuilder());
+          }
+      } while (tryConsume(","));
+      consume("]");
+      return true;
   }
 
   private boolean parseEnumDefinition(EnumDescriptorProto.Builder enumType, LocationRecorder enumLocation) {
@@ -609,7 +707,7 @@ public class Parser {
   }
 
   private boolean parseEnumStatement(EnumDescriptorProto.Builder enumType, LocationRecorder enumLocation) {
-      if (lookingAt("option")) return parseOption(enumLocation);
+      if (lookingAt("option")) return parseOption(enumType.getOptionsBuilder(), enumLocation);
       if (lookingAt(";")) { input.next(); return true; }
       
       LocationRecorder location = new LocationRecorder(enumLocation, EnumDescriptorProto.VALUE_FIELD_NUMBER, enumType.getValueCount());
@@ -622,9 +720,17 @@ public class Parser {
       consume("=");
       
       int[] number = new int[1];
-      consumeInteger(number); // Should handle signed integer
+      consumeSignedInteger(number);
       val.setNumber(number[0]);
       
+      if (lookingAt("[")) {
+          consume("[");
+          do {
+             parseOptionEntry(val.getOptionsBuilder());
+          } while (tryConsume(","));
+          consume("]");
+      }
+
       consume(";");
       return true;
   }
@@ -640,7 +746,7 @@ public class Parser {
           if (lookingAt("rpc")) {
               parseServiceMethod(service.addMethodBuilder(), location);
           } else if (lookingAt("option")) {
-              parseOption(location);
+              parseOption(service.getOptionsBuilder(), location);
           } else {
               input.next();
           }
@@ -676,22 +782,161 @@ public class Parser {
       consume(")");
       
       if (tryConsume("{")) {
-          while(!tryConsume("}")) input.next(); // Skip options block
+          while (!lookingAt("}")) {
+              if (lookingAt("option")) {
+                  parseOption(method.getOptionsBuilder(), parentLocation);
+              } else {
+                  input.next();
+              }
+          }
+          consume("}");
       } else {
           consume(";");
       }
       return true;
   }
 
-  // Simplified option skipper
-  private boolean parseOption(LocationRecorder location) {
+  private boolean parseOption(com.google.protobuf.GeneratedMessage.Builder<?> optionsBuilder, LocationRecorder location) {
       consume("option");
-      // Skip until semicolon
-      while (!lookingAt(";") && !atEnd()) {
-          input.next();
-      }
+      if (!parseOptionEntry(optionsBuilder)) return false;
       consume(";");
       return true;
+  }
+
+  private boolean parseOptionEntry(com.google.protobuf.GeneratedMessage.Builder<?> optionsBuilder) {
+      UninterpretedOption.Builder uninterpreted = UninterpretedOption.newBuilder();
+
+      if (!parseOptionName(uninterpreted)) return false;
+
+      consume("=");
+
+      if (!parseOptionValue(uninterpreted)) return false;
+
+      try {
+          java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
+          m.invoke(optionsBuilder, uninterpreted.build());
+      } catch (Exception e) {
+          recordError("Could not add option: " + e.getMessage());
+          return false;
+      }
+      return true;
+  }
+
+  private boolean parseOptionName(UninterpretedOption.Builder uninterpreted) {
+      do {
+          UninterpretedOption.NamePart.Builder part = uninterpreted.addNameBuilder();
+          if (tryConsume("(")) {
+              part.setIsExtension(true);
+              StringBuilder name = new StringBuilder();
+              if (!parseType(name)) return false;
+              part.setNamePart(name.toString());
+              consume(")");
+          } else {
+              part.setIsExtension(false);
+              StringBuilder name = new StringBuilder();
+              consumeIdentifier(name);
+              part.setNamePart(name.toString());
+          }
+      } while (tryConsume("."));
+      return true;
+  }
+
+  private boolean parseOptionValue(UninterpretedOption.Builder uninterpreted) {
+      if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
+          uninterpreted.setIdentifierValue(input.current().text);
+          input.next();
+      } else if (lookingAtType(Tokenizer.TokenType.INTEGER)) {
+          try {
+             long val = parseInteger(input.current().text);
+             uninterpreted.setPositiveIntValue(val);
+          } catch (NumberFormatException e) {
+             recordError("Invalid integer value: " + input.current().text);
+             return false;
+          }
+          input.next();
+      } else if (lookingAt("-")) {
+          consume("-");
+          if (lookingAtType(Tokenizer.TokenType.INTEGER)) {
+              try {
+                  long val = parseInteger(input.current().text);
+                  uninterpreted.setNegativeIntValue(-val);
+              } catch (NumberFormatException e) {
+                  recordError("Invalid integer value: -" + input.current().text);
+                  return false;
+              }
+              input.next();
+          } else if (lookingAtType(Tokenizer.TokenType.FLOAT)) {
+              double val = Double.parseDouble(input.current().text);
+              uninterpreted.setDoubleValue(-val);
+              input.next();
+          } else if (lookingAt("inf")) {
+              uninterpreted.setDoubleValue(Double.NEGATIVE_INFINITY);
+              input.next();
+          } else if (lookingAt("nan")) {
+              uninterpreted.setDoubleValue(Double.NaN);
+              input.next();
+          }
+      } else if (lookingAtType(Tokenizer.TokenType.FLOAT)) {
+           double val = Double.parseDouble(input.current().text);
+           uninterpreted.setDoubleValue(val);
+           input.next();
+      } else if (lookingAtType(Tokenizer.TokenType.STRING)) {
+          StringBuilder sb = new StringBuilder();
+          consumeString(sb);
+          uninterpreted.setStringValue(com.google.protobuf.ByteString.copyFromUtf8(sb.toString()));
+      } else if (lookingAt("{")) {
+          consume("{");
+          int depth = 1;
+          StringBuilder aggregate = new StringBuilder();
+          while (depth > 0 && !atEnd()) {
+              if (lookingAt("}")) {
+                  depth--;
+                  if (depth == 0) break;
+              } else if (lookingAt("{")) {
+                  depth++;
+              }
+              aggregate.append(input.current().text).append(" ");
+              input.next();
+          }
+          uninterpreted.setAggregateValue(aggregate.toString().trim());
+          consume("}");
+      } else {
+          recordError("Expected option value.");
+          return false;
+      }
+      return true;
+  }
+
+  private String escape(String raw) {
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < raw.length(); i++) {
+          char c = raw.charAt(i);
+          switch (c) {
+              case '\n': sb.append("\\n"); break;
+              case '\r': sb.append("\\r"); break;
+              case '\t': sb.append("\\t"); break;
+              case '\"': sb.append("\\\""); break;
+              case '\'': sb.append("\\\'"); break;
+              case '\\': sb.append("\\\\"); break;
+              default:
+                  if (c >= 0x20 && c < 0x7F) {
+                      sb.append(c);
+                  } else {
+                      sb.append(String.format("\\%03o", (int)c));
+                  }
+          }
+      }
+      return sb.toString();
+  }
+
+  private long parseInteger(String text) throws NumberFormatException {
+      if (text.startsWith("0x") || text.startsWith("0X")) {
+          return Long.parseUnsignedLong(text.substring(2), 16);
+      } else if (text.startsWith("0") && text.length() > 1) {
+          return Long.parseUnsignedLong(text.substring(1), 8);
+      } else {
+          return Long.parseUnsignedLong(text, 10);
+      }
   }
 
   private boolean isPrimitiveType(String type) {
