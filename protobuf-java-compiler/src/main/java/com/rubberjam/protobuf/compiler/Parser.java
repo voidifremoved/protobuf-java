@@ -10,6 +10,7 @@ import com.google.protobuf.DescriptorProtos.EnumValueDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.DescriptorProtos.MethodDescriptorProto;
+import com.google.protobuf.DescriptorProtos.OneofDescriptorProto;
 import com.google.protobuf.DescriptorProtos.ServiceDescriptorProto;
 import com.google.protobuf.DescriptorProtos.SourceCodeInfo;
 import com.rubberjam.protobuf.io.Tokenizer;
@@ -159,11 +160,11 @@ public class Parser {
   private boolean consumeInteger(int[] output) {
     if (lookingAtType(Tokenizer.TokenType.INTEGER)) {
       try {
-        output[0] = Integer.parseInt(input.current().text);
+        output[0] = Integer.decode(input.current().text);
         input.next();
         return true;
       } catch (NumberFormatException e) {
-        recordError("Invalid integer.");
+        recordError("Invalid integer: " + input.current().text);
         return false;
       }
     }
@@ -173,8 +174,10 @@ public class Parser {
 
   private boolean consumeString(StringBuilder output) {
     if (lookingAtType(Tokenizer.TokenType.STRING)) {
-      output.append(input.current().text); // Tokenizer should handle quotes/escaping
-      input.next();
+      while (lookingAtType(Tokenizer.TokenType.STRING)) {
+        output.append(input.current().text);
+        input.next();
+      }
       return true;
     }
     recordError("Expected string.");
@@ -234,6 +237,12 @@ public class Parser {
       return parseImport(file, rootLocation);
     } else if (lookingAt("extend")) {
         return parseFileExtend(file, rootLocation);
+    } else if (lookingAt("message")) {
+        // Fallback or error if message is handled above?
+        // Ah, lookingAt checks current token. 'message' handled above.
+        // This is safe.
+        input.next();
+        return false;
     } else if (lookingAt("option")) {
       // Simplified option parsing
       return parseOption(rootLocation); 
@@ -277,7 +286,7 @@ public class Parser {
           LocationRecorder location = new LocationRecorder(root, FileDescriptorProto.EXTENSION_FIELD_NUMBER, file.getExtensionCount());
           FieldDescriptorProto.Builder extension = file.addExtensionBuilder();
           extension.setExtendee(extendee.toString());
-          if (!parseMessageField(extension, location)) {
+          if (!parseMessageField(extension, location, null, file, -1)) {
               input.next();
           }
       }
@@ -333,12 +342,39 @@ public class Parser {
       return parseReserved(message, messageLocation);
     } else if (lookingAt("extend")) {
       return parseNestedExtend(message, messageLocation);
+    } else if (lookingAt("oneof")) {
+      return parseOneof(message, messageLocation);
     } else if (lookingAt("option")) {
         return parseOption(messageLocation);
     } else {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
-      return parseMessageField(message.addFieldBuilder(), location);
+      return parseMessageField(message.addFieldBuilder(), location, message, null, -1);
     }
+  }
+
+  private boolean parseOneof(DescriptorProto.Builder message, LocationRecorder messageLocation) {
+      consume("oneof");
+      StringBuilder name = new StringBuilder();
+      consumeIdentifier(name);
+
+      OneofDescriptorProto.Builder oneof = message.addOneofDeclBuilder();
+      oneof.setName(name.toString());
+      int oneofIndex = message.getOneofDeclCount() - 1;
+
+      consume("{");
+      while (!lookingAt("}")) {
+          if (lookingAt("option")) {
+              parseOption(messageLocation);
+          } else {
+              LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
+              FieldDescriptorProto.Builder field = message.addFieldBuilder();
+              if (!parseMessageField(field, location, message, null, oneofIndex)) {
+                  input.next();
+              }
+          }
+      }
+      consume("}");
+      return true;
   }
 
   private boolean parseExtensions(DescriptorProto.Builder message, LocationRecorder parent) {
@@ -410,7 +446,7 @@ public class Parser {
           LocationRecorder location = new LocationRecorder(root, DescriptorProto.EXTENSION_FIELD_NUMBER, message.getExtensionCount());
           FieldDescriptorProto.Builder extension = message.addExtensionBuilder();
           extension.setExtendee(extendee.toString());
-          if (!parseMessageField(extension, location)) {
+          if (!parseMessageField(extension, location, message, null, -1)) {
               input.next();
           }
       }
@@ -432,7 +468,7 @@ public class Parser {
       return false;
   }
 
-  private boolean parseMessageField(FieldDescriptorProto.Builder field, LocationRecorder fieldLocation) {
+  private boolean parseMessageField(FieldDescriptorProto.Builder field, LocationRecorder fieldLocation, DescriptorProto.Builder containingMessage, FileDescriptorProto.Builder containingFile, int oneofIndex) {
     // Label (optional/required/repeated)
     if (tryConsume("optional")) {
       field.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
@@ -442,21 +478,77 @@ public class Parser {
       field.setLabel(FieldDescriptorProto.Label.LABEL_REPEATED);
     } else {
       // In proto3, explicit label is optional
-      if (syntaxIdentifier.equals("proto3")) {
+      if (syntaxIdentifier.equals("proto3") && oneofIndex == -1) {
           field.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
-      } else {
-          // Defaulting or error based on strictness
+      } else if (oneofIndex != -1) {
+          // Oneof fields are implicitly optional, but we don't set LABEL_OPTIONAL usually in proto2?
+          // Actually they are just fields.
       }
     }
 
+    // Check for "group"
+    if (tryConsume("group")) {
+        // Group parsing
+        StringBuilder name = new StringBuilder();
+        consumeIdentifier(name);
+        field.setType(FieldDescriptorProto.Type.TYPE_GROUP);
+        field.setTypeName(name.toString());
+        field.setName(name.toString().toLowerCase()); // Converted to lowercase
+
+        consume("=");
+        int[] number = new int[1];
+        consumeInteger(number);
+        field.setNumber(number[0]);
+
+        // Options?
+        if (lookingAt("[")) {
+            consume("[");
+            while (!lookingAt("]") && !atEnd()) input.next();
+            consume("]");
+        }
+
+        if (oneofIndex != -1) {
+            field.setOneofIndex(oneofIndex);
+        }
+
+        consume("{");
+
+        // Create nested type for group
+        DescriptorProto.Builder nestedType;
+        if (containingMessage != null) {
+            nestedType = containingMessage.addNestedTypeBuilder();
+        } else {
+            // Should be file level (for extensions) but DescriptorProto nested inside file?
+            // FileDescriptorProto does not have nested types directly, only top level messages.
+            // But extensions with groups... the group type is added to the file's message types?
+            if (containingFile != null) {
+                nestedType = containingFile.addMessageTypeBuilder();
+            } else {
+                recordError("Group not allowed here.");
+                return false;
+            }
+        }
+        nestedType.setName(name.toString());
+
+        while (!lookingAt("}")) {
+             if (atEnd()) {
+                 recordError("Unexpected end of file in group definition.");
+                 return false;
+             }
+             if (!parseMessageStatement(nestedType, fieldLocation)) { // Reuse message statement parser
+                 input.next();
+             }
+        }
+        consume("}");
+        return true;
+    }
+
+    // Normal field
     // Type
     StringBuilder type = new StringBuilder();
-    // Simplified type parsing: consume identifier or primitive
     if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
         type.append(input.current().text);
         input.next();
-        // Handle map<K,V> logic here if full fidelity needed
-        // Handle fully qualified names (a.b.c)
         while (tryConsume(".")) {
             type.append(".");
             StringBuilder part = new StringBuilder();
@@ -464,7 +556,6 @@ public class Parser {
         }
     }
     
-    // Map primitive types to Type enum
     if (isPrimitiveType(type.toString())) {
         field.setType(FieldDescriptorProto.Type.valueOf("TYPE_" + type.toString().toUpperCase()));
     } else {
@@ -491,6 +582,10 @@ public class Parser {
             input.next();
         }
         consume("]");
+    }
+
+    if (oneofIndex != -1) {
+        field.setOneofIndex(oneofIndex);
     }
 
     consume(";");
