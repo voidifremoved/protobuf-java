@@ -341,13 +341,32 @@ public class Tokenizer
 		else if (Character.isDigit(currentChar))
 		{
 			StringBuilder sb = new StringBuilder();
+			if (currentChar == '0') {
+				sb.append(currentChar);
+				nextChar();
+				if (currentChar == 'x' || currentChar == 'X') {
+					sb.append(currentChar);
+					nextChar();
+					while (isHexDigit(currentChar)) {
+						sb.append(currentChar);
+						nextChar();
+					}
+					currentToken.type = TokenType.INTEGER;
+					currentToken.text = sb.toString();
+					return true;
+				}
+			}
+
 			while (Character.isDigit(currentChar))
 			{
 				sb.append(currentChar);
 				nextChar();
 			}
+
+			boolean isFloat = false;
 			if (currentChar == '.')
 			{
+				isFloat = true;
 				sb.append(currentChar);
 				nextChar();
 				while (Character.isDigit(currentChar))
@@ -355,13 +374,57 @@ public class Tokenizer
 					sb.append(currentChar);
 					nextChar();
 				}
+			}
+
+			if (currentChar == 'e' || currentChar == 'E') {
+				isFloat = true;
+				sb.append(currentChar);
+				nextChar();
+				if (currentChar == '+' || currentChar == '-') {
+					sb.append(currentChar);
+					nextChar();
+				}
+				while (Character.isDigit(currentChar)) {
+					sb.append(currentChar);
+					nextChar();
+				}
+			}
+
+			currentToken.type = isFloat ? TokenType.FLOAT : TokenType.INTEGER;
+			currentToken.text = sb.toString();
+		}
+		else if (currentChar == '.')
+		{
+			// Check for float starting with .
+			nextChar();
+			if (Character.isDigit(currentChar))
+			{
+				StringBuilder sb = new StringBuilder(".");
+				while (Character.isDigit(currentChar))
+				{
+					sb.append(currentChar);
+					nextChar();
+				}
+				if (currentChar == 'e' || currentChar == 'E') {
+					sb.append(currentChar);
+					nextChar();
+					if (currentChar == '+' || currentChar == '-') {
+						sb.append(currentChar);
+						nextChar();
+					}
+					while (Character.isDigit(currentChar)) {
+						sb.append(currentChar);
+						nextChar();
+					}
+				}
 				currentToken.type = TokenType.FLOAT;
+				currentToken.text = sb.toString();
 			}
 			else
 			{
-				currentToken.type = TokenType.INTEGER;
+				currentToken.text = ".";
+				currentToken.type = TokenType.SYMBOL;
 			}
-			currentToken.text = sb.toString();
 		}
 		else if (currentChar == '\"' || currentChar == '\'')
 		{
@@ -489,6 +552,10 @@ public class Tokenizer
 			return cleaned.toString();
 		}
 		return "";
+	}
+
+	private boolean isHexDigit(char c) {
+		return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
 	}
 
 	private void nextChar()
