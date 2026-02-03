@@ -436,36 +436,109 @@ public class Tokenizer
 				if (currentChar == '\\')
 				{
 					nextChar();
+					if (atEnd) {
+						errorCollector.recordError(line, column, "Unexpected end of string.");
+						break;
+					}
 					switch (currentChar)
 					{
-					case 'n':
-						sb.append('\n');
+					case 'a': sb.append((char) 0x07); nextChar(); break;
+					case 'b': sb.append('\b'); nextChar(); break;
+					case 'f': sb.append('\f'); nextChar(); break;
+					case 'n': sb.append('\n'); nextChar(); break;
+					case 'r': sb.append('\r'); nextChar(); break;
+					case 't': sb.append('\t'); nextChar(); break;
+					case 'v': sb.append((char) 0x0b); nextChar(); break;
+					case '\\': sb.append('\\'); nextChar(); break;
+					case '\'': sb.append('\''); nextChar(); break;
+					case '\"': sb.append('\"'); nextChar(); break;
+					case '?': sb.append('?'); nextChar(); break;
+
+					case '0': case '1': case '2': case '3':
+					case '4': case '5': case '6': case '7':
+					{
+						int code = 0;
+						for (int i = 0; i < 3; ++i) {
+							if (currentChar >= '0' && currentChar <= '7') {
+								code = (code * 8) + (currentChar - '0');
+								nextChar();
+							} else {
+								break;
+							}
+						}
+						sb.append((char) code);
 						break;
-					case 't':
-						sb.append('\t');
+					}
+
+					case 'x': case 'X':
+					{
+						nextChar();
+						int code = 0;
+						if (isHexDigit(currentChar)) {
+							code = Character.digit(currentChar, 16);
+							nextChar();
+							if (isHexDigit(currentChar)) {
+								code = (code * 16) + Character.digit(currentChar, 16);
+								nextChar();
+							}
+						} else {
+							errorCollector.recordError(line, column, "Invalid hex escape.");
+						}
+						sb.append((char) code);
 						break;
-					case 'r':
-						sb.append('\r');
+					}
+
+					case 'u':
+					{
+						nextChar();
+						int code = 0;
+						for (int i = 0; i < 4; i++) {
+							if (isHexDigit(currentChar)) {
+								code = (code * 16) + Character.digit(currentChar, 16);
+								nextChar();
+							} else {
+								errorCollector.recordError(line, column, "Invalid unicode escape.");
+								break;
+							}
+						}
+						sb.append((char) code);
 						break;
-					case '\\':
-						sb.append('\\');
+					}
+
+					case 'U':
+					{
+						nextChar();
+						int code = 0;
+						for (int i = 0; i < 8; i++) {
+							if (isHexDigit(currentChar)) {
+								code = (code * 16) + Character.digit(currentChar, 16);
+								nextChar();
+							} else {
+								errorCollector.recordError(line, column, "Invalid unicode escape.");
+								break;
+							}
+						}
+						sb.appendCodePoint(code);
 						break;
-					case '\"':
-						sb.append('\"');
-						break;
-					case '\'':
-						sb.append('\'');
-						break;
+					}
+
 					default:
+						// Invalid escape sequence, but usually we just print it as literal backslash + char
+						// in robust parsers, or error out. C++ parser records error.
+						// C++ tokenizer.cc: RecordError("Invalid escape sequence."); text->push_back('\\'); text->push_back(current_char_);
+						// So we append both.
+						errorCollector.recordError(line, column, "Invalid escape sequence.");
+						sb.append('\\');
 						sb.append(currentChar);
+						nextChar();
 						break;
 					}
 				}
 				else
 				{
 					sb.append(currentChar);
+					nextChar();
 				}
-				nextChar();
 			}
 			if (currentChar == delimiter)
 			{
