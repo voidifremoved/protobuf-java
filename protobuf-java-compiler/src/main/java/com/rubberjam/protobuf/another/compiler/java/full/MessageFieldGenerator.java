@@ -3,6 +3,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
 import com.rubberjam.protobuf.another.compiler.java.DocComment;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -42,10 +43,14 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-    printer.emit(variables,
-        "boolean has$capitalized_name$();\n" +
-        "$type$ get$capitalized_name$();\n" +
-        "$type$OrBuilder get$capitalized_name$OrBuilder();\n");
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+    printer.emit(variables, "boolean has$capitalized_name$();\n");
+
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    printer.emit(variables, "$type$ get$capitalized_name$();\n");
+
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    printer.emit(variables, "$type$OrBuilder get$capitalized_name$OrBuilder();\n");
   }
 
   @Override

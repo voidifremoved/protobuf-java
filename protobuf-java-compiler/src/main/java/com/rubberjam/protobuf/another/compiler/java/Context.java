@@ -63,8 +63,7 @@ public class Context {
   }
 
   public boolean hasGeneratedMethods(FileDescriptor file) {
-    return options.isEnforceLite() ||
-           file.getOptions().getOptimizeFor() != FileOptions.OptimizeMode.CODE_SIZE;
+    return !options.isEnforceLite();
   }
 
   public boolean hasGeneratedMethods(com.google.protobuf.Descriptors.EnumDescriptor descriptor) {

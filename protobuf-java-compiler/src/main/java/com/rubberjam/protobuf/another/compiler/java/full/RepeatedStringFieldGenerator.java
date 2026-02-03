@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -36,19 +37,29 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
      if (isString()) {
-         printer.emit(variables,
-             "java.util.List<java.lang.String>\n" +
-             "    get$capitalized_name$List();\n" +
-             "int get$capitalized_name$Count();\n" +
-             "java.lang.String get$capitalized_name$(int index);\n" +
-             "com.google.protobuf.ByteString\n" +
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+         printer.emit(variables, "java.util.List<java.lang.String>\n" +
+             "    get$capitalized_name$List();\n");
+
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+         printer.emit(variables, "int get$capitalized_name$Count();\n");
+
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables, "java.lang.String get$capitalized_name$(int index);\n");
+
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables, "com.google.protobuf.ByteString\n" +
              "    get$capitalized_name$Bytes(int index);\n");
      } else {
-         printer.emit(variables,
-             "java.util.List<com.google.protobuf.ByteString>\n" +
-             "    get$capitalized_name$List();\n" +
-             "int get$capitalized_name$Count();\n" +
-             "com.google.protobuf.ByteString get$capitalized_name$(int index);\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+         printer.emit(variables, "java.util.List<com.google.protobuf.ByteString>\n" +
+             "    get$capitalized_name$List();\n");
+
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+         printer.emit(variables, "int get$capitalized_name$Count();\n");
+
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables, "com.google.protobuf.ByteString get$capitalized_name$(int index);\n");
      }
   }
 

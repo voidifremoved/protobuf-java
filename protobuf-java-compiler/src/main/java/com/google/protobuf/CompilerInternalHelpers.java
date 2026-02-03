@@ -6,7 +6,7 @@ import com.google.protobuf.Descriptors.OneofDescriptor;
 /**
  * Helper class for generating code.
  */
-public class InternalHelpers
+public class CompilerInternalHelpers
 {
 
 	public static boolean hasHasbit(FieldDescriptor descriptor)
@@ -18,6 +18,10 @@ public class InternalHelpers
 		OneofDescriptor oneof = descriptor.getContainingOneof();
 		return oneof == null || oneof.isSynthetic();
 	}
+
+    public static boolean isSynthetic(OneofDescriptor oneof) {
+        return oneof.isSynthetic();
+    }
 
 	// Add other methods from internal_helpers.cc as needed
 }

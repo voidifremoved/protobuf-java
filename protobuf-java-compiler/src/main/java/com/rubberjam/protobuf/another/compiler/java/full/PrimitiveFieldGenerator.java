@@ -111,8 +111,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
     if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
   }
 

@@ -3,6 +3,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
 import com.rubberjam.protobuf.another.compiler.java.DocComment;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -32,6 +33,14 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
     if (supportUnknownEnumValue) {
       variables.put("unknown", descriptor.getEnumType().getName() + ".UNRECOGNIZED");
+      String defaultNum = "0";
+      if (descriptor.hasDefaultValue()) {
+          defaultNum = String.valueOf(((com.google.protobuf.Descriptors.EnumValueDescriptor)descriptor.getDefaultValue()).getNumber());
+      } else if (descriptor.getEnumType().getValues().size() > 0) {
+          // Proto3 default is 0, but technically it's the first value's number (usually 0).
+          defaultNum = String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber());
+      }
+      variables.put("default_number", defaultNum);
     } else {
       variables.put("unknown", variables.get("default")); // fallback
     }
@@ -50,13 +59,15 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
     if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
-    printer.emit(variables, "$type$ get$capitalized_name$();\n");
-
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+       DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
        printer.emit(variables, "int get$capitalized_name$Value();\n");
     }
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    printer.emit(variables, "$type$ get$capitalized_name$();\n");
   }
 
   @Override
@@ -109,16 +120,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuilderMembers(Printer printer) {
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
        // Storage is int.
-       // Init value:
-       String defaultNum = "0";
-       if (descriptor.hasDefaultValue()) {
-          defaultNum = String.valueOf(((com.google.protobuf.Descriptors.EnumValueDescriptor)descriptor.getDefaultValue()).getNumber());
-       } else if (descriptor.getEnumType().getValues().size() > 0) {
-           // Proto3 default is 0, but technically it's the first value's number (usually 0).
-           defaultNum = String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber());
-       }
-       variables.put("default_number", defaultNum);
-
        printer.emit(variables, "private int $name$_ = $default_number$;\n");
     } else {
        printer.emit(variables, "private $type$ $name$_ = $default$;\n");
@@ -189,15 +190,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInitializationCode(Printer printer) {
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-         // Default for int is 0. If default value number is 0, no init needed if presence not tracked?
-         // But let's be safe.
-         String defaultNum = "0";
-         if (descriptor.hasDefaultValue()) {
-             defaultNum = String.valueOf(((com.google.protobuf.Descriptors.EnumValueDescriptor)descriptor.getDefaultValue()).getNumber());
-         } else if (descriptor.getEnumType().getValues().size() > 0) {
-             defaultNum = String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber());
-         }
-         variables.put("default_number", defaultNum);
          printer.emit(variables, "$name$_ = $default_number$;\n");
      } else {
          printer.emit(variables, "$name$_ = $default$;\n");

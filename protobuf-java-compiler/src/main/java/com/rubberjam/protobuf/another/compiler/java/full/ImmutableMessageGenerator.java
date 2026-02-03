@@ -170,6 +170,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           fieldGenerators.get(field).generateInterfaceMembers(printer);
       }
       for (OneofDescriptor oneof : oneofs.values()) {
+          if (com.google.protobuf.CompilerInternalHelpers.isSynthetic(oneof)) continue;
           String capitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
           printer.print(
               "\n" +

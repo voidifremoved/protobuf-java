@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.another.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.rubberjam.protobuf.another.compiler.java.Context;
+import com.rubberjam.protobuf.another.compiler.java.DocComment;
 import com.rubberjam.protobuf.another.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.another.compiler.java.Helpers;
 import com.rubberjam.protobuf.another.compiler.java.InternalHelpers;
@@ -28,6 +29,12 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
     } else {
        variables.put("unknown", variables.get("default"));
     }
+
+    int wireType = descriptor.isPacked() ?
+        com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED :
+        com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+    variables.put("tag", (descriptor.getNumber() << 3) | wireType);
+    variables.put("tag_size", com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber()));
   }
 
   @Override
@@ -44,15 +51,22 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-     printer.emit(variables,
-         "java.util.List<$type$> get$capitalized_name$List();\n" +
-         "$type$ get$capitalized_name$(int index);\n" +
-         "int get$capitalized_name$Count();\n");
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+     printer.emit(variables, "java.util.List<$type$> get$capitalized_name$List();\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+     printer.emit(variables, "int get$capitalized_name$Count();\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+     printer.emit(variables, "$type$ get$capitalized_name$(int index);\n");
 
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-         printer.emit(variables,
-             "java.util.List<java.lang.Integer> get$capitalized_name$ValueList();\n" +
-             "int get$capitalized_name$Value(int index);\n");
+         DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+         printer.emit(variables, "java.util.List<java.lang.Integer>\n" +
+             "get$capitalized_name$ValueList();\n");
+
+         DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables, "int get$capitalized_name$Value(int index);\n");
      }
   }
 
@@ -118,6 +132,10 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
             "public $type$ get$capitalized_name$(int index) {\n" +
             "  return $name$_.get(index);\n" +
             "}\n");
+     }
+
+     if (descriptor.isPacked()) {
+       printer.emit(variables, "private int $name$MemoizedSerializedSize;\n");
      }
   }
 
@@ -414,6 +432,7 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                  "  size += com.google.protobuf.CodedOutputStream\n" +
                  "    .computeUInt32SizeNoTag(dataSize);\n" +
                  "}");
+             printer.emit(variables, "$name$MemoizedSerializedSize = dataSize;\n");
          } else {
              printer.emit(variables,
                  "size += $tag_size$ * $name$_.size();\n");
