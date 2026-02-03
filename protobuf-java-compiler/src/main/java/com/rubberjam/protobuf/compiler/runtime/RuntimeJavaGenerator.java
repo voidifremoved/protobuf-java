@@ -11,9 +11,9 @@ import java.util.Set;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.Descriptors.FileDescriptor;
-import com.rubberjam.protobuf.another.compiler.CompilationException;
-import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator;
-import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator.GeneratedJavaFile;
+import com.rubberjam.protobuf.compiler.CompilationException;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
 
 /**
  * Helper for generating Java source at runtime from descriptor protos.
@@ -66,7 +66,7 @@ public final class RuntimeJavaGenerator
 		{
 			javaFiles = codeGenerator.generateJavaFiles(fileDescriptor, parameter, context);
 		}
-		catch (com.rubberjam.protobuf.another.compiler.CodeGenerator.GenerationException e)
+		catch (com.rubberjam.protobuf.compiler.CodeGenerator.GenerationException e)
 		{
 			throw new CompilationException("Error generating code", e);
 		}
@@ -202,7 +202,7 @@ public final class RuntimeJavaGenerator
 		}
 	}
 
-	private static class InMemoryGeneratorContext implements com.rubberjam.protobuf.another.compiler.GeneratorContext
+	private static class InMemoryGeneratorContext implements com.rubberjam.protobuf.compiler.GeneratorContext
 	{
 		private final Map<String, ByteArrayOutputStream> files = new HashMap<>();
 

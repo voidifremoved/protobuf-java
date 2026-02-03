@@ -10,7 +10,7 @@ package com.rubberjam.protobuf.io;
 import java.io.IOException;
 import java.io.Reader;
 
-import com.rubberjam.protobuf.another.compiler.ErrorCollector;
+import com.rubberjam.protobuf.compiler.ErrorCollector;
 
 /**
  * Tokenizer for .proto files.

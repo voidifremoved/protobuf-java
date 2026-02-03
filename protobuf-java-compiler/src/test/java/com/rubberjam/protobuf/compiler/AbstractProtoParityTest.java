@@ -13,11 +13,11 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.rubberjam.protobuf.another.compiler.CompilationException;
-import com.rubberjam.protobuf.another.compiler.ErrorCollector;
-import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator.GeneratedJavaFile;
-import com.rubberjam.protobuf.another.compiler.Parser;
-import com.rubberjam.protobuf.another.compiler.SourceLocationTable;
+import com.rubberjam.protobuf.compiler.CompilationException;
+import com.rubberjam.protobuf.compiler.ErrorCollector;
+import com.rubberjam.protobuf.compiler.Parser;
+import com.rubberjam.protobuf.compiler.SourceLocationTable;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.io.Tokenizer;
 

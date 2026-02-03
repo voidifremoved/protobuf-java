@@ -9,7 +9,7 @@ import com.google.protobuf.DescriptorProtos.DescriptorProto;
 import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
 import com.google.protobuf.Message.Builder;
-import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator.GeneratedJavaFile;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeCompiler;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 
