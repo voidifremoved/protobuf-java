@@ -587,6 +587,6 @@ public final class InternalHelpers
 
 	public static boolean hasHasbit(FieldDescriptor descriptor)
 	{
-		return com.google.protobuf.InternalHelpers.hasHasbit(descriptor);
+		return com.google.protobuf.CompilerInternalHelpers.hasHasbit(descriptor);
 	}
 }

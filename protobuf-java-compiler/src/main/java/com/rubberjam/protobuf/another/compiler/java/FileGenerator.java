@@ -185,4 +185,7 @@ public class FileGenerator {
       "      (com.google.protobuf.ExtensionRegistryLite) registry);\n" +
       "}\n");
   }
+  
+  
+	
 }

@@ -13,8 +13,13 @@ import java.util.Collections;
 import java.util.stream.Collectors;
 
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.rubberjam.protobuf.another.compiler.CompilationException;
+import com.rubberjam.protobuf.another.compiler.ErrorCollector;
+import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator.GeneratedJavaFile;
+import com.rubberjam.protobuf.another.compiler.Parser;
+import com.rubberjam.protobuf.another.compiler.SourceLocationTable;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
-import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator.GeneratedJavaFile;
+import com.rubberjam.protobuf.io.Tokenizer;
 
 public abstract class AbstractProtoParityTest
 {
@@ -160,7 +165,7 @@ public abstract class AbstractProtoParityTest
 
 		java.util.List<String> errors = new java.util.ArrayList<>();
 		final int MAX_ERRORS = 100; // Limit errors to prevent infinite loops
-		com.rubberjam.protobuf.compiler.ErrorCollector errorCollector = (line, column, message) ->
+		ErrorCollector errorCollector = (line, column, message) ->
 		{
 			if (errors.size() < MAX_ERRORS)
 			{
@@ -172,10 +177,9 @@ public abstract class AbstractProtoParityTest
 			}
 		};
 
-		com.rubberjam.protobuf.compiler.Tokenizer tokenizer = new com.rubberjam.protobuf.compiler.Tokenizer(
+		Tokenizer tokenizer = new Tokenizer(
 				new java.io.StringReader(content), errorCollector);
-		com.rubberjam.protobuf.compiler.Parser parser = new com.rubberjam.protobuf.compiler.Parser(
-				errorCollector, new com.rubberjam.protobuf.compiler.SourceLocationTable());
+		Parser parser = new Parser();
 
 		boolean parseSuccess = parser.parse(tokenizer, fileBuilder);
 
@@ -190,7 +194,7 @@ public abstract class AbstractProtoParityTest
 			{
 				errorMessage += "\n\nToo many errors detected - possible infinite loop in parser.";
 			}
-			throw new com.rubberjam.protobuf.compiler.CompilationException(errorMessage);
+			throw new CompilationException(errorMessage);
 		}
 
 		return fileBuilder.build();

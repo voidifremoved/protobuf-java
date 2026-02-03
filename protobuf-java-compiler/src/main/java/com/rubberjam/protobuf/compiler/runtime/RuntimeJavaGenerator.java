@@ -1,17 +1,19 @@
 package com.rubberjam.protobuf.compiler.runtime;
 
-import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.google.protobuf.Descriptors.FileDescriptor;
-import com.rubberjam.protobuf.compiler.CompilationException;
-import com.rubberjam.protobuf.compiler.java.FileGenerator;
-
 import java.io.ByteArrayOutputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+
+import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.Descriptors.FileDescriptor;
+import com.rubberjam.protobuf.another.compiler.CompilationException;
+import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator;
+import com.rubberjam.protobuf.another.compiler.JavaCodeGenerator.GeneratedJavaFile;
 
 /**
  * Helper for generating Java source at runtime from descriptor protos.
@@ -23,41 +25,7 @@ public final class RuntimeJavaGenerator
 	{
 	}
 
-	public static final class GeneratedJavaFile
-	{
-		private final String fileName;
-		private final String packageName;
-		private final String className;
-		private final String source;
 
-		public GeneratedJavaFile(String fileName, String packageName, String className, String source)
-		{
-			this.fileName = fileName;
-			this.packageName = packageName;
-			this.className = className;
-			this.source = source;
-		}
-
-		public String getFileName()
-		{
-			return fileName;
-		}
-
-		public String getPackageName()
-		{
-			return packageName;
-		}
-
-		public String getClassName()
-		{
-			return className;
-		}
-
-		public String getSource()
-		{
-			return source;
-		}
-	}
 
 	public static GeneratedJavaFile generateJavaSource(
 			FileDescriptorProto rootProto,
@@ -90,52 +58,26 @@ public final class RuntimeJavaGenerator
 		// Use Compiler's JavaCodeGenerator approach (same as Compiler.compile())
 		InMemoryGeneratorContext context = new InMemoryGeneratorContext();
 		
-		com.rubberjam.protobuf.another.compiler.JavaCodeGenerator codeGenerator = 
-				new com.rubberjam.protobuf.another.compiler.JavaCodeGenerator();
+		JavaCodeGenerator codeGenerator = 
+				new JavaCodeGenerator();
 		
+		List<JavaCodeGenerator.GeneratedJavaFile> javaFiles;
 		try
 		{
-			codeGenerator.generate(fileDescriptor, parameter, context);
+			javaFiles = codeGenerator.generateJavaFiles(fileDescriptor, parameter, context);
 		}
 		catch (com.rubberjam.protobuf.another.compiler.CodeGenerator.GenerationException e)
 		{
 			throw new CompilationException("Error generating code", e);
 		}
 
-		Map<String, String> generatedFiles = context.getFiles();
-		if (generatedFiles.isEmpty())
+
+		if (javaFiles.isEmpty())
 		{
 			throw new CompilationException("No files were generated");
 		}
 
-		// Find the main Java file (should be only one for single proto)
-		String fileName = null;
-		String source = null;
-		for (Map.Entry<String, String> entry : generatedFiles.entrySet())
-		{
-			if (entry.getKey().endsWith(".java") && !entry.getKey().endsWith(".pb.meta"))
-			{
-				fileName = entry.getKey();
-				source = entry.getValue();
-				break;
-			}
-		}
-
-		if (fileName == null || source == null)
-		{
-			throw new CompilationException("No Java file was generated");
-		}
-
-		// Extract package and class name from FileGenerator
-		com.rubberjam.protobuf.compiler.java.JavaCompilerOptions options = 
-				com.rubberjam.protobuf.compiler.java.JavaCompilerOptions.fromParameter(parameter);
-		boolean immutableApi = !options.generateMutableCode;
-		FileGenerator fileGenerator = new FileGenerator(fileDescriptor, rootProto, options, immutableApi);
-		
-		String packageName = fileGenerator.getJavaPackage();
-		String className = fileGenerator.getClassName();
-
-		return new GeneratedJavaFile(fileName, packageName, className, source);
+		return javaFiles.getFirst();
 	}
 
 	public static Map<String, GeneratedJavaFile> generateJavaSources(

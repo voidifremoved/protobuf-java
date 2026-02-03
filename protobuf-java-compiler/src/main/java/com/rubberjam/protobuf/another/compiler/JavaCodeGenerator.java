@@ -12,10 +12,12 @@ import com.rubberjam.protobuf.io.Printer;
 
 public class JavaCodeGenerator extends CodeGenerator
 {
-	@Override
-	public void generate(FileDescriptor file, String parameter, GeneratorContext generatorContext)
-			throws GenerationException
+	
+	public List<GeneratedJavaFile> generateJavaFiles(FileDescriptor file, String parameter, GeneratorContext generatorContext)
+	throws GenerationException
 	{
+		
+		List<GeneratedJavaFile> target = new ArrayList<>();
 		Options fileOptions = Options.fromParameter(parameter);
 
 		if (fileOptions.isEnforceLite() && fileOptions.isGenerateMutableCode())
@@ -60,25 +62,64 @@ public class JavaCodeGenerator extends CodeGenerator
 			throw new GenerationException(validationErrors.get(0));
 		}
 
+
+		for (FileGenerator fileGenerator : fileGenerators)
+		{
+			String packageDir = fileGenerator.getJavaPackage().replace('.', '/');
+			String javaFilename = packageDir + "/" + fileGenerator.getClassName() + ".java";
+			allFiles.add(javaFilename);
+			String infoFullPath = javaFilename + ".pb.meta";
+			if (fileOptions.isAnnotateCode())
+			{
+				allAnnotations.add(infoFullPath);
+			}
+
+			// Generate main java file using another.compiler's Printer (buffer then write).
+			Printer.Options printerOptions = new Printer.Options();
+			Printer printer = new Printer(printerOptions);
+			fileGenerator.generate(printer);
+
+			GeneratedJavaFile f = new GeneratedJavaFile(javaFilename, fileGenerator.getJavaPackage(), fileGenerator.getClassName(), printer.toString());
+			target.add(f);
+
+			
+		}
+		return target;
+
+	}
+	
+	@Override
+	public void generate(FileDescriptor file, String parameter, GeneratorContext generatorContext)
+			throws GenerationException
+	{
+		List<GeneratedJavaFile> javaFiles = generateJavaFiles(file, parameter, generatorContext);
+
+		
+		Options fileOptions = Options.fromParameter(parameter);
+
+		if (fileOptions.isEnforceLite() && fileOptions.isGenerateMutableCode())
+		{
+			throw new GenerationException(
+					"lite runtime generator option cannot be used with mutable API.");
+		}
+
+		// By default we generate immutable code and shared code for immutable API.
+		if (!fileOptions.isGenerateImmutableCode()
+				&& !fileOptions.isGenerateMutableCode()
+				&& !fileOptions.isGenerateSharedCode())
+		{
+			fileOptions.setGenerateImmutableCode(true);
+			fileOptions.setGenerateSharedCode(true);
+		}
+
 		try
 		{
-			for (FileGenerator fileGenerator : fileGenerators)
+			for (GeneratedJavaFile f : javaFiles)
 			{
-				String packageDir = fileGenerator.getJavaPackage().replace('.', '/');
-				String javaFilename = packageDir + "/" + fileGenerator.getClassName() + ".java";
-				allFiles.add(javaFilename);
-				String infoFullPath = javaFilename + ".pb.meta";
-				if (fileOptions.isAnnotateCode())
-				{
-					allAnnotations.add(infoFullPath);
-				}
-
-				// Generate main java file using another.compiler's Printer (buffer then write).
-				Printer.Options printerOptions = new Printer.Options();
-				Printer printer = new Printer(printerOptions);
-				fileGenerator.generate(printer);
-				byte[] bytes = printer.toString().getBytes(StandardCharsets.UTF_8);
-				try (java.io.OutputStream out = generatorContext.open(javaFilename))
+				byte[] bytes = f.getSource().getBytes(StandardCharsets.UTF_8);
+				
+				
+				try (java.io.OutputStream out = generatorContext.open(f.getFileName()))
 				{
 					out.write(bytes);
 				}
@@ -91,9 +132,9 @@ public class JavaCodeGenerator extends CodeGenerator
 				try (java.io.PrintWriter writer = new java.io.PrintWriter(
 						new java.io.OutputStreamWriter(generatorContext.open(outputListFile), StandardCharsets.UTF_8)))
 				{
-					for (String fileName : allFiles)
+					for (GeneratedJavaFile f : javaFiles)
 					{
-						writer.println(fileName);
+						writer.println(f.getFileName());
 					}
 				}
 			}
@@ -104,9 +145,12 @@ public class JavaCodeGenerator extends CodeGenerator
 				try (java.io.PrintWriter writer = new java.io.PrintWriter(
 						new java.io.OutputStreamWriter(generatorContext.open(annotationListFile), StandardCharsets.UTF_8)))
 				{
-					for (String fileName : allAnnotations)
+					for (GeneratedJavaFile f : javaFiles)
 					{
-						writer.println(fileName);
+						if (fileOptions.isAnnotateCode())
+						{
+							writer.println(f.getFileName());
+						}
 					}
 				}
 			}
@@ -133,5 +177,41 @@ public class JavaCodeGenerator extends CodeGenerator
 	public Edition getMaximumEdition()
 	{
 		return Edition.EDITION_2023;
+	}
+	
+	public static final class GeneratedJavaFile
+	{
+		private final String fileName;
+		private final String packageName;
+		private final String className;
+		private final String source;
+
+		public GeneratedJavaFile(String fileName, String packageName, String className, String source)
+		{
+			this.fileName = fileName;
+			this.packageName = packageName;
+			this.className = className;
+			this.source = source;
+		}
+
+		public String getFileName()
+		{
+			return fileName;
+		}
+
+		public String getPackageName()
+		{
+			return packageName;
+		}
+
+		public String getClassName()
+		{
+			return className;
+		}
+
+		public String getSource()
+		{
+			return source;
+		}
 	}
 }
