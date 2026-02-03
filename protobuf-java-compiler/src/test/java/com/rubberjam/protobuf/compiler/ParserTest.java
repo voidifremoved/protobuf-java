@@ -58,6 +58,7 @@ public class ParserTest {
         FileDescriptorProto result = parse(input);
         assertTrue("Expected parse success", result != null);
     }
+    
 
     @Test
     public void testSimpleMessage() {
