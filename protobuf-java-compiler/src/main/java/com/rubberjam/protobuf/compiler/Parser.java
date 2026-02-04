@@ -81,6 +81,9 @@ public class Parser {
         location.addSpan(token.line);
       }
       location.addSpan(token.endColumn);
+      if (token.trailingComments != null && !token.trailingComments.isEmpty()) {
+        location.setTrailingComments(token.trailingComments);
+      }
     }
     
     // Attaches comments consumed by the parser to this location
@@ -229,6 +232,7 @@ public class Parser {
 
   private boolean consumeEndOfDeclaration(String text, LocationRecorder location) {
     if (tryConsume(text)) {
+        location.endAt(input.previous());
         return true;
     }
     recordError("Expected \"" + text + "\".");
@@ -360,6 +364,7 @@ public class Parser {
       }
     }
     consume("}");
+    messageLocation.endAt(input.previous());
     return true;
   }
 
@@ -436,7 +441,7 @@ public class Parser {
           parseFieldOptions(field);
       }
 
-      consume(";");
+      consumeEndOfDeclaration(";", location);
       return true;
   }
 
@@ -553,6 +558,7 @@ public class Parser {
           }
       }
       consume("}");
+      root.endAt(input.previous());
       return true;
   }
 
@@ -664,7 +670,7 @@ public class Parser {
         field.setOneofIndex(oneofIndex);
     }
 
-    consume(";");
+    consumeEndOfDeclaration(";", fieldLocation);
     return true;
   }
 
@@ -713,6 +719,7 @@ public class Parser {
       }
     }
     consume("}");
+    enumLocation.endAt(input.previous());
     return true;
   }
 
@@ -741,7 +748,7 @@ public class Parser {
           consume("]");
       }
 
-      consume(";");
+      consumeEndOfDeclaration(";", location);
       return true;
   }
   
@@ -762,6 +769,7 @@ public class Parser {
           }
       }
       consume("}");
+      location.endAt(input.previous());
       return true;
   }
   
@@ -824,17 +832,17 @@ public class Parser {
 
       UninterpretedOption option = uninterpreted.build();
 
-      // Always add to uninterpreted_option so the descriptor retains all options
-      try {
-          java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
-          m.invoke(optionsBuilder, option);
-      } catch (Exception e) {
-          recordError("Could not add option: " + e.getMessage());
-          return false;
+      // interpret known options into typed fields when possible
+      if (!interpretOption(optionsBuilder, option)) {
+          // Add to uninterpreted_option only if not interpreted
+          try {
+              java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
+              m.invoke(optionsBuilder, option);
+          } catch (Exception e) {
+              recordError("Could not add option: " + e.getMessage());
+              return false;
+          }
       }
-
-      // Also interpret known options into typed fields when possible
-      interpretOption(optionsBuilder, option);
 
       return true;
   }
