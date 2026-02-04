@@ -445,7 +445,9 @@ public class MessageBuilderGenerator {
       // This is a complex part often delegated to FieldGenerators but usually the switch is here.
 
       // For now, standard implementation:
-      for (FieldDescriptor field : descriptor.getFields()) {
+      List<FieldDescriptor> sortedFields = new ArrayList<>(descriptor.getFields());
+      sortedFields.sort(Comparator.comparingInt(Helpers::getWireFormatForField));
+      for (FieldDescriptor field : sortedFields) {
           printer.print("case " + Helpers.getWireFormatForField(field) + ": {\n");
           printer.indent();
           fieldGenerators.get(field).generateParsingCode(printer);

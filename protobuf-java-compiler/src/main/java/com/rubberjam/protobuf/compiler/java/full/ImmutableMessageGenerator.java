@@ -699,7 +699,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       printer.indent();
       printer.print("size = 0;\n");
 
-      for (FieldDescriptor field : descriptor.getFields()) {
+      for (FieldDescriptor field : sortedFields) {
           fieldGenerators.get(field).generateSerializedSizeCode(printer);
       }
 

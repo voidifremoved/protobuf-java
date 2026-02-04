@@ -121,7 +121,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
     if (descriptor.hasPresence()) {
-      printer.emit(variables, "private $type$ $name$_;\n");
+      printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -136,7 +136,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
           "}\n");
     } else {
       // Proto3 implicit
-      printer.emit(variables, "private $type$ $name$_;\n");
+      printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -149,29 +149,37 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderMembers(Printer printer) {
     if (descriptor.hasPresence()) {
-      printer.emit(variables,
-          "private $type$ $name$_ $default_init$;\n");
+      if (Helpers.isDefaultValueJavaDefault(descriptor)) {
+        printer.emit(variables, "private $type$ $name$_ ;\n");
+      } else {
+        printer.emit(variables, "private $type$ $name$_ = $default_init$;\n");
+      }
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
           "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
           "  return $name$_;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+          "  $null_check$\n" +
           "  $name$_ = value;\n" +
+          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +
           "  return this;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
@@ -184,20 +192,23 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables,
           "private $type$ $name$_;\n"); // Default is 0/false by JVM
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
           "  return $name$_;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  \n" +
+          "  $null_check$\n" +
           "  $name$_ = value;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  \n" +
@@ -210,9 +221,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-    if (descriptor.hasPresence()) {
-      printer.emit(variables, "$name$_ = $default$;\n");
-    } else {
+    if (!Helpers.isDefaultValueJavaDefault(descriptor)) {
       printer.emit(variables, "$name$_ = $default$;\n");
     }
   }
