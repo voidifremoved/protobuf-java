@@ -63,6 +63,58 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     com.google.protobuf.ByteString
         getUnicodeStringBytes();
+
+    /**
+     * <pre>
+     * Field numbers at boundaries
+     * </pre>
+     *
+     * <code>optional int32 field15 = 15;</code>
+     * @return Whether the field15 field is set.
+     */
+    boolean hasField15();
+    /**
+     * <pre>
+     * Field numbers at boundaries
+     * </pre>
+     *
+     * <code>optional int32 field15 = 15;</code>
+     * @return The field15.
+     */
+    int getField15();
+
+    /**
+     * <code>optional int32 field16 = 16;</code>
+     * @return Whether the field16 field is set.
+     */
+    boolean hasField16();
+    /**
+     * <code>optional int32 field16 = 16;</code>
+     * @return The field16.
+     */
+    int getField16();
+
+    /**
+     * <code>optional int32 field2047 = 2047;</code>
+     * @return Whether the field2047 field is set.
+     */
+    boolean hasField2047();
+    /**
+     * <code>optional int32 field2047 = 2047;</code>
+     * @return The field2047.
+     */
+    int getField2047();
+
+    /**
+     * <code>optional int32 field2048 = 2048;</code>
+     * @return Whether the field2048 field is set.
+     */
+    boolean hasField2048();
+    /**
+     * <code>optional int32 field2048 = 2048;</code>
+     * @return The field2048.
+     */
+    int getField2048();
   }
   /**
    * <pre>
@@ -206,6 +258,90 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       }
     }
 
+    public static final int FIELD15_FIELD_NUMBER = 15;
+    private int field15_ = 0;
+    /**
+     * <pre>
+     * Field numbers at boundaries
+     * </pre>
+     *
+     * <code>optional int32 field15 = 15;</code>
+     * @return Whether the field15 field is set.
+     */
+    @java.lang.Override
+    public boolean hasField15() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * Field numbers at boundaries
+     * </pre>
+     *
+     * <code>optional int32 field15 = 15;</code>
+     * @return The field15.
+     */
+    @java.lang.Override
+    public int getField15() {
+      return field15_;
+    }
+
+    public static final int FIELD16_FIELD_NUMBER = 16;
+    private int field16_ = 0;
+    /**
+     * <code>optional int32 field16 = 16;</code>
+     * @return Whether the field16 field is set.
+     */
+    @java.lang.Override
+    public boolean hasField16() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional int32 field16 = 16;</code>
+     * @return The field16.
+     */
+    @java.lang.Override
+    public int getField16() {
+      return field16_;
+    }
+
+    public static final int FIELD2047_FIELD_NUMBER = 2047;
+    private int field2047_ = 0;
+    /**
+     * <code>optional int32 field2047 = 2047;</code>
+     * @return Whether the field2047 field is set.
+     */
+    @java.lang.Override
+    public boolean hasField2047() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional int32 field2047 = 2047;</code>
+     * @return The field2047.
+     */
+    @java.lang.Override
+    public int getField2047() {
+      return field2047_;
+    }
+
+    public static final int FIELD2048_FIELD_NUMBER = 2048;
+    private int field2048_ = 0;
+    /**
+     * <code>optional int32 field2048 = 2048;</code>
+     * @return Whether the field2048 field is set.
+     */
+    @java.lang.Override
+    public boolean hasField2048() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional int32 field2048 = 2048;</code>
+     * @return The field2048.
+     */
+    @java.lang.Override
+    public int getField2048() {
+      return field2048_;
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -220,11 +356,23 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (((bitField0_ & 0x00000004) != 0)) {
+        output.writeInt32(15, field15_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        output.writeInt32(16, field16_);
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 17, emptyString_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 18, unicodeString_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        output.writeInt32(2047, field2047_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        output.writeInt32(2048, field2048_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -235,11 +383,27 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (size != -1) return size;
 
       size = 0;
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, field15_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(16, field16_);
+      }
       if (((bitField0_ & 0x00000001) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(17, emptyString_);
       }
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(18, unicodeString_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2047, field2047_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2048, field2048_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -266,6 +430,26 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         if (!getUnicodeString()
             .equals(other.getUnicodeString())) return false;
       }
+      if (hasField15() != other.hasField15()) return false;
+      if (hasField15()) {
+        if (getField15()
+            != other.getField15()) return false;
+      }
+      if (hasField16() != other.hasField16()) return false;
+      if (hasField16()) {
+        if (getField16()
+            != other.getField16()) return false;
+      }
+      if (hasField2047() != other.hasField2047()) return false;
+      if (hasField2047()) {
+        if (getField2047()
+            != other.getField2047()) return false;
+      }
+      if (hasField2048() != other.hasField2048()) return false;
+      if (hasField2048()) {
+        if (getField2048()
+            != other.getField2048()) return false;
+      }
       if (!getUnknownFields().equals(other.getUnknownFields())) return false;
       return true;
     }
@@ -284,6 +468,22 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (hasUnicodeString()) {
         hash = (37 * hash) + UNICODE_STRING_FIELD_NUMBER;
         hash = (53 * hash) + getUnicodeString().hashCode();
+      }
+      if (hasField15()) {
+        hash = (37 * hash) + FIELD15_FIELD_NUMBER;
+        hash = (53 * hash) + getField15();
+      }
+      if (hasField16()) {
+        hash = (37 * hash) + FIELD16_FIELD_NUMBER;
+        hash = (53 * hash) + getField16();
+      }
+      if (hasField2047()) {
+        hash = (37 * hash) + FIELD2047_FIELD_NUMBER;
+        hash = (53 * hash) + getField2047();
+      }
+      if (hasField2048()) {
+        hash = (37 * hash) + FIELD2048_FIELD_NUMBER;
+        hash = (53 * hash) + getField2048();
       }
       hash = (29 * hash) + getUnknownFields().hashCode();
       memoizedHashCode = hash;
@@ -422,6 +622,10 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         bitField0_ = 0;
         emptyString_ = "";
         unicodeString_ = "";
+        field15_ = 0;
+        field16_ = 0;
+        field2047_ = 0;
+        field2048_ = 0;
         return this;
       }
 
@@ -464,6 +668,22 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           result.unicodeString_ = unicodeString_;
           to_bitField0_ |= 0x00000002;
         }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.field15_ = field15_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.field16_ = field16_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.field2047_ = field2047_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.field2048_ = field2048_;
+          to_bitField0_ |= 0x00000020;
+        }
         result.bitField0_ |= to_bitField0_;
       }
 
@@ -488,6 +708,18 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           unicodeString_ = other.unicodeString_;
           bitField0_ |= 0x00000002;
           onChanged();
+        }
+        if (other.hasField15()) {
+          setField15(other.getField15());
+        }
+        if (other.hasField16()) {
+          setField16(other.getField16());
+        }
+        if (other.hasField2047()) {
+          setField2047(other.getField2047());
+        }
+        if (other.hasField2048()) {
+          setField2048(other.getField2048());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         onChanged();
@@ -515,6 +747,16 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
               case 0:
                 done = true;
                 break;
+              case 120: {
+                field15_ = input.readInt32();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 120
+              case 128: {
+                field16_ = input.readInt32();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 128
               case 138: {
                 emptyString_ = input.readBytes();
                 bitField0_ |= 0x00000001;
@@ -525,6 +767,16 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 bitField0_ |= 0x00000002;
                 break;
               } // case 146
+              case 16376: {
+                field2047_ = input.readInt32();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 16376
+              case 16384: {
+                field2048_ = input.readInt32();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 16384
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -702,6 +954,182 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         return this;
       }
 
+      private int field15_ ;
+      /**
+       * <pre>
+       * Field numbers at boundaries
+       * </pre>
+       *
+       * <code>optional int32 field15 = 15;</code>
+       * @return Whether the field15 field is set.
+       */
+      @java.lang.Override
+      public boolean hasField15() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * Field numbers at boundaries
+       * </pre>
+       *
+       * <code>optional int32 field15 = 15;</code>
+       * @return The field15.
+       */
+      @java.lang.Override
+      public int getField15() {
+        return field15_;
+      }
+      /**
+       * <pre>
+       * Field numbers at boundaries
+       * </pre>
+       *
+       * <code>optional int32 field15 = 15;</code>
+       * @param value The field15 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField15(int value) {
+
+        field15_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * Field numbers at boundaries
+       * </pre>
+       *
+       * <code>optional int32 field15 = 15;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField15() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        field15_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int field16_ ;
+      /**
+       * <code>optional int32 field16 = 16;</code>
+       * @return Whether the field16 field is set.
+       */
+      @java.lang.Override
+      public boolean hasField16() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional int32 field16 = 16;</code>
+       * @return The field16.
+       */
+      @java.lang.Override
+      public int getField16() {
+        return field16_;
+      }
+      /**
+       * <code>optional int32 field16 = 16;</code>
+       * @param value The field16 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField16(int value) {
+
+        field16_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 field16 = 16;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField16() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        field16_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int field2047_ ;
+      /**
+       * <code>optional int32 field2047 = 2047;</code>
+       * @return Whether the field2047 field is set.
+       */
+      @java.lang.Override
+      public boolean hasField2047() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional int32 field2047 = 2047;</code>
+       * @return The field2047.
+       */
+      @java.lang.Override
+      public int getField2047() {
+        return field2047_;
+      }
+      /**
+       * <code>optional int32 field2047 = 2047;</code>
+       * @param value The field2047 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField2047(int value) {
+
+        field2047_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 field2047 = 2047;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField2047() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        field2047_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int field2048_ ;
+      /**
+       * <code>optional int32 field2048 = 2048;</code>
+       * @return Whether the field2048 field is set.
+       */
+      @java.lang.Override
+      public boolean hasField2048() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional int32 field2048 = 2048;</code>
+       * @return The field2048.
+       */
+      @java.lang.Override
+      public int getField2048() {
+        return field2048_;
+      }
+      /**
+       * <code>optional int32 field2048 = 2048;</code>
+       * @param value The field2048 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField2048(int value) {
+
+        field2048_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional int32 field2048 = 2048;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField2048() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        field2048_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal)
     }
 
@@ -769,10 +1197,12 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     java.lang.String[] descriptorData = {
       "\n+comprehensive_test_edge_cases_minimal." +
       "proto\022\"ComprehensiveTest.EdgeCasesMinima" +
-      "l\"A\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 \001" +
-      "(\t:\000\022\026\n\016unicode_string\030\022 \001(\tBP\n)com.rubb" +
-      "erjam.protobuf.compiler.test.edgeB!Compr" +
-      "ehensiveTestEdgeCasesMinimalH\001"
+      "l\"\213\001\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 " +
+      "\001(\t:\000\022\026\n\016unicode_string\030\022 \001(\t\022\017\n\007field15" +
+      "\030\017 \001(\005\022\017\n\007field16\030\020 \001(\005\022\022\n\tfield2047\030\377\017 " +
+      "\001(\005\022\022\n\tfield2048\030\200\020 \001(\005BP\n)com.rubberjam" +
+      ".protobuf.compiler.test.edgeB!Comprehens" +
+      "iveTestEdgeCasesMinimalH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -783,7 +1213,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor,
-        new java.lang.String[] { "EmptyString", "UnicodeString", });
+        new java.lang.String[] { "EmptyString", "UnicodeString", "Field15", "Field16", "Field2047", "Field2048", });
     descriptor.resolveAllFeaturesImmutable();
   }
 
