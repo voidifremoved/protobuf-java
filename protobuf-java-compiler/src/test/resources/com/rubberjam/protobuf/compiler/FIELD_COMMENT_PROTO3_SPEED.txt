@@ -635,16 +635,10 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\
-+comprehensive_test_edge_cases_minimal." +
+      "\n+comprehensive_test_edge_cases_minimal." +
       "proto\022\"ComprehensiveTest.EdgeCasesMinima" +
-      "l\";\
-\017EdgeCaseMinimal\022\031\
-\
-field19000\030\320\214\001 \001" +
-      "(\tH\000\210\001\001B\r\
-\013_field19000BP\
-)com.rubberjam." +
+      "l\";\n\017EdgeCaseMinimal\022\031\n\nfield19000\030\320\214\001 \001" +
+      "(\tH\000\210\001\001B\r\n\013_field19000BP\n)com.rubberjam." +
       "protobuf.compiler.test.edgeB!Comprehensi" +
       "veTestEdgeCasesMinimalH\001b\006proto3"
     };
