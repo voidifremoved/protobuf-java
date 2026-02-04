@@ -37,17 +37,17 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public int getNumBitsForMessage() {
-    return descriptor.hasPresence() ? 1 : 0;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
   public int getNumBitsForBuilder() {
-    return descriptor.hasPresence() ? 1 : 0;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
@@ -67,7 +67,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     printer.emit(variables, "@SuppressWarnings(\"serial\")\n");
     printer.emit(variables, "private volatile java.lang.Object $name$_ = $default$;\n");
 
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -88,9 +88,11 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         "    com.google.protobuf.ByteString bs = \n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
+          (InternalHelpers.checkUtf8(descriptor) ?
+          "    $name$_ = s;\n" :
           "    if (bs.isValidUtf8()) {\n" +
           "      $name$_ = s;\n" +
-          "    }\n" +
+          "    }\n") +
           "    return s;\n" +
           "  }\n" +
           "}\n");
@@ -125,7 +127,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     printer.emit(variables,
         "private java.lang.Object $name$_ = $default$;\n");
 
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
       printer.emit(variables,
           "public boolean has$capitalized_name$() {\n" +
@@ -142,9 +144,11 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         "    com.google.protobuf.ByteString bs =\n" +
           "        (com.google.protobuf.ByteString) ref;\n" +
           "    java.lang.String s = bs.toStringUtf8();\n" +
+          (InternalHelpers.checkUtf8(descriptor) ?
+          "    $name$_ = s;\n" :
           "    if (bs.isValidUtf8()) {\n" +
           "      $name$_ = s;\n" +
-          "    }\n" +
+          "    }\n") +
           "    return s;\n" +
           "  } else {\n" +
           "    return (java.lang.String) ref;\n" +
@@ -188,7 +192,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           "public Builder set$capitalized_name$Bytes(\n" +
           "    com.google.protobuf.ByteString value) {\n" +
           "  $null_check$\n" +
-          (InternalHelpers.checkUtf8(descriptor) ? "  com.google.protobuf.AbstractMessageLite.checkByteStringIsUtf8(value);\n" : "") +
+          (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
           "  $name$_ = value;\n" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +
@@ -251,7 +255,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuildingCode(Printer printer) {
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
        printer.emit(variables,
            "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
            "  result.$name$_ = $name$_;\n" +
@@ -269,16 +273,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
        if (InternalHelpers.checkUtf8(descriptor)) {
            printer.emit(variables,
                "$name$_ = input.readStringRequireUtf8();\n" +
-               (descriptor.hasPresence() ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+               (Helpers.supportFieldPresence(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
        } else {
            printer.emit(variables,
                "$name$_ = input.readBytes();\n" +
-               (descriptor.hasPresence() ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+               (Helpers.supportFieldPresence(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
        }
     } else {
        printer.emit(variables,
            "$name$_ = input.readBytes();\n" +
-           (descriptor.hasPresence() ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+           (Helpers.supportFieldPresence(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
     }
   }
 
@@ -297,12 +301,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     // Strings/Bytes size calc
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
         printer.emit(variables,
-            "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "!get$capitalized_name$Bytes().isEmpty()") + ") {\n" +
+            "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "!get$capitalized_name$Bytes().isEmpty()") + ") {\n" +
             "  size += com.google.protobuf.GeneratedMessage.computeStringSize($number$, $name$_);\n" +
             "}\n");
     } else {
         printer.emit(variables,
-            "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
+            "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
             "  size += com.google.protobuf.CodedOutputStream\n" +
             "    .computeBytesSize($number$, $name$_);\n" +
             "}\n");
@@ -313,12 +317,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
   public void generateSerializationCode(Printer printer) {
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
         printer.emit(variables,
-            "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "!get$capitalized_name$Bytes().isEmpty()") + ") {\n" +
+            "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "!get$capitalized_name$Bytes().isEmpty()") + ") {\n" +
             "  com.google.protobuf.GeneratedMessage.writeString(output, $number$, $name$_);\n" +
             "}\n");
     } else {
         printer.emit(variables,
-            "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
+            "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
             "  output.writeBytes($number$, $name$_);\n" +
             "}\n");
     }
@@ -326,15 +330,34 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateEqualsCode(Printer printer) {
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.emit(variables,
+            "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
+            "if (has$capitalized_name$()) {\n");
+        printer.indent();
+     }
      printer.emit(variables,
          "if (!get$capitalized_name$()\n" +
          "    .equals(other.get$capitalized_name$())) return false;\n");
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.outdent();
+        printer.print("}\n");
+     }
   }
 
   @Override
   public void generateHashCodeCode(Printer printer) {
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.emit(variables,
+            "if (has$capitalized_name$()) {\n");
+        printer.indent();
+     }
      printer.emit(variables,
          "hash = (37 * hash) + $constant_name$;\n" +
          "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.outdent();
+        printer.print("}\n");
+     }
   }
 }

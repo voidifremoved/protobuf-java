@@ -51,11 +51,11 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
      printer.emit(variables, "int get$capitalized_name$Count();\n");
 
-     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_LIST_GETTER, context.getOptions());
      printer.emit(variables, "java.util.List<? extends $type$OrBuilder> \n" +
          "    get$capitalized_name$OrBuilderList();\n");
 
-     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_INDEXED_GETTER, context.getOptions());
      printer.emit(variables, "$type$OrBuilder get$capitalized_name$OrBuilder(\n" +
          "    int index);\n");
   }
@@ -63,24 +63,40 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
      printer.emit(variables,
-         "private java.util.List<$type$> $name$_;\n" +
+         "@SuppressWarnings(\"serial\")\n" +
+         "private java.util.List<$type$> $name$_;\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+     printer.emit(variables,
          "@java.lang.Override\n" +
          "public java.util.List<$type$> get$capitalized_name$List() {\n" +
          "  return $name$_;\n" +
-         "}\n" +
+         "}\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_LIST_GETTER, context.getOptions());
+     printer.emit(variables,
          "@java.lang.Override\n" +
          "public java.util.List<? extends $type$OrBuilder> \n" +
          "    get$capitalized_name$OrBuilderList() {\n" +
          "  return $name$_;\n" +
-         "}\n" +
+         "}\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+     printer.emit(variables,
          "@java.lang.Override\n" +
          "public int get$capitalized_name$Count() {\n" +
          "  return $name$_.size();\n" +
-         "}\n" +
+         "}\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+     printer.emit(variables,
          "@java.lang.Override\n" +
          "public $type$ get$capitalized_name$(int index) {\n" +
          "  return $name$_.get(index);\n" +
-         "}\n" +
+         "}\n");
+
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_INDEXED_GETTER, context.getOptions());
+     printer.emit(variables,
          "@java.lang.Override\n" +
          "public $type$OrBuilder get$capitalized_name$OrBuilder(\n" +
          "    int index) {\n" +
@@ -90,7 +106,8 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuilderMembers(Printer printer) {
-     // RepeatedFieldBuilderV3
+     variables.put("ver", Helpers.getGeneratedCodeVersionSuffix());
+     // RepeatedFieldBuilder
      printer.emit(variables,
          "private java.util.List<$type$> $name$_ =\n" +
          "  java.util.Collections.emptyList();\n" +
@@ -101,10 +118,11 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "   }\n" +
          "}\n" +
          "\n" +
-         "private com.google.protobuf.RepeatedFieldBuilderV3<\n" +
+         "private com.google.protobuf.RepeatedFieldBuilder$ver$<\n" +
          "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
 
-     // getBuilderList
+     // getList
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public java.util.List<$type$> get$capitalized_name$List() {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -115,6 +133,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // getCount
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions(), true);
      printer.emit(variables,
          "public int get$capitalized_name$Count() {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -125,6 +144,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // get(index)
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public $type$ get$capitalized_name$(int index) {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -135,6 +155,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // set
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
      printer.emit(variables,
          "public Builder set$capitalized_name$(\n" +
          "    int index, $type$ value) {\n" +
@@ -151,7 +172,23 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "  return this;\n" +
          "}\n");
 
+     // set builder
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
+     printer.emit(variables,
+         "public Builder set$capitalized_name$(\n" +
+         "    int index, $type$.Builder builderForValue) {\n" +
+         "  if ($name$Builder_ == null) {\n" +
+         "    ensure$capitalized_name$IsMutable();\n" +
+         "    $name$_.set(index, builderForValue.build());\n" +
+         "    onChanged();\n" +
+         "  } else {\n" +
+         "    $name$Builder_.setMessage(index, builderForValue.build());\n" +
+         "  }\n" +
+         "  return this;\n" +
+         "}\n");
+
      // add
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
      printer.emit(variables,
          "public Builder add$capitalized_name$($type$ value) {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -167,7 +204,56 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "  return this;\n" +
          "}\n");
 
+     // add(index)
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+     printer.emit(variables,
+         "public Builder add$capitalized_name$(\n" +
+         "    int index, $type$ value) {\n" +
+         "  if ($name$Builder_ == null) {\n" +
+         "    if (value == null) {\n" +
+         "      throw new NullPointerException();\n" +
+         "    }\n" +
+         "    ensure$capitalized_name$IsMutable();\n" +
+         "    $name$_.add(index, value);\n" +
+         "    onChanged();\n" +
+         "  } else {\n" +
+         "    $name$Builder_.addMessage(index, value);\n" +
+         "  }\n" +
+         "  return this;\n" +
+         "}\n");
+
+     // add builder
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+     printer.emit(variables,
+         "public Builder add$capitalized_name$(\n" +
+         "    $type$.Builder builderForValue) {\n" +
+         "  if ($name$Builder_ == null) {\n" +
+         "    ensure$capitalized_name$IsMutable();\n" +
+         "    $name$_.add(builderForValue.build());\n" +
+         "    onChanged();\n" +
+         "  } else {\n" +
+         "    $name$Builder_.addMessage(builderForValue.build());\n" +
+         "  }\n" +
+         "  return this;\n" +
+         "}\n");
+
+     // add builder (index)
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+     printer.emit(variables,
+         "public Builder add$capitalized_name$(\n" +
+         "    int index, $type$.Builder builderForValue) {\n" +
+         "  if ($name$Builder_ == null) {\n" +
+         "    ensure$capitalized_name$IsMutable();\n" +
+         "    $name$_.add(index, builderForValue.build());\n" +
+         "    onChanged();\n" +
+         "  } else {\n" +
+         "    $name$Builder_.addMessage(index, builderForValue.build());\n" +
+         "  }\n" +
+         "  return this;\n" +
+         "}\n");
+
      // addAll
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_MULTI_ADDER, context.getOptions(), true);
      printer.emit(variables,
          "public Builder addAll$capitalized_name$(\n" +
          "    java.lang.Iterable<? extends $type$> values) {\n" +
@@ -183,6 +269,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // clear
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
      printer.emit(variables,
          "public Builder clear$capitalized_name$() {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -196,6 +283,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // remove
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true); // CLEARER doesn't emit tags
      printer.emit(variables,
          "public Builder remove$capitalized_name$(int index) {\n" +
          "  if ($name$Builder_ == null) {\n" +
@@ -209,13 +297,15 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // getBuilder
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public $type$.Builder get$capitalized_name$Builder(\n" +
          "    int index) {\n" +
-         "  return get$capitalized_name$FieldBuilder().getBuilder(index);\n" +
+         "  return internalGet$capitalized_name$FieldBuilder().getBuilder(index);\n" +
          "}\n");
 
      // getOrBuilder
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_INDEXED_GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public $type$OrBuilder get$capitalized_name$OrBuilder(\n" +
          "    int index) {\n" +
@@ -227,6 +317,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // getOrBuilderList
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_LIST_GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public java.util.List<? extends $type$OrBuilder> \n" +
          "     get$capitalized_name$OrBuilderList() {\n" +
@@ -238,43 +329,51 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "}\n");
 
      // addBuilder
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public $type$.Builder add$capitalized_name$Builder() {\n" +
-         "  return get$capitalized_name$FieldBuilder().addBuilder(\n" +
+         "  return internalGet$capitalized_name$FieldBuilder().addBuilder(\n" +
          "      $type$.getDefaultInstance());\n" +
          "}\n");
 
      // addBuilder (index)
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public $type$.Builder add$capitalized_name$Builder(\n" +
          "    int index) {\n" +
-         "  return get$capitalized_name$FieldBuilder().addBuilder(\n" +
+         "  return internalGet$capitalized_name$FieldBuilder().addBuilder(\n" +
          "      index, $type$.getDefaultInstance());\n" +
          "}\n");
 
      // getBuilderList
+     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
      printer.emit(variables,
          "public java.util.List<$type$.Builder> \n" +
          "     get$capitalized_name$BuilderList() {\n" +
-         "  return get$capitalized_name$FieldBuilder().getBuilderList();\n" +
+         "  return internalGet$capitalized_name$FieldBuilder().getBuilderList();\n" +
          "}\n");
 
      // getFieldBuilder (private)
      printer.emit(variables,
-         "private com.google.protobuf.RepeatedFieldBuilderV3<\n" +
+         "private com.google.protobuf.RepeatedFieldBuilder$ver$<\n" +
          "    $type$, $type$.Builder, $type$OrBuilder> \n" +
-         "    get$capitalized_name$FieldBuilder() {\n" +
+         "    internalGet$capitalized_name$FieldBuilder() {\n" +
          "  if ($name$Builder_ == null) {\n" +
-         "    $name$Builder_ = new com.google.protobuf.RepeatedFieldBuilderV3<\n" +
+         "    $name$Builder_ = new com.google.protobuf.RepeatedFieldBuilder$ver$<\n" +
          "        $type$, $type$.Builder, $type$OrBuilder>(\n" +
          "            $name$_,\n" +
-         "            " + Helpers.generateGetBit(builderBitIndex) + ",\n" +
+         "            ((" + Helpers.getBitFieldName(builderBitIndex / 32) + " & " + Helpers.getBitMask(builderBitIndex) + ") != 0),\n" +
          "            getParentForChildren(),\n" +
          "            isClean());\n" +
          "    $name$_ = null;\n" +
          "  }\n" +
          "  return $name$Builder_;\n" +
          "}\n");
+  }
+
+  @Override
+  public void generateFieldBuilderInitializationCode(Printer printer) {
+    printer.emit(variables, "internalGet$capitalized_name$FieldBuilder();\n");
   }
 
   @Override
@@ -316,8 +415,8 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "      $name$_ = other.$name$_;\n" +
          "      " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
          "      $name$Builder_ = \n" +
-         "        com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?\n" +
-         "           get$capitalized_name$FieldBuilder() : null;\n" +
+         "        com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + ".alwaysUseFieldBuilders ?\n" +
+         "           internalGet$capitalized_name$FieldBuilder() : null;\n" +
          "    } else {\n" +
          "      $name$Builder_.addAllMessages(other.$name$_);\n" +
          "    }\n" +
@@ -355,7 +454,9 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
      } else {
          printer.emit(variables,
              "$type$ m =\n" +
-             "    input.readMessage($type$.parser(), extensionRegistry);\n" +
+             "    input.readMessage(\n" +
+             "        $type$.parser(),\n" +
+             "        extensionRegistry);\n" +
              "if ($name$Builder_ == null) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.add(m);\n" +

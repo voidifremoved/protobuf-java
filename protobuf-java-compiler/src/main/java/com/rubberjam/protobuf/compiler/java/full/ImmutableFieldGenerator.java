@@ -1,6 +1,7 @@
 package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.FieldCommon;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon;
@@ -69,10 +70,15 @@ public abstract class ImmutableFieldGenerator implements GeneratorCommon.FieldGe
   }
 
   public void generateBuilderParsingCode(Printer printer) {
-    generateParsingCode(printer); // Default to standard parsing code
+    printer.print("case " + Helpers.getWireFormatForField(descriptor) + ": {\n");
+    printer.indent();
+    generateParsingCode(printer);
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + Helpers.getWireFormatForField(descriptor) + "\n");
   }
 
   public void generateBuilderParsingCodeFromPacked(Printer printer) {
-    generateParsingCodeFromPacked(printer); // Default to standard parsing code
+    // Default implementation does nothing
   }
 }

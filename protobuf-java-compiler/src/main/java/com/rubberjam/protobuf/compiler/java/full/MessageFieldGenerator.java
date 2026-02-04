@@ -32,12 +32,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public int getNumBitsForMessage() {
-    return 1;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
   public int getNumBitsForBuilder() {
-    return 1;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
@@ -48,7 +48,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions());
     printer.emit(variables, "$type$OrBuilder get$capitalized_name$OrBuilder();\n");
   }
 
@@ -58,11 +58,19 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "private $type$ $name$_;\n");
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
-    printer.emit(variables,
-        "@java.lang.Override\n" +
-        "public boolean has$capitalized_name$() {\n" +
-        "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
-        "}\n");
+    if (Helpers.supportFieldPresence(descriptor)) {
+      printer.emit(variables,
+          "@java.lang.Override\n" +
+          "public boolean has$capitalized_name$() {\n" +
+          "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+          "}\n");
+    } else {
+      printer.emit(variables,
+          "@java.lang.Override\n" +
+          "public boolean has$capitalized_name$() {\n" +
+          "  return $name$_ != null;\n" +
+          "}\n");
+    }
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables,
@@ -71,7 +79,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
         "}\n");
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions());
     printer.emit(variables,
         "@java.lang.Override\n" +
         "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
@@ -81,22 +89,30 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuilderMembers(Printer printer) {
-    // We use SingleFieldBuilderV3 for message fields in builders to support nested builders.
+    variables.put("ver", Helpers.getGeneratedCodeVersionSuffix());
+    // We use SingleFieldBuilder for message fields in builders to support nested builders.
     printer.emit(variables,
         "private $type$ $name$_;\n" +
-        "private com.google.protobuf.SingleFieldBuilderV3<\n" +
+        "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
         "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
 
     // has
-    printer.emit(variables,
-        "@java.lang.Override\n" +
-        "public boolean has$capitalized_name$() {\n" +
-        "  return " + Helpers.generateGetBit(builderBitIndex) + " || $name$Builder_ != null;\n" +
-        "}\n");
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+    if (Helpers.supportFieldPresence(descriptor)) {
+      printer.emit(variables,
+          "public boolean has$capitalized_name$() {\n" +
+          "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
+          "}\n");
+    } else {
+      printer.emit(variables,
+          "public boolean has$capitalized_name$() {\n" +
+          "  return $name$Builder_ != null || $name$_ != null;\n" +
+          "}\n");
+    }
 
     // get
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
     printer.emit(variables,
-        "@java.lang.Override\n" +
         "public $type$ get$capitalized_name$() {\n" +
         "  if ($name$Builder_ == null) {\n" +
         "    return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
@@ -106,6 +122,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // set
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder set$capitalized_name$($type$ value) {\n" +
         "  if ($name$Builder_ == null) {\n" +
@@ -122,6 +139,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // set builder
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder set$capitalized_name$(\n" +
         "    $type$.Builder builderForValue) {\n" +
@@ -136,27 +154,37 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // merge
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+    printer.emit(variables, "public Builder merge$capitalized_name$($type$ value) {\n");
+    printer.indent();
+    printer.emit(variables, "if ($name$Builder_ == null) {\n");
+    printer.indent();
     printer.emit(variables,
-        "public Builder merge$capitalized_name$($type$ value) {\n" +
-        "  if ($name$Builder_ == null) {\n" +
-        "    if (" + Helpers.generateGetBit(builderBitIndex) + " &&\n" +
-        "        $name$_ != null &&\n" +
-        "        $name$_ != $type$.getDefaultInstance()) {\n" +
-        "      get$capitalized_name$Builder().mergeFrom(value);\n" +
-        "    } else {\n" +
-        "      $name$_ = value;\n" +
-        "    }\n" +
-        "  } else {\n" +
-        "    $name$Builder_.mergeFrom(value);\n" +
-        "  }\n" +
-        "  if ($name$_ != null) {\n" +
-        "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "    onChanged();\n" +
-        "  }\n" +
-        "  return this;\n" +
+        "if (" + Helpers.generateGetBit(builderBitIndex) + " &&\n" +
+        "  $name$_ != null &&\n" +
+        "  $name$_ != $type$.getDefaultInstance()) {\n");
+    printer.indent();
+    printer.emit(variables, "get$capitalized_name$Builder().mergeFrom(value);\n");
+    printer.outdent();
+    printer.emit(variables,
+        "} else {\n" +
+        "  $name$_ = value;\n" +
         "}\n");
+    printer.outdent();
+    printer.emit(variables,
+        "} else {\n" +
+        "  $name$Builder_.mergeFrom(value);\n" +
+        "}\n" +
+        "if ($name$_ != null) {\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+        "  onChanged();\n" +
+        "}\n" +
+        "return this;\n");
+    printer.outdent();
+    printer.print("}\n");
 
     // clear
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder clear$capitalized_name$() {\n" +
         "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
@@ -170,16 +198,17 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // getBuilder
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
     printer.emit(variables,
         "public $type$.Builder get$capitalized_name$Builder() {\n" +
         "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  onChanged();\n" +
-        "  return get$capitalized_name$FieldBuilder().getBuilder();\n" +
+        "  return internalGet$capitalized_name$FieldBuilder().getBuilder();\n" +
         "}\n");
 
     // getOrBuilder
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions(), true);
     printer.emit(variables,
-        "@java.lang.Override\n" +
         "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
         "  if ($name$Builder_ != null) {\n" +
         "    return $name$Builder_.getMessageOrBuilder();\n" +
@@ -191,11 +220,11 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
     // getFieldBuilder (private)
     printer.emit(variables,
-        "private com.google.protobuf.SingleFieldBuilderV3<\n" +
+        "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
         "    $type$, $type$.Builder, $type$OrBuilder> \n" +
-        "    get$capitalized_name$FieldBuilder() {\n" +
+        "    internalGet$capitalized_name$FieldBuilder() {\n" +
         "  if ($name$Builder_ == null) {\n" +
-        "    $name$Builder_ = new com.google.protobuf.SingleFieldBuilderV3<\n" +
+        "    $name$Builder_ = new com.google.protobuf.SingleFieldBuilder$ver$<\n" +
         "        $type$, $type$.Builder, $type$OrBuilder>(\n" +
         "            get$capitalized_name$(),\n" +
         "            getParentForChildren(),\n" +
@@ -207,8 +236,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
   }
 
   @Override
+  public void generateFieldBuilderInitializationCode(Printer printer) {
+    printer.emit(variables, "internalGet$capitalized_name$FieldBuilder();\n");
+  }
+
+  @Override
   public void generateInitializationCode(Printer printer) {
-     printer.emit(variables, "$name$_ = null;\n");
   }
 
   @Override
@@ -231,24 +264,29 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuildingCode(Printer printer) {
-     printer.emit(variables,
-         "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
-         "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
-         "}\n");
-
-     printer.emit(variables,
-         "if ($name$Builder_ == null) {\n" +
-         "  result.$name$_ = $name$_;\n" +
-         "} else {\n" +
-         "  result.$name$_ = $name$Builder_.build();\n" +
-         "}\n");
+    if (Helpers.supportFieldPresence(descriptor)) {
+      printer.emit(variables,
+          "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+          "  result.$name$_ = $name$Builder_ == null\n" +
+          "      ? $name$_\n" +
+          "      : $name$Builder_.build();\n" +
+          "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
+          "}\n");
+    } else {
+      printer.emit(variables,
+          "if ($name$Builder_ == null) {\n" +
+          "  result.$name$_ = $name$_;\n" +
+          "} else {\n" +
+          "  result.$name$_ = $name$Builder_.build();\n" +
+          "}\n");
+    }
   }
 
   @Override
   public void generateParsingCode(Printer printer) {
      printer.emit(variables,
          "input.readMessage(\n" +
-         "    get$capitalized_name$FieldBuilder().getBuilder(),\n" +
+         "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
          "    extensionRegistry);\n" +
          Helpers.generateSetBit(builderBitIndex) + ";\n");
   }
@@ -265,16 +303,20 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateSerializedSizeCode(Printer printer) {
+    String condition = Helpers.supportFieldPresence(descriptor)
+        ? Helpers.generateGetBit(messageBitIndex)
+        : "has$capitalized_name$()";
+    variables.put("condition", condition);
     // computeGroupSize or computeMessageSize
     if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
         printer.emit(variables,
-            "if (" + Helpers.generateGetBit(messageBitIndex) + ") {\n" +
+            "if ($condition$) {\n" +
             "  size += com.google.protobuf.CodedOutputStream\n" +
             "    .computeGroupSize($number$, get$capitalized_name$());\n" +
             "}\n");
     } else {
         printer.emit(variables,
-            "if (" + Helpers.generateGetBit(messageBitIndex) + ") {\n" +
+            "if ($condition$) {\n" +
             "  size += com.google.protobuf.CodedOutputStream\n" +
             "    .computeMessageSize($number$, get$capitalized_name$());\n" +
             "}\n");
@@ -283,14 +325,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateSerializationCode(Printer printer) {
+    String condition = Helpers.supportFieldPresence(descriptor)
+        ? Helpers.generateGetBit(messageBitIndex)
+        : "has$capitalized_name$()";
+    variables.put("condition", condition);
     if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
         printer.emit(variables,
-            "if (" + Helpers.generateGetBit(messageBitIndex) + ") {\n" +
+            "if ($condition$) {\n" +
             "  output.writeGroup($number$, get$capitalized_name$());\n" +
             "}\n");
     } else {
         printer.emit(variables,
-            "if (" + Helpers.generateGetBit(messageBitIndex) + ") {\n" +
+            "if ($condition$) {\n" +
             "  output.writeMessage($number$, get$capitalized_name$());\n" +
             "}\n");
     }
@@ -298,15 +344,26 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateEqualsCode(Printer printer) {
-     printer.emit(variables,
-         "if (!get$capitalized_name$()\n" +
-         "    .equals(other.get$capitalized_name$())) return false;\n");
+    printer.emit(variables,
+        "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
+        "if (has$capitalized_name$()) {\n");
+    printer.indent();
+    printer.emit(variables,
+        "if (!get$capitalized_name$()\n" +
+        "    .equals(other.get$capitalized_name$())) return false;\n");
+    printer.outdent();
+    printer.print("}\n");
   }
 
   @Override
   public void generateHashCodeCode(Printer printer) {
-     printer.emit(variables,
-         "hash = (37 * hash) + $constant_name$;\n" +
-         "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
+    printer.emit(variables,
+        "if (has$capitalized_name$()) {\n");
+    printer.indent();
+    printer.emit(variables,
+        "hash = (37 * hash) + $constant_name$;\n" +
+        "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
+    printer.outdent();
+    printer.print("}\n");
   }
 }

@@ -577,8 +577,13 @@ public class Parser {
   }
 
   private boolean parseMessageField(FieldDescriptorProto.Builder field, LocationRecorder fieldLocation, DescriptorProto.Builder containingMessage, FileDescriptorProto.Builder containingFile, int oneofIndex) {
+    boolean isProto3Optional = false;
     if (tryConsume("optional")) {
       field.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
+      if (syntaxIdentifier.equals("proto3")) {
+          isProto3Optional = true;
+          field.setProto3Optional(true);
+      }
     } else if (tryConsume("required")) {
       field.setLabel(FieldDescriptorProto.Label.LABEL_REQUIRED);
     } else if (tryConsume("repeated")) {
@@ -655,6 +660,12 @@ public class Parser {
     StringBuilder name = new StringBuilder();
     consumeIdentifier(name);
     field.setName(name.toString());
+
+    if (isProto3Optional && containingMessage != null) {
+        OneofDescriptorProto.Builder oneof = containingMessage.addOneofDeclBuilder();
+        oneof.setName("_" + name.toString());
+        field.setOneofIndex(containingMessage.getOneofDeclCount() - 1);
+    }
 
     consume("=");
 

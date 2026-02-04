@@ -267,13 +267,13 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       for (FieldDescriptor field : descriptor.getFields()) {
           totalBits += fieldGenerators.get(field).getNumBitsForMessage();
       }
-      System.err.println("DEBUG: totalBits=" + totalBits + " for " + descriptor.getName());
       int totalInts = (totalBits + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print("private int " + getBitFieldName(i) + ";\n");
       }
 
       for (OneofDescriptor oneof : oneofs.values()) {
+          if (com.google.protobuf.CompilerInternalHelpers.isSynthetic(oneof)) continue;
           String oneofName = context.getOneofGeneratorInfo(oneof).name;
           String oneofCapitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
           vars.put("oneof_name", oneofName);
@@ -346,10 +346,12 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       }
 
       for (FieldDescriptor field : descriptor.getFields()) {
-          printer.print(
-              "public static final int " + Helpers.fieldConstantName(field) + " = " + field.getNumber() + ";\n");
-          fieldGenerators.get(field).generateMembers(printer);
-          printer.print("\n");
+          if (!Helpers.isRealOneof(field)) {
+              printer.print(
+                  "public static final int " + Helpers.fieldConstantName(field) + " = " + field.getNumber() + ";\n");
+              fieldGenerators.get(field).generateMembers(printer);
+              printer.print("\n");
+          }
       }
 
       if (context.hasGeneratedMethods(descriptor)) {
@@ -406,7 +408,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
 
   private void generateInitializers(Printer printer) {
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
+          if (!Helpers.isRealOneof(field)) {
               fieldGenerators.get(field).generateInitializationCode(printer);
           }
       }
@@ -744,22 +746,13 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           "\n");
 
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
-              if (field.hasPresence()) {
-                  printer.print(
-                      "if (has" + context.getFieldGeneratorInfo(field).capitalizedName + "() != other.has" + context.getFieldGeneratorInfo(field).capitalizedName + "()) return false;\n" +
-                      "if (has" + context.getFieldGeneratorInfo(field).capitalizedName + "()) {\n");
-                  printer.indent();
-              }
+          if (!Helpers.isRealOneof(field)) {
               fieldGenerators.get(field).generateEqualsCode(printer);
-              if (field.hasPresence()) {
-                  printer.outdent();
-                  printer.print("}\n");
-              }
           }
       }
 
       for (OneofDescriptor oneof : oneofs.values()) {
+          if (com.google.protobuf.CompilerInternalHelpers.isSynthetic(oneof)) continue;
           String capName = context.getOneofGeneratorInfo(oneof).capitalizedName;
           String name = context.getOneofGeneratorInfo(oneof).name;
           printer.print(
@@ -804,20 +797,13 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           "hash = (19 * hash) + getDescriptor().hashCode();\n");
 
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
-              if (field.hasPresence()) {
-                  printer.print("if (has" + context.getFieldGeneratorInfo(field).capitalizedName + "()) {\n");
-                  printer.indent();
-              }
+          if (!Helpers.isRealOneof(field)) {
               fieldGenerators.get(field).generateHashCodeCode(printer);
-              if (field.hasPresence()) {
-                  printer.outdent();
-                  printer.print("}\n");
-              }
           }
       }
 
       for (OneofDescriptor oneof : oneofs.values()) {
+          if (com.google.protobuf.CompilerInternalHelpers.isSynthetic(oneof)) continue;
           String name = context.getOneofGeneratorInfo(oneof).name;
           printer.print("switch (" + name + "Case_) {\n");
           printer.indent();

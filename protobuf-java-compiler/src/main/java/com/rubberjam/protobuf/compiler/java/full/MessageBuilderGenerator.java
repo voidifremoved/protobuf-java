@@ -57,13 +57,7 @@ public class MessageBuilderGenerator {
       generateDescriptorMethods(printer);
       generateCommonBuilderMethods(printer);
 
-      int totalBits = 0;
-      for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
-              totalBits += fieldGenerators.get(field).getNumBitsForBuilder();
-          }
-      }
-      int totalInts = (totalBits + 31) / 32;
+      int totalInts = (descriptor.getFields().size() + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print("private int " + Helpers.getBitFieldName(i) + ";\n");
       }
@@ -152,29 +146,36 @@ public class MessageBuilderGenerator {
       Map<String, Object> vars = new HashMap<>();
       vars.put("classname", className);
 
-      printer.print(vars,
-          "// Construct using " + className + ".newBuilder()\n" +
-          "private Builder() {\n" +
-          "\n" +
-          "}\n" +
-          "\n" +
-          "private Builder(\n" +
-          "    com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + ".BuilderParent parent) {\n" +
-          "  super(parent);\n" +
-          "\n" +
-          "}\n");
-
-      boolean hasRepeatedMessages = false;
+      boolean needMaybeForceBuilderInit = false;
       for (FieldDescriptor field : descriptor.getFields()) {
           if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE &&
-              field.isRepeated() &&
-              !field.isMapField()) {
-              hasRepeatedMessages = true;
+              !Helpers.isRealOneof(field) &&
+              Helpers.hasHasbit(field)) {
+              needMaybeForceBuilderInit = true;
               break;
           }
       }
 
-      if (hasRepeatedMessages) {
+      String forceBuilderInit = needMaybeForceBuilderInit
+          ? "  maybeForceBuilderInitialization();"
+          : "";
+      vars.put("force_builder_init", forceBuilderInit);
+
+      printer.print(vars,
+          "// Construct using $classname$.newBuilder()\n" +
+          "private Builder() {\n" +
+          "$force_builder_init$\n" +
+          "}\n" +
+          "\n");
+
+      printer.print(vars,
+          "private Builder(\n" +
+          "    com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + ".BuilderParent parent) {\n" +
+          "  super(parent);\n" +
+          "$force_builder_init$\n" +
+          "}\n");
+
+      if (needMaybeForceBuilderInit) {
           printer.print(
               "private void maybeForceBuilderInitialization() {\n" +
               "  if (com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + "\n" +
@@ -183,10 +184,8 @@ public class MessageBuilderGenerator {
           printer.indent();
           printer.indent();
           for (FieldDescriptor field : descriptor.getFields()) {
-              if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE &&
-                  field.isRepeated() &&
-                  !field.isMapField()) {
-                  printer.print("    get" + context.getFieldGeneratorInfo(field).capitalizedName + "FieldBuilder();\n");
+              if (!Helpers.isRealOneof(field)) {
+                  fieldGenerators.get(field).generateFieldBuilderInitializationCode(printer);
               }
           }
           printer.outdent();
@@ -203,19 +202,13 @@ public class MessageBuilderGenerator {
 
       printer.indent();
 
-      int totalBits = 0;
-      for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
-              totalBits += fieldGenerators.get(field).getNumBitsForBuilder();
-          }
-      }
-      int totalInts = (totalBits + 31) / 32;
+      int totalInts = (descriptor.getFields().size() + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print(Helpers.getBitFieldName(i) + " = 0;\n");
       }
 
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
+          if (!Helpers.isRealOneof(field)) {
               fieldGenerators.get(field).generateBuilderClearCode(printer);
           }
       }
@@ -261,13 +254,16 @@ public class MessageBuilderGenerator {
 
       printer.indent();
 
-      totalBits = 0;
+      boolean hasRepeatedFields = false;
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
-              totalBits += fieldGenerators.get(field).getNumBitsForBuilder();
+          if (Helpers.bitfieldTracksMutability(field)) {
+              hasRepeatedFields = true;
+              printer.print("buildPartialRepeatedFields(result);\n");
+              break;
           }
       }
-      totalInts = (totalBits + 31) / 32;
+
+      totalInts = (descriptor.getFields().size() + 31) / 32;
 
       for (int i = 0; i < totalInts; i++) {
         printer.print("if (bitField" + i + "_ != 0) { buildPartial" + i + "(result); }\n");
@@ -284,6 +280,18 @@ public class MessageBuilderGenerator {
       printer.print("return result;\n");
       printer.outdent();
       printer.print("}\n\n");
+
+      if (hasRepeatedFields) {
+          printer.print("private void buildPartialRepeatedFields(" + className + " result) {\n");
+          printer.indent();
+          for (FieldDescriptor field : descriptor.getFields()) {
+              if (Helpers.bitfieldTracksMutability(field)) {
+                  fieldGenerators.get(field).generateBuildingCode(printer);
+              }
+          }
+          printer.outdent();
+          printer.print("}\n\n");
+      }
 
       generateBuildPartialMethods(printer);
 
@@ -314,7 +322,7 @@ public class MessageBuilderGenerator {
           "if (other == " + nameResolver.getImmutableClassName(descriptor) + ".getDefaultInstance()) return this;\n");
 
       for (FieldDescriptor field : descriptor.getFields()) {
-          if (field.getContainingOneof() == null) {
+          if (!Helpers.isRealOneof(field)) {
               fieldGenerators.get(field).generateMergingCode(printer);
           }
       }
@@ -446,14 +454,9 @@ public class MessageBuilderGenerator {
 
       // For now, standard implementation:
       List<FieldDescriptor> sortedFields = new ArrayList<>(descriptor.getFields());
-      sortedFields.sort(Comparator.comparingInt(Helpers::getWireFormatForField));
+      sortedFields.sort(Comparator.comparingInt(FieldDescriptor::getNumber));
       for (FieldDescriptor field : sortedFields) {
-          printer.print("case " + Helpers.getWireFormatForField(field) + ": {\n");
-          printer.indent();
-          fieldGenerators.get(field).generateParsingCode(printer);
-          printer.print("break;\n");
-          printer.outdent();
-          printer.print("} // case " + Helpers.getWireFormatForField(field) + "\n");
+          fieldGenerators.get(field).generateBuilderParsingCode(printer);
       }
 
       printer.print(
@@ -520,42 +523,41 @@ public class MessageBuilderGenerator {
   }
 
   private void generateBuildPartialMethods(Printer printer) {
-      int totalBits = 0;
-      for (FieldDescriptor field : descriptor.getFields()) {
-           if (field.getContainingOneof() == null) {
-               totalBits += fieldGenerators.get(field).getNumBitsForBuilder();
-           }
-      }
-      int totalInts = (totalBits + 31) / 32;
+      int totalInts = (descriptor.getFields().size() + 31) / 32;
 
       for (int i = 0; i < totalInts; i++) {
           printer.print("private void buildPartial" + i + "(" + nameResolver.getImmutableClassName(descriptor) + " result) {\n");
           printer.indent();
 
           printer.print("int from_bitField" + i + "_ = bitField" + i + "_;\n");
-          printer.print("int to_bitField" + i + "_ = 0;\n");
+          java.util.Set<Integer> declaredToBitfields = new java.util.TreeSet<>();
 
-          int chunkStartBit = i * 32;
-          int chunkEndBit = (i + 1) * 32;
-
-          int scanBitIndex = 0;
+          int totalMessageBits = 0;
           for (FieldDescriptor field : descriptor.getFields()) {
-               if (field.getContainingOneof() == null) {
-                   int bits = fieldGenerators.get(field).getNumBitsForBuilder();
-                   boolean inChunk = false;
-                   if (scanBitIndex >= chunkStartBit && scanBitIndex < chunkEndBit) {
-                       inChunk = true;
-                   }
+              totalMessageBits += fieldGenerators.get(field).getNumBitsForMessage();
+          }
+          int totalMessageInts = (totalMessageBits + 31) / 32;
 
-                   if (inChunk) {
-                       fieldGenerators.get(field).generateBuildingCode(printer);
-                   }
-
-                   scanBitIndex += bits;
-               }
+          for (int j = 0; j < 32; j++) {
+              int fieldIndex = i * 32 + j;
+              if (fieldIndex >= descriptor.getFields().size()) break;
+              FieldDescriptor field = descriptor.getFields().get(fieldIndex);
+              if (!Helpers.isRealOneof(field) && !Helpers.bitfieldTracksMutability(field)) {
+                  ImmutableFieldGenerator generator = fieldGenerators.get(field);
+                  if (generator.getNumBitsForMessage() > 0) {
+                      int toBitFieldIndex = generator.getMessageBitIndex() / 32;
+                      if (!declaredToBitfields.contains(toBitFieldIndex) && toBitFieldIndex < totalMessageInts) {
+                          printer.print("int to_bitField" + toBitFieldIndex + "_ = 0;\n");
+                          declaredToBitfields.add(toBitFieldIndex);
+                      }
+                  }
+                  generator.generateBuildingCode(printer);
+              }
           }
 
-          printer.print("result.bitField" + i + "_ |= to_bitField" + i + "_;\n");
+          for (int toBitFieldIndex : declaredToBitfields) {
+              printer.print("result.bitField" + toBitFieldIndex + "_ |= to_bitField" + toBitFieldIndex + "_;\n");
+          }
           printer.outdent();
           printer.print("}\n\n");
       }
