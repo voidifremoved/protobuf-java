@@ -19,228 +19,231 @@ import com.rubberjam.protobuf.io.Printer;
 public final class DocComment
 {
 
-	private DocComment()
-	{
-	}
+  private DocComment()
+  {
+  }
 
-	public enum AccessorType
-	{
-		HAZZER,
-		GETTER,
-		SETTER,
+  public enum AccessorType
+  {
+    HAZZER,
+    GETTER,
+    SETTER,
         BYTES_SETTER,
-		CLEARER,
+    CLEARER,
         BYTES_GETTER,
-		// Repeated
-		LIST_COUNT,
-		LIST_GETTER,
-		LIST_INDEXED_GETTER,
-		LIST_INDEXED_SETTER,
-		LIST_ADDER,
-		LIST_MULTI_ADDER,
-		// Map
-		MAP_ENTRY_ADDER,
-		MAP_MULTI_ADDER,
-		MAP_ENTRY_REMOVER
-	}
+    // Repeated
+    LIST_COUNT,
+    LIST_GETTER,
+    LIST_INDEXED_GETTER,
+    LIST_INDEXED_SETTER,
+    LIST_ADDER,
+    LIST_MULTI_ADDER,
+    // Map
+    MAP_ENTRY_ADDER,
+    MAP_MULTI_ADDER,
+    MAP_ENTRY_REMOVER,
+    OR_BUILDER_GETTER,
+    OR_BUILDER_LIST_GETTER,
+    OR_BUILDER_INDEXED_GETTER
+  }
 
-	/**
-	 * Escapes the input string for inclusion in Javadoc.
-	 *
-	 */
-	public static String escapeJavadoc(String input)
-	{
-		StringBuilder result = new StringBuilder(input.length() * 2);
-		char prev = '*';
+  /**
+   * Escapes the input string for inclusion in Javadoc.
+   *
+   */
+  public static String escapeJavadoc(String input)
+  {
+    StringBuilder result = new StringBuilder(input.length() * 2);
+    char prev = '*';
 
-		for (int i = 0; i < input.length(); i++)
-		{
-			char c = input.charAt(i);
-			switch (c)
-			{
-			case '*':
-				// Avoid "/*".
-				if (prev == '/')
-				{
-					result.append("&#42;");
-				}
-				else
-				{
-					result.append(c);
-				}
-				break;
-			case '/':
-				// Avoid "*/".
-				if (prev == '*')
-				{
-					result.append("&#47;");
-				}
-				else
-				{
-					result.append(c);
-				}
-				break;
-			case '@':
-				// '@' starts javadoc tags.
-				result.append("&#64;");
-				break;
-			case '<':
-				// Avoid interpretation as HTML.
-				result.append("&lt;");
-				break;
-			case '>':
-				// Avoid interpretation as HTML.
-				result.append("&gt;");
-				break;
-			case '&':
-				// Avoid interpretation as HTML.
-				result.append("&amp;");
-				break;
-			case '\\':
-				// Java interprets Unicode escape sequences anywhere!
-				result.append("&#92;");
-				break;
-			default:
-				result.append(c);
-				break;
-			}
-			prev = c;
-		}
+    for (int i = 0; i < input.length(); i++)
+    {
+      char c = input.charAt(i);
+      switch (c)
+      {
+      case '*':
+        // Avoid "/*".
+        if (prev == '/')
+        {
+          result.append("&#42;");
+        }
+        else
+        {
+          result.append(c);
+        }
+        break;
+      case '/':
+        // Avoid "*/".
+        if (prev == '*')
+        {
+          result.append("&#47;");
+        }
+        else
+        {
+          result.append(c);
+        }
+        break;
+      case '@':
+        // '@' starts javadoc tags.
+        result.append("&#64;");
+        break;
+      case '<':
+        // Avoid interpretation as HTML.
+        result.append("&lt;");
+        break;
+      case '>':
+        // Avoid interpretation as HTML.
+        result.append("&gt;");
+        break;
+      case '&':
+        // Avoid interpretation as HTML.
+        result.append("&amp;");
+        break;
+      case '\\':
+        // Java interprets Unicode escape sequences anywhere!
+        result.append("&#92;");
+        break;
+      default:
+        result.append(c);
+        break;
+      }
+      prev = c;
+    }
 
-		return result.toString();
-	}
+    return result.toString();
+  }
 
-	/**
-	 * Escapes the input string for inclusion in KDoc.
-	 *
-	 */
-	public static String escapeKdoc(String input)
-	{
-		StringBuilder result = new StringBuilder(input.length() * 2);
-		char prev = 'a'; // Initial dummy value
+  /**
+   * Escapes the input string for inclusion in KDoc.
+   *
+   */
+  public static String escapeKdoc(String input)
+  {
+    StringBuilder result = new StringBuilder(input.length() * 2);
+    char prev = 'a'; // Initial dummy value
 
-		for (int i = 0; i < input.length(); i++)
-		{
-			char c = input.charAt(i);
-			switch (c)
-			{
-			case '*':
-				// Avoid "/*".
-				if (prev == '/')
-				{
-					result.append("&#42;");
-				}
-				else
-				{
-					result.append(c);
-				}
-				break;
-			case '/':
-				// Avoid "*/".
-				if (prev == '*')
-				{
-					result.append("&#47;");
-				}
-				else
-				{
-					result.append(c);
-				}
-				break;
-			default:
-				result.append(c);
-				break;
-			}
-			prev = c;
-		}
-		return result.toString();
-	}
+    for (int i = 0; i < input.length(); i++)
+    {
+      char c = input.charAt(i);
+      switch (c)
+      {
+      case '*':
+        // Avoid "/*".
+        if (prev == '/')
+        {
+          result.append("&#42;");
+        }
+        else
+        {
+          result.append(c);
+        }
+        break;
+      case '/':
+        // Avoid "*/".
+        if (prev == '*')
+        {
+          result.append("&#47;");
+        }
+        else
+        {
+          result.append(c);
+        }
+        break;
+      default:
+        result.append(c);
+        break;
+      }
+      prev = c;
+    }
+    return result.toString();
+  }
 
-	private static void writeDocCommentBodyForLocation(
-			Printer printer, SourceCodeInfo.Location location, Options options, boolean kdoc)
-	{
-		if (options.isStripNonfunctionalCodegen())
-		{
-			return;
-		}
+  private static void writeDocCommentBodyForLocation(
+      Printer printer, SourceCodeInfo.Location location, Options options, boolean kdoc)
+  {
+    if (options.isStripNonfunctionalCodegen())
+    {
+      return;
+    }
 
-		String comments = location.getLeadingComments();
-		if (comments.isEmpty())
-		{
-			comments = location.getTrailingComments();
-		}
+    String comments = location.getLeadingComments();
+    if (comments.isEmpty())
+    {
+      comments = location.getTrailingComments();
+    }
 
-		if (!comments.isEmpty())
-		{
-			if (kdoc)
-			{
-				comments = escapeKdoc(comments);
-			}
-			else
-			{
-				comments = escapeJavadoc(comments);
-			}
+    if (!comments.isEmpty())
+    {
+      if (kdoc)
+      {
+        comments = escapeKdoc(comments);
+      }
+      else
+      {
+        comments = escapeJavadoc(comments);
+      }
 
-			String[] lines = comments.split("\n");
+      String[] lines = comments.split("\n");
 
-			if (kdoc)
-			{
-				printer.emit(" * ```\n");
-			}
-			else
-			{
-				printer.emit(" * <pre>\n");
-			}
+      if (kdoc)
+      {
+        printer.emit(" * ```\n");
+      }
+      else
+      {
+        printer.emit(" * <pre>\n");
+      }
 
-			for (String line : lines)
-			{
-				String trimmed = stripLeadingWhitespace(line);
-				if (!trimmed.isEmpty())
-				{
-					printer.emit(Map.of("line", trimmed), " * $line$\n");
-				}
-				else
-				{
-					printer.emit(" *\n");
-				}
-			}
+      for (String line : lines)
+      {
+        String trimmed = stripLeadingWhitespace(line);
+        if (!trimmed.isEmpty())
+        {
+          printer.emit(Map.of("line", trimmed), " * $line$\n");
+        }
+        else
+        {
+          printer.emit(" *\n");
+        }
+      }
 
-			if (kdoc)
-			{
-				printer.emit(" * ```\n");
-			}
-			else
-			{
-				printer.emit(" * </pre>\n");
-			}
-			printer.emit(" *\n");
-		}
-	}
+      if (kdoc)
+      {
+        printer.emit(" * ```\n");
+      }
+      else
+      {
+        printer.emit(" * </pre>\n");
+      }
+      printer.emit(" *\n");
+    }
+  }
 
-	private static String stripLeadingWhitespace(String s)
-	{
+  private static String stripLeadingWhitespace(String s)
+  {
         // We only strip ' ' (space) not tabs or others, to match C++ behavior presumably,
         // but java Character.isWhitespace matches more.
         // Let's use simple logic.
-		int i = 0;
-		while (i < s.length() && s.charAt(i) == ' ')
-		{
-			i++;
-		}
-		return s.substring(i);
-	}
+    int i = 0;
+    while (i < s.length() && s.charAt(i) == ' ')
+    {
+      i++;
+    }
+    return s.substring(i);
+  }
 
-	public static void writeDocCommentBody(
-			Printer printer, GenericDescriptor descriptor, Options options, boolean kdoc)
-	{
-		SourceCodeInfo.Location location = getLocation(descriptor);
-		if (location != null)
-		{
-			writeDocCommentBodyForLocation(printer, location, options, kdoc);
-		}
-	}
+  public static void writeDocCommentBody(
+      Printer printer, GenericDescriptor descriptor, Options options, boolean kdoc)
+  {
+    SourceCodeInfo.Location location = getLocation(descriptor);
+    if (location != null)
+    {
+      writeDocCommentBodyForLocation(printer, location, options, kdoc);
+    }
+  }
 
-	private static SourceCodeInfo.Location getLocation(GenericDescriptor descriptor)
-	{
+  private static SourceCodeInfo.Location getLocation(GenericDescriptor descriptor)
+  {
         List<Integer> path = getPath(descriptor);
         if (path == null) return null;
 
@@ -252,8 +255,8 @@ public final class DocComment
                 return loc;
             }
         }
-		return null;
-	}
+    return null;
+  }
 
     private static List<Integer> getPath(GenericDescriptor descriptor) {
         List<Integer> path = new ArrayList<>();
@@ -325,20 +328,20 @@ public final class DocComment
         }
     }
 
-	private static void writeDebugString(
-			Printer printer, FieldDescriptor field, Options options, boolean kdoc)
-	{
+  private static void writeDebugString(
+      Printer printer, FieldDescriptor field, Options options, boolean kdoc)
+  {
         String fieldComment = getFieldDefinition(field);
 
-		if (kdoc)
-		{
-			printer.emit(Map.of("def", escapeKdoc(fieldComment)), " * `$def$`\n");
-		}
-		else
-		{
-			printer.emit(Map.of("def", escapeJavadoc(fieldComment)), " * <code>$def$</code>\n");
-		}
-	}
+    if (kdoc)
+    {
+      printer.emit(Map.of("def", escapeKdoc(fieldComment)), " * `$def$`\n");
+    }
+    else
+    {
+      printer.emit(Map.of("def", escapeJavadoc(fieldComment)), " * <code>$def$</code>\n");
+    }
+  }
 
     private static String getFieldDefinition(FieldDescriptor field) {
         StringBuilder sb = new StringBuilder();
@@ -417,152 +420,161 @@ public final class DocComment
 
     private static String escapeString(String s) {
         return s.replace("\\", "\\\\")
-				.replace("\"", "\\\"")
-				.replace("\n", "\\n")
-				.replace("\r", "\\r");
+        .replace("\"", "\\\"")
+        .replace("\n", "\\n")
+        .replace("\r", "\\r");
     }
 
-	public static void writeMessageDocComment(
-			Printer printer, Descriptor message, Options options, boolean kdoc)
-	{
-		printer.emit("/**\n");
-		writeDocCommentBody(printer, message, options, kdoc);
-		if (kdoc)
-		{
-			printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
-					" * Protobuf type `$fullname$`\n" + " */\n");
-		}
-		else
-		{
-			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
-					" * Protobuf type {@code $fullname$}\n" + " */\n");
-		}
-	}
+  public static void writeMessageDocComment(
+      Printer printer, Descriptor message, Options options, boolean kdoc)
+  {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, message, options, kdoc);
+    if (kdoc)
+    {
+      printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
+          " * Protobuf type `$fullname$`\n" + " */\n");
+    }
+    else
+    {
+      printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
+          " * Protobuf type {@code $fullname$}\n" + " */\n");
+    }
+  }
 
-	public static void writeMessageDocComment(
-			Printer printer, EnumDescriptor message, Options options, boolean kdoc)
-	{
-		printer.emit("/**\n");
-		writeDocCommentBody(printer, message, options, kdoc);
-		if (kdoc)
-		{
-			printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
-					" * Protobuf enum `$fullname$`\n" + " */\n");
-		}
-		else
-		{
-			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
-					" * Protobuf enum {@code $fullname$}\n" + " */\n");
-		}
-	}
+  public static void writeMessageDocComment(
+      Printer printer, EnumDescriptor message, Options options, boolean kdoc)
+  {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, message, options, kdoc);
+    if (kdoc)
+    {
+      printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
+          " * Protobuf enum `$fullname$`\n" + " */\n");
+    }
+    else
+    {
+      printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
+          " * Protobuf enum {@code $fullname$}\n" + " */\n");
+    }
+  }
 
-	public static void writeMessageDocComment(
-			Printer printer, ServiceDescriptor message, Options options, boolean kdoc)
-	{
-		printer.emit("/**\n");
-		writeDocCommentBody(printer, message, options, kdoc);
-		if (kdoc)
-		{
-			printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
-					" * Protobuf service `$fullname$`\n" + " */\n");
-		}
-		else
-		{
-			printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
-					" * Protobuf service {@code $fullname$}\n" + " */\n");
-		}
-	}
+  public static void writeMessageDocComment(
+      Printer printer, ServiceDescriptor message, Options options, boolean kdoc)
+  {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, message, options, kdoc);
+    if (kdoc)
+    {
+      printer.emit(Map.of("fullname", escapeKdoc(message.getFullName())),
+          " * Protobuf service `$fullname$`\n" + " */\n");
+    }
+    else
+    {
+      printer.emit(Map.of("fullname", escapeJavadoc(message.getFullName())),
+          " * Protobuf service {@code $fullname$}\n" + " */\n");
+    }
+  }
 
-	public static void writeFieldDocComment(
-			Printer printer, FieldDescriptor field, Options options, boolean kdoc)
-	{
-		printer.emit("/**\n");
-		writeDocCommentBody(printer, field, options, kdoc);
-		writeDebugString(printer, field, options, kdoc);
-		printer.emit(" */\n");
-	}
+  public static void writeFieldDocComment(
+      Printer printer, FieldDescriptor field, Options options, boolean kdoc)
+  {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, field, options, kdoc);
+    writeDebugString(printer, field, options, kdoc);
+    printer.emit(" */\n");
+  }
 
-	public static void writeDeprecatedJavadoc(
-			Printer printer, FieldDescriptor field, Options options)
-	{
-		if (!field.getOptions().getDeprecated())
-		{
-			return;
-		}
-		printer.emit(Map.of("name", field.getFullName()), " * @deprecated $name$ is deprecated.\n");
-	}
+  public static void writeDeprecatedJavadoc(
+      Printer printer, FieldDescriptor field, Options options)
+  {
+    if (!field.getOptions().getDeprecated())
+    {
+      return;
+    }
+    printer.emit(Map.of("name", field.getFullName()), " * @deprecated $name$ is deprecated.\n");
+  }
 
-	public static void writeFieldAccessorDocComment(
-			Printer printer,
-			FieldDescriptor field,
-			AccessorType type,
-			Options options,
-			boolean builder,
-			boolean kdoc,
-			boolean isPrivate)
-	{
-		printer.emit("/**\n");
-		writeDocCommentBody(printer, field, options, kdoc);
-		writeDebugString(printer, field, options, kdoc);
-		if (!kdoc && !isPrivate)
-		{
-			writeDeprecatedJavadoc(printer, field, options);
-		}
+  public static void writeFieldAccessorDocComment(
+      Printer printer,
+      FieldDescriptor field,
+      AccessorType type,
+      Options options,
+      boolean builder,
+      boolean kdoc,
+      boolean isPrivate)
+  {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, field, options, kdoc);
+    writeDebugString(printer, field, options, kdoc);
+    if (!kdoc && !isPrivate)
+    {
+      writeDeprecatedJavadoc(printer, field, options);
+    }
 
-		String name = underscoresToCamelCase(field.getName(), false);
+    String name = underscoresToCamelCase(field.getName(), false);
 
-		switch (type)
-		{
-		case HAZZER:
-			printer.emit(Map.of("name", name), " * @return Whether the $name$ field is set.\n");
-			break;
-		case GETTER:
-			printer.emit(Map.of("name", name), " * @return The $name$.\n");
-			break;
-        case BYTES_GETTER:
-            printer.emit(Map.of("name", name), " * @return The bytes for $name$.\n");
-            break;
-		case SETTER:
-			printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
-			break;
-        case BYTES_SETTER:
-            printer.emit(Map.of("name", name), " * @param value The bytes for $name$ to set.\n");
-            break;
-		case CLEARER:
-			break;
-		case LIST_COUNT:
-			printer.emit(Map.of("name", name), " * @return The count of $name$.\n");
-			break;
-		case LIST_GETTER:
-			printer.emit(Map.of("name", name), " * @return A list containing the $name$.\n");
-			break;
-		case LIST_INDEXED_GETTER:
-			printer.emit(" * @param index The index of the element to return.\n");
-			printer.emit(Map.of("name", name), " * @return The $name$ at the given index.\n");
-			break;
-		case LIST_INDEXED_SETTER:
-			printer.emit(" * @param index The index to set the value at.\n");
-			printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
-			break;
-		case LIST_ADDER:
-			printer.emit(Map.of("name", name), " * @param value The $name$ to add.\n");
-			break;
-		case LIST_MULTI_ADDER:
-			printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
-			break;
-		case MAP_ENTRY_ADDER:
-			printer.emit(Map.of("name", name), " * @param key The key of the $name$ to add.\n");
-			printer.emit(Map.of("name", name), " * @param value The value of the $name$ to add.\n");
-			break;
-		case MAP_MULTI_ADDER:
-			printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
-			break;
-		case MAP_ENTRY_REMOVER:
-			printer.emit(Map.of("name", name), " * @param key The key of the $name$ to remove.\n");
-			break;
-		}
-		if (builder)
-		{
+    switch (type)
+    {
+    case OR_BUILDER_GETTER:
+    case OR_BUILDER_LIST_GETTER:
+    case OR_BUILDER_INDEXED_GETTER:
+      break;
+    case HAZZER:
+      printer.emit(Map.of("name", name), " * @return Whether the $name$ field is set.\n");
+      break;
+    case GETTER:
+      printer.emit(Map.of("name", name), " * @return The $name$.\n");
+      break;
+    case BYTES_GETTER:
+      printer.emit(Map.of("name", name), " * @return The bytes for $name$.\n");
+      break;
+    case SETTER:
+            if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
+      printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
+      break;
+    case BYTES_SETTER:
+            if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
+      printer.emit(Map.of("name", name), " * @param value The bytes for $name$ to set.\n");
+      break;
+    case CLEARER:
+      break;
+    case LIST_COUNT:
+      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
+      printer.emit(Map.of("name", name), " * @return The count of $name$.\n");
+      break;
+    case LIST_GETTER:
+      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
+      printer.emit(Map.of("name", name), " * @return A list containing the $name$.\n");
+      break;
+    case LIST_INDEXED_GETTER:
+      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
+      printer.emit(" * @param index The index of the element to return.\n");
+      printer.emit(Map.of("name", name), " * @return The $name$ at the given index.\n");
+      break;
+    case LIST_INDEXED_SETTER:
+      printer.emit(" * @param index The index to set the value at.\n");
+      printer.emit(Map.of("name", name), " * @param value The $name$ to set.\n");
+      break;
+    case LIST_ADDER:
+      printer.emit(Map.of("name", name), " * @param value The $name$ to add.\n");
+      break;
+    case LIST_MULTI_ADDER:
+      printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
+      break;
+    case MAP_ENTRY_ADDER:
+      printer.emit(Map.of("name", name), " * @param key The key of the $name$ to add.\n");
+      printer.emit(Map.of("name", name), " * @param value The value of the $name$ to add.\n");
+      break;
+    case MAP_MULTI_ADDER:
+      printer.emit(Map.of("name", name), " * @param values The $name$ to add.\n");
+      break;
+    case MAP_ENTRY_REMOVER:
+      printer.emit(Map.of("name", name), " * @param key The key of the $name$ to remove.\n");
+      break;
+    }
+    if (builder)
+    {
             switch (type) {
                 case SETTER:
                 case BYTES_SETTER:
@@ -573,33 +585,35 @@ public final class DocComment
                 case MAP_ENTRY_ADDER:
                 case MAP_MULTI_ADDER:
                 case MAP_ENTRY_REMOVER:
-			        printer.emit(" * @return This builder for chaining.\n");
+                    if (field.getType() != FieldDescriptor.Type.MESSAGE && field.getType() != FieldDescriptor.Type.GROUP) {
+                  printer.emit(" * @return This builder for chaining.\n");
+                    }
                     break;
                 default:
                     break;
             }
-		}
-		printer.emit(" */\n");
-	}
+    }
+    printer.emit(" */\n");
+  }
 
-	public static void writeFieldAccessorDocComment(
-			Printer printer,
-			FieldDescriptor field,
-			AccessorType type,
-			Options options,
-			boolean builder)
-	{
-		writeFieldAccessorDocComment(printer, field, type, options, builder, false, false);
-	}
+  public static void writeFieldAccessorDocComment(
+      Printer printer,
+      FieldDescriptor field,
+      AccessorType type,
+      Options options,
+      boolean builder)
+  {
+    writeFieldAccessorDocComment(printer, field, type, options, builder, false, false);
+  }
 
-	public static void writeFieldAccessorDocComment(
-			Printer printer,
-			FieldDescriptor field,
-			AccessorType type,
-			Options options)
-	{
-		writeFieldAccessorDocComment(printer, field, type, options, false, false, false);
-	}
+  public static void writeFieldAccessorDocComment(
+      Printer printer,
+      FieldDescriptor field,
+      AccessorType type,
+      Options options)
+  {
+    writeFieldAccessorDocComment(printer, field, type, options, false, false, false);
+  }
 
     public static void writeFieldEnumValueAccessorDocComment(
             Printer printer,
@@ -671,6 +685,7 @@ public final class DocComment
         default:
             break;
         }
+
 
         if (builder)
         {
@@ -753,6 +768,7 @@ public final class DocComment
             break;
         }
 
+
         if (builder)
         {
             switch (type) {
@@ -770,35 +786,35 @@ public final class DocComment
         printer.emit(" */\n");
     }
 
-	// Minimal implementation helper for CamelCase
-	private static String underscoresToCamelCase(String input, boolean capNextLetter)
-	{
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < input.length(); i++)
-		{
-			char c = input.charAt(i);
-			if (c == '_')
-			{
-				capNextLetter = true;
-			}
-			else if (capNextLetter)
-			{
-				result.append(Character.toUpperCase(c));
-				capNextLetter = false;
-			}
-			else
-			{
-				result.append(c);
-			}
-		}
-		return result.toString();
-	}
+  // Minimal implementation helper for CamelCase
+  private static String underscoresToCamelCase(String input, boolean capNextLetter)
+  {
+    StringBuilder result = new StringBuilder();
+    for (int i = 0; i < input.length(); i++)
+    {
+      char c = input.charAt(i);
+      if (c == '_')
+      {
+        capNextLetter = true;
+      }
+      else if (capNextLetter)
+      {
+        result.append(Character.toUpperCase(c));
+        capNextLetter = false;
+      }
+      else
+      {
+        result.append(c);
+      }
+    }
+    return result.toString();
+  }
 
-	public static void writeEnumValueDocComment(Printer printer, EnumValueDescriptor value, Context context)
-	{
+  public static void writeEnumValueDocComment(Printer printer, EnumValueDescriptor value, Context context)
+  {
         printer.emit("/**\n");
-		writeDocCommentBody(printer, value, context.getOptions(), false); // Assuming no KDoc support in enum values for now
+    writeDocCommentBody(printer, value, context.getOptions(), false); // Assuming no KDoc support in enum values for now
         printer.emit(Map.of("def", escapeJavadoc(value.getName())), " * <code>$def$ = " + value.getNumber() + ";</code>\n");
-		printer.emit(" */\n");
-	}
+    printer.emit(" */\n");
+  }
 }

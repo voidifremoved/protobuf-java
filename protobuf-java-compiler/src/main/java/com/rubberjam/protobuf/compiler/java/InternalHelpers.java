@@ -27,6 +27,10 @@ public final class InternalHelpers
 
 	public static boolean supportUnknownEnumValue(FieldDescriptor field)
 	{
+		if (field.getFile().toProto().getSyntax().equals("proto3"))
+		{
+			return true;
+		}
 		return !field.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_).getLegacyClosedEnum();
 	}
 
@@ -35,6 +39,10 @@ public final class InternalHelpers
 		if (descriptor.getType() != FieldDescriptor.Type.STRING)
 		{
 			return false;
+		}
+		if (descriptor.getFile().toProto().getSyntax().equals("proto3"))
+		{
+			return true;
 		}
 		return descriptor.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_)
 				.getUtf8Validation() == JavaFeaturesProto.JavaFeatures.Utf8Validation.VERIFY;

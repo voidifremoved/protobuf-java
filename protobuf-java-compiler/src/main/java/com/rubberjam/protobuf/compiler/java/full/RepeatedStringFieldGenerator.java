@@ -67,42 +67,50 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public void generateMembers(Printer printer) {
      if (isString()) {
          printer.emit(variables,
+             "@SuppressWarnings(\"serial\")\n" +
              "private com.google.protobuf.LazyStringArrayList $name$_ =\n" +
              "    com.google.protobuf.LazyStringArrayList.emptyList();\n");
 
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
          printer.emit(variables,
-             "@java.lang.Override\n" +
-             "public java.util.List<java.lang.String> get$capitalized_name$List() {\n" +
+             "public com.google.protobuf.ProtocolStringList\n" +
+             "    get$capitalized_name$List() {\n" +
              "  return $name$_;\n" +
-             "}\n" +
-             "@java.lang.Override\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+         printer.emit(variables,
              "public int get$capitalized_name$Count() {\n" +
              "  return $name$_.size();\n" +
-             "}\n" +
-             "@java.lang.Override\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables,
              "public java.lang.String get$capitalized_name$(int index) {\n" +
              "  return $name$_.get(index);\n" +
-             "}\n" +
-             "@java.lang.Override\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables,
              "public com.google.protobuf.ByteString\n" +
              "    get$capitalized_name$Bytes(int index) {\n" +
              "  return $name$_.getByteString(index);\n" +
              "}\n");
      } else {
          printer.emit(variables,
+             "@SuppressWarnings(\"serial\")\n" +
              "private java.util.List<com.google.protobuf.ByteString> $name$_ =\n" +
              "    java.util.Collections.emptyList();\n");
 
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
          printer.emit(variables,
-             "@java.lang.Override\n" +
              "public java.util.List<com.google.protobuf.ByteString> get$capitalized_name$List() {\n" +
              "  return $name$_;\n" +
-             "}\n" +
-             "@java.lang.Override\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+         printer.emit(variables,
              "public int get$capitalized_name$Count() {\n" +
              "  return $name$_.size();\n" +
-             "}\n" +
-             "@java.lang.Override\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+         printer.emit(variables,
              "public com.google.protobuf.ByteString get$capitalized_name$(int index) {\n" +
              "  return $name$_.get(index);\n" +
              "}\n");
@@ -122,21 +130,30 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  }\n" +
              "}\n");
 
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
          printer.emit(variables,
              "public java.util.List<java.lang.String>\n" +
              "    get$capitalized_name$List() {\n" +
              "  return java.util.Collections.unmodifiableList($name$_);\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions(), true);
+         printer.emit(variables,
              "public int get$capitalized_name$Count() {\n" +
              "  return $name$_.size();\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
+         printer.emit(variables,
              "public java.lang.String get$capitalized_name$(int index) {\n" +
              "  return $name$_.get(index);\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
+         printer.emit(variables,
              "public com.google.protobuf.ByteString\n" +
              "    get$capitalized_name$Bytes(int index) {\n" +
              "  return $name$_.getByteString(index);\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder set$capitalized_name$(\n" +
              "    int index, java.lang.String value) {\n" +
              "  if (value == null) {\n" +
@@ -146,7 +163,9 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  $name$_.set(index, value);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder add$capitalized_name$(\n" +
              "    java.lang.String value) {\n" +
              "  if (value == null) {\n" +
@@ -156,7 +175,9 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  $name$_.add(value);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_MULTI_ADDER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder addAll$capitalized_name$(\n" +
              "    java.lang.Iterable<java.lang.String> values) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
@@ -164,20 +185,24 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "      values, $name$_);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder clear$capitalized_name$() {\n" +
              "  $name$_ =\n" +
              "    com.google.protobuf.LazyStringArrayList.emptyList();\n" +
              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder add$capitalized_name$Bytes(\n" +
              "    com.google.protobuf.ByteString value) {\n" +
              "  if (value == null) {\n" +
              "    throw new NullPointerException();\n" +
              "  }\n" +
-             "  " + (InternalHelpers.checkUtf8(descriptor) ? "com.google.protobuf.AbstractMessageLite.checkByteStringIsUtf8(value);\n" : "") +
+             "  " + (InternalHelpers.checkUtf8(descriptor) ? "checkByteStringIsUtf8(value);\n" : "") +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.add(value);\n" +
              "  onChanged();\n" +
@@ -194,17 +219,24 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  }\n" +
              "}\n");
 
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
          printer.emit(variables,
              "public java.util.List<com.google.protobuf.ByteString>\n" +
              "    get$capitalized_name$List() {\n" +
              "  return java.util.Collections.unmodifiableList($name$_);\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions(), true);
+         printer.emit(variables,
              "public int get$capitalized_name$Count() {\n" +
              "  return $name$_.size();\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
+         printer.emit(variables,
              "public com.google.protobuf.ByteString get$capitalized_name$(int index) {\n" +
              "  return $name$_.get(index);\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder set$capitalized_name$(\n" +
              "    int index, com.google.protobuf.ByteString value) {\n" +
              "  if (value == null) {\n" +
@@ -214,7 +246,9 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  $name$_.set(index, value);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder add$capitalized_name$(\n" +
              "    com.google.protobuf.ByteString value) {\n" +
              "  if (value == null) {\n" +
@@ -224,7 +258,9 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "  $name$_.add(value);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_MULTI_ADDER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder addAll$capitalized_name$(\n" +
              "    java.lang.Iterable<? extends com.google.protobuf.ByteString> values) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
@@ -232,7 +268,9 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
              "      values, $name$_);\n" +
              "  onChanged();\n" +
              "  return this;\n" +
-             "}\n" +
+             "}\n");
+         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+         printer.emit(variables,
              "public Builder clear$capitalized_name$() {\n" +
              "  $name$_ = java.util.Collections.emptyList();\n" +
              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
@@ -246,7 +284,8 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public void generateInitializationCode(Printer printer) {
      if (isString()) {
          printer.emit(variables,
-             "$name$_ = com.google.protobuf.LazyStringArrayList.emptyList();\n");
+             "$name$_ =\n" +
+             "    com.google.protobuf.LazyStringArrayList.emptyList();\n");
      } else {
          printer.emit(variables,
              "$name$_ = java.util.Collections.emptyList();\n");
@@ -257,12 +296,11 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuilderClearCode(Printer printer) {
      if (isString()) {
          printer.emit(variables,
-             "$name$_ = com.google.protobuf.LazyStringArrayList.emptyList();\n" +
-             Helpers.generateClearBit(builderBitIndex) + ";\n");
+             "$name$_ =\n" +
+             "    com.google.protobuf.LazyStringArrayList.emptyList();\n");
      } else {
          printer.emit(variables,
-             "$name$_ = java.util.Collections.emptyList();\n" +
-             Helpers.generateClearBit(builderBitIndex) + ";\n");
+             "$name$_ = java.util.Collections.emptyList();\n");
      }
   }
 
@@ -272,7 +310,7 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
          "if (!other.$name$_.isEmpty()) {\n" +
          "  if ($name$_.isEmpty()) {\n" +
          "    $name$_ = other.$name$_;\n" +
-         "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+         "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
          "  } else {\n" +
          "    ensure$capitalized_name$IsMutable();\n" +
          "    $name$_.addAll(other.$name$_);\n" +
@@ -285,18 +323,16 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
      if (isString()) {
          printer.emit(variables,
-             "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
-             "  $name$_ = $name$_.getUnmodifiableView();\n" +
-             "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-             "}\n" +
-             "result.$name$_ = $name$_;\n");
+             "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+             "  $name$_.makeImmutable();\n" +
+             "  result.$name$_ = $name$_;\n" +
+             "}\n");
      } else {
          printer.emit(variables,
-             "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+             "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
              "  $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
-             "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-             "}\n" +
-             "result.$name$_ = $name$_;\n");
+             "  result.$name$_ = $name$_;\n" +
+             "}\n");
      }
   }
 
@@ -341,7 +377,7 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
          printer.emit(variables, "for (int i = 0; i < $name$_.size(); i++) {\n");
          if (isString()) {
              printer.emit(variables,
-                 "  dataSize += com.google.protobuf.CodedOutputStream.computeStringSizeNoTag($name$_.getRaw(i));\n");
+                 "  dataSize += computeStringSizeNoTag($name$_.getRaw(i));\n");
          } else {
              printer.emit(variables,
                  "  dataSize += com.google.protobuf.CodedOutputStream\n" +
@@ -373,7 +409,8 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateEqualsCode(Printer printer) {
      printer.emit(variables,
-         "if (!$name$_.equals(other.$name$_)) return false;\n");
+         "if (!get$capitalized_name$List()\n" +
+         "    .equals(other.get$capitalized_name$List())) return false;\n");
   }
 
   @Override
@@ -381,7 +418,7 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
      printer.emit(variables,
          "if (get$capitalized_name$Count() > 0) {\n" +
          "  hash = (37 * hash) + $constant_name$;\n" +
-         "  hash = (53 * hash) + $name$_.hashCode();\n" +
+         "  hash = (53 * hash) + get$capitalized_name$List().hashCode();\n" +
          "}\n");
   }
 }

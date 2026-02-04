@@ -2,6 +2,7 @@ package com.rubberjam.protobuf.compiler.java.full;
 
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
+import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.InternalHelpers;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon.FieldGeneratorMap;
@@ -44,7 +45,7 @@ public final class ImmutableFieldGeneratorFactory {
           }
         }
       } else {
-        if (field.getContainingOneof() != null) {
+        if (Helpers.isRealOneof(field)) {
           if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
             generator =
                 new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);

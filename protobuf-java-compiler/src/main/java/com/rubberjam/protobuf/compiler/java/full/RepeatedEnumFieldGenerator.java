@@ -74,7 +74,9 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
   public void generateMembers(Printer printer) {
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
         printer.emit(variables,
-            "private java.util.List<java.lang.Integer> $name$_;\n" +
+            "@SuppressWarnings(\"serial\")\n" +
+            "private java.util.List<java.lang.Integer> $name$_ =\n" +
+            "    java.util.Collections.emptyList();\n" +
             "private static final com.google.protobuf.Internal.ListAdapter.Converter<\n" +
             "    java.lang.Integer, $type$> $name$_converter_ =\n" +
             "        new com.google.protobuf.Internal.ListAdapter.Converter<\n" +
@@ -85,49 +87,60 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
             "          }\n" +
             "        };\n");
 
+        DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
             "public java.util.List<java.lang.Integer>\n" +
             "get$capitalized_name$ValueList() {\n" +
             "  return $name$_;\n" +
-            "}\n" +
+            "}\n");
+        DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+        printer.emit(variables,
             "@java.lang.Override\n" +
             "public int get$capitalized_name$Value(int index) {\n" +
             "  return $name$_.get(index);\n" +
             "}\n");
 
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
             "public java.util.List<$type$> get$capitalized_name$List() {\n" +
-            "  return new com.google.protobuf.Internal.ListAdapter<\n" +
-            "      java.lang.Integer, $type$>($name$_, $name$_converter_);\n" +
-            "}\n" +
+            "  return new com.google.protobuf.Internal.IntListAdapter<\n" +
+            "      $type$>($name$_, $name$_converter_);\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+        printer.emit(variables,
             "@java.lang.Override\n" +
             "public int get$capitalized_name$Count() {\n" +
             "  return $name$_.size();\n" +
-            "}\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+        printer.emit(variables,
             "@java.lang.Override\n" +
             "public $type$ get$capitalized_name$(int index) {\n" +
             "  return $name$_converter_.convert($name$_.get(index));\n" +
             "}\n");
      } else {
         printer.emit(variables,
-            "private java.util.List<$type$> $name$_;\n");
+            "@SuppressWarnings(\"serial\")\n" +
+            "private java.util.List<$type$> $name$_ =\n" +
+            "    java.util.Collections.emptyList();\n");
 
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
             "public java.util.List<$type$> get$capitalized_name$List() {\n" +
             "  return $name$_;\n" +
-            "}\n" +
-            "@java.lang.Override\n" +
-            "public java.util.List<? extends $type$> get$capitalized_name$OrBuilderList() {\n" +
-            "  return $name$_;\n" +
-            "}\n" + // OrBuilderList usually for messages? For enums it's just List.
+            "}\n");
 
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+        printer.emit(variables,
             "@java.lang.Override\n" +
             "public int get$capitalized_name$Count() {\n" +
             "  return $name$_.size();\n" +
-            "}\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+        printer.emit(variables,
             "@java.lang.Override\n" +
             "public $type$ get$capitalized_name$(int index) {\n" +
             "  return $name$_.get(index);\n" +
@@ -293,8 +306,7 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderClearCode(Printer printer) {
      printer.emit(variables,
-         "$name$_ = java.util.Collections.emptyList();\n" +
-         Helpers.generateClearBit(builderBitIndex) + ";\n");
+         "$name$_ = java.util.Collections.emptyList();\n");
   }
 
   @Override
@@ -315,60 +327,29 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuildingCode(Printer printer) {
      printer.emit(variables,
-         "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+         "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
          "  $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
-         "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-         "}\n" +
-         "result.$name$_ = $name$_;\n");
+         "  result.$name$_ = $name$_;\n" +
+         "}\n");
   }
 
   @Override
   public void generateParsingCode(Printer printer) {
-     // Handling packed vs unpacked is important
-     // C++ checks if packed
-     boolean isPacked = descriptor.isPacked();
-     if (isPacked) {
+     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
          printer.emit(variables,
-             "int length = input.readRawVarint32();\n" +
-             "int oldLimit = input.pushLimit(length);\n" +
-             "while(input.getBytesUntilLimit() > 0) {\n");
-
-         if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-             printer.emit(variables,
-                 "  int rawValue = input.readEnum();\n" +
-                 "  ensure$capitalized_name$IsMutable();\n" +
-                 "  $name$_.add(rawValue);\n");
-         } else {
-             printer.emit(variables,
-                 "  int rawValue = input.readEnum();\n" +
-                 "  $type$ value = $type$.forNumber(rawValue);\n" +
-                 "  if (value == null) {\n" +
-                 "    unknownFields.mergeVarintField($number$, rawValue);\n" +
-                 "  } else {\n" +
-                 "    ensure$capitalized_name$IsMutable();\n" +
-                 "    $name$_.add(value);\n" +
-                 "  }\n");
-         }
-         printer.emit(variables,
-             "}\n" +
-             "input.popLimit(oldLimit);\n");
+             "int rawValue = input.readEnum();\n" +
+             "ensure$capitalized_name$IsMutable();\n" +
+             "$name$_.add(rawValue);\n");
      } else {
-         if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-             printer.emit(variables,
-                 "int rawValue = input.readEnum();\n" +
-                 "ensure$capitalized_name$IsMutable();\n" +
-                 "$name$_.add(rawValue);\n");
-         } else {
-             printer.emit(variables,
-                 "int rawValue = input.readEnum();\n" +
-                 "$type$ value = $type$.forNumber(rawValue);\n" +
-                 "if (value == null) {\n" +
-                 "  unknownFields.mergeVarintField($number$, rawValue);\n" +
-                 "} else {\n" +
-                 "  ensure$capitalized_name$IsMutable();\n" +
-                 "  $name$_.add(value);\n" +
-                 "}\n");
-         }
+         printer.emit(variables,
+             "int rawValue = input.readEnum();\n" +
+             "$type$ value = $type$.forNumber(rawValue);\n" +
+             "if (value == null) {\n" +
+             "  unknownFields.mergeVarintField($number$, rawValue);\n" +
+             "} else {\n" +
+             "  ensure$capitalized_name$IsMutable();\n" +
+             "  $name$_.add(value);\n" +
+             "}\n");
      }
   }
 
@@ -476,7 +457,8 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateEqualsCode(Printer printer) {
      printer.emit(variables,
-         "if (!$name$_.equals(other.$name$_)) return false;\n");
+         "if (!get$capitalized_name$List()\n" +
+         "    .equals(other.get$capitalized_name$List())) return false;\n");
   }
 
   @Override
@@ -484,7 +466,26 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
      printer.emit(variables,
          "if (get$capitalized_name$Count() > 0) {\n" +
          "  hash = (37 * hash) + $constant_name$;\n" +
-         "  hash = (53 * hash) + $name$_.hashCode();\n" +
+         "  hash = (53 * hash) + get$capitalized_name$List().hashCode();\n" +
          "}\n");
+  }
+
+  @Override
+  public void generateBuilderParsingCode(Printer printer) {
+    int tag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+    printer.print("case " + tag + ": {\n");
+    printer.indent();
+    generateParsingCode(printer);
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + tag + "\n");
+
+    int packedTag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+    printer.print("case " + packedTag + ": {\n");
+    printer.indent();
+    generateParsingCodeFromPacked(printer);
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + packedTag + "\n");
   }
 }

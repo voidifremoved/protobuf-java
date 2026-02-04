@@ -47,17 +47,17 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public int getNumBitsForMessage() {
-    return descriptor.hasPresence() ? 1 : 0;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
   public int getNumBitsForBuilder() {
-    return descriptor.hasPresence() ? 1 : 0;
+    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
   }
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
@@ -77,7 +77,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables, "private $type$ $name$_;\n");
     }
 
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -88,9 +88,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
        // getEnumValue() returns int
-       // DocComment doesn't have VALUE_GETTER, reuse GETTER? Or maybe need new type.
-       // Standard protobuf uses GETTER doc for both usually, or specific.
-       // For now using GETTER for Enum and Value.
+       DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
        printer.emit(variables,
            "@java.lang.Override\n" +
            "public int get$capitalized_name$Value() {\n" +
@@ -124,31 +122,35 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
        printer.emit(variables, "private $type$ $name$_ = $default$;\n");
     }
 
-    if (descriptor.hasPresence()) {
+    if (Helpers.supportFieldPresence(descriptor)) {
       printer.emit(variables,
-          "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
           "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
           "}\n");
     }
 
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+        DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
         printer.emit(variables,
-            "@java.lang.Override\n" +
             "public int get$capitalized_name$Value() {\n" +
             "  return $name$_;\n" +
-            "}\n" +
+            "}\n");
+        DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+        printer.emit(variables,
             "public Builder set$capitalized_name$Value(int value) {\n" +
             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
             "  $name$_ = value;\n" +
             "  onChanged();\n" +
             "  return this;\n" +
-            "}\n" +
-            "@java.lang.Override\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+        printer.emit(variables,
             "public $type$ get$capitalized_name$() {\n" +
             "  $type$ result = $type$.forNumber($name$_);\n" +
             "  return result == null ? $type$.UNRECOGNIZED : result;\n" +
-            "}\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+        printer.emit(variables,
             "public Builder set$capitalized_name$($type$ value) {\n" +
             "  if (value == null) {\n" +
             "    throw new NullPointerException();\n" +
@@ -160,7 +162,6 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
             "}\n");
     } else {
         printer.emit(variables,
-            "@java.lang.Override\n" +
             "public $type$ get$capitalized_name$() {\n" +
             "  return $name$_;\n" +
             "}\n" +
@@ -235,7 +236,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuildingCode(Printer printer) {
-     if (descriptor.hasPresence()) {
+     if (Helpers.supportFieldPresence(descriptor)) {
         printer.emit(variables,
           "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
           "  result.$name$_ = $name$_;\n" +
@@ -251,7 +252,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
         printer.emit(variables,
             "$name$_ = input.readEnum();\n");
-        if (descriptor.hasPresence()) {
+        if (Helpers.supportFieldPresence(descriptor)) {
              printer.emit(variables, Helpers.generateSetBit(builderBitIndex) + ";\n");
         }
      } else {
@@ -262,7 +263,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
             "if (value == null) {\n" +
             "  unknownFields.mergeVarintField($number$, rawValue);\n" +
             "} else {\n" +
-            (descriptor.hasPresence() ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
+            (Helpers.supportFieldPresence(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
             "  $name$_ = value;\n" +
             "}\n");
      }
@@ -282,13 +283,13 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   public void generateSerializedSizeCode(Printer printer) {
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
          printer.emit(variables,
-             "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default_number$") + ") {\n" +
+             "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default_number$") + ") {\n" +
              "  size += com.google.protobuf.CodedOutputStream\n" +
              "    .computeEnumSize($number$, $name$_);\n" +
              "}\n");
      } else {
          printer.emit(variables,
-             "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
+             "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
              "  size += com.google.protobuf.CodedOutputStream\n" +
              "    .computeEnumSize($number$, $name$_.getNumber());\n" +
              "}\n");
@@ -299,12 +300,12 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
   public void generateSerializationCode(Printer printer) {
      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
          printer.emit(variables,
-             "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default_number$") + ") {\n" +
+             "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default_number$") + ") {\n" +
              "  output.writeEnum($number$, $name$_);\n" +
              "}\n");
      } else {
          printer.emit(variables,
-             "if (" + (descriptor.hasPresence() ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
+             "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
              "  output.writeEnum($number$, $name$_.getNumber());\n" +
              "}\n");
      }
@@ -312,14 +313,33 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateEqualsCode(Printer printer) {
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.emit(variables,
+            "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
+            "if (has$capitalized_name$()) {\n");
+        printer.indent();
+     }
      printer.emit(variables,
          "if (" + (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_" : "$name$_.getNumber()") + " != other." + (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_" : "$name$_.getNumber()") + ") return false;\n");
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.outdent();
+        printer.print("}\n");
+     }
   }
 
   @Override
   public void generateHashCodeCode(Printer printer) {
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.emit(variables,
+            "if (has$capitalized_name$()) {\n");
+        printer.indent();
+     }
      printer.emit(variables,
          "hash = (37 * hash) + $constant_name$;\n" +
          "hash = (53 * hash) + " + (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_" : "$name$_.getNumber()") + ";\n");
+     if (Helpers.supportFieldPresence(descriptor)) {
+        printer.outdent();
+        printer.print("}\n");
+     }
   }
 }

@@ -124,25 +124,29 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
     printer.emit(variables,
-        "private $list_type$ $name$_;\n");
+        "@SuppressWarnings(\"serial\")\n" +
+        "private $list_type$ $name$_ =\n" +
+        "    $empty_list$;\n");
 
     Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
     String boxed = Helpers.getBoxedPrimitiveTypeName(javaType);
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
     printer.emit(variables,
         "@java.lang.Override\n" +
-        "public java.util.List<" + boxed + "> $repeated_get$() {\n" +
+        "public java.util.List<" + boxed + ">\n" +
+        "    $repeated_get$() {\n" +
         "  return $name$_;\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
     printer.emit(variables,
-        "@java.lang.Override\n" +
         "public int $repeated_count$() {\n" +
         "  return $name$_.size();\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
     printer.emit(variables,
-        "@java.lang.Override\n" +
         "public $type$ $repeated_get_index$(int index) {\n" +
         "  return $name$_.get" + (javaType == Helpers.JavaType.INT ? "Int" : (javaType == Helpers.JavaType.LONG ? "Long" : (javaType == Helpers.JavaType.FLOAT ? "Float" : (javaType == Helpers.JavaType.DOUBLE ? "Double" : "Boolean")))) + "(index);\n" +
         "}\n");
@@ -162,27 +166,37 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
     printer.emit(variables,
         "private $list_type$ $name$_ = $empty_list$;\n" +
         "private void ensure$capitalized_name$IsMutable() {\n" +
-        "  if (!" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+        "  if (!$name$_.isModifiable()) {\n" +
         "    $name$_ = makeMutableCopy($name$_);\n" +
-        "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  }\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+        "}\n" +
+        "private void ensure$capitalized_name$IsMutable(int capacity) {\n" +
+        "  if (!$name$_.isModifiable()) {\n" +
+        "    $name$_ = makeMutableCopy($name$_, capacity);\n" +
+        "  }\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
     printer.emit(variables,
         "public java.util.List<" + boxed + "> $repeated_get$() {\n" +
         "  return $name$_;\n" + // wrapper might be needed if unmodifiable view desired
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions(), true);
     printer.emit(variables,
         "public int $repeated_count$() {\n" +
         "  return $name$_.size();\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
     printer.emit(variables,
         "public $type$ $repeated_get_index$(int index) {\n" +
         "  return $name$_.get" + (javaType == Helpers.JavaType.INT ? "Int" : (javaType == Helpers.JavaType.LONG ? "Long" : (javaType == Helpers.JavaType.FLOAT ? "Float" : (javaType == Helpers.JavaType.DOUBLE ? "Double" : "Boolean")))) + "(index);\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder $repeated_set$(int index, $type$ value) {\n" +
         "  ensure$capitalized_name$IsMutable();\n" +
@@ -191,6 +205,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         "  return this;\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder $repeated_add$($type$ value) {\n" +
         "  ensure$capitalized_name$IsMutable();\n" +
@@ -199,6 +214,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         "  return this;\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_MULTI_ADDER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder addAll$capitalized_name$(\n" +
         "    java.lang.Iterable<? extends " + boxed + "> values) {\n" +
@@ -209,6 +225,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         "  return this;\n" +
         "}\n");
 
+    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder clear$capitalized_name$() {\n" +
         "  $name$_ = $empty_list$;\n" +
@@ -226,8 +243,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderClearCode(Printer printer) {
     printer.emit(variables,
-        "$name$_ = $empty_list$;\n" +
-        Helpers.generateClearBit(builderBitIndex) + ";\n");
+        "$name$_ = $empty_list$;\n");
   }
 
   @Override
@@ -236,7 +252,8 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         "if (!other.$name$_.isEmpty()) {\n" +
         "  if ($name$_.isEmpty()) {\n" +
         "    $name$_ = other.$name$_;\n" +
-        "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+        "    $name$_.makeImmutable();\n" +
+        "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  } else {\n" +
         "    ensure$capitalized_name$IsMutable();\n" +
         "    $name$_.addAll(other.$name$_);\n" +
@@ -248,7 +265,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuildingCode(Printer printer) {
     printer.emit(variables,
-        "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+        "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
         "  $name$_.makeImmutable();\n" +
         "  result.$name$_ = $name$_;\n" +
         "}\n");
@@ -257,24 +274,54 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateParsingCode(Printer printer) {
     printer.emit(variables,
-        "if (!$name$_.isModifiable()) {\n" +
-        "  $name$_ = makeMutableCopy($name$_);\n" +
-        "}\n" +
-        "$name$_.add" + getAddMethodSuffix() + "(input.read$capitalized_type$());\n");
+        "$type$ v = input.read$capitalized_type$();\n" +
+        "ensure$capitalized_name$IsMutable();\n" +
+        "$name$_.add" + getAddMethodSuffix() + "(v);\n");
   }
 
   @Override
   public void generateParsingCodeFromPacked(Printer printer) {
-    printer.emit(variables,
-        "int length = input.readRawVarint32();\n" +
-        "int limit = input.pushLimit(length);\n" +
-        "if (!$name$_.isModifiable() && input.getBytesUntilLimit() > 0) {\n" +
-        "  $name$_ = makeMutableCopy($name$_);\n" +
-        "}\n" +
-        "while (input.getBytesUntilLimit() > 0) {\n" +
-        "  $name$_.add" + getAddMethodSuffix() + "(input.read$capitalized_type$());\n" +
-        "}\n" +
-        "input.popLimit(limit);\n");
+    int fixedSize = Helpers.getFixedSize(descriptor.getType());
+    if (fixedSize != -1) {
+        variables.put("fixed_size", fixedSize);
+        printer.emit(variables,
+            "int length = input.readRawVarint32();\n" +
+            "int limit = input.pushLimit(length);\n" +
+            "int alloc = length > 4096 ? 4096 : length;\n" +
+            "ensure$capitalized_name$IsMutable(alloc / $fixed_size$);\n" +
+            "while (input.getBytesUntilLimit() > 0) {\n" +
+            "  $name$_.add" + getAddMethodSuffix() + "(input.read$capitalized_type$());\n" +
+            "}\n" +
+            "input.popLimit(limit);\n");
+    } else {
+        printer.emit(variables,
+            "int length = input.readRawVarint32();\n" +
+            "int limit = input.pushLimit(length);\n" +
+            "ensure$capitalized_name$IsMutable();\n" +
+            "while (input.getBytesUntilLimit() > 0) {\n" +
+            "  $name$_.add" + getAddMethodSuffix() + "(input.read$capitalized_type$());\n" +
+            "}\n" +
+            "input.popLimit(limit);\n");
+    }
+  }
+
+  @Override
+  public void generateBuilderParsingCode(Printer printer) {
+    int tag = (descriptor.getNumber() << 3) | Helpers.getWireTypeForFieldType(descriptor.getType());
+    printer.print("case " + tag + ": {\n");
+    printer.indent();
+    generateParsingCode(printer);
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + tag + "\n");
+
+    int packedTag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+    printer.print("case " + packedTag + ": {\n");
+    printer.indent();
+    generateParsingCodeFromPacked(printer);
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + packedTag + "\n");
   }
 
   private String getAddMethodSuffix() {
@@ -314,12 +361,20 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   public void generateSerializedSizeCode(Printer printer) {
     printer.emit(variables,
         "{\n" +
-        "  int dataSize = 0;\n" +
-        "  for (int i = 0; i < $name$_.size(); i++) {\n" +
-        "    dataSize += com.google.protobuf.CodedOutputStream\n" +
-        "      .compute$capitalized_type$SizeNoTag($name$_.get" + getAddMethodSuffix() + "(i));\n" +
-        "  }\n" +
-        "  size += dataSize;\n");
+        "  int dataSize = 0;\n");
+    int fixedSize = Helpers.getFixedSize(descriptor.getType());
+    if (fixedSize == -1) {
+        printer.emit(variables,
+            "  for (int i = 0; i < $name$_.size(); i++) {\n" +
+            "    dataSize += com.google.protobuf.CodedOutputStream\n" +
+            "      .compute$capitalized_type$SizeNoTag($name$_.get" + getAddMethodSuffix() + "(i));\n" +
+            "  }\n");
+    } else {
+        variables.put("fixed_size", fixedSize);
+        printer.emit(variables,
+            "  dataSize = $fixed_size$ * get$capitalized_name$List().size();\n");
+    }
+    printer.emit(variables, "  size += dataSize;\n");
 
     if (descriptor.isPacked()) {
         printer.emit(variables,

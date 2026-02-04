@@ -346,6 +346,13 @@ public class Printer
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
 					Chunk chunk = line.chunks.get(chunkIdx);
+
+					if (pendingIndent)
+					{
+						writeIndent();
+						pendingIndent = false;
+					}
+
 					if (!chunk.isVar)
 					{
 						writeRaw(chunk.text);
@@ -619,24 +626,19 @@ public class Printer
 		return format;
 	}
 
+	private void writeIndent()
+	{
+		if (currentIndent > 0)
+		{
+			String spaces = " ".repeat(currentIndent);
+			buffer.append(spaces);
+			bytesWritten += spaces.length();
+		}
+		atStartOfLine = false;
+	}
+
 	private void writeRaw(String data)
 	{
-		if (data.isEmpty())
-		{
-			return;
-		}
-
-		if (pendingIndent)
-		{
-			if (!data.startsWith("\n"))
-			{
-				String spaces = " ".repeat(currentIndent);
-				buffer.append(spaces);
-				bytesWritten += spaces.length();
-			}
-			pendingIndent = false;
-		}
-
 		for (char c : data.toCharArray())
 		{
 			buffer.append(c);

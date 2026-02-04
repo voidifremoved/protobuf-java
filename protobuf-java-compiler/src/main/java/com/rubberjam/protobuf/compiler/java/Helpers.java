@@ -83,7 +83,11 @@ public class Helpers
 	}
 
 	public static boolean hasHasbit(FieldDescriptor field) {
-		return field.hasPresence();
+		return com.google.protobuf.CompilerInternalHelpers.hasHasbit(field);
+	}
+
+	public static boolean isRealOneof(FieldDescriptor field) {
+		return field.getContainingOneof() != null && !com.google.protobuf.CompilerInternalHelpers.isSynthetic(field.getContainingOneof());
 	}
 
 	public static boolean isAnyMessage(Descriptor descriptor) {
@@ -553,11 +557,31 @@ public class Helpers
 		return generateSetBitInternal("", bitIndex);
 	}
 
+	public static String generateSetBit(String prefix, int bitIndex)
+	{
+		return generateSetBitInternal(prefix, bitIndex);
+	}
+
 	public static String generateClearBit(int bitIndex)
 	{
-		String varName = getBitFieldNameForBit(bitIndex);
+		return generateClearBitInternal("", bitIndex);
+	}
+
+	public static String generateClearBit(String prefix, int bitIndex)
+	{
+		return generateClearBitInternal(prefix, bitIndex);
+	}
+
+	private static String generateClearBitInternal(String prefix, int bitIndex)
+	{
+		String varName = prefix + getBitFieldNameForBit(bitIndex);
 		int maskIndex = bitIndex % 32;
 		return varName + " = (" + varName + " & ~" + BIT_MASKS[maskIndex] + ")";
+	}
+
+	public static String getBitMask(int bitIndex)
+	{
+		return BIT_MASKS[bitIndex % 32];
 	}
 
 	// --- Logic Helpers ---
@@ -594,6 +618,40 @@ public class Helpers
 
 	public static String immutableDefaultValue(FieldDescriptor field, ClassNameResolver nameResolver, Options options) {
 		return defaultValue(field, true, nameResolver, options);
+	}
+
+	public static boolean supportFieldPresence(FieldDescriptor field) {
+		return hasHasbit(field);
+	}
+
+	public static boolean bitfieldTracksMutability(FieldDescriptor field) {
+		if (!field.isRepeated() || (field.getType() == FieldDescriptor.Type.MESSAGE && isMapEntry(field.getMessageType()))) {
+			return false;
+		}
+		switch (field.getType()) {
+			case GROUP:
+			case MESSAGE:
+				return true;
+			default:
+				return false;
+		}
+	}
+
+	public static int getFixedSize(FieldDescriptor.Type type) {
+		switch (type) {
+			case FIXED32:
+			case SFIXED32:
+			case FLOAT:
+				return 4;
+			case FIXED64:
+			case SFIXED64:
+			case DOUBLE:
+				return 8;
+			case BOOL:
+				return 1;
+			default:
+				return -1;
+		}
 	}
 
 	public static String getCapitalizedType(FieldDescriptor field, boolean immutable) {
