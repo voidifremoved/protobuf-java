@@ -66,6 +66,35 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
 
     /**
      * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return Whether the field19000 field is set.
+     */
+    boolean hasField19000();
+    /**
+     * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return The field19000.
+     */
+    java.lang.String getField19000();
+    /**
+     * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return The bytes for field19000.
+     */
+    com.google.protobuf.ByteString
+        getField19000Bytes();
+
+    /**
+     * <pre>
      * Field numbers at boundaries
      * </pre>
      *
@@ -144,6 +173,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     private EdgeCaseMinimal() {
       emptyString_ = "";
       unicodeString_ = "";
+      field19000_ = "";
     }
 
     public static final com.google.protobuf.Descriptors.Descriptor
@@ -258,6 +288,67 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       }
     }
 
+    public static final int FIELD19000_FIELD_NUMBER = 18000;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object field19000_ = "";
+    /**
+     * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return Whether the field19000 field is set.
+     */
+    @java.lang.Override
+    public boolean hasField19000() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return The field19000.
+     */
+    @java.lang.Override
+    public java.lang.String getField19000() {
+      java.lang.Object ref = field19000_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          field19000_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     * High field number
+     * </pre>
+     *
+     * <code>optional string field19000 = 18000;</code>
+     * @return The bytes for field19000.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getField19000Bytes() {
+      java.lang.Object ref = field19000_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        field19000_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     public static final int FIELD15_FIELD_NUMBER = 15;
     private int field15_ = 0;
     /**
@@ -270,7 +361,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasField15() {
-      return ((bitField0_ & 0x00000004) != 0);
+      return ((bitField0_ & 0x00000008) != 0);
     }
     /**
      * <pre>
@@ -293,7 +384,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasField16() {
-      return ((bitField0_ & 0x00000008) != 0);
+      return ((bitField0_ & 0x00000010) != 0);
     }
     /**
      * <code>optional int32 field16 = 16;</code>
@@ -312,7 +403,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasField2047() {
-      return ((bitField0_ & 0x00000010) != 0);
+      return ((bitField0_ & 0x00000020) != 0);
     }
     /**
      * <code>optional int32 field2047 = 2047;</code>
@@ -331,7 +422,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
      */
     @java.lang.Override
     public boolean hasField2048() {
-      return ((bitField0_ & 0x00000020) != 0);
+      return ((bitField0_ & 0x00000040) != 0);
     }
     /**
      * <code>optional int32 field2048 = 2048;</code>
@@ -356,10 +447,10 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000008) != 0)) {
         output.writeInt32(15, field15_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000010) != 0)) {
         output.writeInt32(16, field16_);
       }
       if (((bitField0_ & 0x00000001) != 0)) {
@@ -368,11 +459,14 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (((bitField0_ & 0x00000002) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 18, unicodeString_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         output.writeInt32(2047, field2047_);
       }
-      if (((bitField0_ & 0x00000020) != 0)) {
+      if (((bitField0_ & 0x00000040) != 0)) {
         output.writeInt32(2048, field2048_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 18000, field19000_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -383,11 +477,11 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000004) != 0)) {
+      if (((bitField0_ & 0x00000008) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(15, field15_);
       }
-      if (((bitField0_ & 0x00000008) != 0)) {
+      if (((bitField0_ & 0x00000010) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(16, field16_);
       }
@@ -397,13 +491,16 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (((bitField0_ & 0x00000002) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(18, unicodeString_);
       }
-      if (((bitField0_ & 0x00000010) != 0)) {
+      if (((bitField0_ & 0x00000020) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2047, field2047_);
       }
-      if (((bitField0_ & 0x00000020) != 0)) {
+      if (((bitField0_ & 0x00000040) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2048, field2048_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(18000, field19000_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSize = size;
@@ -429,6 +526,11 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (hasUnicodeString()) {
         if (!getUnicodeString()
             .equals(other.getUnicodeString())) return false;
+      }
+      if (hasField19000() != other.hasField19000()) return false;
+      if (hasField19000()) {
+        if (!getField19000()
+            .equals(other.getField19000())) return false;
       }
       if (hasField15() != other.hasField15()) return false;
       if (hasField15()) {
@@ -468,6 +570,10 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       if (hasUnicodeString()) {
         hash = (37 * hash) + UNICODE_STRING_FIELD_NUMBER;
         hash = (53 * hash) + getUnicodeString().hashCode();
+      }
+      if (hasField19000()) {
+        hash = (37 * hash) + FIELD19000_FIELD_NUMBER;
+        hash = (53 * hash) + getField19000().hashCode();
       }
       if (hasField15()) {
         hash = (37 * hash) + FIELD15_FIELD_NUMBER;
@@ -622,6 +728,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         bitField0_ = 0;
         emptyString_ = "";
         unicodeString_ = "";
+        field19000_ = "";
         field15_ = 0;
         field16_ = 0;
         field2047_ = 0;
@@ -669,20 +776,24 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
           to_bitField0_ |= 0x00000002;
         }
         if (((from_bitField0_ & 0x00000004) != 0)) {
-          result.field15_ = field15_;
+          result.field19000_ = field19000_;
           to_bitField0_ |= 0x00000004;
         }
         if (((from_bitField0_ & 0x00000008) != 0)) {
-          result.field16_ = field16_;
+          result.field15_ = field15_;
           to_bitField0_ |= 0x00000008;
         }
         if (((from_bitField0_ & 0x00000010) != 0)) {
-          result.field2047_ = field2047_;
+          result.field16_ = field16_;
           to_bitField0_ |= 0x00000010;
         }
         if (((from_bitField0_ & 0x00000020) != 0)) {
-          result.field2048_ = field2048_;
+          result.field2047_ = field2047_;
           to_bitField0_ |= 0x00000020;
+        }
+        if (((from_bitField0_ & 0x00000040) != 0)) {
+          result.field2048_ = field2048_;
+          to_bitField0_ |= 0x00000040;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -707,6 +818,11 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         if (other.hasUnicodeString()) {
           unicodeString_ = other.unicodeString_;
           bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasField19000()) {
+          field19000_ = other.field19000_;
+          bitField0_ |= 0x00000004;
           onChanged();
         }
         if (other.hasField15()) {
@@ -749,12 +865,12 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
                 break;
               case 120: {
                 field15_ = input.readInt32();
-                bitField0_ |= 0x00000004;
+                bitField0_ |= 0x00000008;
                 break;
               } // case 120
               case 128: {
                 field16_ = input.readInt32();
-                bitField0_ |= 0x00000008;
+                bitField0_ |= 0x00000010;
                 break;
               } // case 128
               case 138: {
@@ -769,14 +885,19 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
               } // case 146
               case 16376: {
                 field2047_ = input.readInt32();
-                bitField0_ |= 0x00000010;
+                bitField0_ |= 0x00000020;
                 break;
               } // case 16376
               case 16384: {
                 field2048_ = input.readInt32();
-                bitField0_ |= 0x00000020;
+                bitField0_ |= 0x00000040;
                 break;
               } // case 16384
+              case 144002: {
+                field19000_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 144002
               default: {
                 if (!super.parseUnknownField(input, extensionRegistry, tag)) {
                   done = true; // was an endgroup tag
@@ -954,6 +1075,110 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
         return this;
       }
 
+      private java.lang.Object field19000_ = "";
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @return Whether the field19000 field is set.
+       */
+      public boolean hasField19000() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @return The field19000.
+       */
+      public java.lang.String getField19000() {
+        java.lang.Object ref = field19000_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            field19000_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @return The bytes for field19000.
+       */
+      public com.google.protobuf.ByteString
+          getField19000Bytes() {
+        java.lang.Object ref = field19000_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          field19000_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @param value The field19000 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField19000(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        field19000_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearField19000() {
+        field19000_ = getDefaultInstance().getField19000();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       * High field number
+       * </pre>
+       *
+       * <code>optional string field19000 = 18000;</code>
+       * @param value The bytes for field19000 to set.
+       * @return This builder for chaining.
+       */
+      public Builder setField19000Bytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        field19000_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
       private int field15_ ;
       /**
        * <pre>
@@ -965,7 +1190,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasField15() {
-        return ((bitField0_ & 0x00000004) != 0);
+        return ((bitField0_ & 0x00000008) != 0);
       }
       /**
        * <pre>
@@ -991,7 +1216,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setField15(int value) {
 
         field15_ = value;
-        bitField0_ |= 0x00000004;
+        bitField0_ |= 0x00000008;
         onChanged();
         return this;
       }
@@ -1004,7 +1229,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearField15() {
-        bitField0_ = (bitField0_ & ~0x00000004);
+        bitField0_ = (bitField0_ & ~0x00000008);
         field15_ = 0;
         onChanged();
         return this;
@@ -1017,7 +1242,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasField16() {
-        return ((bitField0_ & 0x00000008) != 0);
+        return ((bitField0_ & 0x00000010) != 0);
       }
       /**
        * <code>optional int32 field16 = 16;</code>
@@ -1035,7 +1260,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setField16(int value) {
 
         field16_ = value;
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         onChanged();
         return this;
       }
@@ -1044,7 +1269,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearField16() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         field16_ = 0;
         onChanged();
         return this;
@@ -1057,7 +1282,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasField2047() {
-        return ((bitField0_ & 0x00000010) != 0);
+        return ((bitField0_ & 0x00000020) != 0);
       }
       /**
        * <code>optional int32 field2047 = 2047;</code>
@@ -1075,7 +1300,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setField2047(int value) {
 
         field2047_ = value;
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000020;
         onChanged();
         return this;
       }
@@ -1084,7 +1309,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearField2047() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000020);
         field2047_ = 0;
         onChanged();
         return this;
@@ -1097,7 +1322,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        */
       @java.lang.Override
       public boolean hasField2048() {
-        return ((bitField0_ & 0x00000020) != 0);
+        return ((bitField0_ & 0x00000040) != 0);
       }
       /**
        * <code>optional int32 field2048 = 2048;</code>
@@ -1115,7 +1340,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
       public Builder setField2048(int value) {
 
         field2048_ = value;
-        bitField0_ |= 0x00000020;
+        bitField0_ |= 0x00000040;
         onChanged();
         return this;
       }
@@ -1124,7 +1349,7 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
        * @return This builder for chaining.
        */
       public Builder clearField2048() {
-        bitField0_ = (bitField0_ & ~0x00000020);
+        bitField0_ = (bitField0_ & ~0x00000040);
         field2048_ = 0;
         onChanged();
         return this;
@@ -1181,11 +1406,1451 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
 
   }
 
+  public interface SpecialStringsOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.EdgeCasesMinimal.SpecialStrings)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return Whether the emptyString field is set.
+     */
+    boolean hasEmptyString();
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return The emptyString.
+     */
+    java.lang.String getEmptyString();
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return The bytes for emptyString.
+     */
+    com.google.protobuf.ByteString
+        getEmptyStringBytes();
+
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return Whether the unicodeString field is set.
+     */
+    boolean hasUnicodeString();
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return The unicodeString.
+     */
+    java.lang.String getUnicodeString();
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return The bytes for unicodeString.
+     */
+    com.google.protobuf.ByteString
+        getUnicodeStringBytes();
+
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return Whether the newlineString field is set.
+     */
+    boolean hasNewlineString();
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return The newlineString.
+     */
+    java.lang.String getNewlineString();
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return The bytes for newlineString.
+     */
+    com.google.protobuf.ByteString
+        getNewlineStringBytes();
+
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return Whether the tabString field is set.
+     */
+    boolean hasTabString();
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return The tabString.
+     */
+    java.lang.String getTabString();
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return The bytes for tabString.
+     */
+    com.google.protobuf.ByteString
+        getTabStringBytes();
+
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return Whether the quoteString field is set.
+     */
+    boolean hasQuoteString();
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return The quoteString.
+     */
+    java.lang.String getQuoteString();
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return The bytes for quoteString.
+     */
+    com.google.protobuf.ByteString
+        getQuoteStringBytes();
+
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return Whether the backslashString field is set.
+     */
+    boolean hasBackslashString();
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return The backslashString.
+     */
+    java.lang.String getBackslashString();
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return The bytes for backslashString.
+     */
+    com.google.protobuf.ByteString
+        getBackslashStringBytes();
+  }
+  /**
+   * <pre>
+   * Message with special string values
+   * </pre>
+   *
+   * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.SpecialStrings}
+   */
+  public static final class SpecialStrings extends
+      com.google.protobuf.GeneratedMessage implements
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.EdgeCasesMinimal.SpecialStrings)
+      SpecialStringsOrBuilder {
+  private static final long serialVersionUID = 0L;
+    static {
+      com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(
+        com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,
+        /* major= */ 4,
+        /* minor= */ 33,
+        /* patch= */ 4,
+        /* suffix= */ "",
+        "SpecialStrings");
+    }
+    // Use SpecialStrings.newBuilder() to construct.
+    private SpecialStrings(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+    }
+    private SpecialStrings() {
+      emptyString_ = "";
+      unicodeString_ = "";
+      newlineString_ = "";
+      tabString_ = "";
+      quoteString_ = "";
+      backslashString_ = "";
+    }
+
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int EMPTY_STRING_FIELD_NUMBER = 1;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object emptyString_ = "";
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return Whether the emptyString field is set.
+     */
+    @java.lang.Override
+    public boolean hasEmptyString() {
+      return ((bitField0_ & 0x00000001) != 0);
+    }
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return The emptyString.
+     */
+    @java.lang.Override
+    public java.lang.String getEmptyString() {
+      java.lang.Object ref = emptyString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          emptyString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string empty_string = 1 [default = ""];</code>
+     * @return The bytes for emptyString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getEmptyStringBytes() {
+      java.lang.Object ref = emptyString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        emptyString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int UNICODE_STRING_FIELD_NUMBER = 2;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object unicodeString_ = "";
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return Whether the unicodeString field is set.
+     */
+    @java.lang.Override
+    public boolean hasUnicodeString() {
+      return ((bitField0_ & 0x00000002) != 0);
+    }
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return The unicodeString.
+     */
+    @java.lang.Override
+    public java.lang.String getUnicodeString() {
+      java.lang.Object ref = unicodeString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          unicodeString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string unicode_string = 2;</code>
+     * @return The bytes for unicodeString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getUnicodeStringBytes() {
+      java.lang.Object ref = unicodeString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        unicodeString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int NEWLINE_STRING_FIELD_NUMBER = 3;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object newlineString_ = "";
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return Whether the newlineString field is set.
+     */
+    @java.lang.Override
+    public boolean hasNewlineString() {
+      return ((bitField0_ & 0x00000004) != 0);
+    }
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return The newlineString.
+     */
+    @java.lang.Override
+    public java.lang.String getNewlineString() {
+      java.lang.Object ref = newlineString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          newlineString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string newline_string = 3;</code>
+     * @return The bytes for newlineString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getNewlineStringBytes() {
+      java.lang.Object ref = newlineString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        newlineString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int TAB_STRING_FIELD_NUMBER = 4;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object tabString_ = "";
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return Whether the tabString field is set.
+     */
+    @java.lang.Override
+    public boolean hasTabString() {
+      return ((bitField0_ & 0x00000008) != 0);
+    }
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return The tabString.
+     */
+    @java.lang.Override
+    public java.lang.String getTabString() {
+      java.lang.Object ref = tabString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          tabString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string tab_string = 4;</code>
+     * @return The bytes for tabString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTabStringBytes() {
+      java.lang.Object ref = tabString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        tabString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int QUOTE_STRING_FIELD_NUMBER = 5;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object quoteString_ = "";
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return Whether the quoteString field is set.
+     */
+    @java.lang.Override
+    public boolean hasQuoteString() {
+      return ((bitField0_ & 0x00000010) != 0);
+    }
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return The quoteString.
+     */
+    @java.lang.Override
+    public java.lang.String getQuoteString() {
+      java.lang.Object ref = quoteString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          quoteString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string quote_string = 5;</code>
+     * @return The bytes for quoteString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getQuoteStringBytes() {
+      java.lang.Object ref = quoteString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        quoteString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BACKSLASH_STRING_FIELD_NUMBER = 6;
+    @SuppressWarnings("serial")
+    private volatile java.lang.Object backslashString_ = "";
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return Whether the backslashString field is set.
+     */
+    @java.lang.Override
+    public boolean hasBackslashString() {
+      return ((bitField0_ & 0x00000020) != 0);
+    }
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return The backslashString.
+     */
+    @java.lang.Override
+    public java.lang.String getBackslashString() {
+      java.lang.Object ref = backslashString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          backslashString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string backslash_string = 6;</code>
+     * @return The bytes for backslashString.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getBackslashStringBytes() {
+      java.lang.Object ref = backslashString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        backslashString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (((bitField0_ & 0x00000001) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 1, emptyString_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 2, unicodeString_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 3, newlineString_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 4, tabString_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 5, quoteString_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        com.google.protobuf.GeneratedMessage.writeString(output, 6, backslashString_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(1, emptyString_);
+      }
+      if (((bitField0_ & 0x00000002) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(2, unicodeString_);
+      }
+      if (((bitField0_ & 0x00000004) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(3, newlineString_);
+      }
+      if (((bitField0_ & 0x00000008) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(4, tabString_);
+      }
+      if (((bitField0_ & 0x00000010) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(5, quoteString_);
+      }
+      if (((bitField0_ & 0x00000020) != 0)) {
+        size += com.google.protobuf.GeneratedMessage.computeStringSize(6, backslashString_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings)) {
+        return super.equals(obj);
+      }
+      com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings other = (com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings) obj;
+
+      if (hasEmptyString() != other.hasEmptyString()) return false;
+      if (hasEmptyString()) {
+        if (!getEmptyString()
+            .equals(other.getEmptyString())) return false;
+      }
+      if (hasUnicodeString() != other.hasUnicodeString()) return false;
+      if (hasUnicodeString()) {
+        if (!getUnicodeString()
+            .equals(other.getUnicodeString())) return false;
+      }
+      if (hasNewlineString() != other.hasNewlineString()) return false;
+      if (hasNewlineString()) {
+        if (!getNewlineString()
+            .equals(other.getNewlineString())) return false;
+      }
+      if (hasTabString() != other.hasTabString()) return false;
+      if (hasTabString()) {
+        if (!getTabString()
+            .equals(other.getTabString())) return false;
+      }
+      if (hasQuoteString() != other.hasQuoteString()) return false;
+      if (hasQuoteString()) {
+        if (!getQuoteString()
+            .equals(other.getQuoteString())) return false;
+      }
+      if (hasBackslashString() != other.hasBackslashString()) return false;
+      if (hasBackslashString()) {
+        if (!getBackslashString()
+            .equals(other.getBackslashString())) return false;
+      }
+      if (!getUnknownFields().equals(other.getUnknownFields())) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      if (hasEmptyString()) {
+        hash = (37 * hash) + EMPTY_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getEmptyString().hashCode();
+      }
+      if (hasUnicodeString()) {
+        hash = (37 * hash) + UNICODE_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getUnicodeString().hashCode();
+      }
+      if (hasNewlineString()) {
+        hash = (37 * hash) + NEWLINE_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getNewlineString().hashCode();
+      }
+      if (hasTabString()) {
+        hash = (37 * hash) + TAB_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getTabString().hashCode();
+      }
+      if (hasQuoteString()) {
+        hash = (37 * hash) + QUOTE_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getQuoteString().hashCode();
+      }
+      if (hasBackslashString()) {
+        hash = (37 * hash) + BACKSLASH_STRING_FIELD_NUMBER;
+        hash = (53 * hash) + getBackslashString().hashCode();
+      }
+      hash = (29 * hash) + getUnknownFields().hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessage
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * <pre>
+     * Message with special string values
+     * </pre>
+     *
+     * Protobuf type {@code ComprehensiveTest.EdgeCasesMinimal.SpecialStrings}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.EdgeCasesMinimal.SpecialStrings)
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStringsOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.class, com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.Builder.class);
+      }
+
+      // Construct using com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.newBuilder()
+      private Builder() {
+
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        bitField0_ = 0;
+        emptyString_ = "";
+        unicodeString_ = "";
+        newlineString_ = "";
+        tabString_ = "";
+        quoteString_ = "";
+        backslashString_ = "";
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings getDefaultInstanceForType() {
+        return com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings build() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings buildPartial() {
+        com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings result = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings(this);
+        if (bitField0_ != 0) { buildPartial0(result); }
+        onBuilt();
+        return result;
+      }
+
+      private void buildPartial0(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings result) {
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) != 0)) {
+          result.emptyString_ = emptyString_;
+          to_bitField0_ |= 0x00000001;
+        }
+        if (((from_bitField0_ & 0x00000002) != 0)) {
+          result.unicodeString_ = unicodeString_;
+          to_bitField0_ |= 0x00000002;
+        }
+        if (((from_bitField0_ & 0x00000004) != 0)) {
+          result.newlineString_ = newlineString_;
+          to_bitField0_ |= 0x00000004;
+        }
+        if (((from_bitField0_ & 0x00000008) != 0)) {
+          result.tabString_ = tabString_;
+          to_bitField0_ |= 0x00000008;
+        }
+        if (((from_bitField0_ & 0x00000010) != 0)) {
+          result.quoteString_ = quoteString_;
+          to_bitField0_ |= 0x00000010;
+        }
+        if (((from_bitField0_ & 0x00000020) != 0)) {
+          result.backslashString_ = backslashString_;
+          to_bitField0_ |= 0x00000020;
+        }
+        result.bitField0_ |= to_bitField0_;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings) {
+          return mergeFrom((com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings other) {
+        if (other == com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings.getDefaultInstance()) return this;
+        if (other.hasEmptyString()) {
+          emptyString_ = other.emptyString_;
+          bitField0_ |= 0x00000001;
+          onChanged();
+        }
+        if (other.hasUnicodeString()) {
+          unicodeString_ = other.unicodeString_;
+          bitField0_ |= 0x00000002;
+          onChanged();
+        }
+        if (other.hasNewlineString()) {
+          newlineString_ = other.newlineString_;
+          bitField0_ |= 0x00000004;
+          onChanged();
+        }
+        if (other.hasTabString()) {
+          tabString_ = other.tabString_;
+          bitField0_ |= 0x00000008;
+          onChanged();
+        }
+        if (other.hasQuoteString()) {
+          quoteString_ = other.quoteString_;
+          bitField0_ |= 0x00000010;
+          onChanged();
+        }
+        if (other.hasBackslashString()) {
+          backslashString_ = other.backslashString_;
+          bitField0_ |= 0x00000020;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        if (extensionRegistry == null) {
+          throw new java.lang.NullPointerException();
+        }
+        try {
+          boolean done = false;
+          while (!done) {
+            int tag = input.readTag();
+            switch (tag) {
+              case 0:
+                done = true;
+                break;
+              case 10: {
+                emptyString_ = input.readBytes();
+                bitField0_ |= 0x00000001;
+                break;
+              } // case 10
+              case 18: {
+                unicodeString_ = input.readBytes();
+                bitField0_ |= 0x00000002;
+                break;
+              } // case 18
+              case 26: {
+                newlineString_ = input.readBytes();
+                bitField0_ |= 0x00000004;
+                break;
+              } // case 26
+              case 34: {
+                tabString_ = input.readBytes();
+                bitField0_ |= 0x00000008;
+                break;
+              } // case 34
+              case 42: {
+                quoteString_ = input.readBytes();
+                bitField0_ |= 0x00000010;
+                break;
+              } // case 42
+              case 50: {
+                backslashString_ = input.readBytes();
+                bitField0_ |= 0x00000020;
+                break;
+              } // case 50
+              default: {
+                if (!super.parseUnknownField(input, extensionRegistry, tag)) {
+                  done = true; // was an endgroup tag
+                }
+                break;
+              } // default:
+            } // switch (tag)
+          } // while (!done)
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.unwrapIOException();
+        } finally {
+          onChanged();
+        } // finally
+        return this;
+      }
+      private int bitField0_;
+
+      private java.lang.Object emptyString_ = "";
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @return Whether the emptyString field is set.
+       */
+      public boolean hasEmptyString() {
+        return ((bitField0_ & 0x00000001) != 0);
+      }
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @return The emptyString.
+       */
+      public java.lang.String getEmptyString() {
+        java.lang.Object ref = emptyString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            emptyString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @return The bytes for emptyString.
+       */
+      public com.google.protobuf.ByteString
+          getEmptyStringBytes() {
+        java.lang.Object ref = emptyString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          emptyString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @param value The emptyString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmptyString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        emptyString_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearEmptyString() {
+        emptyString_ = getDefaultInstance().getEmptyString();
+        bitField0_ = (bitField0_ & ~0x00000001);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string empty_string = 1 [default = ""];</code>
+       * @param value The bytes for emptyString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setEmptyStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        emptyString_ = value;
+        bitField0_ |= 0x00000001;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object unicodeString_ = "";
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @return Whether the unicodeString field is set.
+       */
+      public boolean hasUnicodeString() {
+        return ((bitField0_ & 0x00000002) != 0);
+      }
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @return The unicodeString.
+       */
+      public java.lang.String getUnicodeString() {
+        java.lang.Object ref = unicodeString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            unicodeString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @return The bytes for unicodeString.
+       */
+      public com.google.protobuf.ByteString
+          getUnicodeStringBytes() {
+        java.lang.Object ref = unicodeString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          unicodeString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @param value The unicodeString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnicodeString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        unicodeString_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearUnicodeString() {
+        unicodeString_ = getDefaultInstance().getUnicodeString();
+        bitField0_ = (bitField0_ & ~0x00000002);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string unicode_string = 2;</code>
+       * @param value The bytes for unicodeString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setUnicodeStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        unicodeString_ = value;
+        bitField0_ |= 0x00000002;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object newlineString_ = "";
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @return Whether the newlineString field is set.
+       */
+      public boolean hasNewlineString() {
+        return ((bitField0_ & 0x00000004) != 0);
+      }
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @return The newlineString.
+       */
+      public java.lang.String getNewlineString() {
+        java.lang.Object ref = newlineString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            newlineString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @return The bytes for newlineString.
+       */
+      public com.google.protobuf.ByteString
+          getNewlineStringBytes() {
+        java.lang.Object ref = newlineString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          newlineString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @param value The newlineString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNewlineString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        newlineString_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearNewlineString() {
+        newlineString_ = getDefaultInstance().getNewlineString();
+        bitField0_ = (bitField0_ & ~0x00000004);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string newline_string = 3;</code>
+       * @param value The bytes for newlineString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setNewlineStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        newlineString_ = value;
+        bitField0_ |= 0x00000004;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object tabString_ = "";
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @return Whether the tabString field is set.
+       */
+      public boolean hasTabString() {
+        return ((bitField0_ & 0x00000008) != 0);
+      }
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @return The tabString.
+       */
+      public java.lang.String getTabString() {
+        java.lang.Object ref = tabString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            tabString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @return The bytes for tabString.
+       */
+      public com.google.protobuf.ByteString
+          getTabStringBytes() {
+        java.lang.Object ref = tabString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          tabString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @param value The tabString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTabString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        tabString_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTabString() {
+        tabString_ = getDefaultInstance().getTabString();
+        bitField0_ = (bitField0_ & ~0x00000008);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string tab_string = 4;</code>
+       * @param value The bytes for tabString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTabStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        tabString_ = value;
+        bitField0_ |= 0x00000008;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object quoteString_ = "";
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @return Whether the quoteString field is set.
+       */
+      public boolean hasQuoteString() {
+        return ((bitField0_ & 0x00000010) != 0);
+      }
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @return The quoteString.
+       */
+      public java.lang.String getQuoteString() {
+        java.lang.Object ref = quoteString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            quoteString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @return The bytes for quoteString.
+       */
+      public com.google.protobuf.ByteString
+          getQuoteStringBytes() {
+        java.lang.Object ref = quoteString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          quoteString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @param value The quoteString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQuoteString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        quoteString_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearQuoteString() {
+        quoteString_ = getDefaultInstance().getQuoteString();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string quote_string = 5;</code>
+       * @param value The bytes for quoteString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setQuoteStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        quoteString_ = value;
+        bitField0_ |= 0x00000010;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object backslashString_ = "";
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @return Whether the backslashString field is set.
+       */
+      public boolean hasBackslashString() {
+        return ((bitField0_ & 0x00000020) != 0);
+      }
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @return The backslashString.
+       */
+      public java.lang.String getBackslashString() {
+        java.lang.Object ref = backslashString_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          if (bs.isValidUtf8()) {
+            backslashString_ = s;
+          }
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @return The bytes for backslashString.
+       */
+      public com.google.protobuf.ByteString
+          getBackslashStringBytes() {
+        java.lang.Object ref = backslashString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          backslashString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @param value The backslashString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBackslashString(
+          java.lang.String value) {
+        if (value == null) { throw new NullPointerException(); }
+        backslashString_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBackslashString() {
+        backslashString_ = getDefaultInstance().getBackslashString();
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string backslash_string = 6;</code>
+       * @param value The bytes for backslashString to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBackslashStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) { throw new NullPointerException(); }
+        backslashString_ = value;
+        bitField0_ |= 0x00000020;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.EdgeCasesMinimal.SpecialStrings)
+    }
+
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.EdgeCasesMinimal.SpecialStrings)
+    private static final com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings();
+    }
+
+    public static com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SpecialStrings>
+        PARSER = new com.google.protobuf.AbstractParser<SpecialStrings>() {
+      @java.lang.Override
+      public SpecialStrings parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        Builder builder = newBuilder();
+        try {
+          builder.mergeFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          throw e.setUnfinishedMessage(builder.buildPartial());
+        } catch (com.google.protobuf.UninitializedMessageException e) {
+          throw e.asInvalidProtocolBufferException().setUnfinishedMessage(builder.buildPartial());
+        } catch (java.io.IOException e) {
+          throw new com.google.protobuf.InvalidProtocolBufferException(e)
+              .setUnfinishedMessage(builder.buildPartial());
+        }
+        return builder.buildPartial();
+      }
+    };
+
+    public static com.google.protobuf.Parser<SpecialStrings> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SpecialStrings> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.rubberjam.protobuf.compiler.test.edge.ComprehensiveTestEdgeCasesMinimal.SpecialStrings getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -1197,12 +2862,17 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     java.lang.String[] descriptorData = {
       "\n+comprehensive_test_edge_cases_minimal." +
       "proto\022\"ComprehensiveTest.EdgeCasesMinima" +
-      "l\"\213\001\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 " +
-      "\001(\t:\000\022\026\n\016unicode_string\030\022 \001(\t\022\017\n\007field15" +
-      "\030\017 \001(\005\022\017\n\007field16\030\020 \001(\005\022\022\n\tfield2047\030\377\017 " +
-      "\001(\005\022\022\n\tfield2048\030\200\020 \001(\005BP\n)com.rubberjam" +
-      ".protobuf.compiler.test.edgeB!Comprehens" +
-      "iveTestEdgeCasesMinimalH\001"
+      "l\"\241\001\n\017EdgeCaseMinimal\022\026\n\014empty_string\030\021 " +
+      "\001(\t:\000\022\026\n\016unicode_string\030\022 \001(\t\022\024\n\nfield19" +
+      "000\030\320\214\001 \001(\t\022\017\n\007field15\030\017 \001(\005\022\017\n\007field16\030" +
+      "\020 \001(\005\022\022\n\tfield2047\030\377\017 \001(\005\022\022\n\tfield2048\030\200" +
+      "\020 \001(\005\"\234\001\n\016SpecialStrings\022\026\n\014empty_string" +
+      "\030\001 \001(\t:\000\022\026\n\016unicode_string\030\002 \001(\t\022\026\n\016newl" +
+      "ine_string\030\003 \001(\t\022\022\n\ntab_string\030\004 \001(\t\022\024\n\014" +
+      "quote_string\030\005 \001(\t\022\030\n\020backslash_string\030\006" +
+      " \001(\tBP\n)com.rubberjam.protobuf.compiler." +
+      "test.edgeB!ComprehensiveTestEdgeCasesMin" +
+      "imalH\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1213,7 +2883,13 @@ public final class ComprehensiveTestEdgeCasesMinimal extends com.google.protobuf
     internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_EdgeCasesMinimal_EdgeCaseMinimal_descriptor,
-        new java.lang.String[] { "EmptyString", "UnicodeString", "Field15", "Field16", "Field2047", "Field2048", });
+        new java.lang.String[] { "EmptyString", "UnicodeString", "Field19000", "Field15", "Field16", "Field2047", "Field2048", });
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor =
+      getDescriptor().getMessageType(1);
+    internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+        internal_static_ComprehensiveTest_EdgeCasesMinimal_SpecialStrings_descriptor,
+        new java.lang.String[] { "EmptyString", "UnicodeString", "NewlineString", "TabString", "QuoteString", "BackslashString", });
     descriptor.resolveAllFeaturesImmutable();
   }
 

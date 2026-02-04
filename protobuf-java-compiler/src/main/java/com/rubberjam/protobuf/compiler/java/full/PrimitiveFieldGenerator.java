@@ -6,6 +6,7 @@ import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.io.Printer;
+import java.util.Map;
 
 /**
  * For generating primitive fields (int, long, float, double, boolean).
@@ -26,12 +27,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
     String defaultValue = Helpers.defaultValue(descriptor, true, context.getNameResolver(), context.getOptions());
     variables.put("default", defaultValue);
-    // For builder: C++ uses "" when IsDefaultValueJavaDefault (so "private int field15_ ;"),
-    // otherwise "= " + default (e.g. "= 0"). We must not emit "field15_ 0" (missing =).
-    String defaultInit = Helpers.isDefaultValueJavaDefault(descriptor)
-        ? ""
-        : ("= " + defaultValue);
-    variables.put("default_init", defaultInit);
+    variables.put("default_init", defaultValue);
 
     variables.put("tag", String.valueOf(
         (descriptor.getNumber() << 3) | getWireType(descriptor)));
@@ -125,7 +121,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
     if (descriptor.hasPresence()) {
-      // C++: "private $field_type$ $name$_ = $default$;\n" - message always has explicit default
       printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
@@ -141,7 +136,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
           "}\n");
     } else {
       // Proto3 implicit
-      printer.emit(variables, "private $type$ $name$_;\n");
+      printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -154,18 +149,20 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderMembers(Printer printer) {
     if (descriptor.hasPresence()) {
-      // C++: "private $field_type$ $name$_ $default_init$;\n" with default_init "" or "= 0"
-      printer.emit(variables,
-          "private $type$ $name$_ $default_init$;\n");
+      if (Helpers.isDefaultValueJavaDefault(descriptor)) {
+        printer.emit(variables, "private $type$ $name$_ ;\n");
+      } else {
+        printer.emit(variables, "private $type$ $name$_ = $default_init$;\n");
+      }
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
           "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
           "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
@@ -173,7 +170,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
           "}\n");
 
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
-      // C++ order: $null_check$ then $name$_ = value then $set_has_field_bit_builder$ (assignment before set bit)
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
           "  $null_check$\n" +
@@ -196,20 +192,23 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables,
           "private $type$ $name$_;\n"); // Default is 0/false by JVM
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
           "  return $name$_;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  \n" +
+          "  $null_check$\n" +
           "  $name$_ = value;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  \n" +
@@ -222,7 +221,6 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-    // C++: only output when !IsDefaultValueJavaDefault (optional int32 default 0 = Java default, so no line in constructor)
     if (!Helpers.isDefaultValueJavaDefault(descriptor)) {
       printer.emit(variables, "$name$_ = $default$;\n");
     }
