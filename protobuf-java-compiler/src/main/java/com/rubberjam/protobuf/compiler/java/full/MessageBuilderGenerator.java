@@ -440,12 +440,10 @@ public class MessageBuilderGenerator {
       printer.indent();
       printer.indent();
 
-      // We need to sort fields by number or handle them in order.
-      // And handle unknown fields.
-      // This is a complex part often delegated to FieldGenerators but usually the switch is here.
-
-      // For now, standard implementation:
-      for (FieldDescriptor field : descriptor.getFields()) {
+      // Switch cases must be in tag (field number) order to match reference protoc output.
+      List<FieldDescriptor> sortedFields = new ArrayList<>(descriptor.getFields());
+      sortedFields.sort(Comparator.comparingInt(FieldDescriptor::getNumber));
+      for (FieldDescriptor field : sortedFields) {
           printer.print("case " + Helpers.getWireFormatForField(field) + ": {\n");
           printer.indent();
           fieldGenerators.get(field).generateParsingCode(printer);

@@ -6,7 +6,6 @@ import com.rubberjam.protobuf.compiler.java.DocComment;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.io.Printer;
-import java.util.Map;
 
 /**
  * For generating primitive fields (int, long, float, double, boolean).
@@ -27,7 +26,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
     String defaultValue = Helpers.defaultValue(descriptor, true, context.getNameResolver(), context.getOptions());
     variables.put("default", defaultValue);
-    variables.put("default_init", defaultValue);
+    // For builder: C++ uses "" when IsDefaultValueJavaDefault (so "private int field15_ ;"),
+    // otherwise "= " + default (e.g. "= 0"). We must not emit "field15_ 0" (missing =).
+    String defaultInit = Helpers.isDefaultValueJavaDefault(descriptor)
+        ? ""
+        : ("= " + defaultValue);
+    variables.put("default_init", defaultInit);
 
     variables.put("tag", String.valueOf(
         (descriptor.getNumber() << 3) | getWireType(descriptor)));
@@ -121,7 +125,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
     if (descriptor.hasPresence()) {
-      printer.emit(variables, "private $type$ $name$_;\n");
+      // C++: "private $field_type$ $name$_ = $default$;\n" - message always has explicit default
+      printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
@@ -149,29 +154,36 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderMembers(Printer printer) {
     if (descriptor.hasPresence()) {
+      // C++: "private $field_type$ $name$_ $default_init$;\n" with default_init "" or "= 0"
       printer.emit(variables,
           "private $type$ $name$_ $default_init$;\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
           "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
           "  return $name$_;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      // C++ order: $null_check$ then $name$_ = value then $set_has_field_bit_builder$ (assignment before set bit)
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+          "  $null_check$\n" +
           "  $name$_ = value;\n" +
+          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +
           "  return this;\n" +
           "}\n");
 
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
           "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
@@ -210,9 +222,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-    if (descriptor.hasPresence()) {
-      printer.emit(variables, "$name$_ = $default$;\n");
-    } else {
+    // C++: only output when !IsDefaultValueJavaDefault (optional int32 default 0 = Java default, so no line in constructor)
+    if (!Helpers.isDefaultValueJavaDefault(descriptor)) {
       printer.emit(variables, "$name$_ = $default$;\n");
     }
   }
