@@ -822,18 +822,20 @@ public class Parser {
 
       if (!parseOptionValue(uninterpreted)) return false;
 
-      // Try to interpret as standard option
-      if (interpretOption(optionsBuilder, uninterpreted.build())) {
-          return true;
-      }
+      UninterpretedOption option = uninterpreted.build();
 
+      // Always add to uninterpreted_option so the descriptor retains all options
       try {
           java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
-          m.invoke(optionsBuilder, uninterpreted.build());
+          m.invoke(optionsBuilder, option);
       } catch (Exception e) {
           recordError("Could not add option: " + e.getMessage());
           return false;
       }
+
+      // Also interpret known options into typed fields when possible
+      interpretOption(optionsBuilder, option);
+
       return true;
   }
 
