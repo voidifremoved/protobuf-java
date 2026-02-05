@@ -418,6 +418,20 @@ public final class DocComment
             return "\"" + escapeString(((com.google.protobuf.ByteString)val).toStringUtf8()) + "\"";
         } else if (field.getType() == FieldDescriptor.Type.ENUM) {
             return ((EnumValueDescriptor)val).getName();
+        } else if (field.getType() == FieldDescriptor.Type.UINT32 || field.getType() == FieldDescriptor.Type.FIXED32) {
+            return Integer.toUnsignedString((Integer)val);
+        } else if (field.getType() == FieldDescriptor.Type.UINT64 || field.getType() == FieldDescriptor.Type.FIXED64) {
+            return Long.toUnsignedString((Long)val);
+        } else if (field.getType() == FieldDescriptor.Type.FLOAT) {
+            Float f = (Float) val;
+            if (f.isInfinite()) return f < 0 ? "-inf" : "inf";
+            if (f.isNaN()) return "nan";
+            return Helpers.formatFloat(f);
+        } else if (field.getType() == FieldDescriptor.Type.DOUBLE) {
+            Double d = (Double) val;
+            if (d.isInfinite()) return d < 0 ? "-inf" : "inf";
+            if (d.isNaN()) return "nan";
+            return Helpers.formatDouble(d);
         } else {
             return val.toString();
         }
