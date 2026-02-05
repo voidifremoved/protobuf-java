@@ -48,7 +48,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions());
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables, "$type$OrBuilder get$capitalized_name$OrBuilder();\n");
   }
 
@@ -79,7 +79,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
         "}\n");
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions());
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "@java.lang.Override\n" +
         "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
@@ -122,7 +122,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // set
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "public Builder set$capitalized_name$($type$ value) {\n" +
         "  if ($name$Builder_ == null) {\n" +
@@ -139,7 +139,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // set builder
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "public Builder set$capitalized_name$(\n" +
         "    $type$.Builder builderForValue) {\n" +
@@ -154,7 +154,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // merge
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables, "public Builder merge$capitalized_name$($type$ value) {\n");
     printer.indent();
     printer.emit(variables, "if ($name$Builder_ == null) {\n");
@@ -184,7 +184,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     printer.print("}\n");
 
     // clear
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "public Builder clear$capitalized_name$() {\n" +
         "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
@@ -198,7 +198,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // getBuilder
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "public $type$.Builder get$capitalized_name$Builder() {\n" +
         "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
@@ -207,7 +207,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // getOrBuilder
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.OR_BUILDER_GETTER, context.getOptions(), true);
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
         "  if ($name$Builder_ != null) {\n" +
@@ -219,6 +219,7 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
         "}\n");
 
     // getFieldBuilder (private)
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
         "    $type$, $type$.Builder, $type$OrBuilder> \n" +

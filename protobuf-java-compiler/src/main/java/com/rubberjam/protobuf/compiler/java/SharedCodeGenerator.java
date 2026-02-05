@@ -28,12 +28,11 @@ public class SharedCodeGenerator {
         "java.lang.String[] descriptorData = {\n");
     printer.indent();
 
-    com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder fileProtoBuilder = file.toProto().toBuilder();
-    fileProtoBuilder.clearSourceCodeInfo();
-    if ("proto2".equals(fileProtoBuilder.getSyntax())) {
-        fileProtoBuilder.clearSyntax();
-    }
-    com.google.protobuf.ByteString bytes = fileProtoBuilder.build().toByteString();
+    // We must rebuild the FileDescriptorProto from the linked FileDescriptor
+    // to ensure all type names are fully qualified and field types are correct.
+    // file.toProto() might return the original unlinked proto.
+    com.google.protobuf.DescriptorProtos.FileDescriptorProto fileProto = rebuildDescriptorProto(file);
+    com.google.protobuf.ByteString bytes = fileProto.toByteString();
     List<String> pieces = new ArrayList<>();
     int chunkSize = 40;
     for (int i = 0; i < bytes.size(); i += chunkSize) {
@@ -64,6 +63,49 @@ public class SharedCodeGenerator {
     printer.outdent();
     printer.print(
         "    });\n");
+  }
+
+  private com.google.protobuf.DescriptorProtos.FileDescriptorProto rebuildDescriptorProto(com.google.protobuf.Descriptors.FileDescriptor file) {
+    com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder builder = file.toProto().toBuilder();
+    builder.clearSourceCodeInfo();
+    if ("proto2".equals(builder.getSyntax())) {
+      builder.clearSyntax();
+    }
+
+    // Fully qualify all type names in messages
+    for (int i = 0; i < file.getMessageTypes().size(); i++) {
+        updateMessageProto(builder.getMessageTypeBuilder(i), file.getMessageTypes().get(i));
+    }
+    // and enums? (usually they don't have nested types that need qualifying in the same way, but their types are used in fields)
+
+    // and extensions
+    for (int i = 0; i < file.getExtensions().size(); i++) {
+        updateFieldProto(builder.getExtensionBuilder(i), file.getExtensions().get(i));
+    }
+
+    return builder.build();
+  }
+
+  private void updateMessageProto(com.google.protobuf.DescriptorProtos.DescriptorProto.Builder builder, com.google.protobuf.Descriptors.Descriptor descriptor) {
+      for (int i = 0; i < descriptor.getFields().size(); i++) {
+          updateFieldProto(builder.getFieldBuilder(i), descriptor.getFields().get(i));
+      }
+      for (int i = 0; i < descriptor.getNestedTypes().size(); i++) {
+          updateMessageProto(builder.getNestedTypeBuilder(i), descriptor.getNestedTypes().get(i));
+      }
+      for (int i = 0; i < descriptor.getExtensions().size(); i++) {
+          updateFieldProto(builder.getExtensionBuilder(i), descriptor.getExtensions().get(i));
+      }
+  }
+
+  private void updateFieldProto(com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Builder builder, com.google.protobuf.Descriptors.FieldDescriptor field) {
+      builder.setType(com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Type.forNumber(field.getType().toProto().getNumber()));
+      if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.MESSAGE ||
+          field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.GROUP) {
+          builder.setTypeName("." + field.getMessageType().getFullName());
+      } else if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
+          builder.setTypeName("." + field.getEnumType().getFullName());
+      }
   }
 
   private static String escapeBytes(com.google.protobuf.ByteString input) {
