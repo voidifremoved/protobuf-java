@@ -40,6 +40,9 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         variables.put("packed_tag", String.valueOf(
             (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED));
     }
+
+    variables.put("null_check", ""); // Primitives are not reference types
+    variables.put("on_changed", "onChanged();");
   }
 
   private String getPrimitiveTypeName(Helpers.JavaType type) {
@@ -170,18 +173,24 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         "    $name$_ = makeMutableCopy($name$_);\n" +
         "  }\n" +
         "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "}\n" +
-        "private void ensure$capitalized_name$IsMutable(int capacity) {\n" +
-        "  if (!$name$_.isModifiable()) {\n" +
-        "    $name$_ = makeMutableCopy($name$_, capacity);\n" +
-        "  }\n" +
-        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "}\n");
+
+    if (Helpers.getFixedSize(descriptor.getType()) != -1) {
+      printer.emit(variables,
+          "private void ensure$capitalized_name$IsMutable(int capacity) {\n" +
+          "  if (!$name$_.isModifiable()) {\n" +
+          "    $name$_ = makeMutableCopy($name$_, capacity);\n" +
+          "  }\n" +
+          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+          "}\n");
+    }
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions(), true);
     printer.emit(variables,
-        "public java.util.List<" + boxed + "> $repeated_get$() {\n" +
-        "  return $name$_;\n" + // wrapper might be needed if unmodifiable view desired
+        "public java.util.List<$boxed_type$>\n" +
+        "    $repeated_get$() {\n" +
+        "  $name$_.makeImmutable();\n" +
+        "  return $name$_;\n" +
         "}\n");
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions(), true);
@@ -193,14 +202,17 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions(), true);
     printer.emit(variables,
         "public $type$ $repeated_get_index$(int index) {\n" +
-        "  return $name$_.get" + (javaType == Helpers.JavaType.INT ? "Int" : (javaType == Helpers.JavaType.LONG ? "Long" : (javaType == Helpers.JavaType.FLOAT ? "Float" : (javaType == Helpers.JavaType.DOUBLE ? "Double" : "Boolean")))) + "(index);\n" +
+        "  return $name$_.get" + getAddMethodSuffix() + "(index);\n" +
         "}\n");
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_SETTER, context.getOptions(), true);
     printer.emit(variables,
-        "public Builder $repeated_set$(int index, $type$ value) {\n" +
+        "public Builder $repeated_set$(\n" +
+        "    int index, $type$ value) {\n" +
+        "  $null_check$\n" +
         "  ensure$capitalized_name$IsMutable();\n" +
-        "  $name$_.set" + (javaType == Helpers.JavaType.INT ? "Int" : (javaType == Helpers.JavaType.LONG ? "Long" : (javaType == Helpers.JavaType.FLOAT ? "Float" : (javaType == Helpers.JavaType.DOUBLE ? "Double" : "Boolean")))) + "(index, value);\n" +
+        "  $name$_.set" + getAddMethodSuffix() + "(index, value);\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  onChanged();\n" +
         "  return this;\n" +
         "}\n");
@@ -208,8 +220,10 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_ADDER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder $repeated_add$($type$ value) {\n" +
+        "  $null_check$\n" +
         "  ensure$capitalized_name$IsMutable();\n" +
-        "  $name$_.add" + (javaType == Helpers.JavaType.INT ? "Int" : (javaType == Helpers.JavaType.LONG ? "Long" : (javaType == Helpers.JavaType.FLOAT ? "Float" : (javaType == Helpers.JavaType.DOUBLE ? "Double" : "Boolean")))) + "(value);\n" +
+        "  $name$_.add" + getAddMethodSuffix() + "(value);\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  onChanged();\n" +
         "  return this;\n" +
         "}\n");
@@ -217,10 +231,11 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_MULTI_ADDER, context.getOptions(), true);
     printer.emit(variables,
         "public Builder addAll$capitalized_name$(\n" +
-        "    java.lang.Iterable<? extends " + boxed + "> values) {\n" +
+        "    java.lang.Iterable<? extends $boxed_type$> values) {\n" +
         "  ensure$capitalized_name$IsMutable();\n" +
         "  com.google.protobuf.AbstractMessageLite.Builder.addAll(\n" +
         "      values, $name$_);\n" +
+        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
         "  onChanged();\n" +
         "  return this;\n" +
         "}\n");

@@ -35,6 +35,9 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
         com.google.protobuf.WireFormat.WIRETYPE_VARINT;
     variables.put("tag", (descriptor.getNumber() << 3) | wireType);
     variables.put("tag_size", com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber()));
+
+    variables.put("null_check", "if (value == null) { throw new NullPointerException(); }");
+    variables.put("on_changed", "onChanged();");
   }
 
   @Override
@@ -77,11 +80,11 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
             "@SuppressWarnings(\"serial\")\n" +
             "private java.util.List<java.lang.Integer> $name$_ =\n" +
             "    java.util.Collections.emptyList();\n" +
-            "private static final com.google.protobuf.Internal.ListAdapter.Converter<\n" +
-            "    java.lang.Integer, $type$> $name$_converter_ =\n" +
-            "        new com.google.protobuf.Internal.ListAdapter.Converter<\n" +
-            "            java.lang.Integer, $type$>() {\n" +
-            "          public $type$ convert(java.lang.Integer from) {\n" +
+            "private static final com.google.protobuf.Internal.IntListAdapter.IntConverter<\n" +
+            "    $type$> $name$_converter_ =\n" +
+            "        new com.google.protobuf.Internal.IntListAdapter.IntConverter<\n" +
+            "            $type$>() {\n" +
+            "          public $type$ convert(int from) {\n" +
             "            $type$ result = $type$.forNumber(from);\n" +
             "            return result == null ? $type$.UNRECOGNIZED : result;\n" +
             "          }\n" +
@@ -167,7 +170,8 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
          printer.emit(variables,
              "public java.util.List<java.lang.Integer>\n" +
              "    get$capitalized_name$ValueList() {\n" +
-             "  return java.util.Collections.unmodifiableList($name$_);\n" +
+             "  $name$_.makeImmutable();\n" +
+             "  return $name$_;\n" +
              "}\n" +
              "public int get$capitalized_name$Value(int index) {\n" +
              "  return $name$_.get(index);\n" +
@@ -176,13 +180,15 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "    int index, int value) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.set(index, value);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder add$capitalized_name$Value(int value) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.add(value);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder addAll$capitalized_name$Value(\n" +
@@ -190,15 +196,18 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "  ensure$capitalized_name$IsMutable();\n" +
              "  com.google.protobuf.AbstractMessageLite.Builder.addAll(\n" +
              "      values, $name$_);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n");
 
          // Enum methods
          printer.emit(variables,
-             "public java.util.List<$type$> get$capitalized_name$List() {\n" +
-             "  return new com.google.protobuf.Internal.ListAdapter<\n" +
-             "      java.lang.Integer, $type$>($name$_, $name$_converter_);\n" +
+             "public java.util.List<$type$>\n" +
+             "    get$capitalized_name$List() {\n" +
+             "  $name$_.makeImmutable();\n" +
+             "  return new com.google.protobuf.Internal.IntListAdapter<\n" +
+             "      $type$>($name$_, $name$_converter_);\n" +
              "}\n" +
              "public int get$capitalized_name$Count() {\n" +
              "  return $name$_.size();\n" +
@@ -208,21 +217,19 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "}\n" +
              "public Builder set$capitalized_name$(\n" +
              "    int index, $type$ value) {\n" +
-             "  if (value == null) {\n" +
-             "    throw new NullPointerException();\n" +
-             "  }\n" +
+             "  $null_check$\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.set(index, value.getNumber());\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder add$capitalized_name$($type$ value) {\n" +
-             "  if (value == null) {\n" +
-             "    throw new NullPointerException();\n" +
-             "  }\n" +
+             "  $null_check$\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.add(value.getNumber());\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder addAll$capitalized_name$(\n" +
@@ -231,13 +238,14 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "  for ($type$ value : values) {\n" +
              "    $name$_.add(value.getNumber());\n" +
              "  }\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder clear$capitalized_name$() {\n" +
              "  $name$_ = java.util.Collections.emptyList();\n" +
              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-             "  onChanged();\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n");
 
@@ -253,7 +261,9 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "}\n");
 
          printer.emit(variables,
-             "public java.util.List<$type$> get$capitalized_name$List() {\n" +
+             "public java.util.List<$type$>\n" +
+             "    get$capitalized_name$List() {\n" +
+             "  $name$_.makeImmutable();\n" +
              "  return java.util.Collections.unmodifiableList($name$_);\n" +
              "}\n" +
              "public int get$capitalized_name$Count() {\n" +
@@ -264,21 +274,19 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "}\n" +
              "public Builder set$capitalized_name$(\n" +
              "    int index, $type$ value) {\n" +
-             "  if (value == null) {\n" +
-             "    throw new NullPointerException();\n" +
-             "  }\n" +
+             "  $null_check$\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.set(index, value);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder add$capitalized_name$($type$ value) {\n" +
-             "  if (value == null) {\n" +
-             "    throw new NullPointerException();\n" +
-             "  }\n" +
+             "  $null_check$\n" +
              "  ensure$capitalized_name$IsMutable();\n" +
              "  $name$_.add(value);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder addAll$capitalized_name$(\n" +
@@ -286,13 +294,14 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
              "  ensure$capitalized_name$IsMutable();\n" +
              "  com.google.protobuf.AbstractMessageLite.Builder.addAll(\n" +
              "      values, $name$_);\n" +
-             "  onChanged();\n" +
+             "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n" +
              "public Builder clear$capitalized_name$() {\n" +
              "  $name$_ = java.util.Collections.emptyList();\n" +
              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-             "  onChanged();\n" +
+             "  $on_changed$\n" +
              "  return this;\n" +
              "}\n");
      }
