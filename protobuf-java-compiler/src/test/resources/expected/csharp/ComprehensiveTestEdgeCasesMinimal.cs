@@ -32,14 +32,27 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
             "EhIKCWZpZWxkMjA0OBiAECABKAUinAEKDlNwZWNpYWxTdHJpbmdzEhYKDGVt",
             "cHR5X3N0cmluZxgBIAEoCToAEhYKDnVuaWNvZGVfc3RyaW5nGAIgASgJEhYK",
             "Dm5ld2xpbmVfc3RyaW5nGAMgASgJEhIKCnRhYl9zdHJpbmcYBCABKAkSFAoM",
-            "cXVvdGVfc3RyaW5nGAUgASgJEhgKEGJhY2tzbGFzaF9zdHJpbmcYBiABKAlC",
-            "UAopY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LmVkZ2VC",
-            "IUNvbXByZWhlbnNpdmVUZXN0RWRnZUNhc2VzTWluaW1hbEgB"));
+            "cXVvdGVfc3RyaW5nGAUgASgJEhgKEGJhY2tzbGFzaF9zdHJpbmcYBiABKAki",
+            "+wMKD0V4dHJlbWVEZWZhdWx0cxIdCgltYXhfaW50MzIYASABKAU6CjIxNDc0",
+            "ODM2NDcSHgoJbWluX2ludDMyGAIgASgFOgstMjE0NzQ4MzY0OBImCgltYXhf",
+            "aW50NjQYAyABKAM6EzkyMjMzNzIwMzY4NTQ3NzU4MDcSJwoJbWluX2ludDY0",
+            "GAQgASgDOhQtOTIyMzM3MjAzNjg1NDc3NTgwOBIeCgptYXhfdWludDMyGAUg",
+            "ASgNOgo0Mjk0OTY3Mjk1EigKCm1heF91aW50NjQYBiABKAQ6FDE4NDQ2NzQ0",
+            "MDczNzA5NTUxNjE1EiEKCW1heF9mbG9hdBgHIAEoAjoOMy40MDI4MjM0N2Ur",
+            "MzgSIQoJbWluX2Zsb2F0GAggASgCOg4xLjQwMTI5ODQ2ZS00NRIrCgptYXhf",
+            "ZG91YmxlGAkgASgBOhcxLjc5NzY5MzEzNDg2MjMxNTdlKzMwOBIWCglpbmZf",
+            "ZmxvYXQYCyABKAI6A2luZhIbCg1uZWdfaW5mX2Zsb2F0GAwgASgCOgQtaW5m",
+            "EhYKCW5hbl9mbG9hdBgNIAEoAjoDbmFuEhcKCmluZl9kb3VibGUYDiABKAE6",
+            "A2luZhIcCg5uZWdfaW5mX2RvdWJsZRgPIAEoAToELWluZhIXCgpuYW5fZG91",
+            "YmxlGBAgASgBOgNuYW5CUAopY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21w",
+            "aWxlci50ZXN0LmVkZ2VCIUNvbXByZWhlbnNpdmVUZXN0RWRnZUNhc2VzTWlu",
+            "aW1hbEgB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal), global::ComprehensiveTest.EdgeCasesMinimal.EdgeCaseMinimal.Parser, new[]{ "EmptyString", "UnicodeString", "Field19000", "Field15", "Field16", "Field2047", "Field2048" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings), global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings.Parser, new[]{ "EmptyString", "UnicodeString", "NewlineString", "TabString", "QuoteString", "BackslashString" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings), global::ComprehensiveTest.EdgeCasesMinimal.SpecialStrings.Parser, new[]{ "EmptyString", "UnicodeString", "NewlineString", "TabString", "QuoteString", "BackslashString" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults), global::ComprehensiveTest.EdgeCasesMinimal.ExtremeDefaults.Parser, new[]{ "MaxInt32", "MinInt32", "MaxInt64", "MinInt64", "MaxUint32", "MaxUint64", "MaxFloat", "MinFloat", "MaxDouble", "InfFloat", "NegInfFloat", "NanFloat", "InfDouble", "NegInfDouble", "NanDouble" }, null, null, null, null)
           }));
     }
     #endregion
@@ -1040,6 +1053,952 @@ namespace ComprehensiveTest.EdgeCasesMinimal {
           }
           case 50: {
             BackslashString = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  /// <summary>
+  /// Message with extreme numeric defaults
+  /// </summary>
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ExtremeDefaults : pb::IMessage<ExtremeDefaults>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ExtremeDefaults> _parser = new pb::MessageParser<ExtremeDefaults>(() => new ExtremeDefaults());
+    private pb::UnknownFieldSet _unknownFields;
+    private int _hasBits0;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ExtremeDefaults> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::ComprehensiveTest.EdgeCasesMinimal.ComprehensiveTestEdgeCasesMinimalReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ExtremeDefaults() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ExtremeDefaults(ExtremeDefaults other) : this() {
+      _hasBits0 = other._hasBits0;
+      maxInt32_ = other.maxInt32_;
+      minInt32_ = other.minInt32_;
+      maxInt64_ = other.maxInt64_;
+      minInt64_ = other.minInt64_;
+      maxUint32_ = other.maxUint32_;
+      maxUint64_ = other.maxUint64_;
+      maxFloat_ = other.maxFloat_;
+      minFloat_ = other.minFloat_;
+      maxDouble_ = other.maxDouble_;
+      infFloat_ = other.infFloat_;
+      negInfFloat_ = other.negInfFloat_;
+      nanFloat_ = other.nanFloat_;
+      infDouble_ = other.infDouble_;
+      negInfDouble_ = other.negInfDouble_;
+      nanDouble_ = other.nanDouble_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ExtremeDefaults Clone() {
+      return new ExtremeDefaults(this);
+    }
+
+    /// <summary>Field number for the "max_int32" field.</summary>
+    public const int MaxInt32FieldNumber = 1;
+    private readonly static int MaxInt32DefaultValue = 2147483647;
+
+    private int maxInt32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MaxInt32 {
+      get { if ((_hasBits0 & 1) != 0) { return maxInt32_; } else { return MaxInt32DefaultValue; } }
+      set {
+        _hasBits0 |= 1;
+        maxInt32_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_int32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxInt32 {
+      get { return (_hasBits0 & 1) != 0; }
+    }
+    /// <summary>Clears the value of the "max_int32" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxInt32() {
+      _hasBits0 &= ~1;
+    }
+
+    /// <summary>Field number for the "min_int32" field.</summary>
+    public const int MinInt32FieldNumber = 2;
+    private readonly static int MinInt32DefaultValue = -2147483648;
+
+    private int minInt32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int MinInt32 {
+      get { if ((_hasBits0 & 2) != 0) { return minInt32_; } else { return MinInt32DefaultValue; } }
+      set {
+        _hasBits0 |= 2;
+        minInt32_ = value;
+      }
+    }
+    /// <summary>Gets whether the "min_int32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMinInt32 {
+      get { return (_hasBits0 & 2) != 0; }
+    }
+    /// <summary>Clears the value of the "min_int32" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMinInt32() {
+      _hasBits0 &= ~2;
+    }
+
+    /// <summary>Field number for the "max_int64" field.</summary>
+    public const int MaxInt64FieldNumber = 3;
+    private readonly static long MaxInt64DefaultValue = 9223372036854775807L;
+
+    private long maxInt64_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long MaxInt64 {
+      get { if ((_hasBits0 & 4) != 0) { return maxInt64_; } else { return MaxInt64DefaultValue; } }
+      set {
+        _hasBits0 |= 4;
+        maxInt64_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_int64" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxInt64 {
+      get { return (_hasBits0 & 4) != 0; }
+    }
+    /// <summary>Clears the value of the "max_int64" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxInt64() {
+      _hasBits0 &= ~4;
+    }
+
+    /// <summary>Field number for the "min_int64" field.</summary>
+    public const int MinInt64FieldNumber = 4;
+    private readonly static long MinInt64DefaultValue = -9223372036854775808L;
+
+    private long minInt64_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public long MinInt64 {
+      get { if ((_hasBits0 & 8) != 0) { return minInt64_; } else { return MinInt64DefaultValue; } }
+      set {
+        _hasBits0 |= 8;
+        minInt64_ = value;
+      }
+    }
+    /// <summary>Gets whether the "min_int64" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMinInt64 {
+      get { return (_hasBits0 & 8) != 0; }
+    }
+    /// <summary>Clears the value of the "min_int64" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMinInt64() {
+      _hasBits0 &= ~8;
+    }
+
+    /// <summary>Field number for the "max_uint32" field.</summary>
+    public const int MaxUint32FieldNumber = 5;
+    private readonly static uint MaxUint32DefaultValue = 4294967295;
+
+    private uint maxUint32_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public uint MaxUint32 {
+      get { if ((_hasBits0 & 16) != 0) { return maxUint32_; } else { return MaxUint32DefaultValue; } }
+      set {
+        _hasBits0 |= 16;
+        maxUint32_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_uint32" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxUint32 {
+      get { return (_hasBits0 & 16) != 0; }
+    }
+    /// <summary>Clears the value of the "max_uint32" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxUint32() {
+      _hasBits0 &= ~16;
+    }
+
+    /// <summary>Field number for the "max_uint64" field.</summary>
+    public const int MaxUint64FieldNumber = 6;
+    private readonly static ulong MaxUint64DefaultValue = 18446744073709551615UL;
+
+    private ulong maxUint64_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ulong MaxUint64 {
+      get { if ((_hasBits0 & 32) != 0) { return maxUint64_; } else { return MaxUint64DefaultValue; } }
+      set {
+        _hasBits0 |= 32;
+        maxUint64_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_uint64" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxUint64 {
+      get { return (_hasBits0 & 32) != 0; }
+    }
+    /// <summary>Clears the value of the "max_uint64" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxUint64() {
+      _hasBits0 &= ~32;
+    }
+
+    /// <summary>Field number for the "max_float" field.</summary>
+    public const int MaxFloatFieldNumber = 7;
+    private readonly static float MaxFloatDefaultValue = 3.40282e+38F;
+
+    private float maxFloat_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MaxFloat {
+      get { if ((_hasBits0 & 64) != 0) { return maxFloat_; } else { return MaxFloatDefaultValue; } }
+      set {
+        _hasBits0 |= 64;
+        maxFloat_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_float" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxFloat {
+      get { return (_hasBits0 & 64) != 0; }
+    }
+    /// <summary>Clears the value of the "max_float" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxFloat() {
+      _hasBits0 &= ~64;
+    }
+
+    /// <summary>Field number for the "min_float" field.</summary>
+    public const int MinFloatFieldNumber = 8;
+    private readonly static float MinFloatDefaultValue = 1.4013e-45F;
+
+    private float minFloat_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float MinFloat {
+      get { if ((_hasBits0 & 128) != 0) { return minFloat_; } else { return MinFloatDefaultValue; } }
+      set {
+        _hasBits0 |= 128;
+        minFloat_ = value;
+      }
+    }
+    /// <summary>Gets whether the "min_float" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMinFloat {
+      get { return (_hasBits0 & 128) != 0; }
+    }
+    /// <summary>Clears the value of the "min_float" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMinFloat() {
+      _hasBits0 &= ~128;
+    }
+
+    /// <summary>Field number for the "max_double" field.</summary>
+    public const int MaxDoubleFieldNumber = 9;
+    private readonly static double MaxDoubleDefaultValue = 1.79769e+308D;
+
+    private double maxDouble_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double MaxDouble {
+      get { if ((_hasBits0 & 256) != 0) { return maxDouble_; } else { return MaxDoubleDefaultValue; } }
+      set {
+        _hasBits0 |= 256;
+        maxDouble_ = value;
+      }
+    }
+    /// <summary>Gets whether the "max_double" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasMaxDouble {
+      get { return (_hasBits0 & 256) != 0; }
+    }
+    /// <summary>Clears the value of the "max_double" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearMaxDouble() {
+      _hasBits0 &= ~256;
+    }
+
+    /// <summary>Field number for the "inf_float" field.</summary>
+    public const int InfFloatFieldNumber = 11;
+    private readonly static float InfFloatDefaultValue = float.PositiveInfinity;
+
+    private float infFloat_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float InfFloat {
+      get { if ((_hasBits0 & 512) != 0) { return infFloat_; } else { return InfFloatDefaultValue; } }
+      set {
+        _hasBits0 |= 512;
+        infFloat_ = value;
+      }
+    }
+    /// <summary>Gets whether the "inf_float" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasInfFloat {
+      get { return (_hasBits0 & 512) != 0; }
+    }
+    /// <summary>Clears the value of the "inf_float" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearInfFloat() {
+      _hasBits0 &= ~512;
+    }
+
+    /// <summary>Field number for the "neg_inf_float" field.</summary>
+    public const int NegInfFloatFieldNumber = 12;
+    private readonly static float NegInfFloatDefaultValue = float.NegativeInfinity;
+
+    private float negInfFloat_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float NegInfFloat {
+      get { if ((_hasBits0 & 1024) != 0) { return negInfFloat_; } else { return NegInfFloatDefaultValue; } }
+      set {
+        _hasBits0 |= 1024;
+        negInfFloat_ = value;
+      }
+    }
+    /// <summary>Gets whether the "neg_inf_float" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNegInfFloat {
+      get { return (_hasBits0 & 1024) != 0; }
+    }
+    /// <summary>Clears the value of the "neg_inf_float" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNegInfFloat() {
+      _hasBits0 &= ~1024;
+    }
+
+    /// <summary>Field number for the "nan_float" field.</summary>
+    public const int NanFloatFieldNumber = 13;
+    private readonly static float NanFloatDefaultValue = float.NaN;
+
+    private float nanFloat_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public float NanFloat {
+      get { if ((_hasBits0 & 2048) != 0) { return nanFloat_; } else { return NanFloatDefaultValue; } }
+      set {
+        _hasBits0 |= 2048;
+        nanFloat_ = value;
+      }
+    }
+    /// <summary>Gets whether the "nan_float" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNanFloat {
+      get { return (_hasBits0 & 2048) != 0; }
+    }
+    /// <summary>Clears the value of the "nan_float" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNanFloat() {
+      _hasBits0 &= ~2048;
+    }
+
+    /// <summary>Field number for the "inf_double" field.</summary>
+    public const int InfDoubleFieldNumber = 14;
+    private readonly static double InfDoubleDefaultValue = double.PositiveInfinity;
+
+    private double infDouble_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double InfDouble {
+      get { if ((_hasBits0 & 4096) != 0) { return infDouble_; } else { return InfDoubleDefaultValue; } }
+      set {
+        _hasBits0 |= 4096;
+        infDouble_ = value;
+      }
+    }
+    /// <summary>Gets whether the "inf_double" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasInfDouble {
+      get { return (_hasBits0 & 4096) != 0; }
+    }
+    /// <summary>Clears the value of the "inf_double" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearInfDouble() {
+      _hasBits0 &= ~4096;
+    }
+
+    /// <summary>Field number for the "neg_inf_double" field.</summary>
+    public const int NegInfDoubleFieldNumber = 15;
+    private readonly static double NegInfDoubleDefaultValue = double.NegativeInfinity;
+
+    private double negInfDouble_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double NegInfDouble {
+      get { if ((_hasBits0 & 8192) != 0) { return negInfDouble_; } else { return NegInfDoubleDefaultValue; } }
+      set {
+        _hasBits0 |= 8192;
+        negInfDouble_ = value;
+      }
+    }
+    /// <summary>Gets whether the "neg_inf_double" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNegInfDouble {
+      get { return (_hasBits0 & 8192) != 0; }
+    }
+    /// <summary>Clears the value of the "neg_inf_double" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNegInfDouble() {
+      _hasBits0 &= ~8192;
+    }
+
+    /// <summary>Field number for the "nan_double" field.</summary>
+    public const int NanDoubleFieldNumber = 16;
+    private readonly static double NanDoubleDefaultValue = double.NaN;
+
+    private double nanDouble_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double NanDouble {
+      get { if ((_hasBits0 & 16384) != 0) { return nanDouble_; } else { return NanDoubleDefaultValue; } }
+      set {
+        _hasBits0 |= 16384;
+        nanDouble_ = value;
+      }
+    }
+    /// <summary>Gets whether the "nan_double" field is set</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool HasNanDouble {
+      get { return (_hasBits0 & 16384) != 0; }
+    }
+    /// <summary>Clears the value of the "nan_double" field</summary>
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void ClearNanDouble() {
+      _hasBits0 &= ~16384;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ExtremeDefaults);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ExtremeDefaults other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (MaxInt32 != other.MaxInt32) return false;
+      if (MinInt32 != other.MinInt32) return false;
+      if (MaxInt64 != other.MaxInt64) return false;
+      if (MinInt64 != other.MinInt64) return false;
+      if (MaxUint32 != other.MaxUint32) return false;
+      if (MaxUint64 != other.MaxUint64) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MaxFloat, other.MaxFloat)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(MinFloat, other.MinFloat)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(MaxDouble, other.MaxDouble)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(InfFloat, other.InfFloat)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NegInfFloat, other.NegInfFloat)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(NanFloat, other.NanFloat)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(InfDouble, other.InfDouble)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(NegInfDouble, other.NegInfDouble)) return false;
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(NanDouble, other.NanDouble)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (HasMaxInt32) hash ^= MaxInt32.GetHashCode();
+      if (HasMinInt32) hash ^= MinInt32.GetHashCode();
+      if (HasMaxInt64) hash ^= MaxInt64.GetHashCode();
+      if (HasMinInt64) hash ^= MinInt64.GetHashCode();
+      if (HasMaxUint32) hash ^= MaxUint32.GetHashCode();
+      if (HasMaxUint64) hash ^= MaxUint64.GetHashCode();
+      if (HasMaxFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MaxFloat);
+      if (HasMinFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(MinFloat);
+      if (HasMaxDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(MaxDouble);
+      if (HasInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(InfFloat);
+      if (HasNegInfFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NegInfFloat);
+      if (HasNanFloat) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(NanFloat);
+      if (HasInfDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(InfDouble);
+      if (HasNegInfDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(NegInfDouble);
+      if (HasNanDouble) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(NanDouble);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (HasMaxInt32) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MaxInt32);
+      }
+      if (HasMinInt32) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MinInt32);
+      }
+      if (HasMaxInt64) {
+        output.WriteRawTag(24);
+        output.WriteInt64(MaxInt64);
+      }
+      if (HasMinInt64) {
+        output.WriteRawTag(32);
+        output.WriteInt64(MinInt64);
+      }
+      if (HasMaxUint32) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(MaxUint32);
+      }
+      if (HasMaxUint64) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(MaxUint64);
+      }
+      if (HasMaxFloat) {
+        output.WriteRawTag(61);
+        output.WriteFloat(MaxFloat);
+      }
+      if (HasMinFloat) {
+        output.WriteRawTag(69);
+        output.WriteFloat(MinFloat);
+      }
+      if (HasMaxDouble) {
+        output.WriteRawTag(73);
+        output.WriteDouble(MaxDouble);
+      }
+      if (HasInfFloat) {
+        output.WriteRawTag(93);
+        output.WriteFloat(InfFloat);
+      }
+      if (HasNegInfFloat) {
+        output.WriteRawTag(101);
+        output.WriteFloat(NegInfFloat);
+      }
+      if (HasNanFloat) {
+        output.WriteRawTag(109);
+        output.WriteFloat(NanFloat);
+      }
+      if (HasInfDouble) {
+        output.WriteRawTag(113);
+        output.WriteDouble(InfDouble);
+      }
+      if (HasNegInfDouble) {
+        output.WriteRawTag(121);
+        output.WriteDouble(NegInfDouble);
+      }
+      if (HasNanDouble) {
+        output.WriteRawTag(129, 1);
+        output.WriteDouble(NanDouble);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (HasMaxInt32) {
+        output.WriteRawTag(8);
+        output.WriteInt32(MaxInt32);
+      }
+      if (HasMinInt32) {
+        output.WriteRawTag(16);
+        output.WriteInt32(MinInt32);
+      }
+      if (HasMaxInt64) {
+        output.WriteRawTag(24);
+        output.WriteInt64(MaxInt64);
+      }
+      if (HasMinInt64) {
+        output.WriteRawTag(32);
+        output.WriteInt64(MinInt64);
+      }
+      if (HasMaxUint32) {
+        output.WriteRawTag(40);
+        output.WriteUInt32(MaxUint32);
+      }
+      if (HasMaxUint64) {
+        output.WriteRawTag(48);
+        output.WriteUInt64(MaxUint64);
+      }
+      if (HasMaxFloat) {
+        output.WriteRawTag(61);
+        output.WriteFloat(MaxFloat);
+      }
+      if (HasMinFloat) {
+        output.WriteRawTag(69);
+        output.WriteFloat(MinFloat);
+      }
+      if (HasMaxDouble) {
+        output.WriteRawTag(73);
+        output.WriteDouble(MaxDouble);
+      }
+      if (HasInfFloat) {
+        output.WriteRawTag(93);
+        output.WriteFloat(InfFloat);
+      }
+      if (HasNegInfFloat) {
+        output.WriteRawTag(101);
+        output.WriteFloat(NegInfFloat);
+      }
+      if (HasNanFloat) {
+        output.WriteRawTag(109);
+        output.WriteFloat(NanFloat);
+      }
+      if (HasInfDouble) {
+        output.WriteRawTag(113);
+        output.WriteDouble(InfDouble);
+      }
+      if (HasNegInfDouble) {
+        output.WriteRawTag(121);
+        output.WriteDouble(NegInfDouble);
+      }
+      if (HasNanDouble) {
+        output.WriteRawTag(129, 1);
+        output.WriteDouble(NanDouble);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (HasMaxInt32) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MaxInt32);
+      }
+      if (HasMinInt32) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(MinInt32);
+      }
+      if (HasMaxInt64) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MaxInt64);
+      }
+      if (HasMinInt64) {
+        size += 1 + pb::CodedOutputStream.ComputeInt64Size(MinInt64);
+      }
+      if (HasMaxUint32) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(MaxUint32);
+      }
+      if (HasMaxUint64) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt64Size(MaxUint64);
+      }
+      if (HasMaxFloat) {
+        size += 1 + 4;
+      }
+      if (HasMinFloat) {
+        size += 1 + 4;
+      }
+      if (HasMaxDouble) {
+        size += 1 + 8;
+      }
+      if (HasInfFloat) {
+        size += 1 + 4;
+      }
+      if (HasNegInfFloat) {
+        size += 1 + 4;
+      }
+      if (HasNanFloat) {
+        size += 1 + 4;
+      }
+      if (HasInfDouble) {
+        size += 1 + 8;
+      }
+      if (HasNegInfDouble) {
+        size += 1 + 8;
+      }
+      if (HasNanDouble) {
+        size += 2 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ExtremeDefaults other) {
+      if (other == null) {
+        return;
+      }
+      if (other.HasMaxInt32) {
+        MaxInt32 = other.MaxInt32;
+      }
+      if (other.HasMinInt32) {
+        MinInt32 = other.MinInt32;
+      }
+      if (other.HasMaxInt64) {
+        MaxInt64 = other.MaxInt64;
+      }
+      if (other.HasMinInt64) {
+        MinInt64 = other.MinInt64;
+      }
+      if (other.HasMaxUint32) {
+        MaxUint32 = other.MaxUint32;
+      }
+      if (other.HasMaxUint64) {
+        MaxUint64 = other.MaxUint64;
+      }
+      if (other.HasMaxFloat) {
+        MaxFloat = other.MaxFloat;
+      }
+      if (other.HasMinFloat) {
+        MinFloat = other.MinFloat;
+      }
+      if (other.HasMaxDouble) {
+        MaxDouble = other.MaxDouble;
+      }
+      if (other.HasInfFloat) {
+        InfFloat = other.InfFloat;
+      }
+      if (other.HasNegInfFloat) {
+        NegInfFloat = other.NegInfFloat;
+      }
+      if (other.HasNanFloat) {
+        NanFloat = other.NanFloat;
+      }
+      if (other.HasInfDouble) {
+        InfDouble = other.InfDouble;
+      }
+      if (other.HasNegInfDouble) {
+        NegInfDouble = other.NegInfDouble;
+      }
+      if (other.HasNanDouble) {
+        NanDouble = other.NanDouble;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            MaxInt32 = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            MinInt32 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            MaxInt64 = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            MinInt64 = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            MaxUint32 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            MaxUint64 = input.ReadUInt64();
+            break;
+          }
+          case 61: {
+            MaxFloat = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            MinFloat = input.ReadFloat();
+            break;
+          }
+          case 73: {
+            MaxDouble = input.ReadDouble();
+            break;
+          }
+          case 93: {
+            InfFloat = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            NegInfFloat = input.ReadFloat();
+            break;
+          }
+          case 109: {
+            NanFloat = input.ReadFloat();
+            break;
+          }
+          case 113: {
+            InfDouble = input.ReadDouble();
+            break;
+          }
+          case 121: {
+            NegInfDouble = input.ReadDouble();
+            break;
+          }
+          case 129: {
+            NanDouble = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            MaxInt32 = input.ReadInt32();
+            break;
+          }
+          case 16: {
+            MinInt32 = input.ReadInt32();
+            break;
+          }
+          case 24: {
+            MaxInt64 = input.ReadInt64();
+            break;
+          }
+          case 32: {
+            MinInt64 = input.ReadInt64();
+            break;
+          }
+          case 40: {
+            MaxUint32 = input.ReadUInt32();
+            break;
+          }
+          case 48: {
+            MaxUint64 = input.ReadUInt64();
+            break;
+          }
+          case 61: {
+            MaxFloat = input.ReadFloat();
+            break;
+          }
+          case 69: {
+            MinFloat = input.ReadFloat();
+            break;
+          }
+          case 73: {
+            MaxDouble = input.ReadDouble();
+            break;
+          }
+          case 93: {
+            InfFloat = input.ReadFloat();
+            break;
+          }
+          case 101: {
+            NegInfFloat = input.ReadFloat();
+            break;
+          }
+          case 109: {
+            NanFloat = input.ReadFloat();
+            break;
+          }
+          case 113: {
+            InfDouble = input.ReadDouble();
+            break;
+          }
+          case 121: {
+            NegInfDouble = input.ReadDouble();
+            break;
+          }
+          case 129: {
+            NanDouble = input.ReadDouble();
             break;
           }
         }

@@ -31,3 +31,24 @@ message SpecialStrings {
   optional string quote_string = 5;
   optional string backslash_string = 6;
 }
+
+
+// Message with extreme numeric defaults
+message ExtremeDefaults {
+  optional int32 max_int32 = 1 [default = 2147483647];
+  optional int32 min_int32 = 2 [default = -2147483648];
+  optional int64 max_int64 = 3 [default = 9223372036854775807];
+  optional int64 min_int64 = 4 [default = -9223372036854775808];
+  optional uint32 max_uint32 = 5 [default = 4294967295];
+  optional uint64 max_uint64 = 6 [default = 18446744073709551615];
+  optional float max_float = 7 [default = 3.4028235e+38];
+  optional float min_float = 8 [default = 1.4e-45];
+  optional double max_double = 9 [default = 1.7976931348623157e+308];
+
+  optional float inf_float = 11 [default = inf];
+  optional float neg_inf_float = 12 [default = -inf];
+  optional float nan_float = 13 [default = nan];
+  optional double inf_double = 14 [default = inf];
+  optional double neg_inf_double = 15 [default = -inf];
+  optional double nan_double = 16 [default = nan];
+}
