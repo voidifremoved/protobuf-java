@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ComprehensiveTest.V3Minimmal;
+package ComprehensiveTest.V3Minimal;
 
 option java_package = "com.rubberjam.protobuf.compiler.test.v3";
 option java_outer_classname = "ComprehensiveTestV3Minimal";

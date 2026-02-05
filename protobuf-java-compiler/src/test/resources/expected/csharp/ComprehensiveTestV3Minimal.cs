@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace ComprehensiveTest.V3Minimmal {
+namespace ComprehensiveTest.V3Minimal {
 
   /// <summary>Holder for reflection information generated from comprehensive_test_v3_minimal.proto</summary>
   public static partial class ComprehensiveTestV3MinimalReflection {
@@ -24,79 +24,78 @@ namespace ComprehensiveTest.V3Minimmal {
     static ComprehensiveTestV3MinimalReflection() {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
-            "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIcQ29tcHJl",
-            "aGVuc2l2ZVRlc3QuVjNNaW5pbW1hbBoZZ29vZ2xlL3Byb3RvYnVmL2FueS5w",
-            "cm90bxofZ29vZ2xlL3Byb3RvYnVmL3RpbWVzdGFtcC5wcm90bxoeZ29vZ2xl",
-            "L3Byb3RvYnVmL2R1cmF0aW9uLnByb3RvGhxnb29nbGUvcHJvdG9idWYvc3Ry",
-            "dWN0LnByb3RvGhtnb29nbGUvcHJvdG9idWYvZW1wdHkucHJvdG8aIGdvb2ds",
-            "ZS9wcm90b2J1Zi9maWVsZF9tYXNrLnByb3RvIpsFCg9BbGxGaWVsZFR5cGVz",
-            "VjMSEwoLaW50MzJfZmllbGQYASABKAUSEwoLaW50NjRfZmllbGQYAiABKAMS",
-            "FAoMdWludDMyX2ZpZWxkGAMgASgNEhQKDHVpbnQ2NF9maWVsZBgEIAEoBBIU",
-            "CgxzaW50MzJfZmllbGQYBSABKBESFAoMc2ludDY0X2ZpZWxkGAYgASgSEhUK",
-            "DWZpeGVkMzJfZmllbGQYByABKAcSFQoNZml4ZWQ2NF9maWVsZBgIIAEoBhIW",
-            "Cg5zZml4ZWQzMl9maWVsZBgJIAEoDxIWCg5zZml4ZWQ2NF9maWVsZBgKIAEo",
-            "EBITCgtmbG9hdF9maWVsZBgLIAEoAhIUCgxkb3VibGVfZmllbGQYDCABKAES",
-            "EgoKYm9vbF9maWVsZBgNIAEoCBIUCgxzdHJpbmdfZmllbGQYDiABKAkSEwoL",
-            "Ynl0ZXNfZmllbGQYDyABKAwSPAoKZW51bV9maWVsZBgQIAEoDjIoLkNvbXBy",
-            "ZWhlbnNpdmVUZXN0LlYzTWluaW1tYWwuVGVzdEVudW1WMxIWCg5yZXBlYXRl",
-            "ZF9pbnQzMhgSIAMoBRIXCg9yZXBlYXRlZF9zdHJpbmcYEyADKAkSPwoNcmVw",
-            "ZWF0ZWRfZW51bRgUIAMoDjIoLkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1t",
-            "YWwuVGVzdEVudW1WMxIcCg9vcHRpb25hbF9zdHJpbmcYFiABKAlIAIgBARIb",
-            "Cg5vcHRpb25hbF9pbnQzMhgXIAEoBUgBiAEBEhoKDW9wdGlvbmFsX2Jvb2wY",
-            "GCABKAhIAogBAUISChBfb3B0aW9uYWxfc3RyaW5nQhEKD19vcHRpb25hbF9p",
-            "bnQzMkIQCg5fb3B0aW9uYWxfYm9vbCKOAgoPUGFja2VkTWVzc2FnZVYzEhgK",
-            "DHBhY2tlZF9pbnQzMhgBIAMoBUICEAESGAoMcGFja2VkX2ludDY0GAIgAygD",
-            "QgIQARIZCg1wYWNrZWRfdWludDMyGAMgAygNQgIQARIXCgtwYWNrZWRfYm9v",
-            "bBgEIAMoCEICEAESQQoLcGFja2VkX2VudW0YBSADKA4yKC5Db21wcmVoZW5z",
-            "aXZlVGVzdC5WM01pbmltbWFsLlRlc3RFbnVtVjNCAhABEhoKDnBhY2tlZF9m",
-            "aXhlZDMyGAYgAygHQgIQARIYCgxwYWNrZWRfZmxvYXQYByADKAJCAhABEhoK",
-            "DnVucGFja2VkX2ludDMyGAggAygFQgIQACLBAgoOT25lb2ZNZXNzYWdlVjMS",
-            "FgoMb25lb2Zfc3RyaW5nGAEgASgJSAASFQoLb25lb2ZfaW50MzIYAiABKAVI",
-            "ABI+CgpvbmVvZl9lbnVtGAMgASgOMiguQ29tcHJlaGVuc2l2ZVRlc3QuVjNN",
-            "aW5pbW1hbC5UZXN0RW51bVYzSAASRgoNb25lb2ZfbWVzc2FnZRgEIAEoCzIt",
-            "LkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1tYWwuQWxsRmllbGRUeXBlc1Yz",
-            "SAASFQoLb25lb2ZfYnl0ZXMYBSABKAxIABIVCg1yZWd1bGFyX2ZpZWxkGAYg",
-            "ASgJEhQKCm9uZW9mX2Jvb2wYByABKAhIARIWCgxvbmVvZl9kb3VibGUYCCAB",
-            "KAFIAUIMCgp0ZXN0X29uZW9mQg4KDHNlY29uZF9vbmVvZiLaCQoMTWFwTWVz",
-            "c2FnZVYzElYKD3N0cmluZ190b19pbnQzMhgBIAMoCzI9LkNvbXByZWhlbnNp",
-            "dmVUZXN0LlYzTWluaW1tYWwuTWFwTWVzc2FnZVYzLlN0cmluZ1RvSW50MzJF",
-            "bnRyeRJWCg9pbnQzMl90b19zdHJpbmcYAiADKAsyPS5Db21wcmVoZW5zaXZl",
-            "VGVzdC5WM01pbmltbWFsLk1hcE1lc3NhZ2VWMy5JbnQzMlRvU3RyaW5nRW50",
-            "cnkSVAoOc3RyaW5nX3RvX2VudW0YAyADKAsyPC5Db21wcmVoZW5zaXZlVGVz",
-            "dC5WM01pbmltbWFsLk1hcE1lc3NhZ2VWMy5TdHJpbmdUb0VudW1FbnRyeRJa",
-            "ChFzdHJpbmdfdG9fbWVzc2FnZRgEIAMoCzI/LkNvbXByZWhlbnNpdmVUZXN0",
-            "LlYzTWluaW1tYWwuTWFwTWVzc2FnZVYzLlN0cmluZ1RvTWVzc2FnZUVudHJ5",
-            "ElQKDmJvb2xfdG9fc3RyaW5nGAUgAygLMjwuQ29tcHJlaGVuc2l2ZVRlc3Qu",
-            "VjNNaW5pbW1hbC5NYXBNZXNzYWdlVjMuQm9vbFRvU3RyaW5nRW50cnkSVAoO",
-            "aW50NjRfdG9fYnl0ZXMYBiADKAsyPC5Db21wcmVoZW5zaXZlVGVzdC5WM01p",
-            "bmltbWFsLk1hcE1lc3NhZ2VWMy5JbnQ2NFRvQnl0ZXNFbnRyeRJWCg91aW50",
-            "MzJfdG9fZmxvYXQYByADKAsyPS5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmlt",
-            "bWFsLk1hcE1lc3NhZ2VWMy5VaW50MzJUb0Zsb2F0RW50cnkSWgoRZml4ZWQ2",
-            "NF90b19kb3VibGUYCCADKAsyPy5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmlt",
-            "bWFsLk1hcE1lc3NhZ2VWMy5GaXhlZDY0VG9Eb3VibGVFbnRyeRo0ChJTdHJp",
-            "bmdUb0ludDMyRW50cnkSCwoDa2V5GAEgASgJEg0KBXZhbHVlGAIgASgFOgI4",
-            "ARo0ChJJbnQzMlRvU3RyaW5nRW50cnkSCwoDa2V5GAEgASgFEg0KBXZhbHVl",
-            "GAIgASgJOgI4ARpdChFTdHJpbmdUb0VudW1FbnRyeRILCgNrZXkYASABKAkS",
-            "NwoFdmFsdWUYAiABKA4yKC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltbWFs",
-            "LlRlc3RFbnVtVjM6AjgBGmUKFFN0cmluZ1RvTWVzc2FnZUVudHJ5EgsKA2tl",
-            "eRgBIAEoCRI8CgV2YWx1ZRgCIAEoCzItLkNvbXByZWhlbnNpdmVUZXN0LlYz",
-            "TWluaW1tYWwuQWxsRmllbGRUeXBlc1YzOgI4ARozChFCb29sVG9TdHJpbmdF",
-            "bnRyeRILCgNrZXkYASABKAgSDQoFdmFsdWUYAiABKAk6AjgBGjMKEUludDY0",
-            "VG9CeXRlc0VudHJ5EgsKA2tleRgBIAEoAxINCgV2YWx1ZRgCIAEoDDoCOAEa",
-            "NAoSVWludDMyVG9GbG9hdEVudHJ5EgsKA2tleRgBIAEoDRINCgV2YWx1ZRgC",
-            "IAEoAjoCOAEaNgoURml4ZWQ2NFRvRG91YmxlRW50cnkSCwoDa2V5GAEgASgG",
-            "Eg0KBXZhbHVlGAIgASgBOgI4ASpPCgpUZXN0RW51bVYzEhAKDFRFU1RfVU5L",
-            "Tk9XThAAEg4KClRFU1RfRklSU1QQARIPCgtURVNUX1NFQ09ORBACEg4KClRF",
-            "U1RfVEhJUkQQA0JNCidjb20ucnViYmVyamFtLnByb3RvYnVmLmNvbXBpbGVy",
-            "LnRlc3QudjNCGkNvbXByZWhlbnNpdmVUZXN0VjNNaW5pbWFsSAKAAQCIAQBi",
-            "BnByb3RvMw=="));
+            "CiNjb21wcmVoZW5zaXZlX3Rlc3RfdjNfbWluaW1hbC5wcm90bxIbQ29tcHJl",
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbWFsGhlnb29nbGUvcHJvdG9idWYvYW55LnBy",
+            "b3RvGh9nb29nbGUvcHJvdG9idWYvdGltZXN0YW1wLnByb3RvGh5nb29nbGUv",
+            "cHJvdG9idWYvZHVyYXRpb24ucHJvdG8aHGdvb2dsZS9wcm90b2J1Zi9zdHJ1",
+            "Y3QucHJvdG8aG2dvb2dsZS9wcm90b2J1Zi9lbXB0eS5wcm90bxogZ29vZ2xl",
+            "L3Byb3RvYnVmL2ZpZWxkX21hc2sucHJvdG8imQUKD0FsbEZpZWxkVHlwZXNW",
+            "MxITCgtpbnQzMl9maWVsZBgBIAEoBRITCgtpbnQ2NF9maWVsZBgCIAEoAxIU",
+            "Cgx1aW50MzJfZmllbGQYAyABKA0SFAoMdWludDY0X2ZpZWxkGAQgASgEEhQK",
+            "DHNpbnQzMl9maWVsZBgFIAEoERIUCgxzaW50NjRfZmllbGQYBiABKBISFQoN",
+            "Zml4ZWQzMl9maWVsZBgHIAEoBxIVCg1maXhlZDY0X2ZpZWxkGAggASgGEhYK",
+            "DnNmaXhlZDMyX2ZpZWxkGAkgASgPEhYKDnNmaXhlZDY0X2ZpZWxkGAogASgQ",
+            "EhMKC2Zsb2F0X2ZpZWxkGAsgASgCEhQKDGRvdWJsZV9maWVsZBgMIAEoARIS",
+            "Cgpib29sX2ZpZWxkGA0gASgIEhQKDHN0cmluZ19maWVsZBgOIAEoCRITCgti",
+            "eXRlc19maWVsZBgPIAEoDBI7CgplbnVtX2ZpZWxkGBAgASgOMicuQ29tcHJl",
+            "aGVuc2l2ZVRlc3QuVjNNaW5pbWFsLlRlc3RFbnVtVjMSFgoOcmVwZWF0ZWRf",
+            "aW50MzIYEiADKAUSFwoPcmVwZWF0ZWRfc3RyaW5nGBMgAygJEj4KDXJlcGVh",
+            "dGVkX2VudW0YFCADKA4yJy5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltYWwu",
+            "VGVzdEVudW1WMxIcCg9vcHRpb25hbF9zdHJpbmcYFiABKAlIAIgBARIbCg5v",
+            "cHRpb25hbF9pbnQzMhgXIAEoBUgBiAEBEhoKDW9wdGlvbmFsX2Jvb2wYGCAB",
+            "KAhIAogBAUISChBfb3B0aW9uYWxfc3RyaW5nQhEKD19vcHRpb25hbF9pbnQz",
+            "MkIQCg5fb3B0aW9uYWxfYm9vbCKNAgoPUGFja2VkTWVzc2FnZVYzEhgKDHBh",
+            "Y2tlZF9pbnQzMhgBIAMoBUICEAESGAoMcGFja2VkX2ludDY0GAIgAygDQgIQ",
+            "ARIZCg1wYWNrZWRfdWludDMyGAMgAygNQgIQARIXCgtwYWNrZWRfYm9vbBgE",
+            "IAMoCEICEAESQAoLcGFja2VkX2VudW0YBSADKA4yJy5Db21wcmVoZW5zaXZl",
+            "VGVzdC5WM01pbmltYWwuVGVzdEVudW1WM0ICEAESGgoOcGFja2VkX2ZpeGVk",
+            "MzIYBiADKAdCAhABEhgKDHBhY2tlZF9mbG9hdBgHIAMoAkICEAESGgoOdW5w",
+            "YWNrZWRfaW50MzIYCCADKAVCAhAAIr8CCg5PbmVvZk1lc3NhZ2VWMxIWCgxv",
+            "bmVvZl9zdHJpbmcYASABKAlIABIVCgtvbmVvZl9pbnQzMhgCIAEoBUgAEj0K",
+            "Cm9uZW9mX2VudW0YAyABKA4yJy5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmlt",
+            "YWwuVGVzdEVudW1WM0gAEkUKDW9uZW9mX21lc3NhZ2UYBCABKAsyLC5Db21w",
+            "cmVoZW5zaXZlVGVzdC5WM01pbmltYWwuQWxsRmllbGRUeXBlc1YzSAASFQoL",
+            "b25lb2ZfYnl0ZXMYBSABKAxIABIVCg1yZWd1bGFyX2ZpZWxkGAYgASgJEhQK",
+            "Cm9uZW9mX2Jvb2wYByABKAhIARIWCgxvbmVvZl9kb3VibGUYCCABKAFIAUIM",
+            "Cgp0ZXN0X29uZW9mQg4KDHNlY29uZF9vbmVvZiLQCQoMTWFwTWVzc2FnZVYz",
+            "ElUKD3N0cmluZ190b19pbnQzMhgBIAMoCzI8LkNvbXByZWhlbnNpdmVUZXN0",
+            "LlYzTWluaW1hbC5NYXBNZXNzYWdlVjMuU3RyaW5nVG9JbnQzMkVudHJ5ElUK",
+            "D2ludDMyX3RvX3N0cmluZxgCIAMoCzI8LkNvbXByZWhlbnNpdmVUZXN0LlYz",
+            "TWluaW1hbC5NYXBNZXNzYWdlVjMuSW50MzJUb1N0cmluZ0VudHJ5ElMKDnN0",
+            "cmluZ190b19lbnVtGAMgAygLMjsuQ29tcHJlaGVuc2l2ZVRlc3QuVjNNaW5p",
+            "bWFsLk1hcE1lc3NhZ2VWMy5TdHJpbmdUb0VudW1FbnRyeRJZChFzdHJpbmdf",
+            "dG9fbWVzc2FnZRgEIAMoCzI+LkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1h",
+            "bC5NYXBNZXNzYWdlVjMuU3RyaW5nVG9NZXNzYWdlRW50cnkSUwoOYm9vbF90",
+            "b19zdHJpbmcYBSADKAsyOy5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltYWwu",
+            "TWFwTWVzc2FnZVYzLkJvb2xUb1N0cmluZ0VudHJ5ElMKDmludDY0X3RvX2J5",
+            "dGVzGAYgAygLMjsuQ29tcHJlaGVuc2l2ZVRlc3QuVjNNaW5pbWFsLk1hcE1l",
+            "c3NhZ2VWMy5JbnQ2NFRvQnl0ZXNFbnRyeRJVCg91aW50MzJfdG9fZmxvYXQY",
+            "ByADKAsyPC5Db21wcmVoZW5zaXZlVGVzdC5WM01pbmltYWwuTWFwTWVzc2Fn",
+            "ZVYzLlVpbnQzMlRvRmxvYXRFbnRyeRJZChFmaXhlZDY0X3RvX2RvdWJsZRgI",
+            "IAMoCzI+LkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1hbC5NYXBNZXNzYWdl",
+            "VjMuRml4ZWQ2NFRvRG91YmxlRW50cnkaNAoSU3RyaW5nVG9JbnQzMkVudHJ5",
+            "EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEaNAoSSW50MzJUb1N0",
+            "cmluZ0VudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEoCToCOAEaXAoR",
+            "U3RyaW5nVG9FbnVtRW50cnkSCwoDa2V5GAEgASgJEjYKBXZhbHVlGAIgASgO",
+            "MicuQ29tcHJlaGVuc2l2ZVRlc3QuVjNNaW5pbWFsLlRlc3RFbnVtVjM6AjgB",
+            "GmQKFFN0cmluZ1RvTWVzc2FnZUVudHJ5EgsKA2tleRgBIAEoCRI7CgV2YWx1",
+            "ZRgCIAEoCzIsLkNvbXByZWhlbnNpdmVUZXN0LlYzTWluaW1hbC5BbGxGaWVs",
+            "ZFR5cGVzVjM6AjgBGjMKEUJvb2xUb1N0cmluZ0VudHJ5EgsKA2tleRgBIAEo",
+            "CBINCgV2YWx1ZRgCIAEoCToCOAEaMwoRSW50NjRUb0J5dGVzRW50cnkSCwoD",
+            "a2V5GAEgASgDEg0KBXZhbHVlGAIgASgMOgI4ARo0ChJVaW50MzJUb0Zsb2F0",
+            "RW50cnkSCwoDa2V5GAEgASgNEg0KBXZhbHVlGAIgASgCOgI4ARo2ChRGaXhl",
+            "ZDY0VG9Eb3VibGVFbnRyeRILCgNrZXkYASABKAYSDQoFdmFsdWUYAiABKAE6",
+            "AjgBKk8KClRlc3RFbnVtVjMSEAoMVEVTVF9VTktOT1dOEAASDgoKVEVTVF9G",
+            "SVJTVBABEg8KC1RFU1RfU0VDT05EEAISDgoKVEVTVF9USElSRBADQk0KJ2Nv",
+            "bS5ydWJiZXJqYW0ucHJvdG9idWYuY29tcGlsZXIudGVzdC52M0IaQ29tcHJl",
+            "aGVuc2l2ZVRlc3RWM01pbmltYWxIAoABAIgBAGIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.AnyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.TimestampReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.DurationReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.StructReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.FieldMaskReflection.Descriptor, },
-          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimmal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.PackedMessageV3), global::ComprehensiveTest.V3Minimmal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.OneofMessageV3), global::ComprehensiveTest.V3Minimmal.OneofMessageV3.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble" }, new[]{ "TestOneof", "SecondOneof" }, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimmal.MapMessageV3), global::ComprehensiveTest.V3Minimmal.MapMessageV3.Parser, new[]{ "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes", "Uint32ToFloat", "Fixed64ToDouble" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, null, null, null, null, })
+          new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V3Minimal.TestEnumV3), }, null, new pbr::GeneratedClrTypeInfo[] {
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimal.AllFieldTypesV3), global::ComprehensiveTest.V3Minimal.AllFieldTypesV3.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool" }, new[]{ "OptionalString", "OptionalInt32", "OptionalBool" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimal.PackedMessageV3), global::ComprehensiveTest.V3Minimal.PackedMessageV3.Parser, new[]{ "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimal.OneofMessageV3), global::ComprehensiveTest.V3Minimal.OneofMessageV3.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble" }, new[]{ "TestOneof", "SecondOneof" }, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V3Minimal.MapMessageV3), global::ComprehensiveTest.V3Minimal.MapMessageV3.Parser, new[]{ "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes", "Uint32ToFloat", "Fixed64ToDouble" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, null, null, null, null, })
           }));
     }
     #endregion
@@ -138,7 +137,7 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[0]; }
+      get { return global::ComprehensiveTest.V3Minimal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -381,13 +380,13 @@ namespace ComprehensiveTest.V3Minimmal {
 
     /// <summary>Field number for the "enum_field" field.</summary>
     public const int EnumFieldFieldNumber = 16;
-    private global::ComprehensiveTest.V3Minimmal.TestEnumV3 enumField_ = global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown;
+    private global::ComprehensiveTest.V3Minimal.TestEnumV3 enumField_ = global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown;
     /// <summary>
     /// Enum and message types
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.V3Minimmal.TestEnumV3 EnumField {
+    public global::ComprehensiveTest.V3Minimal.TestEnumV3 EnumField {
       get { return enumField_; }
       set {
         enumField_ = value;
@@ -421,12 +420,12 @@ namespace ComprehensiveTest.V3Minimmal {
 
     /// <summary>Field number for the "repeated_enum" field.</summary>
     public const int RepeatedEnumFieldNumber = 20;
-    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimmal.TestEnumV3> _repeated_repeatedEnum_codec
-        = pb::FieldCodec.ForEnum(162, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x);
-    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> repeatedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimal.TestEnumV3> _repeated_repeatedEnum_codec
+        = pb::FieldCodec.ForEnum(162, x => (int) x, x => (global::ComprehensiveTest.V3Minimal.TestEnumV3) x);
+    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3> repeatedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> RepeatedEnum {
+    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3> RepeatedEnum {
       get { return repeatedEnum_; }
     }
 
@@ -572,7 +571,7 @@ namespace ComprehensiveTest.V3Minimmal {
       if (BoolField != false) hash ^= BoolField.GetHashCode();
       if (StringField.Length != 0) hash ^= StringField.GetHashCode();
       if (BytesField.Length != 0) hash ^= BytesField.GetHashCode();
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) hash ^= EnumField.GetHashCode();
+      if (EnumField != global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown) hash ^= EnumField.GetHashCode();
       hash ^= repeatedInt32_.GetHashCode();
       hash ^= repeatedString_.GetHashCode();
       hash ^= repeatedEnum_.GetHashCode();
@@ -657,7 +656,7 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+      if (EnumField != global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown) {
         output.WriteRawTag(128, 1);
         output.WriteEnum((int) EnumField);
       }
@@ -746,7 +745,7 @@ namespace ComprehensiveTest.V3Minimmal {
         output.WriteRawTag(122);
         output.WriteBytes(BytesField);
       }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+      if (EnumField != global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown) {
         output.WriteRawTag(128, 1);
         output.WriteEnum((int) EnumField);
       }
@@ -820,7 +819,7 @@ namespace ComprehensiveTest.V3Minimmal {
       if (BytesField.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeBytesSize(BytesField);
       }
-      if (EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+      if (EnumField != global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown) {
         size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumField);
       }
       size += repeatedInt32_.CalculateSize(_repeated_repeatedInt32_codec);
@@ -892,7 +891,7 @@ namespace ComprehensiveTest.V3Minimmal {
       if (other.BytesField.Length != 0) {
         BytesField = other.BytesField;
       }
-      if (other.EnumField != global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown) {
+      if (other.EnumField != global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown) {
         EnumField = other.EnumField;
       }
       repeatedInt32_.Add(other.repeatedInt32_);
@@ -987,7 +986,7 @@ namespace ComprehensiveTest.V3Minimmal {
             break;
           }
           case 128: {
-            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
+            EnumField = (global::ComprehensiveTest.V3Minimal.TestEnumV3) input.ReadEnum();
             break;
           }
           case 146:
@@ -1096,7 +1095,7 @@ namespace ComprehensiveTest.V3Minimmal {
             break;
           }
           case 128: {
-            EnumField = (global::ComprehensiveTest.V3Minimmal.TestEnumV3) input.ReadEnum();
+            EnumField = (global::ComprehensiveTest.V3Minimal.TestEnumV3) input.ReadEnum();
             break;
           }
           case 146:
@@ -1150,7 +1149,7 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[1]; }
+      get { return global::ComprehensiveTest.V3Minimal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1233,12 +1232,12 @@ namespace ComprehensiveTest.V3Minimmal {
 
     /// <summary>Field number for the "packed_enum" field.</summary>
     public const int PackedEnumFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimmal.TestEnumV3> _repeated_packedEnum_codec
-        = pb::FieldCodec.ForEnum(42, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x);
-    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> packedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    private static readonly pb::FieldCodec<global::ComprehensiveTest.V3Minimal.TestEnumV3> _repeated_packedEnum_codec
+        = pb::FieldCodec.ForEnum(42, x => (int) x, x => (global::ComprehensiveTest.V3Minimal.TestEnumV3) x);
+    private readonly pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3> packedEnum_ = new pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimmal.TestEnumV3> PackedEnum {
+    public pbc::RepeatedField<global::ComprehensiveTest.V3Minimal.TestEnumV3> PackedEnum {
       get { return packedEnum_; }
     }
 
@@ -1541,7 +1540,7 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[2]; }
+      get { return global::ComprehensiveTest.V3Minimal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[2]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1654,8 +1653,8 @@ namespace ComprehensiveTest.V3Minimmal {
     public const int OneofEnumFieldNumber = 3;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.V3Minimmal.TestEnumV3 OneofEnum {
-      get { return HasOneofEnum ? (global::ComprehensiveTest.V3Minimmal.TestEnumV3) testOneof_ : global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown; }
+    public global::ComprehensiveTest.V3Minimal.TestEnumV3 OneofEnum {
+      get { return HasOneofEnum ? (global::ComprehensiveTest.V3Minimal.TestEnumV3) testOneof_ : global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown; }
       set {
         testOneof_ = value;
         testOneofCase_ = TestOneofOneofCase.OneofEnum;
@@ -1680,8 +1679,8 @@ namespace ComprehensiveTest.V3Minimmal {
     public const int OneofMessageFieldNumber = 4;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 OneofMessage {
-      get { return testOneofCase_ == TestOneofOneofCase.OneofMessage ? (global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3) testOneof_ : null; }
+    public global::ComprehensiveTest.V3Minimal.AllFieldTypesV3 OneofMessage {
+      get { return testOneofCase_ == TestOneofOneofCase.OneofMessage ? (global::ComprehensiveTest.V3Minimal.AllFieldTypesV3) testOneof_ : null; }
       set {
         testOneof_ = value;
         testOneofCase_ = value == null ? TestOneofOneofCase.None : TestOneofOneofCase.OneofMessage;
@@ -2018,7 +2017,7 @@ namespace ComprehensiveTest.V3Minimmal {
           break;
         case TestOneofOneofCase.OneofMessage:
           if (OneofMessage == null) {
-            OneofMessage = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+            OneofMessage = new global::ComprehensiveTest.V3Minimal.AllFieldTypesV3();
           }
           OneofMessage.MergeFrom(other.OneofMessage);
           break;
@@ -2069,7 +2068,7 @@ namespace ComprehensiveTest.V3Minimmal {
             break;
           }
           case 34: {
-            global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+            global::ComprehensiveTest.V3Minimal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimal.AllFieldTypesV3();
             if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
               subBuilder.MergeFrom(OneofMessage);
             }
@@ -2126,7 +2125,7 @@ namespace ComprehensiveTest.V3Minimmal {
             break;
           }
           case 34: {
-            global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3();
+            global::ComprehensiveTest.V3Minimal.AllFieldTypesV3 subBuilder = new global::ComprehensiveTest.V3Minimal.AllFieldTypesV3();
             if (testOneofCase_ == TestOneofOneofCase.OneofMessage) {
               subBuilder.MergeFrom(OneofMessage);
             }
@@ -2175,7 +2174,7 @@ namespace ComprehensiveTest.V3Minimmal {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::ComprehensiveTest.V3Minimmal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[3]; }
+      get { return global::ComprehensiveTest.V3Minimal.ComprehensiveTestV3MinimalReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2236,23 +2235,23 @@ namespace ComprehensiveTest.V3Minimmal {
 
     /// <summary>Field number for the "string_to_enum" field.</summary>
     public const int StringToEnumFieldNumber = 3;
-    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>.Codec _map_stringToEnum_codec
-        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForEnum(16, x => (int) x, x => (global::ComprehensiveTest.V3Minimmal.TestEnumV3) x, global::ComprehensiveTest.V3Minimmal.TestEnumV3.TestUnknown), 26);
-    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3> stringToEnum_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3>();
+    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimal.TestEnumV3>.Codec _map_stringToEnum_codec
+        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimal.TestEnumV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForEnum(16, x => (int) x, x => (global::ComprehensiveTest.V3Minimal.TestEnumV3) x, global::ComprehensiveTest.V3Minimal.TestEnumV3.TestUnknown), 26);
+    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimal.TestEnumV3> stringToEnum_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimal.TestEnumV3>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.TestEnumV3> StringToEnum {
+    public pbc::MapField<string, global::ComprehensiveTest.V3Minimal.TestEnumV3> StringToEnum {
       get { return stringToEnum_; }
     }
 
     /// <summary>Field number for the "string_to_message" field.</summary>
     public const int StringToMessageFieldNumber = 4;
-    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>.Codec _map_stringToMessage_codec
-        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3.Parser), 34);
-    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3> stringToMessage_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3>();
+    private static readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3>.Codec _map_stringToMessage_codec
+        = new pbc::MapField<string, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3>.Codec(pb::FieldCodec.ForString(10, ""), pb::FieldCodec.ForMessage(18, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3.Parser), 34);
+    private readonly pbc::MapField<string, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3> stringToMessage_ = new pbc::MapField<string, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::MapField<string, global::ComprehensiveTest.V3Minimmal.AllFieldTypesV3> StringToMessage {
+    public pbc::MapField<string, global::ComprehensiveTest.V3Minimal.AllFieldTypesV3> StringToMessage {
       get { return stringToMessage_; }
     }
 

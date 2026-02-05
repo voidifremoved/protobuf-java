@@ -31,7 +31,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
    * Test enum (proto3 - open enum)
    * </pre>
    *
-   * Protobuf enum {@code ComprehensiveTest.V3Minimmal.TestEnumV3}
+   * Protobuf enum {@code ComprehensiveTest.V3Minimal.TestEnumV3}
    */
   public enum TestEnumV3
       implements com.google.protobuf.ProtocolMessageEnum {
@@ -170,11 +170,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       this.value = value;
     }
 
-    // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3Minimmal.TestEnumV3)
+    // @@protoc_insertion_point(enum_scope:ComprehensiveTest.V3Minimal.TestEnumV3)
   }
 
   public interface AllFieldTypesV3OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimal.AllFieldTypesV3)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -290,7 +290,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Enum and message types
      * </pre>
      *
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
      * @return The enum numeric value on the wire for enumField.
      */
     int getEnumFieldValue();
@@ -299,7 +299,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Enum and message types
      * </pre>
      *
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
      * @return The enumField.
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField();
@@ -359,29 +359,29 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         getRepeatedStringBytes(int index);
 
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return A list containing the repeatedEnum.
      */
     java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return The count of repeatedEnum.
      */
     int getRepeatedEnumCount();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @param index The index of the element to return.
      * @return The repeatedEnum at the given index.
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getRepeatedEnum(int index);
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return A list containing the enum numeric values on the wire for repeatedEnum.
      */
     java.util.List<java.lang.Integer>
     getRepeatedEnumValueList();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @param index The index of the value to return.
      * @return The enum numeric value on the wire of repeatedEnum at the given index.
      */
@@ -443,11 +443,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
    * Message with all field types (proto3)
    * </pre>
    *
-   * Protobuf type {@code ComprehensiveTest.V3Minimmal.AllFieldTypesV3}
+   * Protobuf type {@code ComprehensiveTest.V3Minimal.AllFieldTypesV3}
    */
   public static final class AllFieldTypesV3 extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimal.AllFieldTypesV3)
       AllFieldTypesV3OrBuilder {
   private static final long serialVersionUID = 0L;
     static {
@@ -476,13 +476,13 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder.class);
     }
@@ -700,7 +700,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Enum and message types
      * </pre>
      *
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
      * @return The enum numeric value on the wire for enumField.
      */
     @java.lang.Override public int getEnumFieldValue() {
@@ -711,7 +711,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Enum and message types
      * </pre>
      *
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
      * @return The enumField.
      */
     @java.lang.Override public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getEnumField() {
@@ -812,7 +812,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
               }
             };
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return A list containing the repeatedEnum.
      */
     @java.lang.Override
@@ -821,7 +821,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
           com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return The count of repeatedEnum.
      */
     @java.lang.Override
@@ -829,7 +829,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return repeatedEnum_.size();
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @param index The index of the element to return.
      * @return The repeatedEnum at the given index.
      */
@@ -838,7 +838,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @return A list containing the enum numeric values on the wire for repeatedEnum.
      */
     @java.lang.Override
@@ -847,7 +847,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return repeatedEnum_;
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
      * @param index The index of the value to return.
      * @return The enum numeric value on the wire of repeatedEnum at the given index.
      */
@@ -1051,21 +1051,21 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Message with all field types (proto3)
      * </pre>
      *
-     * Protobuf type {@code ComprehensiveTest.V3Minimmal.AllFieldTypesV3}
+     * Protobuf type {@code ComprehensiveTest.V3Minimal.AllFieldTypesV3}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimal.AllFieldTypesV3)
         com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder.class);
       }
@@ -1113,7 +1113,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor;
       }
 
       @java.lang.Override
@@ -1780,7 +1780,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
        * Enum and message types
        * </pre>
        *
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
        * @return The enum numeric value on the wire for enumField.
        */
       @java.lang.Override public int getEnumFieldValue() {
@@ -1791,7 +1791,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
        * Enum and message types
        * </pre>
        *
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
        * @param value The enum numeric value on the wire for enumField to set.
        * @return This builder for chaining.
        */
@@ -1806,7 +1806,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
        * Enum and message types
        * </pre>
        *
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
        * @return The enumField.
        */
       @java.lang.Override
@@ -1819,7 +1819,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
        * Enum and message types
        * </pre>
        *
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
        * @param value The enumField to set.
        * @return This builder for chaining.
        */
@@ -1835,7 +1835,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
        * Enum and message types
        * </pre>
        *
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 enum_field = 16;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 enum_field = 16;</code>
        * @return This builder for chaining.
        */
       public Builder clearEnumField() {
@@ -2076,7 +2076,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         bitField0_ |= 0x00040000;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @return A list containing the repeatedEnum.
        */
       public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getRepeatedEnumList() {
@@ -2084,14 +2084,14 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
             com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(repeatedEnum_, repeatedEnum_converter_);
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @return The count of repeatedEnum.
        */
       public int getRepeatedEnumCount() {
         return repeatedEnum_.size();
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param index The index of the element to return.
        * @return The repeatedEnum at the given index.
        */
@@ -2099,7 +2099,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return repeatedEnum_converter_.convert(repeatedEnum_.getInt(index));
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param index The index to set the value at.
        * @param value The repeatedEnum to set.
        * @return This builder for chaining.
@@ -2113,7 +2113,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param value The repeatedEnum to add.
        * @return This builder for chaining.
        */
@@ -2125,7 +2125,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param values The repeatedEnum to add.
        * @return This builder for chaining.
        */
@@ -2139,7 +2139,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @return This builder for chaining.
        */
       public Builder clearRepeatedEnum() {
@@ -2149,7 +2149,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @return A list containing the enum numeric values on the wire for repeatedEnum.
        */
       public java.util.List<java.lang.Integer>
@@ -2158,7 +2158,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return repeatedEnum_;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param index The index of the value to return.
        * @return The enum numeric value on the wire of repeatedEnum at the given index.
        */
@@ -2166,7 +2166,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return repeatedEnum_.getInt(index);
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param index The index to set the value at.
        * @param value The enum numeric value on the wire for repeatedEnum to set.
        * @return This builder for chaining.
@@ -2179,7 +2179,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param value The enum numeric value on the wire for repeatedEnum to add.
        * @return This builder for chaining.
        */
@@ -2190,7 +2190,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 repeated_enum = 20;</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 repeated_enum = 20;</code>
        * @param values The enum numeric values on the wire for repeatedEnum to add.
        * @return This builder for chaining.
        */
@@ -2387,10 +2387,10 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimal.AllFieldTypesV3)
     }
 
-    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.AllFieldTypesV3)
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimal.AllFieldTypesV3)
     private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3();
@@ -2439,7 +2439,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   }
 
   public interface PackedMessageV3OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimal.PackedMessageV3)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -2511,29 +2511,29 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     boolean getPackedBool(int index);
 
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return A list containing the packedEnum.
      */
     java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getPackedEnumList();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return The count of packedEnum.
      */
     int getPackedEnumCount();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @param index The index of the element to return.
      * @return The packedEnum at the given index.
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getPackedEnum(int index);
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return A list containing the enum numeric values on the wire for packedEnum.
      */
     java.util.List<java.lang.Integer>
     getPackedEnumValueList();
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @param index The index of the value to return.
      * @return The enum numeric value on the wire of packedEnum at the given index.
      */
@@ -2607,11 +2607,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
    * Message with packed repeated fields (proto3 default)
    * </pre>
    *
-   * Protobuf type {@code ComprehensiveTest.V3Minimmal.PackedMessageV3}
+   * Protobuf type {@code ComprehensiveTest.V3Minimal.PackedMessageV3}
    */
   public static final class PackedMessageV3 extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimal.PackedMessageV3)
       PackedMessageV3OrBuilder {
   private static final long serialVersionUID = 0L;
     static {
@@ -2640,13 +2640,13 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.Builder.class);
     }
@@ -2785,7 +2785,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
               }
             };
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return A list containing the packedEnum.
      */
     @java.lang.Override
@@ -2794,7 +2794,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
           com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(packedEnum_, packedEnum_converter_);
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return The count of packedEnum.
      */
     @java.lang.Override
@@ -2802,7 +2802,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return packedEnum_.size();
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @param index The index of the element to return.
      * @return The packedEnum at the given index.
      */
@@ -2811,7 +2811,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return packedEnum_converter_.convert(packedEnum_.getInt(index));
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @return A list containing the enum numeric values on the wire for packedEnum.
      */
     @java.lang.Override
@@ -2820,7 +2820,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return packedEnum_;
     }
     /**
-     * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+     * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
      * @param index The index of the value to return.
      * @return The enum numeric value on the wire of packedEnum at the given index.
      */
@@ -3028,21 +3028,21 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Message with packed repeated fields (proto3 default)
      * </pre>
      *
-     * Protobuf type {@code ComprehensiveTest.V3Minimmal.PackedMessageV3}
+     * Protobuf type {@code ComprehensiveTest.V3Minimal.PackedMessageV3}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimal.PackedMessageV3)
         com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3.Builder.class);
       }
@@ -3075,7 +3075,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor;
       }
 
       @java.lang.Override
@@ -3488,7 +3488,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         bitField0_ |= 0x00000010;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @return A list containing the packedEnum.
        */
       public java.util.List<com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> getPackedEnumList() {
@@ -3496,14 +3496,14 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
             com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>(packedEnum_, packedEnum_converter_);
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @return The count of packedEnum.
        */
       public int getPackedEnumCount() {
         return packedEnum_.size();
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param index The index of the element to return.
        * @return The packedEnum at the given index.
        */
@@ -3511,7 +3511,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return packedEnum_converter_.convert(packedEnum_.getInt(index));
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param index The index to set the value at.
        * @param value The packedEnum to set.
        * @return This builder for chaining.
@@ -3525,7 +3525,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param value The packedEnum to add.
        * @return This builder for chaining.
        */
@@ -3537,7 +3537,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param values The packedEnum to add.
        * @return This builder for chaining.
        */
@@ -3551,7 +3551,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @return This builder for chaining.
        */
       public Builder clearPackedEnum() {
@@ -3561,7 +3561,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @return A list containing the enum numeric values on the wire for packedEnum.
        */
       public java.util.List<java.lang.Integer>
@@ -3570,7 +3570,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return packedEnum_;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param index The index of the value to return.
        * @return The enum numeric value on the wire of packedEnum at the given index.
        */
@@ -3578,7 +3578,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return packedEnum_.getInt(index);
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param index The index to set the value at.
        * @param value The enum numeric value on the wire for packedEnum to set.
        * @return This builder for chaining.
@@ -3591,7 +3591,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param value The enum numeric value on the wire for packedEnum to add.
        * @return This builder for chaining.
        */
@@ -3602,7 +3602,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>repeated .ComprehensiveTest.V3Minimmal.TestEnumV3 packed_enum = 5 [packed = true];</code>
+       * <code>repeated .ComprehensiveTest.V3Minimal.TestEnumV3 packed_enum = 5 [packed = true];</code>
        * @param values The enum numeric values on the wire for packedEnum to add.
        * @return This builder for chaining.
        */
@@ -3908,10 +3908,10 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimal.PackedMessageV3)
     }
 
-    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.PackedMessageV3)
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimal.PackedMessageV3)
     private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3 DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.PackedMessageV3();
@@ -3960,7 +3960,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   }
 
   public interface OneofMessageV3OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimal.OneofMessageV3)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -3992,33 +3992,33 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
     int getOneofInt32();
 
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return Whether the oneofEnum field is set.
      */
     boolean hasOneofEnum();
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return The enum numeric value on the wire for oneofEnum.
      */
     int getOneofEnumValue();
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return The oneofEnum.
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getOneofEnum();
 
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      * @return Whether the oneofMessage field is set.
      */
     boolean hasOneofMessage();
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      * @return The oneofMessage.
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getOneofMessage();
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder();
 
@@ -4076,11 +4076,11 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
    * Message with oneof (proto3)
    * </pre>
    *
-   * Protobuf type {@code ComprehensiveTest.V3Minimmal.OneofMessageV3}
+   * Protobuf type {@code ComprehensiveTest.V3Minimal.OneofMessageV3}
    */
   public static final class OneofMessageV3 extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimal.OneofMessageV3)
       OneofMessageV3OrBuilder {
   private static final long serialVersionUID = 0L;
     static {
@@ -4102,13 +4102,13 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.Builder.class);
     }
@@ -4278,14 +4278,14 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
     public static final int ONEOF_ENUM_FIELD_NUMBER = 3;
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return Whether the oneofEnum field is set.
      */
     public boolean hasOneofEnum() {
       return testOneofCase_ == 3;
     }
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return The enum numeric value on the wire for oneofEnum.
      */
     public int getOneofEnumValue() {
@@ -4295,7 +4295,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return 0;
     }
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+     * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
      * @return The oneofEnum.
      */
     public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getOneofEnum() {
@@ -4309,7 +4309,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
 
     public static final int ONEOF_MESSAGE_FIELD_NUMBER = 4;
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      * @return Whether the oneofMessage field is set.
      */
     @java.lang.Override
@@ -4317,7 +4317,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return testOneofCase_ == 4;
     }
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      * @return The oneofMessage.
      */
     @java.lang.Override
@@ -4328,7 +4328,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.getDefaultInstance();
     }
     /**
-     * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+     * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
      */
     @java.lang.Override
     public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
@@ -4537,21 +4537,21 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
      * Message with oneof (proto3)
      * </pre>
      *
-     * Protobuf type {@code ComprehensiveTest.V3Minimmal.OneofMessageV3}
+     * Protobuf type {@code ComprehensiveTest.V3Minimal.OneofMessageV3}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimal.OneofMessageV3)
         com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor;
       }
 
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3.Builder.class);
       }
@@ -4584,7 +4584,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor;
       }
 
       @java.lang.Override
@@ -4796,7 +4796,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       }
 
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @return Whether the oneofEnum field is set.
        */
       @java.lang.Override
@@ -4804,7 +4804,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return testOneofCase_ == 3;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @return The enum numeric value on the wire for oneofEnum.
        */
       @java.lang.Override
@@ -4815,7 +4815,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return 0;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @param value The enum numeric value on the wire for oneofEnum to set.
        * @return This builder for chaining.
        */
@@ -4826,7 +4826,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @return The oneofEnum.
        */
       @java.lang.Override
@@ -4839,7 +4839,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3.TEST_UNKNOWN;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @param value The oneofEnum to set.
        * @return This builder for chaining.
        */
@@ -4851,7 +4851,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.TestEnumV3 oneof_enum = 3;</code>
+       * <code>.ComprehensiveTest.V3Minimal.TestEnumV3 oneof_enum = 3;</code>
        * @return This builder for chaining.
        */
       public Builder clearOneofEnum() {
@@ -4866,7 +4866,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
       private com.google.protobuf.SingleFieldBuilder<
           com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> oneofMessageBuilder_;
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        * @return Whether the oneofMessage field is set.
        */
       @java.lang.Override
@@ -4874,7 +4874,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return testOneofCase_ == 4;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        * @return The oneofMessage.
        */
       @java.lang.Override
@@ -4892,7 +4892,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         }
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       public Builder setOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 value) {
         if (oneofMessageBuilder_ == null) {
@@ -4908,7 +4908,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       public Builder setOneofMessage(
           com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder builderForValue) {
@@ -4922,7 +4922,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       public Builder mergeOneofMessage(com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 value) {
         if (oneofMessageBuilder_ == null) {
@@ -4945,7 +4945,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       public Builder clearOneofMessage() {
         if (oneofMessageBuilder_ == null) {
@@ -4964,13 +4964,13 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder getOneofMessageBuilder() {
         return internalGetOneofMessageFieldBuilder().getBuilder();
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       @java.lang.Override
       public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder getOneofMessageOrBuilder() {
@@ -4984,7 +4984,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         }
       }
       /**
-       * <code>.ComprehensiveTest.V3Minimmal.AllFieldTypesV3 oneof_message = 4;</code>
+       * <code>.ComprehensiveTest.V3Minimal.AllFieldTypesV3 oneof_message = 4;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
           com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3OrBuilder> 
@@ -5203,10 +5203,10 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimal.OneofMessageV3)
     }
 
-    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.OneofMessageV3)
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimal.OneofMessageV3)
     private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3 DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.OneofMessageV3();
@@ -5255,7 +5255,7 @@ public final class ComprehensiveTestV3Minimal extends com.google.protobuf.Genera
   }
 
   public interface MapMessageV3OrBuilder extends
-      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimmal.MapMessageV3)
+      // @@protoc_insertion_point(interface_extends:ComprehensiveTest.V3Minimal.MapMessageV3)
       com.google.protobuf.MessageOrBuilder {
 
     /**
@@ -5325,11 +5325,11 @@ java.lang.String defaultValue);
         int key);
 
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     int getStringToEnumCount();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     boolean containsStringToEnum(
         java.lang.String key);
@@ -5340,12 +5340,12 @@ java.lang.String defaultValue);
     java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
     getStringToEnum();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
     getStringToEnumMap();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     /* nullable */
 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrDefault(
@@ -5353,7 +5353,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 ge
         /* nullable */
 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3         defaultValue);
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
         java.lang.String key);
@@ -5364,28 +5364,28 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3   
     java.util.Map<java.lang.String, java.lang.Integer>
     getStringToEnumValue();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     java.util.Map<java.lang.String, java.lang.Integer>
     getStringToEnumValueMap();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     int getStringToEnumValueOrDefault(
         java.lang.String key,
         int defaultValue);
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     int getStringToEnumValueOrThrow(
         java.lang.String key);
 
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     int getStringToMessageCount();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     boolean containsStringToMessage(
         java.lang.String key);
@@ -5396,12 +5396,12 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3   
     java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
     getStringToMessage();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>
     getStringToMessageMap();
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     /* nullable */
 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrDefault(
@@ -5409,7 +5409,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         /* nullable */
 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 defaultValue);
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
         java.lang.String key);
@@ -5551,11 +5551,11 @@ com.google.protobuf.ByteString defaultValue);
    * Message with map fields (proto3)
    * </pre>
    *
-   * Protobuf type {@code ComprehensiveTest.V3Minimmal.MapMessageV3}
+   * Protobuf type {@code ComprehensiveTest.V3Minimal.MapMessageV3}
    */
   public static final class MapMessageV3 extends
       com.google.protobuf.GeneratedMessage implements
-      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimmal.MapMessageV3)
+      // @@protoc_insertion_point(message_implements:ComprehensiveTest.V3Minimal.MapMessageV3)
       MapMessageV3OrBuilder {
   private static final long serialVersionUID = 0L;
     static {
@@ -5576,7 +5576,7 @@ com.google.protobuf.ByteString defaultValue);
 
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor;
     }
 
     @SuppressWarnings({"rawtypes"})
@@ -5608,7 +5608,7 @@ com.google.protobuf.ByteString defaultValue);
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable
+      return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.Builder.class);
     }
@@ -5619,7 +5619,7 @@ com.google.protobuf.ByteString defaultValue);
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -5696,7 +5696,7 @@ com.google.protobuf.ByteString defaultValue);
           java.lang.Integer, java.lang.String> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.Integer, java.lang.String>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.INT32,
                   0,
                   com.google.protobuf.WireFormat.FieldType.STRING,
@@ -5775,7 +5775,7 @@ java.lang.String defaultValue) {
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.ENUM,
@@ -5809,7 +5809,7 @@ java.lang.String defaultValue) {
       return internalGetStringToEnum().getMap().size();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public boolean containsStringToEnum(
@@ -5827,7 +5827,7 @@ java.lang.String defaultValue) {
       return getStringToEnumMap();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
@@ -5835,7 +5835,7 @@ java.lang.String defaultValue) {
       return internalGetAdaptedStringToEnumMap(
           internalGetStringToEnum().getMap());}
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public /* nullable */
@@ -5851,7 +5851,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
              : defaultValue;
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
@@ -5874,7 +5874,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
       return getStringToEnumValueMap();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.String, java.lang.Integer>
@@ -5882,7 +5882,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
       return internalGetStringToEnum().getMap();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public int getStringToEnumValueOrDefault(
@@ -5894,7 +5894,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
      */
     @java.lang.Override
     public int getStringToEnumValueOrThrow(
@@ -5914,7 +5914,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
           java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.MESSAGE,
@@ -5935,7 +5935,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
       return internalGetStringToMessage().getMap().size();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     @java.lang.Override
     public boolean containsStringToMessage(
@@ -5952,14 +5952,14 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
       return getStringToMessageMap();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     @java.lang.Override
     public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessageMap() {
       return internalGetStringToMessage().getMap();
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     @java.lang.Override
     public /* nullable */
@@ -5973,7 +5973,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+     * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
      */
     @java.lang.Override
     public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
@@ -5993,7 +5993,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
           java.lang.Boolean, java.lang.String> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.Boolean, java.lang.String>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.BOOL,
                   false,
                   com.google.protobuf.WireFormat.FieldType.STRING,
@@ -6072,7 +6072,7 @@ java.lang.String defaultValue) {
           java.lang.Long, com.google.protobuf.ByteString> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.Long, com.google.protobuf.ByteString>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.INT64,
                   0L,
                   com.google.protobuf.WireFormat.FieldType.BYTES,
@@ -6151,7 +6151,7 @@ com.google.protobuf.ByteString defaultValue) {
           java.lang.Integer, java.lang.Float> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.Integer, java.lang.Float>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.UINT32,
                   0,
                   com.google.protobuf.WireFormat.FieldType.FLOAT,
@@ -6228,7 +6228,7 @@ com.google.protobuf.ByteString defaultValue) {
           java.lang.Long, java.lang.Double> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.Long, java.lang.Double>newDefaultInstance(
-                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor, 
+                  com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.FIXED64,
                   0L,
                   com.google.protobuf.WireFormat.FieldType.DOUBLE,
@@ -6396,15 +6396,15 @@ com.google.protobuf.ByteString defaultValue) {
      * Message with map fields (proto3)
      * </pre>
      *
-     * Protobuf type {@code ComprehensiveTest.V3Minimmal.MapMessageV3}
+     * Protobuf type {@code ComprehensiveTest.V3Minimal.MapMessageV3}
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder> implements
-        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimmal.MapMessageV3)
+        // @@protoc_insertion_point(builder_implements:ComprehensiveTest.V3Minimal.MapMessageV3)
         com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3OrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor;
       }
 
       @SuppressWarnings({"rawtypes"})
@@ -6460,7 +6460,7 @@ com.google.protobuf.ByteString defaultValue) {
       @java.lang.Override
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_fieldAccessorTable
             .ensureFieldAccessorsInitialized(
                 com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.class, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3.Builder.class);
       }
@@ -6493,7 +6493,7 @@ com.google.protobuf.ByteString defaultValue) {
       @java.lang.Override
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+        return com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor;
       }
 
       @java.lang.Override
@@ -6834,7 +6834,7 @@ java.lang.String defaultValue) {
         return internalGetStringToEnum().getMap().size();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public boolean containsStringToEnum(
@@ -6852,7 +6852,7 @@ java.lang.String defaultValue) {
         return getStringToEnumMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3>
@@ -6860,7 +6860,7 @@ java.lang.String defaultValue) {
         return internalGetAdaptedStringToEnumMap(
             internalGetStringToEnum().getMap());}
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public /* nullable */
@@ -6876,7 +6876,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
                : defaultValue;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 getStringToEnumOrThrow(
@@ -6899,7 +6899,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return getStringToEnumValueMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public java.util.Map<java.lang.String, java.lang.Integer>
@@ -6907,7 +6907,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return internalGetStringToEnum().getMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public int getStringToEnumValueOrDefault(
@@ -6919,7 +6919,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return map.containsKey(key) ? map.get(key) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       @java.lang.Override
       public int getStringToEnumValueOrThrow(
@@ -6939,7 +6939,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       public Builder removeStringToEnum(
           java.lang.String key) {
@@ -6959,7 +6959,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
              internalGetMutableStringToEnum().getMutableMap());
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       public Builder putStringToEnum(
           java.lang.String key,
@@ -6972,7 +6972,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       public Builder putAllStringToEnum(
           java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3> values) {
@@ -6992,7 +6992,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return internalGetMutableStringToEnum().getMutableMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       public Builder putStringToEnumValue(
           java.lang.String key,
@@ -7005,7 +7005,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.TestEnumV3&gt; string_to_enum = 3;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.TestEnumV3&gt; string_to_enum = 3;</code>
        */
       public Builder putAllStringToEnumValue(
           java.util.Map<java.lang.String, java.lang.Integer> values) {
@@ -7051,7 +7051,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return internalGetStringToMessage().ensureBuilderMap().size();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       @java.lang.Override
       public boolean containsStringToMessage(
@@ -7068,14 +7068,14 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.TestEnumV3 de
         return getStringToMessageMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       @java.lang.Override
       public java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> getStringToMessageMap() {
         return internalGetStringToMessage().getImmutableMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       @java.lang.Override
       public /* nullable */
@@ -7088,7 +7088,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         return map.containsKey(key) ? stringToMessageConverter.build(map.get(key)) : defaultValue;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       @java.lang.Override
       public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3 getStringToMessageOrThrow(
@@ -7106,7 +7106,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       public Builder removeStringToMessage(
           java.lang.String key) {
@@ -7125,7 +7125,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         return internalGetMutableStringToMessage().ensureMessageMap();
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       public Builder putStringToMessage(
           java.lang.String key,
@@ -7138,7 +7138,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       public Builder putAllStringToMessage(
           java.util.Map<java.lang.String, com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3> values) {
@@ -7153,7 +7153,7 @@ com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypes
         return this;
       }
       /**
-       * <code>map&lt;string, .ComprehensiveTest.V3Minimmal.AllFieldTypesV3&gt; string_to_message = 4;</code>
+       * <code>map&lt;string, .ComprehensiveTest.V3Minimal.AllFieldTypesV3&gt; string_to_message = 4;</code>
        */
       public com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.AllFieldTypesV3.Builder putStringToMessageBuilderIfAbsent(
           java.lang.String key) {
@@ -7674,10 +7674,10 @@ com.google.protobuf.ByteString defaultValue) {
         return this;
       }
 
-      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimmal.MapMessageV3)
+      // @@protoc_insertion_point(builder_scope:ComprehensiveTest.V3Minimal.MapMessageV3)
     }
 
-    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimmal.MapMessageV3)
+    // @@protoc_insertion_point(class_scope:ComprehensiveTest.V3Minimal.MapMessageV3)
     private static final com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3 DEFAULT_INSTANCE;
     static {
       DEFAULT_INSTANCE = new com.rubberjam.protobuf.compiler.test.v3.ComprehensiveTestV3Minimal.MapMessageV3();
@@ -7726,65 +7726,65 @@ com.google.protobuf.ByteString defaultValue) {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor;
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable;
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7794,80 +7794,79 @@ com.google.protobuf.ByteString defaultValue) {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n#comprehensive_test_v3_minimal.proto\022\034C" +
-      "omprehensiveTest.V3Minimmal\032\031google/prot" +
-      "obuf/any.proto\032\037google/protobuf/timestam" +
-      "p.proto\032\036google/protobuf/duration.proto\032" +
-      "\034google/protobuf/struct.proto\032\033google/pr" +
-      "otobuf/empty.proto\032 google/protobuf/fiel" +
-      "d_mask.proto\"\233\005\n\017AllFieldTypesV3\022\023\n\013int3" +
-      "2_field\030\001 \001(\005\022\023\n\013int64_field\030\002 \001(\003\022\024\n\014ui" +
-      "nt32_field\030\003 \001(\r\022\024\n\014uint64_field\030\004 \001(\004\022\024" +
-      "\n\014sint32_field\030\005 \001(\021\022\024\n\014sint64_field\030\006 \001" +
-      "(\022\022\025\n\rfixed32_field\030\007 \001(\007\022\025\n\rfixed64_fie" +
-      "ld\030\010 \001(\006\022\026\n\016sfixed32_field\030\t \001(\017\022\026\n\016sfix" +
-      "ed64_field\030\n \001(\020\022\023\n\013float_field\030\013 \001(\002\022\024\n" +
-      "\014double_field\030\014 \001(\001\022\022\n\nbool_field\030\r \001(\010\022" +
-      "\024\n\014string_field\030\016 \001(\t\022\023\n\013bytes_field\030\017 \001" +
-      "(\014\022<\n\nenum_field\030\020 \001(\0162(.ComprehensiveTe" +
-      "st.V3Minimmal.TestEnumV3\022\026\n\016repeated_int" +
-      "32\030\022 \003(\005\022\027\n\017repeated_string\030\023 \003(\t\022?\n\rrep" +
-      "eated_enum\030\024 \003(\0162(.ComprehensiveTest.V3M" +
-      "inimmal.TestEnumV3\022\034\n\017optional_string\030\026 " +
-      "\001(\tH\000\210\001\001\022\033\n\016optional_int32\030\027 \001(\005H\001\210\001\001\022\032\n" +
-      "\roptional_bool\030\030 \001(\010H\002\210\001\001B\022\n\020_optional_s" +
-      "tringB\021\n\017_optional_int32B\020\n\016_optional_bo" +
-      "ol\"\216\002\n\017PackedMessageV3\022\030\n\014packed_int32\030\001" +
-      " \003(\005B\002\020\001\022\030\n\014packed_int64\030\002 \003(\003B\002\020\001\022\031\n\rpa" +
-      "cked_uint32\030\003 \003(\rB\002\020\001\022\027\n\013packed_bool\030\004 \003" +
-      "(\010B\002\020\001\022A\n\013packed_enum\030\005 \003(\0162(.Comprehens" +
-      "iveTest.V3Minimmal.TestEnumV3B\002\020\001\022\032\n\016pac" +
-      "ked_fixed32\030\006 \003(\007B\002\020\001\022\030\n\014packed_float\030\007 " +
-      "\003(\002B\002\020\001\022\032\n\016unpacked_int32\030\010 \003(\005B\002\020\000\"\301\002\n\016" +
-      "OneofMessageV3\022\026\n\014oneof_string\030\001 \001(\tH\000\022\025" +
-      "\n\013oneof_int32\030\002 \001(\005H\000\022>\n\noneof_enum\030\003 \001(" +
-      "\0162(.ComprehensiveTest.V3Minimmal.TestEnu" +
-      "mV3H\000\022F\n\roneof_message\030\004 \001(\0132-.Comprehen" +
-      "siveTest.V3Minimmal.AllFieldTypesV3H\000\022\025\n" +
-      "\013oneof_bytes\030\005 \001(\014H\000\022\025\n\rregular_field\030\006 " +
-      "\001(\t\022\024\n\noneof_bool\030\007 \001(\010H\001\022\026\n\014oneof_doubl" +
-      "e\030\010 \001(\001H\001B\014\n\ntest_oneofB\016\n\014second_oneof\"" +
-      "\332\t\n\014MapMessageV3\022V\n\017string_to_int32\030\001 \003(" +
-      "\0132=.ComprehensiveTest.V3Minimmal.MapMess" +
-      "ageV3.StringToInt32Entry\022V\n\017int32_to_str" +
-      "ing\030\002 \003(\0132=.ComprehensiveTest.V3Minimmal" +
-      ".MapMessageV3.Int32ToStringEntry\022T\n\016stri" +
-      "ng_to_enum\030\003 \003(\0132<.ComprehensiveTest.V3M" +
-      "inimmal.MapMessageV3.StringToEnumEntry\022Z" +
-      "\n\021string_to_message\030\004 \003(\0132?.Comprehensiv" +
-      "eTest.V3Minimmal.MapMessageV3.StringToMe" +
-      "ssageEntry\022T\n\016bool_to_string\030\005 \003(\0132<.Com" +
-      "prehensiveTest.V3Minimmal.MapMessageV3.B" +
-      "oolToStringEntry\022T\n\016int64_to_bytes\030\006 \003(\013" +
-      "2<.ComprehensiveTest.V3Minimmal.MapMessa" +
-      "geV3.Int64ToBytesEntry\022V\n\017uint32_to_floa" +
-      "t\030\007 \003(\0132=.ComprehensiveTest.V3Minimmal.M" +
-      "apMessageV3.Uint32ToFloatEntry\022Z\n\021fixed6" +
-      "4_to_double\030\010 \003(\0132?.ComprehensiveTest.V3" +
-      "Minimmal.MapMessageV3.Fixed64ToDoubleEnt" +
-      "ry\0324\n\022StringToInt32Entry\022\013\n\003key\030\001 \001(\t\022\r\n" +
-      "\005value\030\002 \001(\005:\0028\001\0324\n\022Int32ToStringEntry\022\013" +
-      "\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032]\n\021String" +
-      "ToEnumEntry\022\013\n\003key\030\001 \001(\t\0227\n\005value\030\002 \001(\0162" +
-      "(.ComprehensiveTest.V3Minimmal.TestEnumV" +
-      "3:\0028\001\032e\n\024StringToMessageEntry\022\013\n\003key\030\001 \001" +
-      "(\t\022<\n\005value\030\002 \001(\0132-.ComprehensiveTest.V3" +
-      "Minimmal.AllFieldTypesV3:\0028\001\0323\n\021BoolToSt" +
-      "ringEntry\022\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028" +
-      "\001\0323\n\021Int64ToBytesEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005v" +
-      "alue\030\002 \001(\014:\0028\001\0324\n\022Uint32ToFloatEntry\022\013\n\003" +
-      "key\030\001 \001(\r\022\r\n\005value\030\002 \001(\002:\0028\001\0326\n\024Fixed64T" +
-      "oDoubleEntry\022\013\n\003key\030\001 \001(\006\022\r\n\005value\030\002 \001(\001" +
-      ":\0028\001*O\n\nTestEnumV3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\n" +
-      "TEST_FIRST\020\001\022\017\n\013TEST_SECOND\020\002\022\016\n\nTEST_TH" +
-      "IRD\020\003BM\n\'com.rubberjam.protobuf.compiler" +
-      ".test.v3B\032ComprehensiveTestV3MinimalH\002\200\001" +
-      "\000\210\001\000b\006proto3"
+      "\n#comprehensive_test_v3_minimal.proto\022\033C" +
+      "omprehensiveTest.V3Minimal\032\031google/proto" +
+      "buf/any.proto\032\037google/protobuf/timestamp" +
+      ".proto\032\036google/protobuf/duration.proto\032\034" +
+      "google/protobuf/struct.proto\032\033google/pro" +
+      "tobuf/empty.proto\032 google/protobuf/field" +
+      "_mask.proto\"\231\005\n\017AllFieldTypesV3\022\023\n\013int32" +
+      "_field\030\001 \001(\005\022\023\n\013int64_field\030\002 \001(\003\022\024\n\014uin" +
+      "t32_field\030\003 \001(\r\022\024\n\014uint64_field\030\004 \001(\004\022\024\n" +
+      "\014sint32_field\030\005 \001(\021\022\024\n\014sint64_field\030\006 \001(" +
+      "\022\022\025\n\rfixed32_field\030\007 \001(\007\022\025\n\rfixed64_fiel" +
+      "d\030\010 \001(\006\022\026\n\016sfixed32_field\030\t \001(\017\022\026\n\016sfixe" +
+      "d64_field\030\n \001(\020\022\023\n\013float_field\030\013 \001(\002\022\024\n\014" +
+      "double_field\030\014 \001(\001\022\022\n\nbool_field\030\r \001(\010\022\024" +
+      "\n\014string_field\030\016 \001(\t\022\023\n\013bytes_field\030\017 \001(" +
+      "\014\022;\n\nenum_field\030\020 \001(\0162\'.ComprehensiveTes" +
+      "t.V3Minimal.TestEnumV3\022\026\n\016repeated_int32" +
+      "\030\022 \003(\005\022\027\n\017repeated_string\030\023 \003(\t\022>\n\rrepea" +
+      "ted_enum\030\024 \003(\0162\'.ComprehensiveTest.V3Min" +
+      "imal.TestEnumV3\022\034\n\017optional_string\030\026 \001(\t" +
+      "H\000\210\001\001\022\033\n\016optional_int32\030\027 \001(\005H\001\210\001\001\022\032\n\rop" +
+      "tional_bool\030\030 \001(\010H\002\210\001\001B\022\n\020_optional_stri" +
+      "ngB\021\n\017_optional_int32B\020\n\016_optional_bool\"" +
+      "\215\002\n\017PackedMessageV3\022\030\n\014packed_int32\030\001 \003(" +
+      "\005B\002\020\001\022\030\n\014packed_int64\030\002 \003(\003B\002\020\001\022\031\n\rpacke" +
+      "d_uint32\030\003 \003(\rB\002\020\001\022\027\n\013packed_bool\030\004 \003(\010B" +
+      "\002\020\001\022@\n\013packed_enum\030\005 \003(\0162\'.Comprehensive" +
+      "Test.V3Minimal.TestEnumV3B\002\020\001\022\032\n\016packed_" +
+      "fixed32\030\006 \003(\007B\002\020\001\022\030\n\014packed_float\030\007 \003(\002B" +
+      "\002\020\001\022\032\n\016unpacked_int32\030\010 \003(\005B\002\020\000\"\277\002\n\016Oneo" +
+      "fMessageV3\022\026\n\014oneof_string\030\001 \001(\tH\000\022\025\n\013on" +
+      "eof_int32\030\002 \001(\005H\000\022=\n\noneof_enum\030\003 \001(\0162\'." +
+      "ComprehensiveTest.V3Minimal.TestEnumV3H\000" +
+      "\022E\n\roneof_message\030\004 \001(\0132,.ComprehensiveT" +
+      "est.V3Minimal.AllFieldTypesV3H\000\022\025\n\013oneof" +
+      "_bytes\030\005 \001(\014H\000\022\025\n\rregular_field\030\006 \001(\t\022\024\n" +
+      "\noneof_bool\030\007 \001(\010H\001\022\026\n\014oneof_double\030\010 \001(" +
+      "\001H\001B\014\n\ntest_oneofB\016\n\014second_oneof\"\320\t\n\014Ma" +
+      "pMessageV3\022U\n\017string_to_int32\030\001 \003(\0132<.Co" +
+      "mprehensiveTest.V3Minimal.MapMessageV3.S" +
+      "tringToInt32Entry\022U\n\017int32_to_string\030\002 \003" +
+      "(\0132<.ComprehensiveTest.V3Minimal.MapMess" +
+      "ageV3.Int32ToStringEntry\022S\n\016string_to_en" +
+      "um\030\003 \003(\0132;.ComprehensiveTest.V3Minimal.M" +
+      "apMessageV3.StringToEnumEntry\022Y\n\021string_" +
+      "to_message\030\004 \003(\0132>.ComprehensiveTest.V3M" +
+      "inimal.MapMessageV3.StringToMessageEntry" +
+      "\022S\n\016bool_to_string\030\005 \003(\0132;.Comprehensive" +
+      "Test.V3Minimal.MapMessageV3.BoolToString" +
+      "Entry\022S\n\016int64_to_bytes\030\006 \003(\0132;.Comprehe" +
+      "nsiveTest.V3Minimal.MapMessageV3.Int64To" +
+      "BytesEntry\022U\n\017uint32_to_float\030\007 \003(\0132<.Co" +
+      "mprehensiveTest.V3Minimal.MapMessageV3.U" +
+      "int32ToFloatEntry\022Y\n\021fixed64_to_double\030\010" +
+      " \003(\0132>.ComprehensiveTest.V3Minimal.MapMe" +
+      "ssageV3.Fixed64ToDoubleEntry\0324\n\022StringTo" +
+      "Int32Entry\022\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\002" +
+      "8\001\0324\n\022Int32ToStringEntry\022\013\n\003key\030\001 \001(\005\022\r\n" +
+      "\005value\030\002 \001(\t:\0028\001\032\\\n\021StringToEnumEntry\022\013\n" +
+      "\003key\030\001 \001(\t\0226\n\005value\030\002 \001(\0162\'.Comprehensiv" +
+      "eTest.V3Minimal.TestEnumV3:\0028\001\032d\n\024String" +
+      "ToMessageEntry\022\013\n\003key\030\001 \001(\t\022;\n\005value\030\002 \001" +
+      "(\0132,.ComprehensiveTest.V3Minimal.AllFiel" +
+      "dTypesV3:\0028\001\0323\n\021BoolToStringEntry\022\013\n\003key" +
+      "\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028\001\0323\n\021Int64ToByte" +
+      "sEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005value\030\002 \001(\014:\0028\001\0324" +
+      "\n\022Uint32ToFloatEntry\022\013\n\003key\030\001 \001(\r\022\r\n\005val" +
+      "ue\030\002 \001(\002:\0028\001\0326\n\024Fixed64ToDoubleEntry\022\013\n\003" +
+      "key\030\001 \001(\006\022\r\n\005value\030\002 \001(\001:\0028\001*O\n\nTestEnum" +
+      "V3\022\020\n\014TEST_UNKNOWN\020\000\022\016\n\nTEST_FIRST\020\001\022\017\n\013" +
+      "TEST_SECOND\020\002\022\016\n\nTEST_THIRD\020\003BM\n\'com.rub" +
+      "berjam.protobuf.compiler.test.v3B\032Compre" +
+      "hensiveTestV3MinimalH\002\200\001\000\210\001\000b\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -7879,77 +7878,77 @@ com.google.protobuf.ByteString defaultValue) {
           com.google.protobuf.EmptyProto.getDescriptor(),
           com.google.protobuf.FieldMaskProto.getDescriptor(),
         });
-    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor =
+    internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor =
       getDescriptor().getMessageType(0);
-    internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_AllFieldTypesV3_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_AllFieldTypesV3_descriptor,
         new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "OptionalString", "OptionalInt32", "OptionalBool", });
-    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor =
+    internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor =
       getDescriptor().getMessageType(1);
-    internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_PackedMessageV3_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_PackedMessageV3_descriptor,
         new java.lang.String[] { "PackedInt32", "PackedInt64", "PackedUint32", "PackedBool", "PackedEnum", "PackedFixed32", "PackedFloat", "UnpackedInt32", });
-    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor =
+    internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor =
       getDescriptor().getMessageType(2);
-    internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_OneofMessageV3_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_OneofMessageV3_descriptor,
         new java.lang.String[] { "OneofString", "OneofInt32", "OneofEnum", "OneofMessage", "OneofBytes", "RegularField", "OneofBool", "OneofDouble", "TestOneof", "SecondOneof", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor =
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor =
       getDescriptor().getMessageType(3);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor,
         new java.lang.String[] { "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes", "Uint32ToFloat", "Fixed64ToDouble", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(0);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(0);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToInt32Entry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToInt32Entry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(1);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(1);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int32ToStringEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int32ToStringEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(2);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(2);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToEnumEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToEnumEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(3);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(3);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_StringToMessageEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_StringToMessageEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(4);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(4);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_BoolToStringEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_BoolToStringEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(5);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(5);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Int64ToBytesEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Int64ToBytesEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(6);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(6);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Uint32ToFloatEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Uint32ToFloatEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor =
-      internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_descriptor.getNestedType(7);
-    internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable = new
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_descriptor =
+      internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_descriptor.getNestedType(7);
+    internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-        internal_static_ComprehensiveTest_V3Minimmal_MapMessageV3_Fixed64ToDoubleEntry_descriptor,
+        internal_static_ComprehensiveTest_V3Minimal_MapMessageV3_Fixed64ToDoubleEntry_descriptor,
         new java.lang.String[] { "Key", "Value", });
     descriptor.resolveAllFeaturesImmutable();
     com.google.protobuf.AnyProto.getDescriptor();

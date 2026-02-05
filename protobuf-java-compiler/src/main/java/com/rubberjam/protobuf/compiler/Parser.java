@@ -94,6 +94,7 @@ public class Parser {
     }
   }
 
+
   public boolean parse(Tokenizer input, FileDescriptorProto.Builder file) {
     this.input = input;
     this.sourceCodeInfo = SourceCodeInfo.newBuilder();
@@ -267,7 +268,7 @@ public class Parser {
   private boolean parseTopLevelStatement(FileDescriptorProto.Builder file, LocationRecorder rootLocation) {
     if (lookingAt("message")) {
       LocationRecorder location = new LocationRecorder(rootLocation, FileDescriptorProto.MESSAGE_TYPE_FIELD_NUMBER, file.getMessageTypeCount());
-      return parseMessageDefinition(file.addMessageTypeBuilder(), location);
+      return parseMessageDefinition(file, file.addMessageTypeBuilder(), location);
     } else if (lookingAt("enum")) {
       LocationRecorder location = new LocationRecorder(rootLocation, FileDescriptorProto.ENUM_TYPE_FIELD_NUMBER, file.getEnumTypeCount());
       return parseEnumDefinition(file.addEnumTypeBuilder(), location);
@@ -347,7 +348,7 @@ public class Parser {
     return true;
   }
 
-  private boolean parseMessageDefinition(DescriptorProto.Builder message, LocationRecorder messageLocation) {
+  private boolean parseMessageDefinition(FileDescriptorProto.Builder file, DescriptorProto.Builder message, LocationRecorder messageLocation) {
     consume("message");
     StringBuilder name = new StringBuilder();
     if (!consumeIdentifier(name)) return false;
@@ -359,7 +360,7 @@ public class Parser {
         recordError("Unexpected end of file in message definition.");
         return false;
       }
-      if (!parseMessageStatement(message, messageLocation)) {
+      if (!parseMessageStatement(file, message, messageLocation)) {
           input.next();
       }
     }
@@ -368,10 +369,10 @@ public class Parser {
     return true;
   }
 
-  private boolean parseMessageStatement(DescriptorProto.Builder message, LocationRecorder messageLocation) {
+  private boolean parseMessageStatement(FileDescriptorProto.Builder file, DescriptorProto.Builder message, LocationRecorder messageLocation) {
     if (lookingAt("message")) {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.NESTED_TYPE_FIELD_NUMBER, message.getNestedTypeCount());
-      return parseMessageDefinition(message.addNestedTypeBuilder(), location);
+      return parseMessageDefinition(file, message.addNestedTypeBuilder(), location);
     } else if (lookingAt("enum")) {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.ENUM_TYPE_FIELD_NUMBER, message.getEnumTypeCount());
       return parseEnumDefinition(message.addEnumTypeBuilder(), location);
@@ -387,14 +388,14 @@ public class Parser {
         return parseOption(message.getOptionsBuilder(), messageLocation);
     } else if (lookingAt("map")) {
         LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
-        return parseMapField(message, location);
+        return parseMapField(file, message, location);
     } else {
       LocationRecorder location = new LocationRecorder(messageLocation, DescriptorProto.FIELD_FIELD_NUMBER, message.getFieldCount());
       return parseMessageField(message.addFieldBuilder(), location, message, null, -1);
     }
   }
 
-  private boolean parseMapField(DescriptorProto.Builder message, LocationRecorder location) {
+  private boolean parseMapField(FileDescriptorProto.Builder file, DescriptorProto.Builder message, LocationRecorder location) {
       consume("map");
       consume("<");
       StringBuilder keyType = new StringBuilder();
@@ -421,13 +422,13 @@ public class Parser {
       keyField.setName("key");
       keyField.setNumber(1);
       keyField.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
-      setFieldType(keyField, keyType.toString());
+      setFieldType(file, keyField, keyType.toString());
 
       FieldDescriptorProto.Builder valueField = entry.addFieldBuilder();
       valueField.setName("value");
       valueField.setNumber(2);
       valueField.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL);
-      setFieldType(valueField, valueType.toString());
+      setFieldType(file, valueField, valueType.toString());
 
       // Add field to message
       FieldDescriptorProto.Builder field = message.addFieldBuilder();
@@ -445,12 +446,54 @@ public class Parser {
       return true;
   }
 
-  private void setFieldType(FieldDescriptorProto.Builder field, String type) {
+  private void setFieldType(FileDescriptorProto.Builder file, FieldDescriptorProto.Builder field, String type) {
       if (isPrimitiveType(type)) {
           field.setType(FieldDescriptorProto.Type.valueOf("TYPE_" + type.toUpperCase()));
+      } else if (file != null && isEnumTypeInFile(type, file)) {
+          field.setType(FieldDescriptorProto.Type.TYPE_ENUM);
+          field.setTypeName(type);
       } else {
           field.setTypeName(type);
           field.setType(FieldDescriptorProto.Type.TYPE_MESSAGE);
+      }
+  }
+
+  /**
+   * Returns true if {@code typeName} refers to an enum defined in {@code file} (or nested in its messages).
+   * Handles simple names (e.g. "TestEnumV3") and qualified names (e.g. "ComprehensiveTest.V3Minimal.TestEnumV3").
+   */
+  private boolean isEnumTypeInFile(String typeName, FileDescriptorProto.Builder file) {
+      String simpleName = typeName.contains(".") ? typeName.substring(typeName.lastIndexOf('.') + 1) : typeName;
+      return enumSimpleNamesInFile(file).contains(simpleName);
+  }
+
+  private java.util.Set<String> enumSimpleNamesInFile(FileDescriptorProto.Builder file) {
+      java.util.Set<String> names = new java.util.HashSet<>();
+      collectEnumNamesFromFile(file, "", names);
+      return names;
+  }
+
+  private void collectEnumNamesFromFile(FileDescriptorProto.Builder file, String parentPath, java.util.Set<String> out) {
+      for (int i = 0; i < file.getEnumTypeCount(); i++) {
+          out.add(file.getEnumType(i).getName());
+      }
+      for (int i = 0; i < file.getMessageTypeCount(); i++) {
+          DescriptorProto.Builder msg = file.getMessageTypeBuilder(i);
+          String path = parentPath.isEmpty() ? msg.getName() : (parentPath + "." + msg.getName());
+          collectEnumNamesFromMessage(msg, path, out);
+      }
+  }
+
+  private void collectEnumNamesFromMessage(DescriptorProto.Builder message, String parentPath, java.util.Set<String> out) {
+      for (int i = 0; i < message.getEnumTypeCount(); i++) {
+          out.add(message.getEnumType(i).getName());
+      }
+      for (int i = 0; i < message.getNestedTypeCount(); i++) {
+          DescriptorProto.Builder nested = message.getNestedTypeBuilder(i);
+          if (!nested.getOptions().getMapEntry()) {
+              String path = parentPath + "." + nested.getName();
+              collectEnumNamesFromMessage(nested, path, out);
+          }
       }
   }
 
@@ -632,7 +675,7 @@ public class Parser {
                  recordError("Unexpected end of file in group definition.");
                  return false;
              }
-             if (!parseMessageStatement(nestedType, fieldLocation)) {
+             if (!parseMessageStatement(containingFile, nestedType, fieldLocation)) {
                  input.next();
              }
         }
