@@ -27,7 +27,7 @@ public final class InternalHelpers
 
 	public static boolean supportUnknownEnumValue(FieldDescriptor field)
 	{
-		if (field.getFile().toProto().getSyntax().equals("proto3"))
+		if (field.getFile() != null && field.getFile().toProto().getSyntax().equals("proto3"))
 		{
 			return true;
 		}
@@ -40,7 +40,7 @@ public final class InternalHelpers
 		{
 			return false;
 		}
-		if (descriptor.getFile().toProto().getSyntax().equals("proto3"))
+		if (descriptor.getFile() != null && descriptor.getFile().toProto().getSyntax().equals("proto3"))
 		{
 			return true;
 		}

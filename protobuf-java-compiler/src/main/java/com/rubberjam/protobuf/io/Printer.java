@@ -343,26 +343,63 @@ public class Printer
 
 				currentIndent = baseIndent + line.indent;
 
+				boolean isBlankLine = false;
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
 					Chunk chunk = line.chunks.get(chunkIdx);
-
-					if (pendingIndent)
+					if (chunk.text.trim().isBlank())
 					{
-						writeIndent();
-						pendingIndent = false;
+						isBlankLine = true;
 					}
-
-					if (!chunk.isVar)
+					else if (chunk.isVar)
 					{
-						writeRaw(chunk.text);
+						PrinterValue sub = lookupVar(chunk.text);
+						if (sub != null && sub.text != null && sub.text.isBlank())
+						{
+							isBlankLine = true;
+						}
+						else
+						{
+							isBlankLine = false;
+							break;	
+						}
 					}
 					else
 					{
-						chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
+						isBlankLine = false;
+						break;
 					}
 				}
-				previousLineWasPure = isPure;
+				
+				if (isBlankLine)
+				{
+					continue;
+				}
+				else
+				{
+					for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
+					{
+						Chunk chunk = line.chunks.get(chunkIdx);
+						
+						
+						if (pendingIndent)
+						{
+
+							writeIndent();
+							pendingIndent = false;
+						}
+	
+						if (!chunk.isVar)
+						{
+							writeRaw(chunk.text);
+						}
+						else
+						{
+							chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
+						}
+					}
+					previousLineWasPure = isPure;
+				}
 			}
 			currentIndent = baseIndent;
 		}
