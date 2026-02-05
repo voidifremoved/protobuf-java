@@ -372,23 +372,28 @@ public final class DocComment
             }
         }
 
-        if (field.getType() == FieldDescriptor.Type.MESSAGE) {
-             sb.append(".").append(field.getMessageType().getFullName());
+        if (field.getType() == FieldDescriptor.Type.GROUP) {
+             sb.append("group ").append(field.getMessageType().getName());
+        } else if (field.getType() == FieldDescriptor.Type.MESSAGE) {
+             sb.append(".").append(field.getMessageType().getFullName()).append(" ").append(field.getName());
         } else if (field.getType() == FieldDescriptor.Type.ENUM) {
-             sb.append(".").append(field.getEnumType().getFullName());
+             sb.append(".").append(field.getEnumType().getFullName()).append(" ").append(field.getName());
         } else {
-             sb.append(field.getType().name().toLowerCase());
+             sb.append(field.getType().name().toLowerCase()).append(" ").append(field.getName());
         }
 
-        sb.append(" ").append(field.getName()).append(" = ").append(field.getNumber());
+        sb.append(" = ").append(field.getNumber());
 
-        if (shouldPrintDefault(field)) {
-             sb.append(" [default = ");
-             sb.append(formatDefaultValue(field));
-             sb.append("]");
+        if (field.getType() == FieldDescriptor.Type.GROUP) {
+            sb.append(" { ... }");
+        } else {
+            if (shouldPrintDefault(field)) {
+                 sb.append(" [default = ");
+                 sb.append(formatDefaultValue(field));
+                 sb.append("]");
+            }
+            sb.append(";");
         }
-
-        sb.append(";");
         return sb.toString();
     }
 
