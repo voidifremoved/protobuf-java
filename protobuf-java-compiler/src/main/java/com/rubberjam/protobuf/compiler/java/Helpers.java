@@ -211,7 +211,13 @@ public class Helpers
 
 	public static String camelCaseFieldName(FieldDescriptor field)
 	{
-		String fieldName = underscoresToCamelCase(field.getName(), false);
+		String name;
+		if (field.getType() == FieldDescriptor.Type.GROUP) {
+			name = field.getMessageType().getName();
+		} else {
+			name = field.getName();
+		}
+		String fieldName = underscoresToCamelCase(name, false);
 		if (fieldName.length() > 0 && Character.isDigit(fieldName.charAt(0)))
 		{
 			return "_" + fieldName;

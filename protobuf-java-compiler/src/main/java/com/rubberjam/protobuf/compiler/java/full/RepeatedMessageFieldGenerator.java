@@ -444,7 +444,8 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
      if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
          printer.emit(variables,
              "$type$ m =\n" +
-             "    input.readGroup($number$, $type$.parser(),\n" +
+             "    input.readGroup($number$,\n" +
+             "        $type$.parser(),\n" +
              "        extensionRegistry);\n" +
              "if ($name$Builder_ == null) {\n" +
              "  ensure$capitalized_name$IsMutable();\n" +

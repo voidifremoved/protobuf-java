@@ -285,11 +285,18 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateParsingCode(Printer printer) {
-     printer.emit(variables,
-         "input.readMessage(\n" +
-         "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
-         "    extensionRegistry);\n" +
-         Helpers.generateSetBit(builderBitIndex) + ";\n");
+    if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
+      printer.emit(variables,
+          "input.readGroup($number$,\n" +
+          "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
+          "    extensionRegistry);\n");
+    } else {
+      printer.emit(variables,
+          "input.readMessage(\n" +
+          "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
+          "    extensionRegistry);\n");
+    }
+    printer.emit(variables, Helpers.generateSetBit(builderBitIndex) + ";\n");
   }
 
   @Override
