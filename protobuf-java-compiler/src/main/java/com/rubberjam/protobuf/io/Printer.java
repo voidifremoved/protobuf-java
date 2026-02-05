@@ -373,6 +373,7 @@ public class Printer
 				
 				if (isBlankLine)
 				{
+					previousLineWasPure = isPure;
 					continue;
 				}
 				else
@@ -381,14 +382,6 @@ public class Printer
 					{
 						Chunk chunk = line.chunks.get(chunkIdx);
 						
-						
-						if (pendingIndent)
-						{
-
-							writeIndent();
-							pendingIndent = false;
-						}
-	
 						if (!chunk.isVar)
 						{
 							writeRaw(chunk.text);
@@ -616,9 +609,7 @@ public class Printer
 			String lineText = lines[i];
 			int leading = 0;
 
-			boolean shouldStrip = (i > 0) || format.isRawString;
-
-			if (shouldStrip)
+			if (format.isRawString)
 			{
 				while (leading < lineText.length() && lineText.charAt(leading) == ' ')
 				{
@@ -633,7 +624,14 @@ public class Printer
 			}
 
 			Line line = new Line();
-			line.indent = Math.max(0, leading - rawStringIndent);
+			if (format.isRawString)
+			{
+				line.indent = Math.max(0, leading - rawStringIndent);
+			}
+			else
+			{
+				line.indent = 0;
+			}
 
 			String regex = Pattern.quote(String.valueOf(options.variableDelimiter));
 			String[] parts = lineText.split(regex, -1);
@@ -678,15 +676,23 @@ public class Printer
 	{
 		for (char c : data.toCharArray())
 		{
-			buffer.append(c);
-			bytesWritten++;
 			if (c == '\n')
 			{
+				buffer.append(c);
+				bytesWritten++;
 				atStartOfLine = true;
 				lastNewlineBytes = bytesWritten;
+				pendingIndent = true;
 			}
 			else
 			{
+				if (pendingIndent)
+				{
+					writeIndent();
+					pendingIndent = false;
+				}
+				buffer.append(c);
+				bytesWritten++;
 				atStartOfLine = false;
 			}
 		}

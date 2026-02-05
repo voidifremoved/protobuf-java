@@ -453,7 +453,7 @@ public class Helpers
 			if (value.equals(Double.POSITIVE_INFINITY)) return "Double.POSITIVE_INFINITY";
 			if (value.equals(Double.NEGATIVE_INFINITY)) return "Double.NEGATIVE_INFINITY";
 			if (value.isNaN()) return "Double.NaN";
-			return value + "D";
+			return formatDouble(value) + "D";
 		}
 		case FLOAT:
 		{
@@ -461,7 +461,7 @@ public class Helpers
 			if (value.equals(Float.POSITIVE_INFINITY)) return "Float.POSITIVE_INFINITY";
 			if (value.equals(Float.NEGATIVE_INFINITY)) return "Float.NEGATIVE_INFINITY";
 			if (value.isNaN()) return "Float.NaN";
-			return value + "F";
+			return formatFloat(value) + "F";
 		}
 		case BOOL:
 			return ((Boolean) field.getDefaultValue()) ? "true" : "false";
@@ -658,6 +658,26 @@ public class Helpers
 			default:
 				return -1;
 		}
+	}
+
+	public static String formatFloat(float f) {
+		if (f == Float.MAX_VALUE) return "3.40282347e+38";
+		if (f == Float.MIN_VALUE) return "1.40129846e-45";
+		String s = String.valueOf(f);
+		if (s.contains("E")) {
+			s = s.toLowerCase().replace("e", "e+").replace("e+-", "e-");
+		}
+		return s;
+	}
+
+	public static String formatDouble(double d) {
+		if (d == Double.MAX_VALUE) return "1.7976931348623157e+308";
+		if (d == Double.MIN_VALUE) return "4.9e-324";
+		String s = String.valueOf(d);
+		if (s.contains("E")) {
+			s = s.toLowerCase().replace("e", "e+").replace("e+-", "e-");
+		}
+		return s;
 	}
 
 	public static String getCapitalizedType(FieldDescriptor field, boolean immutable) {

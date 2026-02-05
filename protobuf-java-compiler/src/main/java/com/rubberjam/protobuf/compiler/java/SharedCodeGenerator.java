@@ -106,6 +106,56 @@ public class SharedCodeGenerator {
       } else if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
           builder.setTypeName("." + field.getEnumType().getFullName());
       }
+      if (field.hasDefaultValue()) {
+          builder.setDefaultValue(formatDefaultValue(field));
+      }
+  }
+
+  private String formatDefaultValue(com.google.protobuf.Descriptors.FieldDescriptor field) {
+      Object val = field.getDefaultValue();
+      switch (field.getType()) {
+          case UINT32:
+          case FIXED32:
+              return Integer.toUnsignedString((Integer)val);
+          case UINT64:
+          case FIXED64:
+              return Long.toUnsignedString((Long)val);
+          case FLOAT: {
+              float f = (Float) val;
+              if (Float.isInfinite(f)) return f < 0 ? "-inf" : "inf";
+              if (Float.isNaN(f)) return "nan";
+              return Helpers.formatFloat(f);
+          }
+          case DOUBLE: {
+              double d = (Double) val;
+              if (Double.isInfinite(d)) return d < 0 ? "-inf" : "inf";
+              if (Double.isNaN(d)) return "nan";
+              return Helpers.formatDouble(d);
+          }
+          case ENUM:
+              return ((com.google.protobuf.Descriptors.EnumValueDescriptor)val).getName();
+          case BYTES:
+              return escapeBytesInDescriptor((com.google.protobuf.ByteString)val);
+          default:
+              return val.toString();
+      }
+  }
+
+  private String escapeBytesInDescriptor(com.google.protobuf.ByteString bytes) {
+      // Descriptors store default values for bytes as C-escaped strings
+      StringBuilder sb = new StringBuilder();
+      for (int i = 0; i < bytes.size(); i++) {
+          byte b = bytes.byteAt(i);
+          if (b == '\n') sb.append("\\n");
+          else if (b == '\r') sb.append("\\r");
+          else if (b == '\t') sb.append("\\t");
+          else if (b == '\"') sb.append("\\\"");
+          else if (b == '\'') sb.append("\\\'");
+          else if (b == '\\') sb.append("\\\\");
+          else if (b >= 0x20 && b <= 0x7E) sb.append((char)b);
+          else sb.append(String.format("\\%03o", b & 0xFF));
+      }
+      return sb.toString();
   }
 
   private static String escapeBytes(com.google.protobuf.ByteString input) {
