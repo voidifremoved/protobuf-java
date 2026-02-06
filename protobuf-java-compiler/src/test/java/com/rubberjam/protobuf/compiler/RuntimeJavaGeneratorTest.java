@@ -69,4 +69,21 @@ public class RuntimeJavaGeneratorTest
 
 		System.out.println(builder.build());
 	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testCompileError()
+	{
+		RuntimeCompiler compiler = new RuntimeCompiler(getClass().getClassLoader());
+		try
+		{
+			compiler.compile("com.example.BadClass", "package com.example; public class BadClass { invalid code }", null);
+		}
+		catch (IllegalStateException e)
+		{
+			assertTrue(e.getMessage().contains("failed to compile"));
+			assertTrue(e.getMessage().contains("ERROR:[1,"));
+			assertTrue(e.getMessage().contains("invalid code"));
+			throw e;
+		}
+	}
 }

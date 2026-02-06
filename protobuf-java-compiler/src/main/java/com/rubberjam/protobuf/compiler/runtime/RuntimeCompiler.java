@@ -20,6 +20,8 @@ public final class RuntimeCompiler
 
 	public static final RuntimeCompiler DEFAULT = new RuntimeCompiler(RuntimeCompiler.class.getClassLoader());
 
+	private static final Pattern LINE_PATTERN = Pattern.compile("\n");
+
 	private final ReentrantLock lock = new ReentrantLock();
 
 	private final RuntimeGeneratedClassLoader classLoader;
@@ -64,13 +66,12 @@ public final class RuntimeCompiler
 				boolean success = task.call();
 				if (!success)
 				{
-					final Pattern linePattern = Pattern.compile("\n");
 					String compilationMessages = diagnosticCollector.getDiagnostics().stream()
 							.map(d -> d.getKind() + ":[" + d.getLineNumber() + "," + d.getColumnNumber() + "] "
 									+ d.getMessage(null)
 									+ "\n        "
 									+ (d.getLineNumber() <= 0 ? ""
-											: linePattern.splitAsStream(javaSource).skip(d.getLineNumber() - 1).findFirst()
+											: LINE_PATTERN.splitAsStream(javaSource).skip(d.getLineNumber() - 1).findFirst()
 													.orElse("")))
 							.collect(Collectors.joining("\n"));
 					throw new IllegalStateException("The generated class (" + fullClassName + ") failed to compile.\n"
