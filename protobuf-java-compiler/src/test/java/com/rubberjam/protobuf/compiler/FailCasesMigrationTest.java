@@ -175,7 +175,168 @@ public class FailCasesMigrationTest
 				+ "}\n"
 				+ "", loadExpectedContent("NESTED_MESSAGES_PROTO3_SPEED.txt"));
 	}
+	
+	@Test
+	public void testOneOfFieldProto3Speed() throws Exception
+	{
+		verifyParity("syntax = \"proto3\";\n"
+				+ "\n"
+				+ "package ComprehensiveTest.EdgeCasesMinimal;\n"
+				+ "\n"
+				+ "option java_package = \"com.rubberjam.protobuf.compiler.test.edge\";\n"
+				+ "option java_outer_classname = \"ComprehensiveTestEdgeCasesMinimal\";\n"
+				+ "option optimize_for = SPEED;\n"
+				+ "\n"
+				+ "\n"
+				+ "// Message with many oneof fields\n"
+				+ "message ManyOneofs {\n"
+				+ "  oneof oneof1 {\n"
+				+ "    string oneof1_string = 1;\n"
+				+ "    int32 oneof1_int32 = 2;\n"
+				+ "  }\n"
+				+ "  oneof oneof2 {\n"
+				+ "    string oneof2_string = 3;\n"
+				+ "    int32 oneof2_int32 = 4;\n"
+				+ "  }\n"
+				+ "  oneof oneof3 {\n"
+				+ "    string oneof3_string = 5;\n"
+				+ "    int32 oneof3_int32 = 6;\n"
+				+ "  }\n"
+				+ "  oneof oneof4 {\n"
+				+ "    string oneof4_string = 7;\n"
+				+ "    int32 oneof4_int32 = 8;\n"
+				+ "  }\n"
+				+ "  oneof oneof5 {\n"
+				+ "    string oneof5_string = 9;\n"
+				+ "    int32 oneof5_int32 = 10;\n"
+				+ "  }\n"
+				+ "}\n"
+				+ "", loadExpectedContent("ONEOF_FIELD_PROTO3_SPEED.txt"));
+	}
 
+	@Test
+	public void testOneOfFieldProto2Speed() throws Exception
+	{
+		verifyParity("syntax = \"proto2\";\n"
+				+ "\n"
+				+ "package ComprehensiveTest.EdgeCasesMinimal;\n"
+				+ "\n"
+				+ "option java_package = \"com.rubberjam.protobuf.compiler.test.edge\";\n"
+				+ "option java_outer_classname = \"ComprehensiveTestEdgeCasesMinimal\";\n"
+				+ "option optimize_for = SPEED;\n"
+				+ "\n"
+				+ "\n"
+				+ "// Message with many oneof fields\n"
+				+ "message ManyOneofs {\n"
+				+ "  oneof oneof1 {\n"
+				+ "    string oneof1_string = 1;\n"
+				+ "    int32 oneof1_int32 = 2;\n"
+				+ "  }\n"
+				+ "  oneof oneof2 {\n"
+				+ "    string oneof2_string = 3;\n"
+				+ "    int32 oneof2_int32 = 4;\n"
+				+ "  }\n"
+				+ "  oneof oneof3 {\n"
+				+ "    string oneof3_string = 5;\n"
+				+ "    int32 oneof3_int32 = 6;\n"
+				+ "  }\n"
+				+ "  oneof oneof4 {\n"
+				+ "    string oneof4_string = 7;\n"
+				+ "    int32 oneof4_int32 = 8;\n"
+				+ "  }\n"
+				+ "  oneof oneof5 {\n"
+				+ "    string oneof5_string = 9;\n"
+				+ "    int32 oneof5_int32 = 10;\n"
+				+ "  }\n"
+				+ "}\n"
+				+ "", loadExpectedContent("ONEOF_FIELD_PROTO2_SPEED.txt"));
+	}
+	
+	@Test
+	public void testMapMessageProto3Speed() throws Exception
+	{
+		verifyParity("syntax = \"proto3\";\n"
+				+ "\n"
+				+ "package ComprehensiveTest.EdgeCasesMinimal;\n"
+				+ "\n"
+				+ "option java_package = \"com.rubberjam.protobuf.compiler.test.edge\";\n"
+				+ "option java_outer_classname = \"ComprehensiveTestEdgeCasesMinimal\";\n"
+				+ "option optimize_for = SPEED;\n"
+				+ "\n"
+				+ "\n"
+				+ "// Message with many map fields\n"
+				+ "message ManyMaps {\n"
+				+ "  map<string, int32> map1 = 1;\n"
+				+ "  map<string, int32> map2 = 2;\n"
+				+ "  map<string, int32> map3 = 3;\n"
+				+ "  map<int32, string> map4 = 4;\n"
+				+ "  map<int32, string> map5 = 5;\n"
+				+ "  map<bool, string> map6 = 6;\n"
+				+ "  map<string, bool> map7 = 7;\n"
+				+ "  map<int64, bytes> map8 = 8;\n"
+				+ "}\n"
+				+ "", loadExpectedContent("MAP_MESSAGE_PROTO3_SPEED.txt"));
+	}
+	
+	@Test
+	public void testMapMessageProto2Speed() throws Exception
+	{
+		verifyParity("syntax = \"proto2\";\n"
+				+ "\n"
+				+ "package ComprehensiveTest.EdgeCasesMinimal;\n"
+				+ "\n"
+				+ "option java_package = \"com.rubberjam.protobuf.compiler.test.edge\";\n"
+				+ "option java_outer_classname = \"ComprehensiveTestEdgeCasesMinimal\";\n"
+				+ "option optimize_for = SPEED;\n"
+				+ "\n"
+				+ "\n"
+				+ "// Message with many map fields\n"
+				+ "message ManyMaps {\n"
+				+ "  map<string, int32> map1 = 1;\n"
+				+ "  map<string, int32> map2 = 2;\n"
+				+ "  map<string, int32> map3 = 3;\n"
+				+ "  map<int32, string> map4 = 4;\n"
+				+ "  map<int32, string> map5 = 5;\n"
+				+ "  map<bool, string> map6 = 6;\n"
+				+ "  map<string, bool> map7 = 7;\n"
+				+ "  map<int64, bytes> map8 = 8;\n"
+				+ "}\n"
+				+ "", loadExpectedContent("MAP_MESSAGE_PROTO2_SPEED.txt"));
+	}
+	
+	@Test
+	public void testFieldDefaultsProto2Speed() throws Exception
+	{
+		verifyParity("syntax = \"proto2\";\n"
+				+ "\n"
+				+ "package ComprehensiveTest.EdgeCasesMinimal;\n"
+				+ "\n"
+				+ "option java_package = \"com.rubberjam.protobuf.compiler.test.edge\";\n"
+				+ "option java_outer_classname = \"ComprehensiveTestEdgeCasesMinimal\";\n"
+				+ "option optimize_for = SPEED;\n"
+				+ "\n"
+				+ "\n"
+				+ "// Message with extreme numeric defaults\n"
+				+ "message ExtremeDefaults {\n"
+				+ "  optional int32 max_int32 = 1 [default = 2147483647];\n"
+				+ "  optional int32 min_int32 = 2 [default = -2147483648];\n"
+				+ "  optional int64 max_int64 = 3 [default = 9223372036854775807];\n"
+				+ "  optional int64 min_int64 = 4 [default = -9223372036854775808];\n"
+				+ "  optional uint32 max_uint32 = 5 [default = 4294967295];\n"
+				+ "  optional uint64 max_uint64 = 6 [default = 18446744073709551615];\n"
+				+ "  optional float max_float = 7 [default = 3.4028235e+38];\n"
+				+ "  optional float min_float = 8 [default = 1.4e-45];\n"
+				+ "  optional double max_double = 9 [default = 1.7976931348623157e+308];\n"
+				+ "\n"
+				+ "  optional float inf_float = 11 [default = inf];\n"
+				+ "  optional float neg_inf_float = 12 [default = -inf];\n"
+				+ "  optional float nan_float = 13 [default = nan];\n"
+				+ "  optional double inf_double = 14 [default = inf];\n"
+				+ "  optional double neg_inf_double = 15 [default = -inf];\n"
+				+ "  optional double nan_double = 16 [default = nan];\n"
+				+ "}", loadExpectedContent("FIeLD_DEFAULTS_PROTO2_SPEED.txt"));
+	}
+	
 	private static String loadExpectedContent(String resourceName) throws IOException {
 		try (InputStream in = FailCasesMigrationTest.class.getResourceAsStream(resourceName)) {
 			if (in == null) {
