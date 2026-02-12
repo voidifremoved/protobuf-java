@@ -78,7 +78,7 @@ public final class ImmutableFieldGeneratorFactory {
 
       // Increment bit indices
       messageBitIndex += generator.getNumBitsForMessage();
-      builderBitIndex += generator.getNumBitsForBuilder();
+      builderBitIndex++;
     }
 
     return fieldGenerators;

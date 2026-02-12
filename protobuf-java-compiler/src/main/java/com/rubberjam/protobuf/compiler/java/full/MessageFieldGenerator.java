@@ -32,12 +32,12 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public int getNumBitsForMessage() {
-    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
+    return Helpers.hasHasbit(descriptor) ? 1 : 0;
   }
 
   @Override
   public int getNumBitsForBuilder() {
-    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
+    return 1;
   }
 
   @Override
@@ -54,186 +54,368 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateMembers(Printer printer) {
-    printer.emit(variables,
-        "private $type$ $name$_;\n");
-
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
-          "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
-          "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+          "  return $oneof_name$Case_ == $number$;\n" +
+          "}\n");
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      printer.emit(variables,
+          "public $type$ get$capitalized_name$() {\n" +
+          "  if ($oneof_name$Case_ == $number$) {\n" +
+          "     return ($type$) $oneof_name$_;\n" +
+          "  }\n" +
+          "  return $type$.getDefaultInstance();\n" +
+          "}\n");
+
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
+          "  if ($oneof_name$Case_ == $number$) {\n" +
+          "     return ($type$) $oneof_name$_;\n" +
+          "  }\n" +
+          "  return $type$.getDefaultInstance();\n" +
           "}\n");
     } else {
       printer.emit(variables,
+          "private $type$ $name$_;\n");
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      if (Helpers.hasHasbit(descriptor)) {
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+            "public boolean has$capitalized_name$() {\n" +
+            "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+            "}\n");
+      } else {
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+            "public boolean has$capitalized_name$() {\n" +
+            "  return $name$_ != null;\n" +
+            "}\n");
+      }
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      printer.emit(variables,
           "@java.lang.Override\n" +
-          "public boolean has$capitalized_name$() {\n" +
-          "  return $name$_ != null;\n" +
+          "public $type$ get$capitalized_name$() {\n" +
+          "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
+          "}\n");
+
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "@java.lang.Override\n" +
+          "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
+          "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
           "}\n");
     }
-
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
-    printer.emit(variables,
-        "@java.lang.Override\n" +
-        "public $type$ get$capitalized_name$() {\n" +
-        "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
-        "}\n");
-
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "@java.lang.Override\n" +
-        "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
-        "  return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
-        "}\n");
   }
 
   @Override
   public void generateBuilderMembers(Printer printer) {
     variables.put("ver", Helpers.getGeneratedCodeVersionSuffix());
-    // We use SingleFieldBuilder for message fields in builders to support nested builders.
-    printer.emit(variables,
-        "private $type$ $name$_;\n" +
-        "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
-        "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
 
-    // has
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      // has
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
       printer.emit(variables,
+          "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
-          "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
+          "  return $oneof_name$Case_ == $number$;\n" +
           "}\n");
-    } else {
+
+      // get
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
-          "public boolean has$capitalized_name$() {\n" +
-          "  return $name$Builder_ != null || $name$_ != null;\n" +
+          "@java.lang.Override\n" +
+          "public $type$ get$capitalized_name$() {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    if ($oneof_name$Case_ == $number$) {\n" +
+          "      return ($type$) $oneof_name$_;\n" +
+          "    }\n" +
+          "    return $type$.getDefaultInstance();\n" +
+          "  } else {\n" +
+          "    if ($oneof_name$Case_ == $number$) {\n" +
+          "      return $name$Builder_.getMessage();\n" +
+          "    }\n" +
+          "    return $type$.getDefaultInstance();\n" +
+          "  }\n" +
+          "}\n");
+
+      // set
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder set$capitalized_name$($type$ value) {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    if (value == null) {\n" +
+          "      throw new NullPointerException();\n" +
+          "    }\n" +
+          "    $oneof_name$_ = value;\n" +
+          "    onChanged();\n" +
+          "  } else {\n" +
+          "    $name$Builder_.setMessage(value);\n" +
+          "  }\n" +
+          "  $oneof_name$Case_ = $number$;\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // set builder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder set$capitalized_name$(\n" +
+          "    $type$.Builder builderForValue) {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    $oneof_name$_ = builderForValue.build();\n" +
+          "    onChanged();\n" +
+          "  } else {\n" +
+          "    $name$Builder_.setMessage(builderForValue.build());\n" +
+          "  }\n" +
+          "  $oneof_name$Case_ = $number$;\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // merge
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables, "public Builder merge$capitalized_name$($type$ value) {\n");
+      printer.indent();
+      printer.emit(variables, "if ($name$Builder_ == null) {\n");
+      printer.indent();
+      printer.emit(variables,
+          "if ($oneof_name$Case_ == $number$ &&\n" +
+          "    $oneof_name$_ != $type$.getDefaultInstance()) {\n" +
+          "  $oneof_name$_ = $type$.newBuilder(($type$) $oneof_name$_)\n" +
+          "      .mergeFrom(value).buildPartial();\n" +
+          "} else {\n" +
+          "  $oneof_name$_ = value;\n" +
+          "}\n" +
+          "onChanged();\n");
+      printer.outdent();
+      printer.emit(variables,
+          "} else {\n" +
+          "  $name$Builder_.mergeFrom(value);\n" +
+          "}\n" +
+          "$oneof_name$Case_ = $number$;\n" +
+          "return this;\n");
+      printer.outdent();
+      printer.print("}\n");
+
+      // clear
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder clear$capitalized_name$() {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    if ($oneof_name$Case_ == $number$) {\n" +
+          "      $oneof_name$Case_ = 0;\n" +
+          "      $oneof_name$_ = null;\n" +
+          "      onChanged();\n" +
+          "    }\n" +
+          "  } else {\n" +
+          "    if ($oneof_name$Case_ == $number$) {\n" +
+          "      $oneof_name$Case_ = 0;\n" +
+          "      $oneof_name$_ = null;\n" +
+          "    }\n" +
+          "    $name$Builder_.clear();\n" +
+          "  }\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // getBuilder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public $type$.Builder get$capitalized_name$Builder() {\n" +
+          "  return internalGet$capitalized_name$FieldBuilder().getBuilder();\n" +
+          "}\n");
+
+      // getOrBuilder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "@java.lang.Override\n" +
+          "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
+          "  if (($oneof_name$Case_ == $number$) && ($name$Builder_ != null)) {\n" +
+          "    return $name$Builder_.getMessageOrBuilder();\n" +
+          "  } else {\n" +
+          "    if ($oneof_name$Case_ == $number$) {\n" +
+          "      return ($type$) $oneof_name$_;\n" +
+          "    }\n" +
+          "    return $type$.getDefaultInstance();\n" +
+          "  }\n" +
+          "}\n");
+
+      // getFieldBuilder (private)
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "    $type$, $type$.Builder, $type$OrBuilder> \n" +
+          "    internalGet$capitalized_name$FieldBuilder() {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    if (!($oneof_name$Case_ == $number$)) {\n" +
+          "      $oneof_name$_ = $type$.getDefaultInstance();\n" +
+          "    }\n" +
+          "    $name$Builder_ = new com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "        $type$, $type$.Builder, $type$OrBuilder>(\n" +
+          "            ($type$) $oneof_name$_,\n" +
+          "            getParentForChildren(),\n" +
+          "            isClean());\n" +
+          "    $oneof_name$_ = null;\n" +
+          "  }\n" +
+          "  $oneof_name$Case_ = $number$;\n" +
+          "  onChanged();\n" +
+          "  return $name$Builder_;\n" +
+          "}\n");
+
+      // storage for builder
+      printer.emit(variables,
+          "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
+
+    } else {
+      // We use SingleFieldBuilder for message fields in builders to support nested builders.
+      printer.emit(variables,
+          "private $type$ $name$_;\n" +
+          "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
+
+      // has
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+      if (Helpers.hasHasbit(descriptor)) {
+        printer.emit(variables,
+            "public boolean has$capitalized_name$() {\n" +
+            "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
+            "}\n");
+      } else {
+        printer.emit(variables,
+            "public boolean has$capitalized_name$() {\n" +
+            "  return $name$Builder_ != null || $name$_ != null;\n" +
+            "}\n");
+      }
+
+      // get
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      printer.emit(variables,
+          "public $type$ get$capitalized_name$() {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
+          "  } else {\n" +
+          "    return $name$Builder_.getMessage();\n" +
+          "  }\n" +
+          "}\n");
+
+      // set
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder set$capitalized_name$($type$ value) {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    if (value == null) {\n" +
+          "      throw new NullPointerException();\n" +
+          "    }\n" +
+          "    $name$_ = value;\n" +
+          "  } else {\n" +
+          "    $name$Builder_.setMessage(value);\n" +
+          "  }\n" +
+          "  " + (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
+          "  onChanged();\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // set builder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder set$capitalized_name$(\n" +
+          "    $type$.Builder builderForValue) {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    $name$_ = builderForValue.build();\n" +
+          "  } else {\n" +
+          "    $name$Builder_.setMessage(builderForValue.build());\n" +
+          "  }\n" +
+          "  " + (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
+          "  onChanged();\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // merge
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables, "public Builder merge$capitalized_name$($type$ value) {\n");
+      printer.indent();
+      printer.emit(variables, "if ($name$Builder_ == null) {\n");
+      printer.indent();
+      printer.emit(variables,
+          "if (" + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(builderBitIndex) : "has$capitalized_name$()") + " &&\n" +
+          "  $name$_ != null &&\n" +
+          "  $name$_ != $type$.getDefaultInstance()) {\n");
+      printer.indent();
+      printer.emit(variables, "get$capitalized_name$Builder().mergeFrom(value);\n");
+      printer.outdent();
+      printer.emit(variables,
+          "} else {\n" +
+          "  $name$_ = value;\n" +
+          "}\n");
+      printer.outdent();
+      printer.emit(variables,
+          "} else {\n" +
+          "  $name$Builder_.mergeFrom(value);\n" +
+          "}\n" +
+          "if ($name$_ != null) {\n" +
+          "  " + (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
+          "  onChanged();\n" +
+          "}\n" +
+          "return this;\n");
+      printer.outdent();
+      printer.print("}\n");
+
+      // clear
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public Builder clear$capitalized_name$() {\n" +
+          "  " + (Helpers.hasHasbit(descriptor) ? Helpers.generateClearBit(builderBitIndex) + ";\n" : "") +
+          "  $name$_ = null;\n" +
+          "  if ($name$Builder_ != null) {\n" +
+          "    $name$Builder_.dispose();\n" +
+          "    $name$Builder_ = null;\n" +
+          "  }\n" +
+          "  onChanged();\n" +
+          "  return this;\n" +
+          "}\n");
+
+      // getBuilder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public $type$.Builder get$capitalized_name$Builder() {\n" +
+          "  " + (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : "") +
+          "  onChanged();\n" +
+          "  return internalGet$capitalized_name$FieldBuilder().getBuilder();\n" +
+          "}\n");
+
+      // getOrBuilder
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
+          "  if ($name$Builder_ != null) {\n" +
+          "    return $name$Builder_.getMessageOrBuilder();\n" +
+          "  } else {\n" +
+          "    return $name$_ == null ?\n" +
+          "        $type$.getDefaultInstance() : $name$_;\n" +
+          "  }\n" +
+          "}\n");
+
+      // getFieldBuilder (private)
+      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+      printer.emit(variables,
+          "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "    $type$, $type$.Builder, $type$OrBuilder> \n" +
+          "    internalGet$capitalized_name$FieldBuilder() {\n" +
+          "  if ($name$Builder_ == null) {\n" +
+          "    $name$Builder_ = new com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+          "        $type$, $type$.Builder, $type$OrBuilder>(\n" +
+          "            get$capitalized_name$(),\n" +
+          "            getParentForChildren(),\n" +
+          "            isClean());\n" +
+          "    $name$_ = null;\n" +
+          "  }\n" +
+          "  return $name$Builder_;\n" +
           "}\n");
     }
-
-    // get
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
-    printer.emit(variables,
-        "public $type$ get$capitalized_name$() {\n" +
-        "  if ($name$Builder_ == null) {\n" +
-        "    return $name$_ == null ? $type$.getDefaultInstance() : $name$_;\n" +
-        "  } else {\n" +
-        "    return $name$Builder_.getMessage();\n" +
-        "  }\n" +
-        "}\n");
-
-    // set
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "public Builder set$capitalized_name$($type$ value) {\n" +
-        "  if ($name$Builder_ == null) {\n" +
-        "    if (value == null) {\n" +
-        "      throw new NullPointerException();\n" +
-        "    }\n" +
-        "    $name$_ = value;\n" +
-        "  } else {\n" +
-        "    $name$Builder_.setMessage(value);\n" +
-        "  }\n" +
-        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "  onChanged();\n" +
-        "  return this;\n" +
-        "}\n");
-
-    // set builder
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "public Builder set$capitalized_name$(\n" +
-        "    $type$.Builder builderForValue) {\n" +
-        "  if ($name$Builder_ == null) {\n" +
-        "    $name$_ = builderForValue.build();\n" +
-        "  } else {\n" +
-        "    $name$Builder_.setMessage(builderForValue.build());\n" +
-        "  }\n" +
-        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "  onChanged();\n" +
-        "  return this;\n" +
-        "}\n");
-
-    // merge
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables, "public Builder merge$capitalized_name$($type$ value) {\n");
-    printer.indent();
-    printer.emit(variables, "if ($name$Builder_ == null) {\n");
-    printer.indent();
-    printer.emit(variables,
-        "if (" + Helpers.generateGetBit(builderBitIndex) + " &&\n" +
-        "  $name$_ != null &&\n" +
-        "  $name$_ != $type$.getDefaultInstance()) {\n");
-    printer.indent();
-    printer.emit(variables, "get$capitalized_name$Builder().mergeFrom(value);\n");
-    printer.outdent();
-    printer.emit(variables,
-        "} else {\n" +
-        "  $name$_ = value;\n" +
-        "}\n");
-    printer.outdent();
-    printer.emit(variables,
-        "} else {\n" +
-        "  $name$Builder_.mergeFrom(value);\n" +
-        "}\n" +
-        "if ($name$_ != null) {\n" +
-        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "  onChanged();\n" +
-        "}\n" +
-        "return this;\n");
-    printer.outdent();
-    printer.print("}\n");
-
-    // clear
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "public Builder clear$capitalized_name$() {\n" +
-        "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-        "  $name$_ = null;\n" +
-        "  if ($name$Builder_ != null) {\n" +
-        "    $name$Builder_.dispose();\n" +
-        "    $name$Builder_ = null;\n" +
-        "  }\n" +
-        "  onChanged();\n" +
-        "  return this;\n" +
-        "}\n");
-
-    // getBuilder
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "public $type$.Builder get$capitalized_name$Builder() {\n" +
-        "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-        "  onChanged();\n" +
-        "  return internalGet$capitalized_name$FieldBuilder().getBuilder();\n" +
-        "}\n");
-
-    // getOrBuilder
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "public $type$OrBuilder get$capitalized_name$OrBuilder() {\n" +
-        "  if ($name$Builder_ != null) {\n" +
-        "    return $name$Builder_.getMessageOrBuilder();\n" +
-        "  } else {\n" +
-        "    return $name$_ == null ?\n" +
-        "        $type$.getDefaultInstance() : $name$_;\n" +
-        "  }\n" +
-        "}\n");
-
-    // getFieldBuilder (private)
-    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
-    printer.emit(variables,
-        "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
-        "    $type$, $type$.Builder, $type$OrBuilder> \n" +
-        "    internalGet$capitalized_name$FieldBuilder() {\n" +
-        "  if ($name$Builder_ == null) {\n" +
-        "    $name$Builder_ = new com.google.protobuf.SingleFieldBuilder$ver$<\n" +
-        "        $type$, $type$.Builder, $type$OrBuilder>(\n" +
-        "            get$capitalized_name$(),\n" +
-        "            getParentForChildren(),\n" +
-        "            isClean());\n" +
-        "    $name$_ = null;\n" +
-        "  }\n" +
-        "  return $name$Builder_;\n" +
-        "}\n");
   }
 
   @Override
@@ -265,7 +447,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuildingCode(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      return;
+    }
+    if (Helpers.hasHasbit(descriptor)) {
       printer.emit(variables,
           "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
           "  result.$name$_ = $name$Builder_ == null\n" +
@@ -296,7 +481,9 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
           "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
           "    extensionRegistry);\n");
     }
-    printer.emit(variables, Helpers.generateSetBit(builderBitIndex) + ";\n");
+    if (Helpers.hasHasbit(descriptor)) {
+      printer.emit(variables, Helpers.generateSetBit(builderBitIndex) + ";\n");
+    }
   }
 
   @Override
@@ -311,9 +498,21 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateSerializedSizeCode(Printer printer) {
-    String condition = Helpers.supportFieldPresence(descriptor)
-        ? Helpers.generateGetBit(messageBitIndex)
-        : "has$capitalized_name$()";
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if ($oneof_name$Case_ == $number$) {\n" +
+          "  size += com.google.protobuf.CodedOutputStream\n" +
+          "    .compute" + (descriptor.getType() == FieldDescriptor.Type.GROUP ? "Group" : "Message") + "Size($number$, ($type$) $oneof_name$_);\n" +
+          "}\n");
+      return;
+    }
+
+    String condition;
+    if (Helpers.hasHasbit(descriptor)) {
+      condition = Helpers.generateGetBit(messageBitIndex);
+    } else {
+      condition = "has$capitalized_name$()";
+    }
     variables.put("condition", condition);
     // computeGroupSize or computeMessageSize
     if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
@@ -333,9 +532,20 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateSerializationCode(Printer printer) {
-    String condition = Helpers.supportFieldPresence(descriptor)
-        ? Helpers.generateGetBit(messageBitIndex)
-        : "has$capitalized_name$()";
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if ($oneof_name$Case_ == $number$) {\n" +
+          "  output.write" + (descriptor.getType() == FieldDescriptor.Type.GROUP ? "Group" : "Message") + "($number$, ($type$) $oneof_name$_);\n" +
+          "}\n");
+      return;
+    }
+
+    String condition;
+    if (Helpers.hasHasbit(descriptor)) {
+      condition = Helpers.generateGetBit(messageBitIndex);
+    } else {
+      condition = "has$capitalized_name$()";
+    }
     variables.put("condition", condition);
     if (descriptor.getType() == FieldDescriptor.Type.GROUP) {
         printer.emit(variables,
@@ -352,26 +562,34 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateEqualsCode(Printer printer) {
-    printer.emit(variables,
-        "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
-        "if (has$capitalized_name$()) {\n");
-    printer.indent();
+    if (!Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
+          "if (has$capitalized_name$()) {\n");
+      printer.indent();
+    }
     printer.emit(variables,
         "if (!get$capitalized_name$()\n" +
         "    .equals(other.get$capitalized_name$())) return false;\n");
-    printer.outdent();
-    printer.print("}\n");
+    if (!Helpers.isRealOneof(descriptor)) {
+      printer.outdent();
+      printer.print("}\n");
+    }
   }
 
   @Override
   public void generateHashCodeCode(Printer printer) {
-    printer.emit(variables,
-        "if (has$capitalized_name$()) {\n");
-    printer.indent();
+    if (!Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if (has$capitalized_name$()) {\n");
+      printer.indent();
+    }
     printer.emit(variables,
         "hash = (37 * hash) + $constant_name$;\n" +
         "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
-    printer.outdent();
-    printer.print("}\n");
+    if (!Helpers.isRealOneof(descriptor)) {
+      printer.outdent();
+      printer.print("}\n");
+    }
   }
 }

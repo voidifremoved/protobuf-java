@@ -126,7 +126,8 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
      // getList
      DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
      printer.emit(variables,
-         "public java.util.List<$type$> get$capitalized_name$List() {\n" +
+         "public java.util.List<$type$> \n" +
+         "    get$capitalized_name$List() {\n" +
          "  if ($name$Builder_ == null) {\n" +
          "    return java.util.Collections.unmodifiableList($name$_);\n" +
          "  } else {\n" +

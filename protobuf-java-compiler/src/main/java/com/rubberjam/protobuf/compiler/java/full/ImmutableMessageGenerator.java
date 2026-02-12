@@ -172,8 +172,8 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
       for (OneofDescriptor oneof : oneofs.values()) {
           if (com.google.protobuf.CompilerInternalHelpers.isSynthetic(oneof)) continue;
           String capitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
+          printer.print("\n");
           printer.print(
-              "\n" +
               nameResolver.getImmutableClassName(descriptor) + "." + capitalizedName + "Case " +
               "get" + capitalizedName + "Case();\n");
       }
@@ -333,8 +333,9 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           printer.print("};\n\n");
 
           printer.print(vars,
+              "\n" +
               "public $oneof_capitalized_name$Case\n" +
-              "    get$oneof_capitalized_name$Case() {\n" +
+              "get$oneof_capitalized_name$Case() {\n" +
               "  return $oneof_capitalized_name$Case.forNumber(\n" +
               "      $oneof_name$Case_);\n" +
               "}\n" +
@@ -352,6 +353,10 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
               fieldGenerators.get(field).generateMembers(printer);
               printer.print("\n");
           }
+      }
+
+      for (OneofDescriptor oneof : descriptor.getRealOneofs()) {
+          generateOneofMembers(printer, oneof);
       }
 
       if (context.hasGeneratedMethods(descriptor)) {
@@ -756,8 +761,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           String capName = context.getOneofGeneratorInfo(oneof).capitalizedName;
           String name = context.getOneofGeneratorInfo(oneof).name;
           printer.print(
-              "if (!get" + capName + "Case().equals(\n" +
-              "    other.get" + capName + "Case())) return false;\n" +
+              "if (!get" + capName + "Case().equals(other.get" + capName + "Case())) return false;\n" +
               "switch (" + name + "Case_) {\n");
           printer.indent();
           for (FieldDescriptor field : oneof.getFields()) {
@@ -975,6 +979,15 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
           "  return PARSER;\n" +
           "}\n" +
           "\n");
+  }
+
+  private void generateOneofMembers(Printer printer, OneofDescriptor oneof) {
+      for (FieldDescriptor field : oneof.getFields()) {
+          printer.print(
+              "public static final int " + Helpers.fieldConstantName(field) + " = " + field.getNumber() + ";\n");
+          fieldGenerators.get(field).generateMembers(printer);
+          printer.print("\n");
+      }
   }
 
   // Helpers

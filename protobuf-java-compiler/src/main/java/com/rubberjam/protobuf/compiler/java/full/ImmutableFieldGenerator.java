@@ -28,10 +28,18 @@ public abstract class ImmutableFieldGenerator implements GeneratorCommon.FieldGe
     this.variables = new HashMap<>();
     FieldCommon.setCommonFieldVariables(
         descriptor, context.getFieldGeneratorInfo(descriptor), variables);
+    if (Helpers.isRealOneof(descriptor)) {
+      FieldCommon.setCommonOneofVariables(
+          descriptor, context.getOneofGeneratorInfo(descriptor.getRealContainingOneof()), variables);
+    }
   }
 
   public int getMessageBitIndex() {
     return messageBitIndex;
+  }
+
+  public int getBuilderBitIndex() {
+    return builderBitIndex;
   }
 
   public abstract int getNumBitsForMessage();

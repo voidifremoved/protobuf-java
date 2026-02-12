@@ -334,7 +334,7 @@ public class FailCasesMigrationTest
 				+ "  optional double inf_double = 14 [default = inf];\n"
 				+ "  optional double neg_inf_double = 15 [default = -inf];\n"
 				+ "  optional double nan_double = 16 [default = nan];\n"
-				+ "}", loadExpectedContent("FIeLD_DEFAULTS_PROTO2_SPEED.txt"));
+				+ "}", loadExpectedContent("FIELD_DEFAULTS_PROTO2_SPEED.txt"));
 	}
 	
 	private static String loadExpectedContent(String resourceName) throws IOException {

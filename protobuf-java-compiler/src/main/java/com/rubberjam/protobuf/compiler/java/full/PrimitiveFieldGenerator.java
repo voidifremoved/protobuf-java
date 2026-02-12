@@ -100,12 +100,12 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public int getNumBitsForMessage() {
-    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
+    return Helpers.hasHasbit(descriptor) ? 1 : 0;
   }
 
   @Override
   public int getNumBitsForBuilder() {
-    return Helpers.supportFieldPresence(descriptor) ? 1 : 0;
+    return 1;
   }
 
   @Override
@@ -120,35 +120,88 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateMembers(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
-      printer.emit(variables, "private $type$ $name$_ = $default$;\n");
+    if (Helpers.isRealOneof(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public boolean has$capitalized_name$() {\n" +
-          "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+          "  return $oneof_name$Case_ == $number$;\n" +
           "}\n");
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
-          "  return $name$_;\n" +
+          "  if ($oneof_name$Case_ == $number$) {\n" +
+          "    return ($boxed_type$) $oneof_name$_;\n" +
+          "  }\n" +
+          "  return $default$;\n" +
           "}\n");
     } else {
-      // Proto3 implicit
       printer.emit(variables, "private $type$ $name$_ = $default$;\n");
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
-      printer.emit(variables,
-          "@java.lang.Override\n" +
-          "public $type$ get$capitalized_name$() {\n" +
-          "  return $name$_;\n" +
-          "}\n");
+      if (Helpers.hasHasbit(descriptor)) {
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+            "public boolean has$capitalized_name$() {\n" +
+            "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+            "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+            "public $type$ get$capitalized_name$() {\n" +
+            "  return $name$_;\n" +
+            "}\n");
+      } else {
+        // Proto3 implicit
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+            "public $type$ get$capitalized_name$() {\n" +
+            "  return $name$_;\n" +
+            "}\n");
+      }
     }
   }
 
   @Override
   public void generateBuilderMembers(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+      printer.emit(variables,
+          "public boolean has$capitalized_name$() {\n" +
+          "  return $oneof_name$Case_ == $number$;\n" +
+          "}\n");
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      printer.emit(variables,
+          "public $type$ get$capitalized_name$() {\n" +
+          "  if ($oneof_name$Case_ == $number$) {\n" +
+          "    return ($boxed_type$) $oneof_name$_;\n" +
+          "  }\n" +
+          "  return $default$;\n" +
+          "}\n");
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      printer.emit(variables,
+          "public Builder set$capitalized_name$($type$ value) {\n" +
+          "\n" +
+          "  $oneof_name$Case_ = $number$;\n" +
+          "  $oneof_name$_ = value;\n" +
+          "  onChanged();\n" +
+          "  return this;\n" +
+          "}\n");
+
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      printer.emit(variables,
+          "public Builder clear$capitalized_name$() {\n" +
+          "  if ($oneof_name$Case_ == $number$) {\n" +
+          "    $oneof_name$Case_ = 0;\n" +
+          "    $oneof_name$_ = null;\n" +
+          "    onChanged();\n" +
+          "  }\n" +
+          "  return this;\n" +
+          "}\n");
+    } else if (Helpers.hasHasbit(descriptor)) {
       if (Helpers.isDefaultValueJavaDefault(descriptor)) {
         printer.emit(variables, "private $type$ $name$_ ;\n");
       } else {
@@ -172,7 +225,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  $null_check$\n" +
+          "\n" +
           "  $name$_ = value;\n" +
           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
           "  onChanged();\n" +
@@ -194,6 +247,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
       printer.emit(variables,
+          "@java.lang.Override\n" +
           "public $type$ get$capitalized_name$() {\n" +
           "  return $name$_;\n" +
           "}\n");
@@ -201,7 +255,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "  $null_check$\n" +
+          "\n" +
           "  $name$_ = value;\n" +
           "  onChanged();\n" +
           "  return this;\n" +
@@ -210,7 +264,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
-          "  \n" +
+          "\n" +
           "  $name$_ = $default$;\n" + // Helper default should be 0/false
           "  onChanged();\n" +
           "  return this;\n" +
@@ -233,7 +287,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateMergingCode(Printer printer) {
-    if (descriptor.hasPresence()) {
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "set$capitalized_name$(other.get$capitalized_name$());\n");
+    } else if (descriptor.hasPresence()) {
       printer.emit(variables,
           "if (other.has$capitalized_name$()) {\n" +
           "  set$capitalized_name$(other.get$capitalized_name$());\n" +
@@ -249,7 +306,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuildingCode(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      return;
+    }
+    if (Helpers.hasHasbit(descriptor)) {
       printer.emit(variables,
           "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
           "  result.$name$_ = $name$_;\n" +
@@ -263,11 +323,17 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateParsingCode(Printer printer) {
-    printer.emit(variables,
-        "$name$_ = input.read$capitalized_type$();\n");
-    if (Helpers.supportFieldPresence(descriptor)) {
-       printer.emit(variables,
-           Helpers.generateSetBit(builderBitIndex) + ";\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "$oneof_name$_ = input.read$capitalized_type$();\n" +
+          "$oneof_name$Case_ = $number$;\n");
+    } else {
+      printer.emit(variables,
+          "$name$_ = input.read$capitalized_type$();\n");
+      if (Helpers.hasHasbit(descriptor)) {
+         printer.emit(variables,
+             Helpers.generateSetBit(builderBitIndex) + ";\n");
+      }
     }
   }
 
@@ -283,24 +349,41 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateSerializationCode(Printer printer) {
-    printer.emit(variables,
-        "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
-        "  output.write$capitalized_type$($number$, $name$_);\n" +
-        "}\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if ($oneof_name$Case_ == $number$) {\n" +
+          "  output.write$capitalized_type$(\n" +
+          "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+          "}\n");
+    } else {
+      printer.emit(variables,
+          "if (" + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$")) + ") {\n" +
+          "  output.write$capitalized_type$($number$, $name$_);\n" +
+          "}\n");
+    }
   }
 
   @Override
   public void generateSerializedSizeCode(Printer printer) {
-    printer.emit(variables,
-        "if (" + (Helpers.supportFieldPresence(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ") {\n" +
-        "  size += com.google.protobuf.CodedOutputStream\n" +
-        "    .compute$capitalized_type$Size($number$, $name$_);\n" +
-        "}\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "if ($oneof_name$Case_ == $number$) {\n" +
+          "  size += com.google.protobuf.CodedOutputStream\n" +
+          "    .compute$capitalized_type$Size(\n" +
+          "        $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+          "}\n");
+    } else {
+      printer.emit(variables,
+          "if (" + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$")) + ") {\n" +
+          "  size += com.google.protobuf.CodedOutputStream\n" +
+          "    .compute$capitalized_type$Size($number$, $name$_);\n" +
+          "}\n");
+    }
   }
 
   @Override
   public void generateEqualsCode(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.emit(variables,
           "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
           "if (has$capitalized_name$()) {\n");
@@ -322,7 +405,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
             "if (get$capitalized_name$()\n" +
             "    != other.get$capitalized_name$()) return false;\n");
     }
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
       printer.print("}\n");
     }
@@ -330,7 +413,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateHashCodeCode(Printer printer) {
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.emit(variables, "if (has$capitalized_name$()) {\n");
       printer.indent();
     }
@@ -353,7 +436,7 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
         printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
             "    java.lang.Double.doubleToLongBits(get$capitalized_name$()));\n");
     }
-    if (Helpers.supportFieldPresence(descriptor)) {
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
       printer.print("}\n");
     }

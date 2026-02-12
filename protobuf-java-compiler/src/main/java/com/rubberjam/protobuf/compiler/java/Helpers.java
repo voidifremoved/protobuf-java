@@ -627,7 +627,7 @@ public class Helpers
 	}
 
 	public static boolean supportFieldPresence(FieldDescriptor field) {
-		return hasHasbit(field);
+		return field.hasPresence();
 	}
 
 	public static boolean bitfieldTracksMutability(FieldDescriptor field) {

@@ -28,9 +28,6 @@ public class SharedCodeGenerator {
         "java.lang.String[] descriptorData = {\n");
     printer.indent();
 
-    // We must rebuild the FileDescriptorProto from the linked FileDescriptor
-    // to ensure all type names are fully qualified and field types are correct.
-    // file.toProto() might return the original unlinked proto.
     com.google.protobuf.DescriptorProtos.FileDescriptorProto fileProto = rebuildDescriptorProto(file);
     com.google.protobuf.ByteString bytes = fileProto.toByteString();
     List<String> pieces = new ArrayList<>();
@@ -68,17 +65,13 @@ public class SharedCodeGenerator {
   private com.google.protobuf.DescriptorProtos.FileDescriptorProto rebuildDescriptorProto(com.google.protobuf.Descriptors.FileDescriptor file) {
     com.google.protobuf.DescriptorProtos.FileDescriptorProto.Builder builder = file.toProto().toBuilder();
     builder.clearSourceCodeInfo();
-    if ("proto2".equals(builder.getSyntax())) {
+    if ("proto2".equals(file.toProto().getSyntax())) {
       builder.clearSyntax();
     }
 
-    // Fully qualify all type names in messages
     for (int i = 0; i < file.getMessageTypes().size(); i++) {
         updateMessageProto(builder.getMessageTypeBuilder(i), file.getMessageTypes().get(i));
     }
-    // and enums? (usually they don't have nested types that need qualifying in the same way, but their types are used in fields)
-
-    // and extensions
     for (int i = 0; i < file.getExtensions().size(); i++) {
         updateFieldProto(builder.getExtensionBuilder(i), file.getExtensions().get(i));
     }
@@ -100,14 +93,21 @@ public class SharedCodeGenerator {
 
   private void updateFieldProto(com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Builder builder, com.google.protobuf.Descriptors.FieldDescriptor field) {
       builder.setType(com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Type.forNumber(field.getType().toProto().getNumber()));
+      builder.setLabel(com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Label.forNumber(field.toProto().getLabel().getNumber()));
+
       if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.MESSAGE ||
           field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.GROUP) {
           builder.setTypeName("." + field.getMessageType().getFullName());
       } else if (field.getType() == com.google.protobuf.Descriptors.FieldDescriptor.Type.ENUM) {
           builder.setTypeName("." + field.getEnumType().getFullName());
       }
+
       if (field.hasDefaultValue()) {
           builder.setDefaultValue(formatDefaultValue(field));
+      }
+
+      if (field.getContainingOneof() != null) {
+          builder.setOneofIndex(field.getContainingOneof().getIndex());
       }
   }
 
@@ -142,7 +142,6 @@ public class SharedCodeGenerator {
   }
 
   private String escapeBytesInDescriptor(com.google.protobuf.ByteString bytes) {
-      // Descriptors store default values for bytes as C-escaped strings
       StringBuilder sb = new StringBuilder();
       for (int i = 0; i < bytes.size(); i++) {
           byte b = bytes.byteAt(i);
@@ -176,7 +175,6 @@ public class SharedCodeGenerator {
       } else if (c == '\t') {
         builder.append("\\t");
       } else if (c == '$') {
-        // Escape $ so Printer does not treat it as variable delimiter.
         builder.append("\\044");
       } else if (c >= 0x20 && c < 0x7F) {
         builder.append(c);

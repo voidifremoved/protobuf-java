@@ -299,8 +299,10 @@ public class Printer
 		emit(vars, formatStr);
 	}
 
-	public void annotate(String startVar, String endVar, com.google.protobuf.Descriptors.FieldDescriptor descriptor) {
-		// Stub implementation for now to satisfy compilation.
+	public void annotate(String varName, String marker, com.google.protobuf.Descriptors.FieldDescriptor descriptor) {
+		Map<String, Object> vars = new HashMap<>();
+		vars.put(varName, new AnnotationRecord("", Collections.emptyList(), Semantic.NONE));
+		emit(vars, "$_start$" + varName + "$" + marker + "$_end$" + varName + "$");
 	}
 
 	public void emit(Map<String, Object> vars, String formatStr)
@@ -371,28 +373,20 @@ public class Printer
 					}
 				}
 				
-				if (isBlankLine)
+				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
-					previousLineWasPure = isPure;
-					continue;
-				}
-				else
-				{
-					for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
+					Chunk chunk = line.chunks.get(chunkIdx);
+
+					if (!chunk.isVar)
 					{
-						Chunk chunk = line.chunks.get(chunkIdx);
-						
-						if (!chunk.isVar)
-						{
-							writeRaw(chunk.text);
-						}
-						else
-						{
-							chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
-						}
+						writeRaw(chunk.text);
 					}
-					previousLineWasPure = isPure;
+					else
+					{
+						chunkIdx = handleVariableWithAnnotations(chunk, annotRecords, line, chunkIdx);
+					}
 				}
+				previousLineWasPure = isPure;
 			}
 			currentIndent = baseIndent;
 		}
@@ -626,7 +620,7 @@ public class Printer
 			Line line = new Line();
 			if (format.isRawString)
 			{
-				line.indent = Math.max(0, leading - rawStringIndent);
+				line.indent = leading - rawStringIndent;
 			}
 			else
 			{

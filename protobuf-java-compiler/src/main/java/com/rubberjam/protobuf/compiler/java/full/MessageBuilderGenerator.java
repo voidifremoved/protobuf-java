@@ -57,6 +57,14 @@ public class MessageBuilderGenerator {
       generateDescriptorMethods(printer);
       generateCommonBuilderMethods(printer);
 
+      // Generate oneofs
+      for (OneofDescriptor oneof : descriptor.getRealOneofs()) {
+           String name = context.getOneofGeneratorInfo(oneof).name;
+           printer.print("private int " + name + "Case_ = 0;\n");
+           printer.print("private java.lang.Object " + name + "_;\n");
+           generateOneofBuilderMembers(printer, oneof);
+      }
+
       int totalInts = (descriptor.getFields().size() + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print("private int " + Helpers.getBitFieldName(i) + ";\n");
@@ -70,11 +78,6 @@ public class MessageBuilderGenerator {
       for (FieldDescriptor field : descriptor.getFields()) {
           printer.print("\n");
           fieldGenerators.get(field).generateBuilderMembers(printer);
-      }
-
-      // Generate oneofs
-      for (OneofDescriptor oneof : descriptor.getRealOneofs()) {
-           generateOneofBuilderMembers(printer, oneof);
       }
 
       generateBuilderExtensionMethods(printer);
@@ -202,7 +205,7 @@ public class MessageBuilderGenerator {
 
       printer.indent();
 
-      int totalInts = (descriptor.getFields().size() + 31) / 32;
+    int totalInts = (descriptor.getFields().size() + 31) / 32;
       for (int i = 0; i < totalInts; i++) {
           printer.print(Helpers.getBitFieldName(i) + " = 0;\n");
       }
@@ -263,17 +266,14 @@ public class MessageBuilderGenerator {
           }
       }
 
-      totalInts = (descriptor.getFields().size() + 31) / 32;
+    totalInts = (descriptor.getFields().size() + 31) / 32;
 
       for (int i = 0; i < totalInts; i++) {
         printer.print("if (bitField" + i + "_ != 0) { buildPartial" + i + "(result); }\n");
       }
 
-      for (OneofDescriptor oneof : descriptor.getRealOneofs()) {
-          String name = context.getOneofGeneratorInfo(oneof).name;
-          printer.print(
-              "result." + name + "Case_ = " + name + "Case_;\n" +
-              "result." + name + "_ = " + name + "_;\n");
+      if (!descriptor.getRealOneofs().isEmpty()) {
+        printer.print("buildPartialOneofs(result);\n");
       }
 
       printer.print("onBuilt();\n");
@@ -294,6 +294,10 @@ public class MessageBuilderGenerator {
       }
 
       generateBuildPartialMethods(printer);
+
+      if (!descriptor.getRealOneofs().isEmpty()) {
+        generateBuildPartialOneofs(printer);
+      }
 
       generateMergeFromMessage(printer);
       generateMergeFrom(printer);
@@ -497,9 +501,10 @@ public class MessageBuilderGenerator {
       String capitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
 
       printer.print(
-          "public " + nameResolver.getImmutableClassName(descriptor) + "." + capitalizedName + "Case\n" +
+          "\n" +
+          "public " + capitalizedName + "Case\n" +
           "    get" + capitalizedName + "Case() {\n" +
-          "  return " + nameResolver.getImmutableClassName(descriptor) + "." + capitalizedName + "Case.forNumber(\n" +
+          "  return " + capitalizedName + "Case.forNumber(\n" +
           "      " + name + "Case_);\n" +
           "}\n" +
           "\n" +
@@ -522,8 +527,21 @@ public class MessageBuilderGenerator {
       return nameResolver.getImmutableClassName(valueField.getMessageType());
   }
 
+  private void generateBuildPartialOneofs(Printer printer) {
+      printer.print("private void buildPartialOneofs(" + nameResolver.getImmutableClassName(descriptor) + " result) {\n");
+      printer.indent();
+      for (OneofDescriptor oneof : descriptor.getRealOneofs()) {
+          String name = context.getOneofGeneratorInfo(oneof).name;
+          printer.print(
+              "result." + name + "Case_ = " + name + "Case_;\n" +
+              "result." + name + "_ = this." + name + "_;\n");
+      }
+      printer.outdent();
+      printer.print("}\n\n");
+  }
+
   private void generateBuildPartialMethods(Printer printer) {
-      int totalInts = (descriptor.getFields().size() + 31) / 32;
+    int totalInts = (descriptor.getFields().size() + 31) / 32;
 
       for (int i = 0; i < totalInts; i++) {
           printer.print("private void buildPartial" + i + "(" + nameResolver.getImmutableClassName(descriptor) + " result) {\n");
@@ -538,20 +556,19 @@ public class MessageBuilderGenerator {
           }
           int totalMessageInts = (totalMessageBits + 31) / 32;
 
-          for (int j = 0; j < 32; j++) {
-              int fieldIndex = i * 32 + j;
-              if (fieldIndex >= descriptor.getFields().size()) break;
-              FieldDescriptor field = descriptor.getFields().get(fieldIndex);
-              if (!Helpers.isRealOneof(field) && !Helpers.bitfieldTracksMutability(field)) {
-                  ImmutableFieldGenerator generator = fieldGenerators.get(field);
-                  if (generator.getNumBitsForMessage() > 0) {
-                      int toBitFieldIndex = generator.getMessageBitIndex() / 32;
-                      if (!declaredToBitfields.contains(toBitFieldIndex) && toBitFieldIndex < totalMessageInts) {
-                          printer.print("int to_bitField" + toBitFieldIndex + "_ = 0;\n");
-                          declaredToBitfields.add(toBitFieldIndex);
+      for (FieldDescriptor field : descriptor.getFields()) {
+        ImmutableFieldGenerator generator = fieldGenerators.get(field);
+        if (generator.getNumBitsForBuilder() > 0 && (generator.getBuilderBitIndex() / 32) == i) {
+          if (!Helpers.isRealOneof(field) && !Helpers.bitfieldTracksMutability(field)) {
+            if (generator.getNumBitsForMessage() > 0) {
+              int toBitFieldIndex = generator.getMessageBitIndex() / 32;
+              if (!declaredToBitfields.contains(toBitFieldIndex) && toBitFieldIndex < totalMessageInts) {
+                printer.print("int to_bitField" + toBitFieldIndex + "_ = 0;\n");
+                declaredToBitfields.add(toBitFieldIndex);
+              }
                       }
+            generator.generateBuildingCode(printer);
                   }
-                  generator.generateBuildingCode(printer);
               }
           }
 
