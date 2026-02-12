@@ -351,10 +351,12 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
      }
      if (Helpers.hasHasbit(descriptor)) {
         printer.emit(variables,
-          "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
-          "  result.$name$_ = $name$_;\n" +
-          "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
-          "}\n");
+          "if ($get_has_field_bit_from_local$) {\n" +
+          "  result.$name$_ = $name$_;\n");
+        if (getNumBitsForMessage() > 0) {
+          printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
+        }
+        printer.print("}\n");
      } else {
          printer.emit(variables, "result.$name$_ = $name$_;\n");
      }
@@ -526,13 +528,5 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     printer.print("break;\n");
     printer.outdent();
     printer.print("} // case " + tag + "\n");
-
-    int packedTag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
-    printer.print("case " + packedTag + ": {\n");
-    printer.indent();
-    generateParsingCodeFromPacked(printer);
-    printer.print("break;\n");
-    printer.outdent();
-    printer.print("} // case " + packedTag + "\n");
   }
 }

@@ -594,12 +594,22 @@ public class Helpers
 
 	public static boolean hasRequiredFields(Descriptor descriptor)
 	{
+		return hasRequiredFields(descriptor, new HashSet<>());
+	}
+
+	private static boolean hasRequiredFields(Descriptor descriptor, Set<Descriptor> visited)
+	{
+		if (visited.contains(descriptor))
+		{
+			return false;
+		}
+		visited.add(descriptor);
 		for (FieldDescriptor field : descriptor.getFields())
 		{
 			if (field.isRequired()) return true;
 			if (field.getType() == FieldDescriptor.Type.MESSAGE)
 			{
-				if (hasRequiredFields(field.getMessageType())) return true;
+				if (hasRequiredFields(field.getMessageType(), visited)) return true;
 			}
 		}
 		return false;

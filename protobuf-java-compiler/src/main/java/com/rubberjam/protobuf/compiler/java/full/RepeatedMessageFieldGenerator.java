@@ -430,7 +430,7 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
      printer.emit(variables,
          "if ($name$Builder_ == null) {\n" +
-         "  if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+         "  if ($get_has_field_bit_from_local$) {\n" +
          "    $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
          "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
          "  }\n" +

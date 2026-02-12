@@ -450,22 +450,15 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       return;
     }
-    if (Helpers.hasHasbit(descriptor)) {
-      printer.emit(variables,
-          "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
-          "  result.$name$_ = $name$Builder_ == null\n" +
-          "      ? $name$_\n" +
-          "      : $name$Builder_.build();\n" +
-          "  " + Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField") + ";\n" +
-          "}\n");
-    } else {
-      printer.emit(variables,
-          "if ($name$Builder_ == null) {\n" +
-          "  result.$name$_ = $name$_;\n" +
-          "} else {\n" +
-          "  result.$name$_ = $name$Builder_.build();\n" +
-          "}\n");
+    printer.emit(variables,
+        "if ($get_has_field_bit_from_local$) {\n" +
+        "  result.$name$_ = $name$Builder_ == null\n" +
+        "      ? $name$_\n" +
+        "      : $name$Builder_.build();\n");
+    if (getNumBitsForMessage() > 0) {
+      printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
     }
+    printer.print("}\n");
   }
 
   @Override
