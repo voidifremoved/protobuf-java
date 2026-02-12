@@ -324,7 +324,7 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
          "if (!other.$name$_.isEmpty()) {\n" +
          "  if ($name$_.isEmpty()) {\n" +
          "    $name$_ = other.$name$_;\n" +
-         "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+         "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
          "  } else {\n" +
          "    ensure$capitalized_name$IsMutable();\n" +
          "    $name$_.addAll(other.$name$_);\n" +
@@ -417,11 +417,11 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
 
          if (descriptor.isPacked()) {
              printer.emit(variables,
-                 "if (!get$capitalized_name$List().isEmpty()) {" +
+                 "if (!get$capitalized_name$List().isEmpty()) {\n" +
                  "  size += $tag_size$;\n" +
                  "  size += com.google.protobuf.CodedOutputStream\n" +
                  "    .computeUInt32SizeNoTag(dataSize);\n" +
-                 "}");
+                 "}\n");
              printer.emit(variables, "$name$MemoizedSerializedSize = dataSize;\n");
          } else {
              printer.emit(variables,

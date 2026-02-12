@@ -344,6 +344,13 @@ public final class DocComment
   }
 
     private static String getFieldDefinition(FieldDescriptor field) {
+        if (field.isMapField()) {
+            FieldDescriptor keyField = field.getMessageType().findFieldByName("key");
+            FieldDescriptor valueField = field.getMessageType().findFieldByName("value");
+            return "map<" + getTypeName(keyField) + ", " + getTypeName(valueField) + "> " +
+                   field.getName() + " = " + field.getNumber() + ";";
+        }
+
         StringBuilder sb = new StringBuilder();
 
         if (field.isRepeated()) {
@@ -354,7 +361,9 @@ public final class DocComment
             // Check syntax via toProto() string
             String syntax = field.getFile().toProto().getSyntax();
             if (syntax.isEmpty() || "proto2".equals(syntax)) {
-                sb.append("optional ");
+                if (field.getRealContainingOneof() == null) {
+                    sb.append("optional ");
+                }
             } else if (field.toProto().hasProto3Optional()) {
                  if (field.toProto().getLabel() == com.google.protobuf.DescriptorProtos.FieldDescriptorProto.Label.LABEL_OPTIONAL) {
                      if ("proto3".equals(syntax)) {
@@ -364,10 +373,6 @@ public final class DocComment
                      } else {
                          sb.append("optional ");
                      }
-                 }
-            } else {
-                 if (syntax.isEmpty() || "proto2".equals(syntax)) {
-                     sb.append("optional ");
                  }
             }
         }
@@ -395,6 +400,16 @@ public final class DocComment
             sb.append(";");
         }
         return sb.toString();
+    }
+
+    private static String getTypeName(FieldDescriptor field) {
+        if (field.getType() == FieldDescriptor.Type.MESSAGE) {
+            return "." + field.getMessageType().getFullName();
+        } else if (field.getType() == FieldDescriptor.Type.ENUM) {
+            return "." + field.getEnumType().getFullName();
+        } else {
+            return field.getType().name().toLowerCase();
+        }
     }
 
     private static boolean shouldPrintDefault(FieldDescriptor field) {
@@ -531,7 +546,7 @@ public final class DocComment
       writeDeprecatedJavadoc(printer, field, options);
     }
 
-    String name = underscoresToCamelCase(field.getName(), false);
+    String name = underscoresToCamelCase(field.getName().toLowerCase(), false);
 
     switch (type)
     {
@@ -559,15 +574,12 @@ public final class DocComment
     case CLEARER:
       break;
     case LIST_COUNT:
-      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
       printer.emit(Map.of("name", name), " * @return The count of $name$.\n");
       break;
     case LIST_GETTER:
-      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
       printer.emit(Map.of("name", name), " * @return A list containing the $name$.\n");
       break;
     case LIST_INDEXED_GETTER:
-      if (field.getType() == FieldDescriptor.Type.MESSAGE || field.getType() == FieldDescriptor.Type.GROUP) break;
       printer.emit(" * @param index The index of the element to return.\n");
       printer.emit(Map.of("name", name), " * @return The $name$ at the given index.\n");
       break;
@@ -667,7 +679,7 @@ public final class DocComment
             writeDeprecatedJavadoc(printer, field, options);
         }
 
-        String name = underscoresToCamelCase(field.getName(), false);
+        String name = underscoresToCamelCase(field.getName().toLowerCase(), false);
 
         switch (type)
         {
@@ -756,7 +768,7 @@ public final class DocComment
             writeDeprecatedJavadoc(printer, field, options);
         }
 
-        String name = underscoresToCamelCase(field.getName(), false);
+        String name = underscoresToCamelCase(field.getName().toLowerCase(), false);
 
         switch (type)
         {
