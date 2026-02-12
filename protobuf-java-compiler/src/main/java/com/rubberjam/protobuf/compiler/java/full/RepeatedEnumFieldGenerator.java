@@ -79,7 +79,7 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
         printer.emit(variables,
             "@SuppressWarnings(\"serial\")\n" +
             "private java.util.List<java.lang.Integer> $name$_ =\n" +
-            "    java.util.Collections.emptyList();\n" +
+            "    emptyIntList();\n" +
             "private static final com.google.protobuf.Internal.IntListAdapter.IntConverter<\n" +
             "    $type$> $name$_converter_ =\n" +
             "        new com.google.protobuf.Internal.IntListAdapter.IntConverter<\n" +
@@ -309,13 +309,20 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-     printer.emit(variables, "$name$_ = java.util.Collections.emptyList();\n");
+     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+         printer.emit(variables, "$name$_ = emptyIntList();\n");
+     } else {
+         printer.emit(variables, "$name$_ = java.util.Collections.emptyList();\n");
+     }
   }
 
   @Override
   public void generateBuilderClearCode(Printer printer) {
-     printer.emit(variables,
-         "$name$_ = java.util.Collections.emptyList();\n");
+     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+        printer.emit(variables, "$name$_ = emptyIntList();\n");
+     } else {
+        printer.emit(variables, "$name$_ = java.util.Collections.emptyList();\n");
+     }
   }
 
   @Override
@@ -336,8 +343,9 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuildingCode(Printer printer) {
      printer.emit(variables,
-         "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+         "if ($get_has_field_bit_from_local$) {\n" +
          "  $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
+         "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
          "  result.$name$_ = $name$_;\n" +
          "}\n");
   }
