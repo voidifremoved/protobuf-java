@@ -194,7 +194,7 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuildingCode(Printer printer) {
      printer.emit(variables,
-         "if (" + Helpers.generateGetBit(builderBitIndex) + ") {\n" +
+         "if ($get_has_field_bit_from_local$) {\n" +
          "  $name$_.makeImmutable();\n" +
          "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
          "}\n" +

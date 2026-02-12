@@ -317,14 +317,16 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
   public void generateBuildingCode(Printer printer) {
      if (isString()) {
          printer.emit(variables,
-             "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+             "if ($get_has_field_bit_from_local$) {\n" +
              "  $name$_.makeImmutable();\n" +
+             "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
              "  result.$name$_ = $name$_;\n" +
              "}\n");
      } else {
          printer.emit(variables,
-             "if (" + Helpers.generateGetBit("from_", builderBitIndex) + ") {\n" +
+             "if ($get_has_field_bit_from_local$) {\n" +
              "  $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
+             "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
              "  result.$name$_ = $name$_;\n" +
              "}\n");
      }
