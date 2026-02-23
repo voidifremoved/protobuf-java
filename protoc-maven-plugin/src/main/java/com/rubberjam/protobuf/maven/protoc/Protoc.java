@@ -12,6 +12,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -268,9 +269,15 @@ public class Protoc
 	{
 		log("protoc version: " + protocVersion + ", detected platform: " + getPlatformVerbose());
 
-		File tmpDir = File.createTempFile("protocjar", "", dir);
-		tmpDir.delete();
-		tmpDir.mkdirs();
+		File tmpDir;
+		if (dir == null)
+		{
+			tmpDir = Files.createTempDirectory("protocjar").toFile();
+		}
+		else
+		{
+			tmpDir = Files.createTempDirectory(dir.toPath(), "protocjar").toFile();
+		}
 		tmpDir.deleteOnExit();
 		File binDir = new File(tmpDir, "bin");
 		binDir.mkdirs();
@@ -468,9 +475,7 @@ public class Protoc
 	{
 		if (tmpDir == null)
 		{
-			tmpDir = File.createTempFile("protocjar", "");
-			tmpDir.delete();
-			tmpDir.mkdirs();
+			tmpDir = Files.createTempDirectory("protocjar").toFile();
 			tmpDir.deleteOnExit();
 		}
 
@@ -544,10 +549,12 @@ public class Protoc
 
 	static File getWebcacheDir() throws IOException
 	{
-		File tmpFile = File.createTempFile("protocjar", ".tmp");
-		File cacheDir = new File(tmpFile.getParentFile(), "protocjar.webcache");
-		cacheDir.mkdirs();
-		tmpFile.delete();
+		File tmpDir = new File(System.getProperty("java.io.tmpdir"));
+		File cacheDir = new File(tmpDir, "protocjar.webcache");
+		if (!cacheDir.exists())
+		{
+			cacheDir.mkdirs();
+		}
 		return cacheDir;
 	}
 
