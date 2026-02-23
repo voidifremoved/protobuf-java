@@ -345,34 +345,6 @@ public class Printer
 
 				currentIndent = baseIndent + line.indent;
 
-				boolean isBlankLine = false;
-				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
-				{
-					Chunk chunk = line.chunks.get(chunkIdx);
-					if (chunk.text.trim().isBlank())
-					{
-						isBlankLine = true;
-					}
-					else if (chunk.isVar)
-					{
-						PrinterValue sub = lookupVar(chunk.text);
-						if (sub != null && sub.text != null && sub.text.isBlank())
-						{
-							isBlankLine = true;
-						}
-						else
-						{
-							isBlankLine = false;
-							break;	
-						}
-					}
-					else
-					{
-						isBlankLine = false;
-						break;
-					}
-				}
-				
 				for (int chunkIdx = 0; chunkIdx < line.chunks.size(); chunkIdx++)
 				{
 					Chunk chunk = line.chunks.get(chunkIdx);
@@ -528,6 +500,8 @@ public class Printer
 		String processing = formatString;
 		int rawStringIndent = 0;
 
+		Pattern delimiterPattern = Pattern.compile(Pattern.quote(String.valueOf(options.variableDelimiter)));
+
 		// Raw String Detection Logic:
 		// Only strip indentation if the string starts with an explicit newline.
 		if (options.stripRawStringIndentation && formatString.startsWith("\n") && formatString.length() > 1)
@@ -627,8 +601,7 @@ public class Printer
 				line.indent = 0;
 			}
 
-			String regex = Pattern.quote(String.valueOf(options.variableDelimiter));
-			String[] parts = lineText.split(regex, -1);
+			String[] parts = delimiterPattern.split(lineText, -1);
 			boolean isVar = false;
 
 			for (String p : parts)
