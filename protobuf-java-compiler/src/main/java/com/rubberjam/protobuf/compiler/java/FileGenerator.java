@@ -21,13 +21,12 @@ public class FileGenerator {
   private final ClassNameResolver nameResolver;
   private final GeneratorFactory factory;
 
-  public FileGenerator(FileDescriptor file, Options options) {
+  public FileGenerator(FileDescriptor file, Options options, Context context, GeneratorFactory factory) {
     this.file = file;
     this.options = options;
-    this.context = new Context(file, options);
+    this.context = context;
     this.nameResolver = context.getNameResolver();
-    // TODO: Support Lite runtime via factory selection
-    this.factory = new ImmutableGeneratorFactory(context);
+    this.factory = factory;
   }
 
   /** Java package for the generated file (for output path). */

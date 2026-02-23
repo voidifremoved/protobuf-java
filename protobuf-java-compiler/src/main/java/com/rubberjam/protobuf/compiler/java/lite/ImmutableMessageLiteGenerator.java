@@ -1,11 +1,13 @@
 package com.rubberjam.protobuf.compiler.java.lite;
 
 import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.OneofDescriptor;
 import com.rubberjam.protobuf.compiler.java.ClassNameResolver;
 import com.rubberjam.protobuf.compiler.java.Context;
 import com.rubberjam.protobuf.compiler.java.DocComment;
+import com.rubberjam.protobuf.compiler.java.GeneratorFactory;
 import com.rubberjam.protobuf.compiler.java.Helpers;
 import com.rubberjam.protobuf.compiler.java.InternalHelpers;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon.FieldGeneratorMap;
@@ -15,38 +17,49 @@ import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
 
-public class ImmutableMessageLiteGenerator {
-  private final Descriptor descriptor;
+public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGenerator {
   private final Context context;
   private final ClassNameResolver nameResolver;
   private final FieldGeneratorMap<ImmutableFieldLiteGenerator> fieldGenerators;
 
   public ImmutableMessageLiteGenerator(Descriptor descriptor, Context context) {
-    this.descriptor = descriptor;
+    super(descriptor);
     this.context = context;
     this.nameResolver = context.getNameResolver();
     this.fieldGenerators = ImmutableFieldLiteGeneratorFactory.createFieldGenerators(descriptor, context);
   }
 
-  public void generateInterface(Printer printer) {
-     String className = nameResolver.getImmutableClassName(descriptor);
-     Map<String, Object> vars = new HashMap<>();
-     vars.put("classname", className);
-
-     printer.emit(vars,
-         "public interface $classname$OrBuilder extends\n" +
-         "    // @@protoc_insertion_point(interface_extends:$classname$)\n" +
-         "    com.google.protobuf.MessageLiteOrBuilder {\n");
-     printer.indent();
-
-     for (FieldDescriptor field : descriptor.getFields()) {
-         fieldGenerators.get(field).generateInterfaceMembers(printer);
-     }
-
-     printer.outdent();
-     printer.emit("}\n");
+  @Override
+  public void generateStaticVariables(Printer printer, int[] bytecodeEstimate) {
+    // Lite doesn't have descriptor-based static variables in the same way full does.
   }
 
+  @Override
+  public int generateStaticVariableInitializers(Printer printer) {
+    return 0;
+  }
+
+  @Override
+  public void generateInterface(Printer printer) {
+    String className = nameResolver.getImmutableClassName(descriptor);
+    Map<String, Object> vars = new HashMap<>();
+    vars.put("classname", className);
+
+    printer.emit(vars,
+        "public interface $classname$OrBuilder extends\n" +
+        "    // @@protoc_insertion_point(interface_extends:$classname$)\n" +
+        "    com.google.protobuf.MessageLiteOrBuilder {\n");
+    printer.indent();
+
+    for (FieldDescriptor field : descriptor.getFields()) {
+      fieldGenerators.get(field).generateInterfaceMembers(printer);
+    }
+
+    printer.outdent();
+    printer.emit("}\n");
+  }
+
+  @Override
   public void generate(Printer printer) {
     String className = nameResolver.getImmutableClassName(descriptor);
     Map<String, Object> vars = new HashMap<>();
@@ -66,45 +79,57 @@ public class ImmutableMessageLiteGenerator {
     printer.emit(vars, "private $classname$() {\n");
     // Initialize fields
     for (FieldDescriptor field : descriptor.getFields()) {
-        fieldGenerators.get(field).generateInitializationCode(printer);
+      fieldGenerators.get(field).generateInitializationCode(printer);
     }
     printer.emit("}\n");
 
     // Oneofs
     for (OneofDescriptor oneof : descriptor.getOneofs()) {
-        String oneofName = context.getOneofGeneratorInfo(oneof).name;
-        String oneofCapitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
-        printer.emit("private int " + oneofName + "Case_ = 0;\n");
-        printer.emit("private java.lang.Object " + oneofName + "_;\n");
-        printer.emit("public enum " + oneofCapitalizedName + "Case {\n");
-        for (FieldDescriptor field : oneof.getFields()) {
-            printer.emit("  " + field.getName().toUpperCase() + "(" + field.getNumber() + "),\n");
-        }
-        printer.emit("  " + oneofCapitalizedName.toUpperCase() + "_NOT_SET(0);\n");
-        printer.emit("  private final int value;\n");
-        printer.emit("  private " + oneofCapitalizedName + "Case(int value) {\n");
-        printer.emit("    this.value = value;\n");
-        printer.emit("  }\n");
-        printer.emit("  public static " + oneofCapitalizedName + "Case forNumber(int value) {\n");
-        printer.emit("    switch (value) {\n");
-        for (FieldDescriptor field : oneof.getFields()) {
-            printer.emit("      case " + field.getNumber() + ": return " + field.getName().toUpperCase() + ";\n");
-        }
-        printer.emit("      case 0: return " + oneofCapitalizedName.toUpperCase() + "_NOT_SET;\n");
-        printer.emit("      default: return null;\n");
-        printer.emit("    }\n");
-        printer.emit("  }\n");
-        printer.emit("  public int getNumber() {\n");
-        printer.emit("    return this.value;\n");
-        printer.emit("  }\n");
-        printer.emit("}\n");
-        printer.emit("public " + oneofCapitalizedName + "Case get" + oneofCapitalizedName + "Case() {\n");
-        printer.emit("  return " + oneofCapitalizedName + "Case.forNumber(" + oneofName + "Case_);\n");
-        printer.emit("}\n");
-        printer.emit("private void clear" + oneofCapitalizedName + "() {\n");
-        printer.emit("  " + oneofName + "Case_ = 0;\n");
-        printer.emit("  " + oneofName + "_ = null;\n");
-        printer.emit("}\n");
+      String oneofName = context.getOneofGeneratorInfo(oneof).name;
+      String oneofCapitalizedName = context.getOneofGeneratorInfo(oneof).capitalizedName;
+      printer.emit("private int " + oneofName + "Case_ = 0;\n");
+      printer.emit("private java.lang.Object " + oneofName + "_;\n");
+      printer.emit("public enum " + oneofCapitalizedName + "Case {\n");
+      for (FieldDescriptor field : oneof.getFields()) {
+        printer.emit("  " + field.getName().toUpperCase() + "(" + field.getNumber() + "),\n");
+      }
+      printer.emit("  " + oneofCapitalizedName.toUpperCase() + "_NOT_SET(0);\n");
+      printer.emit("  private final int value;\n");
+      printer.emit("  private " + oneofCapitalizedName + "Case(int value) {\n");
+      printer.emit("    this.value = value;\n");
+      printer.emit("  }\n");
+      printer.emit("  public static " + oneofCapitalizedName + "Case forNumber(int value) {\n");
+      printer.emit("    switch (value) {\n");
+      for (FieldDescriptor field : oneof.getFields()) {
+        printer.emit("      case " + field.getNumber() + ": return " + field.getName().toUpperCase() + ";\n");
+      }
+      printer.emit("      case 0: return " + oneofCapitalizedName.toUpperCase() + "_NOT_SET;\n");
+      printer.emit("      default: return null;\n");
+      printer.emit("    }\n");
+      printer.emit("  }\n");
+      printer.emit("  public int getNumber() {\n");
+      printer.emit("    return this.value;\n");
+      printer.emit("  }\n");
+      printer.emit("}\n");
+      printer.emit("public " + oneofCapitalizedName + "Case get" + oneofCapitalizedName + "Case() {\n");
+      printer.emit("  return " + oneofCapitalizedName + "Case.forNumber(" + oneofName + "Case_);\n");
+      printer.emit("}\n");
+      printer.emit("private void clear" + oneofCapitalizedName + "() {\n");
+      printer.emit("  " + oneofName + "Case_ = 0;\n");
+      printer.emit("  " + oneofName + "_ = null;\n");
+      printer.emit("}\n");
+    }
+
+    // Nested types
+    for (EnumDescriptor enumDesc : descriptor.getEnumTypes()) {
+      new com.rubberjam.protobuf.compiler.java.full.EnumGenerator(enumDesc, true, context).generate(printer);
+    }
+
+    for (Descriptor nested : descriptor.getNestedTypes()) {
+      if (nested.getOptions().getMapEntry()) continue;
+      ImmutableMessageLiteGenerator messageGenerator = new ImmutableMessageLiteGenerator(nested, context);
+      messageGenerator.generateInterface(printer);
+      messageGenerator.generate(printer);
     }
 
     // Members
@@ -149,7 +174,7 @@ public class ImmutableMessageLiteGenerator {
     // Check if bitField0_ is used.
     // Iterate fields
     for (FieldDescriptor field : descriptor.getFields()) {
-        fieldGenerators.get(field).generateFieldInfo(printer, infoOutput);
+      fieldGenerators.get(field).generateFieldInfo(printer, infoOutput);
     }
     printer.outdent();
     printer.emit("        };\n");
@@ -157,7 +182,7 @@ public class ImmutableMessageLiteGenerator {
     // Convert infoOutput to string literal
     StringBuilder infoStr = new StringBuilder();
     for (Integer i : infoOutput) {
-        infoStr.append((char)i.intValue());
+      infoStr.append((char)i.intValue());
     }
     // String infoLiteral = DocComment.escapeJavadoc(infoStr.toString()); // Use generic escape?
     // Actually we need to escape for Java string literal.
@@ -230,10 +255,20 @@ public class ImmutableMessageLiteGenerator {
     printer.emit("}\n");
   }
 
+  @Override
+  public void generateExtensionRegistrationCode(Printer printer) {
+    for (FieldDescriptor ext : descriptor.getExtensions()) {
+      new ImmutableExtensionLiteGenerator(ext, context).generateRegistrationCode(printer);
+    }
+    for (Descriptor nested : descriptor.getNestedTypes()) {
+      new ImmutableMessageLiteGenerator(nested, context).generateExtensionRegistrationCode(printer);
+    }
+  }
+
   private String escapeJavaString(String s) {
-      return s.replace("\\", "\\\\")
-              .replace("\"", "\\\"")
-              .replace("\n", "\\n")
-              .replace("\r", "\\r");
+    return s.replace("\\", "\\\\")
+            .replace("\"", "\\\"")
+            .replace("\n", "\\n")
+            .replace("\r", "\\r");
   }
 }

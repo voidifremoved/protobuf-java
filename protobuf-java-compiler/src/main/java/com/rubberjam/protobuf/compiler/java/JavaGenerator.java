@@ -1,5 +1,6 @@
 package com.rubberjam.protobuf.compiler.java;
 
+import com.google.protobuf.DescriptorProtos.FileOptions;
 import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.Descriptors.EnumDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
@@ -7,6 +8,7 @@ import com.google.protobuf.Descriptors.ServiceDescriptor;
 import com.rubberjam.protobuf.compiler.CodeGenerator;
 import com.rubberjam.protobuf.compiler.GeneratorContext;
 import com.rubberjam.protobuf.compiler.java.full.ImmutableGeneratorFactory;
+import com.rubberjam.protobuf.compiler.java.lite.ImmutableLiteGeneratorFactory;
 import com.rubberjam.protobuf.io.Printer;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -26,22 +28,27 @@ public class JavaGenerator extends CodeGenerator {
     parseGeneratorParameter(parameter, options);
 
     // Initialize context
-    Context generatorContext = new Context(file, options);
-    ClassNameResolver nameResolver = generatorContext.getNameResolver();
+    Context javaContext = new Context(file, options);
+    ClassNameResolver nameResolver = javaContext.getNameResolver();
 
     // We only support immutable code generation for now as per the conversion order (Phase 8-9).
-    // Use ImmutableGeneratorFactory.
-    // TODO: Support Lite runtime via factory selection if needed.
-    GeneratorFactory factory = new ImmutableGeneratorFactory(generatorContext);
+    // Select the factory based on whether Lite runtime is required.
+    GeneratorFactory factory;
+    if (javaContext.enforceLite()
+        || file.getOptions().getOptimizeFor() == FileOptions.OptimizeMode.LITE_RUNTIME) {
+      factory = new ImmutableLiteGeneratorFactory(javaContext);
+    } else {
+      factory = new ImmutableGeneratorFactory(javaContext);
+    }
 
     try {
-      generateFile(file, options, generatorContext, nameResolver, factory, context);
+      generateFile(file, options, javaContext, nameResolver, factory, context);
     } catch (IOException e) {
       throw new GenerationException(e);
     }
   }
 
-  private void generateFile(FileDescriptor file, Options options, Context generatorContext,
+  private void generateFile(FileDescriptor file, Options options, Context javaContext,
       ClassNameResolver nameResolver, GeneratorFactory factory, GeneratorContext outputContext)
       throws IOException {
 
@@ -56,7 +63,7 @@ public class JavaGenerator extends CodeGenerator {
     String outerFilename = javaPackageDir + outerClassname + ".java";
 
     Printer printer = new Printer(new Printer.Options());
-    FileGenerator fileGenerator = new FileGenerator(file, options);
+    FileGenerator fileGenerator = new FileGenerator(file, options, javaContext, factory);
     fileGenerator.generate(printer);
 
     try (OutputStream output = outputContext.open(outerFilename)) {
@@ -66,22 +73,22 @@ public class JavaGenerator extends CodeGenerator {
     // Generate separate files for top-level messages, enums, and services if java_multiple_files is true
     if (file.getOptions().getJavaMultipleFiles()) {
       for (Descriptor message : file.getMessageTypes()) {
-        generateMessage(message, generatorContext, nameResolver, factory, outputContext, javaPackage);
+        generateMessage(message, javaContext, nameResolver, factory, outputContext, javaPackage);
       }
       for (EnumDescriptor enumType : file.getEnumTypes()) {
-        generateEnum(enumType, generatorContext, nameResolver, factory, outputContext, javaPackage);
+        generateEnum(enumType, javaContext, nameResolver, factory, outputContext, javaPackage);
       }
       for (ServiceDescriptor service : file.getServices()) {
-        generateService(service, generatorContext, nameResolver, factory, outputContext, javaPackage);
+        generateService(service, javaContext, nameResolver, factory, outputContext, javaPackage);
       }
     }
   }
 
-  private void generateMessage(Descriptor message, Context generatorContext,
+  private void generateMessage(Descriptor message, Context javaContext,
       ClassNameResolver nameResolver, GeneratorFactory factory, GeneratorContext outputContext, String javaPackage)
       throws IOException {
 
-    String className = nameResolver.getClassName(message, !generatorContext.enforceLite());
+    String className = nameResolver.getClassName(message, !javaContext.enforceLite());
     String filename = className.replace('.', '/') + ".java";
 
     Printer printer = new Printer(new Printer.Options());
@@ -93,11 +100,11 @@ public class JavaGenerator extends CodeGenerator {
     }
   }
 
-  private void generateEnum(EnumDescriptor enumType, Context generatorContext,
+  private void generateEnum(EnumDescriptor enumType, Context javaContext,
       ClassNameResolver nameResolver, GeneratorFactory factory, GeneratorContext outputContext, String javaPackage)
       throws IOException {
 
-    String className = nameResolver.getClassName(enumType, !generatorContext.enforceLite());
+    String className = nameResolver.getClassName(enumType, !javaContext.enforceLite());
     String filename = className.replace('.', '/') + ".java";
 
     Printer printer = new Printer(new Printer.Options());
@@ -109,11 +116,11 @@ public class JavaGenerator extends CodeGenerator {
     }
   }
 
-  private void generateService(ServiceDescriptor service, Context generatorContext,
+  private void generateService(ServiceDescriptor service, Context javaContext,
       ClassNameResolver nameResolver, GeneratorFactory factory, GeneratorContext outputContext, String javaPackage)
       throws IOException {
 
-    String className = nameResolver.getClassName(service, !generatorContext.enforceLite());
+    String className = nameResolver.getClassName(service, !javaContext.enforceLite());
     String filename = className.replace('.', '/') + ".java";
 
     Printer printer = new Printer(new Printer.Options());
