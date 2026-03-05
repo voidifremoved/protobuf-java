@@ -528,7 +528,7 @@ public class Parser {
       int oneofIndex = message.getOneofDeclCount() - 1;
 
       consume("{");
-      while (!lookingAt("}")) {
+      while (!lookingAt("}") && !atEnd()) {
           if (lookingAt("option")) {
               parseOption(oneof.getOptionsBuilder(), messageLocation);
           } else {
@@ -783,7 +783,7 @@ public class Parser {
     enumType.setName(name.toString());
 
     consume("{");
-    while (!lookingAt("}")) {
+    while (!lookingAt("}") && !atEnd()) {
       if (!parseEnumStatement(enumType, enumLocation)) {
           input.next();
       }
@@ -796,7 +796,9 @@ public class Parser {
   private boolean parseEnumStatement(EnumDescriptorProto.Builder enumType, LocationRecorder enumLocation) {
       if (lookingAt("option")) return parseOption(enumType.getOptionsBuilder(), enumLocation);
       if (lookingAt(";")) { input.next(); return true; }
-      
+      if (lookingAt("reserved")) return parseEnumReserved(enumType, enumLocation);
+      if (lookingAt("}") || atEnd()) return false;
+
       LocationRecorder location = new LocationRecorder(enumLocation, EnumDescriptorProto.VALUE_FIELD_NUMBER, enumType.getValueCount());
       EnumValueDescriptorProto.Builder val = enumType.addValueBuilder();
       
@@ -822,6 +824,44 @@ public class Parser {
       return true;
   }
   
+  private boolean parseEnumReserved(EnumDescriptorProto.Builder enumType, LocationRecorder enumLocation) {
+      consume("reserved");
+
+      if (lookingAtType(Tokenizer.TokenType.STRING)) {
+          do {
+              StringBuilder name = new StringBuilder();
+              consumeString(name);
+              enumType.addReservedName(name.toString());
+          } while (tryConsume(","));
+      } else {
+          do {
+              int[] start = new int[1];
+              boolean negative = tryConsume("-");
+              consumeInteger(start);
+              if (negative) start[0] = -start[0];
+              int end = start[0];
+              if (tryConsume("to")) {
+                  if (lookingAt("max")) {
+                      consume("max");
+                      end = Integer.MAX_VALUE;
+                  } else {
+                      int[] endVal = new int[1];
+                      boolean negEnd = tryConsume("-");
+                      consumeInteger(endVal);
+                      if (negEnd) endVal[0] = -endVal[0];
+                      end = endVal[0];
+                  }
+              }
+              EnumDescriptorProto.EnumReservedRange.Builder range = enumType.addReservedRangeBuilder();
+              range.setStart(start[0]);
+              range.setEnd(end);
+          } while (tryConsume(","));
+      }
+
+      consume(";");
+      return true;
+  }
+
   private boolean parseServiceDefinition(ServiceDescriptorProto.Builder service, LocationRecorder location) {
       consume("service");
       StringBuilder name = new StringBuilder();
@@ -829,7 +869,7 @@ public class Parser {
       service.setName(name.toString());
       
       consume("{");
-      while(!lookingAt("}")) {
+      while(!lookingAt("}") && !atEnd()) {
           if (lookingAt("rpc")) {
               parseServiceMethod(service.addMethodBuilder(), location);
           } else if (lookingAt("option")) {
@@ -870,7 +910,7 @@ public class Parser {
       consume(")");
       
       if (tryConsume("{")) {
-          while (!lookingAt("}")) {
+          while (!lookingAt("}") && !atEnd()) {
               if (lookingAt("option")) {
                   parseOption(method.getOptionsBuilder(), parentLocation);
               } else {
@@ -902,16 +942,12 @@ public class Parser {
 
       UninterpretedOption option = uninterpreted.build();
 
-      // interpret known options into typed fields when possible
-      if (!interpretOption(optionsBuilder, option)) {
-          // Add to uninterpreted_option only if not interpreted
-          try {
-              java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
-              m.invoke(optionsBuilder, option);
-          } catch (Exception e) {
-              recordError("Could not add option: " + e.getMessage());
-              return false;
-          }
+      try {
+          java.lang.reflect.Method m = optionsBuilder.getClass().getMethod("addUninterpretedOption", UninterpretedOption.class);
+          m.invoke(optionsBuilder, option);
+      } catch (Exception e) {
+          recordError("Could not add option: " + e.getMessage());
+          return false;
       }
 
       return true;
