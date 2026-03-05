@@ -118,6 +118,10 @@ public class SharedCodeGenerator {
       if (field.getContainingOneof() != null) {
           builder.setOneofIndex(field.getContainingOneof().getIndex());
       }
+
+      if (field.isExtension()) {
+          builder.setExtendee("." + field.getContainingType().getFullName());
+      }
   }
 
   private String formatDefaultValue(com.google.protobuf.Descriptors.FieldDescriptor field) {

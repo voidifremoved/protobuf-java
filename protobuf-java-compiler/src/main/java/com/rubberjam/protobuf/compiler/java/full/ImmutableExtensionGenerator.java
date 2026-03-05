@@ -82,6 +82,12 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator {
 
   @Override
   public int generateNonNestedInitializationCode(Printer printer) {
+    if (descriptor.getExtensionScope() == null) {
+      Map<String, Object> vars = new HashMap<>();
+      vars.put("name", simpleName);
+      vars.put("index", String.valueOf(descriptor.getIndex()));
+      printer.emit(vars, "$name$.internalInit(descriptor.getExtension($index$));\n");
+    }
     return 0;
   }
 
