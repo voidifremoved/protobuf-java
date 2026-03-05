@@ -340,10 +340,41 @@ public class MessageBuilderGenerator {
             generateBuildPartialOneofs(printer);
         }
 
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
+            generateExtensionOverrides(printer);
+        }
         if (context.hasGeneratedMethods(descriptor)) {
             generateMergeFromMessage(printer);
             generateMergeFrom(printer);
         }
+    }
+
+    private void generateExtensionOverrides(Printer printer) {
+        String className = nameResolver.getImmutableClassName(descriptor);
+        printer.print(
+            "public <Type> Builder setExtension(\n" +
+            "    com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+            "        " + className + ", Type> extension,\n" +
+            "    Type value) {\n" +
+            "  return super.setExtension(extension, value);\n" +
+            "}\n" +
+            "public <Type> Builder setExtension(\n" +
+            "    com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+            "        " + className + ", java.util.List<Type>> extension,\n" +
+            "    int index, Type value) {\n" +
+            "  return super.setExtension(extension, index, value);\n" +
+            "}\n" +
+            "public <Type> Builder addExtension(\n" +
+            "    com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+            "        " + className + ", java.util.List<Type>> extension,\n" +
+            "    Type value) {\n" +
+            "  return super.addExtension(extension, value);\n" +
+            "}\n" +
+            "public <Type> Builder clearExtension(\n" +
+            "    com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+            "        " + className + ", Type> extension) {\n" +
+            "  return super.clearExtension(extension);\n" +
+            "}\n");
     }
 
     private void generateMergeFromMessage(Printer printer) {
@@ -395,11 +426,11 @@ public class MessageBuilderGenerator {
             printer.print("}\n");
         }
 
-        printer.print(
-                "this.mergeUnknownFields(other.getUnknownFields());\n");
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print("this.mergeExtensionFields(other);\n");
         }
+        printer.print(
+                "this.mergeUnknownFields(other.getUnknownFields());\n");
         printer.print("onChanged();\n" +
                 "return this;\n");
         printer.outdent();
@@ -461,7 +492,7 @@ public class MessageBuilderGenerator {
             }
         }
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print(
                     "if (!extensionsAreInitialized()) {\n" +
                             "  return false;\n" +
