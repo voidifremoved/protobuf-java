@@ -8,16 +8,17 @@ import com.rubberjam.protobuf.compiler.java.InternalHelpers;
 import com.rubberjam.protobuf.compiler.java.GeneratorCommon.FieldGeneratorMap;
 
 /**
- * Factory for creating immutable field generators. Ported from java/full/make_field_gens.cc.
+ * Factory for creating immutable field generators. Ported from
+ * java/full/make_field_gens.cc.
  */
 public final class ImmutableFieldGeneratorFactory {
 
-  private ImmutableFieldGeneratorFactory() {}
+  private ImmutableFieldGeneratorFactory() {
+  }
 
   public static FieldGeneratorMap<ImmutableFieldGenerator> createFieldGenerators(
       Descriptor descriptor, Context context) {
-    FieldGeneratorMap<ImmutableFieldGenerator> fieldGenerators =
-        new FieldGeneratorMap<>(descriptor);
+    FieldGeneratorMap<ImmutableFieldGenerator> fieldGenerators = new FieldGeneratorMap<>(descriptor);
 
     int messageBitIndex = 0;
     int builderBitIndex = 0;
@@ -29,47 +30,36 @@ public final class ImmutableFieldGeneratorFactory {
           generator = new MapFieldGenerator(field, messageBitIndex, builderBitIndex, context);
         } else {
           if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-            generator =
-                new RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new RepeatedMessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
-            generator =
-                new RepeatedEnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
-            generator =
-                new RepeatedStringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new RepeatedEnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
+            generator = new RepeatedStringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else {
-            generator =
-                new RepeatedPrimitiveFieldGenerator(
-                    field, messageBitIndex, builderBitIndex, context);
+            generator = new RepeatedPrimitiveFieldGenerator(
+                field, messageBitIndex, builderBitIndex, context);
           }
         }
       } else {
         if (Helpers.isRealOneof(field)) {
           if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-            generator =
-                new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
             generator = new EnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
             generator = new StringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else {
-            generator =
-                new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           }
         } else {
           if (field.getJavaType() == FieldDescriptor.JavaType.MESSAGE) {
-            generator =
-                new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new MessageFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
             generator = new EnumFieldGenerator(field, messageBitIndex, builderBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
             generator = new StringFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           } else {
-            generator =
-                new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context);
+            generator = new PrimitiveFieldGenerator(field, messageBitIndex, builderBitIndex, context);
           }
         }
       }

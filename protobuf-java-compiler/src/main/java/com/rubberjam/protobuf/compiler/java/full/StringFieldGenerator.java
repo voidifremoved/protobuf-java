@@ -20,7 +20,8 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     super(descriptor, messageBitIndex, builderBitIndex, context);
 
     variables.put("type", Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING
-        ? "java.lang.String" : "com.google.protobuf.ByteString");
+        ? "java.lang.String"
+        : "com.google.protobuf.ByteString");
 
     String defaultValue = Helpers.defaultValue(descriptor, true, context.getNameResolver(), context.getOptions());
     variables.put("default", defaultValue);
@@ -48,17 +49,19 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
     if (Helpers.supportFieldPresence(descriptor)) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+          context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
+          context.getOptions());
       printer.emit(variables,
           "com.google.protobuf.ByteString\n" +
-          "    get$capitalized_name$Bytes();\n");
+              "    get$capitalized_name$Bytes();\n");
     }
   }
 
@@ -67,122 +70,139 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     boolean isRealOneof = Helpers.isRealOneof(descriptor);
 
     if (isRealOneof) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
-      printer.emit(variables,
-          "public boolean has$capitalized_name$() {\n" +
-          "  return $oneof_name$Case_ == $number$;\n" +
-          "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+          context.getOptions());
+      if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
+        printer.emit(variables,
+            "public boolean has$capitalized_name$() {\n" +
+                "  return $oneof_name$Case_ == $number$;\n" +
+                "}\n");
+      } else {
+        printer.emit(variables,
+            "@java.lang.Override\n" +
+                "public boolean has$capitalized_name$() {\n" +
+                "  return $oneof_name$Case_ == $number$;\n" +
+                "}\n");
+      }
     } else {
       printer.emit(variables, "@SuppressWarnings(\"serial\")\n");
       printer.emit(variables, "private volatile java.lang.Object $name$_ = $default$;\n");
 
       if (descriptor.hasPresence()) {
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+            context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public boolean has$capitalized_name$() {\n" +
-            "  return " + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$") + ";\n" +
-            "}\n");
+                "public boolean has$capitalized_name$() {\n" +
+                "  return "
+                + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$")
+                + ";\n" +
+                "}\n");
       }
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
+          context.getOptions());
       if (isRealOneof) {
         printer.emit(variables,
             "public java.lang.String get$capitalized_name$() {\n" +
-            "  java.lang.Object ref = $default$;\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    ref = $oneof_name$_;\n" +
-            "  }\n" +
-            "  if (ref instanceof java.lang.String) {\n" +
-            "    return (java.lang.String) ref;\n" +
-            "  } else {\n" +
-            "    com.google.protobuf.ByteString bs = \n" +
-            "        (com.google.protobuf.ByteString) ref;\n" +
-            "    java.lang.String s = bs.toStringUtf8();\n" +
-            (InternalHelpers.checkUtf8(descriptor) ?
-    "    if ($oneof_name$Case_ == $number$) {\n" +
-    "      $oneof_name$_ = s;\n" +
-    "    }\n" :
-    "    if (bs.isValidUtf8() && ($oneof_name$Case_ == $number$)) {\n" +
-    "      $oneof_name$_ = s;\n" +
-    "    }\n") +
-            "    return s;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions());
+                "  java.lang.Object ref = $default$;\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    ref = $oneof_name$_;\n" +
+                "  }\n" +
+                "  if (ref instanceof java.lang.String) {\n" +
+                "    return (java.lang.String) ref;\n" +
+                "  } else {\n" +
+                "    com.google.protobuf.ByteString bs = \n" +
+                "        (com.google.protobuf.ByteString) ref;\n" +
+                "    java.lang.String s = bs.toStringUtf8();\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "    if ($oneof_name$Case_ == $number$) {\n" +
+                    "      $oneof_name$_ = s;\n" +
+                    "    }\n"
+                    : "    if (bs.isValidUtf8() && ($oneof_name$Case_ == $number$)) {\n" +
+                        "      $oneof_name$_ = s;\n" +
+                        "    }\n")
+                +
+                "    return s;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
+            context.getOptions());
         printer.emit(variables,
             "public com.google.protobuf.ByteString\n" +
-            "    get$capitalized_name$Bytes() {\n" +
-            "  java.lang.Object ref = $default$;\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    ref = $oneof_name$_;\n" +
-            "  }\n" +
-            "  if (ref instanceof java.lang.String) {\n" +
-            "    com.google.protobuf.ByteString b = \n" +
-            "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
-            "            (java.lang.String) ref);\n" +
-            "    if ($oneof_name$Case_ == $number$) {\n" +
-            "      $oneof_name$_ = b;\n" +
-            "    }\n" +
-            "    return b;\n" +
-            "  } else {\n" +
-            "    return (com.google.protobuf.ByteString) ref;\n" +
-            "  }\n" +
-            "}\n");
+                "    get$capitalized_name$Bytes() {\n" +
+                "  java.lang.Object ref = $default$;\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    ref = $oneof_name$_;\n" +
+                "  }\n" +
+                "  if (ref instanceof java.lang.String) {\n" +
+                "    com.google.protobuf.ByteString b = \n" +
+                "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
+                "            (java.lang.String) ref);\n" +
+                "    if ($oneof_name$Case_ == $number$) {\n" +
+                "      $oneof_name$_ = b;\n" +
+                "    }\n" +
+                "    return b;\n" +
+                "  } else {\n" +
+                "    return (com.google.protobuf.ByteString) ref;\n" +
+                "  }\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public java.lang.String get$capitalized_name$() {\n" +
-            "  java.lang.Object ref = $name$_;\n" +
-            "  if (ref instanceof java.lang.String) {\n" +
-            "    return (java.lang.String) ref;\n" +
-            "  } else {\n" +
-            "    com.google.protobuf.ByteString bs = \n" +
-            "        (com.google.protobuf.ByteString) ref;\n" +
-            "    java.lang.String s = bs.toStringUtf8();\n" +
-            (InternalHelpers.checkUtf8(descriptor) ?
-            "    $name$_ = s;\n" :
-            "    if (bs.isValidUtf8()) {\n" +
-            "      $name$_ = s;\n" +
-            "    }\n") +
-            "    return s;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions());
+                "public java.lang.String get$capitalized_name$() {\n" +
+                "  java.lang.Object ref = $name$_;\n" +
+                "  if (ref instanceof java.lang.String) {\n" +
+                "    return (java.lang.String) ref;\n" +
+                "  } else {\n" +
+                "    com.google.protobuf.ByteString bs = \n" +
+                "        (com.google.protobuf.ByteString) ref;\n" +
+                "    java.lang.String s = bs.toStringUtf8();\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "    $name$_ = s;\n"
+                    : "    if (bs.isValidUtf8()) {\n" +
+                        "      $name$_ = s;\n" +
+                        "    }\n")
+                +
+                "    return s;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
+            context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public com.google.protobuf.ByteString\n" +
-            "    get$capitalized_name$Bytes() {\n" +
-            "  java.lang.Object ref = $name$_;\n" +
-            "  if (ref instanceof java.lang.String) {\n" +
-            "    com.google.protobuf.ByteString b = \n" +
-            "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
-            "            (java.lang.String) ref);\n" +
-            "    $name$_ = b;\n" +
-            "    return b;\n" +
-            "  } else {\n" +
-            "    return (com.google.protobuf.ByteString) ref;\n" +
-            "  }\n" +
-            "}\n");
+                "public com.google.protobuf.ByteString\n" +
+                "    get$capitalized_name$Bytes() {\n" +
+                "  java.lang.Object ref = $name$_;\n" +
+                "  if (ref instanceof java.lang.String) {\n" +
+                "    com.google.protobuf.ByteString b = \n" +
+                "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
+                "            (java.lang.String) ref);\n" +
+                "    $name$_ = b;\n" +
+                "    return b;\n" +
+                "  } else {\n" +
+                "    return (com.google.protobuf.ByteString) ref;\n" +
+                "  }\n" +
+                "}\n");
       }
     } else {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
+          context.getOptions());
       if (isRealOneof) {
         printer.emit(variables,
-            "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
-            "  }\n" +
-            "  return (com.google.protobuf.ByteString) $default$;\n" +
-            "}\n");
+            "@java.lang.Override\n" +
+                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
+                "  }\n" +
+                "  return (com.google.protobuf.ByteString) $default$;\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
-            "  return (com.google.protobuf.ByteString) $name$_;\n" +
-            "}\n");
+                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "  return (com.google.protobuf.ByteString) $name$_;\n" +
+                "}\n");
       }
     }
   }
@@ -192,218 +212,236 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     boolean isRealOneof = Helpers.isRealOneof(descriptor);
 
     if (isRealOneof) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(),
+          true);
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public boolean has$capitalized_name$() {\n" +
-          "  return $oneof_name$Case_ == $number$;\n" +
-          "}\n");
+              "public boolean has$capitalized_name$() {\n" +
+              "  return $oneof_name$Case_ == $number$;\n" +
+              "}\n");
     } else {
       printer.emit(variables,
           "private java.lang.Object $name$_ = $default$;\n");
 
       if (descriptor.hasPresence()) {
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public boolean has$capitalized_name$() {\n" +
-            "  return " + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(builderBitIndex) : "$name$_ != $default$") + ";\n" +
-            "}\n");
+                "  return "
+                + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(builderBitIndex) : "$name$_ != $default$")
+                + ";\n" +
+                "}\n");
       }
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
+          true);
       if (isRealOneof) {
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public java.lang.String get$capitalized_name$() {\n" +
-            "  java.lang.Object ref = $default$;\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    ref = $oneof_name$_;\n" +
-            "  }\n" +
-            "  if (!(ref instanceof java.lang.String)) {\n" +
-            "    com.google.protobuf.ByteString bs =\n" +
-            "        (com.google.protobuf.ByteString) ref;\n" +
-            "    java.lang.String s = bs.toStringUtf8();\n" +
-            "    if ($oneof_name$Case_ == $number$) {\n" +
-            (InternalHelpers.checkUtf8(descriptor) ?
-            "      $oneof_name$_ = s;\n" :
-            "      if (bs.isValidUtf8()) {\n" +
-            "        $oneof_name$_ = s;\n" +
-            "      }\n") +
-            "    }\n" +
-            "    return s;\n" +
-            "  } else {\n" +
-            "    return (java.lang.String) ref;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions(), true);
+                "public java.lang.String get$capitalized_name$() {\n" +
+                "  java.lang.Object ref = $default$;\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    ref = $oneof_name$_;\n" +
+                "  }\n" +
+                "  if (!(ref instanceof java.lang.String)) {\n" +
+                "    com.google.protobuf.ByteString bs =\n" +
+                "        (com.google.protobuf.ByteString) ref;\n" +
+                "    java.lang.String s = bs.toStringUtf8();\n" +
+                "    if ($oneof_name$Case_ == $number$) {\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "      $oneof_name$_ = s;\n"
+                    : "      if (bs.isValidUtf8()) {\n" +
+                        "        $oneof_name$_ = s;\n" +
+                        "      }\n")
+                +
+                "    }\n" +
+                "    return s;\n" +
+                "  } else {\n" +
+                "    return (java.lang.String) ref;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public com.google.protobuf.ByteString\n" +
-            "    get$capitalized_name$Bytes() {\n" +
-            "  java.lang.Object ref = $default$;\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    ref = $oneof_name$_;\n" +
-            "  }\n" +
-            "  if (ref instanceof String) {\n" +
-            "    com.google.protobuf.ByteString b = \n" +
-            "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
-            "            (java.lang.String) ref);\n" +
-            "    if ($oneof_name$Case_ == $number$) {\n" +
-            "      $oneof_name$_ = b;\n" +
-            "    }\n" +
-            "    return b;\n" +
-            "  } else {\n" +
-            "    return (com.google.protobuf.ByteString) ref;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+                "public com.google.protobuf.ByteString\n" +
+                "    get$capitalized_name$Bytes() {\n" +
+                "  java.lang.Object ref = $default$;\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    ref = $oneof_name$_;\n" +
+                "  }\n" +
+                "  if (ref instanceof String) {\n" +
+                "    com.google.protobuf.ByteString b = \n" +
+                "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
+                "            (java.lang.String) ref);\n" +
+                "    if ($oneof_name$Case_ == $number$) {\n" +
+                "      $oneof_name$_ = b;\n" +
+                "    }\n" +
+                "    return b;\n" +
+                "  } else {\n" +
+                "    return (com.google.protobuf.ByteString) ref;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$(\n" +
-            "    java.lang.String value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            "  $oneof_name$Case_ = $number$;\n" +
-            "  $oneof_name$_ = value;\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+                "    java.lang.String value) {\n" +
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                "  $oneof_name$Case_ = $number$;\n" +
+                "  $oneof_name$_ = value;\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder clear$capitalized_name$() {\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    $oneof_name$Case_ = 0;\n" +
-            "    $oneof_name$_ = null;\n" +
-            "    onChanged();\n" +
-            "  }\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER, context.getOptions(), true);
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    $oneof_name$Case_ = 0;\n" +
+                "    $oneof_name$_ = null;\n" +
+                "    onChanged();\n" +
+                "  }\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$Bytes(\n" +
-            "    com.google.protobuf.ByteString value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
-            "  $oneof_name$Case_ = $number$;\n" +
-            "  $oneof_name$_ = value;\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
+                "    com.google.protobuf.ByteString value) {\n" +
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
+                "  $oneof_name$Case_ = $number$;\n" +
+                "  $oneof_name$_ = value;\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "public java.lang.String get$capitalized_name$() {\n" +
-            "  java.lang.Object ref = $name$_;\n" +
-            "  if (!(ref instanceof java.lang.String)) {\n" +
-            "    com.google.protobuf.ByteString bs =\n" +
-            "        (com.google.protobuf.ByteString) ref;\n" +
-            "    java.lang.String s = bs.toStringUtf8();\n" +
-            (InternalHelpers.checkUtf8(descriptor) ?
-            "    $name$_ = s;\n" :
-            "    if (bs.isValidUtf8()) {\n" +
-            "      $name$_ = s;\n" +
-            "    }\n") +
-            "    return s;\n" +
-            "  } else {\n" +
-            "    return (java.lang.String) ref;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions(), true);
+                "  java.lang.Object ref = $name$_;\n" +
+                "  if (!(ref instanceof java.lang.String)) {\n" +
+                "    com.google.protobuf.ByteString bs =\n" +
+                "        (com.google.protobuf.ByteString) ref;\n" +
+                "    java.lang.String s = bs.toStringUtf8();\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "    $name$_ = s;\n"
+                    : "    if (bs.isValidUtf8()) {\n" +
+                        "      $name$_ = s;\n" +
+                        "    }\n")
+                +
+                "    return s;\n" +
+                "  } else {\n" +
+                "    return (java.lang.String) ref;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public com.google.protobuf.ByteString\n" +
-            "    get$capitalized_name$Bytes() {\n" +
-            "  java.lang.Object ref = $name$_;\n" +
-            "  if (ref instanceof String) {\n" +
-            "    com.google.protobuf.ByteString b = \n" +
-            "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
-            "            (java.lang.String) ref);\n" +
-            "    $name$_ = b;\n" +
-            "    return b;\n" +
-            "  } else {\n" +
-            "    return (com.google.protobuf.ByteString) ref;\n" +
-            "  }\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+                "    get$capitalized_name$Bytes() {\n" +
+                "  java.lang.Object ref = $name$_;\n" +
+                "  if (ref instanceof String) {\n" +
+                "    com.google.protobuf.ByteString b = \n" +
+                "        com.google.protobuf.ByteString.copyFromUtf8(\n" +
+                "            (java.lang.String) ref);\n" +
+                "    $name$_ = b;\n" +
+                "    return b;\n" +
+                "  } else {\n" +
+                "    return (com.google.protobuf.ByteString) ref;\n" +
+                "  }\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$(\n" +
-            "    java.lang.String value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            "  $name$_ = value;\n" +
-            "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+                "    java.lang.String value) {\n" +
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                "  $name$_ = value;\n" +
+                "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder clear$capitalized_name$() {\n" +
-            "  $name$_ = getDefaultInstance().get$capitalized_name$();\n" +
-            "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER, context.getOptions(), true);
+                "  $name$_ = getDefaultInstance().get$capitalized_name$();\n" +
+                "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$Bytes(\n" +
-            "    com.google.protobuf.ByteString value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
-            "  $name$_ = value;\n" +
-            "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
+                "    com.google.protobuf.ByteString value) {\n" +
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
+                "  $name$_ = value;\n" +
+                "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
       }
     } else {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
+          true);
       if (Helpers.isRealOneof(descriptor)) {
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
-            "  }\n" +
-            "  return (com.google.protobuf.ByteString) $default$;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
+                "  }\n" +
+                "  return (com.google.protobuf.ByteString) $default$;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            "  $oneof_name$Case_ = $number$;\n" +
-            "  $oneof_name$_ = value;\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                "  $oneof_name$Case_ = $number$;\n" +
+                "  $oneof_name$_ = value;\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder clear$capitalized_name$() {\n" +
-            "  if ($oneof_name$Case_ == $number$) {\n" +
-            "    $oneof_name$Case_ = 0;\n" +
-            "    $oneof_name$_ = null;\n" +
-            "    onChanged();\n" +
-            "  }\n" +
-            "  return this;\n" +
-            "}\n");
+                "  if ($oneof_name$Case_ == $number$) {\n" +
+                "    $oneof_name$Case_ = 0;\n" +
+                "    $oneof_name$_ = null;\n" +
+                "    onChanged();\n" +
+                "  }\n" +
+                "  return this;\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
-            "  return (com.google.protobuf.ByteString) $name$_;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+                "  return (com.google.protobuf.ByteString) $name$_;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
-            "  if (value == null) { throw new NullPointerException(); }\n" +
-            "  $name$_ = value;\n" +
-            "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+                "  if (value == null) { throw new NullPointerException(); }\n" +
+                "  $name$_ = value;\n" +
+                "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+            context.getOptions(), true);
         printer.emit(variables,
             "public Builder clear$capitalized_name$() {\n" +
-            "  $name$_ = $default$;\n" +
-            "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-            "  onChanged();\n" +
-            "  return this;\n" +
-            "}\n");
+                "  $name$_ = $default$;\n" +
+                "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+                "  onChanged();\n" +
+                "  return this;\n" +
+                "}\n");
       }
     }
   }
@@ -417,19 +455,19 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         if (InternalHelpers.checkUtf8(descriptor)) {
           printer.emit(variables,
               "java.lang.String s = input.readStringRequireUtf8();\n" +
-              "$oneof_name$Case_ = $number$;\n" +
-              "$oneof_name$_ = s;\n");
+                  "$oneof_name$Case_ = $number$;\n" +
+                  "$oneof_name$_ = s;\n");
         } else {
           printer.emit(variables,
               "com.google.protobuf.ByteString bs = input.readBytes();\n" +
-              "$oneof_name$Case_ = $number$;\n" +
-              "$oneof_name$_ = bs;\n");
+                  "$oneof_name$Case_ = $number$;\n" +
+                  "$oneof_name$_ = bs;\n");
         }
       } else {
         printer.emit(variables,
             "com.google.protobuf.ByteString bs = input.readBytes();\n" +
-            "$oneof_name$Case_ = $number$;\n" +
-            "$oneof_name$_ = bs;\n");
+                "$oneof_name$Case_ = $number$;\n" +
+                "$oneof_name$_ = bs;\n");
       }
     } else {
       generateParsingCode(printer);
@@ -441,35 +479,38 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-     printer.emit(variables, "$name$_ = $default$;\n");
+    printer.emit(variables, "$name$_ = $default$;\n");
   }
 
   @Override
   public void generateBuilderClearCode(Printer printer) {
-     printer.emit(variables, "$name$_ = $default$;\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      return;
+    }
+    printer.emit(variables, "$name$_ = $default$;\n");
   }
 
   @Override
   public void generateMergingCode(Printer printer) {
     if (Helpers.isRealOneof(descriptor)) {
-       printer.emit(variables,
-           "$oneof_name$Case_ = $number$;\n" +
-           "$oneof_name$_ = other.$oneof_name$_;\n" +
-           "onChanged();\n");
+      printer.emit(variables,
+          "$oneof_name$Case_ = $number$;\n" +
+              "$oneof_name$_ = other.$oneof_name$_;\n" +
+              "onChanged();\n");
     } else if (descriptor.hasPresence()) {
-       printer.emit(variables,
-           "if (other.has$capitalized_name$()) {\n" +
-           "  $name$_ = other.$name$_;\n" +
-           "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-           "  onChanged();\n" +
-           "}\n");
+      printer.emit(variables,
+          "if (other.has$capitalized_name$()) {\n" +
+              "  $name$_ = other.$name$_;\n" +
+              "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+              "  onChanged();\n" +
+              "}\n");
     } else {
-       // Proto3 implicit string
-       printer.emit(variables,
-           "if (!other.get$capitalized_name$().isEmpty()) {\n" +
-           "  $name$_ = other.$name$_;\n" +
-           "  onChanged();\n" +
-           "}\n");
+      // Proto3 implicit string
+      printer.emit(variables,
+          "if (!other.get$capitalized_name$().isEmpty()) {\n" +
+              "  $name$_ = other.$name$_;\n" +
+              "  onChanged();\n" +
+              "}\n");
     }
   }
 
@@ -478,18 +519,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       return;
     }
-    if (Helpers.hasHasbit(descriptor)) {
-       printer.emit(variables,
-           "if ($get_has_field_bit_from_local$) {\n" +
-           "  result.$name$_ = $name$_;\n");
-       if (getNumBitsForMessage() > 0) {
-         printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
-       }
-       printer.print("}\n");
-    } else {
-       printer.emit(variables,
-           "result.$name$_ = $name$_;\n");
+    printer.emit(variables,
+        "if ($get_has_field_bit_from_local$) {\n" +
+            "  result.$name$_ = $name$_;\n");
+    if (getNumBitsForMessage() > 0) {
+      printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
     }
+    printer.print("}\n");
   }
 
   @Override
@@ -499,32 +535,32 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         if (InternalHelpers.checkUtf8(descriptor)) {
           printer.emit(variables,
               "$oneof_name$_ = input.readStringRequireUtf8();\n" +
-              "$oneof_name$Case_ = $number$;\n");
+                  "$oneof_name$Case_ = $number$;\n");
         } else {
           printer.emit(variables,
               "$oneof_name$_ = input.readBytes();\n" +
-              "$oneof_name$Case_ = $number$;\n");
+                  "$oneof_name$Case_ = $number$;\n");
         }
       } else {
         printer.emit(variables,
             "$oneof_name$_ = input.readBytes();\n" +
-            "$oneof_name$Case_ = $number$;\n");
+                "$oneof_name$Case_ = $number$;\n");
       }
     } else {
       if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-         if (InternalHelpers.checkUtf8(descriptor)) {
-             printer.emit(variables,
-                 "$name$_ = input.readStringRequireUtf8();\n" +
-                 (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
-         } else {
-             printer.emit(variables,
-                 "$name$_ = input.readBytes();\n" +
-                 (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
-         }
+        if (InternalHelpers.checkUtf8(descriptor)) {
+          printer.emit(variables,
+              "$name$_ = input.readStringRequireUtf8();\n" +
+                  (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+        } else {
+          printer.emit(variables,
+              "$name$_ = input.readBytes();\n" +
+                  (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+        }
       } else {
-         printer.emit(variables,
-             "$name$_ = input.readBytes();\n" +
-             (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
+        printer.emit(variables,
+            "$name$_ = input.readBytes();\n" +
+                (Helpers.hasHasbit(descriptor) ? Helpers.generateSetBit(builderBitIndex) + ";\n" : ""));
       }
     }
   }
@@ -545,14 +581,14 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
-            "  size += com.google.protobuf.GeneratedMessage.computeStringSize($number$, $oneof_name$_);\n" +
-            "}\n");
+                "  size += com.google.protobuf.GeneratedMessage.computeStringSize($number$, $oneof_name$_);\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
-            "  size += com.google.protobuf.CodedOutputStream\n" +
-            "    .computeBytesSize($number$, (com.google.protobuf.ByteString) $oneof_name$_);\n" +
-            "}\n");
+                "  size += com.google.protobuf.CodedOutputStream\n" +
+                "    .computeBytesSize($number$, (com.google.protobuf.ByteString) $oneof_name$_);\n" +
+                "}\n");
       }
       return;
     }
@@ -565,16 +601,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-        printer.emit(variables,
-            "if (" + condition + ") {\n" +
-            "  size += com.google.protobuf.GeneratedMessage.computeStringSize($number$, $name$_);\n" +
-            "}\n");
+      printer.emit(variables,
+          "if (" + condition + ") {\n" +
+              "  size += com.google.protobuf.GeneratedMessage.computeStringSize($number$, $name$_);\n" +
+              "}\n");
     } else {
-        printer.emit(variables,
-            "if (" + condition + ") {\n" +
-            "  size += com.google.protobuf.CodedOutputStream\n" +
-            "    .computeBytesSize($number$, $name$_);\n" +
-            "}\n");
+      printer.emit(variables,
+          "if (" + condition + ") {\n" +
+              "  size += com.google.protobuf.CodedOutputStream\n" +
+              "    .computeBytesSize($number$, $name$_);\n" +
+              "}\n");
     }
   }
 
@@ -584,13 +620,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
-            "  com.google.protobuf.GeneratedMessage.writeString(output, $number$, $oneof_name$_);\n" +
-            "}\n");
+                "  com.google.protobuf.GeneratedMessage.writeString(output, $number$, $oneof_name$_);\n" +
+                "}\n");
       } else {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
-            "  output.writeBytes($number$, (com.google.protobuf.ByteString) $oneof_name$_);\n" +
-            "}\n");
+                "  output.writeBytes($number$, (com.google.protobuf.ByteString) $oneof_name$_);\n" +
+                "}\n");
       }
       return;
     }
@@ -603,48 +639,48 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
-        printer.emit(variables,
-            "if (" + condition + ") {\n" +
-            "  com.google.protobuf.GeneratedMessage.writeString(output, $number$, $name$_);\n" +
-            "}\n");
+      printer.emit(variables,
+          "if (" + condition + ") {\n" +
+              "  com.google.protobuf.GeneratedMessage.writeString(output, $number$, $name$_);\n" +
+              "}\n");
     } else {
-        printer.emit(variables,
-            "if (" + condition + ") {\n" +
-            "  output.writeBytes($number$, $name$_);\n" +
-            "}\n");
+      printer.emit(variables,
+          "if (" + condition + ") {\n" +
+              "  output.writeBytes($number$, $name$_);\n" +
+              "}\n");
     }
   }
 
   @Override
   public void generateEqualsCode(Printer printer) {
-     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
-        printer.emit(variables,
-            "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
-            "if (has$capitalized_name$()) {\n");
-        printer.indent();
-     }
-     printer.emit(variables,
-         "if (!get$capitalized_name$()\n" +
-         "    .equals(other.get$capitalized_name$())) return false;\n");
-     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
-        printer.outdent();
-        printer.print("}\n");
-     }
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
+      printer.emit(variables,
+          "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
+              "if (has$capitalized_name$()) {\n");
+      printer.indent();
+    }
+    printer.emit(variables,
+        "if (!get$capitalized_name$()\n" +
+            "    .equals(other.get$capitalized_name$())) return false;\n");
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
+      printer.outdent();
+      printer.print("}\n");
+    }
   }
 
   @Override
   public void generateHashCodeCode(Printer printer) {
-     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
-        printer.emit(variables,
-            "if (has$capitalized_name$()) {\n");
-        printer.indent();
-     }
-     printer.emit(variables,
-         "hash = (37 * hash) + $constant_name$;\n" +
-         "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
-     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
-        printer.outdent();
-        printer.print("}\n");
-     }
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
+      printer.emit(variables,
+          "if (has$capitalized_name$()) {\n");
+      printer.indent();
+    }
+    printer.emit(variables,
+        "hash = (37 * hash) + $constant_name$;\n" +
+            "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
+    if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
+      printer.outdent();
+      printer.print("}\n");
+    }
   }
 }

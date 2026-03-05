@@ -21,10 +21,8 @@ import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.io.Tokenizer;
 
-public abstract class AbstractProtoParityTest
-{
-	protected void verifyParity(String protoFileName, String expectedJavaFileName) throws Exception
-	{
+public abstract class AbstractProtoParityTest {
+	protected void verifyParity(String protoFileName, String expectedJavaFileName) throws Exception {
 		// Read the proto file
 		String protoContent = readProtoFile(protoFileName);
 		assertNotNull("Proto file not found: " + protoFileName, protoContent);
@@ -51,15 +49,13 @@ public abstract class AbstractProtoParityTest
 		String expectedTrimmed = expected.trim();
 
 		File expectedFile = new File("target/" + expectedJavaFileName + "_Expected.txt");
-		if (expectedFile.getParentFile() != null)
-		{
+		if (expectedFile.getParentFile() != null) {
 			expectedFile.getParentFile().mkdirs();
 		}
 		Files.writeString(expectedFile.toPath(), expectedTrimmed);
 
 		File actualFile = new File("target/" + expectedJavaFileName + "_Actual.txt");
-		if (actualFile.getParentFile() != null)
-		{
+		if (actualFile.getParentFile() != null) {
 			actualFile.getParentFile().mkdirs();
 		}
 		Files.writeString(actualFile.toPath(), actual);
@@ -69,41 +65,41 @@ public abstract class AbstractProtoParityTest
 		String[] expectedLines = expectedTrimmed.split("\n");
 
 		int maxLines = Math.max(actualLines.length, expectedLines.length);
-		for (int i = 0; i < maxLines; i++)
-		{
+		for (int i = 0; i < maxLines; i++) {
 			String actualLine = i < actualLines.length ? actualLines[i] : null;
 			String expectedLine = i < expectedLines.length ? expectedLines[i] : null;
 
-			if (actualLine == null)
-			{
+			if (actualLine == null) {
 				assertEquals("Line " + (i + 1) + ": Expected line missing in generated code", expectedLine, actualLine);
-			}
-			else if (expectedLine == null)
-			{
+			} else if (expectedLine == null) {
 				assertEquals("Line " + (i + 1) + ": Extra line in generated code", expectedLine, actualLine);
-			}
-			else if (!actualLine.equals(expectedLine))
-			{
+			} else if (!actualLine.equals(expectedLine)) {
 				// Print context for debugging - show 5 lines before and after
 				System.out.println("Mismatch at line " + (i + 1) + ":");
 				int start = Math.max(0, i - 5);
 				int end = Math.min(maxLines, i + 6);
-				for (int j = start; j < end; j++)
-				{
+				for (int j = start; j < end; j++) {
 					String expectedPart = j < expectedLines.length ? expectedLines[j] : "<missing>";
 					String actualPart = j < actualLines.length ? actualLines[j] : "<missing>";
-					if (j == i)
-					{
+					if (j == i) {
 						System.out.println(">>> " + (j + 1) + " Expected: " + expectedPart);
 						System.out.println(">>> " + (j + 1) + " Actual:   " + actualPart);
-					}
-					else
-					{
+					} else {
 						System.out.println("    " + (j + 1) + " Expected: " + expectedPart);
 						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
 					}
 				}
-				assertEquals("Line " + (i + 1) + " mismatch", expectedLine, actualLine);
+				try {
+					assertEquals("Line " + (i + 1) + " mismatch", expectedLine, actualLine);
+				} catch (AssertionError e) {
+					System.err.println("DUMPING ACTUAL CODE AROUND MISMATCH:");
+					int startDump = Math.max(0, i - 20);
+					int endDump = Math.min(actualLines.length, i + 21);
+					for (int j = startDump; j < endDump; j++) {
+						System.err.println((j + 1) + ": " + actualLines[j]);
+					}
+					throw e;
+				}
 			}
 		}
 
@@ -111,68 +107,53 @@ public abstract class AbstractProtoParityTest
 		assertEquals("Generated Java source does not match expected", expectedTrimmed, actual);
 	}
 
-	protected String readProtoFile(String fileName) throws Exception
-	{
+	protected String readProtoFile(String fileName) throws Exception {
 		File protoFile = new File("src/test/protobuf", fileName);
-		if (!protoFile.exists())
-		{
+		if (!protoFile.exists()) {
 			// Try relative to project root
 			protoFile = new File("protobuf-java-compiler/src/test/protobuf", fileName);
 		}
-		if (!protoFile.exists())
-		{
+		if (!protoFile.exists()) {
 			return null;
 		}
 		return new String(Files.readAllBytes(protoFile.toPath()), StandardCharsets.UTF_8);
 	}
 
-	protected String readExpectedJavaFile(String fileName) throws Exception
-	{
+	protected String readExpectedJavaFile(String fileName) throws Exception {
 		File javaFile = new File("src/test/resources/expected/java", fileName);
-		if (!javaFile.exists())
-		{
+		if (!javaFile.exists()) {
 			// Try relative to project root
 			javaFile = new File("protobuf-java-compiler/src/test/resources/expected/java", fileName);
 		}
-		if (!javaFile.exists())
-		{
+		if (!javaFile.exists()) {
 			// Try as resource
 			try (InputStream stream = AbstractProtoParityTest.class.getClassLoader()
-					.getResourceAsStream("expected/java/" + fileName))
-			{
-				if (stream != null)
-				{
+					.getResourceAsStream("expected/java/" + fileName)) {
+				if (stream != null) {
 					try (BufferedReader reader = new BufferedReader(
-							new InputStreamReader(stream, StandardCharsets.UTF_8)))
-					{
+							new InputStreamReader(stream, StandardCharsets.UTF_8))) {
 						return reader.lines().collect(Collectors.joining("\n"));
 					}
 				}
 			}
 		}
-		if (javaFile.exists())
-		{
+		if (javaFile.exists()) {
 			return new String(Files.readAllBytes(javaFile.toPath()), StandardCharsets.UTF_8);
 		}
 		return null;
 	}
 
 	protected FileDescriptorProto parseProtoFile(String fileName, String content)
-			throws Exception
-	{
+			throws Exception {
 		FileDescriptorProto.Builder fileBuilder = FileDescriptorProto.newBuilder();
 		fileBuilder.setName(fileName);
 
 		java.util.List<String> errors = new java.util.ArrayList<>();
 		final int MAX_ERRORS = 100; // Limit errors to prevent infinite loops
-		ErrorCollector errorCollector = (line, column, message) ->
-		{
-			if (errors.size() < MAX_ERRORS)
-			{
+		ErrorCollector errorCollector = (line, column, message) -> {
+			if (errors.size() < MAX_ERRORS) {
 				errors.add(fileName + ":" + line + ":" + column + ": " + message);
-			}
-			else if (errors.size() == MAX_ERRORS)
-			{
+			} else if (errors.size() == MAX_ERRORS) {
 				errors.add("... (error limit reached, possible infinite loop)");
 			}
 		};
@@ -183,15 +164,12 @@ public abstract class AbstractProtoParityTest
 
 		boolean parseSuccess = parser.parse(tokenizer, fileBuilder);
 
-		if (!parseSuccess || !errors.isEmpty())
-		{
+		if (!parseSuccess || !errors.isEmpty()) {
 			String errorMessage = "Error parsing proto file " + fileName;
-			if (!errors.isEmpty())
-			{
+			if (!errors.isEmpty()) {
 				errorMessage += ":\n" + String.join("\n", errors);
 			}
-			if (errors.size() >= MAX_ERRORS)
-			{
+			if (errors.size() >= MAX_ERRORS) {
 				errorMessage += "\n\nToo many errors detected - possible infinite loop in parser.";
 			}
 			throw new CompilationException(errorMessage);

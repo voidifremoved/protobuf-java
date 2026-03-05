@@ -431,9 +431,8 @@ public class RepeatedMessageFieldGenerator extends ImmutableFieldGenerator {
          "if ($name$Builder_ == null) {\n" +
          "  if ($get_has_field_bit_from_local$) {\n" +
          "    $name$_ = java.util.Collections.unmodifiableList($name$_);\n" +
-         "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+         "    result.$name$_ = $name$_;\n" +
          "  }\n" +
-         "  result.$name$_ = $name$_;\n" +
          "} else {\n" +
          "  result.$name$_ = $name$Builder_.build();\n" +
          "}\n");

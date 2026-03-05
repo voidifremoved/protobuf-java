@@ -77,7 +77,7 @@ public final class RuntimeJavaGenerator
 			throw new CompilationException("No files were generated");
 		}
 
-		return javaFiles.getFirst();
+		return javaFiles.get(0);
 	}
 
 	public static Map<String, GeneratedJavaFile> generateJavaSources(

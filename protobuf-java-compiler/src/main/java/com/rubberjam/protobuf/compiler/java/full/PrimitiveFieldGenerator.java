@@ -33,68 +33,114 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
         (descriptor.getNumber() << 3) | getWireType(descriptor)));
     variables.put("tag_size", String.valueOf(
         com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
-    variables.put("null_check", ""); // Primitives don't need null checks
+    if (Helpers.isReferenceType(descriptor.getJavaType())) {
+      variables.put("null_check", "  if (value == null) { throw new NullPointerException(); }\n");
+    } else {
+      variables.put("null_check", "\n");
+    }
+
+    if (descriptor.getJavaType() == FieldDescriptor.JavaType.STRING
+        || descriptor.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+      variables.put("clear_default", "getDefaultInstance().get" + variables.get("capitalized_name") + "()");
+    } else {
+      variables.put("clear_default", defaultValue);
+    }
   }
 
   private int getWireType(FieldDescriptor descriptor) {
-      switch (descriptor.getType()) {
-          case DOUBLE: return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
-          case FLOAT: return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
-          case INT32:
-          case INT64:
-          case UINT32:
-          case UINT64:
-          case FIXED32:
-          case FIXED64:
-          case SFIXED32:
-          case SFIXED64:
-          case SINT32:
-          case SINT64:
-              // INT32/INT64 etc use VARINT
-              if (descriptor.getType() == FieldDescriptor.Type.FIXED64 || descriptor.getType() == FieldDescriptor.Type.SFIXED64) {
-                   return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
-              }
-              if (descriptor.getType() == FieldDescriptor.Type.FIXED32 || descriptor.getType() == FieldDescriptor.Type.SFIXED32) {
-                   return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
-              }
-              return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
-          case BOOL: return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
-          default: throw new RuntimeException("Not a primitive type: " + descriptor.getType());
-      }
+    switch (descriptor.getType()) {
+      case DOUBLE:
+        return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
+      case FLOAT:
+        return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
+      case INT32:
+      case INT64:
+      case UINT32:
+      case UINT64:
+      case FIXED32:
+      case FIXED64:
+      case SFIXED32:
+      case SFIXED64:
+      case SINT32:
+      case SINT64:
+        // INT32/INT64 etc use VARINT
+        if (descriptor.getType() == FieldDescriptor.Type.FIXED64
+            || descriptor.getType() == FieldDescriptor.Type.SFIXED64) {
+          return com.google.protobuf.WireFormat.WIRETYPE_FIXED64;
+        }
+        if (descriptor.getType() == FieldDescriptor.Type.FIXED32
+            || descriptor.getType() == FieldDescriptor.Type.SFIXED32) {
+          return com.google.protobuf.WireFormat.WIRETYPE_FIXED32;
+        }
+        return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+      case BOOL:
+        return com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+      case BYTES:
+        return com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+      default:
+        throw new RuntimeException("Not a primitive type: " + descriptor.getType());
+    }
   }
 
   private String getJavaTypeName(Helpers.JavaType type) {
     switch (type) {
-      case INT: return "int";
-      case LONG: return "long";
-      case FLOAT: return "float";
-      case DOUBLE: return "double";
-      case BOOLEAN: return "boolean";
-      default: throw new IllegalArgumentException("Not a primitive type");
+      case INT:
+        return "int";
+      case LONG:
+        return "long";
+      case FLOAT:
+        return "float";
+      case DOUBLE:
+        return "double";
+      case BOOLEAN:
+        return "boolean";
+      case BYTES:
+        return "com.google.protobuf.ByteString";
+      default:
+        throw new IllegalArgumentException("Not a primitive type");
     }
   }
 
   private String getCapitalizedType(FieldDescriptor descriptor) {
     switch (descriptor.getType()) {
-      case INT32: return "Int32";
-      case UINT32: return "UInt32";
-      case SINT32: return "SInt32";
-      case FIXED32: return "Fixed32";
-      case SFIXED32: return "SFixed32";
-      case INT64: return "Int64";
-      case UINT64: return "UInt64";
-      case SINT64: return "SInt64";
-      case FIXED64: return "Fixed64";
-      case SFIXED64: return "SFixed64";
-      case FLOAT: return "Float";
-      case DOUBLE: return "Double";
-      case BOOL: return "Bool";
-      case STRING: return "String";
-      case BYTES: return "Bytes";
-      case ENUM: return "Enum";
-      case GROUP: return "Group";
-      case MESSAGE: return "Message";
-      default: return "";
+      case INT32:
+        return "Int32";
+      case UINT32:
+        return "UInt32";
+      case SINT32:
+        return "SInt32";
+      case FIXED32:
+        return "Fixed32";
+      case SFIXED32:
+        return "SFixed32";
+      case INT64:
+        return "Int64";
+      case UINT64:
+        return "UInt64";
+      case SINT64:
+        return "SInt64";
+      case FIXED64:
+        return "Fixed64";
+      case SFIXED64:
+        return "SFixed64";
+      case FLOAT:
+        return "Float";
+      case DOUBLE:
+        return "Double";
+      case BOOL:
+        return "Bool";
+      case STRING:
+        return "String";
+      case BYTES:
+        return "Bytes";
+      case ENUM:
+        return "Enum";
+      case GROUP:
+        return "Group";
+      case MESSAGE:
+        return "Message";
+      default:
+        return "";
     }
   }
 
@@ -111,7 +157,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateInterfaceMembers(Printer printer) {
     if (Helpers.supportFieldPresence(descriptor)) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+          context.getOptions());
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
@@ -121,44 +168,49 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateMembers(Printer printer) {
     if (Helpers.isRealOneof(descriptor)) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+          context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public boolean has$capitalized_name$() {\n" +
-          "  return $oneof_name$Case_ == $number$;\n" +
-          "}\n");
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+              "public boolean has$capitalized_name$() {\n" +
+              "  return $oneof_name$Case_ == $number$;\n" +
+              "}\n");
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
+          context.getOptions());
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public $type$ get$capitalized_name$() {\n" +
-          "  if ($oneof_name$Case_ == $number$) {\n" +
-          "    return ($boxed_type$) $oneof_name$_;\n" +
-          "  }\n" +
-          "  return $default$;\n" +
-          "}\n");
+              "public $type$ get$capitalized_name$() {\n" +
+              "  if ($oneof_name$Case_ == $number$) {\n" +
+              "    return ($boxed_type$) $oneof_name$_;\n" +
+              "  }\n" +
+              "  return $default$;\n" +
+              "}\n");
     } else {
       printer.emit(variables, "private $type$ $name$_ = $default$;\n");
       if (Helpers.hasHasbit(descriptor)) {
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
+            context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public boolean has$capitalized_name$() {\n" +
-            "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
-            "}\n");
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+                "public boolean has$capitalized_name$() {\n" +
+                "  return " + Helpers.generateGetBit(messageBitIndex) + ";\n" +
+                "}\n");
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
+            context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public $type$ get$capitalized_name$() {\n" +
-            "  return $name$_;\n" +
-            "}\n");
+                "public $type$ get$capitalized_name$() {\n" +
+                "  return $name$_;\n" +
+                "}\n");
       } else {
         // Proto3 implicit
-        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+        DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
+            context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-            "public $type$ get$capitalized_name$() {\n" +
-            "  return $name$_;\n" +
-            "}\n");
+                "public $type$ get$capitalized_name$() {\n" +
+                "  return $name$_;\n" +
+                "}\n");
       }
     }
   }
@@ -166,41 +218,45 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateBuilderMembers(Printer printer) {
     if (Helpers.isRealOneof(descriptor)) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(),
+          true);
       printer.emit(variables,
           "public boolean has$capitalized_name$() {\n" +
-          "  return $oneof_name$Case_ == $number$;\n" +
-          "}\n");
+              "  return $oneof_name$Case_ == $number$;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "public $type$ get$capitalized_name$() {\n" +
-          "  if ($oneof_name$Case_ == $number$) {\n" +
-          "    return ($boxed_type$) $oneof_name$_;\n" +
-          "  }\n" +
-          "  return $default$;\n" +
-          "}\n");
+              "  if ($oneof_name$Case_ == $number$) {\n" +
+              "    return ($boxed_type$) $oneof_name$_;\n" +
+              "  }\n" +
+              "  return $default$;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "\n" +
-          "  $oneof_name$Case_ = $number$;\n" +
-          "  $oneof_name$_ = value;\n" +
-          "  onChanged();\n" +
-          "  return this;\n" +
-          "}\n");
+              "$null_check$" +
+              "  $oneof_name$Case_ = $number$;\n" +
+              "  $oneof_name$_ = value;\n" +
+              "  onChanged();\n" +
+              "  return this;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+          context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
-          "  if ($oneof_name$Case_ == $number$) {\n" +
-          "    $oneof_name$Case_ = 0;\n" +
-          "    $oneof_name$_ = null;\n" +
-          "    onChanged();\n" +
-          "  }\n" +
-          "  return this;\n" +
-          "}\n");
+              "  if ($oneof_name$Case_ == $number$) {\n" +
+              "    $oneof_name$Case_ = 0;\n" +
+              "    $oneof_name$_ = null;\n" +
+              "    onChanged();\n" +
+              "  }\n" +
+              "  return this;\n" +
+              "}\n");
     } else if (Helpers.hasHasbit(descriptor)) {
       if (Helpers.isDefaultValueJavaDefault(descriptor)) {
         printer.emit(variables, "private $type$ $name$_ ;\n");
@@ -208,67 +264,78 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
         printer.emit(variables, "private $type$ $name$_ = $default_init$;\n");
       }
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(),
+          true);
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public boolean has$capitalized_name$() {\n" +
-          "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
-          "}\n");
+              "public boolean has$capitalized_name$() {\n" +
+              "  return " + Helpers.generateGetBit(builderBitIndex) + ";\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public $type$ get$capitalized_name$() {\n" +
-          "  return $name$_;\n" +
-          "}\n");
+              "public $type$ get$capitalized_name$() {\n" +
+              "  return $name$_;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "\n" +
-          "  $name$_ = value;\n" +
-          "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
-          "  onChanged();\n" +
-          "  return this;\n" +
-          "}\n");
+              "$null_check$" +
+              "  $name$_ = value;\n" +
+              "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+              "  onChanged();\n" +
+              "  return this;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+          context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
-          "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
-          "  $name$_ = $default$;\n" +
-          "  onChanged();\n" +
-          "  return this;\n" +
-          "}\n");
+              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+              "  $name$_ = $clear_default$;\n" +
+              "  onChanged();\n" +
+              "  return this;\n" +
+              "}\n");
     } else {
       // Proto3 implicit
-      printer.emit(variables,
-          "private $type$ $name$_;\n"); // Default is 0/false by JVM
+      if (Helpers.isDefaultValueJavaDefault(descriptor)) {
+        printer.emit(variables, "private $type$ $name$_ ;\n");
+      } else {
+        printer.emit(variables, "private $type$ $name$_ = $default$;\n");
+      }
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "@java.lang.Override\n" +
-          "public $type$ get$capitalized_name$() {\n" +
-          "  return $name$_;\n" +
-          "}\n");
+              "public $type$ get$capitalized_name$() {\n" +
+              "  return $name$_;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER, context.getOptions(),
+          true);
       printer.emit(variables,
           "public Builder set$capitalized_name$($type$ value) {\n" +
-          "\n" +
-          "  $name$_ = value;\n" +
-          "  onChanged();\n" +
-          "  return this;\n" +
-          "}\n");
+              "$null_check$" +
+              "  $name$_ = value;\n" +
+              "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+              "  onChanged();\n" +
+              "  return this;\n" +
+              "}\n");
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER, context.getOptions(), true);
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
+          context.getOptions(), true);
       printer.emit(variables,
           "public Builder clear$capitalized_name$() {\n" +
-          "\n" +
-          "  $name$_ = $default$;\n" + // Helper default should be 0/false
-          "  onChanged();\n" +
-          "  return this;\n" +
-          "}\n");
+              "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+              "  $name$_ = $clear_default$;\n" +
+              "  onChanged();\n" +
+              "  return this;\n" +
+              "}\n");
     }
   }
 
@@ -281,8 +348,11 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateBuilderClearCode(Printer printer) {
-      printer.emit(variables,
-          "$name$_ = $default$;\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      return;
+    }
+    printer.emit(variables,
+        "$name$_ = $default$;\n");
   }
 
   @Override
@@ -293,14 +363,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     } else if (descriptor.hasPresence()) {
       printer.emit(variables,
           "if (other.has$capitalized_name$()) {\n" +
-          "  set$capitalized_name$(other.get$capitalized_name$());\n" +
-          "}\n");
+              "  set$capitalized_name$(other.get$capitalized_name$());\n" +
+              "}\n");
     } else {
       // Proto3 implicit: check if value is not default
       printer.emit(variables,
           "if (other.get$capitalized_name$() != $default$) {\n" +
-          "  set$capitalized_name$(other.get$capitalized_name$());\n" +
-          "}\n");
+              "  set$capitalized_name$(other.get$capitalized_name$());\n" +
+              "}\n");
     }
   }
 
@@ -309,18 +379,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       return;
     }
-    if (Helpers.hasHasbit(descriptor)) {
-      printer.emit(variables,
-          "if ($get_has_field_bit_from_local$) {\n" +
-          "  result.$name$_ = $name$_;\n");
-      if (getNumBitsForMessage() > 0) {
-        printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
-      }
-      printer.print("}\n");
-    } else {
-      printer.emit(variables,
-          "result.$name$_ = $name$_;\n");
+    printer.emit(variables,
+        "if ($get_has_field_bit_from_local$) {\n" +
+            "  result.$name$_ = $name$_;\n");
+    if (getNumBitsForMessage() > 0) {
+      printer.emit(variables, "  $set_has_field_bit_to_local$;\n");
     }
+    printer.print("}\n");
   }
 
   @Override
@@ -328,13 +393,13 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       printer.emit(variables,
           "$oneof_name$_ = input.read$capitalized_type$();\n" +
-          "$oneof_name$Case_ = $number$;\n");
+              "$oneof_name$Case_ = $number$;\n");
     } else {
       printer.emit(variables,
           "$name$_ = input.read$capitalized_type$();\n");
       if (Helpers.hasHasbit(descriptor)) {
-         printer.emit(variables,
-             Helpers.generateSetBit(builderBitIndex) + ";\n");
+        printer.emit(variables,
+            Helpers.generateSetBit(builderBitIndex) + ";\n");
       }
     }
   }
@@ -354,14 +419,17 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       printer.emit(variables,
           "if ($oneof_name$Case_ == $number$) {\n" +
-          "  output.write$capitalized_type$(\n" +
-          "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
-          "}\n");
+              "  output.write$capitalized_type$(\n" +
+              "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+              "}\n");
     } else {
       printer.emit(variables,
-          "if (" + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$")) + ") {\n" +
-          "  output.write$capitalized_type$($number$, $name$_);\n" +
-          "}\n");
+          "if ("
+              + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex)
+                  : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$"))
+              + ") {\n" +
+              "  output.write$capitalized_type$($number$, $name$_);\n" +
+              "}\n");
     }
   }
 
@@ -370,16 +438,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       printer.emit(variables,
           "if ($oneof_name$Case_ == $number$) {\n" +
-          "  size += com.google.protobuf.CodedOutputStream\n" +
-          "    .compute$capitalized_type$Size(\n" +
-          "        $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
-          "}\n");
+              "  size += com.google.protobuf.CodedOutputStream\n" +
+              "    .compute$capitalized_type$Size(\n" +
+              "        $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+              "}\n");
     } else {
       printer.emit(variables,
-          "if (" + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$")) + ") {\n" +
-          "  size += com.google.protobuf.CodedOutputStream\n" +
-          "    .compute$capitalized_type$Size($number$, $name$_);\n" +
-          "}\n");
+          "if ("
+              + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex)
+                  : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$"))
+              + ") {\n" +
+              "  size += com.google.protobuf.CodedOutputStream\n" +
+              "    .compute$capitalized_type$Size($number$, $name$_);\n" +
+              "}\n");
     }
   }
 
@@ -388,24 +459,24 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.emit(variables,
           "if (has$capitalized_name$() != other.has$capitalized_name$()) return false;\n" +
-          "if (has$capitalized_name$()) {\n");
+              "if (has$capitalized_name$()) {\n");
       printer.indent();
     }
     Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
     if (javaType == Helpers.JavaType.FLOAT) {
-        printer.emit(variables,
-            "if (java.lang.Float.floatToIntBits(get$capitalized_name$())\n" +
-            "    != java.lang.Float.floatToIntBits(\n" +
-            "        other.get$capitalized_name$())) return false;\n");
+      printer.emit(variables,
+          "if (java.lang.Float.floatToIntBits(get$capitalized_name$())\n" +
+              "    != java.lang.Float.floatToIntBits(\n" +
+              "        other.get$capitalized_name$())) return false;\n");
     } else if (javaType == Helpers.JavaType.DOUBLE) {
-        printer.emit(variables,
-            "if (java.lang.Double.doubleToLongBits(get$capitalized_name$())\n" +
-            "    != java.lang.Double.doubleToLongBits(\n" +
-            "        other.get$capitalized_name$())) return false;\n");
+      printer.emit(variables,
+          "if (java.lang.Double.doubleToLongBits(get$capitalized_name$())\n" +
+              "    != java.lang.Double.doubleToLongBits(\n" +
+              "        other.get$capitalized_name$())) return false;\n");
     } else {
-        printer.emit(variables,
-            "if (get$capitalized_name$()\n" +
-            "    != other.get$capitalized_name$()) return false;\n");
+      printer.emit(variables,
+          "if (get$capitalized_name$()\n" +
+              "    != other.get$capitalized_name$()) return false;\n");
     }
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
@@ -422,21 +493,21 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
     printer.emit(variables, "hash = (37 * hash) + $constant_name$;\n");
     if (javaType == Helpers.JavaType.INT || javaType == Helpers.JavaType.BOOLEAN) {
-        if (javaType == Helpers.JavaType.BOOLEAN) {
-             printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(\n" +
-                 "    get$capitalized_name$());\n");
-        } else {
-             printer.emit(variables, "hash = (53 * hash) + get$capitalized_name$();\n");
-        }
+      if (javaType == Helpers.JavaType.BOOLEAN) {
+        printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(\n" +
+            "    get$capitalized_name$());\n");
+      } else {
+        printer.emit(variables, "hash = (53 * hash) + get$capitalized_name$();\n");
+      }
     } else if (javaType == Helpers.JavaType.LONG) {
-        printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
-            "    get$capitalized_name$());\n");
+      printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
+          "    get$capitalized_name$());\n");
     } else if (javaType == Helpers.JavaType.FLOAT) {
-        printer.emit(variables, "hash = (53 * hash) + java.lang.Float.floatToIntBits(\n" +
-            "    get$capitalized_name$());\n");
+      printer.emit(variables, "hash = (53 * hash) + java.lang.Float.floatToIntBits(\n" +
+          "    get$capitalized_name$());\n");
     } else if (javaType == Helpers.JavaType.DOUBLE) {
-        printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
-            "    java.lang.Double.doubleToLongBits(get$capitalized_name$()));\n");
+      printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
+          "    java.lang.Double.doubleToLongBits(get$capitalized_name$()));\n");
     }
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
