@@ -309,43 +309,51 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
         public void generateParsingCode(Printer printer) {
                 if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
                         printer.emit(variables,
-                                        "int rawValue = input.readEnum();\n" +
+                                        "int tmpRaw = input.readEnum();\n" +
                                                         "ensure$capitalized_name$IsMutable();\n" +
-                                                        "$name$_.addInt(rawValue);\n");
+                                                        "$name$_.addInt(tmpRaw);\n");
                 } else {
                         printer.emit(variables,
-                                        "int rawValue = input.readEnum();\n" +
-                                                        "$type$ value = $type$.forNumber(rawValue);\n" +
-                                                        "if (value == null) {\n" +
-                                                        "  unknownFields.mergeVarintField($number$, rawValue);\n" +
+                                        "int tmpRaw = input.readEnum();\n" +
+                                                        "$type$ tmpValue =\n" +
+                                                        "    $type$.forNumber(tmpRaw);\n" +
+                                                        "if (tmpValue == null) {\n" +
+                                                        "  mergeUnknownVarintField($number$, tmpRaw);\n" +
                                                         "} else {\n" +
                                                         "  ensure$capitalized_name$IsMutable();\n" +
-                                                        "  $name$_.addInt(rawValue);\n" +
+                                                        "  $name$_.addInt(tmpRaw);\n" +
                                                         "}\n");
                 }
         }
 
         @Override
         public void generateParsingCodeFromPacked(Printer printer) {
-                printer.emit(variables,
-                                "int length = input.readRawVarint32();\n" +
-                                                "int oldLimit = input.pushLimit(length);\n" +
-                                                "while (input.getBytesUntilLimit() > 0) {\n" +
-                                                "  int rawValue = input.readEnum();\n" +
-                                                "  if (InternalHelpers.supportUnknownEnumValue(descriptor)) {\n" +
-                                                "    ensure$capitalized_name$IsMutable();\n" +
-                                                "    $name$_.addInt(rawValue);\n" +
-                                                "  } else {\n" +
-                                                "    $type$ value = $type$.forNumber(rawValue);\n" +
-                                                "    if (value == null) {\n" +
-                                                "      unknownFields.mergeVarintField($number$, rawValue);\n" +
-                                                "    } else {\n" +
-                                                "      ensure$capitalized_name$IsMutable();\n" +
-                                                "      $name$_.addInt(rawValue);\n" +
-                                                "    }\n" +
-                                                "  }\n" +
-                                                "}\n" +
-                                                "input.popLimit(oldLimit);\n");
+                if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+                        printer.emit(variables,
+                                        "int length = input.readRawVarint32();\n" +
+                                                        "int limit = input.pushLimit(length);\n" +
+                                                        "ensure$capitalized_name$IsMutable();\n" +
+                                                        "while (input.getBytesUntilLimit() > 0) {\n" +
+                                                        "  $name$_.addInt(input.readEnum());\n" +
+                                                        "}\n" +
+                                                        "input.popLimit(limit);\n");
+                } else {
+                        printer.emit(variables,
+                                        "int length = input.readRawVarint32();\n" +
+                                                        "int limit = input.pushLimit(length);\n" +
+                                                        "ensure$capitalized_name$IsMutable();\n" +
+                                                        "while (input.getBytesUntilLimit() > 0) {\n" +
+                                                        "  int tmpRaw = input.readEnum();\n" +
+                                                        "  $type$ tmpValue =\n" +
+                                                        "      $type$.forNumber(tmpRaw);\n" +
+                                                        "  if (tmpValue == null) {\n" +
+                                                        "    mergeUnknownVarintField($number$, tmpRaw);\n" +
+                                                        "  } else {\n" +
+                                                        "    $name$_.addInt(tmpRaw);\n" +
+                                                        "  }\n" +
+                                                        "}\n" +
+                                                        "input.popLimit(limit);\n");
+                }
         }
 
         @Override
@@ -359,63 +367,26 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                 int packedTag = (descriptor.getNumber() << 3)
                                 | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
 
-                boolean tagFirst = tag < packedTag;
-                if (descriptor.isPacked()) {
-                        if (tagFirst) {
-                                printer.emit(variables, "case $tag$: {\n");
-                                printer.indent();
-                                generateParsingCode(printer);
-                                printer.outdent();
-                                printer.emit(variables, "  break;\n}\n");
-                                printer.emit(variables, "case $packed_tag$: {\n");
-                                printer.indent();
-                                generateParsingCodeFromPacked(printer);
-                                printer.outdent();
-                                printer.emit(variables, "  break;\n}\n");
-                        } else {
-                                printer.emit(variables, "case $packed_tag$: {\n");
-                                printer.indent();
-                                generateParsingCodeFromPacked(printer);
-                                printer.outdent();
-                                printer.emit(variables, "  break;\n}\n");
-                                printer.emit(variables, "case $tag$: {\n");
-                                printer.indent();
-                                generateParsingCode(printer);
-                                printer.outdent();
-                                printer.emit(variables, "  break;\n}\n");
-                        }
+                if (descriptor.isPacked() || descriptor.isPackable()) {
+                        printer.print("case " + tag + ": {\n");
+                        printer.indent();
+                        generateParsingCode(printer);
+                        printer.print("break;\n");
+                        printer.outdent();
+                        printer.print("} // case " + tag + "\n");
+                        printer.print("case " + packedTag + ": {\n");
+                        printer.indent();
+                        generateParsingCodeFromPacked(printer);
+                        printer.print("break;\n");
+                        printer.outdent();
+                        printer.print("} // case " + packedTag + "\n");
                 } else {
-                        if (descriptor.isPackable()) {
-                                if (tagFirst) {
-                                        printer.emit(variables, "case $tag$: {\n");
-                                        printer.indent();
-                                        generateParsingCode(printer);
-                                        printer.outdent();
-                                        printer.emit(variables, "  break;\n}\n");
-                                        printer.emit(variables, "case $packed_tag$: {\n");
-                                        printer.indent();
-                                        generateParsingCodeFromPacked(printer);
-                                        printer.outdent();
-                                        printer.emit(variables, "  break;\n}\n");
-                                } else {
-                                        printer.emit(variables, "case $packed_tag$: {\n");
-                                        printer.indent();
-                                        generateParsingCodeFromPacked(printer);
-                                        printer.outdent();
-                                        printer.emit(variables, "  break;\n}\n");
-                                        printer.emit(variables, "case $tag$: {\n");
-                                        printer.indent();
-                                        generateParsingCode(printer);
-                                        printer.outdent();
-                                        printer.emit(variables, "  break;\n}\n");
-                                }
-                        } else {
-                                printer.emit(variables, "case $tag$: {\n");
-                                printer.indent();
-                                generateParsingCode(printer);
-                                printer.outdent();
-                                printer.emit(variables, "  break;\n}\n");
-                        }
+                        printer.print("case " + tag + ": {\n");
+                        printer.indent();
+                        generateParsingCode(printer);
+                        printer.print("break;\n");
+                        printer.outdent();
+                        printer.print("} // case " + tag + "\n");
                 }
         }
 
