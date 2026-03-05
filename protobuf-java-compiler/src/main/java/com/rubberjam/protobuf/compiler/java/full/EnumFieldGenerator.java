@@ -43,7 +43,17 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     if (supportUnknownEnumValue) {
       variables.put("unknown", variables.get("type") + ".UNRECOGNIZED");
     } else {
-      variables.put("unknown", variables.get("default"));
+      String dflt = (String) variables.get("default");
+      if (dflt != null) {
+        variables.put("unknown", dflt);
+      } else {
+        String enumClassName = context.getNameResolver().getClassName(descriptor.getEnumType(), true);
+        if (descriptor.getEnumType().getValues().size() > 0) {
+          variables.put("unknown", enumClassName + "." + descriptor.getEnumType().getValues().get(0).getName());
+        } else {
+          variables.put("unknown", "null");
+        }
+      }
     }
   }
 

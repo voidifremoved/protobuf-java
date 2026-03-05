@@ -28,7 +28,12 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                 if (supportUnknownEnumValue) {
                         variables.put("unknown", variables.get("type") + ".UNRECOGNIZED");
                 } else {
-                        variables.put("unknown", variables.get("default"));
+                        String enumClassName = context.getNameResolver().getClassName(descriptor.getEnumType(), true);
+                        if (descriptor.getEnumType().getValues().size() > 0) {
+                                variables.put("unknown", enumClassName + "." + descriptor.getEnumType().getValues().get(0).getName());
+                        } else {
+                                variables.put("unknown", variables.get("default"));
+                        }
                 }
 
                 int wireType = descriptor.isPacked() ? com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED

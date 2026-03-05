@@ -119,10 +119,12 @@ public class FileGenerator {
 				factory.newMessageGenerator(message).generateInterface(printer);
 				factory.newMessageGenerator(message).generate(printer);
 			}
-			for (ServiceDescriptor service : file.getServices()) {
-				GeneratorFactory.ServiceGenerator serviceGen = factory.newServiceGenerator(service);
-				if (serviceGen != null) {
-					serviceGen.generate(printer);
+			if (file.getOptions().getJavaGenericServices()) {
+				for (ServiceDescriptor service : file.getServices()) {
+					GeneratorFactory.ServiceGenerator serviceGen = factory.newServiceGenerator(service);
+					if (serviceGen != null) {
+						serviceGen.generate(printer);
+					}
 				}
 			}
 		}
