@@ -9,8 +9,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.protobuf.DescriptorProtos.DescriptorProto;
+import com.google.protobuf.DescriptorProtos.EnumDescriptorProto;
+import com.google.protobuf.DescriptorProtos.EnumValueDescriptorProto;
+import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.DescriptorProtos.MethodDescriptorProto;
+import com.google.protobuf.DescriptorProtos.ServiceDescriptorProto;
+import com.google.protobuf.DescriptorProtos.UninterpretedOption;
+import com.google.protobuf.Descriptors.Descriptor;
+import com.google.protobuf.Descriptors.FieldDescriptor;
 import com.google.protobuf.Descriptors.FileDescriptor;
+import com.google.protobuf.GeneratedMessage;
 import com.rubberjam.protobuf.compiler.CompilationException;
 import com.rubberjam.protobuf.compiler.JavaCodeGenerator;
 import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
@@ -41,7 +51,8 @@ public final class RuntimeJavaGenerator
 			throw new CompilationException("rootProto.name must be set");
 		}
 
-		// Build FileDescriptor from protos
+		rootProto = resolveOptions(rootProto);
+
 		Map<String, FileDescriptorProto> allProtos = new HashMap<>();
 		if (dependencyProtos != null)
 		{
@@ -153,6 +164,193 @@ public final class RuntimeJavaGenerator
 		{
 			throw new CompilationException("Error building file descriptor for " + fileName, e);
 		}
+	}
+
+	/**
+	 * Resolves UninterpretedOption entries into typed option fields on the proto.
+	 * This matches the C++ DescriptorPool cross-linking behavior where uninterpreted
+	 * options are resolved and removed from the proto.
+	 */
+	private static FileDescriptorProto resolveOptions(FileDescriptorProto proto)
+	{
+		FileDescriptorProto.Builder builder = proto.toBuilder();
+		if (builder.hasOptions() && builder.getOptions().getUninterpretedOptionCount() > 0)
+		{
+			resolveOptionsOnBuilder(builder.getOptionsBuilder());
+		}
+		for (int i = 0; i < builder.getMessageTypeCount(); i++)
+		{
+			resolveMessageOptions(builder.getMessageTypeBuilder(i));
+		}
+		for (int i = 0; i < builder.getEnumTypeCount(); i++)
+		{
+			resolveEnumOptions(builder.getEnumTypeBuilder(i));
+		}
+		for (int i = 0; i < builder.getServiceCount(); i++)
+		{
+			resolveServiceOptions(builder.getServiceBuilder(i));
+		}
+		return builder.build();
+	}
+
+	private static void resolveMessageOptions(DescriptorProto.Builder msg)
+	{
+		if (msg.hasOptions() && msg.getOptions().getUninterpretedOptionCount() > 0)
+		{
+			resolveOptionsOnBuilder(msg.getOptionsBuilder());
+		}
+		for (int i = 0; i < msg.getFieldCount(); i++)
+		{
+			if (msg.getField(i).hasOptions() && msg.getField(i).getOptions().getUninterpretedOptionCount() > 0)
+			{
+				resolveOptionsOnBuilder(msg.getFieldBuilder(i).getOptionsBuilder());
+			}
+		}
+		for (int i = 0; i < msg.getNestedTypeCount(); i++)
+		{
+			resolveMessageOptions(msg.getNestedTypeBuilder(i));
+		}
+		for (int i = 0; i < msg.getEnumTypeCount(); i++)
+		{
+			resolveEnumOptions(msg.getEnumTypeBuilder(i));
+		}
+	}
+
+	private static void resolveEnumOptions(EnumDescriptorProto.Builder enumType)
+	{
+		if (enumType.hasOptions() && enumType.getOptions().getUninterpretedOptionCount() > 0)
+		{
+			resolveOptionsOnBuilder(enumType.getOptionsBuilder());
+		}
+		for (int i = 0; i < enumType.getValueCount(); i++)
+		{
+			if (enumType.getValue(i).hasOptions() && enumType.getValue(i).getOptions().getUninterpretedOptionCount() > 0)
+			{
+				resolveOptionsOnBuilder(enumType.getValueBuilder(i).getOptionsBuilder());
+			}
+		}
+	}
+
+	private static void resolveServiceOptions(ServiceDescriptorProto.Builder svc)
+	{
+		if (svc.hasOptions() && svc.getOptions().getUninterpretedOptionCount() > 0)
+		{
+			resolveOptionsOnBuilder(svc.getOptionsBuilder());
+		}
+		for (int i = 0; i < svc.getMethodCount(); i++)
+		{
+			if (svc.getMethod(i).hasOptions() && svc.getMethod(i).getOptions().getUninterpretedOptionCount() > 0)
+			{
+				resolveOptionsOnBuilder(svc.getMethodBuilder(i).getOptionsBuilder());
+			}
+		}
+	}
+
+	private static void resolveOptionsOnBuilder(GeneratedMessage.Builder<?> optionsBuilder)
+	{
+		Descriptor descriptor = optionsBuilder.getDescriptorForType();
+		java.util.List<UninterpretedOption> uninterpreted;
+		try
+		{
+			java.lang.reflect.Method getMethod = optionsBuilder.getClass()
+				.getMethod("getUninterpretedOptionList");
+			@SuppressWarnings("unchecked")
+			java.util.List<UninterpretedOption> list =
+				(java.util.List<UninterpretedOption>) getMethod.invoke(optionsBuilder);
+			uninterpreted = new java.util.ArrayList<>(list);
+		}
+		catch (Exception e)
+		{
+			return;
+		}
+
+		java.util.List<UninterpretedOption> remaining = new java.util.ArrayList<>();
+		for (UninterpretedOption option : uninterpreted)
+		{
+			if (!tryInterpretOption(optionsBuilder, descriptor, option))
+			{
+				remaining.add(option);
+			}
+		}
+
+		try
+		{
+			java.lang.reflect.Method clearMethod = optionsBuilder.getClass()
+				.getMethod("clearUninterpretedOption");
+			clearMethod.invoke(optionsBuilder);
+			for (UninterpretedOption opt : remaining)
+			{
+				java.lang.reflect.Method addMethod = optionsBuilder.getClass()
+					.getMethod("addUninterpretedOption", UninterpretedOption.class);
+				addMethod.invoke(optionsBuilder, opt);
+			}
+		}
+		catch (Exception e)
+		{
+			// ignore
+		}
+	}
+
+	private static boolean tryInterpretOption(
+		GeneratedMessage.Builder<?> optionsBuilder,
+		Descriptor descriptor,
+		UninterpretedOption option)
+	{
+		if (option.getNameCount() != 1) return false;
+		UninterpretedOption.NamePart part = option.getName(0);
+		if (part.getIsExtension()) return false;
+
+		String name = part.getNamePart();
+		FieldDescriptor field = descriptor.findFieldByName(name);
+		if (field == null) return false;
+
+		Object value = null;
+		switch (field.getJavaType())
+		{
+			case INT:
+				if (option.hasPositiveIntValue()) value = (int) option.getPositiveIntValue();
+				else if (option.hasNegativeIntValue()) value = (int) option.getNegativeIntValue();
+				break;
+			case LONG:
+				if (option.hasPositiveIntValue()) value = option.getPositiveIntValue();
+				else if (option.hasNegativeIntValue()) value = option.getNegativeIntValue();
+				break;
+			case BOOLEAN:
+				if (option.hasIdentifierValue())
+				{
+					if ("true".equals(option.getIdentifierValue())) value = true;
+					else if ("false".equals(option.getIdentifierValue())) value = false;
+				}
+				break;
+			case FLOAT:
+				if (option.hasDoubleValue()) value = (float) option.getDoubleValue();
+				else if (option.hasPositiveIntValue()) value = (float) option.getPositiveIntValue();
+				break;
+			case DOUBLE:
+				if (option.hasDoubleValue()) value = option.getDoubleValue();
+				else if (option.hasPositiveIntValue()) value = (double) option.getPositiveIntValue();
+				break;
+			case STRING:
+				if (option.hasStringValue()) value = option.getStringValue().toStringUtf8();
+				else if (option.hasIdentifierValue()) value = option.getIdentifierValue();
+				break;
+			case ENUM:
+				if (option.hasIdentifierValue())
+				{
+					value = field.getEnumType().findValueByName(option.getIdentifierValue());
+				}
+				break;
+			default:
+				break;
+		}
+
+		if (value != null)
+		{
+			if (field.isRepeated()) optionsBuilder.addRepeatedField(field, value);
+			else optionsBuilder.setField(field, value);
+			return true;
+		}
+		return false;
 	}
 
 	/**
