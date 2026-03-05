@@ -47,12 +47,21 @@ public class MessageBuilderGenerator {
         DocComment.writeMessageDocComment(printer, descriptor, new com.rubberjam.protobuf.compiler.java.Options(),
                 false);
 
+        String className = nameResolver.getImmutableClassName(descriptor);
+        String builderSuperClass;
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
+            builderSuperClass = "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix()
+                + ".ExtendableBuilder<\n" +
+                "      " + className + ", Builder>";
+        } else {
+            builderSuperClass = "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix()
+                + ".Builder<Builder>";
+        }
         printer.print(vars,
                 "$deprecation$public static final class Builder extends\n" +
-                        "    com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix()
-                        + ".Builder<Builder> implements\n" +
+                        "    " + builderSuperClass + " implements\n" +
                         "    // @@protoc_insertion_point(builder_implements:" + descriptor.getFullName() + ")\n" +
-                        "    " + nameResolver.getImmutableClassName(descriptor) + "OrBuilder {\n");
+                        "    " + className + "OrBuilder {\n");
 
         printer.indent();
 
