@@ -1,1 +1,0 @@
-syntax = "proto2"; package Isolated; enum SimpleEnum { A = 0; B = 1; } message RepeatedEnumMessage { repeated SimpleEnum rep_enum = 1; }

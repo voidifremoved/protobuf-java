@@ -1,1 +1,0 @@
-syntax = "proto2"; package Isolated; message Outer { message Inner { optional string inner_field = 1; } optional Inner inner_msg = 1; }

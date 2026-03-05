@@ -1,1 +1,0 @@
-syntax = "proto2"; package Isolated; message Empty {} service TestService { rpc SimpleRpc(Empty) returns (Empty); }

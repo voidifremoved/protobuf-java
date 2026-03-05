@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+package IncrementalTest.Step4;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.incremental";
+option java_outer_classname = "IncrementalTestStep4";
+option java_generic_services = false;
+option cc_generic_services = false;
+option optimize_for = CODE_SIZE;
+
+// Test enum (proto3 - open enum)
+enum TestEnumV3 {
+  TEST_UNKNOWN = 0;
+  TEST_FIRST = 1;
+  TEST_SECOND = 2;
+  TEST_THIRD = 3;
+  // Proto3 enums are open, so unknown values are preserved
+}
+
+// Message with all field types (proto3)
+message AllFieldTypesV3 {
+  // Integer types
+  int32 int32_field = 1;
+  int64 int64_field = 2;
+  uint32 uint32_field = 3;
+  uint64 uint64_field = 4;
+  sint32 sint32_field = 5;
+  sint64 sint64_field = 6;
+  fixed32 fixed32_field = 7;
+  fixed64 fixed64_field = 8;
+  sfixed32 sfixed32_field = 9;
+  sfixed64 sfixed64_field = 10;
+
+}
+
+// Message with map fields (proto3)
+message MapMessageV3 {
+  map<string, int32> string_to_int32 = 1;
+  map<int32, string> int32_to_string = 2;
+  map<string, TestEnumV3> string_to_enum = 3;
+  map<string, AllFieldTypesV3> string_to_message = 4;
+  map<bool, string> bool_to_string = 5;
+  map<int64, bytes> int64_to_bytes = 6;
+  map<uint32, float> uint32_to_float = 7;
+  map<fixed64, double> fixed64_to_double = 8;
+}
+
+
+// Import well-known types
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+

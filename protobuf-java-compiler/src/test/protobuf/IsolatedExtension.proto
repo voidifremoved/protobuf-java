@@ -1,1 +1,0 @@
-syntax = "proto2"; package Isolated; message ExtendableMessage { extensions 100 to 199; optional string base_field = 1; } extend ExtendableMessage { optional string extended_string = 100; }

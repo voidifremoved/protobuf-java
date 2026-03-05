@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package IncrementalTest.Step3;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.incremental";
+option java_outer_classname = "IncrementalTestStep3";
+option java_generic_services = false;
+option cc_generic_services = false;
+option optimize_for = CODE_SIZE;
+
+// Test enum (proto3 - open enum)
+enum TestEnumV3 {
+  TEST_UNKNOWN = 0;
+  TEST_FIRST = 1;
+  TEST_SECOND = 2;
+  TEST_THIRD = 3;
+  // Proto3 enums are open, so unknown values are preserved
+}
+
+// Message with all field types (proto3)
+message AllFieldTypesV3 {
+
+  // Floating point types
+  float float_field = 11;
+  double double_field = 12;
+  
+  // Other primitive types
+  bool bool_field = 13;
+  string string_field = 14;
+  bytes bytes_field = 15;
+  
+  // Enum and message types
+  TestEnumV3 enum_field = 16;
+  NestedMessageV3 message_field = 17;
+  
+  // Repeated fields
+  repeated int32 repeated_int32 = 18;
+  repeated string repeated_string = 19;
+  repeated TestEnumV3 repeated_enum = 20;
+  repeated NestedMessageV3 repeated_message = 21;
+  
+  // Proto3 optional fields (explicit presence)
+  optional string optional_string = 22;
+  optional int32 optional_int32 = 23;
+  optional bool optional_bool = 24;
+  
+  // Nested message
+  message NestedMessageV3 {
+    string nested_string = 1;
+    int32 nested_int32 = 2;
+    
+    // Nested enum
+    enum NestedEnumV3 {
+      NESTED_UNKNOWN_V3 = 0;
+      NESTED_FIRST_V3 = 1;
+    }
+    NestedEnumV3 nested_enum = 3;
+  }
+  
+  // Nested enum
+  enum NestedEnumV3 {
+    NESTED_UNKNOWN_V3 = 0;
+    NESTED_FIRST_V3 = 1;
+  }
+  NestedEnumV3 nested_enum_field = 25;
+}
+
+
+// Import well-known types
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+

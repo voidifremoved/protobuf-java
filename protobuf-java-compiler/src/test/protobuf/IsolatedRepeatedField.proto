@@ -1,1 +1,0 @@
-syntax = "proto2"; package Isolated; message RepeatedMessage { repeated int32 rep_int = 1; }
