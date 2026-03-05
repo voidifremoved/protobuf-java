@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message EnumMessage { enum InnerEnum { VAL1 = 1; VAL2 = 2; } optional InnerEnum en = 1; }

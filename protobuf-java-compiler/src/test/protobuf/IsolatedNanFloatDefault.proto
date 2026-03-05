@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message NanFloatDefaultMessage { optional float nan_float = 1 [default = nan]; }

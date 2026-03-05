@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; enum TestEnum { option allow_alias = true; UNKNOWN = 0; FIRST = 1; SECOND = 2; THIRD = 3; ALIAS_THIRD = 3 [deprecated = true]; }

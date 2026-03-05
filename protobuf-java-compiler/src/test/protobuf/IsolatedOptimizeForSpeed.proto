@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; option optimize_for = SPEED; message SpeedMsg { optional int32 id = 1; }

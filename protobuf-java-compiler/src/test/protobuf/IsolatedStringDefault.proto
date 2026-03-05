@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message StringDefaultMessage { optional string str_default = 1 [default = "hello"]; }

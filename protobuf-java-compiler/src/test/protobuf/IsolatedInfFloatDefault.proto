@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message InfFloatDefaultMessage { optional float inf_float = 1 [default = inf]; }
