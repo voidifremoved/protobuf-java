@@ -74,6 +74,16 @@ public class SharedCodeGenerator {
     for (int i = 0; i < file.getExtensions().size(); i++) {
         updateFieldProto(builder.getExtensionBuilder(i), file.getExtensions().get(i));
     }
+    for (int i = 0; i < file.getServices().size(); i++) {
+        com.google.protobuf.Descriptors.ServiceDescriptor service = file.getServices().get(i);
+        com.google.protobuf.DescriptorProtos.ServiceDescriptorProto.Builder svcBuilder = builder.getServiceBuilder(i);
+        for (int j = 0; j < service.getMethods().size(); j++) {
+            com.google.protobuf.Descriptors.MethodDescriptor method = service.getMethods().get(j);
+            com.google.protobuf.DescriptorProtos.MethodDescriptorProto.Builder methodBuilder = svcBuilder.getMethodBuilder(j);
+            methodBuilder.setInputType("." + method.getInputType().getFullName());
+            methodBuilder.setOutputType("." + method.getOutputType().getFullName());
+        }
+    }
 
     return builder.build();
   }
