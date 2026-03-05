@@ -461,10 +461,15 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateMergingCode(Printer printer) {
-    printer.emit(variables,
-        "if (other.has$capitalized_name$()) {\n" +
-            "  merge$capitalized_name$(other.get$capitalized_name$());\n" +
-            "}\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "merge$capitalized_name$(other.get$capitalized_name$());\n");
+    } else {
+      printer.emit(variables,
+          "if (other.has$capitalized_name$()) {\n" +
+              "  merge$capitalized_name$(other.get$capitalized_name$());\n" +
+              "}\n");
+    }
   }
 
   @Override
@@ -501,7 +506,9 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
               "    internalGet$capitalized_name$FieldBuilder().getBuilder(),\n" +
               "    extensionRegistry);\n");
     }
-    if (Helpers.hasHasbit(descriptor)) {
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables, "$oneof_name$Case_ = $number$;\n");
+    } else if (Helpers.hasHasbit(descriptor)) {
       printer.emit(variables, Helpers.generateSetBit(builderBitIndex) + ";\n");
     }
   }

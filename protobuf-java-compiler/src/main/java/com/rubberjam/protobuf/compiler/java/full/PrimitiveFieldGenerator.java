@@ -443,11 +443,19 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateSerializationCode(Printer printer) {
     if (Helpers.isRealOneof(descriptor)) {
-      printer.emit(variables,
-          "if ($oneof_name$Case_ == $number$) {\n" +
-              "  output.write$capitalized_type$(\n" +
-              "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
-              "}\n");
+      if (Helpers.getJavaType(descriptor) == Helpers.JavaType.BYTES) {
+        printer.emit(variables,
+            "if ($oneof_name$Case_ == $number$) {\n" +
+                "  output.write$capitalized_type$(\n" +
+                "      $number$, ($type$) $oneof_name$_);\n" +
+                "}\n");
+      } else {
+        printer.emit(variables,
+            "if ($oneof_name$Case_ == $number$) {\n" +
+                "  output.write$capitalized_type$(\n" +
+                "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+                "}\n");
+      }
     } else {
       String condition;
       if (Helpers.hasHasbit(descriptor)) {
@@ -476,11 +484,14 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   @Override
   public void generateSerializedSizeCode(Printer printer) {
     if (Helpers.isRealOneof(descriptor)) {
+      String castExpr = Helpers.getJavaType(descriptor) == Helpers.JavaType.BYTES
+          ? "($type$) $oneof_name$_"
+          : "($type$)(($boxed_type$) $oneof_name$_)";
       printer.emit(variables,
           "if ($oneof_name$Case_ == $number$) {\n" +
               "  size += com.google.protobuf.CodedOutputStream\n" +
               "    .compute$capitalized_type$Size(\n" +
-              "        $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
+              "        $number$, " + castExpr + ");\n" +
               "}\n");
     } else {
       String condition;
