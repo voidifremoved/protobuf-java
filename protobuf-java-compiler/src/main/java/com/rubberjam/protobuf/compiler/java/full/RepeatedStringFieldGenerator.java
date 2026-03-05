@@ -377,15 +377,17 @@ public class RepeatedStringFieldGenerator extends ImmutableFieldGenerator {
                         printer.emit(variables,
                                         "if ($get_has_field_bit_from_local$) {\n" +
                                                         "  $name$_.makeImmutable();\n" +
-                                                        "  result.$name$_ = $name$_;\n" +
-                                                        "}\n");
+                                                        "  $clear_has_field_bit_from_local$;\n" +
+                                                        "}\n" +
+                                                        "result.$name$_ = $name$_;\n");
                 } else {
                         printer.emit(variables,
                                         "if ($get_has_field_bit_from_local$) {\n" +
                                                         "  $name$_ = java.util.Collections.unmodifiableList($name$_);\n"
                                                         +
-                                                        "  result.$name$_ = $name$_;\n" +
-                                                        "}\n");
+                                                        "  $clear_has_field_bit_from_local$;\n" +
+                                                        "}\n" +
+                                                        "result.$name$_ = $name$_;\n");
                 }
         }
 

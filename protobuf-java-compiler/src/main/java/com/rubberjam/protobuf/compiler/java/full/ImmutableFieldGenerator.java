@@ -35,7 +35,9 @@ public abstract class ImmutableFieldGenerator implements GeneratorCommon.FieldGe
 
     String getBitPrefix = Helpers.bitfieldTracksMutability(descriptor) ? "" : "from_";
     variables.put("get_has_field_bit_from_local", Helpers.generateGetBit(getBitPrefix, builderBitIndex));
-    variables.put("set_has_field_bit_to_local", Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField"));
+    variables.put("set_has_field_bit_to_local",
+        Helpers.generateSetBit(messageBitIndex).replace("bitField", "to_bitField"));
+    variables.put("clear_has_field_bit_from_local", Helpers.generateClearBit(builderBitIndex));
   }
 
   public int getMessageBitIndex() {

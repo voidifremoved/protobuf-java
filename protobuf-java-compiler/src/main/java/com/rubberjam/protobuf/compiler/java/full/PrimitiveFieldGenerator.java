@@ -410,6 +410,24 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
   }
 
   @Override
+  public void generateBuilderParsingCode(Printer printer) {
+    printer.print("case " + Helpers.getWireFormatForField(descriptor) + ": {\n");
+    printer.indent();
+    if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "$oneof_name$_ = input.read$capitalized_type$();\n" +
+              "$oneof_name$Case_ = $number$;\n");
+    } else {
+      printer.emit(variables,
+          "$name$_ = input.read$capitalized_type$();\n" +
+              Helpers.generateSetBit(builderBitIndex) + ";\n");
+    }
+    printer.print("break;\n");
+    printer.outdent();
+    printer.print("} // case " + Helpers.getWireFormatForField(descriptor) + "\n");
+  }
+
+  @Override
   public void generateParsingDoneCode(Printer printer) {
     // No post-processing needed for primitives
   }
@@ -423,11 +441,25 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
               "      $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
               "}\n");
     } else {
+      String condition;
+      if (Helpers.hasHasbit(descriptor)) {
+        condition = Helpers.generateGetBit(messageBitIndex);
+      } else if (descriptor.hasPresence()) {
+        condition = "has$capitalized_name$()";
+      } else {
+        Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
+        if (javaType == Helpers.JavaType.FLOAT) {
+          condition = "java.lang.Float.floatToRawIntBits($name$_) != 0";
+        } else if (javaType == Helpers.JavaType.DOUBLE) {
+          condition = "java.lang.Double.doubleToRawLongBits($name$_) != 0";
+        } else if (javaType == Helpers.JavaType.BYTES) {
+          condition = "!$name$_.isEmpty()";
+        } else {
+          condition = "$name$_ != $default$";
+        }
+      }
       printer.emit(variables,
-          "if ("
-              + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex)
-                  : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$"))
-              + ") {\n" +
+          "if (" + condition + ") {\n" +
               "  output.write$capitalized_type$($number$, $name$_);\n" +
               "}\n");
     }
@@ -443,11 +475,25 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
               "        $number$, ($type$)(($boxed_type$) $oneof_name$_));\n" +
               "}\n");
     } else {
+      String condition;
+      if (Helpers.hasHasbit(descriptor)) {
+        condition = Helpers.generateGetBit(messageBitIndex);
+      } else if (descriptor.hasPresence()) {
+        condition = "has$capitalized_name$()";
+      } else {
+        Helpers.JavaType javaType = Helpers.getJavaType(descriptor);
+        if (javaType == Helpers.JavaType.FLOAT) {
+          condition = "java.lang.Float.floatToRawIntBits($name$_) != 0";
+        } else if (javaType == Helpers.JavaType.DOUBLE) {
+          condition = "java.lang.Double.doubleToRawLongBits($name$_) != 0";
+        } else if (javaType == Helpers.JavaType.BYTES) {
+          condition = "!$name$_.isEmpty()";
+        } else {
+          condition = "$name$_ != $default$";
+        }
+      }
       printer.emit(variables,
-          "if ("
-              + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex)
-                  : (descriptor.hasPresence() ? "has$capitalized_name$()" : "$name$_ != $default$"))
-              + ") {\n" +
+          "if (" + condition + ") {\n" +
               "  size += com.google.protobuf.CodedOutputStream\n" +
               "    .compute$capitalized_type$Size($number$, $name$_);\n" +
               "}\n");
@@ -473,6 +519,10 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
           "if (java.lang.Double.doubleToLongBits(get$capitalized_name$())\n" +
               "    != java.lang.Double.doubleToLongBits(\n" +
               "        other.get$capitalized_name$())) return false;\n");
+    } else if (javaType == Helpers.JavaType.BYTES) {
+      printer.emit(variables,
+          "if (!get$capitalized_name$()\n" +
+              "    .equals(other.get$capitalized_name$())) return false;\n");
     } else {
       printer.emit(variables,
           "if (get$capitalized_name$()\n" +
@@ -508,6 +558,8 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
     } else if (javaType == Helpers.JavaType.DOUBLE) {
       printer.emit(variables, "hash = (53 * hash) + com.google.protobuf.Internal.hashLong(\n" +
           "    java.lang.Double.doubleToLongBits(get$capitalized_name$()));\n");
+    } else if (javaType == Helpers.JavaType.BYTES) {
+      printer.emit(variables, "hash = (53 * hash) + get$capitalized_name$().hashCode();\n");
     }
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();

@@ -470,7 +470,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.hasHasbit(descriptor)) {
       condition = Helpers.generateGetBit(messageBitIndex);
     } else {
-      condition = (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_ != $default_number$"
+      condition = (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_ != $default$.getNumber()"
           : "$name$_ != $default$");
     }
 
@@ -510,7 +510,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.hasHasbit(descriptor)) {
       condition = Helpers.generateGetBit(messageBitIndex);
     } else {
-      condition = (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_ != $default_number$"
+      condition = (InternalHelpers.supportUnknownEnumValue(descriptor) ? "$name$_ != $default$.getNumber()"
           : "$name$_ != $default$");
     }
 
@@ -535,12 +535,19 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
               "if (has$capitalized_name$()) {\n");
       printer.indent();
     }
-    if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-      printer.emit(variables,
-          "if (get$capitalized_name$Value() != other.get$capitalized_name$Value()) return false;\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+        printer.emit(variables,
+            "if (get$capitalized_name$Value()\n" +
+                "    != other.get$capitalized_name$Value()) return false;\n");
+      } else {
+        printer.emit(variables,
+            "if (!get$capitalized_name$()\n" +
+                "    .equals(other.get$capitalized_name$())) return false;\n");
+      }
     } else {
       printer.emit(variables,
-          "if (get$capitalized_name$() != other.get$capitalized_name$()) return false;\n");
+          "if ($name$_ != other.$name$_) return false;\n");
     }
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
@@ -555,12 +562,27 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
           "if (has$capitalized_name$()) {\n");
       printer.indent();
     }
-    printer.emit(variables,
-        "hash = (37 * hash) + $constant_name$;\n" +
-            "hash = (53 * hash) + "
-            + (InternalHelpers.supportUnknownEnumValue(descriptor) ? "get$capitalized_name$Value()"
-                : "get$capitalized_name$().getNumber()")
-            + ";\n");
+    if (Helpers.isRealOneof(descriptor)) {
+      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+        printer.emit(variables,
+            "hash = (37 * hash) + $constant_name$;\n" +
+                "hash = (53 * hash) + get$capitalized_name$Value();\n");
+      } else {
+        printer.emit(variables,
+            "hash = (37 * hash) + $constant_name$;\n" +
+                "hash = (53 * hash) + get$capitalized_name$().getNumber();\n");
+      }
+    } else {
+      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+        printer.emit(variables,
+            "hash = (37 * hash) + $constant_name$;\n" +
+                "hash = (53 * hash) + $name$_;\n");
+      } else {
+        printer.emit(variables,
+            "hash = (37 * hash) + $constant_name$;\n" +
+                "hash = (53 * hash) + $name$_.getNumber();\n");
+      }
+    }
     if (!Helpers.isRealOneof(descriptor) && descriptor.hasPresence()) {
       printer.outdent();
       printer.print("}\n");
@@ -572,7 +594,42 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     int tag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_VARINT;
     printer.print("case " + tag + ": {\n");
     printer.indent();
-    generateParsingCode(printer);
+    if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+      if (Helpers.isRealOneof(descriptor)) {
+        printer.emit(variables,
+            "int rawValue = input.readEnum();\n" +
+                "$oneof_name$Case_ = $number$;\n" +
+                "$oneof_name$_ = rawValue;\n");
+      } else {
+        printer.emit(variables,
+            "$name$_ = input.readEnum();\n" +
+                Helpers.generateSetBit(builderBitIndex) + ";\n");
+      }
+    } else {
+      if (Helpers.isRealOneof(descriptor)) {
+        printer.emit(variables,
+            "int rawValue = input.readEnum();\n" +
+                "$type$ value =\n" +
+                "    $type$.forNumber(rawValue);\n" +
+                "if (value == null) {\n" +
+                "  mergeUnknownVarintField($number$, rawValue);\n" +
+                "} else {\n" +
+                "  $oneof_name$Case_ = $number$;\n" +
+                "  $oneof_name$_ = rawValue;\n" +
+                "}\n");
+      } else {
+        printer.emit(variables,
+            "int tmpRaw = input.readEnum();\n" +
+                "$type$ tmpValue =\n" +
+                "    $type$.forNumber(tmpRaw);\n" +
+                "if (tmpValue == null) {\n" +
+                "  mergeUnknownVarintField($number$, tmpRaw);\n" +
+                "} else {\n" +
+                "  $name$_ = tmpRaw;\n" +
+                "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
+                "}\n");
+      }
+    }
     printer.print("break;\n");
     printer.outdent();
     printer.print("} // case " + tag + "\n");

@@ -470,7 +470,21 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "$oneof_name$_ = bs;\n");
       }
     } else {
-      generateParsingCode(printer);
+      if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
+        if (InternalHelpers.checkUtf8(descriptor)) {
+          printer.emit(variables,
+              "$name$_ = input.readStringRequireUtf8();\n" +
+                  Helpers.generateSetBit(builderBitIndex) + ";\n");
+        } else {
+          printer.emit(variables,
+              "$name$_ = input.readBytes();\n" +
+                  Helpers.generateSetBit(builderBitIndex) + ";\n");
+        }
+      } else {
+        printer.emit(variables,
+            "$name$_ = input.readBytes();\n" +
+                Helpers.generateSetBit(builderBitIndex) + ";\n");
+      }
     }
     printer.print("break;\n");
     printer.outdent();
@@ -509,6 +523,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       printer.emit(variables,
           "if (!other.get$capitalized_name$().isEmpty()) {\n" +
               "  $name$_ = other.$name$_;\n" +
+              "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
               "  onChanged();\n" +
               "}\n");
     }
@@ -597,7 +612,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.hasHasbit(descriptor)) {
       condition = Helpers.generateGetBit(messageBitIndex);
     } else {
-      condition = "!get$capitalized_name$Bytes().isEmpty()";
+      condition = "!com.google.protobuf.GeneratedMessage.isStringEmpty($name$_)";
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
@@ -635,7 +650,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.hasHasbit(descriptor)) {
       condition = Helpers.generateGetBit(messageBitIndex);
     } else {
-      condition = "!get$capitalized_name$Bytes().isEmpty()";
+      condition = "!com.google.protobuf.GeneratedMessage.isStringEmpty($name$_)";
     }
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
