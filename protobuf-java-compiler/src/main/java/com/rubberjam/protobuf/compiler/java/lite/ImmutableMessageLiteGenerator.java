@@ -103,10 +103,11 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
         "  super(builder);\n" +
         "}\n" +
         "private $classname$() {\n");
-    // Initialize fields
+    printer.indent();
     for (FieldDescriptor field : descriptor.getFields()) {
       fieldGenerators.get(field).generateInitializationCode(printer);
     }
+    printer.outdent();
     printer.emit("}\n");
 
     // Oneofs
