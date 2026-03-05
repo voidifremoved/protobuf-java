@@ -67,18 +67,18 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
 
   @Override
   public void generate(Printer printer) {
-    String className = nameResolver.getImmutableClassName(descriptor);
+    String className = descriptor.getName();
     Map<String, Object> vars = new HashMap<>();
     vars.put("classname", className);
-    vars.put("visibility", Helpers.isOwnFile(descriptor, true) ? "public" : "private");
-    vars.put("static", Helpers.isOwnFile(descriptor, true) ? " " : " static ");
+    vars.put("visibility", "public");
+    vars.put("static", " static ");
 
     DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
+    vars.put("full_name", descriptor.getFullName());
     printer.emit(vars,
         "$visibility$$static$final class $classname$ extends\n" +
-        "    com.google.protobuf.GeneratedMessageLite<\n" +
-        "        $classname$, $classname$.Builder> implements\n" +
-        "    // @@protoc_insertion_point(message_implements:$classname$)\n" +
+        "    com.google.protobuf.GeneratedMessage implements\n" +
+        "    // @@protoc_insertion_point(message_implements:$full_name$)\n" +
         "    $classname$OrBuilder {\n");
     printer.indent();
 
