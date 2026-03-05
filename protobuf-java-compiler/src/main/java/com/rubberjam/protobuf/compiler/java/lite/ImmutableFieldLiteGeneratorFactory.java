@@ -29,8 +29,7 @@ public final class ImmutableFieldLiteGeneratorFactory {
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
             generator =
                 new RepeatedImmutableEnumFieldLiteGenerator(field, messageBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
             generator =
                 new RepeatedImmutableStringFieldLiteGenerator(field, messageBitIndex, context);
           } else {
@@ -46,8 +45,7 @@ public final class ImmutableFieldLiteGeneratorFactory {
                 new ImmutableMessageOneofFieldLiteGenerator(field, messageBitIndex, context);
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
             generator = new ImmutableEnumOneofFieldLiteGenerator(field, messageBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
             generator = new ImmutableStringOneofFieldLiteGenerator(field, messageBitIndex, context);
           } else {
              generator =
@@ -59,8 +57,7 @@ public final class ImmutableFieldLiteGeneratorFactory {
                 new ImmutableMessageFieldLiteGenerator(field, messageBitIndex, context);
           } else if (field.getJavaType() == FieldDescriptor.JavaType.ENUM) {
             generator = new ImmutableEnumFieldLiteGenerator(field, messageBitIndex, context);
-          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING ||
-                     field.getJavaType() == FieldDescriptor.JavaType.BYTE_STRING) {
+          } else if (field.getJavaType() == FieldDescriptor.JavaType.STRING) {
             generator = new ImmutableStringFieldLiteGenerator(field, messageBitIndex, context);
           } else {
             generator =

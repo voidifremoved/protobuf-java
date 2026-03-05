@@ -38,10 +38,11 @@ public class SharedCodeGenerator {
     }
 
     for (int i = 0; i < pieces.size(); i++) {
+        String escaped = pieces.get(i).replace("$", "$$");
         if (i < pieces.size() - 1) {
-            printer.print("\"" + pieces.get(i) + "\" +\n");
+            printer.print("\"" + escaped + "\" +\n");
         } else {
-            printer.print("\"" + pieces.get(i) + "\"\n");
+            printer.print("\"" + escaped + "\"\n");
         }
     }
 
@@ -72,6 +73,16 @@ public class SharedCodeGenerator {
     }
     for (int i = 0; i < file.getExtensions().size(); i++) {
         updateFieldProto(builder.getExtensionBuilder(i), file.getExtensions().get(i));
+    }
+    for (int i = 0; i < file.getServices().size(); i++) {
+        com.google.protobuf.Descriptors.ServiceDescriptor service = file.getServices().get(i);
+        com.google.protobuf.DescriptorProtos.ServiceDescriptorProto.Builder svcBuilder = builder.getServiceBuilder(i);
+        for (int j = 0; j < service.getMethods().size(); j++) {
+            com.google.protobuf.Descriptors.MethodDescriptor method = service.getMethods().get(j);
+            com.google.protobuf.DescriptorProtos.MethodDescriptorProto.Builder methodBuilder = svcBuilder.getMethodBuilder(j);
+            methodBuilder.setInputType("." + method.getInputType().getFullName());
+            methodBuilder.setOutputType("." + method.getOutputType().getFullName());
+        }
     }
 
     return builder.build();
@@ -106,6 +117,10 @@ public class SharedCodeGenerator {
 
       if (field.getContainingOneof() != null) {
           builder.setOneofIndex(field.getContainingOneof().getIndex());
+      }
+
+      if (field.isExtension()) {
+          builder.setExtendee("." + field.getContainingType().getFullName());
       }
   }
 
@@ -172,8 +187,6 @@ public class SharedCodeGenerator {
         builder.append("\\r");
       } else if (c == '\t') {
         builder.append("\\t");
-      } else if (c == '$') {
-        builder.append("\\044");
       } else if (c >= 0x20 && c < 0x7F) {
         builder.append(c);
       } else {

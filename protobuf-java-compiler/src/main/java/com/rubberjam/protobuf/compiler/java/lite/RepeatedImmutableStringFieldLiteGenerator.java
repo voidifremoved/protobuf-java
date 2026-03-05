@@ -58,7 +58,8 @@ public class RepeatedImmutableStringFieldLiteGenerator implements ImmutableField
   public void generateInterfaceMembers(Printer printer) {
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
     printer.emit(variables,
-        "$deprecation$java.util.List<java.lang.String> ${$get$capitalized_name$List$}$();\n");
+        "$deprecation$java.util.List<java.lang.String>\n" +
+        "    ${$get$capitalized_name$List$}$();\n");
     // printer.annotate("{", "}", descriptor);
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
@@ -71,7 +72,7 @@ public class RepeatedImmutableStringFieldLiteGenerator implements ImmutableField
         "$deprecation$java.lang.String ${$get$capitalized_name$$}$(int index);\n");
     // printer.annotate("{", "}", descriptor);
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+    DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
     printer.emit(variables,
         "$deprecation$com.google.protobuf.ByteString\n" +
         "    ${$get$capitalized_name$Bytes$}$(int index);\n");

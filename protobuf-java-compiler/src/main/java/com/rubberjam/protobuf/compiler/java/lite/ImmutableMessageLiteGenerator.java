@@ -51,9 +51,14 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
         "    // @@protoc_insertion_point(interface_extends:$full_name$)\n" +
         "    com.google.protobuf.MessageOrBuilder {\n");
     printer.indent();
+    printer.print("\n");
 
-    for (FieldDescriptor field : descriptor.getFields()) {
+    for (int i = 0; i < descriptor.getFields().size(); i++) {
+      FieldDescriptor field = descriptor.getFields().get(i);
       fieldGenerators.get(field).generateInterfaceMembers(printer);
+      if (i < descriptor.getFields().size() - 1) {
+        printer.print("\n");
+      }
     }
 
     printer.outdent();
@@ -62,26 +67,47 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
 
   @Override
   public void generate(Printer printer) {
-    String className = nameResolver.getImmutableClassName(descriptor);
+    String className = descriptor.getName();
     Map<String, Object> vars = new HashMap<>();
     vars.put("classname", className);
-    vars.put("visibility", Helpers.isOwnFile(descriptor, true) ? "public" : "private");
-    vars.put("static", Helpers.isOwnFile(descriptor, true) ? " " : " static ");
+    vars.put("visibility", "public");
+    vars.put("static", " static ");
 
     DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
+    vars.put("full_name", descriptor.getFullName());
     printer.emit(vars,
         "$visibility$$static$final class $classname$ extends\n" +
-        "    com.google.protobuf.GeneratedMessageLite<\n" +
-        "        $classname$, $classname$.Builder> implements\n" +
-        "    // @@protoc_insertion_point(message_implements:$classname$)\n" +
+        "    com.google.protobuf.GeneratedMessage implements\n" +
+        "    // @@protoc_insertion_point(message_implements:$full_name$)\n" +
         "    $classname$OrBuilder {\n");
+    printer.print("private static final long serialVersionUID = 0L;\n");
+
     printer.indent();
 
-    printer.emit(vars, "private $classname$() {\n");
-    // Initialize fields
+    com.google.protobuf.compiler.PluginProtos.Version version =
+        com.rubberjam.protobuf.compiler.Versions.getProtobufJavaVersion(false);
+    printer.emit(vars,
+        "static {\n" +
+        "  com.google.protobuf.RuntimeVersion.validateProtobufGencodeVersion(\n" +
+        "    com.google.protobuf.RuntimeVersion.RuntimeDomain.PUBLIC,\n" +
+        "    /* major= */ " + version.getMajor() + ",\n" +
+        "    /* minor= */ " + version.getMinor() + ",\n" +
+        "    /* patch= */ " + version.getPatch() + ",\n" +
+        "    /* suffix= */ \"" + version.getSuffix() + "\",\n" +
+        "    \"$classname$\");\n" +
+        "}\n");
+
+    printer.emit(vars,
+        "// Use $classname$.newBuilder() to construct.\n" +
+        "private $classname$(com.google.protobuf.GeneratedMessage.Builder<?> builder) {\n" +
+        "  super(builder);\n" +
+        "}\n" +
+        "private $classname$() {\n");
+    printer.indent();
     for (FieldDescriptor field : descriptor.getFields()) {
       fieldGenerators.get(field).generateInitializationCode(printer);
     }
+    printer.outdent();
     printer.emit("}\n");
 
     // Oneofs

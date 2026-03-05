@@ -66,7 +66,9 @@ public class ImmutableMessageFieldLiteGenerator implements ImmutableFieldLiteGen
 
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$deprecation$$type$ ${$get$capitalized_name$$}$();\n");
-    // printer.annotate("{", "}", descriptor);
+
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+    printer.emit(variables, "$deprecation$$type$OrBuilder get$capitalized_name$OrBuilder();\n");
   }
 
   @Override

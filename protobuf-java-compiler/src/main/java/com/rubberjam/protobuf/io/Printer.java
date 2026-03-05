@@ -300,9 +300,6 @@ public class Printer
 	}
 
 	public void annotate(String varName, String marker, com.google.protobuf.Descriptors.FieldDescriptor descriptor) {
-		Map<String, Object> vars = new HashMap<>();
-		vars.put(varName, new AnnotationRecord("", Collections.emptyList(), Semantic.NONE));
-		emit(vars, "$_start$" + varName + "$" + marker + "$_end$" + varName + "$");
 	}
 
 	public void emit(Map<String, Object> vars, String formatStr)

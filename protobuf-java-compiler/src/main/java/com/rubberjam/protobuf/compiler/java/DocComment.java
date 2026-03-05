@@ -299,6 +299,9 @@ public final class DocComment {
   }
 
   private static String getFieldDefinition(FieldDescriptor field) {
+    if (field.isExtension()) {
+      return "extend ." + field.getContainingType().getFullName() + " { ... }";
+    }
     if (field.isMapField()) {
       FieldDescriptor keyField = field.getMessageType().findFieldByName("key");
       FieldDescriptor valueField = field.getMessageType().findFieldByName("value");

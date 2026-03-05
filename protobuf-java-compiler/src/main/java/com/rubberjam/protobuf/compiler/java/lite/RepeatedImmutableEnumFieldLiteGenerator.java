@@ -85,13 +85,12 @@ public class RepeatedImmutableEnumFieldLiteGenerator implements ImmutableFieldLi
     // printer.annotate("{", "}", descriptor);
 
     if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+      DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
       printer.emit(variables,
           "$deprecation$java.util.List<java.lang.Integer>\n" +
           "${$get$capitalized_name$ValueList$}$();\n");
-      // printer.annotate("{", "}", descriptor);
 
-      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
+      DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
       printer.emit(variables,
           "$deprecation$int ${$get$capitalized_name$Value$}$(int index);\n");
       // printer.annotate("{", "}", descriptor);

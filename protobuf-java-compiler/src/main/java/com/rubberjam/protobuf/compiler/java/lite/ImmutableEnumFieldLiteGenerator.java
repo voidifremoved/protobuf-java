@@ -72,9 +72,12 @@ public class ImmutableEnumFieldLiteGenerator implements ImmutableFieldLiteGenera
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
       printer.emit(variables, "$deprecation$boolean has$capitalized_name$();\n");
     }
+    if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
+      DocComment.writeFieldEnumValueAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+      printer.emit(variables, "$deprecation$int ${$get$capitalized_name$Value$}$();\n");
+    }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables, "$deprecation$$type$ ${$get$capitalized_name$$}$();\n");
-    printer.annotate("{", "}", descriptor);
   }
 
   @Override

@@ -26,76 +26,68 @@ public class ImmutableExtensionGenerator extends ExtensionGenerator {
     Map<String, Object> vars = new HashMap<>();
     vars.put("name", simpleName);
     vars.put("containing_type", context.getNameResolver().getClassName(descriptor.getContainingType(), true));
+    vars.put("constant_name", Helpers.fieldConstantName(descriptor));
+    vars.put("number", String.valueOf(descriptor.getNumber()));
 
     JavaType javaType = Helpers.getJavaType(descriptor);
-    String typeParam;
+    String singularType;
     if (javaType == JavaType.MESSAGE) {
-      typeParam = context.getNameResolver().getClassName(descriptor.getMessageType(), true);
+      singularType = context.getNameResolver().getClassName(descriptor.getMessageType(), true);
     } else if (javaType == JavaType.ENUM) {
-      typeParam = context.getNameResolver().getClassName(descriptor.getEnumType(), true);
+      singularType = context.getNameResolver().getClassName(descriptor.getEnumType(), true);
     } else {
-      typeParam = Helpers.getBoxedPrimitiveTypeName(javaType);
+      singularType = Helpers.getBoxedPrimitiveTypeName(javaType);
     }
+    vars.put("singular_type", singularType);
 
     String type;
     if (descriptor.isRepeated()) {
-      type = "java.util.List<" + typeParam + ">";
+      type = "java.util.List<" + singularType + ">";
     } else {
-      type = typeParam;
+      type = singularType;
     }
     vars.put("type", type);
+    vars.put("prototype", javaType == JavaType.MESSAGE
+        ? context.getNameResolver().getClassName(descriptor.getMessageType(), true) + ".getDefaultInstance()"
+        : "null");
 
-    printer.emit(vars,
-      "public static final\n" +
-      "  com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
-      "    $containing_type$,\n" +
-      "    $type$> $name$;\n");
+    printer.emit(vars, "public static final int $constant_name$ = $number$;\n");
+
+    com.rubberjam.protobuf.compiler.java.DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+
+    if (descriptor.getExtensionScope() == null) {
+      printer.emit(vars,
+          "public static final\n" +
+          "  com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+          "    $containing_type$,\n" +
+          "    $type$> $name$ = com.google.protobuf.GeneratedMessage\n" +
+          "        .newFileScopedGeneratedExtension(\n" +
+          "      $singular_type$.class,\n" +
+          "      $prototype$);\n");
+    } else {
+      vars.put("scope", context.getNameResolver().getClassName(descriptor.getExtensionScope(), true));
+      vars.put("index", String.valueOf(descriptor.getIndex()));
+      printer.emit(vars,
+          "public static final\n" +
+          "  com.google.protobuf.GeneratedMessage.GeneratedExtension<\n" +
+          "    $containing_type$,\n" +
+          "    $type$> $name$ = com.google.protobuf.GeneratedMessage\n" +
+          "        .newMessageScopedGeneratedExtension(\n" +
+          "      $scope$.getDefaultInstance(),\n" +
+          "      $index$,\n" +
+          "      $singular_type$.class,\n" +
+          "      $prototype$);\n");
+    }
   }
 
   @Override
   public int generateNonNestedInitializationCode(Printer printer) {
-    Map<String, Object> vars = new HashMap<>();
-    vars.put("name", simpleName);
-
-    String fieldName;
-    if (descriptor.getExtensionScope() != null) {
-       fieldName = context.getNameResolver().getClassName(descriptor.getExtensionScope(), true) + "." + simpleName;
-    } else {
-       fieldName = simpleName;
+    if (descriptor.getExtensionScope() == null) {
+      Map<String, Object> vars = new HashMap<>();
+      vars.put("name", simpleName);
+      vars.put("index", String.valueOf(descriptor.getIndex()));
+      printer.emit(vars, "$name$.internalInit(descriptor.getExtension($index$));\n");
     }
-    vars.put("field_name", fieldName);
-    vars.put("index", String.valueOf(descriptor.getIndex()));
-
-    String typeClass;
-    JavaType javaType = Helpers.getJavaType(descriptor);
-    if (javaType == JavaType.MESSAGE) {
-      typeClass = context.getNameResolver().getClassName(descriptor.getMessageType(), true) + ".class";
-      vars.put("default_instance", context.getNameResolver().getClassName(descriptor.getMessageType(), true) + ".getDefaultInstance()");
-    } else if (javaType == JavaType.ENUM) {
-       typeClass = context.getNameResolver().getClassName(descriptor.getEnumType(), true) + ".class";
-       vars.put("default_instance", "null");
-    } else {
-       typeClass = Helpers.getBoxedPrimitiveTypeName(javaType) + ".class";
-       vars.put("default_instance", "null");
-    }
-    vars.put("type_class", typeClass);
-
-    if (descriptor.getExtensionScope() != null) {
-      vars.put("scope_default_instance",
-          context.getNameResolver().getClassName(descriptor.getExtensionScope(), true) + ".getDefaultInstance()");
-      printer.emit(vars,
-          "$field_name$ = com.google.protobuf.GeneratedMessage.newMessageScopedGeneratedExtension(\n" +
-          "  $scope_default_instance$,\n" +
-          "  $index$,\n" +
-          "  $type_class$,\n" +
-          "  $default_instance$);\n");
-    } else {
-      printer.emit(vars,
-          "$field_name$ = com.google.protobuf.GeneratedMessage.newFileScopedGeneratedExtension(\n" +
-          "  $type_class$,\n" +
-          "  $default_instance$);\n");
-    }
-
     return 0;
   }
 

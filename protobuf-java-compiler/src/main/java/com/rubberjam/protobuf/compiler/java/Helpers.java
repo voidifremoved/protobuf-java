@@ -456,8 +456,15 @@ public class Helpers {
 				return "com.google.protobuf.ByteString.EMPTY";
 			case ENUM:
 				EnumDescriptor enumType = field.getEnumType();
-				return nameResolver.getClassName(enumType, immutable) + "." +
-						((com.google.protobuf.Descriptors.EnumValueDescriptor) field.getDefaultValue()).getName();
+				com.google.protobuf.Descriptors.EnumValueDescriptor defaultEnumVal =
+						(com.google.protobuf.Descriptors.EnumValueDescriptor) field.getDefaultValue();
+				if (defaultEnumVal != null) {
+					return nameResolver.getClassName(enumType, immutable) + "." + defaultEnumVal.getName();
+				}
+				if (enumType.getValues().size() > 0) {
+					return nameResolver.getClassName(enumType, immutable) + "." + enumType.getValues().get(0).getName();
+				}
+				return nameResolver.getClassName(enumType, immutable) + ".UNRECOGNIZED";
 			case MESSAGE:
 				return nameResolver.getClassName(field.getMessageType(), immutable) + ".getDefaultInstance()";
 			default:

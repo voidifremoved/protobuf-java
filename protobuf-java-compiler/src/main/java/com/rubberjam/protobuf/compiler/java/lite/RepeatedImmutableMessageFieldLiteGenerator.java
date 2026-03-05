@@ -57,20 +57,28 @@ public class RepeatedImmutableMessageFieldLiteGenerator implements ImmutableFiel
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
-        "$deprecation$java.util.List<$type$> ${$get$capitalized_name$List$}$();\n");
-    // printer.annotate("{", "}", descriptor);
+        "$deprecation$java.util.List<$type$> \n" +
+        "    ${$get$capitalized_name$List$}$();\n");
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "$deprecation$$type$ ${$get$capitalized_name$$}$(int index);\n");
-    // printer.annotate("{", "}", descriptor);
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_COUNT, context.getOptions());
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
     printer.emit(variables,
         "$deprecation$int ${$get$capitalized_name$Count$}$();\n");
-    // printer.annotate("{", "}", descriptor);
+
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+    printer.emit(variables,
+        "$deprecation$java.util.List<? extends $type$OrBuilder> \n" +
+        "    ${$get$capitalized_name$OrBuilderList$}$();\n");
+
+    DocComment.writeFieldDocComment(printer, descriptor, context.getOptions(), false);
+    printer.emit(variables,
+        "$deprecation$$type$OrBuilder ${$get$capitalized_name$OrBuilder$}$(\n" +
+        "    int index);\n");
   }
 
   @Override
