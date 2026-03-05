@@ -1,0 +1,43 @@
+syntax = "proto3";
+
+package IncrementalTest.Step7;
+
+option java_package = "com.rubberjam.protobuf.compiler.test.incremental";
+option java_outer_classname = "IncrementalTestStep7";
+option java_generic_services = false;
+option cc_generic_services = false;
+option optimize_for = SPEED;
+
+// Test enum (proto3 - open enum)
+enum TestEnumV3 {
+  TEST_UNKNOWN = 0;
+  TEST_FIRST = 1;
+  TEST_SECOND = 2;
+  TEST_THIRD = 3;
+  // Proto3 enums are open, so unknown values are preserved
+}
+
+// Message with all field types (proto3)
+message AllFieldTypesV3 {
+  // Integer types
+  int32 int32_field = 1;
+  int64 int64_field = 2;
+  uint32 uint32_field = 3;
+  uint64 uint64_field = 4;
+  sint32 sint32_field = 5;
+  sint64 sint64_field = 6;
+  fixed32 fixed32_field = 7;
+  fixed64 fixed64_field = 8;
+  sfixed32 sfixed32_field = 9;
+  sfixed64 sfixed64_field = 10;
+ 
+}
+
+// Import well-known types
+import "google/protobuf/any.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/struct.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/field_mask.proto";
+
