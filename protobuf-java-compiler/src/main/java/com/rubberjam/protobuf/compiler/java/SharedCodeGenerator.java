@@ -38,10 +38,11 @@ public class SharedCodeGenerator {
     }
 
     for (int i = 0; i < pieces.size(); i++) {
+        String escaped = pieces.get(i).replace("$", "$$");
         if (i < pieces.size() - 1) {
-            printer.print("\"" + pieces.get(i) + "\" +\n");
+            printer.print("\"" + escaped + "\" +\n");
         } else {
-            printer.print("\"" + pieces.get(i) + "\"\n");
+            printer.print("\"" + escaped + "\"\n");
         }
     }
 
@@ -172,8 +173,6 @@ public class SharedCodeGenerator {
         builder.append("\\r");
       } else if (c == '\t') {
         builder.append("\\t");
-      } else if (c == '$') {
-        builder.append("\\044");
       } else if (c >= 0x20 && c < 0x7F) {
         builder.append(c);
       } else {
