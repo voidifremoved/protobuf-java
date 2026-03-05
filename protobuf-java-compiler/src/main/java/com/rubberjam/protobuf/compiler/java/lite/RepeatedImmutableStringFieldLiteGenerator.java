@@ -72,7 +72,7 @@ public class RepeatedImmutableStringFieldLiteGenerator implements ImmutableField
         "$deprecation$java.lang.String ${$get$capitalized_name$$}$(int index);\n");
     // printer.annotate("{", "}", descriptor);
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER, context.getOptions());
+    DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_INDEXED_GETTER, context.getOptions());
     printer.emit(variables,
         "$deprecation$com.google.protobuf.ByteString\n" +
         "    ${$get$capitalized_name$Bytes$}$(int index);\n");

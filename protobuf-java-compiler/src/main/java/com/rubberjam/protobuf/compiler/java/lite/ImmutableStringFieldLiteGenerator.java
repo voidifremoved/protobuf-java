@@ -66,7 +66,7 @@ public class ImmutableStringFieldLiteGenerator implements ImmutableFieldLiteGene
     printer.emit(variables, "$deprecation$java.lang.String ${$get$capitalized_name$$}$();\n");
     printer.annotate("{", "}", descriptor);
 
-    DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER, context.getOptions());
+    DocComment.writeFieldStringBytesAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables,
         "$deprecation$com.google.protobuf.ByteString\n" +
         "    ${$get$capitalized_name$Bytes$}$();\n");
