@@ -699,9 +699,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             }
         }
 
-        for (FieldDescriptor field : sortedFields) {
-            fieldGenerators.get(field).generateSerializationCode(printer);
-        }
+        generateSerializeFieldsAndExtensions(printer, sortedFields);
 
         if (descriptor.getOptions().getMessageSetWireFormat()) {
             printer.print("getUnknownFields().writeAsMessageSetTo(output);\n");
@@ -1009,5 +1007,29 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
     private String mapValueImmutableClassdName(Descriptor descriptor, ClassNameResolver nameResolver) {
         FieldDescriptor valueField = descriptor.findFieldByName("value");
         return nameResolver.getImmutableClassName(valueField.getMessageType());
+    }
+
+    private void generateSerializeFieldsAndExtensions(Printer printer, List<FieldDescriptor> sortedFields) {
+        List<com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange> sortedExtensions =
+            new ArrayList<>(descriptor.toProto().getExtensionRangeList());
+        sortedExtensions.sort(Comparator.comparingInt(
+            com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange::getStart));
+
+        int rangeIdx = 0;
+        for (FieldDescriptor field : sortedFields) {
+            com.google.protobuf.DescriptorProtos.DescriptorProto.ExtensionRange lastRange = null;
+            while (rangeIdx < sortedExtensions.size() &&
+                   sortedExtensions.get(rangeIdx).getEnd() <= field.getNumber()) {
+                lastRange = sortedExtensions.get(rangeIdx++);
+            }
+            if (lastRange != null) {
+                printer.print("extensionWriter.writeUntil(" + lastRange.getEnd() + ", output);\n");
+            }
+            fieldGenerators.get(field).generateSerializationCode(printer);
+        }
+        if (rangeIdx < sortedExtensions.size()) {
+            printer.print("extensionWriter.writeUntil(" +
+                sortedExtensions.get(sortedExtensions.size() - 1).getEnd() + ", output);\n");
+        }
     }
 }
