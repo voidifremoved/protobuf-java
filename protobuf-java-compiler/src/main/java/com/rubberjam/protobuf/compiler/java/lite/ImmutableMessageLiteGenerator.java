@@ -51,6 +51,7 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
         "    // @@protoc_insertion_point(interface_extends:$full_name$)\n" +
         "    com.google.protobuf.MessageOrBuilder {\n");
     printer.indent();
+    printer.print("\n");
 
     for (FieldDescriptor field : descriptor.getFields()) {
       fieldGenerators.get(field).generateInterfaceMembers(printer);
