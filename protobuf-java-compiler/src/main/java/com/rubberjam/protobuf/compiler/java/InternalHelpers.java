@@ -31,6 +31,14 @@ public final class InternalHelpers
 		{
 			return true;
 		}
+		if (field.getFile() != null && field.getFile().toProto().getSyntax().equals("proto2"))
+		{
+			return false;
+		}
+		if (field.getFile() != null && field.getFile().toProto().getSyntax().isEmpty())
+		{
+			return false;
+		}
 		return !field.getOptions().getFeatures().getExtension(JavaFeaturesProto.java_).getLegacyClosedEnum();
 	}
 

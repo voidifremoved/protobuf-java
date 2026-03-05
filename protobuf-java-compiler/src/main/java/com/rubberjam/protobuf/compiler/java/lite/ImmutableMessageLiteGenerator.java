@@ -41,7 +41,7 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
 
   @Override
   public void generateInterface(Printer printer) {
-    String className = nameResolver.getImmutableClassName(descriptor);
+    String className = descriptor.getName();
     Map<String, Object> vars = new HashMap<>();
     vars.put("classname", className);
 

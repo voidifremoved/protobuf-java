@@ -120,7 +120,7 @@ public class ImmutableExtensionLiteGenerator extends ExtensionGenerator {
       if (descriptor.getExtensionScope() != null) {
          fieldName = context.getNameResolver().getClassName(descriptor.getExtensionScope(), true) + "." + simpleName;
       } else {
-         fieldName = simpleName;
+         fieldName = context.getNameResolver().getImmutableClassName(descriptor.getFile()) + "." + simpleName;
       }
       vars.put("field_name", fieldName);
       printer.emit(vars, "registry.add($field_name$);\n");

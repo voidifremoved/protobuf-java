@@ -125,7 +125,10 @@ public final class FieldCommon {
       FieldDescriptor descriptor, OneofGeneratorInfo info, Map<String, Object> variables) {
     variables.put("oneof_name", info.name);
     variables.put("oneof_capitalized_name", info.capitalizedName);
-    variables.put("oneof_index", String.valueOf(descriptor.getRealContainingOneof().getIndex()));
+    variables.put("oneof_index", String.valueOf(
+        descriptor.getRealContainingOneof() != null
+            ? descriptor.getRealContainingOneof().getIndex()
+            : descriptor.getContainingOneof().getIndex()));
     variables.put("oneof_stored_type", Helpers.getOneofStoredType(descriptor));
     
     variables.put("set_oneof_case_message", info.name + "Case_ = " + descriptor.getNumber());

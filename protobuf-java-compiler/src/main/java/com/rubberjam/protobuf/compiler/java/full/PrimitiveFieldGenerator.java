@@ -366,10 +366,18 @@ public class PrimitiveFieldGenerator extends ImmutableFieldGenerator {
               "  set$capitalized_name$(other.get$capitalized_name$());\n" +
               "}\n");
     } else {
-      // Proto3 implicit: check if value is not default
-      printer.emit(variables,
-          "if (other.get$capitalized_name$() != $default$) {\n" +
-              "  set$capitalized_name$(other.get$capitalized_name$());\n" +
+      String otherPresenceCheck;
+      if (descriptor.getType() == FieldDescriptor.Type.FLOAT) {
+        otherPresenceCheck = "java.lang.Float.floatToRawIntBits(other.get" + variables.get("capitalized_name") + "()) != 0";
+      } else if (descriptor.getType() == FieldDescriptor.Type.DOUBLE) {
+        otherPresenceCheck = "java.lang.Double.doubleToRawLongBits(other.get" + variables.get("capitalized_name") + "()) != 0";
+      } else if (descriptor.getType() == FieldDescriptor.Type.BYTES) {
+        otherPresenceCheck = "!other.get" + variables.get("capitalized_name") + "().isEmpty()";
+      } else {
+        otherPresenceCheck = "other.get" + variables.get("capitalized_name") + "() != " + variables.get("default");
+      }
+      printer.print("if (" + otherPresenceCheck + ") {\n" +
+              "  set" + variables.get("capitalized_name") + "(other.get" + variables.get("capitalized_name") + "());\n" +
               "}\n");
     }
   }
