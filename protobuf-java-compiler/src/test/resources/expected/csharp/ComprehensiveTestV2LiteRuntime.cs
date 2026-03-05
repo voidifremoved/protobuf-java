@@ -25,7 +25,7 @@ namespace ComprehensiveTest.V2Lite {
       byte[] descriptorData = global::System.Convert.FromBase64String(
           string.Concat(
             "Cihjb21wcmVoZW5zaXZlX3Rlc3RfdjJfbGl0ZV9ydW50aW1lLnByb3RvEhhD",
-            "b21wcmVoZW5zaXZlVGVzdC5WMkxpdGUirwoKDUFsbEZpZWxkVHlwZXMSEwoL",
+            "b21wcmVoZW5zaXZlVGVzdC5WMkxpdGUi6AkKDUFsbEZpZWxkVHlwZXMSEwoL",
             "aW50MzJfZmllbGQYASABKAUSEwoLaW50NjRfZmllbGQYAiABKAMSFAoMdWlu",
             "dDMyX2ZpZWxkGAMgASgNEhQKDHVpbnQ2NF9maWVsZBgEIAEoBBIUCgxzaW50",
             "MzJfZmllbGQYBSABKBESFAoMc2ludDY0X2ZpZWxkGAYgASgSEhUKDWZpeGVk",
@@ -43,65 +43,63 @@ namespace ComprehensiveTest.V2Lite {
             "VHlwZXMuTmVzdGVkTWVzc2FnZRIXCg9yZXF1aXJlZF9zdHJpbmcYFiACKAkS",
             "FgoOcmVxdWlyZWRfaW50MzIYFyACKAUSHgoSaW50MzJfd2l0aF9kZWZhdWx0",
             "GBggASgFOgI0MhIiChNzdHJpbmdfd2l0aF9kZWZhdWx0GBkgASgJOgVoZWxs",
-            "bxIfChFib29sX3dpdGhfZGVmYXVsdBgaIAEoCDoEdHJ1ZRJFChFlbnVtX3dp",
-            "dGhfZGVmYXVsdBgbIAEoDjIiLkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5U",
-            "ZXN0RW51bToGU0VDT05EEiQKE2RvdWJsZV93aXRoX2RlZmF1bHQYHCABKAE6",
-            "BzMuMTQxNTkSIwoSZmxvYXRfd2l0aF9kZWZhdWx0GB0gASgCOgcyLjcxODI4",
-            "EhwKEGRlcHJlY2F0ZWRfZmllbGQYHiABKAlCAhgBEk0KEW5lc3RlZF9lbnVt",
-            "X2ZpZWxkGB8gASgOMjIuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLkFsbEZp",
-            "ZWxkVHlwZXMuTmVzdGVkRW51bRrHAQoNTmVzdGVkTWVzc2FnZRIVCg1uZXN0",
-            "ZWRfc3RyaW5nGAEgASgJEhQKDG5lc3RlZF9pbnQzMhgCIAEoBRJVCgtuZXN0",
-            "ZWRfZW51bRgDIAEoDjJALkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5BbGxG",
-            "aWVsZFR5cGVzLk5lc3RlZE1lc3NhZ2UuTmVzdGVkRW51bSIyCgpOZXN0ZWRF",
-            "bnVtEhIKDk5FU1RFRF9VTktOT1dOEAASEAoMTkVTVEVEX0ZJUlNUEAEiMgoK",
-            "TmVzdGVkRW51bRISCg5ORVNURURfVU5LTk9XThAAEhAKDE5FU1RFRF9GSVJT",
-            "VBABIt4BCgxPbmVvZk1lc3NhZ2USFgoMb25lb2Zfc3RyaW5nGAEgASgJSAAS",
-            "FQoLb25lb2ZfaW50MzIYAiABKAVIABI4CgpvbmVvZl9lbnVtGAMgASgOMiIu",
-            "Q29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLlRlc3RFbnVtSAASQAoNb25lb2Zf",
-            "bWVzc2FnZRgEIAEoCzInLkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5BbGxG",
-            "aWVsZFR5cGVzSAASFQoNcmVndWxhcl9maWVsZBgFIAEoCUIMCgp0ZXN0X29u",
-            "ZW9mIoYHCgpNYXBNZXNzYWdlElAKD3N0cmluZ190b19pbnQzMhgBIAMoCzI3",
-            "LkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5NYXBNZXNzYWdlLlN0cmluZ1Rv",
-            "SW50MzJFbnRyeRJQCg9pbnQzMl90b19zdHJpbmcYAiADKAsyNy5Db21wcmVo",
-            "ZW5zaXZlVGVzdC5WMkxpdGUuTWFwTWVzc2FnZS5JbnQzMlRvU3RyaW5nRW50",
-            "cnkSTgoOc3RyaW5nX3RvX2VudW0YAyADKAsyNi5Db21wcmVoZW5zaXZlVGVz",
-            "dC5WMkxpdGUuTWFwTWVzc2FnZS5TdHJpbmdUb0VudW1FbnRyeRJUChFzdHJp",
-            "bmdfdG9fbWVzc2FnZRgEIAMoCzI5LkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0",
-            "ZS5NYXBNZXNzYWdlLlN0cmluZ1RvTWVzc2FnZUVudHJ5Ek4KDmJvb2xfdG9f",
-            "c3RyaW5nGAUgAygLMjYuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLk1hcE1l",
-            "c3NhZ2UuQm9vbFRvU3RyaW5nRW50cnkSTgoOaW50NjRfdG9fYnl0ZXMYBiAD",
-            "KAsyNi5Db21wcmVoZW5zaXZlVGVzdC5WMkxpdGUuTWFwTWVzc2FnZS5JbnQ2",
-            "NFRvQnl0ZXNFbnRyeRo0ChJTdHJpbmdUb0ludDMyRW50cnkSCwoDa2V5GAEg",
-            "ASgJEg0KBXZhbHVlGAIgASgFOgI4ARo0ChJJbnQzMlRvU3RyaW5nRW50cnkS",
-            "CwoDa2V5GAEgASgFEg0KBXZhbHVlGAIgASgJOgI4ARpXChFTdHJpbmdUb0Vu",
-            "dW1FbnRyeRILCgNrZXkYASABKAkSMQoFdmFsdWUYAiABKA4yIi5Db21wcmVo",
-            "ZW5zaXZlVGVzdC5WMkxpdGUuVGVzdEVudW06AjgBGl8KFFN0cmluZ1RvTWVz",
-            "c2FnZUVudHJ5EgsKA2tleRgBIAEoCRI2CgV2YWx1ZRgCIAEoCzInLkNvbXBy",
-            "ZWhlbnNpdmVUZXN0LlYyTGl0ZS5BbGxGaWVsZFR5cGVzOgI4ARozChFCb29s",
-            "VG9TdHJpbmdFbnRyeRILCgNrZXkYASABKAgSDQoFdmFsdWUYAiABKAk6AjgB",
-            "GjMKEUludDY0VG9CeXRlc0VudHJ5EgsKA2tleRgBIAEoAxINCgV2YWx1ZRgC",
-            "IAEoDDoCOAEiNgoRRXh0ZW5kYWJsZU1lc3NhZ2USEgoKYmFzZV9maWVsZBgB",
-            "IAEoCSoFCGQQyAEqBgj0AxDYBCKGAgoMR3JvdXBNZXNzYWdlEkMKCXRlc3Rn",
-            "cm91cBgBIAEoCjIwLkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5Hcm91cE1l",
-            "c3NhZ2UuVGVzdEdyb3VwEksKDXJlcGVhdGVkZ3JvdXAYAiADKAoyNC5Db21w",
-            "cmVoZW5zaXZlVGVzdC5WMkxpdGUuR3JvdXBNZXNzYWdlLlJlcGVhdGVkR3Jv",
-            "dXAaNQoJVGVzdEdyb3VwEhMKC2dyb3VwX2ZpZWxkGAEgASgJEhMKC2dyb3Vw",
-            "X2ludDMyGAIgASgFGi0KDVJlcGVhdGVkR3JvdXASHAoUcmVwZWF0ZWRfZ3Jv",
-            "dXBfZmllbGQYASABKAkiTQoPUmVzZXJ2ZWRNZXNzYWdlEg4KBmZpZWxkMRgB",
-            "IAEoCRIOCgZmaWVsZDMYAyABKAVKBAgCEANKBAgPEBBKBAgJEAxSA2Zvb1ID",
-            "YmFyKlIKCFRlc3RFbnVtEgsKB1VOS05PV04QABIJCgVGSVJTVBABEgoKBlNF",
-            "Q09ORBACEgkKBVRISVJEEAMSEwoLQUxJQVNfVEhJUkQQAxoCCAEaAhABOkQK",
-            "D2V4dGVuZGVkX3N0cmluZxIrLkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5F",
-            "eHRlbmRhYmxlTWVzc2FnZRhkIAEoCTpDCg5leHRlbmRlZF9pbnQzMhIrLkNv",
-            "bXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5FeHRlbmRhYmxlTWVzc2FnZRhlIAEo",
-            "BTpGChFleHRlbmRlZF9yZXBlYXRlZBIrLkNvbXByZWhlbnNpdmVUZXN0LlYy",
-            "TGl0ZS5FeHRlbmRhYmxlTWVzc2FnZRhmIAMoCUJKCidjb20ucnViYmVyamFt",
-            "LnByb3RvYnVmLmNvbXBpbGVyLnRlc3QudjJCF0NvbXByZWhlbnNpdmVUZXN0",
-            "VjJMaXRlSAOAAQGIAQE="));
+            "bxIfChFib29sX3dpdGhfZGVmYXVsdBgaIAEoCDoEdHJ1ZRIkChNkb3VibGVf",
+            "d2l0aF9kZWZhdWx0GBwgASgBOgczLjE0MTU5EiMKEmZsb2F0X3dpdGhfZGVm",
+            "YXVsdBgdIAEoAjoHMi43MTgyOBIcChBkZXByZWNhdGVkX2ZpZWxkGB4gASgJ",
+            "QgIYARJNChFuZXN0ZWRfZW51bV9maWVsZBgfIAEoDjIyLkNvbXByZWhlbnNp",
+            "dmVUZXN0LlYyTGl0ZS5BbGxGaWVsZFR5cGVzLk5lc3RlZEVudW0axwEKDU5l",
+            "c3RlZE1lc3NhZ2USFQoNbmVzdGVkX3N0cmluZxgBIAEoCRIUCgxuZXN0ZWRf",
+            "aW50MzIYAiABKAUSVQoLbmVzdGVkX2VudW0YAyABKA4yQC5Db21wcmVoZW5z",
+            "aXZlVGVzdC5WMkxpdGUuQWxsRmllbGRUeXBlcy5OZXN0ZWRNZXNzYWdlLk5l",
+            "c3RlZEVudW0iMgoKTmVzdGVkRW51bRISCg5ORVNURURfVU5LTk9XThAAEhAK",
+            "DE5FU1RFRF9GSVJTVBABIjIKCk5lc3RlZEVudW0SEgoOTkVTVEVEX1VOS05P",
+            "V04QABIQCgxORVNURURfRklSU1QQASLeAQoMT25lb2ZNZXNzYWdlEhYKDG9u",
+            "ZW9mX3N0cmluZxgBIAEoCUgAEhUKC29uZW9mX2ludDMyGAIgASgFSAASOAoK",
+            "b25lb2ZfZW51bRgDIAEoDjIiLkNvbXByZWhlbnNpdmVUZXN0LlYyTGl0ZS5U",
+            "ZXN0RW51bUgAEkAKDW9uZW9mX21lc3NhZ2UYBCABKAsyJy5Db21wcmVoZW5z",
+            "aXZlVGVzdC5WMkxpdGUuQWxsRmllbGRUeXBlc0gAEhUKDXJlZ3VsYXJfZmll",
+            "bGQYBSABKAlCDAoKdGVzdF9vbmVvZiKGBwoKTWFwTWVzc2FnZRJQCg9zdHJp",
+            "bmdfdG9faW50MzIYASADKAsyNy5Db21wcmVoZW5zaXZlVGVzdC5WMkxpdGUu",
+            "TWFwTWVzc2FnZS5TdHJpbmdUb0ludDMyRW50cnkSUAoPaW50MzJfdG9fc3Ry",
+            "aW5nGAIgAygLMjcuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLk1hcE1lc3Nh",
+            "Z2UuSW50MzJUb1N0cmluZ0VudHJ5Ek4KDnN0cmluZ190b19lbnVtGAMgAygL",
+            "MjYuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLk1hcE1lc3NhZ2UuU3RyaW5n",
+            "VG9FbnVtRW50cnkSVAoRc3RyaW5nX3RvX21lc3NhZ2UYBCADKAsyOS5Db21w",
+            "cmVoZW5zaXZlVGVzdC5WMkxpdGUuTWFwTWVzc2FnZS5TdHJpbmdUb01lc3Nh",
+            "Z2VFbnRyeRJOCg5ib29sX3RvX3N0cmluZxgFIAMoCzI2LkNvbXByZWhlbnNp",
+            "dmVUZXN0LlYyTGl0ZS5NYXBNZXNzYWdlLkJvb2xUb1N0cmluZ0VudHJ5Ek4K",
+            "DmludDY0X3RvX2J5dGVzGAYgAygLMjYuQ29tcHJlaGVuc2l2ZVRlc3QuVjJM",
+            "aXRlLk1hcE1lc3NhZ2UuSW50NjRUb0J5dGVzRW50cnkaNAoSU3RyaW5nVG9J",
+            "bnQzMkVudHJ5EgsKA2tleRgBIAEoCRINCgV2YWx1ZRgCIAEoBToCOAEaNAoS",
+            "SW50MzJUb1N0cmluZ0VudHJ5EgsKA2tleRgBIAEoBRINCgV2YWx1ZRgCIAEo",
+            "CToCOAEaVwoRU3RyaW5nVG9FbnVtRW50cnkSCwoDa2V5GAEgASgJEjEKBXZh",
+            "bHVlGAIgASgOMiIuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLlRlc3RFbnVt",
+            "OgI4ARpfChRTdHJpbmdUb01lc3NhZ2VFbnRyeRILCgNrZXkYASABKAkSNgoF",
+            "dmFsdWUYAiABKAsyJy5Db21wcmVoZW5zaXZlVGVzdC5WMkxpdGUuQWxsRmll",
+            "bGRUeXBlczoCOAEaMwoRQm9vbFRvU3RyaW5nRW50cnkSCwoDa2V5GAEgASgI",
+            "Eg0KBXZhbHVlGAIgASgJOgI4ARozChFJbnQ2NFRvQnl0ZXNFbnRyeRILCgNr",
+            "ZXkYASABKAMSDQoFdmFsdWUYAiABKAw6AjgBIjYKEUV4dGVuZGFibGVNZXNz",
+            "YWdlEhIKCmJhc2VfZmllbGQYASABKAkqBQhkEMgBKgYI9AMQ2AQihgIKDEdy",
+            "b3VwTWVzc2FnZRJDCgl0ZXN0Z3JvdXAYASABKAoyMC5Db21wcmVoZW5zaXZl",
+            "VGVzdC5WMkxpdGUuR3JvdXBNZXNzYWdlLlRlc3RHcm91cBJLCg1yZXBlYXRl",
+            "ZGdyb3VwGAIgAygKMjQuQ29tcHJlaGVuc2l2ZVRlc3QuVjJMaXRlLkdyb3Vw",
+            "TWVzc2FnZS5SZXBlYXRlZEdyb3VwGjUKCVRlc3RHcm91cBITCgtncm91cF9m",
+            "aWVsZBgBIAEoCRITCgtncm91cF9pbnQzMhgCIAEoBRotCg1SZXBlYXRlZEdy",
+            "b3VwEhwKFHJlcGVhdGVkX2dyb3VwX2ZpZWxkGAEgASgJIk0KD1Jlc2VydmVk",
+            "TWVzc2FnZRIOCgZmaWVsZDEYASABKAkSDgoGZmllbGQzGAMgASgFSgQIAhAD",
+            "SgQIDxAQSgQICRAMUgNmb29SA2JhcipSCghUZXN0RW51bRILCgdVTktOT1dO",
+            "EAASCQoFRklSU1QQARIKCgZTRUNPTkQQAhIJCgVUSElSRBADEhMKC0FMSUFT",
+            "X1RISVJEEAMaAggBGgIQATpECg9leHRlbmRlZF9zdHJpbmcSKy5Db21wcmVo",
+            "ZW5zaXZlVGVzdC5WMkxpdGUuRXh0ZW5kYWJsZU1lc3NhZ2UYZCABKAk6QwoO",
+            "ZXh0ZW5kZWRfaW50MzISKy5Db21wcmVoZW5zaXZlVGVzdC5WMkxpdGUuRXh0",
+            "ZW5kYWJsZU1lc3NhZ2UYZSABKAU6RgoRZXh0ZW5kZWRfcmVwZWF0ZWQSKy5D",
+            "b21wcmVoZW5zaXZlVGVzdC5WMkxpdGUuRXh0ZW5kYWJsZU1lc3NhZ2UYZiAD",
+            "KAlCSgonY29tLnJ1YmJlcmphbS5wcm90b2J1Zi5jb21waWxlci50ZXN0LnYy",
+            "QhdDb21wcmVoZW5zaXZlVGVzdFYyTGl0ZUgDgAEBiAEB"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(new[] {typeof(global::ComprehensiveTest.V2Lite.TestEnum), }, new pb::Extension[] { ComprehensiveTestV2LiteRuntimeExtensions.ExtendedString, ComprehensiveTestV2LiteRuntimeExtensions.ExtendedInt32, ComprehensiveTestV2LiteRuntimeExtensions.ExtendedRepeated }, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes), global::ComprehensiveTest.V2Lite.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "MessageField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "RepeatedMessage", "RequiredString", "RequiredInt32", "Int32WithDefault", "StringWithDefault", "BoolWithDefault", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField", "NestedEnumField" }, null, new[]{ typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedEnum) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage), global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage.Parser, new[]{ "NestedString", "NestedInt32", "NestedEnum" }, null, new[]{ typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage.Types.NestedEnum) }, null, null)}),
+            new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes), global::ComprehensiveTest.V2Lite.AllFieldTypes.Parser, new[]{ "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "MessageField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "RepeatedMessage", "RequiredString", "RequiredInt32", "Int32WithDefault", "StringWithDefault", "BoolWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField", "NestedEnumField" }, null, new[]{ typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedEnum) }, null, new pbr::GeneratedClrTypeInfo[] { new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage), global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage.Parser, new[]{ "NestedString", "NestedInt32", "NestedEnum" }, null, new[]{ typeof(global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedMessage.Types.NestedEnum) }, null, null)}),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.OneofMessage), global::ComprehensiveTest.V2Lite.OneofMessage.Parser, new[]{ "OneofString", "OneofInt32", "OneofEnum", "OneofMessage_", "RegularField" }, new[]{ "TestOneof" }, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.MapMessage), global::ComprehensiveTest.V2Lite.MapMessage.Parser, new[]{ "StringToInt32", "Int32ToString", "StringToEnum", "StringToMessage", "BoolToString", "Int64ToBytes" }, null, null, null, new pbr::GeneratedClrTypeInfo[] { null, null, null, null, null, null, }),
             new pbr::GeneratedClrTypeInfo(typeof(global::ComprehensiveTest.V2Lite.ExtendableMessage), global::ComprehensiveTest.V2Lite.ExtendableMessage.Parser, new[]{ "BaseField" }, null, null, null, null),
@@ -205,7 +203,6 @@ namespace ComprehensiveTest.V2Lite {
       int32WithDefault_ = other.int32WithDefault_;
       stringWithDefault_ = other.stringWithDefault_;
       boolWithDefault_ = other.boolWithDefault_;
-      enumWithDefault_ = other.enumWithDefault_;
       doubleWithDefault_ = other.doubleWithDefault_;
       floatWithDefault_ = other.floatWithDefault_;
       deprecatedField_ = other.deprecatedField_;
@@ -859,44 +856,20 @@ namespace ComprehensiveTest.V2Lite {
       _hasBits0 &= ~65536;
     }
 
-    /// <summary>Field number for the "enum_with_default" field.</summary>
-    public const int EnumWithDefaultFieldNumber = 27;
-    private readonly static global::ComprehensiveTest.V2Lite.TestEnum EnumWithDefaultDefaultValue = global::ComprehensiveTest.V2Lite.TestEnum.Second;
-
-    private global::ComprehensiveTest.V2Lite.TestEnum enumWithDefault_;
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::ComprehensiveTest.V2Lite.TestEnum EnumWithDefault {
-      get { if ((_hasBits0 & 131072) != 0) { return enumWithDefault_; } else { return EnumWithDefaultDefaultValue; } }
-      set {
-        _hasBits0 |= 131072;
-        enumWithDefault_ = value;
-      }
-    }
-    /// <summary>Gets whether the "enum_with_default" field is set</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool HasEnumWithDefault {
-      get { return (_hasBits0 & 131072) != 0; }
-    }
-    /// <summary>Clears the value of the "enum_with_default" field</summary>
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void ClearEnumWithDefault() {
-      _hasBits0 &= ~131072;
-    }
-
     /// <summary>Field number for the "double_with_default" field.</summary>
     public const int DoubleWithDefaultFieldNumber = 28;
     private readonly static double DoubleWithDefaultDefaultValue = 3.14159D;
 
     private double doubleWithDefault_;
+    /// <summary>
+    ///optional TestEnum enum_with_default = 27 [default = SECOND];
+    /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public double DoubleWithDefault {
-      get { if ((_hasBits0 & 262144) != 0) { return doubleWithDefault_; } else { return DoubleWithDefaultDefaultValue; } }
+      get { if ((_hasBits0 & 131072) != 0) { return doubleWithDefault_; } else { return DoubleWithDefaultDefaultValue; } }
       set {
-        _hasBits0 |= 262144;
+        _hasBits0 |= 131072;
         doubleWithDefault_ = value;
       }
     }
@@ -904,13 +877,13 @@ namespace ComprehensiveTest.V2Lite {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasDoubleWithDefault {
-      get { return (_hasBits0 & 262144) != 0; }
+      get { return (_hasBits0 & 131072) != 0; }
     }
     /// <summary>Clears the value of the "double_with_default" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearDoubleWithDefault() {
-      _hasBits0 &= ~262144;
+      _hasBits0 &= ~131072;
     }
 
     /// <summary>Field number for the "float_with_default" field.</summary>
@@ -921,9 +894,9 @@ namespace ComprehensiveTest.V2Lite {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public float FloatWithDefault {
-      get { if ((_hasBits0 & 524288) != 0) { return floatWithDefault_; } else { return FloatWithDefaultDefaultValue; } }
+      get { if ((_hasBits0 & 262144) != 0) { return floatWithDefault_; } else { return FloatWithDefaultDefaultValue; } }
       set {
-        _hasBits0 |= 524288;
+        _hasBits0 |= 262144;
         floatWithDefault_ = value;
       }
     }
@@ -931,13 +904,13 @@ namespace ComprehensiveTest.V2Lite {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasFloatWithDefault {
-      get { return (_hasBits0 & 524288) != 0; }
+      get { return (_hasBits0 & 262144) != 0; }
     }
     /// <summary>Clears the value of the "float_with_default" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearFloatWithDefault() {
-      _hasBits0 &= ~524288;
+      _hasBits0 &= ~262144;
     }
 
     /// <summary>Field number for the "deprecated_field" field.</summary>
@@ -980,9 +953,9 @@ namespace ComprehensiveTest.V2Lite {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public global::ComprehensiveTest.V2Lite.AllFieldTypes.Types.NestedEnum NestedEnumField {
-      get { if ((_hasBits0 & 1048576) != 0) { return nestedEnumField_; } else { return NestedEnumFieldDefaultValue; } }
+      get { if ((_hasBits0 & 524288) != 0) { return nestedEnumField_; } else { return NestedEnumFieldDefaultValue; } }
       set {
-        _hasBits0 |= 1048576;
+        _hasBits0 |= 524288;
         nestedEnumField_ = value;
       }
     }
@@ -990,13 +963,13 @@ namespace ComprehensiveTest.V2Lite {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public bool HasNestedEnumField {
-      get { return (_hasBits0 & 1048576) != 0; }
+      get { return (_hasBits0 & 524288) != 0; }
     }
     /// <summary>Clears the value of the "nested_enum_field" field</summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public void ClearNestedEnumField() {
-      _hasBits0 &= ~1048576;
+      _hasBits0 &= ~524288;
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1040,7 +1013,6 @@ namespace ComprehensiveTest.V2Lite {
       if (Int32WithDefault != other.Int32WithDefault) return false;
       if (StringWithDefault != other.StringWithDefault) return false;
       if (BoolWithDefault != other.BoolWithDefault) return false;
-      if (EnumWithDefault != other.EnumWithDefault) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(DoubleWithDefault, other.DoubleWithDefault)) return false;
       if (!pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.Equals(FloatWithDefault, other.FloatWithDefault)) return false;
       if (DeprecatedField != other.DeprecatedField) return false;
@@ -1078,7 +1050,6 @@ namespace ComprehensiveTest.V2Lite {
       if (HasInt32WithDefault) hash ^= Int32WithDefault.GetHashCode();
       if (HasStringWithDefault) hash ^= StringWithDefault.GetHashCode();
       if (HasBoolWithDefault) hash ^= BoolWithDefault.GetHashCode();
-      if (HasEnumWithDefault) hash ^= EnumWithDefault.GetHashCode();
       if (HasDoubleWithDefault) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(DoubleWithDefault);
       if (HasFloatWithDefault) hash ^= pbc::ProtobufEqualityComparers.BitwiseSingleEqualityComparer.GetHashCode(FloatWithDefault);
       if (HasDeprecatedField) hash ^= DeprecatedField.GetHashCode();
@@ -1192,10 +1163,6 @@ namespace ComprehensiveTest.V2Lite {
       if (HasBoolWithDefault) {
         output.WriteRawTag(208, 1);
         output.WriteBool(BoolWithDefault);
-      }
-      if (HasEnumWithDefault) {
-        output.WriteRawTag(216, 1);
-        output.WriteEnum((int) EnumWithDefault);
       }
       if (HasDoubleWithDefault) {
         output.WriteRawTag(225, 1);
@@ -1315,10 +1282,6 @@ namespace ComprehensiveTest.V2Lite {
         output.WriteRawTag(208, 1);
         output.WriteBool(BoolWithDefault);
       }
-      if (HasEnumWithDefault) {
-        output.WriteRawTag(216, 1);
-        output.WriteEnum((int) EnumWithDefault);
-      }
       if (HasDoubleWithDefault) {
         output.WriteRawTag(225, 1);
         output.WriteDouble(DoubleWithDefault);
@@ -1414,9 +1377,6 @@ namespace ComprehensiveTest.V2Lite {
       }
       if (HasBoolWithDefault) {
         size += 2 + 1;
-      }
-      if (HasEnumWithDefault) {
-        size += 2 + pb::CodedOutputStream.ComputeEnumSize((int) EnumWithDefault);
       }
       if (HasDoubleWithDefault) {
         size += 2 + 8;
@@ -1514,9 +1474,6 @@ namespace ComprehensiveTest.V2Lite {
       }
       if (other.HasBoolWithDefault) {
         BoolWithDefault = other.BoolWithDefault;
-      }
-      if (other.HasEnumWithDefault) {
-        EnumWithDefault = other.EnumWithDefault;
       }
       if (other.HasDoubleWithDefault) {
         DoubleWithDefault = other.DoubleWithDefault;
@@ -1656,10 +1613,6 @@ namespace ComprehensiveTest.V2Lite {
           }
           case 208: {
             BoolWithDefault = input.ReadBool();
-            break;
-          }
-          case 216: {
-            EnumWithDefault = (global::ComprehensiveTest.V2Lite.TestEnum) input.ReadEnum();
             break;
           }
           case 225: {
@@ -1804,10 +1757,6 @@ namespace ComprehensiveTest.V2Lite {
           }
           case 208: {
             BoolWithDefault = input.ReadBool();
-            break;
-          }
-          case 216: {
-            EnumWithDefault = (global::ComprehensiveTest.V2Lite.TestEnum) input.ReadEnum();
             break;
           }
           case 225: {

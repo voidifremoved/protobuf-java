@@ -493,7 +493,7 @@ public final class IsolatedBytesDefault extends com.google.protobuf.GeneratedFil
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_BytesDefaultMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_BytesDefaultMessage_fieldAccessorTable;
 

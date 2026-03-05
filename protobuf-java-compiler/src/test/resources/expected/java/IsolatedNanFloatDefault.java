@@ -495,7 +495,7 @@ public final class IsolatedNanFloatDefault extends com.google.protobuf.Generated
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_NanFloatDefaultMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_NanFloatDefaultMessage_fieldAccessorTable;
 

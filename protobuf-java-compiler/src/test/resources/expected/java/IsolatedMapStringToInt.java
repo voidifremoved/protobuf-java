@@ -117,7 +117,7 @@ public final class IsolatedMapStringToInt extends com.google.protobuf.GeneratedF
           java.lang.String, java.lang.Integer> defaultEntry =
               com.google.protobuf.MapEntry
               .<java.lang.String, java.lang.Integer>newDefaultInstance(
-                  Isolated.IsolatedMapStringToInt.internal_static_Isolated_MapMessage_StringToInt32Entry_descriptor,
+                  Isolated.IsolatedMapStringToInt.internal_static_Isolated_MapMessage_StringToInt32Entry_descriptor, 
                   com.google.protobuf.WireFormat.FieldType.STRING,
                   "",
                   com.google.protobuf.WireFormat.FieldType.INT32,
@@ -697,12 +697,12 @@ public final class IsolatedMapStringToInt extends com.google.protobuf.GeneratedF
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_MapMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_MapMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_MapMessage_StringToInt32Entry_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_MapMessage_StringToInt32Entry_fieldAccessorTable;
 

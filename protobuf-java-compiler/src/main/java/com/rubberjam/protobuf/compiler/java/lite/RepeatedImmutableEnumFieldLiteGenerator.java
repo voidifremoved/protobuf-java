@@ -30,7 +30,7 @@ public class RepeatedImmutableEnumFieldLiteGenerator implements ImmutableFieldLi
     variables.put("type", type);
     variables.put("boxed_type", type);
     variables.put("field_type", type);
-    variables.put("default", Helpers.immutableDefaultValue(descriptor, nameResolver, context.getOptions()));
+    //variables.put("default", Helpers.immutableDefaultValue(descriptor, nameResolver, context.getOptions()));
     variables.put("tag", String.valueOf(Helpers.makeTag(descriptor.getNumber(), Helpers.getWireTypeForFieldType(descriptor.getType()))));
     variables.put("tag_size", String.valueOf(com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
     variables.put("required", descriptor.isRequired() ? "true" : "false");

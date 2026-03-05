@@ -492,7 +492,7 @@ public final class IsolatedOptimizeForSpeed extends com.google.protobuf.Generate
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_SpeedMsg_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_SpeedMsg_fieldAccessorTable;
 

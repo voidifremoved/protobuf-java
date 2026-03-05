@@ -383,7 +383,7 @@ public final class IsolatedRpc extends com.google.protobuf.GeneratedFile {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_Empty_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_Empty_fieldAccessorTable;
 

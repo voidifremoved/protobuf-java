@@ -37,7 +37,7 @@ public class ImmutablePrimitiveFieldLiteGenerator implements ImmutableFieldLiteG
     variables.put("tag", String.valueOf(Helpers.makeTag(descriptor.getNumber(), Helpers.getWireTypeForFieldType(descriptor.getType()))));
     variables.put("tag_size", String.valueOf(com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber())));
     variables.put("null_check", "if (value == null) {\n  throw new NullPointerException();\n}\n");
-
+    variables.put("deprecation", descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
     // For fixed size types
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.INT || Helpers.getJavaType(descriptor) == Helpers.JavaType.LONG || Helpers.getJavaType(descriptor) == Helpers.JavaType.BOOLEAN) {
        variables.put("is_primitive", "true");
@@ -80,7 +80,7 @@ public class ImmutablePrimitiveFieldLiteGenerator implements ImmutableFieldLiteG
     printer.emit(variables,
         "private void set$capitalized_name$($type$ value) {\n" +
         // (descriptor.getType() == FieldDescriptor.Type.STRING) ? "$null_check$" : "" + // primitives don't need null check
-        "  $set_has_bit_message$\n" +
+        //"  $set_has_bit_message$\n" +
         "  $name$_ = value;\n" +
         "}\n");
 
@@ -88,7 +88,7 @@ public class ImmutablePrimitiveFieldLiteGenerator implements ImmutableFieldLiteG
         context.getOptions(), false, false, true);
     printer.emit(variables,
         "private void clear$capitalized_name$() {\n" +
-        "  $clear_has_bit_message$\n" +
+        //"  $clear_has_bit_message$\n" +
         "  $name$_ = $default$;\n" +
         "}\n");
   }

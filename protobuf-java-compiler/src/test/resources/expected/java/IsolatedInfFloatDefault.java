@@ -495,7 +495,7 @@ public final class IsolatedInfFloatDefault extends com.google.protobuf.Generated
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_InfFloatDefaultMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_InfFloatDefaultMessage_fieldAccessorTable;
 

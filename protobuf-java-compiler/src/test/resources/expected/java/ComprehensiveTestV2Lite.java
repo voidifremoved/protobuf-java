@@ -584,22 +584,19 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
     boolean getBoolWithDefault();
 
     /**
-     * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-     * @return Whether the enumWithDefault field is set.
-     */
-    boolean hasEnumWithDefault();
-    /**
-     * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-     * @return The enumWithDefault.
-     */
-    com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum getEnumWithDefault();
-
-    /**
+     * <pre>
+     * optional TestEnum enum_with_default = 27 [default = SECOND];
+     * </pre>
+     *
      * <code>optional double double_with_default = 28 [default = 3.14159];</code>
      * @return Whether the doubleWithDefault field is set.
      */
     boolean hasDoubleWithDefault();
     /**
+     * <pre>
+     * optional TestEnum enum_with_default = 27 [default = SECOND];
+     * </pre>
+     *
      * <code>optional double double_with_default = 28 [default = 3.14159];</code>
      * @return The doubleWithDefault.
      */
@@ -700,7 +697,6 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       int32WithDefault_ = 42;
       stringWithDefault_ = "hello";
       boolWithDefault_ = true;
-      enumWithDefault_ = 2;
       doubleWithDefault_ = 3.14159D;
       floatWithDefault_ = 2.71828F;
       deprecatedField_ = "";
@@ -2418,35 +2414,25 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       return boolWithDefault_;
     }
 
-    public static final int ENUM_WITH_DEFAULT_FIELD_NUMBER = 27;
-    private int enumWithDefault_ = 2;
-    /**
-     * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-     * @return Whether the enumWithDefault field is set.
-     */
-    @java.lang.Override public boolean hasEnumWithDefault() {
-      return ((bitField0_ & 0x00400000) != 0);
-    }
-    /**
-     * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-     * @return The enumWithDefault.
-     */
-    @java.lang.Override public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum getEnumWithDefault() {
-      com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum result = com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum.forNumber(enumWithDefault_);
-      return result == null ? com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum.SECOND : result;
-    }
-
     public static final int DOUBLE_WITH_DEFAULT_FIELD_NUMBER = 28;
     private double doubleWithDefault_ = 3.14159D;
     /**
+     * <pre>
+     * optional TestEnum enum_with_default = 27 [default = SECOND];
+     * </pre>
+     *
      * <code>optional double double_with_default = 28 [default = 3.14159];</code>
      * @return Whether the doubleWithDefault field is set.
      */
     @java.lang.Override
     public boolean hasDoubleWithDefault() {
-      return ((bitField0_ & 0x00800000) != 0);
+      return ((bitField0_ & 0x00400000) != 0);
     }
     /**
+     * <pre>
+     * optional TestEnum enum_with_default = 27 [default = SECOND];
+     * </pre>
+     *
      * <code>optional double double_with_default = 28 [default = 3.14159];</code>
      * @return The doubleWithDefault.
      */
@@ -2463,7 +2449,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
      */
     @java.lang.Override
     public boolean hasFloatWithDefault() {
-      return ((bitField0_ & 0x01000000) != 0);
+      return ((bitField0_ & 0x00800000) != 0);
     }
     /**
      * <code>optional float float_with_default = 29 [default = 2.71828];</code>
@@ -2489,7 +2475,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
      */
     @java.lang.Override
     @java.lang.Deprecated public boolean hasDeprecatedField() {
-      return ((bitField0_ & 0x02000000) != 0);
+      return ((bitField0_ & 0x01000000) != 0);
     }
     /**
      * <pre>
@@ -2548,7 +2534,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
      * @return Whether the nestedEnumField field is set.
      */
     @java.lang.Override public boolean hasNestedEnumField() {
-      return ((bitField0_ & 0x04000000) != 0);
+      return ((bitField0_ & 0x02000000) != 0);
     }
     /**
      * <code>optional .ComprehensiveTest.V2Lite.AllFieldTypes.NestedEnum nested_enum_field = 31;</code>
@@ -2660,18 +2646,15 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         output.writeBool(26, boolWithDefault_);
       }
       if (((bitField0_ & 0x00400000) != 0)) {
-        output.writeEnum(27, enumWithDefault_);
-      }
-      if (((bitField0_ & 0x00800000) != 0)) {
         output.writeDouble(28, doubleWithDefault_);
       }
-      if (((bitField0_ & 0x01000000) != 0)) {
+      if (((bitField0_ & 0x00800000) != 0)) {
         output.writeFloat(29, floatWithDefault_);
       }
-      if (((bitField0_ & 0x02000000) != 0)) {
+      if (((bitField0_ & 0x01000000) != 0)) {
         com.google.protobuf.GeneratedMessage.writeString(output, 30, deprecatedField_);
       }
-      if (((bitField0_ & 0x04000000) != 0)) {
+      if (((bitField0_ & 0x02000000) != 0)) {
         output.writeEnum(31, nestedEnumField_);
       }
       getUnknownFields().writeTo(output);
@@ -2800,20 +2783,16 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       }
       if (((bitField0_ & 0x00400000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(27, enumWithDefault_);
+          .computeDoubleSize(28, doubleWithDefault_);
       }
       if (((bitField0_ & 0x00800000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeDoubleSize(28, doubleWithDefault_);
-      }
-      if (((bitField0_ & 0x01000000) != 0)) {
-        size += com.google.protobuf.CodedOutputStream
           .computeFloatSize(29, floatWithDefault_);
       }
-      if (((bitField0_ & 0x02000000) != 0)) {
+      if (((bitField0_ & 0x01000000) != 0)) {
         size += com.google.protobuf.GeneratedMessage.computeStringSize(30, deprecatedField_);
       }
-      if (((bitField0_ & 0x04000000) != 0)) {
+      if (((bitField0_ & 0x02000000) != 0)) {
         size += com.google.protobuf.CodedOutputStream
           .computeEnumSize(31, nestedEnumField_);
       }
@@ -2949,10 +2928,6 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       if (hasBoolWithDefault()) {
         if (getBoolWithDefault()
             != other.getBoolWithDefault()) return false;
-      }
-      if (hasEnumWithDefault() != other.hasEnumWithDefault()) return false;
-      if (hasEnumWithDefault()) {
-        if (enumWithDefault_ != other.enumWithDefault_) return false;
       }
       if (hasDoubleWithDefault() != other.hasDoubleWithDefault()) return false;
       if (hasDoubleWithDefault()) {
@@ -3098,10 +3073,6 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         hash = (37 * hash) + BOOL_WITH_DEFAULT_FIELD_NUMBER;
         hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
             getBoolWithDefault());
-      }
-      if (hasEnumWithDefault()) {
-        hash = (37 * hash) + ENUM_WITH_DEFAULT_FIELD_NUMBER;
-        hash = (53 * hash) + enumWithDefault_;
       }
       if (hasDoubleWithDefault()) {
         hash = (37 * hash) + DOUBLE_WITH_DEFAULT_FIELD_NUMBER;
@@ -3300,7 +3271,6 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         int32WithDefault_ = 42;
         stringWithDefault_ = "hello";
         boolWithDefault_ = true;
-        enumWithDefault_ = 2;
         doubleWithDefault_ = 3.14159D;
         floatWithDefault_ = 2.71828F;
         deprecatedField_ = "";
@@ -3455,24 +3425,20 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
           to_bitField0_ |= 0x00200000;
         }
         if (((from_bitField0_ & 0x04000000) != 0)) {
-          result.enumWithDefault_ = enumWithDefault_;
+          result.doubleWithDefault_ = doubleWithDefault_;
           to_bitField0_ |= 0x00400000;
         }
         if (((from_bitField0_ & 0x08000000) != 0)) {
-          result.doubleWithDefault_ = doubleWithDefault_;
+          result.floatWithDefault_ = floatWithDefault_;
           to_bitField0_ |= 0x00800000;
         }
         if (((from_bitField0_ & 0x10000000) != 0)) {
-          result.floatWithDefault_ = floatWithDefault_;
+          result.deprecatedField_ = deprecatedField_;
           to_bitField0_ |= 0x01000000;
         }
         if (((from_bitField0_ & 0x20000000) != 0)) {
-          result.deprecatedField_ = deprecatedField_;
-          to_bitField0_ |= 0x02000000;
-        }
-        if (((from_bitField0_ & 0x40000000) != 0)) {
           result.nestedEnumField_ = nestedEnumField_;
-          to_bitField0_ |= 0x04000000;
+          to_bitField0_ |= 0x02000000;
         }
         result.bitField0_ |= to_bitField0_;
       }
@@ -3619,9 +3585,6 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         if (other.hasBoolWithDefault()) {
           setBoolWithDefault(other.getBoolWithDefault());
         }
-        if (other.hasEnumWithDefault()) {
-          setEnumWithDefault(other.getEnumWithDefault());
-        }
         if (other.hasDoubleWithDefault()) {
           setDoubleWithDefault(other.getDoubleWithDefault());
         }
@@ -3630,7 +3593,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         }
         if (other.hasDeprecatedField()) {
           deprecatedField_ = other.deprecatedField_;
-          bitField0_ |= 0x20000000;
+          bitField0_ |= 0x10000000;
           onChanged();
         }
         if (other.hasNestedEnumField()) {
@@ -3851,31 +3814,19 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
                 bitField0_ |= 0x02000000;
                 break;
               } // case 208
-              case 216: {
-                int tmpRaw = input.readEnum();
-                com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum tmpValue =
-                    com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum.forNumber(tmpRaw);
-                if (tmpValue == null) {
-                  mergeUnknownVarintField(27, tmpRaw);
-                } else {
-                  enumWithDefault_ = tmpRaw;
-                  bitField0_ |= 0x04000000;
-                }
-                break;
-              } // case 216
               case 225: {
                 doubleWithDefault_ = input.readDouble();
-                bitField0_ |= 0x08000000;
+                bitField0_ |= 0x04000000;
                 break;
               } // case 225
               case 237: {
                 floatWithDefault_ = input.readFloat();
-                bitField0_ |= 0x10000000;
+                bitField0_ |= 0x08000000;
                 break;
               } // case 237
               case 242: {
                 deprecatedField_ = input.readBytes();
-                bitField0_ |= 0x20000000;
+                bitField0_ |= 0x10000000;
                 break;
               } // case 242
               case 248: {
@@ -3886,7 +3837,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
                   mergeUnknownVarintField(31, tmpRaw);
                 } else {
                   nestedEnumField_ = tmpRaw;
-                  bitField0_ |= 0x40000000;
+                  bitField0_ |= 0x20000000;
                 }
                 break;
               } // case 248
@@ -5635,56 +5586,24 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         return this;
       }
 
-      private int enumWithDefault_ = 2;
-      /**
-       * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-       * @return Whether the enumWithDefault field is set.
-       */
-      @java.lang.Override public boolean hasEnumWithDefault() {
-        return ((bitField0_ & 0x04000000) != 0);
-      }
-      /**
-       * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-       * @return The enumWithDefault.
-       */
-      @java.lang.Override
-      public com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum getEnumWithDefault() {
-        com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum result = com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum.forNumber(enumWithDefault_);
-        return result == null ? com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum.SECOND : result;
-      }
-      /**
-       * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-       * @param value The enumWithDefault to set.
-       * @return This builder for chaining.
-       */
-      public Builder setEnumWithDefault(com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.TestEnum value) {
-        if (value == null) { throw new NullPointerException(); }
-        bitField0_ |= 0x04000000;
-        enumWithDefault_ = value.getNumber();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional .ComprehensiveTest.V2Lite.TestEnum enum_with_default = 27 [default = SECOND];</code>
-       * @return This builder for chaining.
-       */
-      public Builder clearEnumWithDefault() {
-        bitField0_ = (bitField0_ & ~0x04000000);
-        enumWithDefault_ = 2;
-        onChanged();
-        return this;
-      }
-
       private double doubleWithDefault_ = 3.14159D;
       /**
+       * <pre>
+       * optional TestEnum enum_with_default = 27 [default = SECOND];
+       * </pre>
+       *
        * <code>optional double double_with_default = 28 [default = 3.14159];</code>
        * @return Whether the doubleWithDefault field is set.
        */
       @java.lang.Override
       public boolean hasDoubleWithDefault() {
-        return ((bitField0_ & 0x08000000) != 0);
+        return ((bitField0_ & 0x04000000) != 0);
       }
       /**
+       * <pre>
+       * optional TestEnum enum_with_default = 27 [default = SECOND];
+       * </pre>
+       *
        * <code>optional double double_with_default = 28 [default = 3.14159];</code>
        * @return The doubleWithDefault.
        */
@@ -5693,6 +5612,10 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
         return doubleWithDefault_;
       }
       /**
+       * <pre>
+       * optional TestEnum enum_with_default = 27 [default = SECOND];
+       * </pre>
+       *
        * <code>optional double double_with_default = 28 [default = 3.14159];</code>
        * @param value The doubleWithDefault to set.
        * @return This builder for chaining.
@@ -5700,16 +5623,20 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       public Builder setDoubleWithDefault(double value) {
 
         doubleWithDefault_ = value;
-        bitField0_ |= 0x08000000;
+        bitField0_ |= 0x04000000;
         onChanged();
         return this;
       }
       /**
+       * <pre>
+       * optional TestEnum enum_with_default = 27 [default = SECOND];
+       * </pre>
+       *
        * <code>optional double double_with_default = 28 [default = 3.14159];</code>
        * @return This builder for chaining.
        */
       public Builder clearDoubleWithDefault() {
-        bitField0_ = (bitField0_ & ~0x08000000);
+        bitField0_ = (bitField0_ & ~0x04000000);
         doubleWithDefault_ = 3.14159D;
         onChanged();
         return this;
@@ -5722,7 +5649,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        */
       @java.lang.Override
       public boolean hasFloatWithDefault() {
-        return ((bitField0_ & 0x10000000) != 0);
+        return ((bitField0_ & 0x08000000) != 0);
       }
       /**
        * <code>optional float float_with_default = 29 [default = 2.71828];</code>
@@ -5740,7 +5667,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
       public Builder setFloatWithDefault(float value) {
 
         floatWithDefault_ = value;
-        bitField0_ |= 0x10000000;
+        bitField0_ |= 0x08000000;
         onChanged();
         return this;
       }
@@ -5749,7 +5676,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        * @return This builder for chaining.
        */
       public Builder clearFloatWithDefault() {
-        bitField0_ = (bitField0_ & ~0x10000000);
+        bitField0_ = (bitField0_ & ~0x08000000);
         floatWithDefault_ = 2.71828F;
         onChanged();
         return this;
@@ -5767,7 +5694,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        * @return Whether the deprecatedField field is set.
        */
       @java.lang.Deprecated public boolean hasDeprecatedField() {
-        return ((bitField0_ & 0x20000000) != 0);
+        return ((bitField0_ & 0x10000000) != 0);
       }
       /**
        * <pre>
@@ -5831,7 +5758,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
           java.lang.String value) {
         if (value == null) { throw new NullPointerException(); }
         deprecatedField_ = value;
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x10000000;
         onChanged();
         return this;
       }
@@ -5847,7 +5774,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        */
       @java.lang.Deprecated public Builder clearDeprecatedField() {
         deprecatedField_ = getDefaultInstance().getDeprecatedField();
-        bitField0_ = (bitField0_ & ~0x20000000);
+        bitField0_ = (bitField0_ & ~0x10000000);
         onChanged();
         return this;
       }
@@ -5866,7 +5793,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
           com.google.protobuf.ByteString value) {
         if (value == null) { throw new NullPointerException(); }
         deprecatedField_ = value;
-        bitField0_ |= 0x20000000;
+        bitField0_ |= 0x10000000;
         onChanged();
         return this;
       }
@@ -5877,7 +5804,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        * @return Whether the nestedEnumField field is set.
        */
       @java.lang.Override public boolean hasNestedEnumField() {
-        return ((bitField0_ & 0x40000000) != 0);
+        return ((bitField0_ & 0x20000000) != 0);
       }
       /**
        * <code>optional .ComprehensiveTest.V2Lite.AllFieldTypes.NestedEnum nested_enum_field = 31;</code>
@@ -5895,7 +5822,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        */
       public Builder setNestedEnumField(com.rubberjam.protobuf.compiler.test.v2.ComprehensiveTestV2Lite.AllFieldTypes.NestedEnum value) {
         if (value == null) { throw new NullPointerException(); }
-        bitField0_ |= 0x40000000;
+        bitField0_ |= 0x20000000;
         nestedEnumField_ = value.getNumber();
         onChanged();
         return this;
@@ -5905,7 +5832,7 @@ public final class ComprehensiveTestV2Lite extends com.google.protobuf.Generated
        * @return This builder for chaining.
        */
       public Builder clearNestedEnumField() {
-        bitField0_ = (bitField0_ & ~0x40000000);
+        bitField0_ = (bitField0_ & ~0x20000000);
         nestedEnumField_ = 0;
         onChanged();
         return this;
@@ -12893,7 +12820,7 @@ com.google.protobuf.ByteString defaultValue) {
   static {
     java.lang.String[] descriptorData = {
       "\n(comprehensive_test_v2_lite_runtime.pro" +
-      "to\022\030ComprehensiveTest.V2Lite\"\257\n\n\rAllFiel" +
+      "to\022\030ComprehensiveTest.V2Lite\"\350\t\n\rAllFiel" +
       "dTypes\022\023\n\013int32_field\030\001 \001(\005\022\023\n\013int64_fie" +
       "ld\030\002 \001(\003\022\024\n\014uint32_field\030\003 \001(\r\022\024\n\014uint64" +
       "_field\030\004 \001(\004\022\024\n\014sint32_field\030\005 \001(\021\022\024\n\014si" +
@@ -12914,67 +12841,65 @@ com.google.protobuf.ByteString defaultValue) {
       " \002(\t\022\026\n\016required_int32\030\027 \002(\005\022\036\n\022int32_wi" +
       "th_default\030\030 \001(\005:\00242\022\"\n\023string_with_defa" +
       "ult\030\031 \001(\t:\005hello\022\037\n\021bool_with_default\030\032 " +
-      "\001(\010:\004true\022E\n\021enum_with_default\030\033 \001(\0162\".C" +
-      "omprehensiveTest.V2Lite.TestEnum:\006SECOND" +
-      "\022$\n\023double_with_default\030\034 \001(\001:\0073.14159\022#" +
-      "\n\022float_with_default\030\035 \001(\002:\0072.71828\022\034\n\020d" +
-      "eprecated_field\030\036 \001(\tB\002\030\001\022M\n\021nested_enum" +
-      "_field\030\037 \001(\01622.ComprehensiveTest.V2Lite." +
-      "AllFieldTypes.NestedEnum\032\307\001\n\rNestedMessa" +
-      "ge\022\025\n\rnested_string\030\001 \001(\t\022\024\n\014nested_int3" +
-      "2\030\002 \001(\005\022U\n\013nested_enum\030\003 \001(\0162@.Comprehen" +
-      "siveTest.V2Lite.AllFieldTypes.NestedMess" +
-      "age.NestedEnum\"2\n\nNestedEnum\022\022\n\016NESTED_U" +
-      "NKNOWN\020\000\022\020\n\014NESTED_FIRST\020\001\"2\n\nNestedEnum" +
-      "\022\022\n\016NESTED_UNKNOWN\020\000\022\020\n\014NESTED_FIRST\020\001\"\336" +
-      "\001\n\014OneofMessage\022\026\n\014oneof_string\030\001 \001(\tH\000\022" +
-      "\025\n\013oneof_int32\030\002 \001(\005H\000\0228\n\noneof_enum\030\003 \001" +
-      "(\0162\".ComprehensiveTest.V2Lite.TestEnumH\000" +
-      "\022@\n\roneof_message\030\004 \001(\0132\'.ComprehensiveT" +
-      "est.V2Lite.AllFieldTypesH\000\022\025\n\rregular_fi" +
-      "eld\030\005 \001(\tB\014\n\ntest_oneof\"\206\007\n\nMapMessage\022P" +
-      "\n\017string_to_int32\030\001 \003(\01327.ComprehensiveT" +
-      "est.V2Lite.MapMessage.StringToInt32Entry" +
-      "\022P\n\017int32_to_string\030\002 \003(\01327.Comprehensiv" +
-      "eTest.V2Lite.MapMessage.Int32ToStringEnt" +
-      "ry\022N\n\016string_to_enum\030\003 \003(\01326.Comprehensi" +
-      "veTest.V2Lite.MapMessage.StringToEnumEnt" +
-      "ry\022T\n\021string_to_message\030\004 \003(\01329.Comprehe" +
-      "nsiveTest.V2Lite.MapMessage.StringToMess" +
-      "ageEntry\022N\n\016bool_to_string\030\005 \003(\01326.Compr" +
-      "ehensiveTest.V2Lite.MapMessage.BoolToStr" +
-      "ingEntry\022N\n\016int64_to_bytes\030\006 \003(\01326.Compr" +
-      "ehensiveTest.V2Lite.MapMessage.Int64ToBy" +
-      "tesEntry\0324\n\022StringToInt32Entry\022\013\n\003key\030\001 " +
-      "\001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0324\n\022Int32ToStringE" +
-      "ntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(\t:\0028\001\032W\n\021" +
-      "StringToEnumEntry\022\013\n\003key\030\001 \001(\t\0221\n\005value\030" +
-      "\002 \001(\0162\".ComprehensiveTest.V2Lite.TestEnu" +
-      "m:\0028\001\032_\n\024StringToMessageEntry\022\013\n\003key\030\001 \001" +
-      "(\t\0226\n\005value\030\002 \001(\0132\'.ComprehensiveTest.V2" +
-      "Lite.AllFieldTypes:\0028\001\0323\n\021BoolToStringEn" +
-      "try\022\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t:\0028\001\0323\n\021I" +
-      "nt64ToBytesEntry\022\013\n\003key\030\001 \001(\003\022\r\n\005value\030\002" +
-      " \001(\014:\0028\001\"6\n\021ExtendableMessage\022\022\n\nbase_fi" +
-      "eld\030\001 \001(\t*\005\010d\020\310\001*\006\010\364\003\020\330\004\"\206\002\n\014GroupMessag" +
-      "e\022C\n\ttestgroup\030\001 \001(\n20.ComprehensiveTest" +
-      ".V2Lite.GroupMessage.TestGroup\022K\n\rrepeat" +
-      "edgroup\030\002 \003(\n24.ComprehensiveTest.V2Lite" +
-      ".GroupMessage.RepeatedGroup\0325\n\tTestGroup" +
-      "\022\023\n\013group_field\030\001 \001(\t\022\023\n\013group_int32\030\002 \001" +
-      "(\005\032-\n\rRepeatedGroup\022\034\n\024repeated_group_fi" +
-      "eld\030\001 \001(\t\"M\n\017ReservedMessage\022\016\n\006field1\030\001" +
-      " \001(\t\022\016\n\006field3\030\003 \001(\005J\004\010\002\020\003J\004\010\017\020\020J\004\010\t\020\014R\003" +
-      "fooR\003bar*R\n\010TestEnum\022\013\n\007UNKNOWN\020\000\022\t\n\005FIR" +
-      "ST\020\001\022\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013ALIAS_THI" +
-      "RD\020\003\032\002\010\001\032\002\020\001:D\n\017extended_string\022+.Compre" +
-      "hensiveTest.V2Lite.ExtendableMessage\030d \001" +
-      "(\t:C\n\016extended_int32\022+.ComprehensiveTest" +
-      ".V2Lite.ExtendableMessage\030e \001(\005:F\n\021exten" +
-      "ded_repeated\022+.ComprehensiveTest.V2Lite." +
-      "ExtendableMessage\030f \003(\tBJ\n\'com.rubberjam" +
-      ".protobuf.compiler.test.v2B\027Comprehensiv" +
-      "eTestV2LiteH\003\200\001\001\210\001\001"
+      "\001(\010:\004true\022$\n\023double_with_default\030\034 \001(\001:\007" +
+      "3.14159\022#\n\022float_with_default\030\035 \001(\002:\0072.7" +
+      "1828\022\034\n\020deprecated_field\030\036 \001(\tB\002\030\001\022M\n\021ne" +
+      "sted_enum_field\030\037 \001(\01622.ComprehensiveTes" +
+      "t.V2Lite.AllFieldTypes.NestedEnum\032\307\001\n\rNe" +
+      "stedMessage\022\025\n\rnested_string\030\001 \001(\t\022\024\n\014ne" +
+      "sted_int32\030\002 \001(\005\022U\n\013nested_enum\030\003 \001(\0162@." +
+      "ComprehensiveTest.V2Lite.AllFieldTypes.N" +
+      "estedMessage.NestedEnum\"2\n\nNestedEnum\022\022\n" +
+      "\016NESTED_UNKNOWN\020\000\022\020\n\014NESTED_FIRST\020\001\"2\n\nN" +
+      "estedEnum\022\022\n\016NESTED_UNKNOWN\020\000\022\020\n\014NESTED_" +
+      "FIRST\020\001\"\336\001\n\014OneofMessage\022\026\n\014oneof_string" +
+      "\030\001 \001(\tH\000\022\025\n\013oneof_int32\030\002 \001(\005H\000\0228\n\noneof" +
+      "_enum\030\003 \001(\0162\".ComprehensiveTest.V2Lite.T" +
+      "estEnumH\000\022@\n\roneof_message\030\004 \001(\0132\'.Compr" +
+      "ehensiveTest.V2Lite.AllFieldTypesH\000\022\025\n\rr" +
+      "egular_field\030\005 \001(\tB\014\n\ntest_oneof\"\206\007\n\nMap" +
+      "Message\022P\n\017string_to_int32\030\001 \003(\01327.Compr" +
+      "ehensiveTest.V2Lite.MapMessage.StringToI" +
+      "nt32Entry\022P\n\017int32_to_string\030\002 \003(\01327.Com" +
+      "prehensiveTest.V2Lite.MapMessage.Int32To" +
+      "StringEntry\022N\n\016string_to_enum\030\003 \003(\01326.Co" +
+      "mprehensiveTest.V2Lite.MapMessage.String" +
+      "ToEnumEntry\022T\n\021string_to_message\030\004 \003(\01329" +
+      ".ComprehensiveTest.V2Lite.MapMessage.Str" +
+      "ingToMessageEntry\022N\n\016bool_to_string\030\005 \003(" +
+      "\01326.ComprehensiveTest.V2Lite.MapMessage." +
+      "BoolToStringEntry\022N\n\016int64_to_bytes\030\006 \003(" +
+      "\01326.ComprehensiveTest.V2Lite.MapMessage." +
+      "Int64ToBytesEntry\0324\n\022StringToInt32Entry\022" +
+      "\013\n\003key\030\001 \001(\t\022\r\n\005value\030\002 \001(\005:\0028\001\0324\n\022Int32" +
+      "ToStringEntry\022\013\n\003key\030\001 \001(\005\022\r\n\005value\030\002 \001(" +
+      "\t:\0028\001\032W\n\021StringToEnumEntry\022\013\n\003key\030\001 \001(\t\022" +
+      "1\n\005value\030\002 \001(\0162\".ComprehensiveTest.V2Lit" +
+      "e.TestEnum:\0028\001\032_\n\024StringToMessageEntry\022\013" +
+      "\n\003key\030\001 \001(\t\0226\n\005value\030\002 \001(\0132\'.Comprehensi" +
+      "veTest.V2Lite.AllFieldTypes:\0028\001\0323\n\021BoolT" +
+      "oStringEntry\022\013\n\003key\030\001 \001(\010\022\r\n\005value\030\002 \001(\t" +
+      ":\0028\001\0323\n\021Int64ToBytesEntry\022\013\n\003key\030\001 \001(\003\022\r" +
+      "\n\005value\030\002 \001(\014:\0028\001\"6\n\021ExtendableMessage\022\022" +
+      "\n\nbase_field\030\001 \001(\t*\005\010d\020\310\001*\006\010\364\003\020\330\004\"\206\002\n\014Gr" +
+      "oupMessage\022C\n\ttestgroup\030\001 \001(\n20.Comprehe" +
+      "nsiveTest.V2Lite.GroupMessage.TestGroup\022" +
+      "K\n\rrepeatedgroup\030\002 \003(\n24.ComprehensiveTe" +
+      "st.V2Lite.GroupMessage.RepeatedGroup\0325\n\t" +
+      "TestGroup\022\023\n\013group_field\030\001 \001(\t\022\023\n\013group_" +
+      "int32\030\002 \001(\005\032-\n\rRepeatedGroup\022\034\n\024repeated" +
+      "_group_field\030\001 \001(\t\"M\n\017ReservedMessage\022\016\n" +
+      "\006field1\030\001 \001(\t\022\016\n\006field3\030\003 \001(\005J\004\010\002\020\003J\004\010\017\020" +
+      "\020J\004\010\t\020\014R\003fooR\003bar*R\n\010TestEnum\022\013\n\007UNKNOWN" +
+      "\020\000\022\t\n\005FIRST\020\001\022\n\n\006SECOND\020\002\022\t\n\005THIRD\020\003\022\023\n\013" +
+      "ALIAS_THIRD\020\003\032\002\010\001\032\002\020\001:D\n\017extended_string" +
+      "\022+.ComprehensiveTest.V2Lite.ExtendableMe" +
+      "ssage\030d \001(\t:C\n\016extended_int32\022+.Comprehe" +
+      "nsiveTest.V2Lite.ExtendableMessage\030e \001(\005" +
+      ":F\n\021extended_repeated\022+.ComprehensiveTes" +
+      "t.V2Lite.ExtendableMessage\030f \003(\tBJ\n\'com." +
+      "rubberjam.protobuf.compiler.test.v2B\027Com" +
+      "prehensiveTestV2LiteH\003\200\001\001\210\001\001"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -12985,7 +12910,7 @@ com.google.protobuf.ByteString defaultValue) {
     internal_static_ComprehensiveTest_V2Lite_AllFieldTypes_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_ComprehensiveTest_V2Lite_AllFieldTypes_descriptor,
-        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "MessageField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "RepeatedMessage", "RequiredString", "RequiredInt32", "Int32WithDefault", "StringWithDefault", "BoolWithDefault", "EnumWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField", "NestedEnumField", });
+        new java.lang.String[] { "Int32Field", "Int64Field", "Uint32Field", "Uint64Field", "Sint32Field", "Sint64Field", "Fixed32Field", "Fixed64Field", "Sfixed32Field", "Sfixed64Field", "FloatField", "DoubleField", "BoolField", "StringField", "BytesField", "EnumField", "MessageField", "RepeatedInt32", "RepeatedString", "RepeatedEnum", "RepeatedMessage", "RequiredString", "RequiredInt32", "Int32WithDefault", "StringWithDefault", "BoolWithDefault", "DoubleWithDefault", "FloatWithDefault", "DeprecatedField", "NestedEnumField", });
     internal_static_ComprehensiveTest_V2Lite_AllFieldTypes_NestedMessage_descriptor =
       internal_static_ComprehensiveTest_V2Lite_AllFieldTypes_descriptor.getNestedType(0);
     internal_static_ComprehensiveTest_V2Lite_AllFieldTypes_NestedMessage_fieldAccessorTable = new

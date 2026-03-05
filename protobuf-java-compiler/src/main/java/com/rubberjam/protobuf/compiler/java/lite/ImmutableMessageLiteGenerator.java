@@ -138,7 +138,7 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
     }
 
     // DynamicMethod
-    printer.emit(
+    printer.emit(vars,
         "@java.lang.Override\n" +
         "protected final java.lang.Object dynamicMethod(\n" +
         "    com.google.protobuf.GeneratedMessageLite.MethodToInvoke method,\n" +
@@ -194,7 +194,7 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
     printer.emit("        return newMessageInfo(DEFAULT_INSTANCE, info, objects);\n");
     printer.emit("    }\n");
 
-    printer.emit(
+    printer.emit(vars,
         "    case GET_DEFAULT_INSTANCE: {\n" +
         "      return DEFAULT_INSTANCE;\n" +
         "    }\n" +

@@ -140,7 +140,7 @@ public final class IsolatedEnumAlias extends com.google.protobuf.GeneratedFile {
     private static final TestEnum[] VALUES = getStaticValuesArray();
     private static TestEnum[] getStaticValuesArray() {
       return new TestEnum[] {
-      UNKNOWN, FIRST, SECOND, THIRD, ALIAS_THIRD,
+      UNKNOWN, FIRST, SECOND, THIRD, ALIAS_THIRD, 
       };
     }
     public static TestEnum valueOf(

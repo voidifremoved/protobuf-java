@@ -163,7 +163,7 @@ public final class IsolatedNestedMessage extends com.google.protobuf.GeneratedFi
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -181,7 +181,7 @@ public final class IsolatedNestedMessage extends com.google.protobuf.GeneratedFi
           getInnerFieldBytes() {
         java.lang.Object ref = innerField_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           innerField_ = b;
@@ -527,7 +527,7 @@ public final class IsolatedNestedMessage extends com.google.protobuf.GeneratedFi
             getInnerFieldBytes() {
           java.lang.Object ref = innerField_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             innerField_ = b;
@@ -1074,7 +1074,7 @@ public final class IsolatedNestedMessage extends com.google.protobuf.GeneratedFi
        * <code>optional .Isolated.Outer.Inner inner_msg = 1;</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          Isolated.IsolatedNestedMessage.Outer.Inner, Isolated.IsolatedNestedMessage.Outer.Inner.Builder, Isolated.IsolatedNestedMessage.Outer.InnerOrBuilder>
+          Isolated.IsolatedNestedMessage.Outer.Inner, Isolated.IsolatedNestedMessage.Outer.Inner.Builder, Isolated.IsolatedNestedMessage.Outer.InnerOrBuilder> 
           internalGetInnerMsgFieldBuilder() {
         if (innerMsgBuilder_ == null) {
           innerMsgBuilder_ = new com.google.protobuf.SingleFieldBuilder<
@@ -1140,12 +1140,12 @@ public final class IsolatedNestedMessage extends com.google.protobuf.GeneratedFi
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_Outer_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_Outer_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_Outer_Inner_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_Outer_Inner_fieldAccessorTable;
 

@@ -163,7 +163,7 @@ public final class IsolatedGroup extends com.google.protobuf.GeneratedFile {
         if (ref instanceof java.lang.String) {
           return (java.lang.String) ref;
         } else {
-          com.google.protobuf.ByteString bs =
+          com.google.protobuf.ByteString bs = 
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
           if (bs.isValidUtf8()) {
@@ -181,7 +181,7 @@ public final class IsolatedGroup extends com.google.protobuf.GeneratedFile {
           getGroupFieldBytes() {
         java.lang.Object ref = groupField_;
         if (ref instanceof java.lang.String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           groupField_ = b;
@@ -527,7 +527,7 @@ public final class IsolatedGroup extends com.google.protobuf.GeneratedFile {
             getGroupFieldBytes() {
           java.lang.Object ref = groupField_;
           if (ref instanceof String) {
-            com.google.protobuf.ByteString b =
+            com.google.protobuf.ByteString b = 
                 com.google.protobuf.ByteString.copyFromUtf8(
                     (java.lang.String) ref);
             groupField_ = b;
@@ -1074,7 +1074,7 @@ public final class IsolatedGroup extends com.google.protobuf.GeneratedFile {
        * <code>optional group TestGroup = 1 { ... }</code>
        */
       private com.google.protobuf.SingleFieldBuilder<
-          Isolated.IsolatedGroup.GroupMessage.TestGroup, Isolated.IsolatedGroup.GroupMessage.TestGroup.Builder, Isolated.IsolatedGroup.GroupMessage.TestGroupOrBuilder>
+          Isolated.IsolatedGroup.GroupMessage.TestGroup, Isolated.IsolatedGroup.GroupMessage.TestGroup.Builder, Isolated.IsolatedGroup.GroupMessage.TestGroupOrBuilder> 
           internalGetTestGroupFieldBuilder() {
         if (testGroupBuilder_ == null) {
           testGroupBuilder_ = new com.google.protobuf.SingleFieldBuilder<
@@ -1140,12 +1140,12 @@ public final class IsolatedGroup extends com.google.protobuf.GeneratedFile {
 
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_GroupMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_GroupMessage_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_GroupMessage_TestGroup_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_GroupMessage_TestGroup_fieldAccessorTable;
 

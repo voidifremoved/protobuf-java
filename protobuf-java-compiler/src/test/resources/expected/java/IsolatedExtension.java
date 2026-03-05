@@ -110,7 +110,7 @@ public final class IsolatedExtension extends com.google.protobuf.GeneratedFile {
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
-        com.google.protobuf.ByteString bs =
+        com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
@@ -128,7 +128,7 @@ public final class IsolatedExtension extends com.google.protobuf.GeneratedFile {
         getBaseFieldBytes() {
       java.lang.Object ref = baseField_;
       if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b =
+        com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
         baseField_ = b;
@@ -514,7 +514,7 @@ public final class IsolatedExtension extends com.google.protobuf.GeneratedFile {
           getBaseFieldBytes() {
         java.lang.Object ref = baseField_;
         if (ref instanceof String) {
-          com.google.protobuf.ByteString b =
+          com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
           baseField_ = b;
@@ -624,7 +624,7 @@ public final class IsolatedExtension extends com.google.protobuf.GeneratedFile {
         null);
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Isolated_ExtendableMessage_descriptor;
-  private static final
+  private static final 
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_Isolated_ExtendableMessage_fieldAccessorTable;
 
