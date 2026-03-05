@@ -53,8 +53,12 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
     printer.indent();
     printer.print("\n");
 
-    for (FieldDescriptor field : descriptor.getFields()) {
+    for (int i = 0; i < descriptor.getFields().size(); i++) {
+      FieldDescriptor field = descriptor.getFields().get(i);
       fieldGenerators.get(field).generateInterfaceMembers(printer);
+      if (i < descriptor.getFields().size() - 1) {
+        printer.print("\n");
+      }
     }
 
     printer.outdent();
