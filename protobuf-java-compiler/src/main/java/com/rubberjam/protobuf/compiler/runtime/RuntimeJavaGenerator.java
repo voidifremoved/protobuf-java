@@ -190,6 +190,13 @@ public final class RuntimeJavaGenerator
 		{
 			resolveServiceOptions(builder.getServiceBuilder(i));
 		}
+		for (int i = 0; i < builder.getExtensionCount(); i++)
+		{
+			if (builder.getExtension(i).hasOptions() && builder.getExtension(i).getOptions().getUninterpretedOptionCount() > 0)
+			{
+				resolveOptionsOnBuilder(builder.getExtensionBuilder(i).getOptionsBuilder());
+			}
+		}
 		return builder.build();
 	}
 

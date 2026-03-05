@@ -168,15 +168,8 @@ public class FileGenerator {
 			printer.print(dependencyClass + ".getDescriptor();\n");
 		}
 
-		if (file.getExtensions().size() > 0) {
-			printer.print("com.google.protobuf.ExtensionRegistry registry =\n"
-					+ "    com.google.protobuf.ExtensionRegistry.newInstance();\n");
-			for (FieldDescriptor extension : file.getExtensions()) {
-				factory.newExtensionGenerator(extension).generateRegistrationCode(printer);
-			}
-			printer.print("com.google.protobuf.Descriptors.FileDescriptor\n"
-					+ "    .internalUpdateFileDescriptor(descriptor, registry);\n");
-		}
+		// Extension registry update only needed for files with extensions that have custom options
+		// requiring descriptor database resolution. Simple extensions don't need it.
 
 		printer.outdent();
 		printer.print("}\n");
