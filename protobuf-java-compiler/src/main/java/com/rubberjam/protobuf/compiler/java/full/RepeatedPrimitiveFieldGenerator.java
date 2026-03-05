@@ -116,6 +116,12 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
                                                         "  }\n" +
                                                         "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
                                                         "}\n");
+                } else {
+                        printer.emit(variables,
+                                        "private void ensure$capitalized_name$IsMutable(int capacity) {\n" +
+                                                        "  ensure$capitalized_name$IsMutable();\n" +
+                                                        "}\n");
+                        variables.put("fixed_size", "1");
                 }
 
                 DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.LIST_GETTER,
@@ -230,8 +236,9 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         @Override
         public void generateParsingCode(Printer printer) {
                 printer.emit(variables,
-                                "ensure$capitalized_name$IsMutable();\n" +
-                                                "$name$_.add$list_type$(input.read$capitalized_type$());\n");
+                                "$type$ v = input.read$capitalized_type$();\n" +
+                                                "ensure$capitalized_name$IsMutable();\n" +
+                                                "$name$_.add$list_type$(v);\n");
         }
 
         @Override
@@ -239,7 +246,8 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
                 printer.emit(variables,
                                 "int length = input.readRawVarint32();\n" +
                                                 "int limit = input.pushLimit(length);\n" +
-                                                "ensure$capitalized_name$IsMutable();\n" +
+                                                "int alloc = length > 4096 ? 4096 : length;\n" +
+                                                "ensure$capitalized_name$IsMutable(alloc / $fixed_size$);\n" +
                                                 "while (input.getBytesUntilLimit() > 0) {\n" +
                                                 "  $name$_.add$list_type$(input.read$capitalized_type$());\n" +
                                                 "}\n" +
@@ -249,6 +257,72 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
         @Override
         public void generateParsingDoneCode(Printer printer) {
                 // No op
+        }
+
+        @Override
+        public void generateBuilderParsingCode(Printer printer) {
+                int tag = (descriptor.getNumber() << 3) | Helpers.getWireTypeForFieldType(descriptor.getType());
+                int packedTag = (descriptor.getNumber() << 3)
+                                | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+
+                boolean tagFirst = tag < packedTag;
+                if (descriptor.isPacked()) {
+                        if (tagFirst) {
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                                printer.emit(variables, "case $packed_tag$: {\n");
+                                printer.indent();
+                                generateParsingCodeFromPacked(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        } else {
+                                printer.emit(variables, "case $packed_tag$: {\n");
+                                printer.indent();
+                                generateParsingCodeFromPacked(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        }
+                } else {
+                        if (descriptor.isPackable()) {
+                                if (tagFirst) {
+                                        printer.emit(variables, "case $tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCode(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                        printer.emit(variables, "case $packed_tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCodeFromPacked(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                } else {
+                                        printer.emit(variables, "case $packed_tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCodeFromPacked(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                        printer.emit(variables, "case $tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCode(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                }
+                        } else {
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        }
+                }
         }
 
         @Override

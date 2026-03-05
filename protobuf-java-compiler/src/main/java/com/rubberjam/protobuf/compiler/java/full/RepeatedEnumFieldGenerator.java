@@ -34,6 +34,9 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                 int wireType = descriptor.isPacked() ? com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED
                                 : com.google.protobuf.WireFormat.WIRETYPE_VARINT;
                 variables.put("tag", (descriptor.getNumber() << 3) | wireType);
+                variables.put("packed_tag", String
+                                .valueOf((descriptor.getNumber() << 3)
+                                                | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED));
                 variables.put("tag_size", com.google.protobuf.CodedOutputStream.computeTagSize(descriptor.getNumber()));
 
                 variables.put("null_check", "if (value == null) { throw new NullPointerException(); }");
@@ -348,6 +351,72 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
         @Override
         public void generateParsingDoneCode(Printer printer) {
                 // No op
+        }
+
+        @Override
+        public void generateBuilderParsingCode(Printer printer) {
+                int tag = (descriptor.getNumber() << 3) | com.google.protobuf.WireFormat.WIRETYPE_VARINT;
+                int packedTag = (descriptor.getNumber() << 3)
+                                | com.google.protobuf.WireFormat.WIRETYPE_LENGTH_DELIMITED;
+
+                boolean tagFirst = tag < packedTag;
+                if (descriptor.isPacked()) {
+                        if (tagFirst) {
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                                printer.emit(variables, "case $packed_tag$: {\n");
+                                printer.indent();
+                                generateParsingCodeFromPacked(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        } else {
+                                printer.emit(variables, "case $packed_tag$: {\n");
+                                printer.indent();
+                                generateParsingCodeFromPacked(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        }
+                } else {
+                        if (descriptor.isPackable()) {
+                                if (tagFirst) {
+                                        printer.emit(variables, "case $tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCode(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                        printer.emit(variables, "case $packed_tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCodeFromPacked(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                } else {
+                                        printer.emit(variables, "case $packed_tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCodeFromPacked(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                        printer.emit(variables, "case $tag$: {\n");
+                                        printer.indent();
+                                        generateParsingCode(printer);
+                                        printer.outdent();
+                                        printer.emit(variables, "  break;\n}\n");
+                                }
+                        } else {
+                                printer.emit(variables, "case $tag$: {\n");
+                                printer.indent();
+                                generateParsingCode(printer);
+                                printer.outdent();
+                                printer.emit(variables, "  break;\n}\n");
+                        }
+                }
         }
 
         // We'll leave the serialization code mostly intact since IntList handles

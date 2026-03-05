@@ -441,7 +441,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
                 "  size += com.google.protobuf.CodedOutputStream\n" +
-                "    .computeEnumSize($number$, (java.lang.Integer) $oneof_name$_);\n" +
+                "    .computeEnumSize($number$, ((java.lang.Integer) $oneof_name$_));\n" +
                 "}\n");
       } else {
         printer.emit(variables,
@@ -482,7 +482,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
       if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
         printer.emit(variables,
             "if ($oneof_name$Case_ == $number$) {\n" +
-                "  output.writeEnum($number$, (java.lang.Integer) $oneof_name$_);\n" +
+                "  output.writeEnum($number$, ((java.lang.Integer) $oneof_name$_));\n" +
                 "}\n");
       } else {
         printer.emit(variables,
