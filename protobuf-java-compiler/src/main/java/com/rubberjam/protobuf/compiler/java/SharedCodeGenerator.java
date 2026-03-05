@@ -52,12 +52,10 @@ public class SharedCodeGenerator {
         "  .internalBuildGeneratedFileFrom(descriptorData,\n" +
         "    new com.google.protobuf.Descriptors.FileDescriptor[] {\n");
 
-    printer.indent();
     for (FileDescriptor dependency : file.getDependencies()) {
         String dependencyClass = nameResolver.getImmutableClassName(dependency);
-        printer.print(dependencyClass + ".getDescriptor(),\n");
+        printer.print("      " + dependencyClass + ".getDescriptor(),\n");
     }
-    printer.outdent();
     printer.print(
         "    });\n");
   }

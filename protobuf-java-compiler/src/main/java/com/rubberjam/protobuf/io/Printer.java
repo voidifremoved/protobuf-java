@@ -381,6 +381,32 @@ public class Printer
 		writeRaw(data);
 	}
 
+	/**
+	 * Writes text to the buffer without applying any pending indentation.
+	 * Matches C++ CopyToBuffer behavior where newlines within a single
+	 * write call set at_start_of_line but don't trigger indent insertion.
+	 */
+	public void writeNoIndent(String data)
+	{
+		pendingIndent = false;
+		for (char c : data.toCharArray())
+		{
+			buffer.append(c);
+			bytesWritten++;
+			if (c == '\n')
+			{
+				atStartOfLine = true;
+				lastNewlineBytes = bytesWritten;
+				pendingIndent = true;
+			}
+			else
+			{
+				atStartOfLine = false;
+				pendingIndent = false;
+			}
+		}
+	}
+
 	private int handleVariableWithAnnotations(Chunk chunk, Deque<AnnotationRecordEntry> annotRecords, Line line, int chunkIdx)
 	{
 		String varName = chunk.text;
@@ -645,6 +671,7 @@ public class Printer
 		{
 			if (c == '\n')
 			{
+				trimTrailingWhitespaceOnCurrentLine();
 				buffer.append(c);
 				bytesWritten++;
 				atStartOfLine = true;
@@ -662,6 +689,27 @@ public class Printer
 				bytesWritten++;
 				atStartOfLine = false;
 			}
+		}
+	}
+
+	private void trimTrailingWhitespaceOnCurrentLine()
+	{
+		int lineStart = lastNewlineBytes;
+		int lineLength = bytesWritten - lineStart;
+		if (lineLength <= 0) return;
+		boolean allSpaces = true;
+		for (int i = 0; i < lineLength; i++)
+		{
+			if (buffer.charAt(buffer.length() - lineLength + i) != ' ')
+			{
+				allSpaces = false;
+				break;
+			}
+		}
+		if (allSpaces)
+		{
+			buffer.setLength(buffer.length() - lineLength);
+			bytesWritten -= lineLength;
 		}
 	}
 

@@ -297,9 +297,8 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                 printer.emit(variables,
                                 "if ($get_has_field_bit_from_local$) {\n" +
                                                 "  $name$_.makeImmutable();\n" +
-                                                "  $clear_has_field_bit_from_local$;\n" +
-                                                "}\n" +
-                                                "result.$name$_ = $name$_;\n");
+                                                "  result.$name$_ = $name$_;\n" +
+                                                "}\n");
         }
 
         @Override

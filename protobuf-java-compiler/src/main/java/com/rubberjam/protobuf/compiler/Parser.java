@@ -413,7 +413,7 @@ public class Parser {
       consumeInteger(number);
 
       // Create synthetic entry message
-      String entryName = capitalized(name.toString()) + "Entry";
+      String entryName = mapEntryName(name.toString());
       DescriptorProto.Builder entry = message.addNestedTypeBuilder();
       entry.setName(entryName);
       entry.getOptionsBuilder().setMapEntry(true);
@@ -497,9 +497,25 @@ public class Parser {
       }
   }
 
-  private String capitalized(String s) {
-      if (s.isEmpty()) return s;
-      return Character.toUpperCase(s.charAt(0)) + s.substring(1);
+  private String mapEntryName(String fieldName) {
+      StringBuilder result = new StringBuilder();
+      boolean capNext = true;
+      for (char c : fieldName.toCharArray()) {
+          if (c == '_') {
+              capNext = true;
+          } else if (capNext) {
+              if ('a' <= c && c <= 'z') {
+                  result.append((char)(c - 'a' + 'A'));
+              } else {
+                  result.append(c);
+              }
+              capNext = false;
+          } else {
+              result.append(c);
+          }
+      }
+      result.append("Entry");
+      return result.toString();
   }
 
   private boolean parseOneof(DescriptorProto.Builder message, LocationRecorder messageLocation) {

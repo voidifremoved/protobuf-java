@@ -208,7 +208,8 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
                                 "if (!other.$name$_.isEmpty()) {\n" +
                                                 "  if ($name$_.isEmpty()) {\n" +
                                                 "    $name$_ = other.$name$_;\n" +
-                                                "    " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
+                                                "    $name$_.makeImmutable();\n" +
+                                                "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
                                                 "  } else {\n" +
                                                 "    ensure$capitalized_name$IsMutable();\n" +
                                                 "    $name$_.addAll(other.$name$_);\n" +
@@ -222,9 +223,8 @@ public class RepeatedPrimitiveFieldGenerator extends ImmutableFieldGenerator {
                 printer.emit(variables,
                                 "if ($get_has_field_bit_from_local$) {\n" +
                                                 "  $name$_.makeImmutable();\n" +
-                                                "  $clear_has_field_bit_from_local$;\n" +
-                                                "}\n" +
-                                                "result.$name$_ = $name$_;\n");
+                                                "  result.$name$_ = $name$_;\n" +
+                                                "}\n");
         }
 
         @Override

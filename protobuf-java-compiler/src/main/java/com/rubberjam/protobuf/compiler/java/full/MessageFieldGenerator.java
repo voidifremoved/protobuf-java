@@ -125,6 +125,10 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
     variables.put("ver", Helpers.getGeneratedCodeVersionSuffix());
 
     if (Helpers.isRealOneof(descriptor)) {
+      printer.emit(variables,
+          "private com.google.protobuf.SingleFieldBuilder$ver$<\n" +
+              "    $type$, $type$.Builder, $type$OrBuilder> $name$Builder_;\n");
+
       // has
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions(),
           true);
@@ -203,7 +207,11 @@ public class MessageFieldGenerator extends ImmutableFieldGenerator {
       printer.outdent();
       printer.emit(variables,
           "} else {\n" +
-              "  $name$Builder_.mergeFrom(value);\n" +
+              "  if ($oneof_name$Case_ == $number$) {\n" +
+              "    $name$Builder_.mergeFrom(value);\n" +
+              "  } else {\n" +
+              "    $name$Builder_.setMessage(value);\n" +
+              "  }\n" +
               "}\n" +
               "$oneof_name$Case_ = $number$;\n" +
               "return this;\n");

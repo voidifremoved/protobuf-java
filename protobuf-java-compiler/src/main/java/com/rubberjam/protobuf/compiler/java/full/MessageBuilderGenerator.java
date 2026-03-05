@@ -137,6 +137,29 @@ public class MessageBuilderGenerator {
             printer.print(
                     "  }\n" +
                             "}\n");
+            printer.print(
+                    "@SuppressWarnings({\"rawtypes\"})\n" +
+                            "protected com.google.protobuf.MapFieldReflectionAccessor internalGetMutableMapFieldReflection(\n"
+                            +
+                            "    int number) {\n" +
+                            "  switch (number) {\n");
+            printer.indent();
+            printer.indent();
+            for (FieldDescriptor field : mapFields) {
+                printer.print(
+                        "case " + field.getNumber() + ":\n" +
+                                "  return internalGetMutable" + context.getFieldGeneratorInfo(field).capitalizedName
+                                + "();\n");
+            }
+            printer.print(
+                    "default:\n" +
+                            "  throw new RuntimeException(\n" +
+                            "      \"Invalid map field number: \" + number);\n");
+            printer.outdent();
+            printer.outdent();
+            printer.print(
+                    "  }\n" +
+                            "}\n");
         }
 
         printer.print(

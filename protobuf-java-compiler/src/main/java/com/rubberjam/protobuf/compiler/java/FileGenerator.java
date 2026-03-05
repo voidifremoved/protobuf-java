@@ -158,6 +158,11 @@ public class FileGenerator {
 
 		printer.print("descriptor.resolveAllFeaturesImmutable();\n");
 
+		for (FileDescriptor dependency : file.getDependencies()) {
+			String dependencyClass = nameResolver.getImmutableClassName(dependency);
+			printer.print(dependencyClass + ".getDescriptor();\n");
+		}
+
 		if (file.getExtensions().size() > 0) {
 			printer.print("com.google.protobuf.ExtensionRegistry registry =\n"
 					+ "    com.google.protobuf.ExtensionRegistry.newInstance();\n");
