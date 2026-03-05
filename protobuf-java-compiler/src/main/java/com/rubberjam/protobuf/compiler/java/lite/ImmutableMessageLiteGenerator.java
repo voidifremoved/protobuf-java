@@ -80,9 +80,9 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
         "    com.google.protobuf.GeneratedMessage implements\n" +
         "    // @@protoc_insertion_point(message_implements:$full_name$)\n" +
         "    $classname$OrBuilder {\n");
-    printer.indent();
-
     printer.print("private static final long serialVersionUID = 0L;\n");
+
+    printer.indent();
 
     com.google.protobuf.compiler.PluginProtos.Version version =
         com.rubberjam.protobuf.compiler.Versions.getProtobufJavaVersion(false);
@@ -97,7 +97,12 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
         "    \"$classname$\");\n" +
         "}\n");
 
-    printer.emit(vars, "private $classname$() {\n");
+    printer.emit(vars,
+        "// Use $classname$.newBuilder() to construct.\n" +
+        "private $classname$(com.google.protobuf.GeneratedMessage.Builder<?> builder) {\n" +
+        "  super(builder);\n" +
+        "}\n" +
+        "private $classname$() {\n");
     // Initialize fields
     for (FieldDescriptor field : descriptor.getFields()) {
       fieldGenerators.get(field).generateInitializationCode(printer);

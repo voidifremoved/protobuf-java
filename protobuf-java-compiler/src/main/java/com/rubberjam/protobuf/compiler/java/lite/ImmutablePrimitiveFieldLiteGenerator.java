@@ -57,10 +57,13 @@ public class ImmutablePrimitiveFieldLiteGenerator implements ImmutableFieldLiteG
 
   @Override
   public void generateInterfaceMembers(Printer printer) {
+    if (descriptor.hasPresence()) {
+      DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER, context.getOptions());
+      printer.emit(variables, "$deprecation$boolean has$capitalized_name$();\n");
+    }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
     printer.emit(variables,
-        "$type$ ${$get$capitalized_name$$}$();\n");
-    // printer.annotate("{", "}", descriptor);
+        "$deprecation$$type$ ${$get$capitalized_name$$}$();\n");
   }
 
   @Override
