@@ -44,10 +44,11 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
     String className = descriptor.getName();
     Map<String, Object> vars = new HashMap<>();
     vars.put("classname", className);
+    vars.put("full_name", descriptor.getFullName());
 
     printer.emit(vars,
         "public interface $classname$OrBuilder extends\n" +
-        "    // @@protoc_insertion_point(interface_extends:$classname$)\n" +
+        "    // @@protoc_insertion_point(interface_extends:$full_name$)\n" +
         "    com.google.protobuf.MessageLiteOrBuilder {\n");
     printer.indent();
 

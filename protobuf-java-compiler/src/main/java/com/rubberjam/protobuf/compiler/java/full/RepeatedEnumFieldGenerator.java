@@ -283,6 +283,7 @@ public class RepeatedEnumFieldGenerator extends ImmutableFieldGenerator {
                                 "if (!other.$name$_.isEmpty()) {\n" +
                                                 "  if ($name$_.isEmpty()) {\n" +
                                                 "    $name$_ = other.$name$_;\n" +
+                                                "    $name$_.makeImmutable();\n" +
                                                 "    " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
                                                 "  } else {\n" +
                                                 "    ensure$capitalized_name$IsMutable();\n" +

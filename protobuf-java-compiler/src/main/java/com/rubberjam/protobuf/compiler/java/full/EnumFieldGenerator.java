@@ -31,20 +31,19 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     boolean supportUnknownEnumValue = InternalHelpers.supportUnknownEnumValue(descriptor);
     variables.put("support_unknown_enum_value", supportUnknownEnumValue);
 
+    String defaultNum = "0";
+    if (descriptor.hasDefaultValue()) {
+      defaultNum = String
+          .valueOf(((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getNumber());
+    } else if (descriptor.getEnumType().getValues().size() > 0) {
+      defaultNum = String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber());
+    }
+    variables.put("default_number", defaultNum);
+
     if (supportUnknownEnumValue) {
       variables.put("unknown", variables.get("type") + ".UNRECOGNIZED");
-      String defaultNum = "0";
-      if (descriptor.hasDefaultValue()) {
-        defaultNum = String
-            .valueOf(((com.google.protobuf.Descriptors.EnumValueDescriptor) descriptor.getDefaultValue()).getNumber());
-      } else if (descriptor.getEnumType().getValues().size() > 0) {
-        // Proto3 default is 0, but technically it's the first value's number (usually
-        // 0).
-        defaultNum = String.valueOf(descriptor.getEnumType().getValues().get(0).getNumber());
-      }
-      variables.put("default_number", defaultNum);
     } else {
-      variables.put("unknown", variables.get("default")); // fallback
+      variables.put("unknown", variables.get("default"));
     }
   }
 
@@ -84,11 +83,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
               "  return $oneof_name$Case_ == $number$;\n" +
               "}\n");
     } else {
-      if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-        printer.emit(variables, "private int $name$_ = $default_number$;\n");
-      } else {
-        printer.emit(variables, "private $type$ $name$_ = $default$;\n");
-      }
+      printer.emit(variables, "private int $name$_ = $default_number$;\n");
 
       if (descriptor.hasPresence()) {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
@@ -340,11 +335,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
 
   @Override
   public void generateInitializationCode(Printer printer) {
-    if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-      printer.emit(variables, "$name$_ = $default_number$;\n");
-    } else {
-      printer.emit(variables, "$name$_ = $default$;\n");
-    }
+    printer.emit(variables, "$name$_ = $default_number$;\n");
   }
 
   @Override
@@ -352,11 +343,7 @@ public class EnumFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.isRealOneof(descriptor)) {
       return;
     }
-    if (InternalHelpers.supportUnknownEnumValue(descriptor)) {
-      printer.emit(variables, "$name$_ = $default_number$;\n");
-    } else {
-      printer.emit(variables, "$name$_ = $default$;\n");
-    }
+    printer.emit(variables, "$name$_ = $default_number$;\n");
   }
 
   @Override

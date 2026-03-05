@@ -120,7 +120,10 @@ public class FileGenerator {
 				factory.newMessageGenerator(message).generate(printer);
 			}
 			for (ServiceDescriptor service : file.getServices()) {
-				factory.newServiceGenerator(service).generate(printer);
+				GeneratorFactory.ServiceGenerator serviceGen = factory.newServiceGenerator(service);
+				if (serviceGen != null) {
+					serviceGen.generate(printer);
+				}
 			}
 		}
 

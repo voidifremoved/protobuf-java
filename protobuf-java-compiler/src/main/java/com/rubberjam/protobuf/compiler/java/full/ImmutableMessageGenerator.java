@@ -151,7 +151,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
         String deprecation = descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "";
         String extraInterfaces = Helpers.getExtraMessageOrBuilderInterfaces(descriptor);
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print(
                     deprecation + "public interface " + descriptor.getName() + "OrBuilder extends\n" +
                             (extraInterfaces.isEmpty() ? "" : "    " + extraInterfaces + "\n") +
@@ -205,7 +205,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
         }
 
         String builderType;
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print(vars,
                     "$deprecation$public $static$final class $classname$ extends\n" +
                             "    com.google.protobuf.GeneratedMessage$ver$.ExtendableMessage<\n" +
@@ -654,7 +654,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             }
         }
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print(
                     "if (!extensionsAreInitialized()) {\n" +
                             "  memoizedIsInitialized = 0;\n" +
@@ -685,7 +685,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             printer.print("getSerializedSize();\n");
         }
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             if (descriptor.getOptions().getMessageSetWireFormat()) {
                 printer.print(
                         "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + "\n" +
@@ -727,7 +727,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             fieldGenerators.get(field).generateSerializedSizeCode(printer);
         }
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             if (descriptor.getOptions().getMessageSetWireFormat()) {
                 printer.print("size += extensionsSerializedSizeAsMessageSet();\n");
             } else {
@@ -799,7 +799,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
 
         printer.print(
                 "if (!getUnknownFields().equals(other.getUnknownFields())) return false;\n");
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print(
                     "if (!getExtensionFields().equals(other.getExtensionFields()))\n" +
                             "  return false;\n");
@@ -845,7 +845,7 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             printer.print("}\n");
         }
 
-        if (descriptor.getExtensions().size() > 0) {
+        if (descriptor.toProto().getExtensionRangeCount() > 0) {
             printer.print("hash = hashFields(hash, getExtensionFields());\n");
         }
 
