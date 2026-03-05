@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message TestMessage { optional float float_with_default = 1 [default = 2.71828]; }

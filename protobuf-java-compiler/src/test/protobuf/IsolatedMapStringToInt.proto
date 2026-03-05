@@ -1,0 +1,1 @@
+syntax = "proto3"; package Isolated; message MapMessage { map<string, int32> string_to_int32 = 1; }

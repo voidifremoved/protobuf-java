@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message TestMessage { optional int32 int_with_default = 1 [default = 42]; }

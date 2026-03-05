@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message BoolDefaultMessage { optional bool bool_default = 1 [default = true]; }

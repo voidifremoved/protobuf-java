@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message NegFloatDefaultMessage { optional float neg_float = 1 [default = -1.5]; }

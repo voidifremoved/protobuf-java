@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message BytesDefaultMessage { optional bytes bytes_default = 1 [default = "\000\001"]; }

@@ -1,0 +1,1 @@
+syntax = "proto2"; package Isolated; message GroupMessage { optional group TestGroup = 1 { optional string group_field = 1; } }
