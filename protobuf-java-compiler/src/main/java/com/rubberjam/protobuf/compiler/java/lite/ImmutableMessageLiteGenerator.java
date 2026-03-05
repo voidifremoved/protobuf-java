@@ -49,7 +49,7 @@ public class ImmutableMessageLiteGenerator extends GeneratorFactory.MessageGener
     printer.emit(vars,
         "public interface $classname$OrBuilder extends\n" +
         "    // @@protoc_insertion_point(interface_extends:$full_name$)\n" +
-        "    com.google.protobuf.MessageLiteOrBuilder {\n");
+        "    com.google.protobuf.MessageOrBuilder {\n");
     printer.indent();
 
     for (FieldDescriptor field : descriptor.getFields()) {

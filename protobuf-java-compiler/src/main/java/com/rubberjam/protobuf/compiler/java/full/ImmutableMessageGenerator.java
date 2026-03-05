@@ -689,15 +689,13 @@ public class ImmutableMessageGenerator extends GeneratorFactory.MessageGenerator
             if (descriptor.getOptions().getMessageSetWireFormat()) {
                 printer.print(
                         "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + "\n" +
-                                "  .ExtendableMessage<" + nameResolver.getImmutableClassName(descriptor)
-                                + ">.ExtensionWriter\n" +
-                                "    extensionWriter = newMessageSetExtensionWriter();\n");
+                                "  .ExtendableMessage.ExtensionSerializer\n" +
+                                "    extensionWriter = newMessageSetExtensionSerializer();\n");
             } else {
                 printer.print(
                         "com.google.protobuf.GeneratedMessage" + Helpers.getGeneratedCodeVersionSuffix() + "\n" +
-                                "  .ExtendableMessage<" + nameResolver.getImmutableClassName(descriptor)
-                                + ">.ExtensionWriter\n" +
-                                "    extensionWriter = newExtensionWriter();\n");
+                                "  .ExtendableMessage.ExtensionSerializer\n" +
+                                "    extensionWriter = newExtensionSerializer();\n");
             }
         }
 
