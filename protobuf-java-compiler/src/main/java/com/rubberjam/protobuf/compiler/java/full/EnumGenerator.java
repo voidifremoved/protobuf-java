@@ -290,8 +290,7 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
         printer.print("getStaticValuesArray();\n");
         printer.print(vars, "private static $classname$[] getStaticValuesArray() {\n");
         printer.indent();
-        printer.print(vars, "return new $classname$[] {\n" +
-            "  ");
+        printer.print(vars, "return new $classname$[] {\n");
         for (EnumValueDescriptor value : descriptor.getValues()) {
           printer.print(value.getName() + ", ");
         }

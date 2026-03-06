@@ -51,14 +51,23 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
           context.getOptions());
+      if (descriptor.getOptions().getDeprecated()) {
+        printer.emit(variables, "@java.lang.Deprecated ");
+      }
       printer.emit(variables, "boolean has$capitalized_name$();\n");
     }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
+    if (descriptor.getOptions().getDeprecated()) {
+      printer.emit(variables, "@java.lang.Deprecated ");
+    }
     printer.emit(variables, "$type$ get$capitalized_name$();\n");
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
           context.getOptions());
+      if (descriptor.getOptions().getDeprecated()) {
+        printer.emit(variables, "@java.lang.Deprecated ");
+      }
       printer.emit(variables,
           "com.google.protobuf.ByteString\n" +
               "    get$capitalized_name$Bytes();\n");
@@ -91,9 +100,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (descriptor.hasPresence()) {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
             context.getOptions());
+        printer.emit(variables, "@java.lang.Override\n");
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
-            "@java.lang.Override\n" +
-                "public boolean has$capitalized_name$() {\n" +
+            "public boolean has$capitalized_name$() {\n" +
                 "  return "
                 + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$")
                 + ";\n" +
@@ -105,6 +117,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER,
           context.getOptions());
       if (isRealOneof) {
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated\n");
+        }
         printer.emit(variables,
             "public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
@@ -149,9 +164,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "  }\n" +
                 "}\n");
       } else {
+        printer.emit(variables, "@java.lang.Override\n");
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
-            "@java.lang.Override\n" +
-                "public java.lang.String get$capitalized_name$() {\n" +
+            "public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (ref instanceof java.lang.String) {\n" +
                 "    return (java.lang.String) ref;\n" +
@@ -169,9 +187,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
             context.getOptions());
+        printer.emit(variables, "@java.lang.Override\n");
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
-            "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString\n" +
+            "public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (ref instanceof java.lang.String) {\n" +
@@ -226,6 +247,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (descriptor.hasPresence()) {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public boolean has$capitalized_name$() {\n" +
                 "  return "
@@ -239,9 +263,12 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions(),
           true);
       if (isRealOneof) {
+        printer.emit(variables, "@java.lang.Override\n");
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated\n");
+        }
         printer.emit(variables,
-            "@java.lang.Override\n" +
-                "public java.lang.String get$capitalized_name$() {\n" +
+            "public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    ref = $oneof_name$_;\n" +
@@ -286,6 +313,10 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
+        printer.emit(variables, "@java.lang.Override\n");
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public Builder set$capitalized_name$(\n" +
                 "    java.lang.String value) {\n" +
@@ -308,6 +339,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public Builder set$capitalized_name$Bytes(\n" +
                 "    com.google.protobuf.ByteString value) {\n" +
@@ -319,6 +353,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "  return this;\n" +
                 "}\n");
       } else {
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
@@ -338,6 +375,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
@@ -354,6 +394,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public Builder set$capitalized_name$(\n" +
                 "    java.lang.String value) {\n" +
@@ -365,6 +408,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public Builder clear$capitalized_name$() {\n" +
                 "  $name$_ = getDefaultInstance().get$capitalized_name$();\n" +
@@ -374,6 +420,9 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
             context.getOptions(), true);
+        if (descriptor.getOptions().getDeprecated()) {
+          printer.emit(variables, "@java.lang.Deprecated ");
+        }
         printer.emit(variables,
             "public Builder set$capitalized_name$Bytes(\n" +
                 "    com.google.protobuf.ByteString value) {\n" +

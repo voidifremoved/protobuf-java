@@ -357,6 +357,15 @@ public final class DocComment {
         sb.append(formatDefaultValue(field));
         hasOptions = true;
       }
+      if (field.getOptions().getDeprecated()) {
+        if (hasOptions) {
+          sb.append(", ");
+        } else {
+          sb.append(" [");
+        }
+        sb.append("deprecated = true");
+        hasOptions = true;
+      }
       if (field.toProto().getOptions().hasPacked()) {
         if (hasOptions) {
           sb.append(", ");
@@ -477,6 +486,14 @@ public final class DocComment {
     }
   }
 
+  public static void writeMethodDocComment(
+      Printer printer, MethodDescriptor method, Options options, boolean kdoc) {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, method, options, kdoc);
+    printer.emit(Map.of("def", escapeJavadoc(method.toProto().getName())), " * <code>rpc $def$(" + (method.toProto().getClientStreaming() ? "stream " : "") + (method.getInputType().getFullName().startsWith(".") ? "" : ".") + method.getInputType().getFullName() + ") returns (" + (method.toProto().getServerStreaming() ? "stream " : "") + (method.getOutputType().getFullName().startsWith(".") ? "" : ".") + method.getOutputType().getFullName() + ");</code>\n");
+    printer.emit(" */\n");
+  }
+
   public static void writeFieldDocComment(
       Printer printer, FieldDescriptor field, Options options, boolean kdoc) {
     printer.emit("/**\n");
@@ -490,7 +507,18 @@ public final class DocComment {
     if (!field.getOptions().getDeprecated()) {
       return;
     }
+
+    String startLine = "0";
+    SourceCodeInfo.Location location = getLocation(field);
+    if (location != null && location.getSpanCount() > 0) {
+      startLine = String.valueOf(location.getSpan(0));
+    }
+
     printer.emit(Map.of("name", field.getFullName()), " * @deprecated $name$ is deprecated.\n");
+    if (!options.isStripNonfunctionalCodegen()) {
+      printer.emit(Map.of("file", field.getFile().getName(), "line", startLine),
+          " *     See $file$;l=$line$\n");
+    }
   }
 
   public static void writeFieldAccessorDocComment(

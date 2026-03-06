@@ -40,6 +40,10 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
       printer.print("@com.google.protobuf.Internal.ProtoNonnullApi\n");
     }
 
+    if (descriptor.getOptions().getDeprecated()) {
+      printer.print("@java.lang.Deprecated\n");
+    }
+
     Map<String, Object> vars = new HashMap<>();
     vars.put("static", isOwnFile ? "" : "static");
     vars.put("classname", descriptor.getName());
@@ -86,7 +90,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
         "public final com.google.protobuf.Descriptors.ServiceDescriptor\n" +
         "    getDescriptorForType() {\n" +
         "  return getDescriptor();\n" +
-        "}\n");
+        "}\n\n");
   }
 
   private void generateInterface(Printer printer) {
@@ -142,10 +146,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
 
   private void generateAbstractMethods(Printer printer) {
     for (MethodDescriptor method : descriptor.getMethods()) {
-      // WriteMethodDocComment(printer, method);
-      DocComment.writeMessageDocComment(printer, method.getInputType(), new com.rubberjam.protobuf.compiler.java.Options(), false); // Method doc comment?
-      // Need writeMethodDocComment in DocComment. Use writeMessageDocComment as placeholder if needed or implement it.
-      // But C++ uses WriteMethodDocComment.
+      DocComment.writeMethodDocComment(printer, method, new com.rubberjam.protobuf.compiler.java.Options(), false);
       generateMethodSignature(printer, method, IsAbstract.IS_ABSTRACT);
       printer.print(";\n\n");
     }

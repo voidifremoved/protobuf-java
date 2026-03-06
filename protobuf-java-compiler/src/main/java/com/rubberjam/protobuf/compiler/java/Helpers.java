@@ -24,17 +24,23 @@ public class Helpers {
 	public static void maybePrintGeneratedAnnotation(Context context, Printer printer, Descriptor descriptor,
 			boolean immutable, String suffix) {
 		// suffix logic?
-		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		if (isOwnFile(descriptor, immutable)) {
+			printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		}
 	}
 
 	public static void maybePrintGeneratedAnnotation(Context context, Printer printer,
 			com.google.protobuf.Descriptors.ServiceDescriptor descriptor, boolean immutable, String suffix) {
-		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		if (isOwnFile(descriptor, immutable)) {
+			printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		}
 	}
 
 	public static void maybePrintGeneratedAnnotation(Context context, Printer printer, EnumDescriptor descriptor,
 			boolean immutable) {
-		printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		if (isOwnFile(descriptor, immutable)) {
+			printGeneratedAnnotation(printer, '$', context.getOptions().getAnnotationListFile(), context.getOptions());
+		}
 	}
 
 	public static void printGeneratedAnnotation(Printer printer, char delimiter, String annotationFile,
@@ -61,6 +67,10 @@ public class Helpers {
 
 	public static boolean isOwnFile(com.google.protobuf.Descriptors.ServiceDescriptor descriptor, boolean immutable) {
 		return descriptor.getFile().getOptions().getJavaMultipleFiles();
+	}
+
+	public static boolean isOwnFile(EnumDescriptor descriptor, boolean immutable) {
+		return descriptor.getContainingType() == null && descriptor.getFile().getOptions().getJavaMultipleFiles();
 	}
 
 	public static String getGeneratedCodeVersionSuffix() {
