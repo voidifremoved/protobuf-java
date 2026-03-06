@@ -58,8 +58,8 @@ public class VersionsTest
     Version javaVersion = Versions.getProtobufJavaVersion(true);
     assertNotNull(javaVersion);
     assertEquals(4, javaVersion.getMajor());
-    assertEquals(34, javaVersion.getMinor());
-    assertEquals(0, javaVersion.getPatch());
-    assertEquals("-dev", javaVersion.getSuffix());
+    assertEquals(33, javaVersion.getMinor());
+    assertEquals(4, javaVersion.getPatch());
+    assertEquals("", javaVersion.getSuffix());
   }
 }
