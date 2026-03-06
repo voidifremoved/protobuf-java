@@ -758,14 +758,16 @@ public class Parser {
                   field.setDefaultValue(input.current().text);
                   input.next();
               } else {
-                  StringBuilder sb = new StringBuilder();
-                  if (consumeNumber(sb)) {
-                      field.setDefaultValue(sb.toString());
-                  } else if (lookingAtType(Tokenizer.TokenType.IDENTIFIER)) {
+                  if (lookingAtType(Tokenizer.TokenType.IDENTIFIER) && !lookingAt("inf") && !lookingAt("nan")) {
                       field.setDefaultValue(input.current().text);
                       input.next();
                   } else {
-                      recordError("Expected default value.");
+                      StringBuilder sb = new StringBuilder();
+                      if (consumeNumber(sb)) {
+                          field.setDefaultValue(sb.toString());
+                      } else {
+                          // consumeNumber already records an error.
+                      }
                   }
               }
           } else {

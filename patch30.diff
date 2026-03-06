@@ -1,0 +1,11 @@
+--- protobuf-java-compiler/src/main/java/com/rubberjam/protobuf/compiler/java/full/EnumGenerator.java
++++ protobuf-java-compiler/src/main/java/com/rubberjam/protobuf/compiler/java/full/EnumGenerator.java
+@@ -134,7 +134,7 @@
+       printer.print(" */\n");
+       if (alias.value.getOptions().getDeprecated()) {
+-        printer.print("@java.lang.Deprecated\n");
++        printer.print("@java.lang.Deprecated ");
+       }
+       printer.print(vars,
+           "public static final $classname$ $name$ = $canonical_name$;\n");
+     }
