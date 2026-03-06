@@ -147,7 +147,7 @@ public class EnumGenerator extends GeneratorFactory.EnumGenerator {
       printer.print("/**\n");
       DocComment.writeDocCommentBody(printer, value, context.getOptions(), false);
       printer.print(vars,
-          " * <code>$name$ = $number$" + (value.getOptions().getDeprecated() ? " [deprecated = true]" : "") + ";</code>\n" +
+          " * <code>$name$ = $number$;</code>\n" +
           " */\n");
 
       printer.print(vars,
