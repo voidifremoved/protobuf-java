@@ -8,6 +8,7 @@ import java.net.URI;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -67,7 +68,7 @@ public class MavenUtil
 		MavenSettings settings = new MavenSettings();
 		try
 		{
-			DocumentBuilder xmlBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilder xmlBuilder = createDocumentBuilderFactory().newDocumentBuilder();
 			Document xmlDoc = xmlBuilder.parse(settingsFile);
 
 			NodeList mirrorList = xmlDoc.getDocumentElement().getElementsByTagName("mirror");
@@ -116,7 +117,7 @@ public class MavenUtil
 		int lastBuild = 0;
 		try
 		{
-			DocumentBuilder xmlBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilder xmlBuilder = createDocumentBuilderFactory().newDocumentBuilder();
 			Document xmlDoc = xmlBuilder.parse(mdFile);
 			NodeList versions = xmlDoc.getElementsByTagName("version");
 			for (int i = 0; i < versions.getLength(); i++)
@@ -146,7 +147,7 @@ public class MavenUtil
 		try
 		{
 			String clsStr = Protoc.getPlatformClassifier();
-			DocumentBuilder xmlBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+			DocumentBuilder xmlBuilder = createDocumentBuilderFactory().newDocumentBuilder();
 			Document xmlDoc = xmlBuilder.parse(mdFile);
 			NodeList versions = xmlDoc.getElementsByTagName("snapshotVersion");
 			for (int i = 0; i < versions.getLength(); i++)
@@ -172,6 +173,18 @@ public class MavenUtil
 			throw new IOException(e);
 		}
 		return exeName;
+	}
+
+	private static DocumentBuilderFactory createDocumentBuilderFactory() throws ParserConfigurationException
+	{
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true);
+		factory.setFeature("http://xml.org/sax/features/external-general-entities", false);
+		factory.setFeature("http://xml.org/sax/features/external-parameter-entities", false);
+		factory.setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
+		factory.setXIncludeAware(false);
+		factory.setExpandEntityReferences(false);
+		return factory;
 	}
 
 	static void log(Object msg)
