@@ -366,6 +366,15 @@ public final class DocComment {
         sb.append("packed = ").append(field.toProto().getOptions().getPacked());
         hasOptions = true;
       }
+      if (field.getOptions().getDeprecated()) {
+        if (hasOptions) {
+          sb.append(", ");
+        } else {
+          sb.append(" [");
+        }
+        sb.append("deprecated = true");
+        hasOptions = true;
+      }
       if (hasOptions) {
         sb.append("]");
       }
@@ -491,6 +500,16 @@ public final class DocComment {
       return;
     }
     printer.emit(Map.of("name", field.getFullName()), " * @deprecated $name$ is deprecated.\n");
+    if (!options.isStripNonfunctionalCodegen()) {
+      SourceCodeInfo.Location location = getLocation(field);
+      String startLine = "0";
+      if (location != null && location.getSpanCount() > 0) {
+        // Source locations use 0-based line numbers, matching C++ start_line
+        startLine = String.valueOf(location.getSpan(0));
+      }
+      printer.emit(Map.of("file", field.getFile().getName(), "line", startLine),
+          " *     See $file$;l=$line$\n");
+    }
   }
 
   public static void writeFieldAccessorDocComment(

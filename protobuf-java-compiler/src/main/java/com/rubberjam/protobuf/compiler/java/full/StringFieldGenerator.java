@@ -51,16 +51,16 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
     if (Helpers.supportFieldPresence(descriptor)) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
           context.getOptions());
-      printer.emit(variables, "boolean has$capitalized_name$();\n");
+      printer.emit(variables, "$deprecation$boolean has$capitalized_name$();\n");
     }
     DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.GETTER, context.getOptions());
-    printer.emit(variables, "$type$ get$capitalized_name$();\n");
+    printer.emit(variables, "$deprecation$$type$ get$capitalized_name$();\n");
 
     if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
       DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
           context.getOptions());
       printer.emit(variables,
-          "com.google.protobuf.ByteString\n" +
+          "$deprecation$com.google.protobuf.ByteString\n" +
               "    get$capitalized_name$Bytes();\n");
     }
   }
@@ -74,13 +74,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           context.getOptions());
       if (Helpers.getJavaType(descriptor) == Helpers.JavaType.STRING) {
         printer.emit(variables,
-            "public boolean has$capitalized_name$() {\n" +
+            "$deprecation$public boolean has$capitalized_name$() {\n" +
                 "  return $oneof_name$Case_ == $number$;\n" +
                 "}\n");
       } else {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public boolean has$capitalized_name$() {\n" +
+                "$deprecation$public boolean has$capitalized_name$() {\n" +
                 "  return $oneof_name$Case_ == $number$;\n" +
                 "}\n");
       }
@@ -93,7 +93,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
             context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public boolean has$capitalized_name$() {\n" +
+                "$deprecation$public boolean has$capitalized_name$() {\n" +
                 "  return "
                 + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(messageBitIndex) : "$name$_ != $default$")
                 + ";\n" +
@@ -106,7 +106,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           context.getOptions());
       if (isRealOneof) {
         printer.emit(variables,
-            "public java.lang.String get$capitalized_name$() {\n" +
+            "$deprecation$public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    ref = $oneof_name$_;\n" +
@@ -130,7 +130,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
             context.getOptions());
         printer.emit(variables,
-            "public com.google.protobuf.ByteString\n" +
+            "$deprecation$public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
@@ -151,7 +151,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       } else {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public java.lang.String get$capitalized_name$() {\n" +
+                "$deprecation$public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (ref instanceof java.lang.String) {\n" +
                 "    return (java.lang.String) ref;\n" +
@@ -171,7 +171,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
             context.getOptions());
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString\n" +
+                "$deprecation$public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (ref instanceof java.lang.String) {\n" +
@@ -191,7 +191,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (isRealOneof) {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "$deprecation$public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
                 "  }\n" +
@@ -200,7 +200,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       } else {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "$deprecation$public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
                 "  return (com.google.protobuf.ByteString) $name$_;\n" +
                 "}\n");
       }
