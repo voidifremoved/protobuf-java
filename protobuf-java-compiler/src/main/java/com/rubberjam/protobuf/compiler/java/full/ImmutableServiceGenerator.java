@@ -66,8 +66,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
     generateStub(printer);
     generateBlockingStub(printer);
 
+    printer.print("\n");
     printer.print(
-        "\n" +
         "// @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")\n");
 
     printer.outdent();
@@ -79,7 +79,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
         "public final com.google.protobuf.Descriptors.ServiceDescriptor\n" +
         "    getDescriptorForType() {\n" +
         "  return getDescriptor();\n" +
-        "}\n\n");
+        "}\n");
   }
 
   private void generateInterface(Printer printer) {
@@ -146,8 +146,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   }
 
   private void generateCallMethod(Printer printer) {
+    printer.print("\n");
     printer.print(
-        "\n" +
         "public final void callMethod(\n" +
         "    com.google.protobuf.Descriptors.MethodDescriptor method,\n" +
         "    com.google.protobuf.RpcController controller,\n" +
@@ -193,8 +193,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   }
 
   private void generateCallBlockingMethod(Printer printer) {
+    printer.print("\n");
     printer.print(
-        "\n" +
         "public final com.google.protobuf.Message callBlockingMethod(\n" +
         "    com.google.protobuf.Descriptors.MethodDescriptor method,\n" +
         "    com.google.protobuf.RpcController controller,\n" +
@@ -409,8 +409,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
     vars.put("input", nameResolver.getImmutableClassName(method.getInputType()));
     vars.put("output", getOutput(method));
 
+    printer.print("\n");
     printer.print(vars,
-        "\n" +
         "public $output$ $method$(\n" +
         "    com.google.protobuf.RpcController controller,\n" +
         "    $input$ request)\n" +
