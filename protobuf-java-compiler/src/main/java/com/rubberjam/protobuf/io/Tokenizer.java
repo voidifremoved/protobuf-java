@@ -215,8 +215,16 @@ public class Tokenizer
 
 					if (!foundCommentOnNextLine)
 					{
-						// Next line does not start with a comment. It starts with a token.
-						// Stop trailing comment search.
+						// Next line does not start with a comment.
+						// If the next token is a scope-closer, keep comments as trailing.
+						// Otherwise, they are leading comments for the next token.
+						if (trailingComments.length() > 0 &&
+							currentChar != '}' && currentChar != ']' && currentChar != ')' && !atEnd)
+						{
+							// Comments are leading for the next token, not trailing for previous
+							currentToken.leadingComments = trailingComments.toString();
+							trailingComments.setLength(0);
+						}
 						break;
 					}
 					// If we found a comment, loop continues to look for more comments
@@ -318,7 +326,14 @@ public class Tokenizer
 
 		if (leadingComments.length() > 0)
 		{
-			currentToken.leadingComments = leadingComments.toString();
+			if (currentToken.leadingComments != null)
+			{
+				currentToken.leadingComments = currentToken.leadingComments + leadingComments.toString();
+			}
+			else
+			{
+				currentToken.leadingComments = leadingComments.toString();
+			}
 		}
 
 		if (atEnd)
