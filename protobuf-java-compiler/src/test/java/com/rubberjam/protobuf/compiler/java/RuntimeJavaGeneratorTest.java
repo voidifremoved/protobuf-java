@@ -1,0 +1,90 @@
+package com.rubberjam.protobuf.compiler.java;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import org.junit.Test;
+
+import com.google.protobuf.DescriptorProtos.DescriptorProto;
+import com.google.protobuf.DescriptorProtos.FieldDescriptorProto;
+import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
+import com.google.protobuf.Message.Builder;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator;
+import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
+import com.rubberjam.protobuf.compiler.runtime.RuntimeCompiler;
+import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
+
+public class RuntimeJavaGeneratorTest
+{
+	@Test
+	public void testGenerateJavaSourceFromDescriptorProto() throws Exception
+	{
+		DescriptorProto message = DescriptorProto.newBuilder()
+				.setName("Person")
+				.addField(FieldDescriptorProto.newBuilder()
+						.setName("name")
+						.setNumber(1)
+						.setLabel(FieldDescriptorProto.Label.LABEL_OPTIONAL)
+						.setType(FieldDescriptorProto.Type.TYPE_STRING)
+						.build())
+				.build();
+
+		FileDescriptorProto fileProto = FileDescriptorProto.newBuilder()
+				.setName("runtime_test.proto")
+				.setPackage("com.example")
+				.setSyntax("proto3")
+				.addMessageType(message)
+				.build();
+
+		GeneratedJavaFile generated = RuntimeJavaGenerator.generateJavaSource(fileProto, null, "");
+
+		assertEquals("com/example/RuntimeTestProto.java", generated.getFileName());
+		assertEquals("com.example", generated.getPackageName());
+		assertEquals("RuntimeTestProto", generated.getClassName());
+		assertTrue(generated.getSource().contains("public final class RuntimeTestProto"));
+		assertTrue(generated.getSource().contains("private volatile java.lang.Object name_"));
+		
+		RuntimeCompiler compiler = new RuntimeCompiler(getClass().getClassLoader());
+		
+		
+		System.out.println(generated.getSource());
+		
+		Class<? extends Object> compiledClass = compiler.compile(generated.getPackageName() + "." + generated.getClassName(), generated.getSource(), null);
+		
+		System.out.println(compiledClass);
+		
+		Class<?> compiledMessageClass = null;
+
+		for (Class<?> cls : compiledClass.getDeclaredClasses()) {
+		    if (cls.getSimpleName().equals("Person")) {
+		        compiledMessageClass = cls;
+		        break;
+		    }
+		}
+
+		if (compiledMessageClass == null) {
+		    throw new ClassNotFoundException("Inner class Person not found");
+		}
+		Builder builder = (Builder)compiledMessageClass.getMethod("newBuilder").invoke(null);
+		builder.getClass().getMethod("setName", String.class).invoke(builder, "TEST NAME");
+
+		System.out.println(builder.build());
+	}
+
+	@Test(expected = IllegalStateException.class)
+	public void testCompileError()
+	{
+		RuntimeCompiler compiler = new RuntimeCompiler(getClass().getClassLoader());
+		try
+		{
+			compiler.compile("com.example.BadClass", "package com.example; public class BadClass { invalid code }", null);
+		}
+		catch (IllegalStateException e)
+		{
+			assertTrue(e.getMessage().contains("failed to compile"));
+			assertTrue(e.getMessage().contains("ERROR:[1,"));
+			assertTrue(e.getMessage().contains("invalid code"));
+			throw e;
+		}
+	}
+}
