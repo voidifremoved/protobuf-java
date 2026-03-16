@@ -31,14 +31,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   public void generate(Printer printer) {
     boolean isOwnFile = Helpers.isOwnFile(descriptor, true);
 
-    // WriteServiceDocComment(printer, descriptor);
-    DocComment.writeMessageDocComment(printer, descriptor, new com.rubberjam.protobuf.compiler.java.Options(), false);
-
-    Helpers.maybePrintGeneratedAnnotation(context, printer, descriptor, true, null);
-
-    if (!context.getOptions().isOpensourceRuntime()) {
-      printer.print("@com.google.protobuf.Internal.ProtoNonnullApi\n");
-    }
+    DocComment.writeMessageDocComment(printer, descriptor, context.getOptions(), false);
 
     Map<String, Object> vars = new HashMap<>();
     vars.put("static", isOwnFile ? "" : "static");
@@ -63,7 +56,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
         "public static final\n" +
         "    com.google.protobuf.Descriptors.ServiceDescriptor\n" +
         "    getDescriptor() {\n" +
-        "  return " + nameResolver.getImmutableClassName(descriptor.getFile()) + ".getDescriptor().getServices().get(" + descriptor.getIndex() + ");\n" +
+        "  return " + nameResolver.getImmutableClassName(descriptor.getFile()) + ".getDescriptor().getService(" + descriptor.getIndex() + ");\n" +
         "}\n");
     generateGetDescriptorForType(printer);
 
@@ -73,8 +66,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
     generateStub(printer);
     generateBlockingStub(printer);
 
+    printer.print("\n");
     printer.print(
-        "\n" +
         "// @@protoc_insertion_point(class_scope:" + descriptor.getFullName() + ")\n");
 
     printer.outdent();
@@ -142,10 +135,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
 
   private void generateAbstractMethods(Printer printer) {
     for (MethodDescriptor method : descriptor.getMethods()) {
-      // WriteMethodDocComment(printer, method);
-      DocComment.writeMessageDocComment(printer, method.getInputType(), new com.rubberjam.protobuf.compiler.java.Options(), false); // Method doc comment?
-      // Need writeMethodDocComment in DocComment. Use writeMessageDocComment as placeholder if needed or implement it.
-      // But C++ uses WriteMethodDocComment.
+      DocComment.writeMethodDocComment(printer, method, context.getOptions());
       generateMethodSignature(printer, method, IsAbstract.IS_ABSTRACT);
       printer.print(";\n\n");
     }
@@ -156,8 +146,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   }
 
   private void generateCallMethod(Printer printer) {
+    printer.print("\n");
     printer.print(
-        "\n" +
         "public final void callMethod(\n" +
         "    com.google.protobuf.Descriptors.MethodDescriptor method,\n" +
         "    com.google.protobuf.RpcController controller,\n" +
@@ -203,8 +193,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
   }
 
   private void generateCallBlockingMethod(Printer printer) {
+    printer.print("\n");
     printer.print(
-        "\n" +
         "public final com.google.protobuf.Message callBlockingMethod(\n" +
         "    com.google.protobuf.Descriptors.MethodDescriptor method,\n" +
         "    com.google.protobuf.RpcController controller,\n" +
@@ -319,7 +309,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
       vars.put("output", getOutput(method));
       printer.print(vars,
           "channel.callMethod(\n" +
-          "  getDescriptor().getMethods().get($index$),\n" +
+          "  getDescriptor().getMethod($index$),\n" +
           "  controller,\n" +
           "  request,\n" +
           "  $output$.getDefaultInstance(),\n" +
@@ -382,7 +372,7 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
       vars.put("output", getOutput(method));
       printer.print(vars,
           "return ($output$) channel.callBlockingMethod(\n" +
-          "  getDescriptor().getMethods().get($index$),\n" +
+          "  getDescriptor().getMethod($index$),\n" +
           "  controller,\n" +
           "  request,\n" +
           "  $output$.getDefaultInstance());\n");
@@ -419,8 +409,8 @@ public class ImmutableServiceGenerator extends GeneratorFactory.ServiceGenerator
     vars.put("input", nameResolver.getImmutableClassName(method.getInputType()));
     vars.put("output", getOutput(method));
 
+    printer.print("\n");
     printer.print(vars,
-        "\n" +
         "public $output$ $method$(\n" +
         "    com.google.protobuf.RpcController controller,\n" +
         "    $input$ request)\n" +
