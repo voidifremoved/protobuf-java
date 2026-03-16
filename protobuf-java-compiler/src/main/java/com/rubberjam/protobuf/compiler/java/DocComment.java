@@ -486,6 +486,19 @@ public final class DocComment {
     }
   }
 
+  public static void writeMethodDocComment(
+      Printer printer, com.google.protobuf.Descriptors.MethodDescriptor method, Options options) {
+    printer.emit("/**\n");
+    writeDocCommentBody(printer, method, options, false);
+    String methodDef = "rpc " + method.getName() + "("
+        + (method.toProto().getClientStreaming() ? "stream " : "")
+        + "." + method.getInputType().getFullName() + ") returns ("
+        + (method.toProto().getServerStreaming() ? "stream " : "")
+        + "." + method.getOutputType().getFullName() + ");";
+    printer.emit(Map.of("def", escapeJavadoc(methodDef)),
+        " * <code>$def$</code>\n" + " */\n");
+  }
+
   public static void writeFieldDocComment(
       Printer printer, FieldDescriptor field, Options options, boolean kdoc) {
     printer.emit("/**\n");

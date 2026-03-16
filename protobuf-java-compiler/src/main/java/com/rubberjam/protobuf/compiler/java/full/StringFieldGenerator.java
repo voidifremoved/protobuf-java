@@ -216,7 +216,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
           true);
       printer.emit(variables,
           "@java.lang.Override\n" +
-              "public boolean has$capitalized_name$() {\n" +
+              "$deprecation$public boolean has$capitalized_name$() {\n" +
               "  return $oneof_name$Case_ == $number$;\n" +
               "}\n");
     } else {
@@ -227,7 +227,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.HAZZER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public boolean has$capitalized_name$() {\n" +
+            "$deprecation$public boolean has$capitalized_name$() {\n" +
                 "  return "
                 + (Helpers.hasHasbit(descriptor) ? Helpers.generateGetBit(builderBitIndex) : "$name$_ != $default$")
                 + ";\n" +
@@ -241,7 +241,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (isRealOneof) {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public java.lang.String get$capitalized_name$() {\n" +
+                "$deprecation$public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    ref = $oneof_name$_;\n" +
@@ -266,7 +266,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
             context.getOptions(), true);
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString\n" +
+                "$deprecation$public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
                 "  java.lang.Object ref = $default$;\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
@@ -287,7 +287,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$(\n" +
+            "$deprecation$public Builder set$capitalized_name$(\n" +
                 "    java.lang.String value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 "  $oneof_name$Case_ = $number$;\n" +
@@ -298,7 +298,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder clear$capitalized_name$() {\n" +
+            "$deprecation$public Builder clear$capitalized_name$() {\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    $oneof_name$Case_ = 0;\n" +
                 "    $oneof_name$_ = null;\n" +
@@ -309,7 +309,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$Bytes(\n" +
+            "$deprecation$public Builder set$capitalized_name$Bytes(\n" +
                 "    com.google.protobuf.ByteString value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
@@ -320,7 +320,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
       } else {
         printer.emit(variables,
-            "public java.lang.String get$capitalized_name$() {\n" +
+            "$deprecation$public java.lang.String get$capitalized_name$() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (!(ref instanceof java.lang.String)) {\n" +
                 "    com.google.protobuf.ByteString bs =\n" +
@@ -339,7 +339,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_GETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public com.google.protobuf.ByteString\n" +
+            "$deprecation$public com.google.protobuf.ByteString\n" +
                 "    get$capitalized_name$Bytes() {\n" +
                 "  java.lang.Object ref = $name$_;\n" +
                 "  if (ref instanceof String) {\n" +
@@ -355,7 +355,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$(\n" +
+            "$deprecation$public Builder set$capitalized_name$(\n" +
                 "    java.lang.String value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 "  $name$_ = value;\n" +
@@ -366,7 +366,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder clear$capitalized_name$() {\n" +
+            "$deprecation$public Builder clear$capitalized_name$() {\n" +
                 "  $name$_ = getDefaultInstance().get$capitalized_name$();\n" +
                 "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
                 "  onChanged();\n" +
@@ -375,7 +375,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.BYTES_SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$Bytes(\n" +
+            "$deprecation$public Builder set$capitalized_name$Bytes(\n" +
                 "    com.google.protobuf.ByteString value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 (InternalHelpers.checkUtf8(descriptor) ? "  checkByteStringIsUtf8(value);\n" : "") +
@@ -391,7 +391,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
       if (Helpers.isRealOneof(descriptor)) {
         printer.emit(variables,
             "@java.lang.Override\n" +
-                "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+                "$deprecation$public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    return (com.google.protobuf.ByteString) $oneof_name$_;\n" +
                 "  }\n" +
@@ -400,7 +400,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
+            "$deprecation$public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 "  $oneof_name$Case_ = $number$;\n" +
                 "  $oneof_name$_ = value;\n" +
@@ -410,7 +410,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder clear$capitalized_name$() {\n" +
+            "$deprecation$public Builder clear$capitalized_name$() {\n" +
                 "  if ($oneof_name$Case_ == $number$) {\n" +
                 "    $oneof_name$Case_ = 0;\n" +
                 "    $oneof_name$_ = null;\n" +
@@ -420,13 +420,13 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
                 "}\n");
       } else {
         printer.emit(variables,
-            "public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
+            "$deprecation$public com.google.protobuf.ByteString get$capitalized_name$() {\n" +
                 "  return (com.google.protobuf.ByteString) $name$_;\n" +
                 "}\n");
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.SETTER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
+            "$deprecation$public Builder set$capitalized_name$(com.google.protobuf.ByteString value) {\n" +
                 "  if (value == null) { throw new NullPointerException(); }\n" +
                 "  $name$_ = value;\n" +
                 "  " + Helpers.generateSetBit(builderBitIndex) + ";\n" +
@@ -436,7 +436,7 @@ public class StringFieldGenerator extends ImmutableFieldGenerator {
         DocComment.writeFieldAccessorDocComment(printer, descriptor, DocComment.AccessorType.CLEARER,
             context.getOptions(), true);
         printer.emit(variables,
-            "public Builder clear$capitalized_name$() {\n" +
+            "$deprecation$public Builder clear$capitalized_name$() {\n" +
                 "  $name$_ = $default$;\n" +
                 "  " + Helpers.generateClearBit(builderBitIndex) + ";\n" +
                 "  onChanged();\n" +
