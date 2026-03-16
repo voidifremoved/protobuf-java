@@ -9,14 +9,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
+import com.github.difflib.DiffUtils;
+import com.github.difflib.UnifiedDiffUtils;
+import com.github.difflib.patch.Patch;
 import com.google.protobuf.DescriptorProtos.FileDescriptorProto;
-import com.rubberjam.protobuf.compiler.CompilationException;
-import com.rubberjam.protobuf.compiler.ErrorCollector;
-import com.rubberjam.protobuf.compiler.Parser;
-import com.rubberjam.protobuf.compiler.SourceLocationTable;
 import com.rubberjam.protobuf.compiler.JavaCodeGenerator.GeneratedJavaFile;
 import com.rubberjam.protobuf.compiler.runtime.RuntimeJavaGenerator;
 import com.rubberjam.protobuf.io.Tokenizer;
@@ -59,52 +60,39 @@ public abstract class AbstractProtoParityTest {
 			actualFile.getParentFile().mkdirs();
 		}
 		Files.writeString(actualFile.toPath(), actual);
+		
+		
 
 		// Compare line by line for better error messages
 		String[] actualLines = actual.split("\n");
 		String[] expectedLines = expectedTrimmed.split("\n");
 
-		int maxLines = Math.max(actualLines.length, expectedLines.length);
-		for (int i = 0; i < maxLines; i++) {
-			String actualLine = i < actualLines.length ? actualLines[i] : null;
-			String expectedLine = i < expectedLines.length ? expectedLines[i] : null;
-
-			if (actualLine == null) {
-				assertEquals("Line " + (i + 1) + ": Expected line missing in generated code", expectedLine, actualLine);
-			} else if (expectedLine == null) {
-				assertEquals("Line " + (i + 1) + ": Extra line in generated code", expectedLine, actualLine);
-			} else if (!actualLine.equals(expectedLine)) {
-				// Print context for debugging - show 5 lines before and after
-				System.out.println("Mismatch at line " + (i + 1) + ":");
-				int start = Math.max(0, i - 5);
-				int end = Math.min(maxLines, i + 6);
-				for (int j = start; j < end; j++) {
-					String expectedPart = j < expectedLines.length ? expectedLines[j] : "<missing>";
-					String actualPart = j < actualLines.length ? actualLines[j] : "<missing>";
-					if (j == i) {
-						System.out.println(">>> " + (j + 1) + " Expected: " + expectedPart);
-						System.out.println(">>> " + (j + 1) + " Actual:   " + actualPart);
-					} else {
-						System.out.println("    " + (j + 1) + " Expected: " + expectedPart);
-						System.out.println("    " + (j + 1) + " Actual:   " + actualPart);
-					}
-				}
-				try {
-					assertEquals("Line " + (i + 1) + " mismatch", expectedLine, actualLine);
-				} catch (AssertionError e) {
-					System.err.println("DUMPING ACTUAL CODE AROUND MISMATCH:");
-					int startDump = Math.max(0, i - 20);
-					int endDump = Math.min(actualLines.length, i + 21);
-					for (int j = startDump; j < endDump; j++) {
-						System.err.println((j + 1) + ": " + actualLines[j]);
-					}
-					throw e;
-				}
+		List<String> expectedLinesList = Arrays.asList(expectedLines);
+		List<String> actualLinesList = Arrays.asList(actualLines);
+		Patch<String> diff = DiffUtils.diff(expectedLinesList, actualLinesList);
+		
+		if (!diff.getDeltas().isEmpty())
+		{
+			
+			System.out.println("OUTPUT MISMATCH IN " + expectedJavaFileName + ", DIFF:");
+			List<String> unifiedDiff = UnifiedDiffUtils.generateUnifiedDiff(expectedJavaFileName + "_Expected.txt", expectedJavaFileName + "_Actual.txt", expectedLinesList, diff, 3);
+			
+			
+			
+			for (String string : unifiedDiff) {			
+				System.out.println(string);
 			}
-		}
+			
+			
 
+			System.out.println("DIFF ENDS");
+		}
+		
+		
+		
+		
 		// Full comparison as fallback
-		assertEquals("Generated Java source does not match expected", expectedTrimmed, actual);
+		assertEquals("Generated Java source does not match expected", diff.getDeltas().isEmpty(), true);
 	}
 
 	protected String readProtoFile(String fileName) throws Exception {
