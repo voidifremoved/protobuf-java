@@ -52,6 +52,8 @@ public final class FieldCommon {
     variables.put("disambiguated_reason", info.disambiguatedReason != null ? info.disambiguatedReason : "");
     variables.put("constant_name", Helpers.getFieldConstantName(descriptor));
     variables.put("number", String.valueOf(descriptor.getNumber()));
+    variables.put("deprecation",
+        descriptor.getOptions().getDeprecated() ? "@java.lang.Deprecated " : "");
     variables.put("kt_dsl_builder", "_builder");
     
     // Placeholders for annotation identifiers

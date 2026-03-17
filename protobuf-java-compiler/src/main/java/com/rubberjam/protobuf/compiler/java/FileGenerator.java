@@ -32,7 +32,7 @@ public class FileGenerator {
 		// (Phase 8-9).
 		// Select the factory based on whether Lite runtime is required.
 		GeneratorFactory factory;
-		if (javaContext.enforceLite() || file.getOptions().getOptimizeFor() == FileOptions.OptimizeMode.LITE_RUNTIME) {
+		if (javaContext.enforceLite()) {
 			factory = new ImmutableLiteGeneratorFactory(javaContext);
 		} else {
 			factory = new ImmutableGeneratorFactory(javaContext);
@@ -168,7 +168,8 @@ public class FileGenerator {
 			printer.print(dependencyClass + ".getDescriptor();\n");
 		}
 
-		// Extension registry update only needed for files with extensions that have custom options
+		// Extension registry update only needed for files with extensions that have
+		// custom options
 		// requiring descriptor database resolution. Simple extensions don't need it.
 
 		printer.outdent();

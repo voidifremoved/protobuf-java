@@ -12,122 +12,142 @@
 		<protobuf.version>4.33.4</protobuf.version>
 	</properties>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.13.0</version>
-				<configuration>
-					<source>21</source>
-					<target>21</target>
-					<release>21</release>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>com.rubberjam.protobuf</groupId>
-				<artifactId>protoc-maven-plugin</artifactId>
-				<version>1.0-SNAPSHOT</version>
-				<executions>
-					<execution>
-						<id>java</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>protoc-maven</goal>
-						</goals>
-						<configuration>
-							<protocVersion>${protobuf.version}</protocVersion>
-							<includeStdTypes>true</includeStdTypes>
-							<inputDirectories>
-								<include>${project.basedir}/src/test/protobuf</include>
-							</inputDirectories>
-							<outputTargets>
-								<outputTarget>
-									<type>java</type>
-									<outputDirectory>${project.basedir}/src/test/resources/expected/java</outputDirectory>
-								</outputTarget>
-							</outputTargets>
-						</configuration>
-					</execution>
-					<execution>
-						<id>csharp</id>
-						<phase>generate-test-sources</phase>
-						<goals>
-							<goal>protoc-maven</goal>
-						</goals>
-						<configuration>
-							<protocVersion>${protobuf.version}</protocVersion>
-							<includeStdTypes>true</includeStdTypes>
-							<inputDirectories>
-								<include>${project.basedir}/src/test/protobuf</include>
-							</inputDirectories>
-							<outputTargets>
-								<outputTarget>
-									<type>csharp</type>
-									<outputDirectory>${project.basedir}/src/test/resources/expected/csharp</outputDirectory>
-								</outputTarget>
-							</outputTargets>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>3.1.0</version>
-				<executions>
-					<execution>
-						<id>flatten-generated-java</id>
-						<phase>process-test-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo message="Flattening generated Java files..."/>
-								<mkdir dir="${project.basedir}/src/test/resources/expected/java-temp"/>
-								<copy todir="${project.basedir}/src/test/resources/expected/java-temp" flatten="true" overwrite="true" failonerror="false">
-									<fileset dir="${project.basedir}/src/test/resources/expected/java">
-										<include name="**/*.java"/>
-									</fileset>
-								</copy>
-								<delete dir="${project.basedir}/src/test/resources/expected/java" includeemptydirs="true"/>
-								<mkdir dir="${project.basedir}/src/test/resources/expected/java"/>
-								<move todir="${project.basedir}/src/test/resources/expected/java" failonerror="false">
-									<fileset dir="${project.basedir}/src/test/resources/expected/java-temp">
-										<include name="*.java"/>
-									</fileset>
-								</move>
-								<delete dir="${project.basedir}/src/test/resources/expected/java-temp"/>
-								<echo message="Flattening complete."/>
-							</target>
-						</configuration>
-					</execution>
-					
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.13.0</version>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                    <release>21</release>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>com.rubberjam.protobuf</groupId>
+                <artifactId>protoc-maven-plugin</artifactId>
+                <version>1.0-SNAPSHOT</version>
+                <executions>
+                    <execution>
+                        <id>java</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>protoc-maven</goal>
+                        </goals>
+                        <configuration>
+                            <protocVersion>${protobuf.version}</protocVersion>
+                            <includeStdTypes>true</includeStdTypes>
+                            <inputDirectories>
+                                <include>${project.basedir}/src/test/protobuf</include>
+                            </inputDirectories>
+                            <outputTargets>
+                                <outputTarget>
+                                    <type>java</type>
+                                    <outputDirectory>
+                                        ${project.basedir}/src/test/resources/expected/java</outputDirectory>
+                                </outputTarget>
+                            </outputTargets>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>csharp</id>
+                        <phase>generate-test-sources</phase>
+                        <goals>
+                            <goal>protoc-maven</goal>
+                        </goals>
+                        <configuration>
+                            <protocVersion>${protobuf.version}</protocVersion>
+                            <includeStdTypes>true</includeStdTypes>
+                            <inputDirectories>
+                                <include>${project.basedir}/src/test/protobuf</include>
+                            </inputDirectories>
+                            <outputTargets>
+                                <outputTarget>
+                                    <type>csharp</type>
+                                    <outputDirectory>
+                                        ${project.basedir}/src/test/resources/expected/csharp</outputDirectory>
+                                </outputTarget>
+                            </outputTargets>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <id>flatten-generated-java</id>
+                        <phase>process-test-sources</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <echo
+                                    message="Flattening generated Java files..." />
+                                <mkdir
+                                    dir="${project.basedir}/src/test/resources/expected/java-temp" />
+                                <copy
+                                    todir="${project.basedir}/src/test/resources/expected/java-temp"
+                                    flatten="true" overwrite="true"
+                                    failonerror="false">
+                                    <fileset
+                                        dir="${project.basedir}/src/test/resources/expected/java">
+                                        <include name="**/*.java" />
+                                    </fileset>
+                                </copy>
+                                <delete
+                                    dir="${project.basedir}/src/test/resources/expected/java"
+                                    includeemptydirs="true" />
+                                <mkdir
+                                    dir="${project.basedir}/src/test/resources/expected/java" />
+                                <move
+                                    todir="${project.basedir}/src/test/resources/expected/java"
+                                    failonerror="false">
+                                    <fileset
+                                        dir="${project.basedir}/src/test/resources/expected/java-temp">
+                                        <include name="*.java" />
+                                    </fileset>
+                                </move>
+                                <delete
+                                    dir="${project.basedir}/src/test/resources/expected/java-temp" />
+                                <echo message="Flattening complete." />
+                            </target>
+                        </configuration>
+                    </execution>
 
-	<dependencies>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.13.2</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.google.protobuf</groupId>
-			<artifactId>protobuf-java</artifactId>
-			<version>${protobuf.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>5.11.0</version>
-			<scope>test</scope>
-		</dependency>
+    <dependencies>
 
-	</dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>${protobuf.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.github.java-diff-utils</groupId>
+            <artifactId>java-diff-utils</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>
